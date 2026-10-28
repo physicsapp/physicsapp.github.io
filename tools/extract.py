@@ -257,7 +257,7 @@ def extract_section(bundle, mid, num):
                 if len(ents) == 2:
                     m = ents[1].find(f".//{M}math")
                     key_equations.append({
-                        "name": "".join(ents[0].itertext()).strip(),
+                        "name": entry_text(ents[0]),
                         "tex": to_tex(m) if m is not None else inline(ents[1], ctx),
                     })
         elif cls.startswith("review-"):
@@ -272,6 +272,15 @@ def extract_section(bundle, mid, num):
         "keyConcepts": key_concepts, "eoc": eoc, "_keyEquations": key_equations,
         "_figs": ctx.figs_used,
     }
+
+
+def entry_text(el):
+    """Plain text of a table cell. A <newline/> inside a name becomes a space."""
+    parts = [el.text or ""]
+    for ch in el:
+        parts.append(" " if ch.tag.endswith("newline") else "".join(ch.itertext()))
+        parts.append(ch.tail or "")
+    return re.sub(r"\s+", " ", "".join(parts)).strip()
 
 
 def main():
