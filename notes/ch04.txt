@@ -1,0 +1,523 @@
+# FREEBODY NOTES: CHAPTER 4, MOTION IN TWO AND THREE DIMENSIONS
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 4.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(v = v_0 + at\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 4.1
+In short: In two or three dimensions, position is a vector \(\vec r(t) = x(t)\hat i + y(t)\hat j + z(t)\hat k\). Displacement is \(\Delta\vec r = \vec r(t_2) - \vec r(t_1)\), and velocity is its derivative, \(\vec v = d\vec r/dt\), taken one component at a time: \(v_x = dx/dt\), \(v_y = dy/dt\). The velocity vector is always tangent to the path. Motion along one axis is independent of motion along a perpendicular axis.
+Watch out: Speed is the magnitude \(\sqrt{v_x^2 + v_y^2}\), not \(v_x + v_y\).
+
+## SUMMARY 4.2
+In short: Acceleration is the derivative of velocity, \(\vec a = d\vec v/dt\), again one component at a time. It can point in any direction, not just along the velocity. With constant acceleration, the one dimensional equations from Chapter 3 hold separately for \(x\), \(y\), and \(z\), for example \(v_x = v_{0x} + a_xt\) and \(v_y = v_{0y} + a_yt\).
+Watch out: An object can accelerate without changing speed, just by changing direction.
+
+## SUMMARY 4.3
+In short: A projectile moves only under gravity, so \(a_x = 0\) and \(a_y = -g\). Split the launch velocity into \(v_{0x} = v_0\cos\theta_0\) and \(v_{0y} = v_0\sin\theta_0\), solve the vertical motion to get the time, then use \(x = v_{0x}t\). Launched and landing at the same height, the time of flight is \(T = 2v_0\sin\theta_0/g\) and the range is \(R = v_0^2\sin 2\theta_0/g\), largest at \(45^\circ\).
+Watch out: At the top of the path \(v_y = 0\), but \(v_x\) is not zero and the acceleration is still \(g\) downward.
+
+## SUMMARY 4.4
+In short: In uniform circular motion the speed is constant, but the direction keeps changing, so there is a centripetal acceleration \(a_c = v^2/r\) pointing toward the center. If the speed also changes, there is a tangential acceleration \(a_T = d|\vec v|/dt\) along the path. The two are perpendicular, so the total acceleration is \(a = \sqrt{a_c^2 + a_T^2}\).
+Watch out: Centripetal acceleration points toward the center, not outward. Nothing pushes a riding passenger outward; they just tend to keep going straight.
+
+## SUMMARY 4.5
+In short: Velocity depends on who is measuring. If frame \(S'\) moves with velocity \(\vec v_{S'S}\) relative to frame \(S\), an object's velocity relative to \(S\) is \(\vec v_{PS} = \vec v_{PS'} + \vec v_{S'S}\). The subscripts chain like dominoes: the inner letters match and drop out. Frames moving at constant velocity relative to each other measure the same acceleration.
+Watch out: \(\vec v_{AB} = -\vec v_{BA}\). Reversing the subscripts reverses the vector.
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: x = 4*t - t^2; t from 0 to 4; y from 0 to 5
+#         The letter before = (x, v, a, or y) labels the vertical axis.
+#         Add "; unit m/s" to change the unit on that axis.
+#   Then either
+#     Tap: t = 2          the student taps the graph; list several times with commas
+#                         and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+# ============================ 4.1 DISPLACEMENT AND VELOCITY VECTORS ============================
+
+## QUIZ 4.1
+Q: How does the velocity vector relate to a particle's path?
+A) It points toward the center of the path
+B) It is tangent to the path
+C) It is perpendicular to the path
+D) It points back to the origin
+Answer: B
+Why: The velocity points in the direction of motion at that instant, which is along the tangent to the path.
+
+## QUIZ 4.1
+Q: A car drives once around a circular track and stops where it started. What is its displacement?
+A) The circumference of the track
+B) The diameter of the track
+C) Zero
+D) Twice the radius
+Answer: C
+Why: Displacement depends only on where you start and end. Ending at the start means \(\Delta\vec r = 0\).
+
+## QUIZ 4.1
+Q: An object's \(x\) motion and \(y\) motion are:
+A) Always the same
+B) Independent of each other
+C) Always opposite
+D) Connected so that \(v_x = v_y\)
+Answer: B
+Why: Motion along perpendicular axes is independent. You can treat each one with its own one dimensional equations.
+
+## QUIZ 4.1
+Q: A particle has \(v_x = 3\ \text{m/s}\) and \(v_y = 4\ \text{m/s}\). What is its speed?
+A) 7 m/s
+B) 5 m/s
+C) 1 m/s
+D) 12 m/s
+Answer: B
+Why: Speed is the magnitude of the velocity, \(\sqrt{3^2 + 4^2} = 5\ \text{m/s}\).
+
+## DRILL 4.1
+Q: A particle moves from \((x, y) = (0, 0)\) to \(({{x}}, {{y}})\ \text{m}\). What is the magnitude of its displacement?
+Let: k = 1 to 5 by 1; x = 3*k; y = 4*k
+Answer: sqrt(x^2 + y^2)
+Wrong: x + y | Add the components as vectors, with the Pythagorean theorem.
+Wrong: x^2 + y^2 | Take the square root.
+Wrong: y - x | Perpendicular components don't subtract.
+Unit: m
+Work: |\Delta\vec r| = \sqrt{({{x}})^2 + ({{y}})^2} = {{answer}}\ \text{m}
+
+## DRILL 4.1
+Q: A particle moves from \((x, y) = ({{x1}}, {{y1}})\ \text{m}\) to \(({{x2}}, {{y2}})\ \text{m}\) in \({{t}}\ \text{s}\). What is the \(x\) component of its average velocity?
+Let: t = 2 to 5 by 1; k = -3 to 4 by 1; x1 = -4 to 6 by 2; x2 = x1 + k*t; y1 = 0 to 8 by 2; y2 = y1 + 3*t
+Answer: (x2 - x1)/t
+Wrong: x2/t | Use the change in \(x\), not the final \(x\).
+Wrong: (x2 - x1)*t | Divide by the time.
+Wrong: (y2 - y1)/t | That's the \(y\) component.
+Unit: m/s
+Work: v_{avg,x} = \frac{x_2 - x_1}{t} = \frac{{{x2}} - ({{x1}})}{{{t}}} = {{answer}}\ \text{m/s}
+
+## DRILL 4.1
+Q: A particle's position is \(\vec r(t) = ({{b}}\ \text{m/s}^2)\,t^2\,\hat i + ({{c}}\ \text{m/s})\,t\,\hat j\). What is \(v_x\) at \(t = {{t}}\ \text{s}\)?
+Let: b = 1 to 4 by 1; c = 2 to 6 by 2; t = 1 to 4 by 1
+Answer: 2*b*t
+Wrong: b*t^2 | That's \(x\), the position. Take the derivative.
+Wrong: b*t | The derivative of \(t^2\) is \(2t\). The 2 is missing.
+Wrong: c | That's \(v_y\).
+Unit: m/s
+Work: v_x = \frac{dx}{dt} = 2({{b}})t = 2({{b}})({{t}}) = {{answer}}\ \text{m/s}
+
+## DRILL 4.1
+Q: A particle's position is \(\vec r(t) = ({{b}}\ \text{m/s})\,t\,\hat i + ({{c}}\ \text{m/s})\,t\,\hat j\). What is its speed?
+Let: k = 1 to 4 by 1; b = 3*k; c = 4*k
+Answer: sqrt(b^2 + c^2)
+Wrong: b + c | Speed is the magnitude, \(\sqrt{v_x^2 + v_y^2}\).
+Wrong: b | That's only \(v_x\).
+Wrong: c - b | Perpendicular components combine with the Pythagorean theorem.
+Unit: m/s
+Work: v = \sqrt{v_x^2 + v_y^2} = \sqrt{({{b}})^2 + ({{c}})^2} = {{answer}}\ \text{m/s}
+
+
+# ============================ 4.2 ACCELERATION VECTOR ============================
+
+## QUIZ 4.2
+Q: A car drives around a curve at a constant 20 m/s. Is it accelerating?
+A) No, its speed is constant
+B) Yes, its direction of motion is changing
+C) Only if it brakes
+D) Only on a banked curve
+Answer: B
+Why: Acceleration is any change in the velocity vector. Changing direction at constant speed is still acceleration.
+
+## QUIZ 4.2
+Q: Must the acceleration vector point in the direction of motion?
+A) Yes, always
+B) No, it can point in any direction
+C) Yes, unless the object is slowing down
+D) Only in one dimension
+Answer: B
+Why: Acceleration points the way the velocity is changing. For a thrown ball it points straight down while the ball moves sideways and up.
+
+## QUIZ 4.2
+Q: An object has constant acceleration \(\vec a = (2\hat i)\ \text{m/s}^2\). What happens to \(v_y\)?
+A) It increases by 2 m/s each second
+B) It stays constant
+C) It becomes zero
+D) It decreases
+Answer: B
+Why: \(a_y = 0\), so the \(y\) component of velocity doesn't change. Only \(v_x\) changes.
+
+## QUIZ 4.2
+Q: Velocity is \(\vec v(t) = (5\hat i + 3t^2\hat j)\ \text{m/s}\). In which direction does the acceleration point?
+A) \(+\hat i\)
+B) \(+\hat j\), for \(t > 0\)
+C) Along the velocity
+D) There is no acceleration
+Answer: B
+Why: \(\vec a = d\vec v/dt = 6t\,\hat j\). The \(x\) component of velocity is constant, so \(a_x = 0\).
+
+## DRILL 4.2
+Q: A particle's velocity is \(\vec v(t) = ({{b}}\ \text{m/s}^2)\,t\,\hat i + ({{c}}\ \text{m/s}^3)\,t^2\,\hat j\). What is \(a_y\) at \(t = {{t}}\ \text{s}\)?
+Let: b = 2 to 6 by 2; c = 1 to 3 by 1; t = 1 to 4 by 1
+Answer: 2*c*t
+Wrong: c*t^2 | That's \(v_y\). Take the derivative.
+Wrong: b | That's \(a_x\).
+Wrong: c*t | The derivative of \(t^2\) is \(2t\). The 2 is missing.
+Unit: m/s²
+Work: a_y = \frac{dv_y}{dt} = 2({{c}})t = 2({{c}})({{t}}) = {{answer}}\ \text{m/s}^2
+
+## DRILL 4.2
+Q: A particle has acceleration components \(a_x = {{ax}}\ \text{m/s}^2\) and \(a_y = {{ay}}\ \text{m/s}^2\). What is the magnitude of its acceleration?
+Let: k = 1 to 3 by 1; ax = 6*k; ay = 8*k
+Answer: sqrt(ax^2 + ay^2)
+Wrong: ax + ay | Combine perpendicular components with the Pythagorean theorem.
+Wrong: ay - ax | Perpendicular components don't subtract.
+Wrong: ax^2 + ay^2 | Take the square root.
+Unit: m/s²
+Work: a = \sqrt{({{ax}})^2 + ({{ay}})^2} = {{answer}}\ \text{m/s}^2
+
+## DRILL 4.2
+Q: A puck starts with \(v_{0x} = {{v0}}\ \text{m/s}\) and has constant \(a_x = {{a}}\ \text{m/s}^2\). What is \(v_x\) after \({{t}}\ \text{s}\)?
+Let: v0 = 2 to 10 by 2; a = -3 to 3 by 1; t = 1 to 4 by 1
+Answer: v0 + a*t
+Wrong: a*t | Add the starting velocity.
+Wrong: v0 + 0.5*a*t^2 | That's the form for position. Velocity is \(v_{0x} + a_xt\).
+Wrong: v0 - a*t | Keep the sign of \(a_x\) as given.
+Unit: m/s
+Work: v_x = v_{0x} + a_xt = {{v0}} + ({{a}})({{t}}) = {{answer}}\ \text{m/s}
+
+## DRILL 4.2
+Q: A skier starts from rest and accelerates down a slope with \(\vec a = ({{ax}}\hat i - {{ay}}\hat j)\ \text{m/s}^2\). What is \(v_x\) after \({{t}}\ \text{s}\)?
+Let: ax = 2 to 6 by 1; ay = 1 to 3 by 1; t = 2 to 5 by 1
+Answer: ax*t
+Wrong: 0.5*ax*t^2 | That's \(x\), the horizontal distance.
+Wrong: -ay*t | That's \(v_y\).
+Wrong: sqrt(ax^2 + ay^2)*t | That's the speed. The question asks for the \(x\) component.
+Unit: m/s
+Work: v_x = v_{0x} + a_xt = 0 + ({{ax}})({{t}}) = {{answer}}\ \text{m/s}
+
+
+# ============================ 4.3 PROJECTILE MOTION ============================
+
+## QUIZ 4.3
+Q: A ball rolls off a table at the same moment an identical ball is dropped from the same height. Ignoring air resistance, which lands first?
+A) The dropped ball
+B) The ball that rolled off
+C) They land at the same time
+D) It depends on how fast the first ball was rolling
+Answer: C
+Why: Both start with \(v_y = 0\) and fall with the same \(a_y = -g\). Horizontal motion doesn't affect the vertical motion.
+
+## QUIZ 4.3
+Q: At the highest point of a projectile's path, what is its velocity?
+A) Zero
+B) Purely horizontal, equal to \(v_0\cos\theta_0\)
+C) Purely vertical
+D) Equal to \(v_0\)
+Answer: B
+Why: \(v_y = 0\) at the top, but \(v_x\) stays \(v_0\cos\theta_0\) the whole flight.
+
+## QUIZ 4.3
+Q: Ignoring air resistance, what is a projectile's acceleration while it is moving up?
+A) Upward, \(g\)
+B) Downward, \(g\)
+C) Zero
+D) Along the velocity
+Answer: B
+Why: The only force is gravity, so the acceleration is \(g\) straight down at every point of the flight.
+
+## QUIZ 4.3
+Q: On level ground, which launch angle gives the longest range?
+A) \(30^\circ\)
+B) \(45^\circ\)
+C) \(60^\circ\)
+D) \(90^\circ\)
+Answer: B
+Why: \(R = v_0^2\sin 2\theta_0/g\) is largest when \(\sin 2\theta_0 = 1\), so \(\theta_0 = 45^\circ\).
+
+## QUIZ 4.3
+Q: On level ground, a ball launched at \(30^\circ\) lands 40 m away. Where does an identical launch at \(60^\circ\) land?
+A) 20 m
+B) 40 m
+C) 80 m
+D) 69 m
+Answer: B
+Why: \(\sin 2\theta_0\) is the same for \(30^\circ\) and \(60^\circ\), so the ranges match. The \(60^\circ\) shot goes higher and stays up longer.
+
+## QUIZ 4.3
+Q: A package is dropped from a plane flying level at constant velocity. Ignoring air resistance, where is the package relative to the plane as it falls?
+A) Behind the plane
+B) Ahead of the plane
+C) Directly below the plane
+D) It depends on the plane's speed
+Answer: C
+Why: The package keeps the plane's horizontal velocity, so it stays under the plane while it falls.
+
+## DRILL 4.3
+Q: A ball rolls off a table \({{h}}\ \text{m}\) high. How long does it take to hit the floor? Use \(g = 10\ \text{m/s}^2\).
+Let: h = one of 0.8, 1.25, 1.8, 5
+Answer: sqrt(2*h/10)
+Wrong: sqrt(h/10) | The 2 from \(h = \tfrac12gt^2\) is missing.
+Wrong: 2*h/10 | Take the square root.
+Wrong: h/10 | Solve \(h = \tfrac12gt^2\) for \(t\). That needs a square root.
+Unit: s
+Work: h = \tfrac12gt^2 \ \Rightarrow\ t = \sqrt{\frac{2({{h}})}{10}} = {{answer}}\ \text{s}
+
+## DRILL 4.3
+Q: A ball is thrown horizontally at \({{v}}\ \text{m/s}\) from a cliff \({{h}}\ \text{m}\) high. How far from the base of the cliff does it land? Use \(g = 10\ \text{m/s}^2\).
+Let: t = 1 to 4 by 1; h = 5*t^2; v = 5 to 20 by 5
+Answer: v*sqrt(2*h/10)
+Wrong: sqrt(2*h/10) | That's the time in the air. Multiply by the horizontal speed.
+Wrong: v*h/10 | Find the time from \(h = \tfrac12gt^2\) first.
+Wrong: v*2*h/10 | You forgot the square root when finding the time.
+Unit: m
+Work: t = \sqrt{\frac{2({{h}})}{10}} = {{t}}\ \text{s},\quad x = v_0t = ({{v}})({{t}}) = {{answer}}\ \text{m}
+
+## DRILL 4.3
+Q: A ball is launched at \({{v0}}\ \text{m/s}\) and \(30^\circ\) above the horizontal and lands at the same height. How long is it in the air? Use \(g = 10\ \text{m/s}^2\) and \(\sin 30^\circ = 0.5\).
+Let: v0 = 10 to 40 by 10
+Answer: 2*v0*0.5/10
+Wrong: v0*0.5/10 | That's only the time to the top. The trip down takes just as long.
+Wrong: 2*v0/10 | Use only the vertical part of the launch velocity, \(v_0\sin 30^\circ\).
+Wrong: 2*v0*0.87/10 | \(\cos 30^\circ\) gives the horizontal part. Time in the air depends on the vertical part.
+Unit: s
+Work: T = \frac{2v_0\sin\theta_0}{g} = \frac{2({{v0}})(0.5)}{10} = {{answer}}\ \text{s}
+
+## DRILL 4.3
+Q: A ball is launched at \({{v0}}\ \text{m/s}\) and \(45^\circ\) above level ground. What is its range? Use \(g = 10\ \text{m/s}^2\).
+Let: v0 = 10 to 40 by 10
+Answer: v0^2/10
+Wrong: v0^2/20 | At \(45^\circ\), \(\sin 2\theta_0 = 1\), so \(R = v_0^2/g\). There's no extra 2.
+Wrong: v0/10 | The range has \(v_0^2\).
+Wrong: 2*v0^2/10 | At \(45^\circ\), \(\sin 2\theta_0 = 1\), so \(R = v_0^2/g\).
+Unit: m
+Work: R = \frac{v_0^2\sin 2\theta_0}{g} = \frac{({{v0}})^2(1)}{10} = {{answer}}\ \text{m}
+
+## DRILL 4.3
+Q: A projectile is launched with \(v_{0y} = {{vy}}\ \text{m/s}\). How high does it rise above the launch point? Use \(g = 10\ \text{m/s}^2\).
+Let: vy = 10 to 40 by 10
+Answer: vy^2/20
+Wrong: vy^2/10 | The 2 in \(v_y^2 = v_{0y}^2 - 2gh\) is missing.
+Wrong: vy/10 | That's the time to the top.
+Wrong: vy^2 | Divide by \(2g\).
+Unit: m
+Work: 0 = v_{0y}^2 - 2gh \ \Rightarrow\ h = \frac{({{vy}})^2}{2(10)} = {{answer}}\ \text{m}
+
+## DRILL 4.3
+Q: A ball is launched at \({{v0}}\ \text{m/s}\) and \(60^\circ\) above the horizontal. What is its speed at the top of its path? (\(\cos 60^\circ = 0.5\))
+Let: v0 = 10 to 40 by 5
+Answer: v0*0.5
+Wrong: 0 | Only \(v_y\) is zero at the top. \(v_x\) never changes.
+Wrong: v0 | Some of the speed was vertical, and that part is gone at the top.
+Wrong: v0*0.87 | That's \(v_0\sin 60^\circ\), the vertical part at launch.
+Unit: m/s
+Work: v_{top} = v_x = v_0\cos 60^\circ = {{v0}}(0.5) = {{answer}}\ \text{m/s}
+
+## GRAPH 4.3
+Q: The graph shows the height of a projectile versus time. Tap the moment it reaches its highest point.
+Plot: y = 15*t - 5*t^2; t from 0 to 3; y from 0 to 13
+Tap: t = 1.5
+Why: The top is where \(dy/dt = v_y = 0\). That's at \(t = 1.5\ \text{s}\), halfway through the 3 s flight.
+
+## GRAPH 4.3
+Q: This is the horizontal velocity of a projectile over its flight, ignoring air resistance. Which graph shape is it?
+Plot: v = 8; t from 0 to 3; y from 0 to 10
+A) A horizontal line, because \(a_x = 0\)
+B) A line sloping down, because of gravity
+C) It should drop to zero at the top
+D) It should be a parabola
+Answer: A
+Why: Gravity acts only vertically, so \(v_x\) stays constant. Only \(v_y\) changes.
+
+
+# ============================ 4.4 CIRCULAR MOTION ============================
+
+## QUIZ 4.4
+Q: In uniform circular motion, which way does the acceleration point?
+A) Along the velocity
+B) Toward the center of the circle
+C) Away from the center
+D) There is no acceleration
+Answer: B
+Why: The velocity keeps turning toward the center, so the acceleration, \(a_c = v^2/r\), points toward the center.
+
+## QUIZ 4.4
+Q: A car on a circular track doubles its speed. What happens to its centripetal acceleration?
+A) It doubles
+B) It quadruples
+C) It halves
+D) It stays the same
+Answer: B
+Why: \(a_c = v^2/r\), so doubling \(v\) multiplies \(a_c\) by 4.
+
+## QUIZ 4.4
+Q: A car speeds up while going around a curve. Which accelerations does it have?
+A) Only centripetal
+B) Only tangential
+C) Both centripetal and tangential
+D) Neither
+Answer: C
+Why: The turning gives a centripetal part toward the center, and the change in speed gives a tangential part along the path.
+
+## QUIZ 4.4
+Q: At the same speed, which curve gives the larger centripetal acceleration?
+A) The one with the larger radius
+B) The one with the smaller radius
+C) They are equal
+D) It depends on the car's mass
+Answer: B
+Why: \(a_c = v^2/r\), so a tighter curve, smaller \(r\), means a larger acceleration.
+
+## DRILL 4.4
+Q: A car drives around a curve of radius \({{r}}\ \text{m}\) at \({{v}}\ \text{m/s}\). What is its centripetal acceleration?
+Let: v = 10 to 30 by 10; r = one of 25, 50, 100
+Answer: v^2/r
+Wrong: v/r | The speed is squared in \(a_c = v^2/r\).
+Wrong: v^2*r | Divide by the radius.
+Wrong: r/v^2 | The fraction is upside down.
+Unit: m/s²
+Work: a_c = \frac{v^2}{r} = \frac{({{v}})^2}{{{r}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 4.4
+Q: A ride spins riders in a circle of radius \({{r}}\ \text{m}\) with a centripetal acceleration of \({{a}}\ \text{m/s}^2\). How fast are the riders moving?
+Let: v = 4 to 12 by 2; r = one of 2, 4, 8; a = v^2/r
+Answer: sqrt(a*r)
+Wrong: a*r | Take the square root of \(a_cr\).
+Wrong: a/r | Rearrange \(a_c = v^2/r\) to \(v^2 = a_cr\).
+Wrong: sqrt(a/r) | Multiply by the radius, don't divide.
+Unit: m/s
+Work: v = \sqrt{a_cr} = \sqrt{({{a}})({{r}})} = {{answer}}\ \text{m/s}
+
+## DRILL 4.4
+Q: A car on a curve has a centripetal acceleration of \({{ac}}\ \text{m/s}^2\) and a tangential acceleration of \({{at}}\ \text{m/s}^2\). What is the magnitude of its total acceleration?
+Let: k = 1 to 3 by 1; ac = 4*k; at = 3*k
+Answer: sqrt(ac^2 + at^2)
+Wrong: ac + at | The two parts are perpendicular, so combine them with the Pythagorean theorem.
+Wrong: ac | Include the tangential part too.
+Wrong: ac - at | Perpendicular parts don't subtract.
+Unit: m/s²
+Work: a = \sqrt{a_c^2 + a_T^2} = \sqrt{({{ac}})^2 + ({{at}})^2} = {{answer}}\ \text{m/s}^2
+
+## DRILL 4.4
+Q: A stone on a string moves in a circle of radius \({{r}}\ \text{m}\), going around once every \({{T}}\ \text{s}\). What is its speed? Use \(\pi \approx 3\).
+Let: r = one of 0.5, 1, 1.5, 2; T = one of 0.5, 1, 2
+Answer: 2*3*r/T
+Wrong: 3*r/T | One trip around is the circumference, \(2\pi r\), not \(\pi r\).
+Wrong: 2*3*r*T | Speed is distance divided by time.
+Wrong: r/T | One trip around covers \(2\pi r\), not \(r\).
+Unit: m/s
+Work: v = \frac{2\pi r}{T} \approx \frac{2(3)({{r}})}{{{T}}} = {{answer}}\ \text{m/s}
+
+
+# ============================ 4.5 RELATIVE MOTION ============================
+
+## QUIZ 4.5
+Q: You walk toward the front of a train at 1.5 m/s while the train moves at 20 m/s relative to the ground. What is your velocity relative to the ground?
+A) 18.5 m/s
+B) 20 m/s
+C) 21.5 m/s
+D) 1.5 m/s
+Answer: C
+Why: \(\vec v_{you,ground} = \vec v_{you,train} + \vec v_{train,ground} = 1.5 + 20 = 21.5\ \text{m/s}\), in the train's direction.
+
+## QUIZ 4.5
+Q: The velocity of A relative to B is \(\vec v_{AB}\). What is \(\vec v_{BA}\)?
+A) \(\vec v_{AB}\)
+B) \(-\vec v_{AB}\)
+C) Zero
+D) \(2\vec v_{AB}\)
+Answer: B
+Why: If A moves east relative to B, then B moves west relative to A at the same speed.
+
+## QUIZ 4.5
+Q: Two frames move at constant velocity relative to each other. What do observers in both frames agree on for a moving object?
+A) Its velocity
+B) Its position
+C) Its acceleration
+D) Nothing
+Answer: C
+Why: The relative velocity of the frames is constant, so its derivative is zero, and both frames measure the same acceleration.
+
+## QUIZ 4.5
+Q: A boat points straight across a river while the current flows downstream. Relative to the shore, where does the boat end up?
+A) Directly across
+B) Downstream of directly across
+C) Upstream of directly across
+D) It never reaches the other side
+Answer: B
+Why: Relative to the shore, the boat's velocity is its velocity relative to the water plus the water's velocity, so it drifts downstream as it crosses.
+
+## DRILL 4.5
+Q: A boat moves at \({{vb}}\ \text{m/s}\) relative to the water, pointed straight across a river. The current flows at \({{vr}}\ \text{m/s}\). How fast is the boat moving relative to the shore?
+Let: k = 1 to 3 by 1; vb = 4*k; vr = 3*k
+Answer: sqrt(vb^2 + vr^2)
+Wrong: vb + vr | The two velocities are perpendicular. Add them as vectors.
+Wrong: vb - vr | The current is sideways to the boat, not against it.
+Wrong: vb | Relative to the shore, the current adds a sideways part.
+Unit: m/s
+Work: v_{BS} = \sqrt{v_{BW}^2 + v_{WS}^2} = \sqrt{({{vb}})^2 + ({{vr}})^2} = {{answer}}\ \text{m/s}
+
+## DRILL 4.5
+Q: A plane flies at \({{vp}}\ \text{km/h}\) relative to the air, heading straight into a headwind of \({{vw}}\ \text{km/h}\). What is its ground speed?
+Let: vp = 200 to 500 by 100; vw = 20 to 80 by 20
+Answer: vp - vw
+Wrong: vp + vw | A headwind blows against the plane, so it slows the plane down.
+Wrong: vp | The wind changes the plane's velocity relative to the ground.
+Wrong: sqrt(vp^2 + vw^2) | The wind is straight against the plane, not sideways.
+Unit: km/h
+Work: v_{PG} = v_{PA} + v_{AG} = {{vp}} + (-{{vw}}) = {{answer}}\ \text{km/h}
+
+## DRILL 4.5
+Q: Car A drives east at \({{va}}\ \text{m/s}\) and car B drives west at \({{vb}}\ \text{m/s}\). Taking east as positive, what is the velocity of A relative to B?
+Let: va = 10 to 30 by 5; vb = 10 to 30 by 5
+Answer: va + vb
+Wrong: va - vb | B moves west, so its velocity is negative. Then \(v_{AB} = v_A - v_B\) adds the two speeds.
+Wrong: -(va + vb) | That's the velocity of B relative to A.
+Wrong: va | B is moving too, so A's velocity relative to B is different from its velocity relative to the ground.
+Unit: m/s
+Work: v_{AB} = v_A - v_B = {{va}} - (-{{vb}}) = {{answer}}\ \text{m/s}
+
+## DRILL 4.5
+Q: A swimmer swims at \({{vs}}\ \text{m/s}\) relative to the water, straight downstream in a river flowing at \({{vr}}\ \text{m/s}\). How long does it take to cover \({{d}}\ \text{m}\) along the bank?
+Let: vs = 1 to 2 by 0.5; vr = 0.5 to 1.5 by 0.5; d = one of 60, 120, 180
+Answer: d/(vs + vr)
+Wrong: d/vs | Relative to the bank, the current helps. Add it to the swimmer's speed.
+Wrong: d/(vs - vr) | Going downstream, the current adds to the speed.
+Wrong: d*(vs + vr) | Time is distance divided by speed.
+Unit: s
+Work: t = \frac{d}{v_s + v_r} = \frac{{{d}}}{{{vs}} + {{vr}}} = {{answer}}\ \text{s}

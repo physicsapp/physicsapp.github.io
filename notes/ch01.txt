@@ -1,0 +1,573 @@
+# FREEBODY NOTES: CHAPTER 1, UNITS AND MEASUREMENT
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 1.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(v = v_0 + at\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 1.1
+In short: Physics looks for a small number of simple laws that describe everything from atoms to galaxies. Because those scales are so different, physicists compare sizes by order of magnitude, the power of ten closest to a number. A model is a simplified picture of a system, a theory is a tested explanation for patterns, and a law is a short statement, often an equation, of a pattern that holds every time it is tested.
+Watch out: A law in physics is not something proven forever. It is a pattern that has held up in every test so far.
+
+## SUMMARY 1.2
+In short: Every unit in mechanics is built from three SI base units: the meter (m) for length, the kilogram (kg) for mass, and the second (s) for time. Other units, like m/s or newtons, are combinations of these. Metric prefixes scale a unit by powers of ten, such as kilo (\(10^3\)), centi (\(10^{-2}\)), milli (\(10^{-3}\)), micro (\(10^{-6}\)), and nano (\(10^{-9}\)).
+Watch out: The kilogram, not the gram, is the SI base unit of mass, even though it has a prefix.
+
+## SUMMARY 1.3
+In short: To change units, multiply by a conversion factor equal to 1, like \(\frac{1000\ \text{m}}{1\ \text{km}}\), arranged so the unit you don't want cancels. Chain several factors when needed, for example km/h to m/s. Units follow algebra, so a squared unit needs the factor twice and a cubed unit needs it three times.
+Watch out: \(1\ \text{m}^2\) is \(10^4\ \text{cm}^2\), not 100. Square the conversion factor too.
+
+## SUMMARY 1.4
+In short: The dimension of a quantity says which base quantities it is built from: length L, mass M, and time T. Velocity has dimension L/T and acceleration L/T². Every term in a valid equation must have the same dimension, so checking dimensions catches many mistakes and can even help rebuild a formula you half remember.
+Watch out: A dimension check can't catch a wrong number like a missing \(\tfrac12\) or \(2\pi\). Pure numbers have no dimension.
+
+## SUMMARY 1.5
+In short: An estimate, or Fermi calculation, gets a rough answer from reasonable guesses. Build big lengths from small ones, get areas and volumes from lengths, get masses from volume times density, and bound the answer between too small and too large when you're unsure. One significant figure is plenty.
+Watch out: An estimate still needs a sanity check. Ask whether the answer could possibly make sense.
+
+## SUMMARY 1.6
+In short: Accuracy is how close a measurement is to the accepted value; precision is how closely repeated measurements agree. Uncertainty \(\delta A\) says how far off a measurement \(A\) could be, and percent uncertainty is \(\frac{\delta A}{A} \times 100\%\). When multiplying or dividing, keep as many significant figures as the least precise value; when adding or subtracting, keep as many decimal places as the least precise value. For a product or quotient, the percent uncertainties add.
+Watch out: Leading zeros, like those in 0.0052, are not significant. Trailing zeros after a decimal point, like those in 2.500, are.
+
+## SUMMARY 1.7
+In short: Solve problems in three stages. Strategy: figure out what is asked, what is known, and which physical principles connect them. Solution: do the algebra first, then put in numbers with units. Significance: check that the units are right and that the size and sign of the answer make sense.
+Watch out: Carry units through every step. If the units of your answer come out wrong, the algebra is wrong somewhere.
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: x = 4*t - t^2; t from 0 to 4; y from 0 to 5
+#         The letter before = (x, v, a, or y) labels the vertical axis.
+#         Add "; unit m/s" to change the unit on that axis.
+#   Then either
+#     Tap: t = 2          the student taps the graph; list several times with commas
+#                         and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+# ============================ 1.1 SCOPE AND SCALE ============================
+
+## QUIZ 1.1
+Q: What is the order of magnitude of 800 m?
+A) \(10^2\ \text{m}\)
+B) \(10^3\ \text{m}\)
+C) \(10^1\ \text{m}\)
+D) \(10^8\ \text{m}\)
+Answer: B
+Why: 800 m is \(8 \times 10^2\ \text{m}\). Since 8 is larger than about 3, it rounds up to the next power of ten, \(10^3\ \text{m}\).
+
+## QUIZ 1.1
+Q: Which statement best describes a scientific law?
+A) An idea that has been proven true forever
+B) A guess that has not been tested yet
+C) A concise description, often an equation, of a pattern seen again and again
+D) A detailed explanation of why something happens
+Answer: C
+Why: A law summarizes a pattern that holds in every test so far. A theory is the broader explanation for why the pattern happens.
+
+## QUIZ 1.1
+Q: A physicist treats the Sun and Earth as two point masses to study Earth's orbit. What is she using?
+A) A law
+B) A model
+C) A unit
+D) An experiment
+Answer: B
+Why: A model is a simplified representation of a system that keeps only the features that matter for the question being asked.
+
+## QUIZ 1.1
+Q: Two lengths are \(10^{5}\ \text{m}\) and \(10^{2}\ \text{m}\). How do they compare?
+A) The first is 3 times larger
+B) The first is 3 orders of magnitude larger
+C) The first is 2.5 times larger
+D) The first is 5 orders of magnitude larger
+Answer: B
+Why: Orders of magnitude count powers of ten. \(10^5/10^2 = 10^3\), which is 3 orders of magnitude, or 1000 times.
+
+## DRILL 1.1
+Q: What is the order of magnitude of \({{m}} \times 10^{{{k}}}\ \text{m}\)? Give the power of ten.
+Let: m = one of 1.5, 2, 2.5, 3; k = 2 to 8 by 1
+Answer: k
+Wrong: k + 1 | The number in front is less than about 3.16, so it rounds down to the power of ten already shown.
+Wrong: k - 1 | The order of magnitude is the nearest power of ten. With a number in front between 1 and about 3, that's the power already shown.
+Wrong: m*k | Order of magnitude is just the nearest power of ten. Don't multiply.
+Unit:
+Work: {{m}} \times 10^{{{k}}}\ \text{m} \approx 10^{{{answer}}}\ \text{m}
+
+## DRILL 1.1
+Q: Round \({{m}} \times 10^{{{k}}}\ \text{m}\) to its order of magnitude. Which power of ten is it?
+Let: m = one of 5, 6, 7, 8, 9; k = 2 to 8 by 1
+Answer: k + 1
+Wrong: k | The number in front is larger than about 3.16, so it rounds up to the next power of ten.
+Wrong: k - 1 | The number in front is larger than about 3.16, so it rounds up, not down.
+Wrong: k + m | Order of magnitude is just the nearest power of ten. Don't add the front number.
+Unit:
+Work: {{m}} \times 10^{{{k}}}\ \text{m} \approx 10^{{{answer}}}\ \text{m}
+
+## DRILL 1.1
+Q: An object has a size of about \(10^{{{a}}}\ \text{m}\) and another about \(10^{{{b}}}\ \text{m}\). How many orders of magnitude larger is the first?
+Let: b = -4 to 2 by 1; d = 2 to 7 by 1; a = b + d
+Answer: a - b
+Wrong: a + b | Dividing powers of ten subtracts the exponents.
+Wrong: a/b | Dividing powers of ten subtracts the exponents. It doesn't divide them.
+Wrong: 10^(a - b) | That's how many times larger it is. The number of orders of magnitude is the exponent.
+Unit:
+Work: \frac{10^{{{a}}}}{10^{{{b}}}} = 10^{{{a}} - ({{b}})} = 10^{{{answer}}}
+
+
+# ============================ 1.2 UNITS AND STANDARDS ============================
+
+## QUIZ 1.2
+Q: Which of these is an SI base unit?
+A) Gram
+B) Kilogram
+C) Newton
+D) Kilometer
+Answer: B
+Why: The SI base unit of mass is the kilogram. The newton is a derived unit, \(\text{kg}\cdot\text{m/s}^2\), and the kilometer is the meter with a prefix.
+
+## QUIZ 1.2
+Q: Which prefix means \(10^{-6}\)?
+A) Milli
+B) Nano
+C) Micro
+D) Mega
+Answer: C
+Why: Micro (\(\mu\)) is \(10^{-6}\). Milli is \(10^{-3}\), nano is \(10^{-9}\), and mega is \(10^{6}\).
+
+## QUIZ 1.2
+Q: The unit m/s² is called a derived unit. Why?
+A) It is defined by a physical object kept in France
+B) It is a combination of base units
+C) It is only used in the United States
+D) It has a metric prefix
+Answer: B
+Why: Derived units are algebraic combinations of the base units, here meters and seconds.
+
+## QUIZ 1.2
+Q: Today the second is defined using what?
+A) The length of a day
+B) A pendulum one meter long
+C) The frequency of radiation from cesium atoms
+D) The speed of sound
+Answer: C
+Why: One second is a fixed number of oscillations of the radiation from a cesium 133 atom, which atomic clocks can count very precisely.
+
+## DRILL 1.2
+Q: Write \({{n}}\ \text{km}\) in meters.
+Let: n = 1.5 to 9.5 by 0.5
+Answer: n*1000
+Wrong: n*100 | Kilo means 1000, not 100.
+Wrong: n/1000 | A kilometer is bigger than a meter, so the number of meters is larger.
+Wrong: n*10^6 | Kilo is \(10^3\). Mega is \(10^6\).
+Unit: m
+Work: {{n}}\ \text{km} \times \frac{1000\ \text{m}}{1\ \text{km}} = {{answer}}\ \text{m}
+
+## DRILL 1.2
+Q: Write \({{n}}\ \text{mg}\) in grams.
+Let: n = one of 2, 5, 20, 50, 250, 500
+Answer: n/1000
+Wrong: n*1000 | A milligram is smaller than a gram, so the number of grams is smaller.
+Wrong: n/100 | Milli means \(10^{-3}\), not \(10^{-2}\).
+Wrong: n/10^6 | That's micro. Milli is \(10^{-3}\).
+Unit: g
+Work: {{n}}\ \text{mg} \times \frac{1\ \text{g}}{1000\ \text{mg}} = {{answer}}\ \text{g}
+
+## DRILL 1.2
+Q: A pulse of light lasts \({{n}}\ \text{ns}\). How many microseconds is that?
+Let: n = one of 200, 300, 500, 800, 1500, 2500
+Answer: n/1000
+Wrong: n*1000 | A microsecond is longer than a nanosecond, so the number gets smaller.
+Wrong: n/100 | Nano is \(10^{-9}\) and micro is \(10^{-6}\). They differ by a factor of 1000.
+Wrong: n/10^6 | Nano and micro differ by \(10^3\), not \(10^6\).
+Unit: µs
+Work: {{n}}\ \text{ns} \times \frac{1\ \mu\text{s}}{1000\ \text{ns}} = {{answer}}\ \mu\text{s}
+
+
+# ============================ 1.3 UNIT CONVERSION ============================
+
+## QUIZ 1.3
+Q: To convert a speed from km/h to m/s, what do you do?
+A) Multiply by 3.6
+B) Divide by 3.6
+C) Multiply by 1000
+D) Divide by 60
+Answer: B
+Why: \(1\ \text{km/h} = \frac{1000\ \text{m}}{3600\ \text{s}} = \frac{1}{3.6}\ \text{m/s}\). So divide by 3.6.
+
+## QUIZ 1.3
+Q: How many square centimeters are in \(1\ \text{m}^2\)?
+A) 100
+B) 1000
+C) 10,000
+D) 1,000,000
+Answer: C
+Why: \(1\ \text{m}^2 = (100\ \text{cm})^2 = 10^4\ \text{cm}^2\). The conversion factor gets squared along with the unit.
+
+## QUIZ 1.3
+Q: How many cubic centimeters are in one liter?
+A) 10
+B) 100
+C) 1000
+D) 1,000,000
+Answer: C
+Why: A liter is a cube 10 cm on a side, so \(1\ \text{L} = (10\ \text{cm})^3 = 1000\ \text{cm}^3\).
+
+## QUIZ 1.3
+Q: You multiply a length in meters by \(\frac{1\ \text{km}}{1000\ \text{m}}\). Why doesn't this change the actual length?
+A) The factor equals 1
+B) The units are ignored
+C) Kilometers and meters measure different things
+D) It does change the length
+Answer: A
+Why: The top and bottom of a conversion factor are equal lengths, so the factor equals 1. Only the units and the number change; the length stays the same.
+
+## DRILL 1.3
+Q: A car is moving at \({{v}}\ \text{km/h}\). What is that in m/s?
+Let: k = 2 to 9 by 1; v = 18*k
+Answer: v/3.6
+Wrong: v*3.6 | Going from km/h to m/s gives a smaller number, so divide by 3.6.
+Wrong: v*1000/60 | An hour is 3600 s, not 60 s.
+Wrong: v/1000 | You converted kilometers to meters the wrong way and forgot the hours.
+Unit: m/s
+Work: {{v}}\ \frac{\text{km}}{\text{h}} \times \frac{1000\ \text{m}}{1\ \text{km}} \times \frac{1\ \text{h}}{3600\ \text{s}} = {{answer}}\ \text{m/s}
+
+## DRILL 1.3
+Q: A runner moves at \({{v}}\ \text{m/s}\). What is that in km/h?
+Let: v = 2 to 10 by 1
+Answer: v*3.6
+Wrong: v/3.6 | Going from m/s to km/h gives a larger number, so multiply by 3.6.
+Wrong: v*60/1000 | An hour is 3600 s, not 60 s.
+Wrong: v*3600 | You converted seconds to hours but forgot to change meters to kilometers.
+Unit: km/h
+Work: {{v}}\ \frac{\text{m}}{\text{s}} \times \frac{3600\ \text{s}}{1\ \text{h}} \times \frac{1\ \text{km}}{1000\ \text{m}} = {{answer}}\ \text{km/h}
+
+## DRILL 1.3
+Q: A sheet of paper has an area of \({{a}}\ \text{cm}^2\). What is its area in square meters?
+Let: a = one of 200, 300, 500, 600, 800
+Answer: a/10^4
+Wrong: a/100 | Square the factor too: \(1\ \text{m}^2 = 10^4\ \text{cm}^2\).
+Wrong: a*10^4 | A square meter is much bigger than a square centimeter, so the number gets smaller.
+Wrong: a/10^6 | That would be for cubic centimeters. For an area, use \(10^4\).
+Unit: m²
+Work: {{a}}\ \text{cm}^2 \times \left(\frac{1\ \text{m}}{100\ \text{cm}}\right)^2 = {{answer}}\ \text{m}^2
+
+## DRILL 1.3
+Q: A water bottle holds \({{v}}\ \text{L}\). What is that in cubic centimeters?
+Let: v = one of 0.5, 0.75, 1.5, 2, 2.5
+Answer: v*1000
+Wrong: v*100 | A liter is \(1000\ \text{cm}^3\), a cube 10 cm on a side.
+Wrong: v/1000 | A cubic centimeter is smaller than a liter, so the number gets larger.
+Wrong: v*10^6 | That would be cubic meters to cubic centimeters. A liter is only \(1000\ \text{cm}^3\).
+Unit: cm³
+Work: {{v}}\ \text{L} \times \frac{1000\ \text{cm}^3}{1\ \text{L}} = {{answer}}\ \text{cm}^3
+
+
+# ============================ 1.4 DIMENSIONAL ANALYSIS ============================
+
+## QUIZ 1.4
+Q: What is the dimension of acceleration?
+A) L/T
+B) L/T²
+C) L·T²
+D) M·L/T²
+Answer: B
+Why: Acceleration is change in velocity (L/T) per time (T), so its dimension is L/T².
+
+## QUIZ 1.4
+Q: Which equation is dimensionally consistent? Here \(x\) is a position, \(v\) a velocity, \(a\) an acceleration, and \(t\) a time.
+A) \(x = vt^2\)
+B) \(v = at^2\)
+C) \(x = at^2\)
+D) \(v = x t\)
+Answer: C
+Why: \(at^2\) has dimension \((\text{L/T}^2)(\text{T}^2) = \text{L}\), matching \(x\). It's missing the \(\tfrac12\), but a dimension check can't see pure numbers.
+
+## QUIZ 1.4
+Q: The expression \(4\pi r^2\) is either the surface area or the volume of a sphere. Which, and why?
+A) Volume, because it has \(\pi\)
+B) Surface area, because its dimension is L²
+C) Volume, because its dimension is L³
+D) It could be either
+Answer: B
+Why: \(r^2\) has dimension L², an area. A volume needs L³, like \(\tfrac43\pi r^3\).
+
+## QUIZ 1.4
+Q: An equation is dimensionally consistent. What does that guarantee?
+A) It is correct
+B) Every term has the same dimension, so it might be correct
+C) All numbers in it are right
+D) It works in SI units only
+Answer: B
+Why: Consistent dimensions are necessary but not enough. A wrong factor like 2 or \(\pi\) passes the check.
+
+## QUIZ 1.4
+Q: What is the dimension of \(dx/dt\), where \(x\) is a position?
+A) L
+B) L·T
+C) L/T
+D) T/L
+Answer: C
+Why: A derivative divides by the dimension of the variable you differentiate with respect to, so \(dx/dt\) has dimension L/T, a velocity.
+
+## DRILL 1.4
+Q: In \(x = b\,t^{{{n}}}\), \(x\) is a length and \(t\) is a time. The dimension of \(b\) is \(\text{L}\cdot\text{T}^{p}\). What is \(p\)?
+Let: n = 2 to 5 by 1
+Answer: -n
+Wrong: n | \(b\) has to cancel the powers of T that come from \(t\), so its power of T is negative.
+Wrong: 1 - n | There's no extra factor of T. Just cancel the powers of T from \(t\).
+Wrong: 1/n | Powers cancel by changing sign, not by taking a reciprocal.
+Unit:
+Work: [b] = \frac{[x]}{[t]^{{{n}}}} = \frac{\text{L}}{\text{T}^{{{n}}}} = \text{L}\cdot\text{T}^{{{answer}}}
+
+## DRILL 1.4
+Q: A quantity has dimension \(\text{L}/\text{T}^{{{n}}}\). You integrate it with respect to time once. What power of T is in the denominator now?
+Let: n = 2 to 4 by 1
+Answer: n - 1
+Wrong: n + 1 | Integrating with respect to time multiplies the dimension by T, which lowers the power in the denominator.
+Wrong: n | Integrating with respect to time multiplies the dimension by T.
+Wrong: n - 2 | One integral adds just one factor of T.
+Unit:
+Work: \left[\int q\,dt\right] = \frac{\text{L}}{\text{T}^{{{n}}}} \cdot \text{T} = \frac{\text{L}}{\text{T}^{{{answer}}}}
+
+
+# ============================ 1.5 ESTIMATES ============================
+
+## QUIZ 1.5
+Q: How many significant figures does a good Fermi estimate need?
+A) One
+B) Three
+C) As many as your calculator shows
+D) None, it should be exact
+Answer: A
+Why: An estimate is only good to an order of magnitude or so, so one significant figure is plenty.
+
+## QUIZ 1.5
+Q: You know an object's volume and want its mass. What else do you need?
+A) Its speed
+B) Its density
+C) Its surface area
+D) Its temperature
+Answer: B
+Why: Mass is density times volume, \(m = \rho V\).
+
+## QUIZ 1.5
+Q: You can't guess a quantity directly. What does "bound it" mean?
+A) Give up and look it up
+B) Find a value that is surely too small and one that is surely too large, then pick a value between them
+C) Round it to zero
+D) Use the largest value you can imagine
+Answer: B
+Why: Bounding narrows the answer from both sides. A common choice is a middle value on a powers of ten scale, like \(10^3\) between \(10^2\) and \(10^4\).
+
+## QUIZ 1.5
+Q: About how many seconds are in a year?
+A) \(3 \times 10^{5}\)
+B) \(3 \times 10^{7}\)
+C) \(3 \times 10^{9}\)
+D) \(3 \times 10^{3}\)
+Answer: B
+Why: \(365 \times 24 \times 3600\ \text{s} \approx 3.2 \times 10^7\ \text{s}\). It's a useful number to remember.
+
+## DRILL 1.5
+Q: A classroom is \({{L}}\ \text{m}\) by \({{W}}\ \text{m}\) and \(3\ \text{m}\) high. Air has a density of about \(1\ \text{kg/m}^3\). About what is the mass of the air in the room?
+Let: L = 5 to 10 by 1; W = 4 to 8 by 2
+Answer: L*W*3
+Wrong: L*W | You found the floor area. Multiply by the height to get the volume.
+Wrong: L + W + 3 | Volume is length times width times height, not their sum.
+Wrong: L*W*3/1000 | The density is \(1\ \text{kg/m}^3\), so the mass in kilograms equals the volume in cubic meters.
+Unit: kg
+Work: m = \rho V = (1)({{L}})({{W}})(3) = {{answer}}\ \text{kg}
+
+## DRILL 1.5
+Q: A resting heart beats about \({{r}}\) times per minute. About how many times does it beat in an hour?
+Let: r = one of 60, 70, 80
+Answer: r*60
+Wrong: r*3600 | There are 60 minutes in an hour, not 3600.
+Wrong: r*60*24 | That's a whole day. An hour has 60 minutes.
+Wrong: r*24 | That uses hours in a day. An hour has 60 minutes.
+Unit: beats
+Work: {{r}}\ \frac{\text{beats}}{\text{min}} \times 60\ \frac{\text{min}}{\text{h}} = {{answer}}\ \text{beats}
+
+## DRILL 1.5
+Q: A sheet of paper is about \(0.1\ \text{mm}\) thick. About how tall is a stack of \({{n}}\) sheets, in centimeters?
+Let: n = one of 500, 1000, 2000, 5000
+Answer: n*0.1/10
+Wrong: n*0.1 | That's the height in millimeters. There are 10 mm in a centimeter.
+Wrong: n*0.1/100 | There are 10 mm in a centimeter, not 100.
+Wrong: n/0.1 | Multiply the thickness by the number of sheets.
+Unit: cm
+Work: h = {{n}} \times 0.1\ \text{mm} = {{n}} \times 0.01\ \text{cm} = {{answer}}\ \text{cm}
+
+
+# ============================ 1.6 SIGNIFICANT FIGURES ============================
+
+## QUIZ 1.6
+Q: How many significant figures are in 0.00520?
+A) 2
+B) 3
+C) 5
+D) 6
+Answer: B
+Why: Leading zeros only place the decimal point. The 5, the 2, and the trailing zero after the decimal point are significant.
+
+## QUIZ 1.6
+Q: Darts land tightly clustered, but far from the bullseye. Those throws are:
+A) Accurate and precise
+B) Precise but not accurate
+C) Accurate but not precise
+D) Neither
+Answer: B
+Why: Precision is how close the results are to each other. Accuracy is how close they are to the target.
+
+## QUIZ 1.6
+Q: You multiply 2.5 m by 3.14 m. How many significant figures should the area have?
+A) 1
+B) 2
+C) 3
+D) 4
+Answer: B
+Why: For multiplication, keep as many significant figures as the least precise value. 2.5 has two, so the area is \(7.9\ \text{m}^2\).
+
+## QUIZ 1.6
+Q: You add 12.52 m and 3.1 m. What is the result with correct significant figures?
+A) 15.62 m
+B) 15.6 m
+C) 16 m
+D) 15.620 m
+Answer: B
+Why: For addition, keep as many decimal places as the least precise value. 3.1 has one decimal place, so the sum is 15.6 m.
+
+## QUIZ 1.6
+Q: A ruler has marks every millimeter. Which reading is reported with sensible precision?
+A) 12 cm
+B) 12.3 cm
+C) 12.34567 cm
+D) 10 cm
+Answer: B
+Why: With millimeter marks, you can read to the nearest millimeter, 0.1 cm. More digits than that claim precision the ruler doesn't have.
+
+## DRILL 1.6
+Q: A length is measured as \({{A}} \pm {{dA}}\ \text{cm}\). What is the percent uncertainty?
+Let: A = one of 20, 25, 40, 50; dA = one of 0.5, 1, 2
+Answer: dA/A*100
+Wrong: A/dA | Percent uncertainty is the uncertainty divided by the value, times 100.
+Wrong: dA/A | That's the fractional uncertainty. Multiply by 100 to get a percent.
+Wrong: dA*100 | Divide by the measured value first.
+Unit: %
+Work: \frac{\delta A}{A} \times 100\% = \frac{{{dA}}}{{{A}}} \times 100\% = {{answer}}\%
+
+## DRILL 1.6
+Q: A rectangle's length has a percent uncertainty of \({{p1}}\%\) and its width has \({{p2}}\%\). What is the percent uncertainty of its area?
+Let: p1 = 1 to 5 by 1; p2 = 1 to 4 by 1
+Answer: p1 + p2
+Wrong: p1*p2 | For a product, the percent uncertainties add. They don't multiply.
+Wrong: (p1 + p2)/2 | For a product, the percent uncertainties add. Don't average them.
+Wrong: p1 - p2 | Uncertainties never cancel. For a product, add them.
+Unit: %
+Work: \%\,\delta(LW) = \%\,\delta L + \%\,\delta W = {{p1}}\% + {{p2}}\% = {{answer}}\%
+
+## DRILL 1.6
+Q: A cube's side length has a percent uncertainty of \({{p}}\%\). What is the percent uncertainty of its volume, \(V = s^3\)?
+Let: p = 1 to 4 by 1
+Answer: 3*p
+Wrong: p | Cubing multiplies the percent uncertainty by 3.
+Wrong: p^3 | For a power, multiply the percent uncertainty by the exponent. Don't raise it to the power.
+Wrong: p/3 | Cubing makes the uncertainty larger, not smaller.
+Unit: %
+Work: \%\,\delta(s^3) = 3 \times \%\,\delta s = 3({{p}}\%) = {{answer}}\%
+
+
+# ============================ 1.7 SOLVING PROBLEMS ============================
+
+## QUIZ 1.7
+Q: You calculate that a person walks at \(150\ \text{m/s}\). What should you conclude?
+A) The person is a fast walker
+B) Something went wrong; walking speed is about 1 m/s
+C) The units must be km/h
+D) Nothing, the math was done
+Answer: B
+Why: Checking the significance includes asking whether the size makes sense. 150 m/s is about 540 km/h, faster than a race car.
+
+## QUIZ 1.7
+Q: Which step comes first in the problem solving strategy?
+A) Plug numbers into a formula
+B) Identify the physical principles involved and what you know and want
+C) Check whether the answer is reasonable
+D) Round to the right number of significant figures
+Answer: B
+Why: Strategy comes first: understand what is asked, list the knowns, and pick the principles that connect them.
+
+## QUIZ 1.7
+Q: Your answer for a time comes out with units of m/s. What does that tell you?
+A) The answer is fine
+B) There's an algebra mistake somewhere
+C) You need more significant figures
+D) Time can be measured in m/s
+Answer: B
+Why: Units follow the algebra. A time must come out in seconds, so a unit mismatch points to a mistake.
+
+## QUIZ 1.7
+Q: Why is it often better to solve a problem with symbols before putting in numbers?
+A) It lets you check units and special cases, and it's easier to spot mistakes
+B) Numbers are not allowed in physics
+C) It always gives more significant figures
+D) It avoids having to use units
+Answer: A
+Why: A symbolic answer shows how the result depends on each quantity, so you can check its units and see if it behaves sensibly when a quantity grows or shrinks.
+
+## DRILL 1.7
+Q: You find that a car travels \({{d}}\ \text{km}\) in \({{t}}\ \text{h}\). What is its average speed in km/h, and is it reasonable for a highway?
+Let: t = one of 0.5, 1, 2, 3; s = one of 80, 90, 100, 110; d = s*t
+Answer: d/t
+Wrong: d*t | Speed is distance divided by time. That answer is far too large for a car.
+Wrong: t/d | That has units of hours per kilometer, not a speed.
+Wrong: d/(t*60) | The time is already in hours, so don't convert to minutes.
+Unit: km/h
+Work: \bar s = \frac{{{d}}\ \text{km}}{{{t}}\ \text{h}} = {{answer}}\ \text{km/h},\ \text{a normal highway speed}
+
+## DRILL 1.7
+Q: A student's formula for the time to stop is \(t = v_0/a\). With \(v_0 = {{v}}\ \text{m/s}\) and \(a = {{a}}\ \text{m/s}^2\), what does it give?
+Let: a = one of 2, 4, 5; k = 2 to 6 by 1; v = a*k
+Answer: v/a
+Wrong: v*a | That has units of m²/s³, not seconds. Divide.
+Wrong: a/v | That has units of 1/s, not seconds.
+Wrong: v^2/a | That has units of meters. Check the units before trusting a number.
+Unit: s
+Work: t = \frac{v_0}{a} = \frac{{{v}}\ \text{m/s}}{{{a}}\ \text{m/s}^2} = {{answer}}\ \text{s}

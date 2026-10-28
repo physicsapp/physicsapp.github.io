@@ -1,0 +1,573 @@
+# FREEBODY NOTES: CHAPTER 5, NEWTON’S LAWS OF MOTION
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 5.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(v = v_0 + at\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 5.1
+In short: A force is a push or a pull, a vector measured in newtons (N), where \(1\ \text{N} = 1\ \text{kg}\cdot\text{m/s}^2\). Dynamics asks why objects move the way they do, while kinematics only describes the motion. The net force on an object is the vector sum of all the external forces acting on it, and a free body diagram shows those forces and nothing else.
+Watch out: Only forces acting on the object go in its free body diagram, not forces the object exerts on other things.
+
+## SUMMARY 5.2
+In short: Newton's first law, the law of inertia: an object stays at rest or keeps moving at constant velocity unless a net external force acts on it. Mass measures inertia, how hard it is to change an object's motion. When the net force is zero, the object is in equilibrium. The law holds in inertial frames, frames that are not accelerating.
+Watch out: Motion doesn't need a force. A change in motion does. A puck sliding at constant velocity on ice has zero net force.
+
+## SUMMARY 5.3
+In short: Newton's second law: \(\vec F_{net} = m\vec a\). The acceleration points in the direction of the net force and is inversely proportional to the mass. Apply it one component at a time, \(\sum F_x = ma_x\) and \(\sum F_y = ma_y\). In terms of momentum \(\vec p = m\vec v\), the net force is the rate of change of momentum, \(\vec F_{net} = d\vec p/dt\).
+Watch out: Use the net force, the sum of all forces, not just the largest one. Only external forces count.
+
+## SUMMARY 5.4
+In short: Mass is the amount of matter and is the same everywhere. Weight is the gravitational force on an object, \(w = mg\), and depends on where you are: on the Moon you weigh about one sixth as much. In free fall the only force is weight, so \(a = g\) regardless of mass.
+Watch out: Kilograms measure mass, and newtons measure weight. A 60 kg person weighs about 600 N on Earth.
+
+## SUMMARY 5.5
+In short: Newton's third law: when object A pushes on B, B pushes back on A with a force equal in size and opposite in direction, \(\vec F_{AB} = -\vec F_{BA}\). The two forces act on different objects, so they never cancel each other. Choosing the system tells you which of these forces are external and which are internal.
+Watch out: A third law pair never appears on the same free body diagram. Weight and the normal force on a book are not a third law pair.
+
+## SUMMARY 5.6
+In short: The normal force \(N\) pushes perpendicular to a surface; on a level surface with no vertical acceleration, \(N = mg\), and on an incline at angle \(\theta\), \(N = mg\cos\theta\) while \(mg\sin\theta\) pulls along the slope. Tension \(T\) pulls along a rope and equals \(mg\) for a hanging object at rest. A spring exerts \(F = -kx\), opposite to its stretch or compression. Friction acts along a surface and opposes sliding.
+Watch out: The normal force is not always equal to \(mg\). Check the angle and whether there's vertical acceleration or another vertical force.
+
+## SUMMARY 5.7
+In short: To draw a free body diagram, draw the object as a dot or box, then draw every force acting on it as an arrow starting at the object, each labeled. Choose axes, ideally with one along the acceleration, and split each force into components. Draw a separate diagram for each object in a problem.
+Watch out: Don't draw "the force of motion" or \(m\vec a\) as a force. Every force must come from something touching the object, or from gravity.
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: x = 4*t - t^2; t from 0 to 4; y from 0 to 5
+#         The letter before = (x, v, a, or y) labels the vertical axis.
+#         Add "; unit m/s" to change the unit on that axis.
+#   Then either
+#     Tap: t = 2          the student taps the graph; list several times with commas
+#                         and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+# ============================ 5.1 FORCES ============================
+
+## QUIZ 5.1
+Q: What is one newton in base units?
+A) \(\text{kg}\cdot\text{m/s}\)
+B) \(\text{kg}\cdot\text{m/s}^2\)
+C) \(\text{kg/s}^2\)
+D) \(\text{m/s}^2\)
+Answer: B
+Why: From \(F = ma\), a newton is the force that gives 1 kg an acceleration of \(1\ \text{m/s}^2\).
+
+## QUIZ 5.1
+Q: Which question belongs to dynamics rather than kinematics?
+A) How far does a car go in 5 s at constant speed?
+B) What is a ball's velocity at the top of its flight?
+C) Why does a sled slow down on snow?
+D) How long does a dropped stone take to fall 20 m?
+Answer: C
+Why: Dynamics explains motion in terms of forces. The others only describe the motion.
+
+## QUIZ 5.1
+Q: What belongs on a free body diagram of a book?
+A) Every force the book exerts on other objects
+B) Every external force acting on the book
+C) Only the book's weight
+D) The book's velocity
+Answer: B
+Why: A free body diagram shows only the forces acting on the object, from outside it.
+
+## QUIZ 5.1
+Q: Two people push a box with 50 N each. What is the net force?
+A) Always 100 N
+B) Always 0
+C) Anywhere from 0 to 100 N, depending on the directions
+D) 50 N
+Answer: C
+Why: Forces are vectors. Pushing the same way gives 100 N, pushing opposite ways gives 0, and anything in between is possible.
+
+## DRILL 5.1
+Q: Two forces act on a box: \({{a}}\ \text{N}\) east and \({{b}}\ \text{N}\) north. What is the magnitude of the net force?
+Let: k = 1 to 5 by 1; a = 30*k; b = 40*k
+Answer: sqrt(a^2 + b^2)
+Wrong: a + b | The forces are perpendicular. Add them as vectors.
+Wrong: b - a | Perpendicular forces combine with the Pythagorean theorem.
+Wrong: a^2 + b^2 | Take the square root.
+Unit: N
+Work: F_{net} = \sqrt{({{a}})^2 + ({{b}})^2} = {{answer}}\ \text{N}
+
+## DRILL 5.1
+Q: Two dogs pull on a toy, one with \({{a}}\ \text{N}\) to the right and one with \({{b}}\ \text{N}\) to the left. Taking right as positive, what is the net force on the toy?
+Let: a = 20 to 80 by 10; b = 20 to 80 by 10
+Answer: a - b
+Wrong: a + b | They pull in opposite directions, so the forces partly cancel.
+Wrong: b - a | Right is positive.
+Wrong: (a + b)/2 | The net force is the vector sum, not an average.
+Unit: N
+Work: F_{net} = (+{{a}}) + (-{{b}}) = {{answer}}\ \text{N}
+
+
+# ============================ 5.2 FIRST LAW ============================
+
+## QUIZ 5.2
+Q: A hockey puck slides across frictionless ice at constant velocity. What is the net force on it?
+A) In the direction of motion
+B) Opposite the motion
+C) Zero
+D) Equal to its weight
+Answer: C
+Why: Constant velocity means no acceleration, so the net force is zero. No force is needed to keep it moving.
+
+## QUIZ 5.2
+Q: The bus you're standing on brakes suddenly, and you lurch forward. Why?
+A) A forward force pushes you
+B) Your body tends to keep moving at the bus's old velocity
+C) Gravity pulls you forward
+D) The floor pushes you forward
+Answer: B
+Why: That's inertia. The bus slows down, but nothing slows you as quickly, so you keep moving forward relative to the bus.
+
+## QUIZ 5.2
+Q: Which has more inertia?
+A) A 2 kg ball
+B) A 10 kg ball
+C) A fast moving 1 kg ball
+D) They all have the same
+Answer: B
+Why: Inertia depends only on mass. Speed doesn't change how hard it is to change an object's motion.
+
+## QUIZ 5.2
+Q: A car drives at a constant 25 m/s along a straight, level road. Which is true?
+A) The engine's forward force is larger than friction and drag
+B) The net force is zero
+C) The car is not in equilibrium
+D) There are no forces on the car
+Answer: B
+Why: Constant velocity means equilibrium. The forward push from the road balances the drag and friction.
+
+## QUIZ 5.2
+Q: Which frame of reference is inertial, to a good approximation?
+A) A car turning a corner
+B) An elevator speeding up
+C) A train moving at constant velocity on a straight track
+D) A merry go round
+Answer: C
+Why: An inertial frame is not accelerating. Turning, speeding up, or spinning frames are accelerating.
+
+## DRILL 5.2
+Q: A worker pushes a crate across the floor at constant velocity with a horizontal force of \({{p}}\ \text{N}\). How large is the friction force on the crate?
+Let: p = 100 to 400 by 50
+Answer: p
+Wrong: 0 | The crate is sliding, so there is friction. Constant velocity means it balances the push.
+Wrong: 2*p | Constant velocity means the forces balance exactly.
+Wrong: p/2 | If friction were smaller than the push, the crate would speed up.
+Unit: N
+Work: a = 0\ \Rightarrow\ f = P = {{answer}}\ \text{N}
+
+## DRILL 5.2
+Q: A knot is held still by three ropes. One pulls with \({{a}}\ \text{N}\) east and another with \({{b}}\ \text{N}\) north. What is the magnitude of the force from the third rope?
+Let: k = 1 to 4 by 1; a = 60*k; b = 80*k
+Answer: sqrt(a^2 + b^2)
+Wrong: a + b | The third force cancels the vector sum of the other two, found with the Pythagorean theorem.
+Wrong: 0 | The knot is still, but the forces aren't zero. The third must cancel the other two.
+Wrong: b - a | The two forces are perpendicular. Combine them as vectors.
+Unit: N
+Work: F_3 = |\vec F_1 + \vec F_2| = \sqrt{({{a}})^2 + ({{b}})^2} = {{answer}}\ \text{N}
+
+
+# ============================ 5.3 SECOND LAW ============================
+
+## QUIZ 5.3
+Q: The same net force acts on two carts. Cart B has twice the mass of cart A. How do their accelerations compare?
+A) B's is twice A's
+B) B's is half A's
+C) They are equal
+D) B's is four times A's
+Answer: B
+Why: \(a = F_{net}/m\), so doubling the mass halves the acceleration.
+
+## QUIZ 5.3
+Q: Which way does an object's acceleration point?
+A) Along its velocity
+B) Along the net force
+C) Along the largest force
+D) Opposite its velocity
+Answer: B
+Why: \(\vec F_{net} = m\vec a\), so the acceleration is always in the direction of the net force, whichever way the object moves.
+
+## QUIZ 5.3
+Q: A ball thrown straight up is at the top of its path. What is the net force on it?
+A) Zero
+B) Its weight, downward
+C) Upward
+D) Its weight plus the throwing force
+Answer: B
+Why: Once it leaves your hand, only gravity acts (ignoring air). The throwing force ended at release.
+
+## QUIZ 5.3
+Q: In \(\vec F_{net} = d\vec p/dt\), what is \(\vec p\)?
+A) Power
+B) Pressure
+C) Momentum, \(m\vec v\)
+D) Position
+Answer: C
+Why: Momentum is mass times velocity. The net force equals how fast the momentum changes.
+
+## DRILL 5.3
+Q: A net force of \({{F}}\ \text{N}\) acts on a \({{m}}\ \text{kg}\) cart. What is its acceleration?
+Let: m = one of 2, 4, 5, 10; k = 1 to 6 by 1; F = m*k
+Answer: F/m
+Wrong: F*m | Divide by the mass: \(a = F/m\).
+Wrong: m/F | The fraction is upside down.
+Wrong: F | Divide by the mass.
+Unit: m/s²
+Work: a = \frac{F_{net}}{m} = \frac{{{F}}}{{{m}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 5.3
+Q: A bike and rider have a total mass of \({{m}}\ \text{kg}\). What net force gives them an acceleration of \({{a}}\ \text{m/s}^2\)?
+Let: m = 50 to 100 by 10; a = 0.5 to 3 by 0.5
+Answer: m*a
+Wrong: m/a | Multiply: \(F = ma\).
+Wrong: m*10 | That's the weight. The net force gives the acceleration.
+Wrong: m + a | Multiply mass by acceleration.
+Unit: N
+Work: F_{net} = ma = ({{m}})({{a}}) = {{answer}}\ \text{N}
+
+## DRILL 5.3
+Q: A \({{m}}\ \text{kg}\) sled is pulled forward with \({{p}}\ \text{N}\) while friction pulls back with \({{f}}\ \text{N}\). What is its acceleration?
+Let: m = one of 10, 20, 25, 50; k = 1 to 4 by 1; f = 20 to 60 by 20; p = f + m*k
+Answer: (p - f)/m
+Wrong: p/m | Use the net force: subtract friction first.
+Wrong: (p + f)/m | Friction points backward, so subtract it.
+Wrong: p - f | That's the net force. Divide by the mass.
+Unit: m/s²
+Work: a = \frac{P - f}{m} = \frac{{{p}} - {{f}}}{{{m}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 5.3
+Q: A \({{m}}\ \text{kg}\) car speeds up from rest to \({{v}}\ \text{m/s}\) in \({{t}}\ \text{s}\). What average net force acts on it?
+Let: m = 1000 to 2000 by 500; t = 4 to 10 by 2; k = 2 to 4 by 1; v = k*t/2
+Answer: m*v/t
+Wrong: m*v | That's the change in momentum. Divide by the time.
+Wrong: v/t | That's the acceleration. Multiply by the mass.
+Wrong: m*t/v | Find \(a = \Delta v/\Delta t\) first, then \(F = ma\).
+Unit: N
+Work: F = m\frac{\Delta v}{\Delta t} = ({{m}})\frac{{{v}}}{{{t}}} = {{answer}}\ \text{N}
+
+
+# ============================ 5.4 MASS AND WEIGHT ============================
+
+## QUIZ 5.4
+Q: An astronaut with a mass of 80 kg goes from Earth to the Moon. What changes?
+A) Her mass
+B) Her weight
+C) Both
+D) Neither
+Answer: B
+Why: Mass is the amount of matter and doesn't change. Weight is \(mg\), and \(g\) on the Moon is about one sixth as large.
+
+## QUIZ 5.4
+Q: Ignoring air resistance, a 1 kg rock and a 10 kg rock are dropped. How do their accelerations compare?
+A) The 10 kg rock's is 10 times larger
+B) They are the same
+C) The 1 kg rock's is larger
+D) It depends on the height
+Answer: B
+Why: The heavier rock has 10 times the weight but also 10 times the mass, so \(a = w/m = g\) for both.
+
+## QUIZ 5.4
+Q: What does a bathroom scale actually measure?
+A) Your mass
+B) The normal force it pushes up on you with
+C) Your volume
+D) The force of gravity on the scale
+Answer: B
+Why: A scale reads the force it supports. When you stand still, that equals your weight. In an accelerating elevator it doesn't.
+
+## QUIZ 5.4
+Q: Astronauts in the space station float. Why?
+A) There is no gravity in orbit
+B) They and the station are both in free fall around Earth
+C) The station's walls block gravity
+D) They have no mass in space
+Answer: B
+Why: Gravity at the station is about 90% of its strength on the ground. Everything is falling together around Earth, so nothing presses on the floor.
+
+## DRILL 5.4
+Q: A backpack has a mass of \({{m}}\ \text{kg}\). What is its weight? Use \(g = 10\ \text{m/s}^2\).
+Let: m = 2 to 15 by 1
+Answer: m*10
+Wrong: m | That's its mass in kilograms. Weight is \(mg\), in newtons.
+Wrong: m/10 | Multiply by \(g\), don't divide.
+Wrong: m*9.8*10 | Use \(g\) once: \(w = mg\).
+Unit: N
+Work: w = mg = ({{m}})(10) = {{answer}}\ \text{N}
+
+## DRILL 5.4
+Q: A crate weighs \({{w}}\ \text{N}\) on Earth. What is its mass? Use \(g = 10\ \text{m/s}^2\).
+Let: k = 5 to 50 by 5; w = k*10
+Answer: w/10
+Wrong: w | That's the weight. Divide by \(g\) to get mass.
+Wrong: w*10 | Divide by \(g\), don't multiply.
+Wrong: w/9.8/10 | Divide by \(g\) once.
+Unit: kg
+Work: m = \frac{w}{g} = \frac{{{w}}}{10} = {{answer}}\ \text{kg}
+
+## DRILL 5.4
+Q: On the Moon, \(g\) is about \(1.6\ \text{m/s}^2\). What does a \({{m}}\ \text{kg}\) rover weigh there?
+Let: m = one of 10, 50, 100, 200
+Answer: m*1.6
+Wrong: m*10 | That's its weight on Earth.
+Wrong: m | That's its mass, which is the same everywhere.
+Wrong: m/1.6 | Multiply by \(g\), don't divide.
+Unit: N
+Work: w = mg_{Moon} = ({{m}})(1.6) = {{answer}}\ \text{N}
+
+
+# ============================ 5.5 THIRD LAW ============================
+
+## QUIZ 5.5
+Q: A heavy truck hits a small car. How do the forces they exert on each other compare?
+A) The truck pushes harder
+B) The car pushes harder
+C) They are equal in size
+D) It depends on their speeds
+Answer: C
+Why: By the third law the forces are equal and opposite. The car's acceleration is larger because its mass is smaller.
+
+## QUIZ 5.5
+Q: A book rests on a table. What is the third law partner of the book's weight (Earth pulling down on the book)?
+A) The table pushing up on the book
+B) The book pulling up on Earth
+C) The book pushing down on the table
+D) The table's weight
+Answer: B
+Why: Third law partners are the same type of force between the same two objects. Earth pulls the book, so the book pulls Earth.
+
+## QUIZ 5.5
+Q: If every force has an equal and opposite partner, how can anything accelerate?
+A) The partners cancel only sometimes
+B) The partners act on different objects, so they don't cancel on either one
+C) Only the larger force counts
+D) The third law only applies at rest
+Answer: B
+Why: Each force in a pair acts on a different object. To find an object's acceleration, add only the forces acting on it.
+
+## QUIZ 5.5
+Q: How does a swimmer push off a wall to move forward?
+A) The water pushes her forward
+B) She pushes back on the wall, and the wall pushes forward on her
+C) Her muscles push her forward directly
+D) Gravity pushes her forward
+Answer: B
+Why: She exerts a backward force on the wall, and by the third law the wall exerts an equal forward force on her. That external force accelerates her.
+
+## DRILL 5.5
+Q: Two ice skaters push off each other. Skater A (\({{ma}}\ \text{kg}\)) feels a force of \({{F}}\ \text{N}\). What is the acceleration of skater B (\({{mb}}\ \text{kg}\))?
+Let: ma = 50 to 80 by 10; mb = one of 40, 50, 60; k = 2 to 5 by 1; F = mb*k
+Answer: F/mb
+Wrong: F/ma | That's skater A's acceleration. Use B's mass.
+Wrong: F/(ma + mb) | Each skater feels the full force on their own.
+Wrong: 0 | B feels the same size force as A, in the opposite direction.
+Unit: m/s²
+Work: F_{on B} = {{F}}\ \text{N}\ \Rightarrow\ a_B = \frac{{{F}}}{{{mb}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 5.5
+Q: You push on a wall with a force of \({{F}}\ \text{N}\). How large is the force the wall exerts on you?
+Let: F = 50 to 300 by 50
+Answer: F
+Wrong: 0 | Walls push back. That's what keeps your hand from going through it.
+Wrong: 2*F | Third law forces are equal in size.
+Wrong: F/2 | Third law forces are equal in size.
+Unit: N
+Work: F_{wall\ on\ you} = F_{you\ on\ wall} = {{answer}}\ \text{N}
+
+
+# ============================ 5.6 COMMON FORCES ============================
+
+## QUIZ 5.6
+Q: A box sits on a ramp tilted at angle \(\theta\). What is the normal force on it?
+A) \(mg\)
+B) \(mg\cos\theta\)
+C) \(mg\sin\theta\)
+D) \(mg\tan\theta\)
+Answer: B
+Why: The normal force balances the part of the weight perpendicular to the ramp, \(mg\cos\theta\). The part along the ramp is \(mg\sin\theta\).
+
+## QUIZ 5.6
+Q: Which way does the normal force point?
+A) Always straight up
+B) Perpendicular to the surface, away from it
+C) Along the surface
+D) Straight down
+Answer: B
+Why: Normal means perpendicular. The surface pushes out from itself on whatever presses on it.
+
+## QUIZ 5.6
+Q: A spring is stretched to the right. Which way does it pull on the object attached to it?
+A) Right
+B) Left
+C) Up
+D) It doesn't pull
+Answer: B
+Why: \(F = -kx\). The spring force always points back toward the relaxed position.
+
+## QUIZ 5.6
+Q: A lamp hangs at rest from a single cord. What is the tension in the cord?
+A) Zero
+B) Equal to the lamp's weight
+C) Half the lamp's weight
+D) Twice the lamp's weight
+Answer: B
+Why: The lamp is in equilibrium, so the upward tension balances its weight: \(T = mg\).
+
+## QUIZ 5.6
+Q: As a ramp is tilted steeper, what happens to the normal force on a box resting on it?
+A) It increases
+B) It decreases
+C) It stays the same
+D) It becomes larger than the weight
+Answer: B
+Why: \(N = mg\cos\theta\), and \(\cos\theta\) shrinks as \(\theta\) grows.
+
+## DRILL 5.6
+Q: A box with a mass of \({{m}}\ \text{kg}\) rests on a ramp tilted \(60^\circ\). What is the normal force? Use \(g = 10\ \text{m/s}^2\) and \(\cos 60^\circ = 0.5\).
+Let: m = 2 to 20 by 2
+Answer: m*10*0.5
+Wrong: m*10 | On a ramp the normal force is only the perpendicular part of the weight, \(mg\cos\theta\).
+Wrong: m*10*0.87 | That's \(mg\sin 60^\circ\), the part along the ramp.
+Wrong: m*0.5 | Multiply by \(g\) to get a force.
+Unit: N
+Work: N = mg\cos\theta = ({{m}})(10)(0.5) = {{answer}}\ \text{N}
+
+## DRILL 5.6
+Q: A box with a mass of \({{m}}\ \text{kg}\) sits on a frictionless ramp tilted \(30^\circ\). How large is the component of its weight along the ramp? Use \(g = 10\ \text{m/s}^2\) and \(\sin 30^\circ = 0.5\).
+Let: m = 2 to 20 by 2
+Answer: m*10*0.5
+Wrong: m*10 | Only part of the weight points along the ramp: \(mg\sin\theta\).
+Wrong: m*10*0.87 | That's \(mg\cos 30^\circ\), the part perpendicular to the ramp.
+Wrong: m*0.5 | Multiply by \(g\) to get a force.
+Unit: N
+Work: w_\parallel = mg\sin\theta = ({{m}})(10)(0.5) = {{answer}}\ \text{N}
+
+## DRILL 5.6
+Q: A spring with \(k = {{k}}\ \text{N/m}\) is stretched \({{x}}\ \text{cm}\). How large is the spring force?
+Let: k = 100 to 500 by 100; x = 2 to 10 by 2
+Answer: k*x/100
+Wrong: k*x | Convert centimeters to meters first.
+Wrong: k/(x/100) | Multiply: \(F = kx\).
+Wrong: k*x/10 | There are 100 cm in a meter, not 10.
+Unit: N
+Work: F = kx = ({{k}})(0.01 \times {{x}}) = {{answer}}\ \text{N}
+
+## DRILL 5.6
+Q: A \({{m}}\ \text{kg}\) block hangs at rest from a spring with \(k = {{k}}\ \text{N/m}\). How far is the spring stretched? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 0.5, 1, 2; k = one of 50, 100, 200, 250
+Answer: m*10/k
+Wrong: k/(m*10) | The fraction is upside down. \(x = mg/k\).
+Wrong: m/k | The spring holds the weight \(mg\), not the mass.
+Wrong: m*10*k | Divide by \(k\).
+Unit: m
+Work: kx = mg\ \Rightarrow\ x = \frac{({{m}})(10)}{{{k}}} = {{answer}}\ \text{m}
+
+
+# ============================ 5.7 FREE BODY DIAGRAMS ============================
+
+## QUIZ 5.7
+Q: A ball flies through the air after being kicked. Ignoring air resistance, which forces belong on its free body diagram?
+A) Weight and the kick
+B) Weight only
+C) Weight and a forward force of motion
+D) No forces
+Answer: B
+Why: The kick ended when the foot left the ball. In the air, only gravity acts.
+
+## QUIZ 5.7
+Q: A box is pulled across a rough floor by a rope at an angle above horizontal. How many forces act on the box?
+A) 2
+B) 3
+C) 4
+D) 5
+Answer: C
+Why: Weight, the normal force, the rope's tension, and kinetic friction.
+
+## QUIZ 5.7
+Q: Two blocks are in contact, and you push the first one. On the free body diagram of the second block, what horizontal force appears?
+A) Your push
+B) The push from the first block
+C) Both
+D) None
+Answer: B
+Why: You touch only the first block. The second block is pushed by the first block, so that's the only horizontal force on it, if the floor is frictionless.
+
+## QUIZ 5.7
+Q: Why is it often helpful to tilt the axes along a ramp?
+A) It changes the forces
+B) The acceleration then lies along one axis, so only one equation has \(ma\)
+C) Gravity points along the ramp
+D) The normal force disappears
+Answer: B
+Why: With \(x\) along the ramp, \(a_y = 0\). Only the weight needs to be split into components.
+
+## DRILL 5.7
+Q: You push two blocks in contact across a frictionless floor with \({{F}}\ \text{N}\). Block 1 (\({{m1}}\ \text{kg}\)) is in back and block 2 (\({{m2}}\ \text{kg}\)) in front. What is their acceleration?
+Let: m1 = 1 to 5 by 1; m2 = 1 to 5 by 1; k = 1 to 4 by 1; F = (m1 + m2)*k
+Answer: F/(m1 + m2)
+Wrong: F/m1 | Both blocks accelerate together. Use the total mass.
+Wrong: F/m2 | Both blocks accelerate together. Use the total mass.
+Wrong: F*(m1 + m2) | Divide by the total mass.
+Unit: m/s²
+Work: a = \frac{F}{m_1 + m_2} = \frac{{{F}}}{{{m1}} + {{m2}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 5.7
+Q: You push two blocks in contact across a frictionless floor with \({{F}}\ \text{N}\). Block 1 (\({{m1}}\ \text{kg}\)) is in back and block 2 (\({{m2}}\ \text{kg}\)) in front. How hard does block 1 push on block 2?
+Let: m1 = 1 to 5 by 1; m2 = 1 to 5 by 1; k = 1 to 4 by 1; F = (m1 + m2)*k
+Answer: m2*F/(m1 + m2)
+Wrong: F | Block 2 only needs enough force for its own mass. The rest of your push accelerates block 1.
+Wrong: m1*F/(m1 + m2) | That's the net force on block 1. Use block 2's mass.
+Wrong: F/(m1 + m2) | That's the acceleration. Multiply by block 2's mass.
+Unit: N
+Work: a = \frac{{{F}}}{{{m1}} + {{m2}}},\quad F_{12} = m_2a = {{answer}}\ \text{N}
+
+## DRILL 5.7
+Q: A block with a mass of \({{m}}\ \text{kg}\) on a level table is pulled sideways by a horizontal rope. There is no vertical acceleration. What is the normal force on the block? Use \(g = 10\ \text{m/s}^2\).
+Let: m = 1 to 12 by 1
+Answer: m*10
+Wrong: m | That's the mass. The normal force balances the weight, \(mg\).
+Wrong: 0 | The table supports the block, so it pushes up.
+Wrong: m*10/2 | A horizontal rope doesn't change the vertical forces.
+Unit: N
+Work: \sum F_y = N - mg = 0\ \Rightarrow\ N = ({{m}})(10) = {{answer}}\ \text{N}

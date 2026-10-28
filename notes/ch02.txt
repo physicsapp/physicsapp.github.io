@@ -1,0 +1,460 @@
+# FREEBODY NOTES: CHAPTER 2, VECTORS
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 2.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(v = v_0 + at\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 2.1
+In short: A scalar has size only, like mass or time. A vector has size and direction, like displacement or velocity, and is drawn as an arrow whose length is its magnitude. To add vectors on paper, place them tail to head; the resultant runs from the first tail to the last head, and the order doesn't matter. Multiplying a vector by a positive number stretches or shrinks it; a negative number also flips it around.
+Watch out: Magnitudes don't simply add. Two vectors of 3 and 4 units can add up to anything from 1 to 7 units, depending on their directions.
+
+## SUMMARY 2.2
+In short: In a plane, a vector \(\vec A\) splits into components along the axes: \(\vec A = A_x\hat i + A_y\hat j\), with \(A_x = A\cos\theta_A\) and \(A_y = A\sin\theta_A\) when \(\theta_A\) is measured counterclockwise from the positive \(x\) axis. Going back, \(A = \sqrt{A_x^2 + A_y^2}\) and \(\tan\theta_A = A_y/A_x\). In three dimensions, add a \(z\) component and include \(A_z^2\) under the square root.
+Watch out: A calculator's \(\tan^{-1}\) only gives angles between \(-90^\circ\) and \(90^\circ\). If \(A_x\) is negative, add \(180^\circ\).
+
+## SUMMARY 2.3
+In short: To add vectors without drawing, add their components: \(R_x = A_x + B_x + \dots\) and \(R_y = A_y + B_y + \dots\), then find the magnitude and direction of \(\vec R\) from its components. Subtracting \(\vec B\) means adding \(-\vec B\), which flips every component's sign. A unit vector \(\hat V = \vec V/V\) has magnitude 1 and points the same way as \(\vec V\).
+Watch out: Add components, not magnitudes. \(|\vec A + \vec B|\) is not \(A + B\) unless the vectors point the same way.
+
+## SUMMARY 2.4
+In short: The scalar (dot) product \(\vec A\cdot\vec B = AB\cos\varphi = A_xB_x + A_yB_y + A_zB_z\) is a number. It is zero for perpendicular vectors and negative when the angle is more than \(90^\circ\). The vector (cross) product \(\vec A\times\vec B\) has magnitude \(AB\sin\varphi\) and points perpendicular to both vectors, by the right hand rule. Swapping the order flips its sign: \(\vec B\times\vec A = -\vec A\times\vec B\).
+Watch out: Parallel vectors have a cross product of zero, and perpendicular vectors have a dot product of zero. Don't mix up which is which.
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: x = 4*t - t^2; t from 0 to 4; y from 0 to 5
+#         The letter before = (x, v, a, or y) labels the vertical axis.
+#         Add "; unit m/s" to change the unit on that axis.
+#   Then either
+#     Tap: t = 2          the student taps the graph; list several times with commas
+#                         and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+# ============================ 2.1 SCALARS AND VECTORS ============================
+
+## QUIZ 2.1
+Q: Which of these is a vector?
+A) Temperature
+B) Mass
+C) Velocity
+D) Time
+Answer: C
+Why: Velocity has a magnitude and a direction. Temperature, mass, and time have size only.
+
+## QUIZ 2.1
+Q: Vectors \(\vec A\) and \(\vec B\) have magnitudes 3 and 4. Which magnitude is impossible for \(\vec A + \vec B\)?
+A) 1
+B) 5
+C) 7
+D) 8
+Answer: D
+Why: The resultant is largest, 7, when the vectors point the same way and smallest, 1, when they point opposite ways. 8 is out of reach.
+
+## QUIZ 2.1
+Q: What does multiplying \(\vec A\) by \(-2\) do?
+A) Doubles its length and keeps its direction
+B) Doubles its length and reverses its direction
+C) Halves its length and reverses its direction
+D) Makes its magnitude negative
+Answer: B
+Why: The magnitude becomes \(|-2|A = 2A\), and the minus sign reverses the direction. A magnitude is never negative.
+
+## QUIZ 2.1
+Q: When you add vectors tail to head, where does the resultant go?
+A) From the tail of the first vector to the head of the last
+B) From the head of the first vector to the tail of the last
+C) Along the longest vector
+D) From the origin to the head of the first vector
+Answer: A
+Why: The resultant connects where you started to where you ended, the first tail to the last head.
+
+## QUIZ 2.1
+Q: Two vectors are antiparallel. What does that mean?
+A) They are perpendicular
+B) They point in exactly opposite directions
+C) They have the same magnitude
+D) They point the same way
+Answer: B
+Why: Antiparallel vectors lie along the same line but point opposite ways, with direction angles \(180^\circ\) apart. Their magnitudes can differ.
+
+## QUIZ 2.1
+Q: Does the order of adding vectors change the resultant?
+A) Yes, always
+B) No, \(\vec A + \vec B = \vec B + \vec A\)
+C) Only for three or more vectors
+D) Only if they are perpendicular
+Answer: B
+Why: Vector addition is commutative. Drawing them in either order gives the same arrow from start to finish.
+
+## DRILL 2.1
+Q: A hiker walks \({{a}}\ \text{km}\) east, then \({{b}}\ \text{km}\) north. How far is she from where she started?
+Let: k = 1 to 4 by 1; a = 3*k; b = 4*k
+Answer: sqrt(a^2 + b^2)
+Wrong: a + b | That's the distance she walked. Her displacement is the hypotenuse of a right triangle.
+Wrong: b - a | Perpendicular legs combine with the Pythagorean theorem, not by subtracting.
+Wrong: a^2 + b^2 | Take the square root at the end.
+Unit: km
+Work: D = \sqrt{({{a}})^2 + ({{b}})^2} = {{answer}}\ \text{km}
+
+## DRILL 2.1
+Q: Vectors \(\vec A\) and \(\vec B\) have magnitudes \({{a}}\) and \({{b}}\), and their directions can be anything. What is the smallest possible magnitude of \(\vec A + \vec B\)?
+Let: b = 2 to 6 by 1; d = 1 to 5 by 1; a = b + d
+Answer: a - b
+Wrong: a + b | That's the largest possible magnitude, when they point the same way.
+Wrong: 0 | They have different magnitudes, so they can't cancel completely.
+Wrong: sqrt(a^2 + b^2) | That's the magnitude when they are perpendicular, which isn't the smallest.
+Unit:
+Work: |\vec A + \vec B|_{min} = A - B = {{a}} - {{b}} = {{answer}}
+
+## DRILL 2.1
+Q: A vector \(\vec A\) has a magnitude of \({{a}}\). What is the magnitude of \({{c}}\vec A\)?
+Let: a = 2 to 8 by 1; c = one of -3, -2, 2, 3
+Answer: abs(c)*a
+Wrong: c*a | A magnitude is never negative. The minus sign only flips the direction.
+Wrong: a | Multiplying by a number changes the length.
+Wrong: a + c | Multiplying by a scalar scales the magnitude. It doesn't add to it.
+Unit:
+Work: |{{c}}\vec A| = |{{c}}|A = {{answer}}
+
+
+# ============================ 2.2 COMPONENTS ============================
+
+## QUIZ 2.2
+Q: A vector points into the second quadrant (up and to the left). What are the signs of its components?
+A) \(A_x > 0,\ A_y > 0\)
+B) \(A_x < 0,\ A_y > 0\)
+C) \(A_x < 0,\ A_y < 0\)
+D) \(A_x > 0,\ A_y < 0\)
+Answer: B
+Why: Left means negative \(x\), and up means positive \(y\).
+
+## QUIZ 2.2
+Q: A vector has components \(A_x = -3\) and \(A_y = -3\). What is its direction angle, measured counterclockwise from the positive \(x\) axis?
+A) \(45^\circ\)
+B) \(135^\circ\)
+C) \(225^\circ\)
+D) \(315^\circ\)
+Answer: C
+Why: Both components are negative, so the vector is in the third quadrant. \(\tan^{-1}(1) = 45^\circ\), and adding \(180^\circ\) gives \(225^\circ\).
+
+## QUIZ 2.2
+Q: Can a component of a vector be larger than the vector's magnitude?
+A) Yes, if the angle is large
+B) No, a component is at most the magnitude
+C) Only in three dimensions
+D) Only for negative components
+Answer: B
+Why: \(A = \sqrt{A_x^2 + A_y^2}\), so \(|A_x|\) can't exceed \(A\). They're equal only when the vector lies along the \(x\) axis.
+
+## QUIZ 2.2
+Q: In polar coordinates, a point is described by \(r\) and \(\varphi\). What is \(r\)?
+A) The \(x\) coordinate
+B) The distance from the origin
+C) The angle from the \(y\) axis
+D) The sum \(x + y\)
+Answer: B
+Why: \(r = \sqrt{x^2 + y^2}\) is the distance from the origin, and \(\varphi\) is the angle from the positive \(x\) axis.
+
+## QUIZ 2.2
+Q: A vector of magnitude 10 points at \(\theta = 90^\circ\). What are its components?
+A) \(A_x = 10,\ A_y = 0\)
+B) \(A_x = 0,\ A_y = 10\)
+C) \(A_x = 5,\ A_y = 5\)
+D) \(A_x = 7.1,\ A_y = 7.1\)
+Answer: B
+Why: \(90^\circ\) is straight along the positive \(y\) axis: \(A_x = 10\cos 90^\circ = 0\) and \(A_y = 10\sin 90^\circ = 10\).
+
+## DRILL 2.2
+Q: A vector has components \(A_x = {{ax}}\) and \(A_y = {{ay}}\). What is its magnitude?
+Let: k = 1 to 3 by 1; ax = 5*k; ay = 12*k
+Answer: sqrt(ax^2 + ay^2)
+Wrong: ax + ay | Components combine with the Pythagorean theorem, not by adding.
+Wrong: ay - ax | Components combine with the Pythagorean theorem, not by subtracting.
+Wrong: ax^2 + ay^2 | Take the square root.
+Unit:
+Work: A = \sqrt{A_x^2 + A_y^2} = \sqrt{({{ax}})^2 + ({{ay}})^2} = {{answer}}
+
+## DRILL 2.2
+Q: A vector of magnitude \({{A}}\) points \(30^\circ\) counterclockwise from the positive \(x\) axis. What is \(A_y\)? (\(\sin 30^\circ = 0.5\))
+Let: A = 2 to 20 by 2
+Answer: A*0.5
+Wrong: A*0.87 | That's \(A\cos 30^\circ\), the \(x\) component.
+Wrong: A | Only the part of the vector along \(y\) counts.
+Wrong: A/0.5 | Multiply by \(\sin 30^\circ\), don't divide.
+Unit:
+Work: A_y = A\sin 30^\circ = {{A}}(0.5) = {{answer}}
+
+## DRILL 2.2
+Q: A vector of magnitude \({{A}}\) points \(30^\circ\) counterclockwise from the positive \(x\) axis. What is \(A_x\)? (\(\cos 30^\circ \approx 0.87\))
+Let: A = one of 10, 20, 30, 40, 100
+Answer: A*0.87
+Wrong: A*0.5 | That's \(A\sin 30^\circ\), the \(y\) component.
+Wrong: A | Only the part of the vector along \(x\) counts.
+Wrong: A/0.87 | Multiply by \(\cos 30^\circ\), don't divide.
+Unit:
+Work: A_x = A\cos 30^\circ \approx {{A}}(0.87) = {{answer}}
+
+## DRILL 2.2
+Q: A vector has components \(A_x = {{ax}}\) and \(A_y = {{ay}}\). What is its direction angle, measured counterclockwise from the positive \(x\) axis?
+Let: c = 2 to 9 by 1; s = one of 1, -1; ax = s*c; ay = c
+Answer: 90 - 45*s
+Wrong: 45*s | A calculator's \(\tan^{-1}\) gives \(-45^\circ\) here, but the vector points up and to the left. Add \(180^\circ\).
+Wrong: 90 + 45*s | Check the quadrant from the signs of the components.
+Wrong: 270 - 45*s | \(A_y\) is positive, so the vector points up, into the top half.
+Unit: °
+Work: \tan\theta = \frac{A_y}{A_x} = \frac{{{ay}}}{{{ax}}},\ \text{and with } A_y > 0,\ \theta = {{answer}}^\circ
+
+## DRILL 2.2
+Q: A vector in three dimensions has components \(({{x}}, {{y}}, {{z}})\). What is its magnitude?
+Let: k = 1 to 3 by 1; x = 2*k; y = 3*k; z = 6*k
+Answer: sqrt(x^2 + y^2 + z^2)
+Wrong: x + y + z | Components combine as the square root of the sum of squares.
+Wrong: sqrt(x^2 + y^2) | Include the \(z\) component too.
+Wrong: x^2 + y^2 + z^2 | Take the square root.
+Unit:
+Work: A = \sqrt{({{x}})^2 + ({{y}})^2 + ({{z}})^2} = {{answer}}
+
+## DRILL 2.2
+Q: A point has Cartesian coordinates \((x, y) = ({{x}}, {{y}})\ \text{m}\). What is its polar coordinate \(r\)?
+Let: k = 1 to 5 by 1; x = 6*k; y = 8*k
+Answer: sqrt(x^2 + y^2)
+Wrong: x + y | \(r\) is the straight line distance from the origin, found with the Pythagorean theorem.
+Wrong: y/x | That's \(\tan\varphi\), which gives the angle, not the distance.
+Wrong: x | That's just the \(x\) coordinate.
+Unit: m
+Work: r = \sqrt{x^2 + y^2} = \sqrt{({{x}})^2 + ({{y}})^2} = {{answer}}\ \text{m}
+
+
+# ============================ 2.3 ALGEBRA OF VECTORS ============================
+
+## QUIZ 2.3
+Q: \(\vec A = 3\hat i + 2\hat j\). What is \(-\vec A\)?
+A) \(-3\hat i + 2\hat j\)
+B) \(3\hat i - 2\hat j\)
+C) \(-3\hat i - 2\hat j\)
+D) \(-5\)
+Answer: C
+Why: The antiparallel vector flips the sign of every component.
+
+## QUIZ 2.3
+Q: What is the magnitude of any unit vector?
+A) 0
+B) 1
+C) It depends on the vector
+D) \(\sqrt 2\)
+Answer: B
+Why: A unit vector is a vector divided by its own magnitude, \(\hat V = \vec V/V\), so its magnitude is exactly 1. It only carries direction.
+
+## QUIZ 2.3
+Q: Two vectors are equal. What must be true?
+A) Their magnitudes are equal
+B) All their components are equal
+C) They start at the same point
+D) Both A and B
+Answer: D
+Why: Equal vectors have the same magnitude and the same direction, which means every component matches. They can be drawn anywhere.
+
+## QUIZ 2.3
+Q: Why are component methods better than drawing arrows to scale?
+A) Drawings always give the wrong direction
+B) Components give exact results; drawings are only as good as your ruler and protractor
+C) Components work only in two dimensions
+D) There is no difference
+Answer: B
+Why: Analytical methods are exact. Graphical methods are approximate and get hard with many vectors or in three dimensions.
+
+## QUIZ 2.3
+Q: Three forces act on a knot that stays still. What is their vector sum?
+A) The largest force
+B) Zero
+C) The sum of their magnitudes
+D) It depends on the angles
+Answer: B
+Why: Forces that hold an object still balance out, so their resultant is the zero vector. Each component of the sum is zero.
+
+## DRILL 2.3
+Q: \(\vec A\) has components \(({{ax}}, {{ay}})\) and \(\vec B\) has components \(({{bx}}, {{by}})\). What is the \(x\) component of \(\vec A + \vec B\)?
+Let: ax = -6 to 9 by 3; bx = -8 to 8 by 2; ay = 1 to 5 by 1; by = -4 to 4 by 2
+Answer: ax + bx
+Wrong: ax - bx | For a sum, add the components.
+Wrong: ax + ay | Add the \(x\) components of the two vectors, not the components of one vector.
+Wrong: ax + bx + ay + by | Keep the \(\hat i\) and \(\hat j\) parts separate.
+Unit:
+Work: R_x = A_x + B_x = ({{ax}}) + ({{bx}}) = {{answer}}
+
+## DRILL 2.3
+Q: \(\vec A\) has components \(({{ax}}, {{ay}})\) and \(\vec B\) has components \(({{bx}}, {{by}})\). What is the \(y\) component of \(\vec A - \vec B\)?
+Let: ax = 1 to 6 by 1; bx = -3 to 3 by 1; ay = 2 to 8 by 2; by = -5 to 5 by 1
+Answer: ay - by
+Wrong: ay + by | Subtracting \(\vec B\) flips the sign of its components before you add.
+Wrong: by - ay | It's \(\vec A - \vec B\), so \(A_y - B_y\).
+Wrong: ax - bx | That's the \(x\) component.
+Unit:
+Work: (\vec A - \vec B)_y = A_y - B_y = ({{ay}}) - ({{by}}) = {{answer}}
+
+## DRILL 2.3
+Q: A jogger runs \(\vec D_1 = {{a}}\hat i\ \text{km}\), then \(\vec D_2 = {{b}}\hat j\ \text{km}\), then \(\vec D_3 = -{{c}}\hat i\ \text{km}\). How far is she from her starting point?
+Let: k = 1 to 3 by 1; c = 1 to 3 by 1; a = 3*k + c; b = 4*k
+Answer: sqrt((a - c)^2 + b^2)
+Wrong: a + b + c | That's the total distance run, not the displacement.
+Wrong: sqrt(a^2 + b^2) | The third leg points back along \(-\hat i\). Include it in the \(x\) component.
+Wrong: a - c + b | Combine the components with the Pythagorean theorem.
+Unit: km
+Work: \vec D = ({{a}} - {{c}})\hat i + {{b}}\hat j,\quad D = \sqrt{({{a}} - {{c}})^2 + ({{b}})^2} = {{answer}}\ \text{km}
+
+## DRILL 2.3
+Q: \(\vec V = {{x}}\hat i + {{y}}\hat j\). What is the \(x\) component of its unit vector \(\hat V\)?
+Let: k = 1 to 5 by 1; x = 3*k; y = 4*k; m = 5*k
+Answer: x/sqrt(x^2 + y^2)
+Wrong: x | A unit vector has magnitude 1. Divide the component by \(V\).
+Wrong: x/(x + y) | Divide by the magnitude, \(\sqrt{V_x^2 + V_y^2}\), not by the sum.
+Wrong: 1 | Only a vector along the \(x\) axis has a unit vector \(x\) component of 1.
+Unit:
+Work: V = \sqrt{({{x}})^2 + ({{y}})^2} = {{m}},\quad \hat V_x = \frac{V_x}{V} = \frac{{{x}}}{{{m}}} = {{answer}}
+
+## DRILL 2.3
+Q: In a tug of war, one team pulls with \({{a}}\ \text{N}\) east and the other with \({{b}}\ \text{N}\) west. Taking east as positive, what is the net force on the rope?
+Let: a = 300 to 600 by 50; b = 300 to 600 by 50
+Answer: a - b
+Wrong: a + b | The forces point opposite ways, so they partly cancel.
+Wrong: b - a | East is positive, so the east pull counts as positive.
+Wrong: (a + b)/2 | The net force is the vector sum, not an average.
+Unit: N
+Work: F_{net} = (+{{a}}) + (-{{b}}) = {{answer}}\ \text{N}
+
+
+# ============================ 2.4 PRODUCTS OF VECTORS ============================
+
+## QUIZ 2.4
+Q: Two nonzero vectors have a dot product of zero. What can you say?
+A) They are parallel
+B) They are perpendicular
+C) They are antiparallel
+D) One of them must be zero
+Answer: B
+Why: \(\vec A\cdot\vec B = AB\cos\varphi\), which is zero only when \(\cos\varphi = 0\), so \(\varphi = 90^\circ\).
+
+## QUIZ 2.4
+Q: Two nonzero vectors have a cross product of zero. What can you say?
+A) They are perpendicular
+B) They are parallel or antiparallel
+C) They have equal magnitudes
+D) Their dot product is also zero
+Answer: B
+Why: \(|\vec A\times\vec B| = AB\sin\varphi\), which is zero when \(\varphi = 0^\circ\) or \(180^\circ\).
+
+## QUIZ 2.4
+Q: What is \(\hat i\times\hat j\)?
+A) \(\hat k\)
+B) \(-\hat k\)
+C) 1
+D) 0
+Answer: A
+Why: The unit vectors follow the right hand rule in cyclic order: \(\hat i\times\hat j = \hat k\), \(\hat j\times\hat k = \hat i\), and \(\hat k\times\hat i = \hat j\).
+
+## QUIZ 2.4
+Q: What is \(\hat j\times\hat i\)?
+A) \(\hat k\)
+B) \(-\hat k\)
+C) 1
+D) 0
+Answer: B
+Why: Swapping the order of a cross product flips its sign, so \(\hat j\times\hat i = -\hat i\times\hat j = -\hat k\).
+
+## QUIZ 2.4
+Q: What kind of quantity does a dot product give?
+A) A vector perpendicular to both
+B) A scalar
+C) A unit vector
+D) A vector along the first one
+Answer: B
+Why: The dot product is a number, which is why it's also called the scalar product. Work is an example.
+
+## QUIZ 2.4
+Q: The angle between two vectors is \(120^\circ\). What is the sign of their dot product?
+A) Positive
+B) Negative
+C) Zero
+D) It depends on the magnitudes
+Answer: B
+Why: \(\cos 120^\circ = -0.5\), so the dot product is negative whenever the angle is more than \(90^\circ\).
+
+## DRILL 2.4
+Q: Vectors of magnitudes \({{a}}\) and \({{b}}\) make an angle of \({{ph}}^\circ\). What is their dot product? (\(\cos 60^\circ = 0.5\), \(\cos 120^\circ = -0.5\))
+Let: a = 2 to 6 by 1; b = 2 to 8 by 2; ph = one of 0, 60, 90, 120, 180
+Answer: a*b*cos(ph*pi/180)
+Wrong: a*b | That's only true when the vectors point the same way. Include \(\cos\varphi\).
+Wrong: a*b*sin(ph*pi/180) | Sine goes with the cross product. The dot product uses cosine.
+Wrong: a + b | Multiply the magnitudes and the cosine.
+Unit:
+Work: \vec A\cdot\vec B = AB\cos\varphi = ({{a}})({{b}})\cos {{ph}}^\circ = {{answer}}
+
+## DRILL 2.4
+Q: \(\vec A\) has components \(({{ax}}, {{ay}})\) and \(\vec B\) has components \(({{bx}}, {{by}})\). What is \(\vec A\cdot\vec B\)?
+Let: ax = -3 to 4 by 1; ay = 1 to 4 by 1; bx = 1 to 5 by 1; by = -3 to 3 by 1
+Answer: ax*bx + ay*by
+Wrong: ax*by + ay*bx | Multiply matching components: \(x\) with \(x\) and \(y\) with \(y\).
+Wrong: ax*by - ay*bx | That's the \(z\) component of the cross product.
+Wrong: (ax + bx)*(ay + by) | Multiply matching components, then add the products.
+Unit:
+Work: \vec A\cdot\vec B = A_xB_x + A_yB_y = ({{ax}})({{bx}}) + ({{ay}})({{by}}) = {{answer}}
+
+## DRILL 2.4
+Q: Vectors of magnitudes \({{a}}\) and \({{b}}\) make an angle of \({{ph}}^\circ\). What is the magnitude of their cross product? (\(\sin 30^\circ = \sin 150^\circ = 0.5\))
+Let: a = 2 to 6 by 1; b = 2 to 8 by 2; ph = one of 30, 90, 150
+Answer: a*b*sin(ph*pi/180)
+Wrong: a*b*cos(ph*pi/180) | Cosine goes with the dot product. The cross product uses sine.
+Wrong: a*b | That's only true when the vectors are perpendicular.
+Wrong: 0 | The cross product is zero only for parallel or antiparallel vectors.
+Unit:
+Work: |\vec A\times\vec B| = AB\sin\varphi = ({{a}})({{b}})\sin {{ph}}^\circ = {{answer}}
+
+## DRILL 2.4
+Q: \(\vec A\) has components \(({{ax}}, {{ay}})\) and \(\vec B\) has components \(({{bx}}, {{by}})\). What is the \(\hat k\) component of \(\vec A\times\vec B\)?
+Let: ax = 1 to 5 by 1; ay = -2 to 3 by 1; bx = -3 to 2 by 1; by = 1 to 4 by 1
+Answer: ax*by - ay*bx
+Wrong: ay*bx - ax*by | That's \(\vec B\times\vec A\). The order flips the sign.
+Wrong: ax*bx + ay*by | That's the dot product.
+Wrong: ax*by + ay*bx | The two products are subtracted: \(A_xB_y - A_yB_x\).
+Unit:
+Work: (\vec A\times\vec B)_z = A_xB_y - A_yB_x = ({{ax}})({{by}}) - ({{ay}})({{bx}}) = {{answer}}

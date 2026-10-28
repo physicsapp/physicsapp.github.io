@@ -1,0 +1,482 @@
+# FREEBODY NOTES: CHAPTER 6, APPLICATIONS OF NEWTON’S LAWS
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 6.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(v = v_0 + at\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 6.1
+In short: Every Newton's law problem follows the same steps: pick the object, draw its free body diagram, choose axes (one along the acceleration if you can), and write \(\sum F_x = ma_x\) and \(\sum F_y = ma_y\). For connected objects, draw a diagram for each one; a light rope over an ideal pulley has the same tension on both ends, and the objects share the same size of acceleration. In an elevator accelerating up, a scale reads \(m(g + a)\); accelerating down, \(m(g - a)\).
+Watch out: The normal force and tension are whatever they need to be. Don't assume \(N = mg\) or \(T = mg\) when something is accelerating.
+
+## SUMMARY 6.2
+In short: Friction acts along a surface and opposes sliding or attempted sliding. Static friction holds a resting object in place and can be anything up to \(f_s = \mu_sN\). Once the object slides, kinetic friction is \(f_k = \mu_kN\), usually a bit smaller, which is why it's easier to keep a box moving than to start it. Both depend on the normal force, not on the contact area.
+Watch out: \(\mu_sN\) is the largest possible static friction, not the actual value. If you push gently, static friction only matches your push.
+
+## SUMMARY 6.3
+In short: Any object moving in a circle needs a net force toward the center, the centripetal force \(F_c = mv^2/r\). It isn't a new kind of force: friction, tension, gravity, or the normal force supplies it. On a flat curve, static friction does the job, so the top speed is \(v = \sqrt{\mu_srg}\). On a curve banked at the ideal angle \(\tan\theta = v^2/(rg)\), the normal force alone turns the car.
+Watch out: Never draw "centripetal force" as an extra arrow on a free body diagram. It's the net of the real forces.
+
+## SUMMARY 6.4
+In short: An object moving through air or water feels a drag force opposite its velocity. For everyday objects in air, \(F_D = \tfrac12C\rho Av^2\), so drag grows with the square of speed. A falling object speeds up until drag equals its weight; then the net force is zero and it falls at a steady terminal velocity. For tiny objects moving slowly in a thick fluid, drag follows Stokes' law, \(F_s = 6\pi r\eta v\), proportional to \(v\).
+Watch out: At terminal velocity the object is still moving fast. It's the acceleration that is zero.
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: x = 4*t - t^2; t from 0 to 4; y from 0 to 5
+#         The letter before = (x, v, a, or y) labels the vertical axis.
+#         Add "; unit m/s" to change the unit on that axis.
+#   Then either
+#     Tap: t = 2          the student taps the graph; list several times with commas
+#                         and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+# ============================ 6.1 SOLVING PROBLEMS WITH NEWTON'S LAWS ============================
+
+## QUIZ 6.1
+Q: You stand on a scale in an elevator that is speeding up on its way up. How does the reading compare with your weight?
+A) Greater
+B) Less
+C) Equal
+D) Zero
+Answer: A
+Why: The floor has to push up harder than your weight to accelerate you upward: \(N = m(g + a)\).
+
+## QUIZ 6.1
+Q: An elevator moves down at constant speed. How does the scale reading compare with your weight?
+A) Greater
+B) Less
+C) Equal
+D) Zero
+Answer: C
+Why: Constant velocity means zero acceleration, so the normal force balances your weight, whichever way the elevator is moving.
+
+## QUIZ 6.1
+Q: The cable of an elevator snaps, and the elevator falls freely. What does a scale inside read?
+A) Your weight
+B) Twice your weight
+C) Zero
+D) Half your weight
+Answer: C
+Why: You and the scale both fall with \(a = g\), so the scale doesn't need to push on you: \(N = m(g - g) = 0\).
+
+## QUIZ 6.1
+Q: In an Atwood machine, two unequal masses hang from a rope over a light pulley. How does the tension compare with the weights?
+A) It equals the heavier weight
+B) It equals the lighter weight
+C) It's between the two weights
+D) It's the sum of the weights
+Answer: C
+Why: The heavier mass accelerates down, so \(T < m_1g\). The lighter one accelerates up, so \(T > m_2g\).
+
+## QUIZ 6.1
+Q: A rope pulls a box across the floor at an angle above horizontal. How does the normal force compare with the box's weight?
+A) Greater
+B) Less
+C) Equal
+D) Zero
+Answer: B
+Why: The rope's upward component helps hold the box up, so the floor pushes less: \(N = mg - T\sin\theta\).
+
+## DRILL 6.1
+Q: A \({{m}}\ \text{kg}\) person rides an elevator accelerating upward at \({{a}}\ \text{m/s}^2\). What does a bathroom scale under them read? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 40, 50, 60, 70; a = 1 to 3 by 1
+Answer: m*(10 + a)
+Wrong: m*10 | That's the reading at rest. Accelerating up, the scale pushes harder.
+Wrong: m*(10 - a) | That's for accelerating downward.
+Wrong: m*a | That's only the net force. The scale also has to hold up your weight.
+Unit: N
+Work: N - mg = ma\ \Rightarrow\ N = m(g + a) = {{m}}(10 + {{a}}) = {{answer}}\ \text{N}
+
+## DRILL 6.1
+Q: A \({{m}}\ \text{kg}\) person rides an elevator that is accelerating downward at \({{a}}\ \text{m/s}^2\). What does a bathroom scale under them read? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 40, 50, 60, 70; a = 1 to 3 by 1
+Answer: m*(10 - a)
+Wrong: m*10 | That's the reading at rest. Accelerating down, the scale pushes less.
+Wrong: m*(10 + a) | That's for accelerating upward.
+Wrong: m*a | That's only the net force. Find \(N\) from \(mg - N = ma\).
+Unit: N
+Work: mg - N = ma\ \Rightarrow\ N = m(g - a) = {{m}}(10 - {{a}}) = {{answer}}\ \text{N}
+
+## DRILL 6.1
+Q: An Atwood machine holds \({{m1}}\ \text{kg}\) on one side and \({{m2}}\ \text{kg}\) on the other. What is the size of their acceleration? Use \(g = 10\ \text{m/s}^2\).
+Let: c = one of 0.5, 1, 2; d = one of 2, 4, 6, 8; m1 = c*(10 + d)/2; m2 = c*(10 - d)/2
+Answer: (m1 - m2)*10/(m1 + m2)
+Wrong: 10 | The masses pull against each other, so the acceleration is less than \(g\).
+Wrong: (m1 - m2)*10/m1 | Both masses accelerate together. Divide by the total mass.
+Wrong: (m1 - m2)*10 | That's the net force. Divide by the total mass.
+Unit: m/s²
+Work: a = \frac{(m_1 - m_2)g}{m_1 + m_2} = \frac{({{m1}} - {{m2}})(10)}{{{m1}} + {{m2}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 6.1
+Q: A \({{m1}}\ \text{kg}\) block on a frictionless table is tied by a string over a pulley to a hanging \({{m2}}\ \text{kg}\) block. What is the acceleration? Use \(g = 10\ \text{m/s}^2\).
+Let: m2 = 1 to 4 by 1; m1 = 10 - m2
+Answer: m2*10/(m1 + m2)
+Wrong: 10 | The block on the table has to be dragged along too, so the acceleration is less than \(g\).
+Wrong: m2*10/m1 | Both blocks accelerate. Divide by the total mass.
+Wrong: m1*10/(m1 + m2) | Only the hanging block's weight pulls the system.
+Unit: m/s²
+Work: a = \frac{m_2g}{m_1 + m_2} = \frac{({{m2}})(10)}{{{m1}} + {{m2}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 6.1
+Q: A sign of mass \({{m}}\ \text{kg}\) hangs from two ropes, each at \(30^\circ\) above the horizontal. What is the tension in each rope? Use \(g = 10\ \text{m/s}^2\) and \(\sin 30^\circ = 0.5\).
+Let: m = 2 to 20 by 2
+Answer: m*10/(2*0.5)
+Wrong: m*10/2 | Only the vertical part of each tension holds the sign up, \(T\sin 30^\circ\).
+Wrong: m*10/(2*0.87) | Use \(\sin 30^\circ\) for the vertical part of a rope at \(30^\circ\) above horizontal.
+Wrong: 2*m*10 | Solve \(2T\sin 30^\circ = mg\) for \(T\). With \(\sin 30^\circ = 0.5\), each rope holds the full weight, not twice it.
+Unit: N
+Work: 2T\sin 30^\circ = mg\ \Rightarrow\ T = \frac{({{m}})(10)}{2(0.5)} = {{answer}}\ \text{N}
+
+## DRILL 6.1
+Q: A \({{m}}\ \text{kg}\) bucket is lifted by a rope with an upward acceleration of \({{a}}\ \text{m/s}^2\). What is the tension in the rope? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 2, 4, 5, 6, 10; a = 1 to 4 by 1
+Answer: m*(10 + a)
+Wrong: m*10 | That's the tension when it's not accelerating.
+Wrong: m*a | That's the net force. The rope also has to support the weight.
+Wrong: m*(10 - a) | Accelerating up needs more tension than the weight, not less.
+Unit: N
+Work: T - mg = ma\ \Rightarrow\ T = m(g + a) = {{m}}(10 + {{a}}) = {{answer}}\ \text{N}
+
+## DRILL 6.1
+Q: A box with a mass of \({{m}}\ \text{kg}\) is pulled across a frictionless floor by a rope with tension \({{T}}\ \text{N}\) at \(60^\circ\) above the horizontal. What is its acceleration? (\(\cos 60^\circ = 0.5\))
+Let: m = one of 2, 4, 5, 10; k = 1 to 4 by 1; T = 2*m*k
+Answer: T*0.5/m
+Wrong: T/m | Only the horizontal part of the tension, \(T\cos 60^\circ\), speeds the box along the floor.
+Wrong: T*0.87/m | \(T\sin 60^\circ\) is the vertical part. Use \(\cos 60^\circ\) for the horizontal part.
+Wrong: T*0.5 | That's the horizontal force. Divide by the mass.
+Unit: m/s²
+Work: a = \frac{T\cos 60^\circ}{m} = \frac{({{T}})(0.5)}{{{m}}} = {{answer}}\ \text{m/s}^2
+
+
+# ============================ 6.2 FRICTION ============================
+
+## QUIZ 6.2
+Q: Why is it harder to start a heavy box sliding than to keep it sliding?
+A) The box gets lighter once it moves
+B) \(\mu_s\) is usually larger than \(\mu_k\)
+C) Kinetic friction is zero
+D) The normal force drops when it moves
+Answer: B
+Why: The maximum static friction \(\mu_sN\) is usually bigger than kinetic friction \(\mu_kN\), so you must push harder to break it loose.
+
+## QUIZ 6.2
+Q: A 10 kg box rests on a floor with \(\mu_s = 0.5\). You push it sideways with 20 N and it doesn't move. What is the friction force? (\(g = 10\ \text{m/s}^2\))
+A) 50 N
+B) 20 N
+C) 0 N
+D) 30 N
+Answer: B
+Why: Static friction only matches what's needed to keep the box still. 50 N is the most it could supply.
+
+## QUIZ 6.2
+Q: What does the friction force on a sliding block depend on?
+A) The contact area
+B) The normal force and the surfaces
+C) The block's speed
+D) The block's color
+Answer: B
+Why: In the simple model, \(f_k = \mu_kN\). The coefficient depends on the two surfaces, and the force doesn't depend on area or speed.
+
+## QUIZ 6.2
+Q: A block slides down a ramp at constant speed. What does that tell you about \(\mu_k\) and the angle \(\theta\)?
+A) \(\mu_k = \sin\theta\)
+B) \(\mu_k = \cos\theta\)
+C) \(\mu_k = \tan\theta\)
+D) \(\mu_k = 0\)
+Answer: C
+Why: Constant speed means friction balances the pull along the ramp: \(\mu_kmg\cos\theta = mg\sin\theta\), so \(\mu_k = \tan\theta\).
+
+## QUIZ 6.2
+Q: A crate sits in the back of a truck that speeds up. The crate doesn't slide. What force accelerates the crate?
+A) Static friction, forward
+B) Static friction, backward
+C) Kinetic friction
+D) No force is needed
+Answer: A
+Why: The crate speeds up with the truck, so it needs a forward net force. Static friction from the truck bed supplies it.
+
+## DRILL 6.2
+Q: A \({{m}}\ \text{kg}\) crate rests on a floor with \(\mu_s = {{mu}}\). What is the largest sideways push it can take without sliding? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 10, 20, 40, 50; mu = one of 0.2, 0.4, 0.5, 0.6
+Answer: mu*m*10
+Wrong: mu*m | Friction depends on the normal force, \(mg\), not the mass.
+Wrong: m*10 | Multiply the normal force by \(\mu_s\).
+Wrong: m*10/mu | Multiply by \(\mu_s\), don't divide.
+Unit: N
+Work: f_{s,max} = \mu_sN = \mu_smg = ({{mu}})({{m}})(10) = {{answer}}\ \text{N}
+
+## DRILL 6.2
+Q: A \({{m}}\ \text{kg}\) box slides across a floor with \(\mu_k = {{mu}}\). How large is the kinetic friction force? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 5, 10, 20, 30; mu = one of 0.1, 0.2, 0.3, 0.5
+Answer: mu*m*10
+Wrong: mu*m | Friction depends on the normal force, \(mg\), not the mass.
+Wrong: m*10 | That's the normal force. Multiply by \(\mu_k\).
+Wrong: m*10*(1 - mu) | Friction is \(\mu_kN\), not \(N\) minus something.
+Unit: N
+Work: f_k = \mu_kmg = ({{mu}})({{m}})(10) = {{answer}}\ \text{N}
+
+## DRILL 6.2
+Q: A hockey puck slides on ice with \(\mu_k = {{mu}}\). What is the size of its deceleration? Use \(g = 10\ \text{m/s}^2\).
+Let: mu = one of 0.05, 0.1, 0.2, 0.3
+Answer: mu*10
+Wrong: 10 | Only friction slows it, and friction is \(\mu_kmg\), not \(mg\).
+Wrong: mu | Multiply by \(g\): \(a = \mu_kg\).
+Wrong: 10/mu | Multiply, don't divide.
+Unit: m/s²
+Work: \mu_kmg = ma\ \Rightarrow\ a = \mu_kg = ({{mu}})(10) = {{answer}}\ \text{m/s}^2
+
+## DRILL 6.2
+Q: A car skids to a stop from \({{v}}\ \text{m/s}\) with locked wheels, and \(\mu_k = {{mu}}\). How far does it slide? Use \(g = 10\ \text{m/s}^2\).
+Let: v = one of 10, 20, 30; mu = one of 0.5, 1
+Answer: v^2/(2*mu*10)
+Wrong: v^2/(mu*10) | The 2 in \(v^2 = 2a\Delta x\) is missing.
+Wrong: v/(mu*10) | That's the stopping time, in seconds.
+Wrong: v^2/(2*10) | Friction gives \(a = \mu_kg\). Include \(\mu_k\).
+Unit: m
+Work: a = \mu_kg = {{mu}}(10),\quad \Delta x = \frac{v^2}{2a} = \frac{({{v}})^2}{2({{mu}})(10)} = {{answer}}\ \text{m}
+
+## DRILL 6.2
+Q: You push a \({{m}}\ \text{kg}\) box sideways with \({{p}}\ \text{N}\). The floor has \(\mu_s = 0.5\), and the box doesn't move. What is the friction force on the box? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 20, 40, 60; k = one of 0.2, 0.4, 0.6, 0.8; p = k*0.5*m*10
+Answer: p
+Wrong: 0.5*m*10 | That's the most static friction can be. Since the box doesn't move, friction only matches your push.
+Wrong: 0 | The box would slide if nothing opposed your push.
+Wrong: 0.5*m*10 - p | Friction balances the push; it isn't what's left over.
+Unit: N
+Work: a = 0\ \Rightarrow\ f_s = P = {{answer}}\ \text{N}\ \ (\le \mu_sN)
+
+## DRILL 6.2
+Q: A box with a mass of \({{m}}\ \text{kg}\) rests without sliding on a ramp tilted \(30^\circ\). How large is the static friction force on it? Use \(g = 10\ \text{m/s}^2\) and \(\sin 30^\circ = 0.5\).
+Let: m = one of 2, 4, 5, 6, 10, 20
+Answer: m*10*0.5
+Wrong: m*10 | Friction only has to balance the part of the weight along the ramp, \(mg\sin\theta\).
+Wrong: m*10*0.87 | That's \(mg\cos 30^\circ\), the normal force.
+Wrong: 0 | Without friction the box would slide down the ramp.
+Unit: N
+Work: f_s = mg\sin\theta = ({{m}})(10)(0.5) = {{answer}}\ \text{N}
+
+
+# ============================ 6.3 CENTRIPETAL FORCE ============================
+
+## QUIZ 6.3
+Q: A car rounds a flat curve at constant speed. What force provides the centripetal force?
+A) The engine
+B) Static friction between the tires and road
+C) Kinetic friction
+D) The car's weight
+Answer: B
+Why: The tires grip the road without sliding sideways, so static friction points toward the center of the curve.
+
+## QUIZ 6.3
+Q: A ball on a string is whirled in a horizontal circle, and the string breaks. Which way does the ball go?
+A) Straight out from the center
+B) Along the tangent to the circle at that point
+C) Toward the center
+D) It keeps circling
+Answer: B
+Why: With no net force, the ball keeps the velocity it had, which was tangent to the circle.
+
+## QUIZ 6.3
+Q: Passengers in a turning car feel pushed toward the outside of the curve. What's really happening?
+A) A centrifugal force pushes them outward
+B) Their bodies tend to keep going straight while the car turns
+C) Gravity pulls them outward
+D) The seat pushes them outward
+Answer: B
+Why: In the road's inertial frame, there's no outward force. The car turns under them, and the door or seat pushes them inward.
+
+## QUIZ 6.3
+Q: On a curve banked at the ideal angle for the car's speed, which force turns the car?
+A) Friction
+B) The horizontal component of the normal force
+C) The car's weight
+D) The engine
+Answer: B
+Why: The road tilts, so the normal force has a component toward the center. At the ideal speed, no friction is needed.
+
+## QUIZ 6.3
+Q: A car's speed on a flat curve doubles. How much more sideways friction does it need?
+A) Twice as much
+B) Four times as much
+C) Half as much
+D) The same
+Answer: B
+Why: \(F_c = mv^2/r\), so doubling \(v\) quadruples the needed force.
+
+## DRILL 6.3
+Q: A \({{m}}\ \text{kg}\) car takes a curve of radius \({{r}}\ \text{m}\) at \({{v}}\ \text{m/s}\). What centripetal force does it need?
+Let: m = 1000 to 2000 by 500; v = 10 to 20 by 5; r = one of 25, 50, 100
+Answer: m*v^2/r
+Wrong: m*v/r | The speed is squared: \(F_c = mv^2/r\).
+Wrong: v^2/r | That's the acceleration. Multiply by the mass.
+Wrong: m*v^2*r | Divide by the radius.
+Unit: N
+Work: F_c = \frac{mv^2}{r} = \frac{({{m}})({{v}})^2}{{{r}}} = {{answer}}\ \text{N}
+
+## DRILL 6.3
+Q: A car rounds a flat curve of radius \({{r}}\ \text{m}\) at \({{v}}\ \text{m/s}\). What is the smallest \(\mu_s\) that keeps it from sliding? Use \(g = 10\ \text{m/s}^2\).
+Let: v = 10 to 20 by 5; r = one of 50, 100, 200
+Answer: v^2/(r*10)
+Wrong: v/(r*10) | The speed is squared.
+Wrong: r*10/v^2 | The fraction is upside down. Set \(\mu_smg = mv^2/r\).
+Wrong: v^2/r | Divide by \(g\) too: \(\mu_s = v^2/(rg)\).
+Unit:
+Work: \mu_smg = \frac{mv^2}{r}\ \Rightarrow\ \mu_s = \frac{v^2}{rg} = \frac{({{v}})^2}{({{r}})(10)} = {{answer}}
+
+## DRILL 6.3
+Q: A flat curve has radius \({{r}}\ \text{m}\), and \(\mu_s = {{mu}}\). What is the fastest a car can take it? Use \(g = 10\ \text{m/s}^2\).
+Let: v = 10 to 30 by 10; mu = one of 0.4, 0.5, 0.8, 1; r = v^2/(mu*10)
+Answer: sqrt(mu*r*10)
+Wrong: mu*r*10 | Take the square root: \(v = \sqrt{\mu_srg}\).
+Wrong: sqrt(r*10) | Include \(\mu_s\).
+Wrong: sqrt(mu*r) | Include \(g\).
+Unit: m/s
+Work: v = \sqrt{\mu_srg} = \sqrt{({{mu}})({{r}})(10)} = {{answer}}\ \text{m/s}
+
+## DRILL 6.3
+Q: A curve of radius \({{r}}\ \text{m}\) is banked at \(45^\circ\). At what speed can a car take it with no friction needed? Use \(g = 10\ \text{m/s}^2\) and \(\tan 45^\circ = 1\).
+Let: v = 10 to 30 by 5; r = v^2/10
+Answer: sqrt(r*10)
+Wrong: r*10 | Take the square root: \(v^2 = rg\tan\theta\).
+Wrong: sqrt(r) | Include \(g\).
+Wrong: sqrt(r*10)/2 | At \(45^\circ\), \(\tan\theta = 1\), so \(v = \sqrt{rg}\).
+Unit: m/s
+Work: \tan\theta = \frac{v^2}{rg}\ \Rightarrow\ v = \sqrt{rg(1)} = \sqrt{({{r}})(10)} = {{answer}}\ \text{m/s}
+
+## DRILL 6.3
+Q: A \({{m}}\ \text{kg}\) ball swings on a string through the bottom of a vertical circle of radius \({{r}}\ \text{m}\) at \({{v}}\ \text{m/s}\). What is the tension at the bottom? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 0.5, 1, 2; r = one of 0.5, 1, 2; v = 2 to 4 by 1
+Answer: m*10 + m*v^2/r
+Wrong: m*v^2/r | At the bottom the string must also hold up the ball's weight.
+Wrong: m*v^2/r - m*10 | At the bottom, tension points up and weight down. The tension is the larger one.
+Wrong: m*10 | The ball is moving in a circle, so the tension must be larger than its weight.
+Unit: N
+Work: T - mg = \frac{mv^2}{r}\ \Rightarrow\ T = ({{m}})(10) + \frac{({{m}})({{v}})^2}{{{r}}} = {{answer}}\ \text{N}
+
+
+# ============================ 6.4 DRAG AND TERMINAL SPEED ============================
+
+## QUIZ 6.4
+Q: A car doubles its speed on the highway. By what factor does the air drag grow?
+A) 2
+B) 4
+C) 8
+D) It stays the same
+Answer: B
+Why: \(F_D = \tfrac12C\rho Av^2\), so doubling \(v\) multiplies the drag by 4.
+
+## QUIZ 6.4
+Q: A skydiver falls at terminal velocity. What is the net force on her?
+A) Her weight, downward
+B) Zero
+C) Upward
+D) The drag force
+Answer: B
+Why: At terminal velocity, drag balances weight, so the net force and the acceleration are zero.
+
+## QUIZ 6.4
+Q: A skydiver opens her parachute. Why does her terminal velocity drop?
+A) Her weight drops
+B) The larger area \(A\) makes drag reach her weight at a lower speed
+C) The air gets thicker
+D) Gravity weakens
+Answer: B
+Why: Drag grows with area. With a big parachute, drag balances her weight at a much lower speed.
+
+## QUIZ 6.4
+Q: Just after a skydiver jumps from a hovering helicopter, what is her acceleration?
+A) Zero
+B) About \(g\), downward
+C) Larger than \(g\)
+D) Upward
+Answer: B
+Why: At first her speed is nearly zero, so drag is nearly zero and gravity is the only big force.
+
+## QUIZ 6.4
+Q: For a tiny bead sinking slowly in honey, how does the drag depend on speed?
+A) It is proportional to \(v^2\)
+B) It is proportional to \(v\)
+C) It doesn't depend on speed
+D) It is proportional to \(1/v\)
+Answer: B
+Why: Small, slow objects in a thick fluid follow Stokes' law, \(F_s = 6\pi r\eta v\), which is proportional to \(v\).
+
+## DRILL 6.4
+Q: For a cyclist, \(\tfrac12C\rho A = {{b}}\ \text{kg/m}\). What is the drag force at \({{v}}\ \text{m/s}\)?
+Let: b = one of 0.1, 0.2, 0.25, 0.5; v = 4 to 12 by 2
+Answer: b*v^2
+Wrong: b*v | Drag grows with the square of the speed.
+Wrong: 0.5*b*v^2 | The \(\tfrac12\) is already in \(b\).
+Wrong: b*v^2*10 | There's no \(g\) in the drag force.
+Unit: N
+Work: F_D = \tfrac12C\rho Av^2 = ({{b}})({{v}})^2 = {{answer}}\ \text{N}
+
+## DRILL 6.4
+Q: A falling object has \(\tfrac12C\rho A = {{b}}\ \text{kg/m}\) and a weight of \({{w}}\ \text{N}\). What is its terminal speed?
+Let: v = 10 to 50 by 10; b = one of 0.1, 0.2, 0.5; w = b*v^2
+Answer: sqrt(w/b)
+Wrong: w/b | Set \(bv^2 = w\), then take the square root.
+Wrong: sqrt(w*b) | Divide by \(b\), don't multiply.
+Wrong: sqrt(w/b)/2 | The \(\tfrac12\) is already in \(b\).
+Unit: m/s
+Work: bv_T^2 = w\ \Rightarrow\ v_T = \sqrt{\frac{{{w}}}{{{b}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 6.4
+Q: An object's drag force is \({{F}}\ \text{N}\) at \({{v}}\ \text{m/s}\). What is the drag force at \({{n}}\) times that speed, with \(F_D \propto v^2\)?
+Let: F = 10 to 50 by 10; v = 5 to 20 by 5; n = one of 2, 3
+Answer: F*n^2
+Wrong: F*n | Drag goes as \(v^2\), so multiply by \(n^2\).
+Wrong: F*n^3 | Drag goes as \(v^2\), not \(v^3\).
+Wrong: F | Drag depends on speed.
+Unit: N
+Work: F_D' = F_D\left(\frac{v'}{v}\right)^2 = ({{F}})({{n}})^2 = {{answer}}\ \text{N}
+
+## DRILL 6.4
+Q: A skydiver with a mass of \({{m}}\ \text{kg}\) falls at terminal velocity. How large is the drag force on her? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 50, 60, 70, 90
+Answer: m*10
+Wrong: 0 | She's moving fast through the air, so drag is large. It's the net force that is zero.
+Wrong: m | That's her mass. Drag balances her weight, \(mg\).
+Wrong: 2*m*10 | At terminal velocity, drag equals weight exactly.
+Unit: N
+Work: F_D = mg = ({{m}})(10) = {{answer}}\ \text{N}
