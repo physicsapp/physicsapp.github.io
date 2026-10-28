@@ -1,0 +1,688 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 2,
+  "title": "Vectors"
+ },
+ "keyEquations": [
+  {
+   "name": "Multiplication by a scalar (vector equation)",
+   "tex": "\\mathbf{\\vec{B}}=\\alpha \\mathbf{\\vec{A}}"
+  },
+  {
+   "name": "Multiplication by a scalar (scalar equation for magnitudes)",
+   "tex": "B=|\\alpha |A"
+  },
+  {
+   "name": "Resultant of two vectors",
+   "tex": "{\\mathbf{\\vec{D}}}_{AD}={\\mathbf{\\vec{D}}}_{AC}+{\\mathbf{\\vec{D}}}_{CD}"
+  },
+  {
+   "name": "Commutative law",
+   "tex": "\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}=\\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}"
+  },
+  {
+   "name": "Associative law",
+   "tex": "(\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}})+\\mathbf{\\vec{C}}=\\mathbf{\\vec{A}}+(\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})"
+  },
+  {
+   "name": "Distributive law",
+   "tex": "{\\alpha}_{1}\\mathbf{\\vec{A}}+{\\alpha}_{2}\\mathbf{\\vec{A}}=({\\alpha}_{1}+{\\alpha}_{2})\\mathbf{\\vec{A}}"
+  },
+  {
+   "name": "The component form of a vector in two dimensions",
+   "tex": "\\mathbf{\\vec{A}}={A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}}"
+  },
+  {
+   "name": "Scalar components of a vector in two dimensions",
+   "tex": "\\begin{cases}{A}_{x}={x}_{e}-{x}_{b} \\\\ {A}_{y}={y}_{e}-{y}_{b}\\end{cases}"
+  },
+  {
+   "name": "Magnitude of a vector in a plane",
+   "tex": "A=\\sqrt{{A}_{x}^{2}+{A}_{y}^{2}}"
+  },
+  {
+   "name": "The direction angle of a vector in a plane",
+   "tex": "{\\theta}_{A}={\\tan}^{-1}(\\frac{{A}_{y}}{{A}_{x}})"
+  },
+  {
+   "name": "Scalar components of a vector in a plane",
+   "tex": "\\begin{cases}{A}_{x}=A\\, \\cos \\, {\\theta}_{A} \\\\ {A}_{y}=A\\, \\sin \\, {\\theta}_{A}\\end{cases}"
+  },
+  {
+   "name": "Polar coordinates in a plane",
+   "tex": "\\begin{cases}x=r\\, \\cos \\, \\phi \\\\ y=r\\, \\sin \\, \\phi \\end{cases}"
+  },
+  {
+   "name": "The component form of a vector in three dimensions",
+   "tex": "\\mathbf{\\vec{A}}={A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}}+{A}_{z}\\mathbf{\\hat{k}}"
+  },
+  {
+   "name": "The scalar z-component of a vector in three dimensions",
+   "tex": "{A}_{z}={z}_{e}-{z}_{b}"
+  },
+  {
+   "name": "Magnitude of a vector in three dimensions",
+   "tex": "A=\\sqrt{{A}_{x}^{2}+{A}_{y}^{2}+{A}_{z}^{2}}"
+  },
+  {
+   "name": "Distributive property",
+   "tex": "\\alpha (\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}})=\\alpha \\mathbf{\\vec{A}}+\\alpha \\mathbf{\\vec{B}}"
+  },
+  {
+   "name": "Antiparallel vector to A→",
+   "tex": "-\\mathbf{\\vec{A}}=-{A}_{x}\\mathbf{\\hat{i}}-{A}_{y}\\mathbf{\\hat{j}}-{A}_{z}\\mathbf{\\hat{k}}"
+  },
+  {
+   "name": "Equal vectors",
+   "tex": "\\mathbf{\\vec{A}}=\\mathbf{\\vec{B}}\\; ⇔\\; \\begin{cases}{A}_{x}={B}_{x} \\\\ {A}_{y}={B}_{y} \\\\ {A}_{z}={B}_{z}\\end{cases}"
+  },
+  {
+   "name": "Components of the resultant of N vectors",
+   "tex": "\\begin{cases}{F}_{Rx}={\\sum}_{k=1}^{N}{F}_{kx}={F}_{1x}+{F}_{2x}+\\ldots +{F}_{Nx} \\\\ {F}_{Ry}={\\sum}_{k=1}^{N}{F}_{ky}={F}_{1y}+{F}_{2y}+\\ldots +{F}_{Ny} \\\\ {F}_{Rz}={\\sum}_{k=1}^{N}{F}_{kz}={F}_{1z}+{F}_{2z}+\\ldots +{F}_{Nz}\\end{cases}"
+  },
+  {
+   "name": "General unit vector",
+   "tex": "\\mathbf{\\hat{V}}=\\frac{\\mathbf{\\vec{V}}}{V}"
+  },
+  {
+   "name": "Definition of the scalar product",
+   "tex": "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}=AB\\, \\cos \\, \\phi"
+  },
+  {
+   "name": "Commutative property of the scalar product",
+   "tex": "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}=\\mathbf{\\vec{B}}\\cdot \\mathbf{\\vec{A}}"
+  },
+  {
+   "name": "Distributive property of the scalar product",
+   "tex": "\\mathbf{\\vec{A}}\\cdot (\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})=\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{C}}"
+  },
+  {
+   "name": "Scalar product in terms of scalar components of vectors",
+   "tex": "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}={A}_{x}{B}_{x}+{A}_{y}{B}_{y}+{A}_{z}{B}_{z}"
+  },
+  {
+   "name": "Cosine of the angle between two vectors",
+   "tex": "\\cos \\, \\phi =\\frac{\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}}{AB}"
+  },
+  {
+   "name": "Dot products of unit vectors",
+   "tex": "\\mathbf{\\hat{i}}\\cdot \\mathbf{\\hat{j}}=\\mathbf{\\hat{j}}\\cdot \\mathbf{\\hat{k}}=\\mathbf{\\hat{k}}\\cdot \\mathbf{\\hat{i}}=0"
+  },
+  {
+   "name": "Magnitude of the vector product (definition)",
+   "tex": "|\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}|=AB\\, \\sin \\, \\phi"
+  },
+  {
+   "name": "Anticommutative property of the vector product",
+   "tex": "\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}=-\\mathbf{\\vec{B}}\\, \\times \\, \\mathbf{\\vec{A}}"
+  },
+  {
+   "name": "Distributive property of the vector product",
+   "tex": "\\mathbf{\\vec{A}}\\, \\times \\, (\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})=\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{C}}"
+  },
+  {
+   "name": "Cross products of unit vectors",
+   "tex": "\\begin{cases}\\mathbf{\\hat{i}}\\, \\times \\, \\mathbf{\\hat{j}}=+\\mathbf{\\hat{k}}, \\\\ \\mathbf{\\hat{j}}\\, \\times \\, \\mathbf{\\hat{k}}=+\\mathbf{\\hat{i}}, \\\\ \\mathbf{\\hat{k}}\\, \\times \\, \\mathbf{\\hat{i}}=+\\mathbf{\\hat{j}}.\\end{cases}"
+  },
+  {
+   "name": "The cross product in terms of scalar components of vectors",
+   "tex": "\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}=({A}_{y}{B}_{z}-{A}_{z}{B}_{y})\\mathbf{\\hat{i}}+({A}_{z}{B}_{x}-{A}_{x}{B}_{z})\\mathbf{\\hat{j}}+({A}_{x}{B}_{y}-{A}_{y}{B}_{x})\\mathbf{\\hat{k}}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "2.1",
+   "module": "m58277",
+   "title": "Scalars and Vectors",
+   "objectives": [
+    "Describe the difference between vector and scalar quantities.",
+    "Identify the magnitude and direction of a vector.",
+    "Explain the effect of multiplying a vector quantity by a scalar.",
+    "Describe how one-dimensional vector quantities are added or subtracted.",
+    "Explain the geometric construction for the addition or subtraction of vectors in a plane.",
+    "Distinguish between a vector equation and a scalar equation."
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{B}}=\\alpha \\mathbf{\\vec{A}}",
+    "B=|\\alpha |A",
+    "{\\mathbf{\\vec{D}}}_{AD}={\\mathbf{\\vec{D}}}_{AC}+{\\mathbf{\\vec{D}}}_{CD}",
+    "\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}=\\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}",
+    "(\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}})+\\mathbf{\\vec{C}}=\\mathbf{\\vec{A}}+(\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})",
+    "{\\alpha}_{1}\\mathbf{\\vec{A}}+{\\alpha}_{2}\\mathbf{\\vec{A}}=({\\alpha}_{1}+{\\alpha}_{2})\\mathbf{\\vec{A}}"
+   ],
+   "examples": [
+    {
+     "title": "A Ladybug Walker",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A long measuring stick rests against a wall in a physics laboratory with its 200-cm end at the floor. A ladybug lands on the 100-cm mark and crawls randomly along the stick. It first walks 15 cm toward the floor, then it walks 56 cm toward the wall, then it walks 3 cm toward the floor again. Then, after a brief stop, it continues for 25 cm toward the floor and then, again, it crawls up 19 cm toward the wall before coming to a complete rest (the figure). Find the vector of its total displacement and its final resting position on the stick.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>If we choose the direction along the stick toward the floor as the direction of unit vector \\(\\mathbf{\\hat{u}}\\), then the direction toward the floor is \\(+\\mathbf{\\hat{u}}\\) and the direction toward the wall is \\(-\\mathbf{\\hat{u}}\\). The ladybug makes a total of five displacements:</p><div class='eq'>\\[\\begin{array}{l}{\\mathbf{\\vec{D}}}_{1}=(15\\, \\text{cm})(+\\mathbf{\\hat{u}}), \\\\ {\\mathbf{\\vec{D}}}_{2}=(56\\, \\text{cm})(-\\mathbf{\\hat{u}}), \\\\ {\\mathbf{\\vec{D}}}_{3}=(3\\, \\text{cm})(+\\mathbf{\\hat{u}}), \\\\ {\\mathbf{\\vec{D}}}_{4}=(25\\, \\text{cm})(+\\mathbf{\\hat{u}}),\\, \\text{and} \\\\ {\\mathbf{\\vec{D}}}_{5}=(19\\, \\text{cm})(-\\mathbf{\\hat{u}}).\\end{array}\\]</div><p>The total displacement \\(\\mathbf{\\vec{D}}\\) is the resultant of all its displacement vectors.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The resultant of all the displacement vectors is</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{D}} & ={\\mathbf{\\vec{D}}}_{1}+{\\mathbf{\\vec{D}}}_{2}+{\\mathbf{\\vec{D}}}_{3}+{\\mathbf{\\vec{D}}}_{4}+{\\mathbf{\\vec{D}}}_{5} \\\\ & =(15\\, \\text{cm})(+\\mathbf{\\hat{u}})+(56\\, \\text{cm})(-\\mathbf{\\hat{u}})+(3\\, \\text{cm})(+\\mathbf{\\hat{u}})+(25\\, \\text{cm})(+\\mathbf{\\hat{u}})+(19\\, \\text{cm})(-\\mathbf{\\hat{u}}) \\\\ & =(15-56+3+25-19)\\text{cm}\\mathbf{\\hat{u}} \\\\ & =-32\\, \\text{cm}\\mathbf{\\hat{u}}.\\end{array}\\]</div><p>In this calculation, we use the distributive law given by the equation. The result reads that the total displacement vector points away from the 100-cm mark (initial landing site) toward the end of the meter stick that touches the wall. The end that touches the wall is marked 0 cm, so the final position of the ladybug is at the (100 – 32)cm = 68-cm mark.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Geometric Construction of the Resultant",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The three displacement vectors \\(\\mathbf{\\vec{A}}\\), \\(\\mathbf{\\vec{B}}\\), and \\(\\mathbf{\\vec{C}}\\) in the figure are specified by their magnitudes <i>A</i> = 10.0, <i>B</i> = 7.0, and <i>C</i> = 8.0, respectively, and by their respective direction angles with the horizontal direction \\(\\alpha =35^{\\circ}\\), \\(\\beta =-110^{\\circ}\\), and \\(\\gamma =30^{\\circ}\\). The physical units of the magnitudes are centimeters. Choose a convenient scale and use a ruler and a protractor to find the following vector sums: (a) \\(\\mathbf{\\vec{R}}=\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}\\), (b) \\(\\mathbf{\\vec{D}}=\\mathbf{\\vec{A}}-\\mathbf{\\vec{B}}\\text{, and}\\) (c) \\(\\mathbf{\\vec{S}}=\\mathbf{\\vec{A}}-3\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}}\\).</p><figure><img src='img/CNX_UPhysics_02_01_vector07.jpg' alt=\"Vector A has magnitude 10.0 and is at an angle alpha = 35 degrees counterclockwise from the horizontal. It points up and right. Vector B has magnitude 7.0 and is at an angle beta = -110 degrees clockwise from the horizontal. It points down and left. Vector C has magnitude 8.0 and is at an angle gamma = 30 degrees counterclockwise from the horizontal. It points up and right. Vector F has magnitude 20.0 and is at an angle phi = 110 degrees counterclockwise from the horizontal. It points up and left.\" loading='lazy'><figcaption>Vectors used in the example <i>Geometric Construction of the Resultant</i> and in the Check Your Understanding feature that follows.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>In geometric construction, to find a vector means to find its magnitude and its direction angle with the horizontal direction. The strategy is to draw to scale the vectors that appear on the right-hand side of the equation and construct the resultant vector. Then, use a ruler and a protractor to read the magnitude of the resultant and the direction angle. For parts (a) and (b) we use the parallelogram rule. For (c) we use the tail-to-head method.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>For parts (a) and (b), we attach the origin of vector \\(\\mathbf{\\vec{B}}\\) to the origin of vector \\(\\mathbf{\\vec{A}}\\), as shown in the figure, and construct a parallelogram. The shorter diagonal of this parallelogram is the sum \\(\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}\\). The longer of the diagonals is the difference \\(\\mathbf{\\vec{A}}-\\mathbf{\\vec{B}}\\). We use a ruler to measure the lengths of the diagonals, and a protractor to measure the angles with the horizontal. For the resultant \\(\\mathbf{\\vec{R}}\\), we obtain <i>R</i> = 5.8 cm and \\({\\theta}_{R}\\approx 0^{\\circ}\\). For the difference \\(\\mathbf{\\vec{D}}\\), we obtain <i>D</i> = 16.2 cm and \\({\\theta}_{D}=49.3^{\\circ}\\), which are shown in the figure.</p><figure><img src='img/CNX_UPhysics_02_01_vector08.jpg' alt=\"Three diagrams of vectors A and B. Vectors A and B are shown placed tail to tail. Vector A points up and right and has magnitude 10.0. Vector B points down and left and has magnitude 7.0. The angle between vectors A and B is 145 degrees. In the second diagram, Vectors A and B are shown again along with the dashed lines completing the parallelogram. Vector R equaling the sum of vectors A and B is shown as the vector from the tails of A and B to the opposite vertex of the parallelogram. The magnitude of R is 5.8. In the third diagram, Vectors A and B are shown again along with the dashed lines completing the parallelogram. Vector D equaling the difference of vectors A and B is shown as the vector from the head of B to the head of A. The magnitude of D is 16.2, and the angle between D and the horizontal is 49.3 degrees. Vector R in the second diagram is much shorter than vector D in the third diagram.\" loading='lazy'><figcaption>Using the parallelogram rule to solve (a) (finding the resultant, red) and (b) (finding the difference, blue).</figcaption></figure><p>For (c), we can start with vector \\(-3\\mathbf{\\vec{B}}\\) and draw the remaining vectors tail-to-head as shown in the figure. In vector addition, the order in which we draw the vectors is unimportant, but drawing the vectors to scale is very important. Next, we draw vector \\(\\mathbf{\\vec{S}}\\) from the origin of the first vector to the end of the last vector and place the arrowhead at the end of \\(\\mathbf{\\vec{S}}\\). We use a ruler to measure the length of \\(\\mathbf{\\vec{S}}\\), and find that its magnitude is<br><i>S</i> = 36.9 cm. We use a protractor and find that its direction angle is \\({\\theta}_{S}=52.9^{\\circ}\\). This solution is shown in the figure.</p><figure><img src='img/CNX_UPhysics_02_01_vector09.jpg' alt=\"Three vectors are shown in blue and placed head to tail: Vector minus 3 B points up and right and has magnitude 3 B = 21.0. Vector A starts at the head of B, points up and right, and has a magnitude of A=10.0. The angle between vector A and vector minus 3 B is 145 degrees. Vector C starts at the head of A and has magnitude C=8.0. Vector S is green and goes from the tail of minus 3 B to the head of C. Vector S equals vector A minus 3 vector B plus vector C, has a magnitude of S=36.9 and makes an angle of 52.9 degrees counterclockwise with the horizontal.\" loading='lazy'><figcaption>Using the tail-to-head method to solve (c) (finding vector \\(\\mathbf{\\vec{S}}\\), green).</figcaption></figure>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Two motorboats named <i>Alice</i> and <i>Bob</i> are moving on a lake. Given the information about their velocity vectors in each of the following situations, indicate whether their velocity vectors are equal or otherwise. (a) <i>Alice</i> moves north at 6 knots and <i>Bob</i> moves west at 6 knots. (b) <i>Alice</i> moves west at 6 knots and <i>Bob</i> moves west at 3 knots. (c) <i>Alice</i> moves northeast at 6 knots and <i>Bob</i> moves south at 3 knots. (d) <i>Alice</i> moves northeast at 6 knots and <i>Bob</i> moves southwest at 6 knots. (e) <i>Alice</i> moves northeast at 2 knots and <i>Bob</i> moves closer to the shore northeast at 2 knots.</p>",
+     "a": "<p>a. not equal because they are orthogonal; b. not equal because they have different magnitudes; c. not equal because they have different magnitudes and directions; d. not equal because they are antiparallel; e. equal.</p>"
+    },
+    {
+     "q": "<p>A cave diver enters a long underwater tunnel. When her displacement with respect to the entry point is 20 m, she accidentally drops her camera, but she doesn’t notice it missing until she is some 6 m farther into the tunnel. She swims back 10 m but cannot find the camera, so she decides to end the dive. How far from the entry point is she? Taking the positive direction out of the tunnel, what is her displacement vector relative to the entry point?</p>",
+     "a": "<p>16 m; \\(\\mathbf{\\vec{D}}=-16\\, \\text{m}\\mathbf{\\hat{u}}\\)</p>"
+    },
+    {
+     "q": "<p>Using the three displacement vectors \\(\\mathbf{\\vec{A}}\\), \\(\\mathbf{\\vec{B}}\\), and \\(\\mathbf{\\vec{F}}\\) in the figure, choose a convenient scale, and use a ruler and a protractor to find vector \\(\\mathbf{\\vec{G}}\\) given by the vector equation \\(\\mathbf{\\vec{G}}=\\mathbf{\\vec{A}}+2\\mathbf{\\vec{B}}-\\mathbf{\\vec{F}}\\).</p>",
+     "a": "<p><i>G</i> = 28.2 cm, \\({\\theta}_{G}=291^{\\circ}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A vector quantity is any quantity that has magnitude and direction, such as displacement or velocity. Vector quantities are represented by mathematical objects called vectors.",
+    "Geometrically, vectors are represented by arrows, with the end marked by an arrowhead. The length of the vector is its magnitude, which is a positive scalar. On a plane, the direction of a vector is given by the angle the vector makes with a reference direction, often an angle with the horizontal. The direction angle of a vector is a scalar.",
+    "Two vectors are equal if and only if they have the same magnitudes and directions. Parallel vectors have the same direction angles but may have different magnitudes. Antiparallel vectors have direction angles that differ by \\(180^{\\circ}\\). Orthogonal vectors have direction angles that differ by \\(90^{\\circ}\\).",
+    "When a vector is multiplied by a scalar, the result is another vector of a different length than the length of the original vector. Multiplication by a positive scalar does not change the original direction; only the magnitude is affected. Multiplication by a negative scalar reverses the original direction. The resulting vector is antiparallel to the original vector. Multiplication by a scalar is distributive. Vectors can be divided by nonzero scalars but cannot be divided by vectors.",
+    "Two or more vectors can be added to form another vector. The vector sum is called the resultant vector. We can add vectors to vectors or scalars to scalars, but we cannot add scalars to vectors. Vector addition is commutative and associative.",
+    "To construct a resultant vector of two vectors in a plane geometrically, we use the parallelogram rule. To construct a resultant vector of many vectors in a plane geometrically, we use the tail-to-head method."
+   ]
+  },
+  {
+   "num": "2.2",
+   "module": "m58278",
+   "title": "Coordinate Systems and Components of a Vector",
+   "objectives": [
+    "Describe vectors in two and three dimensions in terms of their components, using unit vectors along the axes.",
+    "Distinguish between the vector components of a vector and the scalar components of a vector.",
+    "Explain how the magnitude of a vector is defined in terms of the components of a vector.",
+    "Identify the direction angle of a vector in a plane.",
+    "Explain the connection between polar coordinates and Cartesian coordinates in a plane."
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{A}}={A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}}",
+    "\\begin{cases}{A}_{x}={x}_{e}-{x}_{b} \\\\ {A}_{y}={y}_{e}-{y}_{b}.\\end{cases}",
+    "{A}^{2}={A}_{x}^{2}+{A}_{y}^{2}\\; ⇔\\; A=\\sqrt{{A}_{x}^{2}+{A}_{y}^{2}}",
+    "\\tan \\, \\theta =\\frac{{A}_{y}}{{A}_{x}}",
+    "\\begin{cases}{A}_{x}=A\\, \\cos \\, {\\theta}_{A} \\\\ {A}_{y}=A\\, \\sin \\, {\\theta}_{A}\\end{cases}",
+    "\\begin{cases}x=r\\, \\cos \\, \\phi \\\\ y=r\\, \\sin \\, \\phi \\end{cases}",
+    "\\mathbf{\\vec{A}}={A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}}+{A}_{z}\\mathbf{\\hat{k}}",
+    "{A}_{z}={z}_{e}-{z}_{b}",
+    "A=\\sqrt{{A}_{x}^{2}+{A}_{y}^{2}+{A}_{z}^{2}}"
+   ],
+   "examples": [
+    {
+     "title": "Displacement of a Mouse Pointer",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A mouse pointer on the display monitor of a computer at its initial position is at point (6.0 cm, 1.6 cm) with respect to the lower left-side corner. If you move the pointer to an icon located at point (2.0 cm, 4.5 cm), what is the displacement vector of the pointer?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The origin of the <i>xy</i>-coordinate system is the lower left-side corner of the computer monitor. Therefore, the unit vector \\(\\mathbf{\\hat{i}}\\) on the <i>x</i>-axis points horizontally to the right and the unit vector \\(\\mathbf{\\hat{j}}\\) on the <i>y</i>-axis points vertically upward. The origin of the displacement vector is located at point b(6.0, 1.6) and the end of the displacement vector is located at point e(2.0, 4.5). Substitute the coordinates of these points into the equation to find the scalar components \\({D}_{x}\\) and \\({D}_{y}\\) of the displacement vector \\(\\mathbf{\\vec{D}}\\). Finally, substitute the coordinates into the equation to write the displacement vector in the vector component form.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We identify \\({x}_{b}=6.0\\), \\({x}_{e}=2.0\\), \\({y}_{b}=1.6\\), and \\({y}_{e}=4.5\\), where the physical unit is 1 cm. The scalar <i>x</i>- and <i>y</i>-components of the displacement vector are</p><div class='eq'>\\[\\begin{array}{ll}{D}_{x} & ={x}_{e}-{x}_{b}=(2.0-6.0)\\text{cm}=-4.0\\, \\text{cm}, \\\\ {D}_{y} & ={y}_{e}-{y}_{b}=(4.5-1.6)\\text{cm}=+2.9\\, \\text{cm}.\\end{array}\\]</div><p>The vector component form of the displacement vector is</p><div class='eq'>\\[\\mathbf{\\vec{D}}={D}_{x}\\mathbf{\\hat{i}}+{D}_{y}\\mathbf{\\hat{j}}=(-4.0\\, \\text{cm})\\mathbf{\\hat{i}}+(2.9\\, \\text{cm})\\mathbf{\\hat{j}}=(-4.0\\mathbf{\\hat{i}}+2.9\\mathbf{\\hat{j}})\\text{cm}.\\]</div><p>This solution is shown in the figure.</p><figure><img src='img/CNX_UPhysics_02_02_comp02.jpg' alt=\"Vector D extends from coordinates 6.0, 1.6 to coordinates 2.0, 4.5. Vector D equals vector D sub x plus vector D sub y. D sub x equals minus 4.0 I hat, and extends from x=6.0 to x =2.0. The magnitude D sub x equals 2.0-6.0 = -4.0. D sub y equals plus 2.9 j hat, and extends from y=1.6 to y=4.5. The magnitude D sub y equals 4.5 − 1.6.\" loading='lazy'><figcaption>The graph of the displacement vector. The vector points from the origin point at <i>b</i> to the end point at <i>e</i>.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that the physical unit—here, 1 cm—can be placed either with each component immediately before the unit vector or globally for both components, as in the equation. Often, the latter way is more convenient because it is simpler.</p><p>The vector <i>x</i>-component \\({\\mathbf{\\vec{D}}}_{x}=-4.0\\mathbf{\\hat{i}}=4.0(-\\mathbf{\\hat{i}})\\) of the displacement vector has the magnitude \\(|{\\mathbf{\\vec{D}}}_{x}|=|-4.0||\\mathbf{\\hat{i}}|=4.0\\) because the magnitude of the unit vector is \\(|\\mathbf{\\hat{i}}|=1\\). Notice, too, that the direction of the <i>x</i>-component is \\(-\\mathbf{\\hat{i}}\\), which is antiparallel to the direction of the +<i>x</i>-axis; hence, the <i>x</i>-component vector \\({\\mathbf{\\vec{D}}}_{x}\\) points to the left, as shown in the figure. The scalar <i>x</i>-component of vector \\(\\mathbf{\\vec{D}}\\) is \\({D}_{x}=-4.0\\).</p><p>Similarly, the vector <i>y</i>-component \\({\\mathbf{\\vec{D}}}_{y}=+2.9\\mathbf{\\hat{j}}\\) of the displacement vector has magnitude \\(|{\\mathbf{\\vec{D}}}_{y}|=|2.9||\\mathbf{\\hat{j}}|=\\, 2.9\\) because the magnitude of the unit vector is \\(|\\mathbf{\\hat{j}}|=1\\). The direction of the <i>y</i>-component is \\(+\\mathbf{\\hat{j}}\\), which is parallel to the direction of the +<i>y</i>-axis. Therefore, the <i>y</i>-component vector \\({\\mathbf{\\vec{D}}}_{y}\\) points up, as seen in the figure. The scalar <i>y</i>-component of vector \\(\\mathbf{\\vec{D}}\\) is \\({D}_{y}=+2.9\\). The displacement vector \\(\\mathbf{\\vec{D}}\\) is the resultant of its two <i>vector</i> components.</p><p>The vector component form of the displacement vector the equation tells us that the mouse pointer has been moved on the monitor 4.0 cm to the left and 2.9 cm upward from its initial position.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Magnitude and Direction of the Displacement Vector",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>You move a mouse pointer on the display monitor from its initial position at point (6.0 cm, 1.6 cm) to an icon located at point (2.0 cm, 4.5 cm). What are the magnitude and direction of the displacement vector of the pointer?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>In the example <i>Displacement of a Mouse Pointer</i>, we found the displacement vector \\(\\mathbf{\\vec{D}}\\) of the mouse pointer (see the equation). We identify its scalar components \\({D}_{x}=-4.0\\, \\text{cm}\\) and \\({D}_{y}=+2.9\\, \\text{cm}\\) and substitute into the equation and the equation to find the magnitude <i>D</i> and direction \\({\\theta}_{D}\\), respectively.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The magnitude of vector \\(\\mathbf{\\vec{D}}\\) is</p><div class='eq'>\\[D=\\sqrt{{D}_{x}^{2}+{D}_{y}^{2}}=\\sqrt{{(-4.0\\, \\text{cm})}^{2}+{(2.9\\, \\text{cm})}^{2}}=\\sqrt{{(4.0)}^{2}+{(2.9)}^{2}}\\, \\text{cm}=4.9\\, \\text{cm}.\\]</div><p>The direction angle is</p><div class='eq'>\\[\\tan \\, \\theta =\\frac{{D}_{y}}{{D}_{x}}=\\frac{+2.9\\, \\text{cm}}{-4.0\\, \\text{cm}}=-0.725\\; \\Rightarrow \\; \\theta ={\\tan}^{-1}(-0.725)=-35.9^{\\circ} .\\]</div><p>Vector \\(\\mathbf{\\vec{D}}\\) lies in the second quadrant, so its direction angle is</p><div class='eq'>\\[{\\theta}_{D}=\\theta +180^{\\circ} =-35.9^{\\circ} +180^{\\circ} =144.1^{\\circ} .\\]</div>"
+      }
+     ]
+    },
+    {
+     "title": "Components of Displacement Vectors",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A rescue party for a missing child follows a search dog named Trooper. Trooper wanders a lot and makes many trial sniffs along many different paths. Trooper eventually finds the child and the story has a happy ending, but his displacements on various legs seem to be truly convoluted. On one of the legs he walks 200.0 m southeast, then he runs north some 300.0 m. On the third leg, he examines the scents carefully for 50.0 m in the direction \\(30^{\\circ}\\) west of north. On the fourth leg, Trooper goes directly south for 80.0 m, picks up a fresh scent and turns \\(23^{\\circ}\\) west of south for 150.0 m. Find the scalar components of Trooper’s displacement vectors and his displacement vectors in vector component form for each leg.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Let’s adopt a rectangular coordinate system with the positive <i>x</i>-axis in the direction of geographic east, with the positive <i>y</i>-direction pointed to geographic north. Explicitly, the unit vector \\(\\mathbf{\\hat{i}}\\) of the <i>x</i>-axis points east and the unit vector \\(\\mathbf{\\hat{j}}\\) of the <i>y</i>-axis points north. Trooper makes five legs, so there are five displacement vectors. We start by identifying their magnitudes and direction angles, then we use the equation to find the scalar components of the displacements and the equation for the displacement vectors.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>On the first leg, the displacement magnitude is \\({L}_{1}=200.0\\, \\text{m}\\) and the direction is southeast. For direction angle \\({\\theta}_{1}\\) we can take either \\(45^{\\circ}\\) measured clockwise from the east direction or \\(45^{\\circ} +270^{\\circ}\\) measured counterclockwise from the east direction. With the first choice, \\({\\theta}_{1}=-45^{\\circ}\\). With the second choice, \\({\\theta}_{1}=+315^{\\circ}\\). We can use either one of these two angles. The components are</p><div class='eq'>\\[\\begin{array}{l}{L}_{1x}={L}_{1}\\, \\cos \\, {\\theta}_{1}=(200.0\\, \\text{m})\\, \\cos \\, 315^{\\circ} =141.4\\, \\text{m,} \\\\ {L}_{1y}={L}_{1}\\, \\sin \\, {\\theta}_{1}=(200.0\\, \\text{m})\\, \\sin \\, 315^{\\circ} =-141.4\\, \\text{m}.\\end{array}\\]</div><p>The displacement vector of the first leg is</p><div class='eq'>\\[{\\mathbf{\\vec{L}}}_{1}={L}_{1x}\\mathbf{\\hat{i}}+{L}_{1y}\\mathbf{\\hat{j}}=(141.4\\mathbf{\\hat{i}}-141.4\\mathbf{\\hat{j}})\\, \\text{m}.\\]</div><p>On the second leg of Trooper’s wanderings, the magnitude of the displacement is \\({L}_{2}=300.0\\, \\text{m}\\) and the direction is north. The direction angle is \\({\\theta}_{2}=+90^{\\circ}\\). We obtain the following results:</p><div class='eq'>\\[\\begin{array}{lll}{L}_{2x} & = & {L}_{2}\\, \\cos \\, {\\theta}_{2}=(300.0\\, \\text{m})\\, \\cos \\, 90^{\\circ} =0.0\\, , \\\\ {L}_{2y} & = & {L}_{2}\\, \\sin \\, {\\theta}_{2}=(300.0\\, \\text{m})\\, \\sin \\, 90^{\\circ} =300.0\\, \\text{m,} \\\\ {\\mathbf{\\vec{L}}}_{2} & = & {L}_{2x}\\mathbf{\\hat{i}}+{L}_{2y}\\mathbf{\\hat{j}}=(300.0\\, \\text{m})\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>On the third leg, the displacement magnitude is \\({L}_{3}=50.0\\, \\text{m}\\) and the direction is \\(30^{\\circ}\\) west of north. The direction angle measured counterclockwise from the eastern direction is \\({\\theta}_{3}=30^{\\circ} +90^{\\circ} =+120^{\\circ}\\). This gives the following answers:</p><div class='eq'>\\[\\begin{array}{lll}{L}_{3x} & = & {L}_{3}\\, \\cos \\, {\\theta}_{3}=(50.0\\, \\text{m})\\, \\cos \\, 120^{\\circ} =-25.0\\, \\text{m,} \\\\ {L}_{3y} & = & {L}_{3}\\, \\sin \\, {\\theta}_{3}=(50.0\\, \\text{m})\\, \\sin \\, 120^{\\circ} =+43.3\\, \\text{m,} \\\\ {\\mathbf{\\vec{L}}}_{3} & = & {L}_{3x}\\mathbf{\\hat{i}}+{L}_{3y}\\mathbf{\\hat{j}}=(-25.0\\mathbf{\\hat{i}}+43.3\\mathbf{\\hat{j}})\\text{m}.\\end{array}\\]</div><p>On the fourth leg of the excursion, the displacement magnitude is \\({L}_{4}=80.0\\, \\text{m}\\) and the direction is south. The direction angle can be taken as either \\({\\theta}_{4}=-90^{\\circ}\\) or \\({\\theta}_{4}=+270^{\\circ}\\). We obtain</p><div class='eq'>\\[\\begin{array}{lll}{L}_{4x} & = & {L}_{4}\\, \\cos \\, {\\theta}_{4}=(80.0\\, \\text{m})\\, \\cos \\, (-90^{\\circ} )=0\\, , \\\\ {L}_{4y} & = & {L}_{4}\\, \\sin \\, {\\theta}_{4}=(80.0\\, \\text{m})\\, \\sin \\, (-90^{\\circ} )=-80.0\\, \\text{m,} \\\\ {\\mathbf{\\vec{L}}}_{4} & = & {L}_{4x}\\mathbf{\\hat{i}}+{L}_{4y}\\mathbf{\\hat{j}}=(-80.0\\, \\text{m})\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>On the last leg, the magnitude is \\({L}_{5}=150.0\\, \\text{m}\\) and the angle is \\({\\theta}_{5}=-23^{\\circ} +270^{\\circ} =+247^{\\circ}\\) \\((23^{\\circ}\\) west of south), which gives</p><div class='eq'>\\[\\begin{array}{lll}{L}_{5x} & = & {L}_{5}\\, \\cos \\, {\\theta}_{5}=(150.0\\, \\text{m})\\, \\cos \\, 247^{\\circ} =-58.6\\, \\text{m,} \\\\ {L}_{5y} & = & {L}_{5}\\, \\sin \\, {\\theta}_{5}=(150.0\\, \\text{m})\\, \\sin \\, 247^{\\circ} =-138.1\\, \\text{m,} \\\\ {\\mathbf{\\vec{L}}}_{5} & = & {L}_{5x}\\mathbf{\\hat{i}}+{L}_{5y}\\mathbf{\\hat{j}}=(-58.6\\mathbf{\\hat{i}}-138.1\\mathbf{\\hat{j}})\\text{m}.\\end{array}\\]</div>"
+      }
+     ]
+    },
+    {
+     "title": "Polar Coordinates",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A treasure hunter finds one silver coin at a location 20.0 m away from a dry well in the direction \\(20^{\\circ}\\) north of east and finds one gold coin at a location 10.0 m away from the well in the direction \\(20^{\\circ}\\) north of west. What are the polar and rectangular coordinates of these findings with respect to the well?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The well marks the origin of the coordinate system and east is the +<i>x</i>-direction. We identify radial distances from the locations to the origin, which are \\({r}_{S}=20.0\\, \\text{m}\\) (for the silver coin) and \\({r}_{G}=10.0\\, \\text{m}\\) (for the gold coin). To find the angular coordinates, we convert \\(20^{\\circ}\\) to radians: \\(20^{\\circ} =\\pi 20\\text{/}180=\\pi \\text{/}9\\). We use the equation to find the <i>x</i>- and <i>y</i>-coordinates of the coins.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The angular coordinate of the silver coin is \\({\\phi}_{S}=\\pi \\text{/}9\\), whereas the angular coordinate of the gold coin is \\({\\phi}_{G}=\\pi -\\pi \\text{/}9=8\\pi \\text{/}9\\). Hence, the polar coordinates of the silver coin are \\(({r}_{S},{\\phi}_{S})=(20.0\\, \\text{m},\\pi \\text{/}9)\\) and those of the gold coin are \\(({r}_{G},{\\phi}_{G})=(10.0\\, \\text{m},8\\pi \\text{/}9)\\). We substitute these coordinates into the equation to obtain rectangular coordinates. For the gold coin, the coordinates are</p><div class='eq'>\\[\\begin{cases}{x}_{G}={r}_{G}\\, \\cos \\, {\\phi}_{G}=(10.0\\, \\text{m})\\, \\cos \\, 8\\pi \\text{/}9=-9.4\\, \\text{m} \\\\ {y}_{G}={r}_{G}\\, \\sin \\, {\\phi}_{G}=(10.0\\, \\text{m})\\, \\sin \\, 8\\pi \\text{/}9=3.4\\, \\text{m}\\end{cases}\\; \\Rightarrow \\; ({x}_{G},{y}_{G})=(-9.4\\, \\text{m},3.4\\, \\text{m}).\\]</div><p>For the silver coin, the coordinates are</p><div class='eq'>\\[\\begin{cases}{x}_{S}={r}_{S}\\, \\cos \\, {\\phi}_{S}=(20.0\\, \\text{m})\\, \\cos \\, \\pi \\text{/}9=18.9\\, \\text{m} \\\\ {y}_{S}={r}_{S}\\, \\sin \\, {\\phi}_{S}=(20.0\\, \\text{m})\\, \\sin \\, \\pi \\text{/}9=6.8\\, \\text{m}\\end{cases}\\; \\Rightarrow \\; ({x}_{S},{y}_{S})=(18.9\\, \\text{m},6.8\\, \\text{m}).\\]</div>"
+      }
+     ]
+    },
+    {
+     "title": "Takeoff of a Drone",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>During a takeoff of IAI Heron (the figure), its position with respect to a control tower is 100 m above the ground, 300 m to the east, and 200 m to the north. One minute later, its position is 250 m above the ground, 1200 m to the east, and 2100 m to the north. What is the drone’s displacement vector with respect to the control tower? What is the magnitude of its displacement vector?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We take the origin of the Cartesian coordinate system as the control tower. The direction of the +<i>x</i>-axis is given by unit vector \\(\\mathbf{\\hat{i}}\\) to the east, the direction of the +<i>y</i>-axis is given by unit vector \\(\\mathbf{\\hat{j}}\\) to the north, and the direction of the +<i>z</i>-axis is given by unit vector \\(\\mathbf{\\hat{k}}\\), which points up from the ground. The drone’s first position is the origin (or, equivalently, the beginning) of the displacement vector and its second position is the end of the displacement vector.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We identify <i>b</i>(300.0 m, 200.0 m, 100.0 m) and <i>e</i>(1200 m, 2100 m, 250 m), and use the equation and the equation to find the scalar components of the drone’s displacement vector:</p><div class='eq'>\\[\\begin{cases}{D}_{x}={x}_{e}-{x}_{b}=1200.0\\, \\text{m}-300.0\\, \\text{m}=900.0\\, \\text{m}, \\\\ {D}_{y}={y}_{e}-{y}_{b}=2100.0\\, \\text{m}-200.0\\, \\text{m}=1900.0\\, \\text{m,} \\\\ {D}_{z}={z}_{e}-{z}_{b}=250.0\\, \\text{m}-100.0\\, \\text{m}=150.0\\, \\text{m}.\\end{cases}\\]</div><p>We substitute these components into the equation to find the displacement vector:</p><div class='eq'>\\[\\mathbf{\\vec{D}}={D}_{x}\\mathbf{\\hat{i}}+{D}_{y}\\mathbf{\\hat{j}}+{D}_{z}\\mathbf{\\hat{k}}=900.0\\, \\text{m}\\mathbf{\\hat{i}}+1900.0\\, \\text{m}\\mathbf{\\hat{j}}+150.0\\, \\text{m}\\mathbf{\\hat{k}}=(0.90\\mathbf{\\hat{i}}+1.90\\mathbf{\\hat{j}}+0.15\\mathbf{\\hat{k}})\\, \\text{km}.\\]</div><p>We substitute into the equation to find the magnitude of the displacement:</p><div class='eq'>\\[D=\\sqrt{{D}_{x}^{2}+{D}_{y}^{2}+{D}_{z}^{2}}=\\sqrt{{(0.90\\, \\text{km})}^{2}+{(1.90\\, \\text{km})}^{2}+{(0.15\\, \\text{km})}^{2}}=2.11\\, \\text{km}.\\]</div>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A blue fly lands on a sheet of graph paper at a point located 10.0 cm to the right of its left edge and 8.0 cm above its bottom edge and walks slowly to a point located 5.0 cm from the left edge and 5.0 cm from the bottom edge. Choose the rectangular coordinate system with the origin at the lower left-side corner of the paper and find the displacement vector of the fly. Illustrate your solution by graphing.</p>",
+     "a": "<p>\\(\\mathbf{\\vec{D}}=(-5.0\\mathbf{\\hat{i}}-3.0\\mathbf{\\hat{j}})\\text{cm}\\); the fly moved 5.0 cm to the left and 3.0 cm down from its landing site.</p>"
+    },
+    {
+     "q": "<p>If the displacement vector of a blue fly walking on a sheet of graph paper is \\(\\mathbf{\\vec{D}}=(-5.00\\mathbf{\\hat{i}}-3.00\\mathbf{\\hat{j}})\\text{cm}\\), find its magnitude and direction.</p>",
+     "a": "<p>5.83 cm, \\(211^{\\circ}\\)</p>"
+    },
+    {
+     "q": "<p>If Trooper runs 20 m west before taking a rest, what is his displacement vector?</p>",
+     "a": "<p>\\(\\mathbf{\\vec{D}}=(-20\\, \\text{m})\\mathbf{\\hat{i}}\\)</p>"
+    },
+    {
+     "q": "<p>If the average velocity vector of the drone in the displacement in the example <i>Takeoff of a Drone</i> is \\(\\mathbf{\\vec{u}}=(15.0\\mathbf{\\hat{i}}+31.7\\mathbf{\\hat{j}}+2.5\\mathbf{\\hat{k}})\\text{m}\\text{/}\\text{s}\\), what is the magnitude of the drone’s velocity vector?</p>",
+     "a": "<p>35.2 m/s = 126.7 km/h</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Vectors are described in terms of their components in a coordinate system. In two dimensions (in a plane), vectors have two components. In three dimensions (in space), vectors have three components.",
+    "A vector component of a vector is its part in an axis direction. The vector component is the product of the unit vector of an axis with its scalar component along this axis. A vector is the resultant of its vector components.",
+    "Scalar components of a vector are differences of coordinates, where coordinates of the origin are subtracted from end point coordinates of a vector. In a rectangular system, the magnitude of a vector is the square root of the sum of the squares of its components.",
+    "In a plane, the direction of a vector is given by an angle the vector has with the positive <i>x</i>-axis. This direction angle is measured counterclockwise. The scalar <i>x</i>-component of a vector can be expressed as the product of its magnitude with the cosine of its direction angle, and the scalar <i>y</i>-component can be expressed as the product of its magnitude with the sine of its direction angle.",
+    "In a plane, there are two equivalent coordinate systems. The Cartesian coordinate system is defined by unit vectors \\(\\mathbf{\\hat{i}}\\) and \\(\\mathbf{\\hat{j}}\\) along the <i>x</i>-axis and the <i>y</i>-axis, respectively. The polar coordinate system is defined by the radial unit vector \\(\\mathbf{\\hat{r}}\\), which gives the direction from the origin, and a unit vector \\(\\mathbf{\\hat{t}}\\), which is perpendicular (orthogonal) to the radial direction."
+   ]
+  },
+  {
+   "num": "2.3",
+   "module": "m58279",
+   "title": "Algebra of Vectors",
+   "objectives": [
+    "Apply analytical methods of vector algebra to find resultant vectors and to solve vector equations for unknown vectors.",
+    "Interpret physical situations in terms of vector expressions."
+   ],
+   "callouts": [
+    "\\alpha (\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}})=\\alpha \\mathbf{\\vec{A}}+\\alpha \\mathbf{\\vec{B}}",
+    "-\\mathbf{\\vec{A}}=-{A}_{x}\\mathbf{\\hat{i}}-{A}_{y}\\mathbf{\\hat{j}}-{A}_{z}\\mathbf{\\hat{k}}",
+    "\\mathbf{\\vec{A}}=\\mathbf{\\vec{B}}\\; ⇔\\; \\begin{cases}{A}_{x}={B}_{x} \\\\ {A}_{y}={B}_{y} \\\\ {A}_{z}={B}_{z}\\end{cases}",
+    "\\begin{cases}{F}_{Rx}={\\sum}_{k=1}^{N}{F}_{kx}={F}_{1x}+{F}_{2x}+\\ldots +{F}_{Nx} \\\\ {F}_{Ry}={\\sum}_{k=1}^{N}{F}_{ky}={F}_{1y}+{F}_{2y}+\\ldots +{F}_{Ny} \\\\ {F}_{Rz}={\\sum}_{k=1}^{N}{F}_{kz}={F}_{1z}+{F}_{2z}+\\ldots +{F}_{Nz}.\\end{cases}",
+    "\\mathbf{\\hat{V}}=\\frac{\\mathbf{\\vec{V}}}{V}"
+   ],
+   "examples": [
+    {
+     "title": "Direction of Motion",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>In a Cartesian coordinate system where \\(\\mathbf{\\hat{i}}\\) denotes geographic east, \\(\\mathbf{\\hat{j}}\\) denotes geographic north, and \\(\\mathbf{\\hat{k}}\\) denotes altitude above sea level, a military convoy advances its position through unknown territory with velocity \\(\\mathbf{\\vec{v}}=(4.0\\mathbf{\\hat{i}}+3.0\\mathbf{\\hat{j}}+0.1\\mathbf{\\hat{k}})\\text{km}\\text{/}\\text{h}\\). If the convoy had to retreat, in what geographic direction would it be moving?</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The velocity vector has the third component \\({\\mathbf{\\vec{v}}}_{z}=(+0.1\\text{km}\\text{/}\\text{h})\\mathbf{\\hat{k}}\\), which says the convoy is climbing at a rate of 100 m/h through mountainous terrain. At the same time, its velocity is 4.0 km/h to the east and 3.0 km/h to the north, so it moves on the ground in direction \\({\\tan}^{-1}(3\\, \\text{/}4)\\approx 37^{\\circ}\\) north of east. If the convoy had to retreat, its new velocity vector \\(\\mathbf{\\vec{u}}\\) would have to be antiparallel to \\(\\mathbf{\\vec{v}}\\) and be in the form \\(\\mathbf{\\vec{u}}=-\\alpha \\mathbf{\\vec{v}}\\), where \\(\\alpha\\) is a positive number. Thus, the velocity of the retreat would be \\(\\mathbf{\\vec{u}}=\\alpha (-4.0\\mathbf{\\hat{i}}-3.0\\mathbf{\\hat{j}}-0.1\\mathbf{\\hat{k}})\\text{km}\\text{/}\\text{h}\\). The negative sign of the third component indicates the convoy would be descending. The direction angle of the retreat velocity is \\({\\tan}^{-1}(-3\\alpha \\text{/}-4\\alpha )\\approx 37^{\\circ}\\) south of west. Therefore, the convoy would be moving on the ground in direction \\(37^{\\circ}\\) south of west while descending on its way back.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Analytical Computation of a Resultant",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Three displacement vectors \\(\\mathbf{\\vec{A}}\\), \\(\\mathbf{\\vec{B}}\\), and \\(\\mathbf{\\vec{C}}\\) in a plane (another section) are specified by their magnitudes <i>A</i> = 10.0, <i>B</i> = 7.0, and <i>C</i> = 8.0, respectively, and by their respective direction angles with the horizontal direction \\(\\alpha =35^{\\circ} ,\\) \\(\\beta =-110^{\\circ}\\), and \\(\\gamma =30^{\\circ}\\). The physical units of the magnitudes are centimeters. Resolve the vectors to their scalar components and find the following vector sums: (a) \\(\\mathbf{\\vec{R}}=\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}}\\), (b) \\(\\mathbf{\\vec{D}}=\\mathbf{\\vec{A}}-\\mathbf{\\vec{B}}\\), and (c) \\(\\mathbf{\\vec{S}}=\\mathbf{\\vec{A}}-3\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}}\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we use another section to find the scalar components of each vector and then we express each vector in its vector component form given by another section. Then, we use analytical methods of vector algebra to find the resultants.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We resolve the given vectors to their scalar components:</p><div class='eq'>\\[\\begin{array}{l}\\begin{cases}{A}_{x}=A\\, \\cos \\, \\alpha =(10.0\\, \\text{cm})\\, \\cos \\, 35^{\\circ} =8.19\\, \\text{cm} \\\\ {A}_{y}=A\\, \\sin \\, \\alpha =(10.0\\, \\text{cm})\\, \\sin \\, 35^{\\circ} =5.73\\, \\text{cm}\\end{cases} \\\\ \\begin{cases}{B}_{x}=B\\, \\cos \\, \\beta =(7.0\\, \\text{cm})\\, \\cos \\, (-110^{\\circ} )=-2.39\\, \\text{cm} \\\\ {B}_{y}=B\\, \\sin \\, \\beta =(7.0\\, \\text{cm})\\, \\sin \\, (-110^{\\circ} )=-6.58\\, \\text{cm}\\end{cases} \\\\ \\begin{cases}{C}_{x}=C\\, \\cos \\, \\gamma =(8.0\\, \\text{cm})\\, \\cos \\, 30^{\\circ} =6.93\\, \\text{cm} \\\\ {C}_{y}=C\\, \\sin \\, \\gamma =(8.0\\, \\text{cm})\\, \\sin \\, 30^{\\circ} =4.00\\, \\text{cm}\\end{cases}\\end{array}.\\]</div><p>For (a) we may substitute directly into the equation to find the scalar components of the resultant:</p><div class='eq'>\\[\\begin{cases}{R}_{x}={A}_{x}+{B}_{x}+{C}_{x}=8.19\\, \\text{cm}-2.39\\, \\text{cm}+6.93\\, \\text{cm}=12.73\\, \\text{cm} \\\\ {R}_{y}={A}_{y}+{B}_{y}+{C}_{y}=5.73\\, \\text{cm}-6.58\\, \\text{cm}+4.00\\, \\text{cm}=3.15\\, \\text{cm}\\end{cases}.\\]</div><p>Therefore, the resultant vector is \\(\\mathbf{\\vec{R}}={R}_{x}\\mathbf{\\hat{i}}+{R}_{y}\\mathbf{\\hat{j}}=(12.7\\mathbf{\\hat{i}}+3.1\\mathbf{\\hat{j}})\\text{cm}\\).</p><p>For (b), we may want to write the vector difference as</p><div class='eq'>\\[\\mathbf{\\vec{D}}=\\mathbf{\\vec{A}}-\\mathbf{\\vec{B}}=({A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}})-({B}_{x}\\mathbf{\\hat{i}}+{B}_{y}\\mathbf{\\hat{j}})=({A}_{x}-{B}_{x})\\mathbf{\\hat{i}}+({A}_{y}-{B}_{y})\\mathbf{\\hat{j}}.\\]</div><p>Then, the scalar components of the vector difference are</p><div class='eq'>\\[\\begin{cases}{D}_{x}={A}_{x}-{B}_{x}=8.19\\, \\text{cm}-(-2.39\\, \\text{cm})=10.58\\, \\text{cm} \\\\ {D}_{y}={A}_{y}-{B}_{y}=5.73\\, \\text{cm}-(-6.58\\, \\text{cm})=12.31\\, \\text{cm}\\end{cases}.\\]</div><p>Hence, the difference vector is \\(\\mathbf{\\vec{D}}={D}_{x}\\mathbf{\\hat{i}}+{D}_{y}\\mathbf{\\hat{j}}=(10.6\\mathbf{\\hat{i}}+12.3\\mathbf{\\hat{j}})\\text{cm}\\).</p><p>For (c), we can write vector \\(\\mathbf{\\vec{S}}\\) in the following explicit form:</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{S}} & =\\mathbf{\\vec{A}}-3\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}}=({A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}})-3({B}_{x}\\mathbf{\\hat{i}}+{B}_{y}\\mathbf{\\hat{j}})+({C}_{x}\\mathbf{\\hat{i}}+{C}_{y}\\mathbf{\\hat{j}}) \\\\ & =({A}_{x}-3{B}_{x}+{C}_{x})\\mathbf{\\hat{i}}+({A}_{y}-3{B}_{y}+{C}_{y})\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>Then, the scalar components of \\(\\mathbf{\\vec{S}}\\) are</p><div class='eq'>\\[\\begin{cases}{S}_{x}={A}_{x}-3{B}_{x}+{C}_{x}=8.19\\, \\text{cm}-3(-2.39\\, \\text{cm})+6.93\\, \\text{cm}=22.29\\, \\text{cm} \\\\ {S}_{y}={A}_{y}-3{B}_{y}+{C}_{y}=5.73\\, \\text{cm}-3(-6.58\\, \\text{cm})+4.00\\, \\text{cm}=29.47\\, \\text{cm}\\end{cases}.\\]</div><p>The vector is \\(\\mathbf{\\vec{S}}={S}_{x}\\mathbf{\\hat{i}}+{S}_{y}\\mathbf{\\hat{j}}=(22.3\\mathbf{\\hat{i}}+29.5\\mathbf{\\hat{j}})\\text{cm}\\).</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Having found the vector components, we can illustrate the vectors by graphing or we can compute magnitudes and direction angles, as shown in the figure. Results for the magnitudes in (b) and (c) can be compared with results for the same problems obtained with the graphical method, shown in another section and another section. Notice that the analytical method produces exact results and its accuracy is not limited by the resolution of a ruler or a protractor, as it was with the graphical method used in another section for finding this same resultant.</p><figure><img src='img/CNX_UPhysics_02_03_illustr.jpg' alt=\"Vector R has magnitude 13.11. The angle between R and the positive x direction is theta sub R equals 13.9 degrees. The components of R are R sub x on the x axis and R sub y on the y axis. Vector D has magnitude 16.23. The angle between D and the positive x direction is theta sub D equals 49.3 degrees. The components of D are D sub x on the x axis and D sub y on the y axis. Vector S has magnitude 36.95. The angle between S and the positive x direction is theta sub S equals 52.9 degrees. The components of S are S sub x on the x axis and S sub y on the y axis.\" loading='lazy'><figcaption>Graphical illustration of the solutions obtained analytically in the example <i>Analytical Computation of a Resultant</i>.</figcaption></figure>"
+      }
+     ]
+    },
+    {
+     "title": "The Tug-of-War Game",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Four dogs named Astro, Balto, Clifford, and Dug play a tug-of-war game with a toy (the figure). Astro pulls on the toy in direction \\(\\alpha =55^{\\circ}\\) south of east, Balto pulls in direction \\(\\beta =60^{\\circ}\\) east of north, and Clifford pulls in direction \\(\\gamma =55^{\\circ}\\) west of north. Astro pulls strongly with 160.0 units of force (N), which we abbreviate as <i>A</i> = 160.0 N. Balto pulls even stronger than Astro with a force of magnitude <i>B</i> = 200.0 N, and Clifford pulls with a force of magnitude <i>C</i> = 140.0 N. When Dug pulls on the toy in such a way that his force balances out the resultant of the other three forces, the toy does not move in any direction. With how big a force and in what direction must Dug pull on the toy for this to happen?</p><figure><img src='img/CNX_UPhysics_02_03_dogs_new.jpg' alt=\"Illustration of 4 dogs pulling on a toy. The toy is at the origin of a coordinate system, with plus x aligned with east and plus y with north. Ang is pulling at an angle alpha which is 55 degrees clockwise from the plus x (east) direction. Bing is pulling at an angle beta which is 60 degrees clockwise from the plus y (north) direction. Chang is pulling at an angle gamma which is 55 degrees counterclockwise from the plus y (north) direction. Dong is pulling in an unspecified direction in the third quadrant.\" loading='lazy'><figcaption>Four dogs play a tug-of-war game with a toy.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We assume that east is the direction of the positive <i>x</i>-axis and north is the direction of the positive <i>y</i>-axis. As in the example <i>Analytical Computation of a Resultant</i>, we have to resolve the three given forces— \\(\\mathbf{\\vec{A}}\\) (the pull from Astro), \\(\\mathbf{\\vec{B}}\\) (the pull from Balto), and \\(\\mathbf{\\vec{C}}\\) (the pull from Clifford)—into their scalar components and then find the scalar components of the resultant vector \\(\\mathbf{\\vec{R}}=\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}}\\). When the pulling force \\(\\mathbf{\\vec{D}}\\) from Dug balances out this resultant, the sum of \\(\\mathbf{\\vec{D}}\\) and \\(\\mathbf{\\vec{R}}\\) must give the null vector \\(\\mathbf{\\vec{D}}+\\mathbf{\\vec{R}}=\\mathbf{\\vec{0}}\\). This means that \\(\\mathbf{\\vec{D}}=-\\mathbf{\\vec{R}}\\), so the pull from Dug must be antiparallel to \\(\\mathbf{\\vec{R}}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The direction angles are \\({\\theta}_{A}=-\\alpha =-55^{\\circ}\\), \\({\\theta}_{B}=90^{\\circ} -\\beta =30^{\\circ}\\), and \\({\\theta}_{C}=90^{\\circ} +\\gamma =145^{\\circ}\\), and substituting them into another section gives the scalar components of the three given forces:</p><div class='eq'>\\[\\begin{array}{l}\\begin{cases}{A}_{x}=A\\, \\cos \\, {\\theta}_{A}=(160.0\\, \\text{N})\\, \\cos \\, (-55^{\\circ} )=+91.8\\, \\text{N} \\\\ {A}_{y}=A\\, \\sin \\, {\\theta}_{A}=(160.0\\, \\text{N})\\, \\sin \\, (-55^{\\circ} )=-131.1\\, \\text{N}\\end{cases} \\\\ \\begin{cases}{B}_{x}=B\\, \\cos \\, {\\theta}_{B}=(200.0\\, \\text{N})\\, \\cos \\, 30^{\\circ} =+173.2\\, \\text{N} \\\\ {B}_{y}=B\\, \\sin \\, {\\theta}_{B}=(200.0\\, \\text{N})\\, \\sin \\, 30^{\\circ} =+100.0\\, \\text{N}\\end{cases} \\\\ \\begin{cases}{C}_{x}=C\\, \\cos \\, {\\theta}_{C}=(140.0\\, \\text{N})\\, \\cos \\, 145^{\\circ} =-114.7\\, \\text{N} \\\\ {C}_{y}=C\\, \\sin \\, {\\theta}_{C}=(140.0\\, \\text{N})\\, \\sin \\, 145^{\\circ} =+80.3\\, \\text{N}\\end{cases}\\end{array}.\\]</div><p>Now we compute scalar components of the resultant vector \\(\\mathbf{\\vec{R}}=\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}}\\):</p><div class='eq'>\\[\\begin{cases}{R}_{x}={A}_{x}+{B}_{x}+{C}_{x}=+91.8\\, \\text{N}+173.2\\, \\text{N}-114.7\\, \\text{N}=+150.3\\, \\text{N} \\\\ {R}_{y}={A}_{y}+{B}_{y}+{C}_{y}=-131.1\\, \\text{N}+100.0\\, \\text{N}+80.3\\, \\text{N}=+49.2\\, \\text{N}\\end{cases}.\\]</div><p>The antiparallel vector to the resultant \\(\\mathbf{\\vec{R}}\\) is</p><div class='eq'>\\[\\mathbf{\\vec{D}}=-\\mathbf{\\vec{R}}=-{R}_{x}\\mathbf{\\hat{i}}-{R}_{y}\\mathbf{\\hat{j}}=(-150.3\\mathbf{\\hat{i}}-49.2\\mathbf{\\hat{j}})\\, \\text{N}.\\]</div><p>The magnitude of Dug’s pulling force is</p><div class='eq'>\\[D=\\sqrt{{D}_{x}^{2}+{D}_{y}^{2}}=\\sqrt{{(-150.3)}^{2}+{(-49.2)}^{2}}\\, \\text{N}=158.1\\, \\text{N}.\\]</div><p>The direction of Dug’s pulling force is</p><div class='eq'>\\[\\theta ={\\tan}^{-1}(\\frac{{D}_{y}}{{D}_{x}})={\\tan}^{-1}(\\frac{-49.2\\, \\text{N}}{-150.3\\, \\text{N}})={\\tan}^{-1}(\\frac{49.2}{150.3})=18.1^{\\circ} .\\]</div><p>Dug pulls in the direction \\(18.1^{\\circ}\\) south of west because both components are negative, which means the pull vector lies in the third quadrant (another section).</p>"
+      }
+     ]
+    },
+    {
+     "title": "Vector Algebra",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the magnitude of the vector \\(\\mathbf{\\vec{C}}\\) that satisfies the equation \\(2\\mathbf{\\vec{A}}-6\\mathbf{\\vec{B}}+3\\mathbf{\\vec{C}}=2\\mathbf{\\hat{j}}\\), where \\(\\mathbf{\\vec{A}}=\\mathbf{\\hat{i}}-2\\mathbf{\\hat{k}}\\) and \\(\\mathbf{\\vec{B}}=-\\mathbf{\\hat{j}}+\\mathbf{\\hat{k}}\\text{/}2\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We first solve the given equation for the unknown vector \\(\\mathbf{\\vec{C}}\\). Then we substitute \\(\\mathbf{\\vec{A}}\\) and \\(\\mathbf{\\vec{B}}\\); group the terms along each of the three directions \\(\\mathbf{\\hat{i}}\\), \\(\\mathbf{\\hat{j}}\\), and \\(\\mathbf{\\hat{k}}\\); and identify the scalar components \\({C}_{x}\\), \\({C}_{y}\\), and \\({C}_{z}\\). Finally, we substitute into another section to find magnitude <i>C</i>.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<div class='eq'>\\[\\begin{array}{lll}2\\mathbf{\\vec{A}}-6\\mathbf{\\vec{B}}+3\\mathbf{\\vec{C}} & = & 2\\mathbf{\\hat{j}} \\\\ 3\\mathbf{\\vec{C}} & = & 2\\mathbf{\\hat{j}}-2\\mathbf{\\vec{A}}+6\\mathbf{\\vec{B}} \\\\ \\mathbf{\\vec{C}} & = & \\frac{2}{3}\\mathbf{\\hat{j}}-\\frac{2}{3}\\mathbf{\\vec{A}}+2\\mathbf{\\vec{B}} \\\\ & = & \\frac{2}{3}\\mathbf{\\hat{j}}-\\frac{2}{3}(\\mathbf{\\hat{i}}-2\\mathbf{\\hat{k}})+2(-\\mathbf{\\hat{j}}+\\frac{\\mathbf{\\hat{k}}}{2})=\\frac{2}{3}\\mathbf{\\hat{j}}-\\frac{2}{3}\\mathbf{\\hat{i}}+\\frac{4}{3}\\mathbf{\\hat{k}}-2\\mathbf{\\hat{j}}+\\mathbf{\\hat{k}} \\\\ & = & -\\frac{2}{3}\\mathbf{\\hat{i}}+(\\frac{2}{3}-2)\\mathbf{\\hat{j}}+(\\frac{4}{3}+1)\\mathbf{\\hat{k}} \\\\ & = & -\\frac{2}{3}\\mathbf{\\hat{i}}-\\frac{4}{3}\\mathbf{\\hat{j}}+\\frac{7}{3}\\mathbf{\\hat{k}}.\\end{array}\\]</div><p>The components are \\({C}_{x}=-2\\, \\text{/}3\\), \\({C}_{y}=-4\\text{/}3\\), and \\({C}_{z}=7\\, \\text{/}3\\), and substituting into another section gives</p><div class='eq'>\\[C=\\sqrt{{C}_{x}^{2}+{C}_{y}^{2}+{C}_{z}^{2}}=\\sqrt{{(-2\\text{/}3)}^{2}+{(-4\\, \\text{/}3)}^{2}+{(7\\, \\text{/}3)}^{2}}=\\sqrt{23\\text{/}3}.\\]</div>"
+      }
+     ]
+    },
+    {
+     "title": "Displacement of a Skier",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Starting at a ski lodge, a cross-country skier goes 5.0 km north, then 3.0 km west, and finally 4.0 km southwest before taking a rest. Find their total displacement vector relative to the lodge when they are at the rest point. How far and in what direction must they ski from the rest point to return directly to the lodge?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We assume a rectangular coordinate system with the origin at the ski lodge and with the unit vector \\(\\mathbf{\\hat{i}}\\) pointing east and the unit vector \\(\\mathbf{\\hat{j}}\\) pointing north. There are three displacements: \\({\\mathbf{\\vec{D}}}_{1}\\), \\({\\mathbf{\\vec{D}}}_{2}\\), and \\({\\mathbf{\\vec{D}}}_{3}\\). We identify their magnitudes as \\({D}_{1}=5.0\\, \\text{km}\\), \\({D}_{2}=3.0\\, \\text{km}\\), and \\({D}_{3}=4.0\\, \\text{km}\\). We identify their directions are the angles \\({\\theta}_{1}=90^{\\circ}\\), \\({\\theta}_{2}=180^{\\circ}\\), and \\({\\theta}_{3}=180^{\\circ} +45^{\\circ} =225^{\\circ}\\). We resolve each displacement vector to its scalar components and substitute the components into the equation to obtain the scalar components of the resultant displacement \\(\\mathbf{\\vec{D}}\\) from the lodge to the rest point. On the way back from the rest point to the lodge, the displacement is \\(\\mathbf{\\vec{B}}=-\\mathbf{\\vec{D}}\\). Finally, we find the magnitude and direction of \\(\\mathbf{\\vec{B}}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Scalar components of the displacement vectors are</p><div class='eq'>\\[\\begin{array}{l}\\begin{cases}{D}_{1x}={D}_{1}\\, \\cos \\, {\\theta}_{1}=(5.0\\, \\text{km})\\, \\cos \\, 90^{\\circ} =0 \\\\ {D}_{1y}={D}_{1}\\, \\sin \\, {\\theta}_{1}=(5.0\\, \\text{km})\\, \\sin \\, 90^{\\circ} =5.0\\, \\text{km}\\end{cases} \\\\ \\begin{cases}{D}_{2x}={D}_{2}\\, \\cos \\, {\\theta}_{2}=(3.0\\, \\text{km})\\, \\cos \\, 180^{\\circ} =-3.0\\, \\text{km} \\\\ {D}_{2y}={D}_{2}\\, \\sin \\, {\\theta}_{2}=(3.0\\, \\text{km})\\, \\sin \\, 180^{\\circ} =0\\end{cases} \\\\ \\begin{cases}{D}_{3x}={D}_{3}\\, \\cos \\, {\\theta}_{3}=(4.0\\, \\text{km})\\, \\cos \\, 225^{\\circ} =-2.8\\, \\text{km} \\\\ {D}_{3y}={D}_{3}\\, \\sin \\, {\\theta}_{3}=(4.0\\, \\text{km})\\, \\sin \\, 225^{\\circ} =-2.8\\, \\text{km}\\end{cases}\\end{array}.\\]</div><p>Scalar components of the net displacement vector are</p><div class='eq'>\\[\\begin{cases}{D}_{x}={D}_{1x}+{D}_{2x}+{D}_{3x}=(0-3.0-2.8)\\text{km}=-5.8\\, \\text{km} \\\\ {D}_{y}={D}_{1y}+{D}_{2y}+{D}_{3y}=(5.0+0-2.8)\\text{km}=+2.2\\, \\text{km}\\end{cases}.\\]</div><p>Hence, the skier’s net displacement vector is \\(\\mathbf{\\vec{D}}={D}_{x}\\mathbf{\\hat{i}}+{D}_{y}\\mathbf{\\hat{j}}=(-5.8\\mathbf{\\hat{i}}+2.2\\mathbf{\\hat{j}})\\text{km}\\). On the way back to the lodge, their displacement is \\(\\mathbf{\\vec{B}}=-\\mathbf{\\vec{D}}=-(-5.8\\mathbf{\\hat{i}}+2.2\\mathbf{\\hat{j}})\\text{km}=(5.8\\mathbf{\\hat{i}}-2.2\\mathbf{\\hat{j}})\\text{km}\\). Its magnitude is \\(B=\\sqrt{{B}_{x}^{2}+{B}_{y}^{2}}=\\sqrt{{(5.8)}^{2}+{(-2.2)}^{2}}\\, \\text{km}=6.2\\, \\text{km}\\) and its direction angle is \\(\\theta ={\\tan}^{-1}(-2.2\\text{/}5.8)=-20.8^{\\circ}\\). Therefore, to return to the lodge, they must go 6.2 km in a direction about \\(21^{\\circ}\\) south of east.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that no figure is needed to solve this problem by the analytical method. Figures are required when using a graphical method; however, we can check if our solution makes sense by sketching it, which is a useful final step in solving any vector problem.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Displacement of a Jogger",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A jogger runs up a flight of 200 identical steps to the top of a hill and then runs along the top of the hill 50.0 m before he stops at a drinking fountain (the figure). His displacement vector from point <i>A</i> at the bottom of the steps to point <i>B</i> at the fountain is \\({\\mathbf{\\vec{D}}}_{AB}=(-90.0\\mathbf{\\hat{i}}+30.0\\mathbf{\\hat{j}})\\text{m}\\). What is the height and width of each step in the flight? What is the actual distance the jogger covers? If he makes a loop and returns to point <i>A</i>, what is his net displacement vector?</p><figure><img src='img/CNX_UPhysics_02_03_jogger.jpg' alt=\"A coordinate system is shown with positive x to the right and positive y up. A jogger is at point A at the bottom of steps which lead up and to the left. The top of the steps is labeled as point T. At the top of the steps is a flat section extending from point T to the fountain at point B. The distance between T and B is 50 meters.\" loading='lazy'><figcaption>A jogger runs up a flight of steps.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The displacement vector \\({\\mathbf{\\vec{D}}}_{AB}\\) is the vector sum of the jogger’s displacement vector \\({\\mathbf{\\vec{D}}}_{AT}\\) along the stairs (from point <i>A</i> at the bottom of the stairs to point <i>T</i> at the top of the stairs) and his displacement vector \\({\\mathbf{\\vec{D}}}_{TB}\\) on the top of the hill (from point <i>T</i> at the top of the stairs to the fountain at point <i>B</i>). We must find the horizontal and the vertical components of \\({\\mathbf{\\vec{D}}}_{AT}\\). If each step has width <i>w</i> and height <i>h</i>, the horizontal component of \\({\\mathbf{\\vec{D}}}_{AT}\\) must have a length of 200<i>w</i> and the vertical component must have a length of 200<i>h.</i> The actual distance the jogger covers is the sum of the distance he runs up the stairs and the distance of 50.0 m that he runs along the top of the hill.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>In the coordinate system indicated in the figure, the jogger’s displacement vector on the top of the hill is \\({\\mathbf{\\vec{D}}}_{TB}=(-50.0\\, \\text{m})\\mathbf{\\hat{i}}\\). His net displacement vector is</p><div class='eq'>\\[{\\mathbf{\\vec{D}}}_{AB}={\\mathbf{\\vec{D}}}_{AT}+{\\mathbf{\\vec{D}}}_{TB}.\\]</div><p>Therefore, his displacement vector \\({\\mathbf{\\vec{D}}}_{AT}\\) along the stairs is</p><div class='eq'>\\[\\begin{array}{ll}{\\mathbf{\\vec{D}}}_{AT} & ={\\mathbf{\\vec{D}}}_{AB}-{\\mathbf{\\vec{D}}}_{TB}=(-90.0\\mathbf{\\hat{i}}+30.0\\mathbf{\\hat{j}})\\text{m}-(-50.0\\, \\text{m})\\mathbf{\\hat{i}}=[(-90.0+50.0)\\mathbf{\\hat{i}}+30.0\\mathbf{\\hat{j}}]\\text{m} \\\\ & =(-40.0\\mathbf{\\hat{i}}+30.0\\mathbf{\\hat{j}})\\text{m}.\\end{array}\\]</div><p>Its scalar components are \\({D}_{ATx}=-40.0\\, \\text{m}\\) and \\({D}_{ATy}=30.0\\, \\text{m}\\). Therefore, we must have</p><div class='eq'>\\[200w=|-40.0|\\text{m}\\, \\text{and}\\, 200h=30.0\\, \\text{m}.\\]</div><p>Hence, the step width is <i>w</i> = 40.0 m/200 = 0.2 m = 20 cm, and the step height is <i>h</i> = 30.0 m/200 = 0.15 m = 15 cm. The distance that the jogger covers along the stairs is</p><div class='eq'>\\[{D}_{AT}=\\sqrt{{D}_{ATx}^{2}+{D}_{ATy}^{2}}=\\sqrt{{(-40.0)}^{2}+{(30.0)}^{2}}\\, \\text{m}=50.0\\, \\text{m}.\\]</div><p>Thus, the actual distance he runs is \\({D}_{AT}+{D}_{TB}=50.0\\, \\text{m}+50.0\\, \\text{m}=100.0\\, \\text{m}\\). When he makes a loop and comes back from the fountain to his initial position at point <i>A</i>, the total distance he covers is twice this distance, or 200.0 m. However, his net displacement vector is zero, because when his final position is the same as his initial position, the scalar components of his net displacement vector are zero (another section).</p>"
+      }
+     ]
+    },
+    {
+     "title": "The Unit Vector of Direction",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>If the velocity vector of the military convoy in the example <i>Direction of Motion</i> is \\(\\mathbf{\\vec{v}}=(4.000\\mathbf{\\hat{i}}+3.000\\mathbf{\\hat{j}}+0.100\\mathbf{\\hat{k}})\\text{km}\\text{/}\\text{h}\\), what is the unit vector of its direction of motion?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The unit vector of the convoy’s direction of motion is the unit vector \\(\\mathbf{\\hat{v}}\\) that is parallel to the velocity vector. The unit vector is obtained by dividing a vector by its magnitude, in accordance with the equation.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The magnitude of the vector \\(\\mathbf{\\vec{v}}\\) is</p><div class='eq'>\\[v=\\sqrt{{v}_{x}^{2}+{v}_{y}^{2}+{v}_{z}^{2}}=\\sqrt{{4.000}^{2}+{3.000}^{2}+{0.100}^{2}}\\text{km}\\text{/}\\text{h}=5.001\\text{km}\\text{/}\\text{h}.\\]</div><p>To obtain the unit vector \\(\\mathbf{\\hat{v}}\\), divide \\(\\mathbf{\\vec{v}}\\) by its magnitude:</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\hat{v}} & =\\frac{\\mathbf{\\vec{v}}}{v}=\\frac{(4.000\\mathbf{\\hat{i}}+3.000\\mathbf{\\hat{j}}+0.100\\mathbf{\\hat{k}})\\text{km}\\text{/}\\text{h}}{5.001\\text{km}\\text{/}\\text{h}} \\\\ & =\\frac{(4.000\\mathbf{\\hat{i}}+3.000\\mathbf{\\hat{j}}+0.100\\mathbf{\\hat{k}})}{5.001} \\\\ & =\\frac{4.000}{5.001}\\mathbf{\\hat{i}}+\\frac{3.000}{5.001}\\mathbf{\\hat{j}}+\\frac{0.100}{5.001}\\mathbf{\\hat{k}} \\\\ & =(79.98\\mathbf{\\hat{i}}+59.99\\mathbf{\\hat{j}}+2.00\\mathbf{\\hat{k}})\\, \\times \\, {10}^{-2}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that when using the analytical method with a calculator, it is advisable to carry out your calculations to at least three decimal places and then round off the final answer to the required number of significant figures, which is the way we performed calculations in this example. If you round off your partial answer too early, you risk your final answer having a huge numerical error, and it may be far off from the exact answer or from a value measured in an experiment.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Three displacement vectors \\(\\mathbf{\\vec{A}}\\), \\(\\mathbf{\\vec{B}}\\), and \\(\\mathbf{\\vec{F}}\\) (another section) are specified by their magnitudes <i>A</i> = 10.00, <i>B</i> = 7.00, and <i>F</i> = 20.00, respectively, and by their respective direction angles with the horizontal direction \\(\\alpha =35^{\\circ}\\), \\(\\beta =-110^{\\circ}\\), and \\(\\phi =110^{\\circ}\\). The physical units of the magnitudes are centimeters. Use the analytical method to find vector \\(\\mathbf{\\vec{G}}=\\mathbf{\\vec{A}}+2\\mathbf{\\vec{B}}-\\mathbf{\\vec{F}}\\). Verify that<br><i>G</i> = 28.15 cm and that \\({\\theta}_{G}=-68.65^{\\circ}\\).</p>",
+     "a": "<p>\\(\\mathbf{\\vec{G}}=(10.25\\mathbf{\\hat{i}}-26.22\\mathbf{\\hat{j}})\\text{cm}\\)</p>"
+    },
+    {
+     "q": "<p>Suppose that Balto in the example <i>The Tug-of-War Game</i> leaves the game to attend to more important matters, but Astro, Clifford, and Dug continue playing. Astro and Clifford's pull on the toy does not change, but Dug runs around and bites on the toy in a different place. With how big a force and in what direction must Dug pull on the toy now to balance out the combined pulls from Clifford and Astro? Illustrate this situation by drawing a vector diagram indicating all forces involved.</p>",
+     "a": "<p><i>D</i> = 55.7 N; direction \\(65.7^{\\circ}\\) north of east</p>"
+    },
+    {
+     "q": "<p>Verify that vector \\(\\mathbf{\\hat{v}}\\) obtained in the example <i>The Unit Vector of Direction</i> is indeed a unit vector by computing its magnitude. If the convoy in the example <i>Direction of Motion</i> was moving across a desert flatland—that is, if the third component of its velocity was zero—what is the unit vector of its direction of motion? Which geographic direction does it represent?</p>",
+     "a": "<p>\\(\\mathbf{\\hat{v}}=0.8\\mathbf{\\hat{i}}+0.6\\mathbf{\\hat{j}}\\), \\(36.87^{\\circ}\\) north of east</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Analytical methods of vector algebra allow us to find resultants of sums or differences of vectors without having to draw them. Analytical methods of vector addition are exact, contrary to graphical methods, which are approximate.",
+    "Analytical methods of vector algebra are used routinely in mechanics, electricity, and magnetism. They are important mathematical tools of physics."
+   ]
+  },
+  {
+   "num": "2.4",
+   "module": "m58280",
+   "title": "Products of Vectors",
+   "objectives": [
+    "Explain the difference between the scalar product and the vector product of two vectors.",
+    "Determine the scalar product of two vectors.",
+    "Determine the vector product of two vectors.",
+    "Describe how the products of vectors are used in physics."
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}=\\mathbf{\\vec{B}}\\cdot \\mathbf{\\vec{A}}",
+    "\\mathbf{\\vec{A}}\\cdot (\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})=\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{C}}",
+    "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}={A}_{x}{B}_{x}+{A}_{y}{B}_{y}+{A}_{z}{B}_{z}",
+    "\\cos \\, \\phi =\\frac{\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}}{AB}=\\frac{{A}_{x}{B}_{x}+{A}_{y}{B}_{y}+{A}_{z}{B}_{z}}{AB}",
+    "\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}=-\\mathbf{\\vec{B}}\\, \\times \\, \\mathbf{\\vec{A}}",
+    "\\mathbf{\\vec{A}}\\, \\times \\, (\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})=\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{C}}",
+    "\\begin{cases}\\mathbf{\\hat{i}}\\, \\times \\, \\mathbf{\\hat{j}}=+\\mathbf{\\hat{k}}, \\\\ \\mathbf{\\hat{j}}\\, \\times \\, \\mathbf{\\hat{k}}=+\\mathbf{\\hat{i}}, \\\\ \\mathbf{\\hat{k}}\\, \\times \\, \\mathbf{\\hat{i}}=+\\mathbf{\\hat{j}}.\\end{cases}",
+    "\\mathbf{\\vec{C}}=\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}=({A}_{y}{B}_{z}-{A}_{z}{B}_{y})\\mathbf{\\hat{i}}+({A}_{z}{B}_{x}-{A}_{x}{B}_{z})\\mathbf{\\hat{j}}+({A}_{x}{B}_{y}-{A}_{y}{B}_{x})\\mathbf{\\hat{k}}"
+   ],
+   "examples": [
+    {
+     "title": "The Scalar Product",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>For the vectors shown in another section, find the scalar product \\(\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{F}}\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>From another section, the magnitudes of vectors \\(\\mathbf{\\vec{A}}\\) and \\(\\mathbf{\\vec{F}}\\) are <i>A</i> = 10.0 and <i>F</i> = 20.0. Angle \\(\\theta\\), between them, is the difference: \\(\\theta =\\phi -\\alpha =110^{\\circ} -35^{\\circ} =75^{\\circ}\\). Substituting these values into the equation gives the scalar product.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>A straightforward calculation gives us</p><div class='eq'>\\[\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{F}}=AF\\, \\cos \\, \\theta =(10.0)(20.0)\\, \\cos \\, 75^{\\circ} =51.76.\\]</div>"
+      }
+     ]
+    },
+    {
+     "title": "Angle between Two Forces",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Three dogs are pulling on a stick in different directions, as shown in the figure. The first dog pulls with force \\({\\mathbf{\\vec{F}}}_{1}=(10.0\\mathbf{\\hat{i}}-20.4\\mathbf{\\hat{j}}+2.0\\mathbf{\\hat{k}})\\text{N}\\), the second dog pulls with force \\({\\mathbf{\\vec{F}}}_{2}=(-15.0\\mathbf{\\hat{i}}-6.2\\mathbf{\\hat{k}})\\text{N}\\), and the third dog pulls with force \\({\\mathbf{\\vec{F}}}_{3}=(5.0\\mathbf{\\hat{i}}+12.5\\mathbf{\\hat{j}})\\text{N}\\). What is the angle between forces \\({\\mathbf{\\vec{F}}}_{1}\\) and \\({\\mathbf{\\vec{F}}}_{2}\\)?</p><figure><img src='img/CNX_UPhysics_02_04_dogs.jpg' alt=\"Three dogs pull on a stick.\" loading='lazy'><figcaption>Three dogs are playing with a stick.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The components of force vector \\({\\mathbf{\\vec{F}}}_{1}\\) are \\({F}_{1x}=10.0\\, \\text{N}\\), \\({F}_{1y}=-20.4\\, \\text{N}\\), and \\({F}_{1z}=2.0\\, \\text{N}\\), whereas those of force vector \\({\\mathbf{\\vec{F}}}_{2}\\) are \\({F}_{2x}=-15.0\\, \\text{N}\\), \\({F}_{2y}=0.0\\, \\text{N}\\), and \\({F}_{2z}=-6.2\\, \\text{N}\\). Computing the scalar product of these vectors and their magnitudes, and substituting into the equation gives the angle of interest.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The magnitudes of forces \\({\\mathbf{\\vec{F}}}_{1}\\) and \\({\\mathbf{\\vec{F}}}_{2}\\) are</p><div class='eq'>\\[{F}_{1}=\\sqrt{{F}_{1x}^{2}+{F}_{1y}^{2}+{F}_{1z}^{2}}=\\sqrt{{10.0}^{2}+{20.4}^{2}+{2.0}^{2}}\\, \\text{N}=22.8\\, \\text{N}\\]</div><p>and</p><div class='eq'>\\[{F}_{2}=\\sqrt{{F}_{2x}^{2}+{F}_{2y}^{2}+{F}_{2z}^{2}}=\\sqrt{{15.0}^{2}+{6.2}^{2}}\\, \\text{N}=16.2\\, \\text{N}.\\]</div><p>Substituting the scalar components into the equation yields the scalar product</p><div class='eq'>\\[\\begin{array}{ll}{\\mathbf{\\vec{F}}}_{1}\\cdot {\\mathbf{\\vec{F}}}_{2} & ={F}_{1x}{F}_{2x}+{F}_{1y}{F}_{2y}+{F}_{1z}{F}_{2z} \\\\ & =(10.0\\, \\text{N})(-15.0\\, \\text{N})+(-20.4\\, \\text{N})(0.0\\, \\text{N})+(2.0\\, \\text{N})(-6.2\\, \\text{N}) \\\\ & =-162.4\\, {\\text{N}}^{2}.\\end{array}\\]</div><p>Finally, substituting everything into the equation gives the angle</p><div class='eq'>\\[\\cos \\, \\phi =\\frac{{\\mathbf{\\vec{F}}}_{1}\\cdot {\\mathbf{\\vec{F}}}_{2}}{{F}_{1}{F}_{2}}=\\frac{-162.4\\, {\\text{N}}^{2}}{(22.8\\, \\text{N})(16.2\\, \\text{N})}=-0.439\\Rightarrow \\; \\phi ={\\cos}^{-1}(-0.439)=116.0^{\\circ} .\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that when vectors are given in terms of the unit vectors of axes, we can find the angle between them without knowing the specifics about the geographic directions the unit vectors represent. Here, for example, the +<i>x</i>-direction might be to the east and the +<i>y</i>-direction might be to the north. But, the angle between the forces in the problem is the same if the +<i>x</i>-direction is to the west and the +<i>y</i>-direction is to the south.</p>"
+      }
+     ]
+    },
+    {
+     "title": "The Work of a Force",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>When force \\(\\mathbf{\\vec{F}}\\) pulls on an object and when it causes its displacement \\(\\mathbf{\\vec{D}}\\), we say the force performs work. The amount of work the force does is the scalar product \\(\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{D}}\\). If the stick in the example <i>Angle between Two Forces</i> moves momentarily and gets displaced by vector \\(\\mathbf{\\vec{D}}=(-7.9\\mathbf{\\hat{j}}-4.2\\mathbf{\\hat{k}})\\, \\text{cm}\\), how much work is done by the third dog in the example <i>Angle between Two Forces</i>?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We compute the scalar product of displacement vector \\(\\mathbf{\\vec{D}}\\) with force vector \\({\\mathbf{\\vec{F}}}_{3}=(5.0\\mathbf{\\hat{i}}+12.5\\mathbf{\\hat{j}})\\text{N}\\), which is the pull from the third dog. Let’s use \\({W}_{3}\\) to denote the work done by force \\({\\mathbf{\\vec{F}}}_{3}\\) on displacement \\(\\mathbf{\\vec{D}}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Calculating the work is a straightforward application of the dot product:</p><div class='eq'>\\[\\begin{array}{ll}{W}_{3} & ={\\mathbf{\\vec{F}}}_{3}\\cdot \\mathbf{\\vec{D}}={F}_{3x}{D}_{x}+{F}_{3y}{D}_{y}+{F}_{3z}{D}_{z} \\\\ & =(5.0\\, \\text{N})(0.0\\, \\text{cm})+(12.5\\, \\text{N})(-7.9\\, \\text{cm})+(0.0\\, \\text{N})(-4.2\\, \\text{cm}) \\\\ & =-98.7\\, \\text{N}\\cdot \\text{cm}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The SI unit of work is called the joule \\((\\text{J})\\), where 1 J = 1 \\(\\text{N}\\cdot \\text{m}\\). The unit \\(\\text{cm}\\cdot \\text{N}\\) can be written as \\({10}^{-2}\\text{m}\\cdot \\text{N}={10}^{-2}\\text{J}\\), so the answer can be expressed as \\({W}_{3}=-0.9875\\, \\text{J}\\approx -1.0\\, \\text{J}\\).</p>"
+      }
+     ]
+    },
+    {
+     "title": "The Torque of a Force",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The mechanical advantage that a familiar tool called a <i>wrench</i> provides (the figure) depends on magnitude <i>F</i> of the applied force, on its direction with respect to the wrench handle, and on how far from the nut this force is applied. The distance <i>R</i> from the nut to the point where force vector \\(\\mathbf{\\vec{F}}\\) is attached is represented by the radial vector \\(\\mathbf{\\vec{R}}\\). The physical vector quantity that makes the nut turn is called <i>torque</i> (denoted by \\(\\vec{\\tau })\\), and it is the vector product of the distance between the pivot to force with the force: \\(\\vec{\\tau }=\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}\\).</p><p>To loosen a rusty nut, a 20.00-N force is applied to the wrench handle at angle \\(\\phi =40^{\\circ}\\) and at a distance of 0.25 m from the nut, as shown in the figure(a). Find the magnitude and direction of the torque applied to the nut. What would the magnitude and direction of the torque be if the force were applied at angle \\(\\phi =45^{\\circ}\\), as shown in the figure(b)? For what value of angle \\(\\phi\\) does the torque have the largest magnitude?</p><figure><img src='img/CNX_UPhysics_02_04_wrench.jpg' alt=\"Figure a: a wrench grips a nut. A force F is applied to the wrench at a distance R from the center of the nut. The vector R is the vector from the center of the nut to the location where the force is being applied. The force direction is at an angle phi, measured counterclockwise from the direction of the vector R. Figure b: a wrench grips a nut. A force F is applied to the wrench at a distance R from the center of the nut. The vector R is the vector from the center of the nut to the location where the force is being applied. The force direction is at an angle phi, measured clockwise from the direction of the vector R.\" loading='lazy'><figcaption>A wrench provides grip and mechanical advantage in applying torque to turn a nut. (a) Turn counterclockwise to loosen the nut. (b) Turn clockwise to tighten the nut.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We adopt the frame of reference shown in the figure, where vectors \\(\\mathbf{\\vec{R}}\\) and \\(\\mathbf{\\vec{F}}\\) lie in the <i>xy</i>-plane and the origin is at the position of the nut. The radial direction along vector \\(\\mathbf{\\vec{R}}\\) (pointing away from the origin) is the reference direction for measuring the angle \\(\\phi\\) because \\(\\mathbf{\\vec{R}}\\) is the first vector in the vector product \\(\\vec{\\tau }=\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}\\). Vector \\(\\vec{\\tau }\\) must lie along the <i>z</i>-axis because this is the axis that is perpendicular to the <i>xy</i>-plane, where both \\(\\mathbf{\\vec{R}}\\) and \\(\\mathbf{\\vec{F}}\\) lie. To compute the magnitude \\(\\tau\\), we use the equation. To find the direction of \\(\\vec{\\tau }\\), we use the corkscrew right-hand rule (the figure).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>For the situation in (a), the corkscrew rule gives the direction of \\(\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}\\) in the positive direction of the <i>z</i>-axis. Physically, it means the torque vector \\(\\vec{\\tau }\\) points out of the page, perpendicular to the wrench handle. We identify <i>F</i> = 20.00 N and <i>R</i> = 0.25 m, and compute the magnitude using another section:</p><div class='eq'>\\[\\tau \\, =|\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}|=\\, RF\\, \\sin \\, \\phi =(0.25\\, \\text{m})(20.00\\, \\text{N})\\, \\sin \\, 40^{\\circ} =3.21\\, \\text{N}\\cdot \\text{m}.\\]</div><p>For the situation in (b), the corkscrew rule gives the direction of \\(\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}\\) in the negative direction of the <i>z</i>-axis. Physically, it means the vector \\(\\vec{\\tau }\\) points into the page, perpendicular to the wrench handle. The magnitude of this torque is</p><div class='eq'>\\[\\tau \\, =|\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}|=\\, RF\\, \\sin \\, \\phi =(0.25\\, \\text{m})(20.00\\, \\text{N})\\, \\sin \\, 45^{\\circ} =3.53\\, \\text{N}\\cdot \\text{m}.\\]</div><p>The torque has the largest value when \\(\\sin \\, \\phi =1\\), which happens when \\(\\phi =90^{\\circ}\\). Physically, it means the wrench is most effective—giving us the best mechanical advantage—when we apply the force perpendicular to the wrench handle. For the situation in this example, this best-torque value is \\({\\tau}_{\\text{best}}=RF=(0.25\\, \\text{m})(20.00\\, \\text{N})=5.00\\, \\text{N}\\cdot \\text{m}\\).</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>When solving mechanics problems, we often do not need to use the corkscrew rule at all, as we’ll see now in the following equivalent solution. Notice that once we have identified that vector \\(\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}\\) lies along the <i>z</i>-axis, we can write this vector in terms of the unit vector \\(\\mathbf{\\hat{k}}\\) of the <i>z</i>-axis:</p><div class='eq'>\\[\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}=RF\\, \\sin \\, \\phi \\mathbf{\\hat{k}}.\\]</div><p>In this equation, the number that multiplies \\(\\mathbf{\\hat{k}}\\) is the scalar <i>z</i>-component of the vector \\(\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}\\). In the computation of this component, care must be taken that the angle \\(\\phi\\) is measured <i>counterclockwise</i> from \\(\\mathbf{\\vec{R}}\\) (first vector) to \\(\\mathbf{\\vec{F}}\\) (second vector). Following this principle for the angles, we obtain \\(RF\\, \\sin \\, (+40^{\\circ} )=+3.2\\, \\text{N}\\cdot \\text{m}\\) for the situation in (a), and we obtain \\(RF\\, \\sin \\, (-45^{\\circ} )=-3.5\\, \\text{N}\\cdot \\text{m}\\) for the situation in (b). In the latter case, the angle is negative because the graph in the figure indicates the angle is measured clockwise; but, the same result is obtained when this angle is measured counterclockwise because \\(+(360^{\\circ} -45^{\\circ} )=+315^{\\circ}\\) and \\(\\sin \\, (+315^{\\circ} )=\\sin \\, (-45^{\\circ} )\\). In this way, we obtain the solution without reference to the corkscrew rule. For the situation in (a), the solution is \\(\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}=+3.2\\, \\text{N}\\cdot \\text{m}\\mathbf{\\hat{k}}\\); for the situation in (b), the solution is \\(\\mathbf{\\vec{R}}\\, \\times \\, \\mathbf{\\vec{F}}=-3.5\\, \\text{N}\\cdot \\text{m}\\mathbf{\\hat{k}}\\).</p>"
+      }
+     ]
+    },
+    {
+     "title": "A Particle in a Magnetic Field",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>When moving in a magnetic field, some particles may experience a magnetic force. Without going into details—a detailed study of magnetic phenomena comes in later chapters—let’s acknowledge that the magnetic field \\(\\mathbf{\\vec{B}}\\) is a vector, the magnetic force \\(\\mathbf{\\vec{F}}\\) is a vector, and the velocity \\(\\mathbf{\\vec{u}}\\) of the particle is a vector. The magnetic force vector is proportional to the vector product of the velocity vector with the magnetic field vector, which we express as \\(\\mathbf{\\vec{F}}=\\zeta \\mathbf{\\vec{u}}\\, \\times \\, \\mathbf{\\vec{B}}\\). In this equation, a constant \\(\\zeta\\) takes care of the consistency in physical units, so we can omit physical units on vectors \\(\\mathbf{\\vec{u}}\\) and \\(\\mathbf{\\vec{B}}\\). In this example, let’s assume the constant \\(\\zeta\\) is positive.</p><p>A particle moving in space with velocity vector \\(\\mathbf{\\vec{u}}=-5.0\\mathbf{\\hat{i}}-2.0\\mathbf{\\hat{j}}+3.5\\mathbf{\\hat{k}}\\) enters a region with a magnetic field and experiences a magnetic force. Find the magnetic force \\(\\mathbf{\\vec{F}}\\) on this particle at the entry point to the region where the magnetic field vector is (a) \\(\\mathbf{\\vec{B}}=7.2\\mathbf{\\hat{i}}-\\mathbf{\\hat{j}}-2.4\\mathbf{\\hat{k}}\\) and (b) \\(\\mathbf{\\vec{B}}=4.5\\mathbf{\\hat{k}}\\). In each case, find magnitude <i>F</i> of the magnetic force and angle \\(\\theta\\) the force vector \\(\\mathbf{\\vec{F}}\\) makes with the given magnetic field vector \\(\\mathbf{\\vec{B}}\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we want to find the vector product \\(\\mathbf{\\vec{u}}\\, \\times \\, \\mathbf{\\vec{B}}\\), because then we can determine the magnetic force using \\(\\mathbf{\\vec{F}}=\\zeta \\mathbf{\\vec{u}}\\, \\times \\, \\mathbf{\\vec{B}}\\). Magnitude <i>F</i> can be found either by using components, \\(F=\\sqrt{{F}_{x}^{2}+{F}_{y}^{2}+{F}_{z}^{2}}\\), or by computing the magnitude \\(|\\mathbf{\\vec{u}}\\, \\times \\, \\mathbf{\\vec{B}}|\\) directly using the equation. In the latter approach, we would have to find the angle between vectors \\(\\mathbf{\\vec{u}}\\) and \\(\\mathbf{\\vec{B}}\\). When we have \\(\\mathbf{\\vec{F}}\\), the general method for finding the direction angle \\(\\theta\\) involves the computation of the scalar product \\(\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{B}}\\) and substitution into the equation. To compute the vector product we can either use the equation or compute the product directly, whichever way is simpler.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The components of the velocity vector are \\({u}_{x}=-5.0\\), \\({u}_{y}=-2.0\\), and \\({u}_{z}=3.5\\).</p><p>(a) The components of the magnetic field vector are \\({B}_{x}=7.2\\), \\({B}_{y}=-1.0\\), and \\({B}_{z}=-2.4\\). Substituting them into the equation gives the scalar components of vector \\(\\mathbf{\\vec{F}}=\\zeta \\mathbf{\\vec{u}}\\, \\times \\, \\mathbf{\\vec{B}}\\):</p><div class='eq'>\\[\\begin{cases}{F}_{x}=\\zeta ({u}_{y}{B}_{z}-{u}_{z}{B}_{y})=\\zeta [(-2.0)(-2.4)-(3.5)(-1.0)]=8.3\\zeta \\\\ {F}_{y}=\\zeta ({u}_{z}{B}_{x}-{u}_{x}{B}_{z})=\\zeta [(3.5)(7.2)-(-5.0)(-2.4)]=13.2\\zeta \\\\ {F}_{z}=\\zeta ({u}_{x}{B}_{y}-{u}_{y}{B}_{x})=\\zeta [(-5.0)(-1.0)-(-2.0)(7.2)]=19.4\\zeta \\end{cases}.\\]</div><p>Thus, the magnetic force is \\(\\mathbf{\\vec{F}}=\\zeta (8.3\\mathbf{\\hat{i}}+13.2\\mathbf{\\hat{j}}+19.4\\mathbf{\\hat{k}})\\) and its magnitude is</p><div class='eq'>\\[F=\\sqrt{{F}_{x}^{2}+{F}_{y}^{2}+{F}_{z}^{2}}=\\zeta \\sqrt{{(8.3)}^{2}+{(13.2)}^{2}+{(19.4)}^{2}}=24.9\\zeta .\\]</div><p>To compute angle \\(\\theta\\), we may need to find the magnitude of the magnetic field vector,</p><div class='eq'>\\[B=\\sqrt{{B}_{x}^{2}+{B}_{y}^{2}+{B}_{z}^{2}}=\\sqrt{{(7.2)}^{2}+{(-1.0)}^{2}+{(-2.4)}^{2}}=7.6,\\]</div><p>and the scalar product \\(\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{B}}\\):</p><div class='eq'>\\[\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{B}}={F}_{x}{B}_{x}+{F}_{y}{B}_{y}+{F}_{z}{B}_{z}=(8.3\\zeta )(7.2)+(13.2\\zeta )(-1.0)+(19.4\\zeta )(-2.4)=0.\\]</div><p>Now, substituting into the equation gives angle \\(\\theta\\):</p><div class='eq'>\\[\\cos \\, \\theta =\\frac{\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{B}}}{FB}=\\frac{0}{(24.9\\zeta )(7.6)}=0\\, \\Rightarrow \\; \\theta =90^{\\circ} .\\]</div><p>Hence, the magnetic force vector is perpendicular to the magnetic field vector. (We could have saved some time if we had computed the scalar product earlier.)</p><p>(b) Because vector \\(\\mathbf{\\vec{B}}=4.5\\mathbf{\\hat{k}}\\) has only one component, we can perform the algebra quickly and find the vector product directly:</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{F}} & =\\zeta \\mathbf{\\vec{u}}\\, \\times \\, \\mathbf{\\vec{B}}=\\zeta (-5.0\\mathbf{\\hat{i}}-2.0\\mathbf{\\hat{j}}+3.5\\mathbf{\\hat{k}})\\, \\times \\, (4.5\\mathbf{\\hat{k}}) \\\\ & =\\zeta [(-5.0)(4.5)\\mathbf{\\hat{i}}\\, \\times \\, \\mathbf{\\hat{k}}+(-2.0)(4.5)\\mathbf{\\hat{j}}\\, \\times \\, \\mathbf{\\hat{k}}+(3.5)(4.5)\\mathbf{\\hat{k}}\\, \\times \\, \\mathbf{\\hat{k}}] \\\\ & =\\zeta [-22.5(-\\mathbf{\\hat{j}})-9.0(+\\mathbf{\\hat{i}})+0]=\\zeta (-9.0\\mathbf{\\hat{i}}+22.5\\mathbf{\\hat{j}}).\\end{array}\\]</div><p>The magnitude of the magnetic force is</p><div class='eq'>\\[F=\\sqrt{{F}_{x}^{2}+{F}_{y}^{2}+{F}_{z}^{2}}=\\zeta \\sqrt{{(-9.0)}^{2}+{(22.5)}^{2}+{(0.0)}^{2}}=24.2\\zeta .\\]</div><p>Because the scalar product is</p><div class='eq'>\\[\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{B}}={F}_{x}{B}_{x}+{F}_{y}{B}_{y}+{F}_{z}{B}_{z}=(-9.0\\zeta )(0)+(22.5\\zeta )(0)+(0)(4.5)=0,\\]</div><p>the magnetic force vector \\(\\mathbf{\\vec{F}}\\) is perpendicular to the magnetic field vector \\(\\mathbf{\\vec{B}}\\).</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Even without actually computing the scalar product, we can predict that the magnetic force vector must always be perpendicular to the magnetic field vector because of the way this vector is constructed. Namely, the magnetic force vector is the vector product \\(\\mathbf{\\vec{F}}=\\zeta \\mathbf{\\vec{u}}\\, \\times \\, \\mathbf{\\vec{B}}\\) and, by the definition of the vector product (see the figure), vector \\(\\mathbf{\\vec{F}}\\) must be perpendicular to both vectors \\(\\mathbf{\\vec{u}}\\) and \\(\\mathbf{\\vec{B}}\\).</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>For the vectors given in another section, find the scalar products \\(\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}\\) and \\(\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{C}}\\).</p>",
+     "a": "<p>\\(\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}=-57.3\\), \\(\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{C}}=27.8\\)</p>"
+    },
+    {
+     "q": "<p>For vector \\(\\mathbf{\\vec{A}}={A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}}+{A}_{z}\\mathbf{\\hat{k}}\\) in a rectangular coordinate system, use the equation through the equation to show that \\(\\mathbf{\\vec{A}}\\cdot \\mathbf{\\hat{i}}={A}_{x}\\), \\(\\mathbf{\\vec{A}}\\cdot \\mathbf{\\hat{j}}={A}_{y}\\), and \\(\\mathbf{\\vec{A}}\\cdot \\mathbf{\\hat{k}}={A}_{z}\\).</p>",
+     "a": null
+    },
+    {
+     "q": "<p>Find the angle between forces \\({\\mathbf{\\vec{F}}}_{1}\\) and \\({\\mathbf{\\vec{F}}}_{3}\\) in the example <i>Angle between Two Forces</i>.</p>",
+     "a": "<p>\\(131.9^{\\circ}\\)</p>"
+    },
+    {
+     "q": "<p>How much work is done by the first dog and by the second dog in the example <i>Angle between Two Forces</i> on the displacement in the example <i>The Work of a Force</i>?</p>",
+     "a": "<p>\\({W}_{1}=1.5\\, \\text{J}\\), \\({W}_{2}=0.3\\, \\text{J}\\)</p>"
+    },
+    {
+     "q": "<p>For the vectors given in another section, find the vector products \\(\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}\\) and \\(\\mathbf{\\vec{C}}\\, \\times \\, \\mathbf{\\vec{F}}\\).</p>",
+     "a": "<p>\\(\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}=-40.1\\mathbf{\\hat{k}}\\) or, equivalently, \\(|\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}|=40.1\\), and the direction is into the page; \\(\\mathbf{\\vec{C}}\\, \\times \\, \\mathbf{\\vec{F}}=+157.6\\mathbf{\\hat{k}}\\) or, equivalently, \\(|\\mathbf{\\vec{C}}\\, \\times \\, \\mathbf{\\vec{F}}|=157.6\\), and the direction is out of the page.</p>"
+    },
+    {
+     "q": "<p>Given two vectors \\(\\mathbf{\\vec{A}}=-\\mathbf{\\hat{i}}+\\mathbf{\\hat{j}}\\) and \\(\\mathbf{\\vec{B}}=3\\mathbf{\\hat{i}}-\\mathbf{\\hat{j}}\\), find (a) \\(\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}\\), (b) \\(|\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}|\\), (c) the angle between \\(\\mathbf{\\vec{A}}\\) and \\(\\mathbf{\\vec{B}}\\), and (d) the angle between \\(\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}\\) and vector \\(\\mathbf{\\vec{C}}=\\mathbf{\\hat{i}}+\\mathbf{\\hat{k}}\\).</p>",
+     "a": "<p>a. \\(-2\\mathbf{\\hat{k}}\\), b. 2, c. \\(153.4^{\\circ}\\), d. \\(135^{\\circ}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "There are two kinds of multiplication for vectors. One kind of multiplication is the scalar product, also known as the dot product. The other kind of multiplication is the vector product, also known as the cross product. The scalar product of vectors is a number (scalar). The vector product of vectors is a vector.",
+    "Both kinds of multiplication have the distributive property, but only the scalar product has the commutative property. The vector product has the anticommutative property, which means that when we change the order in which two vectors are multiplied, the result acquires a minus sign.",
+    "The scalar product of two vectors is obtained by multiplying their magnitudes with the cosine of the angle between them. The scalar product of orthogonal vectors vanishes; the scalar product of antiparallel vectors is negative.",
+    "The vector product of two vectors is a vector perpendicular to both of them. Its magnitude is obtained by multiplying their magnitudes by the sine of the angle between them. The direction of the vector product can be determined by the corkscrew right-hand rule. The vector product of two either parallel or antiparallel vectors vanishes. The magnitude of the vector product is largest for orthogonal vectors.",
+    "The scalar product of vectors is used to find angles between vectors and in the definitions of derived scalar physical quantities such as work or energy.",
+    "The cross product of vectors is used in definitions of derived vector physical quantities such as torque or magnetic force, and in describing rotations."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_02_01_vector07.jpg",
+  "CNX_UPhysics_02_01_vector08.jpg",
+  "CNX_UPhysics_02_01_vector09.jpg",
+  "CNX_UPhysics_02_02_comp02.jpg",
+  "CNX_UPhysics_02_03_dogs_new.jpg",
+  "CNX_UPhysics_02_03_illustr.jpg",
+  "CNX_UPhysics_02_03_jogger.jpg",
+  "CNX_UPhysics_02_04_dogs.jpg",
+  "CNX_UPhysics_02_04_wrench.jpg"
+ ]
+}

@@ -1,0 +1,553 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 6,
+  "title": "Applications of Newton’s Laws"
+ },
+ "keyEquations": [
+  {
+   "name": "Magnitude of static friction",
+   "tex": "{f}_{\\text{s}}\\le {\\mu}_{\\text{s}}N"
+  },
+  {
+   "name": "Magnitude of kinetic friction",
+   "tex": "{f}_{k}={\\mu}_{k}N"
+  },
+  {
+   "name": "Centripetal force",
+   "tex": "{F}_{\\text{c}}=m\\frac{{v}^{2}}{r}\\; \\text{or}\\; {F}_{\\text{c}}=mr{\\omega}^{2}"
+  },
+  {
+   "name": "Ideal angle of a banked curve",
+   "tex": "\\tan \\, \\theta =\\frac{{v}^{2}}{rg}"
+  },
+  {
+   "name": "Drag force",
+   "tex": "{F}_{D}=\\frac{1}{2}C\\rho A{v}^{2}"
+  },
+  {
+   "name": "Stokes’ law",
+   "tex": "{F}_{\\text{s}}=6\\pi r\\eta v"
+  }
+ ],
+ "sections": [
+  {
+   "num": "6.1",
+   "module": "m58303",
+   "title": "Solving Problems with Newton’s Laws",
+   "objectives": [
+    "Apply problem-solving techniques to solve for quantities in more complex systems of forces",
+    "Use concepts from kinematics to solve problems using Newton’s laws of motion",
+    "Solve more complex equilibrium problems",
+    "Solve more complex acceleration problems",
+    "Apply calculus to more advanced dynamics problems"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Different Tensions at Different Angles",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider the traffic light (mass of 15.0 kg) suspended from two wires as shown in the figure. Find the tension in each wire, neglecting the masses of the wires.</p><figure><img src='img/CNX_UPhysics_06_01_StopLight.jpg' alt=\"A sketch of a traffic light suspended from two wires supported by two poles is shown. (b) Some forces are shown in this system. Tension T sub one pulling the top of the left-hand pole is shown by the vector arrow along the left wire from the top of the pole, and an equal but opposite tension T sub one is shown by the arrow pointing up along the left-hand wire where it is attached to the light; the left-hand wire makes a thirty-degree angle with the horizontal. Tension T sub two is shown by a vector arrow pointing downward from the top of the right-hand pole along the right-hand wire, and an equal but opposite tension T sub two is shown by the arrow pointing up along the right-hand wire, which makes a forty-five degree angle with the horizontal. The traffic light is suspended at the lower end of the wires, and its weight W is shown by a vector arrow acting downward. (c) The traffic light is the system of interest, indicated by circling the traffic light. Tension T sub one starting from the traffic light is shown by an arrow along the wire making an angle of thirty degrees with the horizontal. Tension T sub two starting from the traffic light is shown by an arrow along the wire making an angle of forty-five degrees with the horizontal. The weight W is shown by a vector arrow pointing downward from the traffic light. A free-body diagram is shown with three forces acting on a point. Weight W acts downward; T sub one and T sub two act at an angle with the vertical. A coordinate system is shown, with positive x to the right and positive y upward. (d) Forces are shown with their components. T sub one is decomposed into T sub one y pointing vertically upward and T sub one x pointing along the negative x direction. The angle between T sub one and T sub one x is thirty degrees. T sub two is decomposed into T sub two y pointing vertically upward and T sub two x pointing along the positive x direction. The angle between T sub two and T sub two x is forty five degrees.  Weight W is shown by a vector arrow acting downward. (e) The net vertical force is zero, so the vector equation is T sub one y plus T sub two y equals W. T sub one y and T sub two y are shown on a free body diagram as equal length arrows pointing up. W is shown as a downward pointing arrow whose length is twice as long as each of the T sub one y and  T sub two y arrows. The net horizontal force is zero, so vector T sub one x is equal to minus vector T sub two x. T sub two x is shown by an arrow pointing toward the right, and T sub one x is shown by an arrow pointing toward the left.\" loading='lazy'><figcaption>A traffic light is suspended from two wires. (b) Some of the forces involved. (c) Only forces acting on the system are shown here. The free-body diagram for the traffic light is also shown. (d) The forces projected onto vertical (<i>y</i>) and horizontal (<i>x</i>) axes. The horizontal components of the tensions must cancel, and the sum of the vertical components of the tensions must equal the weight of the traffic light. (e) The free-body diagram shows the vertical and horizontal forces acting on the traffic light.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The system of interest is the traffic light, and its free-body diagram is shown in the figure(c). The three forces involved are not parallel, and so they must be projected onto a coordinate system. The most convenient coordinate system has one axis vertical and one horizontal, and the vector projections on it are shown in the figure(d). There are two unknowns in this problem (\\({T}_{1}\\) and \\({T}_{2}\\)), so two equations are needed to find them. These two equations come from applying Newton’s second law along the vertical and horizontal axes, noting that the net external force is zero along each axis because acceleration is zero.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First consider the horizontal or <i>x</i>-axis:</p><div class='eq'>\\[{F}_{\\text{net}\\, x}={T}_{2x}-{T}_{1x}=0\\]</div><p>where \\({T}_{1x}\\) and \\({T}_{2x}\\) are the magnitudes of the <i>x</i> components of the tension forces.</p><p>Thus, as you might expect,</p><div class='eq'>\\[|{T}_{1x}|=|{T}_{2x}|.\\]</div><p>This gives us the following relationship:</p><div class='eq'>\\[{T}_{1}\\, \\cos \\, 30^{\\circ} ={T}_{2}\\, \\cos \\, 45^{\\circ} .\\]</div><p>Thus,</p><div class='eq'>\\[{T}_{2}=1.225{T}_{1}.\\]</div><p>Note that \\({T}_{1}\\) and \\({T}_{2}\\) are not equal in this case because the angles on either side are not equal. It is reasonable that \\({T}_{2}\\) ends up being greater than \\({T}_{1}\\) because it is exerted more vertically than \\({T}_{1}.\\)</p><p>Now consider the force components along the vertical or <i>y</i>-axis:</p><div class='eq'>\\[{F}_{\\text{net}\\, y}={T}_{1y}+{T}_{2y}-w=0.\\]</div><p>This implies</p><div class='eq'>\\[{T}_{1y}+{T}_{2y}=w.\\]</div><p>Substituting the expressions for the vertical components gives</p><div class='eq'>\\[{T}_{1}\\, \\sin \\, 30^{\\circ} +{T}_{2}\\sin \\, 45^{\\circ} =w.\\]</div><p>There are two unknowns in this equation, but substituting the expression for \\({T}_{2}\\) in terms of \\({T}_{1}\\) reduces this to one equation with one unknown:</p><div class='eq'>\\[{T}_{1}(0.500)+(1.225{T}_{1})(0.707)=w=mg,\\]</div><p>which yields</p><div class='eq'>\\[1.366{T}_{1}=(15.0\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2}).\\]</div><p>Solving this last equation gives the magnitude of \\({T}_{1}\\) to be</p><div class='eq'>\\[{T}_{1}=108\\, \\text{N}.\\]</div><p>Finally, we find the magnitude of \\({T}_{2}\\) by using the relationship between them, \\({T}_{2}=1.225{T}_{1}\\), found above. Thus we obtain</p><div class='eq'>\\[{T}_{2}=132\\, \\text{N}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Both tensions would be larger if both wires were more horizontal, and they will be equal if and only if the angles on either side are the same (as they were in the earlier example of a tightrope walker in Newton’s Laws of Motion.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Drag Force on a Barge",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Two tugboats push on a barge at different angles (the figure). The first tugboat exerts a force of \\(2.7\\, \\times \\, {10}^{5}\\, \\text{N}\\) in the <i>x</i>-direction, and the second tugboat exerts a force of \\(3.6\\, \\times \\, {10}^{5}\\, \\text{N}\\) in the <i>y</i>-direction. The mass of the barge is \\(5.0\\, \\times \\, {10}^{6}\\, \\text{kg}\\) and its acceleration is observed to be \\(7.5\\, \\times \\, {10}^{-2}\\, {\\text{m/s}}^{2}\\) in the direction shown. What is the drag force of the water on the barge resisting the motion? (<i>Note:</i> Drag force is a frictional force exerted by fluids, such as air or water. The <b>drag force</b> opposes the motion of the object. Since the barge is flat bottomed, we can assume that the drag force is in the direction opposite of motion of the barge.) Assume that the motion and acceleration of the barge are in the same direction.</p><figure><img src='img/CNX_UPhysics_06_01_Tugboats.jpg' alt=\"(a) A view from above of two tugboats pushing on a barge. One tugboat is pushing with the force F sub 1 equal to two point seven times by ten to the five newtons, shown by a vector arrow acting toward the right in the x direction. Another tugboat is pushing with a force F sub 2 equal to three point six times by ten to the five newtons acting upward in the positive y direction. Acceleration of the barge, a, is shown by a vector arrow directed fifty-three point one degree angle above the x axis. In the free-body diagram,  the mass is represented by a point, F sub 2 is acting upward on the point, F sub 1 is acting toward the right, and F sub D is acting approximately southwest. (b) The vectors F sub 1 and F sub 2 are the sides of a right triangle. The resultant is the hypotenuse of this triangle, vector F sub app, making a fifty-three point one degree angle from the base vector F sub 1. The vector F sub app plus the vector force F sub D, pointing down the incline, is equal to the force vector F sub net, which points up the incline.\" loading='lazy'><figcaption>(a) A view from above of two tugboats pushing on a barge. (b) The free-body diagram for the ship contains only forces acting in the plane of the water. It omits the two vertical forces—the weight of the barge and the buoyant force of the water supporting it cancel and are not shown. Note that \\({\\mathbf{\\vec{F}}}_{\\text{app}}\\) is the total applied force of the tugboats.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The directions and magnitudes of acceleration and the applied forces are given in the figure(a). We define the total force of the tugboats on the barge as \\({\\mathbf{\\vec{F}}}_{\\text{app}}\\) so that</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{app}}={\\mathbf{\\vec{F}}}_{1}+{\\mathbf{\\vec{F}}}_{2}.\\]</div><p>The drag of the water \\({\\mathbf{\\vec{F}}}_{\\text{D}}\\) is in the direction opposite to the direction of motion of the boat; this force thus works against \\({\\mathbf{\\vec{F}}}_{\\text{app}},\\) as shown in the free-body diagram in the figure(b). The system of interest here is the barge, since the forces on it are given as well as its acceleration. Because the applied forces are perpendicular, the <i>x</i>- and <i>y</i>-axes are in the same direction as \\({\\mathbf{\\vec{F}}}_{1}\\) and \\({\\mathbf{\\vec{F}}}_{2}.\\) The problem quickly becomes a one-dimensional problem along the direction of \\({\\mathbf{\\vec{F}}}_{\\text{app}}\\), since friction is in the direction opposite to \\({\\mathbf{\\vec{F}}}_{\\text{app}}.\\) Our strategy is to find the magnitude and direction of the net applied force \\({\\mathbf{\\vec{F}}}_{\\text{app}}\\) and then apply Newton’s second law to solve for the drag force \\({\\mathbf{\\vec{F}}}_{\\text{D}}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Since \\({F}_{x}\\) and \\({F}_{y}\\) are perpendicular, we can find the magnitude and direction of \\({\\mathbf{\\vec{F}}}_{\\text{app}}\\) directly. First, the resultant magnitude is given by the Pythagorean theorem:</p><div class='eq'>\\[{F}_{\\text{app}}=\\sqrt{{F}_{1}^{2}+{F}_{2}^{2}}=\\sqrt{{(2.7\\, \\times \\, {10}^{5}\\text{N})}^{2}+{(3.6\\, \\times \\, {10}^{5}\\, \\text{N})}^{2}}=4.5\\, \\times \\, {10}^{5}\\, \\text{N}\\text{.}\\]</div><p>The angle is given by</p><div class='eq'>\\[\\theta ={\\tan}^{-1}(\\frac{{F}_{2}}{{F}_{1}})={\\tan}^{-1}(\\frac{3.6\\, \\times \\, {10}^{5}\\, \\text{N}}{2.7\\, \\times \\, {10}^{5}\\, \\text{N}})=53.1^{\\circ} .\\]</div><p>From Newton’s first law, we know this is the same direction as the acceleration. We also know that \\({\\mathbf{\\vec{F}}}_{\\text{D}}\\) is in the opposite direction of \\({\\mathbf{\\vec{F}}}_{\\text{app}},\\) since it acts to slow down the acceleration. Therefore, the net external force is in the same direction as \\({\\mathbf{\\vec{F}}}_{\\text{app}},\\) but its magnitude is slightly less than \\({\\mathbf{\\vec{F}}}_{\\text{app}}.\\) The problem is now one-dimensional. From the free-body diagram, we can see that</p><div class='eq'>\\[{F}_{\\text{net}}={F}_{\\text{app}}-{F}_{\\text{D}}.\\]</div><p>However, Newton’s second law states that</p><div class='eq'>\\[{F}_{\\text{net}}=ma.\\]</div><p>Thus,</p><div class='eq'>\\[{F}_{\\text{app}}-{F}_{\\text{D}}=ma.\\]</div><p>This can be solved for the magnitude of the drag force of the water \\({F}_{\\text{D}}\\) in terms of known quantities:</p><div class='eq'>\\[{F}_{\\text{D}}={F}_{\\text{app}}-ma.\\]</div><p>Substituting known values gives</p><div class='eq'>\\[{F}_{\\text{D}}=(4.5\\, \\times \\, {10}^{5}\\, \\text{N})-(5.0\\, \\times \\, {10}^{6}\\, \\text{kg})(7.5\\, \\times \\, {10}^{-2}\\, {\\text{m/s}}^{2})=7.5\\, \\times \\, {10}^{4}\\, \\text{N}\\text{.}\\]</div><p>The direction of \\({\\mathbf{\\vec{F}}}_{\\text{D}}\\) has already been determined to be in the direction opposite to \\({\\mathbf{\\vec{F}}}_{\\text{app}},\\) or at an angle of \\(53^{\\circ}\\) south of west.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The numbers used in this example are reasonable for a moderately large barge. It is certainly difficult to obtain larger accelerations with tugboats, and small speeds are desirable to avoid running the barge into the docks. Drag is relatively small for a well-designed hull at low speeds, consistent with the answer to this example, where \\({F}_{\\text{D}}\\) is less than 1/600th of the weight of the ship.</p>"
+      }
+     ]
+    },
+    {
+     "title": "What Does the Bathroom Scale Read in an Elevator?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure shows a 75.0-kg man (weight of about 165 lb.) standing on a bathroom scale in an elevator. Calculate the scale reading: (a) if the elevator accelerates upward at a rate of \\(1.20\\, {\\text{m/s}}^{2},\\) and (b) if the elevator moves upward at a constant speed of 1 m/s.</p><figure><img src='img/CNX_UPhysics_06_01_Scale.jpg' alt=\"A person is standing on a bathroom scale in an elevator. His weight w is shown by an arrow near his chest, pointing downward. F sub s is the force of the scale on the person, shown by a vector starting from his feet pointing vertically upward. W sub s is the weight of the scale, shown by a vector starting at the scale pointing pointing vertically downward. W sub e is the weight of the elevator, shown by a broken arrow starting at the bottom of the elevator pointing vertically downward. F sub p is the force of the person on the scale, drawn starting at the scale and pointing vertically downward. F sub t is the force of the scale on the floor of the elevator, pointing vertically downward, and N is the normal force of the floor on the scale, starting on the elevator near the scale pointing upward. (b) The same person is shown on the scale in the elevator, but only a few forces are shown acting on the person, which is our system of interest. W is shown by an arrow acting downward, and F sub s is the force of the scale on the person, shown by a vector starting from his feet pointing vertically upward. The free-body diagram is also shown, with two forces acting on a point. F sub s acts vertically upward, and w acts vertically downward. An x y coordinate system is shown, with positive x to the right and positive y upward.\" loading='lazy'><figcaption>(a) The various forces acting when a person stands on a bathroom scale in an elevator. The arrows are approximately correct for when the elevator is accelerating upward—broken arrows represent forces too large to be drawn to scale. \\(\\mathbf{\\vec{T}}\\) is the tension in the supporting cable, \\(\\mathbf{\\vec{w}}\\) is the weight of the person, \\({\\mathbf{\\vec{w}}}_{\\text{s}}\\) is the weight of the scale, \\({\\mathbf{\\vec{w}}}_{\\text{e}}\\) is the weight of the elevator, \\({\\mathbf{\\vec{F}}}_{\\text{s}}\\) is the force of the scale on the person, \\({\\mathbf{\\vec{F}}}_{\\text{p}}\\) is the force of the person on the scale, \\({\\mathbf{\\vec{F}}}_{\\text{t}}\\) is the force of the scale on the floor of the elevator, and \\(\\mathbf{\\vec{N}}\\) is the force of the floor upward on the scale. (b) The free-body diagram shows only the external forces acting <i>on</i> the designated system of interest—the person—and is the diagram we use for the solution of the problem.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>If the scale at rest is accurate, its reading equals \\({\\mathbf{\\vec{F}}}_{\\text{p}}\\), the magnitude of the force the person exerts downward on it. The figure(a) shows the numerous forces acting on the elevator, scale, and person. It makes this one-dimensional problem look much more formidable than if the person is chosen to be the system of interest and a free-body diagram is drawn, as in the figure(b). Analysis of the free-body diagram using Newton’s laws can produce answers to both the figure(a) and (b) of this example, as well as some other questions that might arise. The only forces acting on the person are his weight \\(\\mathbf{\\vec{w}}\\) and the upward force of the scale \\({\\mathbf{\\vec{F}}}_{\\text{s}}.\\) According to Newton’s third law, \\({\\mathbf{\\vec{F}}}_{\\text{p}}\\) and \\({\\mathbf{\\vec{F}}}_{\\text{s}}\\) are equal in magnitude and opposite in direction, so that we need to find \\({F}_{\\text{s}}\\) in order to find what the scale reads. We can do this, as usual, by applying Newton’s second law,</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{net}}=m\\mathbf{\\vec{a}}.\\]</div><p>From the free-body diagram, we see that \\({\\mathbf{\\vec{F}}}_{\\text{net}}={\\mathbf{\\vec{F}}}_{s}+\\mathbf{\\vec{w}},\\) so we have</p><div class='eq'>\\[{F}_{\\text{s}}-w=ma.\\]</div><p>Solving for \\({F}_{s}\\) gives us an equation with only one unknown:</p><div class='eq'>\\[{F}_{\\text{s}}=ma+w,\\]</div><p>or, because \\(w=mg,\\) simply</p><div class='eq'>\\[{F}_{\\text{s}}=ma+mg.\\]</div><p>No assumptions were made about the acceleration, so this solution should be valid for a variety of accelerations in addition to those in this situation. (<i>Note:</i> We are considering the case when the elevator is accelerating upward. If the elevator is accelerating downward, Newton’s second law becomes \\({F}_{s}-w=-ma.\\))</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>We have \\(a=1.20\\, {\\text{m/s}}^{2},\\) so that <div class='eq'>\\[{F}_{\\text{s}}=(75.0\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2})+(75.0\\, \\text{kg})(1.20\\, {\\text{m/s}}^{2})\\]</div> yielding <div class='eq'>\\[{F}_{\\text{s}}=825\\, \\text{N}\\text{.}\\]</div></li><li>Now, what happens when the elevator reaches a constant upward velocity? Will the scale still read more than his weight? For any constant velocity—up, down, or stationary—acceleration is zero because \\(a=\\frac{\\Delta v}{\\Delta t}\\) and \\(\\Delta v=0.\\) Thus, <div class='eq'>\\[{F}_{\\text{s}}=ma+mg=0+mg\\]</div> or <div class='eq'>\\[{F}_{\\text{s}}=(75.0\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2}),\\]</div> which gives <div class='eq'>\\[{F}_{\\text{s}}=735\\, \\text{N}\\text{.}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The scale reading in the figure(a) is about 185 lb. What would the scale have read if he were stationary? Since his acceleration would be zero, the force of the scale would be equal to his weight:</p><div class='eq'>\\[{F}_{\\text{net}}=ma=0={F}_{\\text{s}}-w\\]</div><div class='eq'>\\[{F}_{\\text{s}}=w=mg\\]</div><div class='eq'>\\[{F}_{\\text{s}}=(75.0\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2})=735\\, \\text{N}\\text{.}\\]</div><p>Thus, the scale reading in the elevator is greater than his 735-N (165-lb.) weight. This means that the scale is pushing up on the person with a force greater than his weight, as it must in order to accelerate him upward. Clearly, the greater the acceleration of the elevator, the greater the scale reading, consistent with what you feel in rapidly accelerating versus slowly accelerating elevators. In the figure(b), the scale reading is 735 N, which equals the person’s weight. This is the case whenever the elevator has a constant velocity—moving up, moving down, or stationary.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Two Attached Blocks",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure shows a block of mass \\({m}_{1}\\) on a frictionless, horizontal surface. It is pulled by a light string that passes over a frictionless and massless pulley. The other end of the string is connected to a block of mass \\({m}_{2}.\\) Find the acceleration of the blocks and the tension in the string in terms of \\({m}_{1},{m}_{2},\\, \\text{and}\\, g.\\)</p><figure><img src='img/CNX_UPhysics_06_01_Table.jpg' alt=\"(a)  Block m sub 1 is on a horizontal surface. It is connected to a string that passes over a pulley then hangs straight down and connects to  block m sub 2. Block m sub 1 has acceleration a sub 1 directed to the right. Block m sub 2 has acceleration a sub 2 directed downward. (b) Free body diagrams of each block. Block m sub 1 has force w sub 1 directed vertically down, N directed vertically up, and T directed horizontally to the right. Block m sub 2 has force w sub 2 directed vertically down, and T directed vertically up. The x y coordinate system has positive x to the right and positive y up.\" loading='lazy'><figcaption>(a) Block 1 is connected by a light string to block 2. (b) The free-body diagrams of the blocks.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We draw a free-body diagram for each mass separately, as shown in the figure. Then we analyze each one to find the required unknowns. The forces on block 1 are the gravitational force, the contact force of the surface, and the tension in the string. Block 2 is subjected to the gravitational force and the string tension. Newton’s second law applies to each, so we write two vector equations:</p><p>For block 1: \\(\\mathbf{\\vec{T}}+{\\mathbf{\\vec{w}}}_{1}+\\mathbf{\\vec{N}}={m}_{1}{\\mathbf{\\vec{a}}}_{1}\\)</p><p>For block 2: \\(\\mathbf{\\vec{T}}+{\\mathbf{\\vec{w}}}_{2}={m}_{2}{\\mathbf{\\vec{a}}}_{2}.\\)</p><p>Notice that \\(\\mathbf{\\vec{T}}\\) is the same for both blocks. Since the string and the pulley have negligible mass, and since there is no friction in the pulley, the tension is the same throughout the string. We can now write component equations for each block. All forces are either horizontal or vertical, so we can use the same horizontal/vertical coordinate system for both objects</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The component equations follow from the vector equations above. We see that block 1 has the vertical forces balanced, so we ignore them and write an equation relating the <i>x</i>-components. There are no horizontal forces on block 2, so only the <i>y</i>-equation is written. We obtain these results:</p><div class='eq'>\\[\\begin{array}{llll}\\text{Block 1} & & & \\text{Block 2} \\\\ \\sum {F}_{x}=m{a}_{x} & & & \\sum {F}_{y}=m{a}_{y} \\\\ {T}_{x}={m}_{1}{a}_{1x} & & & {T}_{y}-{m}_{2}g={m}_{2}{a}_{2y}.\\end{array}\\]</div><p>When block 1 moves to the right, block 2 travels an equal distance downward; thus, \\({a}_{1x}=-{a}_{2y}.\\) Writing the common acceleration of the blocks as \\(a={a}_{1x}=-{a}_{2y},\\) we now have</p><div class='eq'>\\[T={m}_{1}a\\]</div><p>and</p><div class='eq'>\\[T-{m}_{2}g=-{m}_{2}a.\\]</div><p>From these two equations, we can express <i>a</i> and <i>T</i> in terms of the masses \\({m}_{1}\\, \\text{and}\\, {m}_{2},\\, \\text{and}\\, g:\\)</p><div class='eq'>\\[a=\\frac{{m}_{2}}{{m}_{1}+{m}_{2}}g\\]</div><p>and</p><div class='eq'>\\[T=\\frac{{m}_{1}{m}_{2}}{{m}_{1}+{m}_{2}}g.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that the tension in the string is <i>less</i> than the weight of the block hanging from the end of it. A common error in problems like this is to set \\(T={m}_{2}g.\\) You can see from the free-body diagram of block 2 that cannot be correct if the block is accelerating.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Atwood Machine",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A classic problem in physics, similar to the one we just solved, is that of the <b>Atwood machine</b>, which consists of a rope running over a pulley, with two objects of different mass attached. It is particularly useful in understanding the connection between force and motion. In the figure, \\({m}_{1}=2.00\\, \\text{kg}\\) and \\({m}_{2}=4.00\\, \\text{kg}\\text{.}\\) Consider the pulley to be frictionless. (a) If \\({m}_{2}\\) is released, what will its acceleration be? (b) What is the tension in the string?</p><figure><img src='img/CNX_UPhysics_06_01_Atwood.jpg' alt=\"An Atwood machine consists of masses suspended on either side of a pulley by a string passing over the pulley. In the figure, mass m sub 1 is on the left and mass m sub 2 is on the right. The free body diagram of block one shows mass one with force vector T pointing vertically up and force vector w sub one pointing vertically down. The free body diagram of block two shows mass two with force vector T pointing vertically up and force vector w sub two pointing vertically down.\" loading='lazy'><figcaption>An Atwood machine and free-body diagrams for each of the two blocks.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We draw a free-body diagram for each mass separately, as shown in the figure. Then we analyze each diagram to find the required unknowns. This may involve the solution of simultaneous equations. It is also important to note the similarity with the previous example. As block 2 accelerates with acceleration \\({a}_{2}\\) in the downward direction, block 1 accelerates upward with acceleration \\({a}_{1}\\). Thus, \\(a={a}_{1}=-{a}_{2}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>We have <div class='eq'>\\[\\begin{array}{llll}\\text{For}\\, {m}_{1},\\, \\sum {F}_{y}=T-{m}_{1}g={m}_{1}a. & & & \\text{For}\\, {m}_{2},\\, \\sum {F}_{y}=T-{m}_{2}g=-{m}_{2}a.\\end{array}\\]</div> (The negative sign in front of \\({m}_{2}a\\) indicates that \\({m}_{2}\\) accelerates downward; both blocks accelerate at the same rate, but in opposite directions.) Solve the two equations simultaneously (subtract them) and the result is <div class='eq'>\\[({m}_{2}-{m}_{1})g=({m}_{1}+{m}_{2})a.\\]</div> Solving for <i>a</i>: <div class='eq'>\\[a=\\frac{{m}_{2}-{m}_{1}}{{m}_{1}+{m}_{2}}g=\\frac{4\\, \\text{kg}-2\\, \\text{kg}}{4\\, \\text{kg}+2\\, \\text{kg}}(9.8\\, {\\text{m/s}}^{2})=3.27\\, {\\text{m/s}}^{2}.\\]</div></li><li>Observing the first block, we see that <div class='eq'>\\[\\begin{array}{l}T-{m}_{1}g={m}_{1}a \\\\ T={m}_{1}(g+a)=(2\\, \\text{kg})(9.8\\, {\\text{m/s}}^{2}+3.27\\, {\\text{m/s}}^{2})=26.1\\, \\text{N}\\text{.}\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The result for the acceleration given in the solution can be interpreted as the ratio of the unbalanced force on the system, \\(({m}_{2}-{m}_{1})g\\), to the total mass of the system, \\({m}_{1}+{m}_{2}\\). We can also use the Atwood machine to measure local gravitational field strength.</p>"
+      }
+     ]
+    },
+    {
+     "title": "What Force Must a Soccer Player Exert to Reach Top Speed?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A soccer player starts at rest and accelerates forward, reaching a velocity of 8.00 m/s in 2.50 s. (a) What is her average acceleration? (b) What average force does the ground exert forward on the runner so that she achieves this acceleration? The player’s mass is 70.0 kg, and air resistance is negligible.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>To find the answers to this problem, we use the problem-solving strategy given earlier in this chapter. The solutions to each part of the example illustrate how to apply specific problem-solving steps. In this case, we do not need to use all of the steps. We simply identify the physical principles, and thus the knowns and unknowns; apply Newton’s second law; and check to see whether the answer is reasonable.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>We are given the initial and final velocities (zero and 8.00 m/s forward); thus, the change in velocity is \\(\\Delta v=8.00\\, \\text{m/s}\\). We are given the elapsed time, so \\(\\Delta t=2.50\\, \\text{s}\\text{.}\\) The unknown is acceleration, which can be found from its definition: <div class='eq'>\\[a=\\frac{\\Delta v}{\\Delta t}.\\]</div> Substituting the known values yields <div class='eq'>\\[a=\\frac{8.00\\, \\text{m/s}}{2.50\\, \\text{s}}=3.20\\, {\\text{m/s}}^{2}.\\]</div></li><li>Here we are asked to find the average force the ground exerts on the runner to produce this acceleration. (Remember that we are dealing with the force or forces acting on the object of interest.) This is the reaction force to that exerted by the player backward against the ground, by Newton’s third law. Neglecting air resistance, this would be equal in magnitude to the net external force on the player, since this force causes her acceleration. Since we now know the player’s acceleration and are given her mass, we can use Newton’s second law to find the force exerted. That is, <div class='eq'>\\[{F}_{\\text{net}}=ma.\\]</div> Substituting the known values of <i>m</i> and <i>a</i> gives <div class='eq'>\\[{F}_{\\text{net}}=(70.0\\, \\text{kg})(3.20\\, {\\text{m/s}}^{2})=224\\, \\text{N}\\text{.}\\]</div></li></ol><p>This is a reasonable result: The acceleration is attainable for an athlete in good condition. The force is about 50 pounds, a reasonable average force.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This example illustrates how to apply problem-solving strategies to situations that include topics from different chapters. The first step is to identify the physical principles, the knowns, and the unknowns involved in the problem. The second step is to solve for the unknown, in this case using Newton’s second law. Finally, we check our answer to ensure it is reasonable. These techniques for integrated concept problems will be useful in applications of physics outside of a physics course, such as in your profession, in other science disciplines, and in everyday life.</p>"
+      }
+     ]
+    },
+    {
+     "title": "What Force Acts on a Model Helicopter?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 1.50-kg model helicopter has a velocity of \\(5.00\\mathbf{\\hat{j}}\\, \\text{m/s}\\) at \\(t=0.\\) It is accelerated at a constant rate for two seconds (2.00 s) after which it has a velocity of \\((6.00\\mathbf{\\hat{i}}+12.00\\mathbf{\\hat{j}})\\text{m/s}\\text{.}\\) What is the magnitude of the resultant force acting on the helicopter during this time interval?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can easily set up a coordinate system in which the <i>x</i>-axis \\((\\mathbf{\\hat{i}}\\) direction) is horizontal, and the <i>y</i>-axis \\((\\mathbf{\\hat{j}}\\) direction) is vertical. We know that \\(\\Delta t=2.00s\\) and \\(\\Delta v=(6.00\\mathbf{\\hat{i}}+12.00\\mathbf{\\hat{j}}\\, \\text{m/s})-(5.00\\mathbf{\\hat{j}}\\, \\text{m/s}).\\) From this, we can calculate the acceleration by the definition; we can then apply Newton’s second law.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We have</p><div class='eq'>\\[a=\\frac{\\Delta v}{\\Delta t}=\\frac{(6.00\\mathbf{\\hat{i}}+12.00\\mathbf{\\hat{j}}\\text{m/s})-(5.00\\mathbf{\\hat{j}}\\, \\text{m/s})}{2.00\\, \\text{s}}=3.00\\mathbf{\\hat{i}}+3.50\\mathbf{\\hat{j}}{\\text{m/s}}^{2}\\]</div><div class='eq'>\\[\\sum \\mathbf{\\vec{F}}=m\\mathbf{\\vec{a}}=(1.50\\, \\text{kg})(3.00\\mathbf{\\hat{i}}+3.50\\mathbf{\\hat{j}}\\, {\\text{m/s}}^{2})=4.50\\mathbf{\\hat{i}}+5.25\\mathbf{\\hat{j}}\\, \\text{N}\\text{.}\\]</div><p>The magnitude of the force is now easily found:</p><div class='eq'>\\[F=\\sqrt{{(4.50\\, \\text{N})}^{2}+{(5.25\\, \\text{N})}^{2}}=6.91\\, \\text{N}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The original problem was stated in terms of \\(\\mathbf{\\hat{i}}-\\mathbf{\\hat{j}}\\) vector components, so we used vector methods. Compare this example with the previous example.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Baggage Tractor",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure(a) shows a baggage tractor pulling luggage carts from an airplane. The tractor has mass 650.0 kg, while cart A has mass 250.0 kg and cart B has mass 150.0 kg. The driving force acting for a brief period of time accelerates the system from rest and acts for 3.00 s. (a) If this driving force is given by \\(F=(820.0t)\\, \\text{N,}\\) find the speed after 3.00 seconds. (b) What is the horizontal force acting on the connecting cable between the tractor and cart A at this instant?</p><figure><img src='img/CNX_UPhysics_06_01_Baggage.jpg' alt=\"Figure (a) shows a baggage tractor driving to the left and pulling two luggage carts. The external forces on the system are shown. The forces on the tractor are F sub tractor, horizontally to the left, N sub tractor vertically up, and w sub tractor vertically down. The forces on the cart immediately behind the tractor, cart A, are N sub A vertically up, and w sub A vertically down. The forces on cart B, the one behind cart A, are N sub B vertically up, and w sub B vertically down. Figure (b) shows the free body diagram of the tractor, consisting of F sub tractor, horizontally to the left, N sub tractor vertically up, w sub tractor vertically down, and T horizontally to the right.\" loading='lazy'><figcaption>(a) A free-body diagram is shown, which indicates all the external forces on the system consisting of the tractor and baggage carts for carrying airline luggage. (b) A free-body diagram of the tractor only is shown isolated in order to calculate the tension in the cable to the carts.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>A free-body diagram shows the driving force of the tractor, which gives the system its acceleration. We only need to consider motion in the horizontal direction. The vertical forces balance each other and it is not necessary to consider them. For part b, we make use of a free-body diagram of the tractor alone to determine the force between it and cart A. This exposes the coupling force \\(\\mathbf{\\vec{T}},\\) which is our objective.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(\\sum {F}_{x}={m}_{\\text{system}}{a}_{x}\\) and \\(\\sum {F}_{x}=820.0t,\\) so <div class='eq'>\\[\\begin{array}{lll}820.0t & = & (650.0+250.0+150.0)a \\\\ a & = & 0.7809t.\\end{array}\\]</div> Since acceleration is a function of time, we can determine the velocity of the tractor by using \\(a=\\frac{dv}{dt}\\) with the initial condition that \\({v}_{0}=0\\) at \\(t=0.\\) We integrate from \\(t=0\\) to \\(t=3\\text{:}\\) <div class='eq'>\\[dv=adt,\\; {\\int}_{0}^{3}dv={\\int}_{0}^{3.00}adt={\\int}_{0}^{3.00}0.7809tdt,\\; v=0.3905{{t}^{2}]}_{0}^{3.00}=3.51\\, \\text{m/s}\\text{.}\\]</div></li><li>Refer to the free-body diagram in the figure(b). <div class='eq'>\\[\\begin{array}{lll}\\sum {F}_{x} & = & {m}_{\\text{tractor}}{a}_{x} \\\\ 820.0t-T & = & {m}_{\\text{tractor}}(0.7805)t \\\\ (820.0)(3.00)-T & = & (650.0)(0.7805)(3.00) \\\\ T & = & 938\\, \\text{N}.\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Since the force varies with time, we must use calculus to solve this problem. Notice how the total mass of the system was important in solving the figure(a), whereas only the mass of the truck (since it supplied the force) was of use in the figure(b).</p>"
+      }
+     ]
+    },
+    {
+     "title": "Motion of a Projectile Fired Vertically",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 10.0-kg mortar shell is fired vertically upward from the ground, with an initial velocity of 50.0 m/s (see the figure). Determine the maximum height it will travel if atmospheric resistance is measured as \\({F}_{\\text{D}}=(0.0100{v}^{2})\\, \\text{N,}\\) where <i>v</i> is the speed at any instant.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The known force on the mortar shell can be related to its acceleration using the equations of motion. Kinematics can then be used to relate the mortar shell’s acceleration to its position.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Initially, \\({y}_{0}=0\\) and \\({v}_{0}=50.0\\, \\text{m/s}\\text{.}\\) At the maximum height \\(y=h,v=0.\\) The free-body diagram shows \\({F}_{\\text{D}}\\) to act downward, because it slows the upward motion of the mortar shell. Thus, we can write</p><div class='eq'>\\[\\sum {F}_{y}=m{a}_{y}\\]</div><div class='eq'>\\[\\begin{array}{lll} \\\\ -{F}_{\\text{D}}-w & = & m{a}_{y} \\\\ -0.0100{v}^{2}-98.0 & = & 10.0a \\\\ a & = & -0.00100{v}^{2}-9.80.\\end{array}\\]</div><p>The acceleration depends on <i>v</i> and is therefore variable. Since \\(a=f(v)\\text{,}\\) we can relate <i>a</i> to <i>v</i> using the rearrangement described above,</p><div class='eq'>\\[{a}^{}ds={v}^{}dv.\\]</div><p>We replace <i>ds</i> with <i>dy</i> because we are dealing with the vertical direction,</p><div class='eq'>\\[ady=vdv,\\ \\; (-0.00100{v}^{2}-9.80)dy=vdv.\\]</div><p>We now separate the variables (<i>v</i>’s and <i>dv</i>’s on one side; <i>dy</i> on the other):</p><div class='eq'>\\[\\begin{array}{l} \\\\ {\\int}_{0}^{h}dy={\\int}_{50.0}^{0}\\frac{vdv}{(-0.00100{v}^{2}-9.80)} \\\\ {\\int}_{0}^{h}dy=-{\\int}_{50.0}^{0}\\frac{vdv}{(0.00100{v}^{2}+9.80)}=(-5\\, \\times \\, {10}^{2})\\ln (0.00100{v}^{2}+9.80){|}_{50.0}^{0}.\\end{array}\\]</div><p>Thus, \\(h=114\\, \\text{m}\\text{.}\\)</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice the need to apply calculus since the force is not constant, which also means that acceleration is not constant. To make matters worse, the force depends on <i>v</i> (not <i>t</i>), and so we must use the trick explained prior to the example. The answer for the height indicates a lower elevation if there were air resistance. We will deal with the effects of air resistance and other drag forces in greater detail in Drag Force and Terminal Speed.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Now calculate the scale reading when the elevator accelerates downward at a rate of \\(1.20\\, {\\text{m/s}}^{2}.\\)</p>",
+     "a": "<p>\\({F}_{\\text{s}}=645\\, \\text{N}\\)</p>"
+    },
+    {
+     "q": "<p>Calculate the acceleration of the system, and the tension in the string, when the masses are \\({m}_{1}=5.00\\, \\text{kg}\\) and \\({m}_{2}=3.00\\, \\text{kg}.\\)</p>",
+     "a": "<p>\\(a=3.68\\, {\\text{m/s}}^{2},\\)\\(T=18.4\\, \\text{N}\\)</p>"
+    },
+    {
+     "q": "<p>Determine a general formula in terms of \\({m}_{1},{m}_{2}\\) and <i>g</i> for calculating the tension in the string for the Atwood machine shown above.</p>",
+     "a": "<p>\\(T=\\frac{2{m}_{1}{m}_{2}}{{m}_{1}+{m}_{2}}g\\) (This is found by substituting the equation for acceleration in the figure(a), into the equation for tension in the figure(b).)</p>"
+    },
+    {
+     "q": "<p>The soccer player stops after completing the play described above, but now notices that the ball is in position to be stolen. If she now experiences a force of 126 N to attempt to steal the ball, which is 2.00 m away from her, how long will it take her to get to the ball?</p>",
+     "a": "<p>1.49 s</p>"
+    },
+    {
+     "q": "<p>Find the direction of the resultant for the 1.50-kg model helicopter.</p>",
+     "a": "<p>49.4 degrees</p>"
+    },
+    {
+     "q": "<p>If atmospheric resistance is neglected, find the maximum height for the mortar shell. Is calculus required for this solution?</p>",
+     "a": "<p>128 m; no</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Newton’s laws of motion can be applied in numerous situations to solve motion problems.",
+    "Some problems contain multiple force vectors acting in different directions on an object. Be sure to draw diagrams, resolve all force vectors into horizontal and vertical components, and draw a free-body diagram. Always analyze the direction in which an object accelerates so that you can determine whether \\({F}_{\\text{net}}=ma\\) or \\({F}_{\\text{net}}=0.\\)",
+    "The normal force on an object is not always equal in magnitude to the weight of the object. If an object is accelerating vertically, the normal force is less than or greater than the weight of the object. Also, if the object is on an inclined plane, the normal force is always less than the full weight of the object.",
+    "Some problems contain several physical quantities, such as forces, acceleration, velocity, or position. You can apply concepts from kinematics and dynamics to solve these problems."
+   ]
+  },
+  {
+   "num": "6.2",
+   "module": "m58304",
+   "title": "Friction",
+   "objectives": [
+    "Describe the general characteristics of friction",
+    "List the various types of friction",
+    "Calculate the magnitude of static and kinetic friction, and use these in problems involving Newton’s laws of motion"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Static and Kinetic Friction",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 20.0-kg crate is at rest on a floor as shown in the figure. The coefficient of static friction between the crate and floor is 0.700 and the coefficient of kinetic friction is 0.600. A horizontal force \\(\\mathbf{\\vec{P}}\\) is applied to the crate. Find the force of friction if (a) \\(\\mathbf{\\vec{P}}=20.0\\, \\text{N}\\mathbf{\\hat{i}}\\text{,}\\) (b) \\(\\mathbf{\\vec{P}}=30.0\\, \\text{N}\\mathbf{\\hat{i}}\\text{,}\\) (c) \\(\\mathbf{\\vec{P}}=120.0\\, \\text{N}\\mathbf{\\hat{i}}\\text{,}\\) and (d) \\(\\mathbf{\\vec{P}}=180.0\\, \\text{N}\\mathbf{\\hat{i}}\\text{.}\\)</p><figure><img src='img/CNX_UPhysics_06_02_PushedBox.jpg' alt=\"Here, may represent either the static or the kinetic frictional force. (a) An illustration of a man pushing a crate on a horizontal floor, exerting a force P directed horizontally to the right. (b) A free body diagram of the crate showing force P directed horizontally to the right, force f directed horizontally to the left, force N directed vertically up, and force w directed vertically down. An x y coordinate system is shown with positive x to the right and positive y up.\" loading='lazy'><figcaption>(a) A crate on a horizontal surface is pushed with a force \\(\\mathbf{\\vec{P}}.\\) (b) The forces on the crate. Here, \\(\\mathbf{\\vec{f}}\\) may represent either the static or the kinetic frictional force.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The free-body diagram of the crate is shown in the figure(b). We apply Newton’s second law in the horizontal and vertical directions, including the friction force in opposition to the direction of motion of the box.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Newton’s second law GIVES</p><div class='eq'>\\[\\begin{array}{llll}\\sum {F}_{x}=m{a}_{x} & & & \\sum {F}_{y}=m{a}_{y} \\\\ P-f=m{a}_{x} & & & N-w=0.\\end{array}\\]</div><p>Here we are using the symbol <i>f</i> to represent the frictional force since we have not yet determined whether the crate is subject to station friction or kinetic friction. We do this whenever we are unsure what type of friction is acting. Now the weight of the crate is</p><div class='eq'>\\[w=(20.0\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2})=196\\, \\text{N,}\\]</div><p>which is also equal to <i>N</i>. The maximum force of static friction is therefore \\((0.700)(196\\, \\text{N})=137\\, \\text{N}\\text{.}\\) As long as \\(\\mathbf{\\vec{P}}\\) is less than 137 N, the force of static friction keeps the crate stationary and \\({f}_{\\text{s}}=\\mathbf{\\vec{P}}.\\) Thus, (a) \\({f}_{s}=20.0\\, \\text{N,}\\) (b) \\({f}_{s}=30.0\\, \\text{N,}\\) and (c) \\({f}_{s}=120.0\\, \\text{N}\\text{.}\\)</p><p>(d) If \\(\\mathbf{\\vec{P}}=180.0\\, \\text{N,}\\) the applied force is greater than the maximum force of static friction (137 N), so the crate can no longer remain at rest. Once the crate is in motion, kinetic friction acts. Then</p><div class='eq'>\\[{f}_{\\text{k}}={\\mu}_{\\text{k}}N=(0.600)(196\\, \\text{N})=118\\, \\text{N,}\\]</div><p>and the acceleration is</p><div class='eq'>\\[{a}_{x}=\\frac{P-{f}_{\\text{k}}}{m}=\\frac{180.0\\, \\text{N}-118\\, \\text{N}}{20.0\\, \\text{kg}}=3.10\\, {\\text{m/s}}^{2}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This example illustrates how we consider friction in a dynamics problem. Notice that static friction has a value that matches the applied force, until we reach the maximum value of static friction. Also, no motion can occur until the applied force equals the force of static friction, but the force of kinetic friction will then become smaller.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Downhill Skier",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A skier with a mass of 62 kg is sliding down a snowy 25 degree slope at a constant acceleration. Find the coefficient of kinetic friction for the skier if friction is known to be 45.0 N.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The magnitude of kinetic friction is given as 45.0 N. Kinetic friction is related to the normal force \\(N\\) by \\({f}_{\\text{k}}={\\mu}_{\\text{k}}N\\); thus, we can find the coefficient of kinetic friction if we can find the normal force on the skier. The normal force is always perpendicular to the surface, and since there is no motion perpendicular to the surface, the normal force should equal the component of the skier’s weight perpendicular to the slope. (See the figure, which repeats a figure from the chapter on Newton’s laws of motion.)</p><figure><img src='img/CNX_UPhysics_06_02_Skislope2.jpg' alt=\"The figure shows a skier going down a slope that forms an angle of 25 degrees with the horizontal. An x y coordinate system is shown, tilted so that the positive x direction is parallel to the slop, pointing up the slope, and the positive y direction is out of the slope, perpendicular to it. The weight of the skier, labeled w, is represented by a red arrow pointing vertically downward. This weight is divided into two components, w sub y is perpendicular to the slope pointing in the minus y direction, and w sub x is parallel to the slope, pointing in the minus x direction. The normal force, labeled N, is also perpendicular to the slope, equal in magnitude but pointing out, opposite in direction to w sub y. The friction, f, is represented by a red arrow pointing upslope. In addition, the figure shows a free body diagram that shows the relative magnitudes and directions of f, N, w, and the components w sub x and w sub y of w. In both diagrams, the w vector is scribbled out, as it is replaced by its components.\" loading='lazy'><figcaption>The motion of the skier and friction are parallel to the slope, so it is most convenient to project all forces onto a coordinate system where one axis is parallel to the slope and the other is perpendicular (axes shown to left of skier). The normal force \\(\\mathbf{\\vec{N}}\\) is perpendicular to the slope, and friction \\(\\mathbf{\\vec{f}}\\) is parallel to the slope, but the skier’s weight \\(\\mathbf{\\vec{w}}\\) has components along both axes, namely \\({\\mathbf{\\vec{w}}}_{y}\\) and \\({\\mathbf{\\vec{w}}}_{x}.\\) The normal force \\(\\mathbf{\\vec{N}}\\) is equal in magnitude to \\({\\mathbf{\\vec{w}}}_{y},\\) so there is no motion perpendicular to the slope.</figcaption></figure><p>We have</p><div class='eq'>\\[N={w}_{y}=w\\, \\cos \\, 25^{\\circ} =mg\\, \\cos \\, 25^{\\circ} .\\]</div><p>Substituting this into our expression for kinetic friction, we obtain</p><div class='eq'>\\[{f}_{\\text{k}}={\\mu}_{\\text{k}}mg\\, \\cos \\, 25^{\\circ} ,\\]</div><p>which can now be solved for the coefficient of kinetic friction \\({\\mu}_{\\text{k}}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Solving for \\({\\mu}_{\\text{k}}\\) gives</p><div class='eq'>\\[{\\mu}_{\\text{k}}=\\frac{{f}_{\\text{k}}}{N}=\\frac{{f}_{\\text{k}}}{w\\, \\cos \\, 25^{\\circ}}=\\frac{{f}_{\\text{k}}}{mg\\, \\cos \\, 25^{\\circ}}.\\]</div><p>Substituting known values on the right-hand side of the equation,</p><div class='eq'>\\[{\\mu}_{\\text{k}}=\\frac{45.0\\, \\text{N}}{(62\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2})(0.906)}=0.082.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This result is a little smaller than the coefficient listed in the table for waxed wood on snow, but it is still reasonable since values of the coefficients of friction can vary greatly. In situations like this, where an object of mass <i>m</i> slides down a slope that makes an angle \\(\\theta\\) with the horizontal, friction is given by \\({f}_{\\text{k}}={\\mu}_{\\text{k}}mg\\, \\cos \\, \\theta .\\) All objects slide down a slope with constant acceleration under these circumstances.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Sliding Blocks",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The two blocks of the figure are attached to each other by a massless string that is wrapped around a frictionless pulley. When the bottom 4.00-kg block is pulled to the left by the constant force \\(\\mathbf{\\vec{P}},\\) the top 2.00-kg block slides across it to the right. Find the magnitude of the force necessary to move the blocks at constant speed. Assume that the coefficient of kinetic friction between all surfaces is 0.400.</p><figure><img src='img/CNX_UPhysics_06_02_Blocks.jpg' alt=\"Figure (a) shows an illustration of a 4.0 kilogram block on a horizontal surface and a 2.0 kilogram block resting on top of it. A pulley is connected horizontally to a wall to the right of the blocks. The blocks are connected by a string that passes from one block, over the pulley, and to the other block so that the string is horizontal and to the right of each block. A force P pulls the lower block to the left. An x y coordinate system is shown, with positive x to the right and positive y up. Figure (b) shows the free body diagrams of the blocks. The upper block has forces mu times vector N sub 1 to the left, vector T to the right, 19.6 N vertically down, and vector N sub 1 up.  The lower block has forces mu times vector N sub 1 to the right, mu times vector N sub 2 to the right, Vector P to the left, vector T sub i to the right, Vector N sub 1 vertically down, weight w down, and vector N sub 2 up.\" loading='lazy'><figcaption>(a) Each block moves at constant velocity. (b) Free-body diagrams for the blocks.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We analyze the motions of the two blocks separately. The top block is subjected to a contact force exerted by the bottom block. The components of this force are the normal force \\({N}_{1}\\) and the frictional force \\(-0.400{N}_{1}.\\) Other forces on the top block are the tension \\(T\\) in the string and the weight of the top block itself, 19.6 N. The bottom block is subjected to contact forces due to the top block and due to the floor. The first contact force has components \\(-{N}_{1}\\) and \\(0.400{N}_{1},\\) which are simply reaction forces to the contact forces that the bottom block exerts on the top block. The components of the contact force of the floor are \\({N}_{2}\\) and \\(0.400{N}_{2}.\\) Other forces on this block are \\(-P,\\) the tension \\(T,\\) and the weight –39.2 N.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Since the top block is moving horizontally to the right at constant velocity, its acceleration is zero in both the horizontal and the vertical directions. From Newton’s second law,</p><div class='eq'>\\[\\begin{array}{llllllll}\\sum {F}_{x} & = & {m}_{1}{a}_{x} & & & \\sum {F}_{y} & = & {m}_{1}{a}_{y} \\\\ T-0.400{N}_{1} & = & 0 & & & {N}_{1}-19.6\\, \\text{N} & = & 0.\\end{array}\\]</div><p>Solving for the two unknowns, we obtain \\({N}_{1}=19.6\\, \\text{N}\\) and \\(T=0.40{N}_{1}=7.84\\, \\text{N}\\text{.}\\) The bottom block is also not accelerating, so the application of Newton’s second law to this block gives</p><div class='eq'>\\[\\begin{array}{llll}\\sum {F}_{x}={m}_{2}{a}_{x} & & & \\sum {F}_{y}={m}_{2}{a}_{y} \\\\ T-P+0.400\\, {N}_{1}+0.400\\, {N}_{2}=0 & & & {N}_{2}-39.2\\, \\text{N}-{N}_{1}=0.\\end{array}\\]</div><p>The values of \\({N}_{1}\\) and <i>T</i> were found with the first set of equations. When these values are substituted into the second set of equations, we can determine \\({N}_{2}\\) and <i>P</i>. They are</p><div class='eq'>\\[{N}_{2}=58.8\\, \\text{N}\\; \\text{and}\\; P=39.2\\, \\text{N}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Understanding what direction in which to draw the friction force is often troublesome. Notice that each friction force labeled in the figure acts in the direction opposite the motion of its corresponding block.</p>"
+      }
+     ]
+    },
+    {
+     "title": "A Crate on an Accelerating Truck",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 50.0-kg crate rests on the bed of a truck as shown in the figure. The coefficients of friction between the surfaces are \\({\\mu}_{\\text{k}}=0.300\\) and \\({\\mu}_{\\text{s}}=0.400.\\) Find the frictional force on the crate when the truck is accelerating forward relative to the ground at (a) 2.00 m/s<sup>2</sup>, and (b) 5.00 m/s<sup>2</sup>.</p><figure><img src='img/CNX_UPhysics_06_02_Truckbed.jpg' alt=\"Figure (a) shows an illustration of a 50 kilogram crate on the bed of a truck. A horizontal arrow indicates an acceleration, a, to the right. An x y coordinate system is shown, with positive x to the right and positive y up. Figure (b) shows the free body diagram of the crate. The forces are 490 Newtons vertically down, vector N vertically up, and vector f horizontally to the right.\" loading='lazy'><figcaption>(a) A crate rests on the bed of the truck that is accelerating forward. (b) The free-body diagram of the crate.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The forces on the crate are its weight and the normal and frictional forces due to contact with the truck bed. We start by <i>assuming</i> that the crate is not slipping. In this case, the static frictional force \\({f}_{\\text{s}}\\) acts on the crate. Furthermore, the accelerations of the crate and the truck are equal.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Application of Newton’s second law to the crate, using the reference frame attached to the ground, yields<br> <div class='eq'>\\[\\begin{array}{llllllll}\\sum {F}_{x} & = & m{a}_{x} & & & \\sum {F}_{y} & = & m{a}_{y} \\\\ {f}_{\\text{s}} & = & (50.0\\, \\text{kg})(2.00\\, {\\text{m/s}}^{2}) & & & N-4.90\\, \\times \\, {10}^{2}\\, \\text{N} & = & (50.0\\, \\text{kg})(0) \\\\ & = & 1.00\\, \\times \\, {10}^{2}\\, \\text{N} & & & N & = & 4.90\\, \\times \\, {10}^{2}\\, \\text{N}\\text{.}\\end{array}\\]</div> We can now check the validity of our no-slip assumption. The maximum value of the force of static friction is<br> <div class='eq'>\\[{\\mu}_{\\text{s}}N=(0.400)(4.90\\, \\times \\, {10}^{2}\\, \\text{N})=196\\, \\text{N,}\\]</div> whereas the <i>actual</i> force of static friction that acts when the truck accelerates forward at \\(2.00\\, {\\text{m/s}}^{2}\\) is only \\(1.00\\, \\times \\, {10}^{2}\\, \\text{N}\\text{.}\\) Thus, the assumption of no slipping is valid.</li><li>If the crate is to move with the truck when it accelerates at \\(5.0\\, {\\text{m/s}}^{2},\\) the force of static friction must be<br> <div class='eq'>\\[{f}_{\\text{s}}=m{a}_{x}=(50.0\\, \\text{kg})(5.00\\, {\\text{m/s}}^{2})=250\\, \\text{N}\\text{.}\\]</div> Since this exceeds the maximum of 196 N, the crate must slip. The frictional force is therefore kinetic and is<br> <div class='eq'>\\[{f}_{k}={\\mu}_{k}N=(0.300)(4.90\\, \\times \\, {10}^{2}\\, \\text{N})=147\\, \\text{N}\\text{.}\\]</div> The horizontal acceleration of the crate relative to the ground is now found from<br> <div class='eq'>\\[\\begin{array}{lll}\\sum {F}_{x} & = & m{a}_{x} \\\\ 147\\, \\text{N} & = & (50.0\\, \\text{kg}){a}_{x}, \\\\ \\text{so}\\, {a}_{x} & = & 2.94\\, {\\text{m/s}}^{2}.\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Relative to the ground, the truck is accelerating forward at \\(5.0\\, {\\text{m/s}}^{2}\\) and the crate is accelerating forward at \\(2.94\\, {\\text{m/s}}^{2}\\). Hence the crate is sliding backward relative to the bed of the truck with an acceleration \\(2.94\\, {\\text{m/s}}^{2}-5.00\\, {\\text{m/s}}^{2}=-2.06\\, {\\text{m/s}}^{2}\\text{.}\\)</p>"
+      }
+     ]
+    },
+    {
+     "title": "Snowboarding",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Earlier, we analyzed the situation of a downhill skier moving at constant velocity to determine the coefficient of kinetic friction. Now let’s do a similar analysis to determine acceleration. The snowboarder of the figure glides down a slope that is inclined at 13° to the horizontal. The coefficient of kinetic friction between the board and the snow is \\({\\mu}_{\\text{k}}=0.20.\\) What is the acceleration of the snowboarder?</p><figure><img src='img/CNX_UPhysics_06_02_Snowboard.jpg' alt=\"Figure (a) shows an illustration of a snowboarder on a slope inclined at 13 degrees above the horizontal. An arrow indicates an acceleration, a, downslope. Figure (b) shows the free body diagram of the snowboarder. The forces are  m g cosine 13 degrees into the slope, perpendicular to the surface, N, out of the slope, perpendicular to the surface, m g sine 13 degrees downslope parallel to the surface and mu sub k times N, upslope parallel to the surface.\" loading='lazy'><figcaption>(a) A snowboarder glides down a slope inclined at 13° to the horizontal. (b) The free-body diagram of the snowboarder.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The forces acting on the snowboarder are her weight and the contact force of the slope, which has a component normal to the incline and a component along the incline (force of kinetic friction). Because she moves along the slope, the most convenient reference frame for analyzing her motion is one with the <i>x</i>-axis along and the <i>y</i>-axis perpendicular to the incline. In this frame, both the normal and the frictional forces lie along coordinate axes, the components of the weight are \\(mg\\, \\sin \\, \\theta \\, \\text{along the slope and}\\, mg\\, \\cos \\, \\theta \\, \\text{at right angles into the slope}\\), and the only acceleration is along the <i>x</i>-axis \\(({a}_{y}=0).\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We can now apply Newton’s second law to the snowboarder:</p><div class='eq'>\\[\\begin{array}{llllll}\\sum {F}_{x} & = & m{a}_{x} & & & \\sum {F}_{y}=m{a}_{y} \\\\ mg\\, \\sin \\, \\theta -{\\mu}_{k}N & = & m{a}_{x} & & & N-mg\\, \\cos \\, \\theta =m(0)\\text{.}\\end{array}\\]</div><p>From the second equation, \\(N=mg\\, \\cos \\, \\theta .\\) Upon substituting this into the first equation, we find</p><div class='eq'>\\[\\begin{array}{ll}{a}_{x} & =g(\\sin \\, \\theta -{\\mu}_{\\text{k}}\\, \\cos \\, \\theta ) \\\\ & =g(\\sin \\, 13^{\\circ} -0.20\\, \\cos \\, 13^{\\circ} )=0.29\\, {\\text{m/s}}^{2}\\text{.}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice from this equation that if \\(\\theta\\) is small enough or \\({\\mu}_{\\text{k}}\\) is large enough, \\({a}_{x}\\) is negative, that is, the snowboarder slows down.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A block of mass 1.0 kg rests on a horizontal surface. The frictional coefficients for the block and surface are \\({\\mu}_{s}=0.50\\) and \\({\\mu}_{k}=0.40.\\) (a) What is the minimum horizontal force required to move the block? (b) What is the block’s acceleration when this force is applied?</p>",
+     "a": "<p>a. 4.9 N; b. 0.98 m/s<sup>2</sup></p>"
+    },
+    {
+     "q": "<p>The snowboarder is now moving down a hill with incline \\(10.0^{\\circ}\\). What is the snowboarder's acceleration?</p>",
+     "a": "<p>\\(\\text{-0.23}\\, {\\text{m/s}}^{2}\\); the negative sign indicates that the snowboarder is slowing down.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Friction is a contact force that opposes the motion or attempted motion between two systems. Simple friction is proportional to the normal force <i>N</i> supporting the two systems.",
+    "The magnitude of static friction force between two materials stationary relative to each other is determined using the coefficient of static friction, which depends on both materials.",
+    "The kinetic friction force between two materials moving relative to each other is determined using the coefficient of kinetic friction, which also depends on both materials and is always less than the coefficient of static friction."
+   ]
+  },
+  {
+   "num": "6.3",
+   "module": "m58305",
+   "title": "Centripetal Force",
+   "objectives": [
+    "Explain the equation for centripetal acceleration",
+    "Apply Newton’s second law to develop the equation for centripetal force",
+    "Use circular motion concepts in solving problems involving Newton’s laws of motion"
+   ],
+   "callouts": [
+    "{F}_{\\text{c}}=m\\frac{{v}^{2}}{r};\\; {F}_{\\text{c}}=mr{\\omega}^{2}",
+    "\\theta ={\\tan}^{-1}(\\frac{{v}^{2}}{rg})"
+   ],
+   "examples": [
+    {
+     "title": "What Coefficient of Friction Do Cars Need on a Flat Curve?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>(a) Calculate the centripetal force exerted on a 900.0-kg car that negotiates a 500.0-m radius curve at 25.00 m/s. (b) Assuming an unbanked curve, find the minimum static coefficient of friction between the tires and the road, static friction being the reason that keeps the car from slipping (the figure).</p><figure><img src='img/unnamed.jpg' alt=\"In this figure, a car is shown, driving away from the viewer and turning to the left on a level surface.  The following forces are shown on the car: w pointing straight down, N pointing straight up, and f which equals F sub c which equals mu sub s times N, pointing to the left. The forces w and N act on the body of the car, while f acts where the wheel contacts the ground. The free body diagram is shown to the side of the illustration of the car and shows the forces w, N, and f as arrows with their tails all meeting at a point.\" loading='lazy'><figcaption>This car on level ground is moving away and turning to the left. The centripetal force causing the car to turn in a circular path is due to friction between the tires and the road. A minimum coefficient of friction is needed, or the car will move in a larger-radius curve and leave the roadway.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<ol type='a'><li>We know that \\({F}_{\\text{c}}=\\frac{m{v}^{2}}{r}.\\) Thus, <div class='eq'>\\[{F}_{\\text{c}}=\\frac{m{v}^{2}}{r}=\\frac{(900.0\\, \\text{kg}){(25.00\\, \\text{m/s})}^{2}}{(500.0\\, \\text{m})}=1125\\, \\text{N}\\text{.}\\]</div></li><li>The figure shows the forces acting on the car on an unbanked (level ground) curve. Friction is to the left, keeping the car from slipping, and because it is the only horizontal force acting on the car, the friction is the centripetal force in this case. We know that the maximum static friction (at which the tires roll but do not slip) is \\({\\mu}_{\\text{s}}N,\\) where \\({\\mu}_{\\text{s}}\\) is the static coefficient of friction and <i>N</i> is the normal force. The normal force equals the car’s weight on level ground, so \\(N=mg.\\) Thus the centripetal force in this situation is <div class='eq'>\\[{F}_{\\text{c}}\\equiv f={\\mu}_{\\text{s}}N={\\mu}_{\\text{s}}mg.\\]</div> Now we have a relationship between centripetal force and the coefficient of friction. Using the equation <div class='eq'>\\[{F}_{\\text{c}}=m\\frac{{v}^{2}}{r},\\]</div> we obtain <div class='eq'>\\[m\\frac{{v}^{2}}{r}={\\mu}_{\\text{s}}mg.\\]</div> We solve this for \\({\\mu}_{\\text{s}},\\) noting that mass cancels, and obtain <div class='eq'>\\[{\\mu}_{\\text{s}}=\\frac{{v}^{2}}{rg}.\\]</div> Substituting the knowns, <div class='eq'>\\[{\\mu}_{\\text{s}}=\\frac{{(25.00\\, \\text{m/s})}^{2}}{(500.0\\, \\text{m})(9.80\\, {\\text{m/s}}^{2})}=0.13.\\]</div> (Because coefficients of friction are approximate, the answer is given to only two digits.)</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The coefficient of friction found in the figure(b) is much smaller than is typically found between tires and roads. The car still negotiates the curve if the coefficient is greater than 0.13, because static friction is a responsive force, able to assume a value less than but no more than \\({\\mu}_{\\text{s}}N.\\) A higher coefficient would also allow the car to negotiate the curve at a higher speed, but if the coefficient of friction is less, the safe speed would be less than 25 m/s. Note that mass cancels, implying that, in this example, it does not matter how heavily loaded the car is to negotiate the turn. Mass cancels because friction is assumed proportional to the normal force, which in turn is proportional to mass. If the surface of the road were banked, the normal force would be greater, as discussed next.</p>"
+      }
+     ]
+    },
+    {
+     "title": "What Is the Ideal Speed to Take a Steeply Banked Tight Curve?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Curves on some test tracks and race courses, such as Daytona International Speedway in Florida, are very steeply banked. This banking, with the aid of tire friction and very stable car configurations, allows the curves to be taken at very high speed. To illustrate, calculate the speed at which a 100.0-m radius curve banked at \\(31.0^{\\circ}\\) should be driven if the road were frictionless.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We first note that all terms in the expression for the ideal angle of a banked curve except for speed are known; thus, we need only rearrange it so that speed appears on the left-hand side and then substitute known quantities.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Starting with</p><div class='eq'>\\[\\tan \\, \\theta =\\frac{{v}^{2}}{rg},\\]</div><p>we get</p><div class='eq'>\\[v=\\sqrt{rg\\, \\tan \\, \\theta }.\\]</div><p>Noting that \\(\\tan \\, 31.0^{\\circ} =0.6009,\\) we obtain</p><div class='eq'>\\[v=\\sqrt{(100.0\\, \\text{m})(9.80\\, {\\text{m/s}}^{2})(0.609)}=24.3\\, \\text{m/s}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is just about 87.5 km/h, consistent with a very steeply banked and rather sharp curve. Tire friction enables a vehicle to take the curve at significantly higher speeds.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A car moving at 96.8 km/h travels around a circular curve of radius 182.9 m on a flat country road. What must be the minimum coefficient of static friction to keep the car from slipping?</p>",
+     "a": "<p>0.40</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Centripetal force \\({\\mathbf{\\vec{F}}}_{\\text{c}}\\) is a “center-seeking” force that always points toward the center of rotation. It is perpendicular to linear velocity and has the magnitude <div class='eq'>\\[{F}_{\\text{c}}=m{a}_{\\text{c}}.\\]</div>",
+    "Rotating and accelerated frames of reference are noninertial. Inertial forces, such as the Coriolis force, are needed to explain motion in such frames."
+   ]
+  },
+  {
+   "num": "6.4",
+   "module": "m58306",
+   "title": "Drag Force and Terminal Speed",
+   "objectives": [
+    "Express the drag force mathematically",
+    "Describe applications of the drag force",
+    "Define terminal velocity",
+    "Determine an object’s terminal velocity given its mass"
+   ],
+   "callouts": [
+    "{F}_{\\text{D}}=\\frac{1}{2}C\\rho A{v}^{2}"
+   ],
+   "examples": [
+    {
+     "title": "Terminal Velocity of a Skydiver",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the terminal velocity of an 85-kg skydiver falling in a spread-eagle position. Assume that in the spread-eagle position, the diver has a cross-sectional area of \\(0.70\\, {\\text{m}}^{2}\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>At terminal velocity, \\({F}_{\\text{net}}=0.\\) Thus, the drag force on the skydiver must equal the force of gravity (the person’s weight). Using the equation of drag force, we find \\(mg=\\frac{1}{2}\\rho CA{v}^{2}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The terminal velocity \\({v}_{\\text{T}}\\) can be written as</p><div class='eq'>\\[{v}_{\\text{T}}=\\sqrt{\\frac{2mg}{\\rho CA}}=\\sqrt{\\frac{2(85\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2})}{(1.21\\, {\\text{kg/m}}^{3})(1.0)(0.70\\, {\\text{m}}^{2})}}=44\\, \\text{m/s}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This result is consistent with the value for \\({v}_{\\text{T}}\\) mentioned earlier. The 75-kg skydiver going feet first had a terminal velocity of \\({v}_{\\text{T}}=98\\, \\text{m/s}\\text{.}\\) He weighed less but had a smaller frontal area and so a smaller drag due to the air.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Effect of the Resistive Force on a Motorboat",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A motorboat is moving across a lake at a speed \\({v}_{0}\\) when its motor suddenly freezes up and stops. The boat then slows down under the frictional force \\({f}_{R}=-bv.\\) (a) What are the velocity and position of the boat as functions of time? (b) If the boat slows down from 4.0 to 1.0 m/s in 10 s, how far does it travel before stopping?</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>With the motor stopped, the only horizontal force on the boat is \\({f}_{R}=-bv,\\) so from Newton’s second law, <div class='eq'>\\[m\\frac{dv}{dt}=-bv,\\]</div> which we can write as <div class='eq'>\\[\\frac{dv}{v}=-\\frac{b}{m}dt.\\]</div> Integrating this equation between the time zero when the velocity is \\({v}_{0}\\) and the time <i>t</i> when the velocity is \\(v\\), we have <div class='eq'>\\[{\\int}_{0}^{v}\\frac{d{v}^{'}}{{v}^{'}}=-\\frac{b}{m}{\\int}_{0}^{t}d{t}^{'}.\\]</div> Thus, <div class='eq'>\\[\\ln \\frac{v}{{v}_{0}}=-\\frac{b}{m}t,\\]</div> which, since \\(\\ln A=x\\, \\text{implies}\\, {e}^{x}=A,\\) we can write this as <div class='eq'>\\[v={v}_{0}{e}^{-bt\\text{/}m}.\\]</div> Now from the definition of velocity, <div class='eq'>\\[\\frac{dx}{dt}={v}_{0}{e}^{-bt\\text{/}m},\\]</div> so we have <div class='eq'>\\[dx={v}_{0}{e}^{-bt\\text{/}m}dt.\\]</div> With the initial position zero, we have <div class='eq'>\\[{\\int}_{0}^{x}dx'={v}_{0}{\\int}_{0}^{t}{e}^{-bt'\\text{/}m}dt',\\]</div> and <div class='eq'>\\[{x=-\\frac{m{v}_{0}}{b}{e}^{-bt'\\text{/}m}|}_{0}^{t}=\\frac{m{v}_{0}}{b}(1-{e}^{-bt\\text{/}m}).\\]</div> As time increases, \\({e}^{-bt\\text{/}m}\\to 0,\\) and the position of the boat approaches a limiting value <div class='eq'>\\[{x}_{\\max}=\\frac{m{v}_{0}}{b}.\\]</div> Although this tells us that the boat takes an infinite amount of time to reach \\({x}_{\\max},\\) the boat effectively stops after a reasonable time. For example, at \\(t=10m\\text{/}b,\\) we have <div class='eq'>\\[v={v}_{0}{e}^{-10}≃4.5\\, \\times \\, {10}^{-5}{v}_{0},\\]</div> whereas we also have <div class='eq'>\\[x={x}_{\\max}(1-{e}^{-10})≃0.99995{x}_{\\max}.\\]</div> Therefore, the boat’s velocity and position have essentially reached their final values.</li><li>With \\({v}_{0}=4.0\\, \\text{m/s}\\) and \\(v=1.0\\, \\text{m/s,}\\) we have \\(1.0\\, \\text{m/s}=(4.0\\, \\text{m/s}){e}^{-(b\\text{/}m)(10\\, \\text{s})},\\) so <div class='eq'>\\[\\ln \\, 0.25=-\\ln \\, 4.0=-\\frac{b}{m}(10\\, \\text{s}),\\]</div> and <div class='eq'>\\[\\frac{b}{m}=\\frac{1}{10}\\ln \\, 4.0\\, {\\text{s}}^{\\text{-1}}=0.14\\, {\\text{s}}^{\\text{-1}}\\text{.}\\]</div> Now the boat’s limiting position is <div class='eq'>\\[{x}_{\\max}=\\frac{m{v}_{0}}{b}=\\frac{4.0\\, \\text{m/s}}{0.14\\, {\\text{s}}^{\\text{-1}}}=29\\, \\text{m}\\text{.}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In the both of the previous examples, we found “limiting” values. The terminal velocity is the same as the limiting velocity, which is the velocity of the falling object after a (relatively) long time has passed. Similarly, the limiting distance of the boat is the distance the boat will travel after a long amount of time has passed. Due to the properties of exponential decay, the time involved to reach either of these values is actually not too long (certainly not an infinite amount of time!) but they are quickly found by taking the limit to infinity.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Find the terminal velocity of a 50-kg skydiver falling in spread-eagle fashion.</p>",
+     "a": "<p>34 m/s</p>"
+    },
+    {
+     "q": "<p>Suppose the resistive force of the air on a skydiver can be approximated by \\(f=-b{v}^{2}\\). If the terminal velocity of a 100-kg skydiver is 60 m/s, what is the value of b?</p>",
+     "a": "<p>0.27 kg/m</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Drag forces acting on an object moving in a fluid oppose the motion. For larger objects (such as a baseball) moving at a velocity in air, the drag force is determined using the drag coefficient (typical values are given in the table), the area of the object facing the fluid, and the fluid density.",
+    "For small objects (such as a bacterium) moving in a denser medium (such as water), the drag force is given by Stokes’ law."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_06_01_Atwood.jpg",
+  "CNX_UPhysics_06_01_Baggage.jpg",
+  "CNX_UPhysics_06_01_Scale.jpg",
+  "CNX_UPhysics_06_01_StopLight.jpg",
+  "CNX_UPhysics_06_01_Table.jpg",
+  "CNX_UPhysics_06_01_Tugboats.jpg",
+  "CNX_UPhysics_06_02_Blocks.jpg",
+  "CNX_UPhysics_06_02_PushedBox.jpg",
+  "CNX_UPhysics_06_02_Skislope2.jpg",
+  "CNX_UPhysics_06_02_Snowboard.jpg",
+  "CNX_UPhysics_06_02_Truckbed.jpg",
+  "unnamed.jpg"
+ ]
+}

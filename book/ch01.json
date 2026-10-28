@@ -1,0 +1,339 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 1,
+  "title": "Units and Measurement"
+ },
+ "keyEquations": [
+  {
+   "name": "Percent uncertainty",
+   "tex": "\\text{Percent uncertainty}=\\frac{\\delta A}{A}\\, \\times \\, 100%"
+  }
+ ],
+ "sections": [
+  {
+   "num": "1.1",
+   "module": "m58269",
+   "title": "The Scope and Scale of Physics",
+   "objectives": [
+    "Describe the scope of physics.",
+    "Calculate the order of magnitude of a quantity.",
+    "Compare measurable length, mass, and timescales quantitatively.",
+    "Describe the relationships among models, theories, and laws."
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "Physics is about trying to find the simple laws that describe all natural phenomena.",
+    "Physics operates on a vast range of scales of length, mass, and time. Scientists use the concept of the order of magnitude of a number to track which phenomena occur on which scales. They also use orders of magnitude to compare the various scales.",
+    "Scientists attempt to describe the world by formulating models, theories, and laws."
+   ]
+  },
+  {
+   "num": "1.2",
+   "module": "m58270",
+   "title": "Units and Standards",
+   "objectives": [
+    "Describe how SI base units are defined.",
+    "Describe how derived units are created from base units.",
+    "Express quantities given in SI units using metric prefixes."
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Using Metric Prefixes",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Restate the mass \\(1.93\\, \\times \\, {10}^{13}\\text{kg}\\) using a metric prefix such that the resulting numerical value is bigger than one but less than 1000.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since we are not allowed to “double-up” prefixes, we first need to restate the mass in grams by replacing the prefix symbol k with a factor of 10<sup>3</sup> (see the table). Then, we should see which two prefixes in the table are closest to the resulting power of 10 when the number is written in scientific notation. We use whichever of these two prefixes gives us a number between one and 1000.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Replacing the k in kilogram with a factor of 10<sup>3</sup>, we find that</p><div class='eq'>\\[1.93\\, \\times \\, {10}^{13}\\text{kg}=1.93\\, \\times \\, {10}^{13}\\, \\times \\, {10}^{3}\\text{g}=1.93\\, \\times \\, {10}^{16}\\text{g}\\text{.}\\]</div><p>From the table, we see that 10<sup>16</sup> is between “peta-” (10<sup>15</sup>) and “exa-” (10<sup>18</sup>). If we use the “peta-” prefix, then we find that \\(1.93\\, \\times \\, {10}^{16}\\text{g}=1.93\\, \\times \\, {10}^{1}\\text{Pg},\\) since \\(16=1+15.\\) Alternatively, if we use the “exa-” prefix we find that \\(1.93\\, \\times \\, {10}^{16}\\text{g}=1.93\\, \\times \\, {10}^{-2}\\text{Eg},\\) since \\(16=-2+18.\\) Because the problem asks for the numerical value between one and 1000, we use the “peta-” prefix and the answer is 19.3 Pg.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>It is easy to make silly arithmetic errors when switching from one prefix to another, so it is always a good idea to check that our final answer matches the number we started with. An easy way to do this is to put both numbers in scientific notation and count powers of 10, including the ones hidden in prefixes. If we did not make a mistake, the powers of 10 should match up. In this problem, we started with \\(1.93\\, \\times \\, {10}^{13}\\text{kg,}\\) so we have 13 + 3 = 16 powers of 10. Our final answer in scientific notation is \\(1.93\\, \\times \\, {10}^{1}\\) Pg, so we have 1 + 15 = 16 powers of 10. So, everything checks out.</p><p>If this mass arose from a calculation, we would also want to check to determine whether a mass this large makes any sense in the context of the problem. For this, another section might be helpful.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Restate \\(4.79\\, \\times \\, {10}^{5}\\text{kg}\\) using a metric prefix such that the resulting number is bigger than one but less than 1000.</p>",
+     "a": "<p>\\(4.79\\, \\times \\, {10}^{2}\\) Mg or 479 Mg</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Systems of units are built up from a small number of base units, which are defined by accurate and precise measurements of conventionally chosen base quantities. Other units are then derived as algebraic combinations of the base units.",
+    "Two commonly used systems of units are English units and SI units. All scientists and most of the other people in the world use SI, whereas nonscientists in the United States still tend to use English units.",
+    "The SI base units of length, mass, and time are the meter (m), kilogram (kg), and second (s), respectively.",
+    "SI units are a metric system of units, meaning values can be calculated by factors of 10. Metric prefixes may be used with metric units to scale the base units to sizes appropriate for almost any application."
+   ]
+  },
+  {
+   "num": "1.3",
+   "module": "m58271",
+   "title": "Unit Conversion",
+   "objectives": [
+    "Use conversion factors to express the value of a given quantity in different units."
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Converting Nonmetric Units to Metric",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The distance from the university to home is 10 mi and it usually takes 20 min to drive this distance. Calculate the average speed in meters per second (m/s). (<i>Note:</i> Average speed is distance traveled divided by time of travel.)</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First we calculate the average speed using the given units, then we can get the average speed into the desired units by picking the correct conversion factors and multiplying by them. The correct conversion factors are those that cancel the unwanted units and leave the desired units in their place. In this case, we want to convert miles to meters, so we need to know the fact that there are 1609 m in 1 mi. We also want to convert minutes to seconds, so we use the conversion of 60 s in 1 min.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol><li>Calculate average speed. Average speed is distance traveled divided by time of travel. (Take this definition as a given for now. Average speed and other motion concepts are covered in later chapters.) In equation form, <div class='eq'>\\[\\text{Average speed}=\\frac{\\text{Distance}}{\\text{Time}}.\\]</div></li><li>Substitute the given values for distance and time: <div class='eq'>\\[\\text{Average speed}=\\frac{10\\, \\text{mi}}{20\\, \\min}=0.50\\, \\frac{\\text{mi}}{\\min}.\\]</div></li><li>Convert miles per minute to meters per second by multiplying by the conversion factor that cancels miles and leave meters, and also by the conversion factor that cancels minutes and leave seconds: <div class='eq'>\\[0.50\\, \\frac{\\text{mile}}{\\min}\\, \\times \\, \\frac{1609\\, \\text{m}}{1\\, \\text{mile}}\\, \\times \\, \\frac{1\\, \\min}{60\\, \\text{s}}=\\frac{(0.50)(1609)}{60}\\, \\text{m/s}=13\\, \\text{m/s}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Check the answer in the following ways:</p><ol><li>Be sure the units in the unit conversion cancel correctly. If the unit conversion factor was written upside down, the units do not cancel correctly in the equation. We see the “miles” in the numerator in 0.50 mi/min cancels the “mile” in the denominator in the first conversion factor. Also, the “min” in the denominator in 0.50 mi/min cancels the “min” in the numerator in the second conversion factor.</li><li>Check that the units of the final answer are the desired units. The problem asked us to solve for average speed in units of meters per second and, after the cancellations, the only units left are a meter (m) in the numerator and a second (s) in the denominator, so we have indeed obtained these units.</li></ol>"
+      }
+     ]
+    },
+    {
+     "title": "Converting between Metric Units",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The density of iron is \\(7.86\\, {\\text{g/cm}}^{3}\\) under standard conditions. Convert this to kg/m<sup>3</sup>.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We need to convert grams to kilograms and cubic centimeters to cubic meters. The conversion factors we need are \\(1\\, \\text{kg}={10}^{3}\\text{g}\\) and \\(1\\, \\text{cm}={10}^{-2}\\text{m}\\text{.}\\) However, we are dealing with cubic centimeters \\({\\text{(cm}}^{3}=\\text{cm}\\, \\times \\, \\text{cm}\\, \\times \\, \\text{cm),}\\) so we have to use the second conversion factor three times (that is, we need to cube it). The idea is still to multiply by the conversion factors in such a way that they cancel the units we want to get rid of and introduce the units we want to keep.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<div class='eq'>\\[7.86\\, \\frac{\\text{g}}{{\\text{cm}}^{3}}\\, \\times \\, \\frac{\\text{kg}}{{10}^{3}\\text{g}}\\, \\times \\, {(\\frac{\\text{cm}}{{10}^{-2}\\text{m}})}^{3}=\\frac{7.86}{({10}^{3})({10}^{-6})}\\, {\\text{kg/m}}^{3}=7.86\\, \\times \\, {10}^{3}{\\, \\text{kg/m}}^{3}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Remember, it’s always important to check the answer.</p><ol><li>Be sure to cancel the units in the unit conversion correctly. We see that the gram (“g”) in the numerator in 7.86 g/cm<sup>3</sup> cancels the “g” in the denominator in the first conversion factor. Also, the three factors of “cm” in the denominator in 7.86 g/cm<sup>3</sup> cancel with the three factors of “cm” in the numerator that we get by cubing the second conversion factor.</li><li>Check that the units of the final answer are the desired units. The problem asked for us to convert to kilograms per cubic meter. After the cancellations just described, we see the only units we have left are “kg” in the numerator and three factors of “m” in the denominator (that is, one factor of “m” cubed, or “m<sup>3</sup>”). Therefore, the units on the final answer are correct.</li></ol>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Light travels about 9 Pm in a year. Given that a year is about \\(3\\, \\times \\, {10}^{7}\\text{s},\\) what is the speed of light in meters per second?</p>",
+     "a": "<p>\\(3\\, \\times \\, {10}^{8}\\text{m/s}\\)</p>"
+    },
+    {
+     "q": "<p>We know from another section that the diameter of Earth is on the order of 10<sup>7</sup> m, so the order of magnitude of its surface area is 10<sup>14</sup> m<sup>2</sup>. What is that in square kilometers (that is, km<sup>2</sup>)? (Try doing this both by converting 10<sup>7</sup> m to km and then squaring it and then by converting 10<sup>14</sup> m<sup>2</sup> directly to square kilometers. You should get the same answer both ways.)</p>",
+     "a": "<p>\\(1{0}^{8}{\\, \\text{km}}^{2}\\)</p>"
+    },
+    {
+     "q": "<p>Given that 1 lbf (pound-force) is 4.45 N, were the numbers being output by SM_FORCES too big or too small?</p>",
+     "a": "<p>The numbers were too small, by a factor of 4.45.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "To convert a quantity from one unit to another, multiply by conversion factors in such a way that you cancel the units you want to get rid of and introduce the units you want to end up with.",
+    "Be careful with areas and volumes. Units obey the rules of algebra so, for example, if a unit is squared we need two factors to cancel it."
+   ]
+  },
+  {
+   "num": "1.4",
+   "module": "m58272",
+   "title": "Dimensional Analysis",
+   "objectives": [
+    "Find the dimensions of a mathematical expression involving physical quantities.",
+    "Determine whether an equation involving physical quantities is dimensionally consistent."
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Using Dimensions to Remember an Equation",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Suppose we need the formula for the area of a circle for some computation. Like many people who learned geometry too long ago to recall with any certainty, two expressions may pop into our mind when we think of circles: \\(\\pi {r}^{2}\\) and \\(2\\pi r.\\) One expression is the circumference of a circle of radius <i>r</i> and the other is its area. But which is which?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>One natural strategy is to look it up, but this could take time to find information from a reputable source. Besides, even if we think the source is reputable, we shouldn’t trust everything we read. It is nice to have a way to double-check just by thinking about it. Also, we might be in a situation in which we cannot look things up (such as during a test). Thus, the strategy is to find the dimensions of both expressions by making use of the fact that dimensions follow the rules of algebra. If either expression does not have the same dimensions as area, then it cannot possibly be the correct equation for the area of a circle.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We know the dimension of area is L<sup>2</sup>. Now, the dimension of the expression \\(\\pi {r}^{2}\\) is</p><div class='eq'>\\[[\\pi {r}^{2}]=[\\pi ]\\cdot {[r]}^{2}=1\\cdot {\\text{L}}^{2}={\\text{L}}^{2},\\]</div><p>since the constant \\(\\pi\\) is a pure number and the radius \\(r\\) is a length. Therefore, \\(\\pi {r}^{2}\\) has the dimension of area. Similarly, the dimension of the expression \\(2\\pi r\\) is</p><div class='eq'>\\[[2\\pi r]=[2]\\cdot [\\pi ]\\cdot [r]=1\\cdot 1\\cdot \\text{L}=\\text{L,}\\]</div><p>since the constants \\(2\\) and \\(\\pi\\) are both dimensionless and the radius \\(r\\) is a length. We see that \\(2\\pi r\\) has the dimension of length, which means it cannot possibly be an area.</p><p>We rule out \\(2\\pi r\\) because it is not dimensionally consistent with being an area. We see that \\(\\pi {r}^{2}\\) is dimensionally consistent with being an area, so if we have to choose between these two expressions, \\(\\pi {r}^{2}\\) is the one to choose.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This may seem like kind of a silly example, but the ideas are very general. As long as we know the dimensions of the individual physical quantities that appear in an equation, we can check to see whether the equation is dimensionally consistent. On the other hand, knowing that true equations are dimensionally consistent, we can match expressions from our imperfect memories to the quantities for which they might be expressions. Doing this will not help us remember dimensionless factors that appear in the equations (for example, if you had accidentally conflated the two expressions from the example into \\(2\\pi {r}^{2},\\) then dimensional analysis is no help), but it does help us remember the correct basic form of equations.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Checking Equations for Dimensional Consistency",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider the physical quantities \\(s,\\) \\(v,\\) \\(a,\\) and \\(t\\) with dimensions \\([s]=\\text{L},\\) \\([v]={\\text{LT}}^{-1},\\) \\([a]={\\text{LT}}^{-2},\\) and \\([t]=\\text{T}.\\) Determine whether each of the following equations is dimensionally consistent: (a) \\(s=vt+0.5a{t}^{2};\\) (b) \\(s=v{t}^{2}+0.5at;\\) and (c) \\(v=\\sin (a{t}^{2}\\text{/}s).\\)</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>By the definition of dimensional consistency, we need to check that each term in a given equation has the same dimensions as the other terms in that equation and that the arguments of any standard mathematical functions are dimensionless.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>There are no trigonometric, logarithmic, or exponential functions to worry about in this equation, so we need only look at the dimensions of each term appearing in the equation. There are three terms, one in the left expression and two in the expression on the right, so we look at each in turn: <div class='eq'>\\[\\begin{array}{l}[s]=\\text{L} \\\\ [vt]=[v]\\cdot [t]={\\text{LT}}^{-1}\\cdot \\text{T}={\\text{LT}}^{0}=\\text{L} \\\\ [0.5a{t}^{2}]=[a]\\cdot {[t]}^{2}={\\text{LT}}^{-2}\\cdot {\\text{T}}^{2}={\\text{LT}}^{0}=\\text{L}\\text{.}\\end{array}\\]</div> All three terms have the same dimension, so this equation is dimensionally consistent.</li><li>Again, there are no trigonometric, exponential, or logarithmic functions, so we only need to look at the dimensions of each of the three terms appearing in the equation: <div class='eq'>\\[\\begin{array}{l}[s]=\\text{L} \\\\ [v{t}^{2}]=[v]\\cdot {[t]}^{2}={\\text{LT}}^{-1}\\cdot {\\text{T}}^{2}=\\text{LT} \\\\ [at]=[a]\\cdot [t]={\\text{LT}}^{-2}\\cdot \\text{T}={\\text{LT}}^{-1}.\\end{array}\\]</div> None of the three terms has the same dimension as any other, so this is about as far from being dimensionally consistent as you can get. The technical term for an equation like this is <i>nonsense</i>.</li><li>This equation has a trigonometric function in it, so first we should check that the argument of the sine function is dimensionless: <div class='eq'>\\[\\begin{array}{l}[\\frac{a{t}^{2}}{s}]=\\frac{[a]\\cdot {[t]}^{2}}{[s]}=\\frac{{\\text{LT}}^{-2}\\cdot {\\text{T}}^{2}}{\\text{L}}=\\frac{\\text{L}}{\\text{L}}=1.\\end{array}\\]</div> The argument is dimensionless. So far, so good. Now we need to check the dimensions of each of the two terms (that is, the left expression and the right expression) in the equation: <div class='eq'>\\[\\begin{array}{l}[v]={\\text{LT}}^{-1} \\\\ [\\sin (\\frac{a{t}^{2}}{s})]=1.\\end{array}\\]</div></li></ol><p>The two terms have different dimensions—meaning, the equation is not dimensionally consistent. This equation is another example of “nonsense.”</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>If we are trusting people, these types of dimensional checks might seem unnecessary. But, rest assured, any textbook on a quantitative subject such as physics (including this one) almost certainly contains some equations with typos. Checking equations routinely by dimensional analysis save us the embarrassment of using an incorrect equation. Also, checking the dimensions of an equation we obtain through algebraic manipulation is a great way to make sure we did not make a mistake (or to spot a mistake, if we made one).</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Suppose we want the formula for the volume of a sphere. The two expressions commonly mentioned in elementary discussions of spheres are \\(4\\pi {r}^{2}\\) and \\(4\\pi {r}^{3}\\text{/}3.\\) One is the volume of a sphere of radius <i>r</i> and the other is its surface area. Which one is the volume?</p>",
+     "a": "<p>\\(4\\pi {r}^{3}\\text{/}3\\)</p>"
+    },
+    {
+     "q": "<p>Is the equation <i>v</i> = <i>at</i> dimensionally consistent?</p>",
+     "a": "<p>yes</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The dimension of a physical quantity is just an expression of the base quantities from which it is derived.",
+    "All equations expressing physical laws or principles must be dimensionally consistent. This fact can be used as an aid in remembering physical laws, as a way to check whether claimed relationships between physical quantities are possible, and even to derive new physical laws."
+   ]
+  },
+  {
+   "num": "1.5",
+   "module": "m58273",
+   "title": "Estimates and Fermi Calculations",
+   "objectives": [
+    "Estimate the values of physical quantities."
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Mass of Earth’s Oceans",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Estimate the total mass of the oceans on Earth.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We know the density of water is about 10<sup>3</sup> kg/m<sup>3</sup>, so we start with the advice to “get masses from densities and volumes.” Thus, we need to estimate the volume of the planet’s oceans. Using the advice to “get areas and volumes from lengths,” we can estimate the volume of the oceans as surface area times average depth, or <i>V</i> = <i>AD</i>. We know the diameter of Earth from another section and we know that most of Earth’s surface is covered in water, so we can estimate the surface area of the oceans as being roughly equal to the surface area of the planet. By following the advice to “get areas and volumes from lengths” again, we can approximate Earth as a sphere and use the formula for the surface area of a sphere of diameter <i>d</i>—that is, \\(A=\\pi {d}^{2},\\) to estimate the surface area of the oceans. Now we just need to estimate the average depth of the oceans. For this, we use the advice: “If all else fails, bound it.” We happen to know the deepest points in the ocean are around 10 km and that it is not uncommon for the ocean to be deeper than 1 km, so we take the average depth to be around \\({({10}^{3}\\, \\times \\, {10}^{4})}^{0.5}\\approx 3\\, \\times \\, {10}^{3}\\text{m.}\\) Now we just need to put it all together, heeding the advice that “one ‘sig. fig.’ is fine.”</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We estimate the surface area of Earth (and hence the surface area of Earth’s oceans) to be roughly</p><div class='eq'>\\[A=\\pi {d}^{2}=\\pi {({10}^{7}\\text{m})}^{2}\\approx 3\\, \\times \\, {10}^{14}{\\text{m}}^{2}.\\]</div><p>Next, using our average depth estimate of \\(D=3\\, \\times \\, {10}^{3}\\text{m,}\\) which was obtained by bounding, we estimate the volume of Earth’s oceans to be</p><div class='eq'>\\[V=AD=(3\\, \\times \\, {10}^{14}{\\text{m}}^{2})(3\\, \\times \\, {10}^{3}\\text{m})=9\\, \\times \\, {10}^{17}{\\text{m}}^{3}.\\]</div><p>Last, we estimate the mass of the world’s oceans to be</p><div class='eq'>\\[M=\\rho V=({10}^{3}{\\, \\text{kg/m}}^{3})(9\\, \\times \\, {10}^{17}{\\text{m}}^{3})=9\\, \\times \\, {10}^{20}\\text{kg}.\\]</div><p>Thus, we estimate that the order of magnitude of the mass of the planet’s oceans is 10<sup>21</sup> kg.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>To verify our answer to the best of our ability, we first need to answer the question: Does this make any sense? From another section, we see the mass of Earth’s atmosphere is on the order of 10<sup>19</sup> kg and the mass of Earth is on the order of 10<sup>25</sup> kg. It is reassuring that our estimate of 10<sup>21</sup> kg for the mass of Earth’s oceans falls somewhere between these two. So, yes, it does seem to make sense. It just so happens that we did a search on the Web for “mass of oceans” and the top search results all said \\(1.4\\, \\times \\, {10}^{21}\\text{kg,}\\) which is the same order of magnitude as our estimate. Now, rather than having to trust blindly whoever first put that number up on a website (most of the other sites probably just copied it from them, after all), we can have a little more confidence in it.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>another section says the mass of the atmosphere is 10<sup>19</sup> kg. Assuming the density of the atmosphere is 1 kg/m<sup>3</sup>, estimate the height of Earth’s atmosphere. Do you think your answer is an underestimate or an overestimate? Explain why.</p>",
+     "a": "<p>\\(3\\, \\times \\, {10}^{4}\\text{m}\\) or 30 km. It is probably an underestimate because the density of the atmosphere decreases with altitude. (In fact, 30 km does not even get us out of the stratosphere.)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "An estimate is a rough educated guess at the value of a physical quantity based on prior experience and sound physical reasoning. Some strategies that may help when making an estimate are as follows: <ul><li>Get big lengths from smaller lengths.</li><li>Get areas and volumes from lengths.</li><li>Get masses from volumes and densities.</li><li>If all else fails, bound it.</li><li>One “sig. fig.” is fine.</li><li>Ask yourself: Does this make any sense?</li></ul>",
+    "Get big lengths from smaller lengths.",
+    "Get areas and volumes from lengths.",
+    "Get masses from volumes and densities.",
+    "If all else fails, bound it.",
+    "One “sig. fig.” is fine.",
+    "Ask yourself: Does this make any sense?"
+   ]
+  },
+  {
+   "num": "1.6",
+   "module": "m58274",
+   "title": "Significant Figures",
+   "objectives": [
+    "Determine the correct number of significant figures for the result of a computation.",
+    "Describe the relationship between the concepts of accuracy, precision, uncertainty, and discrepancy.",
+    "Calculate the percent uncertainty of a measurement, given its value and its uncertainty.",
+    "Determine the uncertainty of the result of a computation involving quantities with given uncertainties."
+   ],
+   "callouts": [
+    "\\text{Percent uncertainty}=\\frac{\\delta A}{A}\\, \\times \\, 100%"
+   ],
+   "examples": [
+    {
+     "title": "Calculating Percent Uncertainty: A Bag of Apples",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A grocery store sells 5-lb bags of apples. Let’s say we purchase four bags during the course of a month and weigh the bags each time. We obtain the following measurements:</p><ul><li>Week 1 weight: 4.8 lb</li><li>Week 2 weight: 5.3 lb</li><li>Week 3 weight: 4.9 lb</li><li>Week 4 weight: 5.4 lb</li></ul><p>We then determine the average weight of the 5-lb bag of apples is 5.1 ± 0.3 lb from using half of the range. What is the percent uncertainty of the bag’s weight?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, observe that the average value of the bag’s weight, <i>A</i>, is 5.1 lb. The uncertainty in this value, \\(\\delta A,\\) is 0.3 lb. We can use the following equation to determine the percent uncertainty of the weight:</p><div class='eq'>\\[\\text{Percent uncertainty}=\\frac{\\delta A}{A}\\, \\times \\, 100%.\\]</div>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substitute the values into the equation:</p><div class='eq'>\\[\\text{Percent uncertainty}=\\frac{\\delta A}{A}\\, \\times \\, 100%=\\frac{0.3\\, \\text{lb}}{5.1\\, \\text{lb}}\\, \\times \\, 100%=5.9%\\approx 6%.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We can conclude the average weight of a bag of apples from this store is 5.1 lb ± 6%. Notice the percent uncertainty is dimensionless because the units of weight in \\(\\delta A=0.3\\) lb canceled those in <i>A</i> = 5.1 lb when we took the ratio.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A high school track coach has just purchased a new stopwatch. The stopwatch manual states the stopwatch has an uncertainty of ±0.05 s. Runners on the track coach’s team regularly clock 100-m sprints of 11.49 s to 15.01 s. At the school’s last track meet, the first-place sprinter came in at 12.04 s and the second-place sprinter came in at 12.07 s. Will the coach’s new stopwatch be helpful in timing the sprint team? Why or why not?</p>",
+     "a": "<p>No, the coach’s new stopwatch will not be helpful. The uncertainty in the stopwatch is too great to differentiate between the sprint times effectively.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Accuracy of a measured value refers to how close a measurement is to an accepted reference value. The discrepancy in a measurement is the amount by which the measurement result differs from this value.",
+    "Precision of measured values refers to how close the agreement is between repeated measurements. The uncertainty of a measurement is a quantification of this.",
+    "The precision of a measuring tool is related to the size of its measurement increments. The smaller the measurement increment, the more precise the tool.",
+    "Significant figures express the precision of a measuring tool.",
+    "When multiplying or dividing measured values, the final answer can contain only as many significant figures as the value with the least number of significant figures.",
+    "When adding or subtracting measured values, the final answer cannot contain more decimal places than the least-precise value."
+   ]
+  },
+  {
+   "num": "1.7",
+   "module": "m58275",
+   "title": "Solving Problems in Physics",
+   "objectives": [
+    "Describe the process for developing a problem-solving strategy.",
+    "Explain how to find the numerical solution to a problem.",
+    "Summarize the process for assessing the significance of the numerical solution to a problem."
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "<i>Strategy</i>: Determine which physical principles are involved and develop a strategy for using them to solve the problem.",
+    "<i>Solution</i>: Do the math necessary to obtain a numerical solution complete with units.",
+    "<i>Significance</i>: Check the solution to make sure it makes sense (correct units, reasonable magnitude and sign) and assess its significance."
+   ]
+  }
+ ],
+ "figures": []
+}

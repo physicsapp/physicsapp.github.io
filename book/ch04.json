@@ -1,0 +1,553 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 4,
+  "title": "Motion in Two and Three Dimensions"
+ },
+ "keyEquations": [
+  {
+   "name": "Position vector",
+   "tex": "\\mathbf{\\vec{r}}(t)=x(t)\\mathbf{\\hat{i}}+y(t)\\mathbf{\\hat{j}}+z(t)\\mathbf{\\hat{k}}"
+  },
+  {
+   "name": "Displacement vector",
+   "tex": "\\Delta \\mathbf{\\vec{r}}=\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})"
+  },
+  {
+   "name": "Velocity vector",
+   "tex": "\\mathbf{\\vec{v}}(t)=\\lim _{\\Delta t\\to 0}\\frac{\\mathbf{\\vec{r}}(t+\\Delta t)-\\mathbf{\\vec{r}}(t)}{\\Delta t}=\\frac{d\\mathbf{\\vec{r}}}{dt}"
+  },
+  {
+   "name": "Velocity in terms of components",
+   "tex": "\\mathbf{\\vec{v}}(t)={v}_{x}(t)\\mathbf{\\hat{i}}+{v}_{y}(t)\\mathbf{\\hat{j}}+{v}_{z}(t)\\mathbf{\\hat{k}}"
+  },
+  {
+   "name": "Velocity components",
+   "tex": "{v}_{x}(t)=\\frac{dx(t)}{dt}\\; {v}_{y}(t)=\\frac{dy(t)}{dt}\\; {v}_{z}(t)=\\frac{dz(t)}{dt}"
+  },
+  {
+   "name": "Average velocity",
+   "tex": "{\\mathbf{\\vec{v}}}_{\\text{avg}}=\\frac{\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})}{{t}_{2}-{t}_{1}}"
+  },
+  {
+   "name": "Instantaneous acceleration",
+   "tex": "\\mathbf{\\vec{a}}(t)=\\lim _{t\\to 0}\\frac{\\mathbf{\\vec{v}}(t+\\Delta t)-\\mathbf{\\vec{v}}(t)}{\\Delta t}=\\frac{d\\mathbf{\\vec{v}}(t)}{dt}"
+  },
+  {
+   "name": "Instantaneous acceleration, component form",
+   "tex": "\\mathbf{\\vec{a}}(t)=\\frac{d{v}_{x}(t)}{dt}\\mathbf{\\hat{i}}+\\frac{d{v}_{y}(t)}{dt}\\mathbf{\\hat{j}}+\\frac{d{v}_{z}(t)}{dt}\\mathbf{\\hat{k}}"
+  },
+  {
+   "name": "Instantaneous acceleration as second derivatives of position",
+   "tex": "\\mathbf{\\vec{a}}(t)=\\frac{{d}^{2}x(t)}{d{t}^{2}}\\mathbf{\\hat{i}}+\\frac{{d}^{2}y(t)}{d{t}^{2}}\\mathbf{\\hat{j}}+\\frac{{d}^{2}z(t)}{d{t}^{2}}\\mathbf{\\hat{k}}"
+  },
+  {
+   "name": "Time of flight",
+   "tex": "{T}_{\\text{tof}}=\\frac{2({v}_{0}\\sin {\\theta}_{0})}{g}"
+  },
+  {
+   "name": "Trajectory",
+   "tex": "y=(\\tan {\\theta}_{0})x-[\\frac{g}{2{({v}_{0}\\cos {\\theta}_{0})}^{2}}]{x}^{2}"
+  },
+  {
+   "name": "Range",
+   "tex": "R=\\frac{{v}_{0}^{2}\\sin \\, 2{\\theta}_{0}}{g}"
+  },
+  {
+   "name": "Centripetal acceleration",
+   "tex": "{a}_{\\text{C}}=\\frac{{v}^{2}}{r}"
+  },
+  {
+   "name": "Position vector, uniform circular motion",
+   "tex": "\\mathbf{\\vec{r}}(t)=A\\cos \\, \\omega t\\, \\mathbf{\\hat{i}}+A\\, \\sin \\, \\omega t\\mathbf{\\hat{j}}"
+  },
+  {
+   "name": "Velocity vector, uniform circular motion",
+   "tex": "\\mathbf{\\vec{v}}(t)=\\frac{d\\mathbf{\\vec{r}}(t)}{dt}=-A\\omega \\, \\sin \\, \\omega t\\mathbf{\\hat{i}}+A\\omega \\, \\cos \\, \\omega t\\mathbf{\\hat{j}}"
+  },
+  {
+   "name": "Acceleration vector, uniform circular motion",
+   "tex": "\\mathbf{\\vec{a}}(t)=\\frac{d\\mathbf{\\vec{v}}(t)}{dt}=-A{\\omega}^{2}\\, \\cos \\, \\omega t\\mathbf{\\hat{i}}-A{\\omega}^{2}\\, \\sin \\, \\omega t\\mathbf{\\hat{j}}"
+  },
+  {
+   "name": "Tangential acceleration",
+   "tex": "{a}_{\\text{T}}=\\frac{d|\\mathbf{\\vec{v}}|}{dt}"
+  },
+  {
+   "name": "Total acceleration",
+   "tex": "\\mathbf{\\vec{a}}={\\mathbf{\\vec{a}}}_{\\text{C}}+{\\mathbf{\\vec{a}}}_{\\text{T}}"
+  },
+  {
+   "name": "Position vector in frame S is the position vector in frame S′ plus the vector from the origin of S to the origin of S′",
+   "tex": "{\\mathbf{\\vec{r}}}_{PS}={\\mathbf{\\vec{r}}}_{P{S}^{'}}+{\\mathbf{\\vec{r}}}_{{S}^{'}S}"
+  },
+  {
+   "name": "Relative velocity equation connecting two reference frames",
+   "tex": "{\\mathbf{\\vec{v}}}_{PS}={\\mathbf{\\vec{v}}}_{P{S}^{'}}+{\\mathbf{\\vec{v}}}_{{S}^{'}S}"
+  },
+  {
+   "name": "Relative velocity equation connecting more than two reference frames",
+   "tex": "{\\mathbf{\\vec{v}}}_{PC}={\\mathbf{\\vec{v}}}_{PA}+{\\mathbf{\\vec{v}}}_{AB}+{\\mathbf{\\vec{v}}}_{BC}"
+  },
+  {
+   "name": "Relative acceleration equation",
+   "tex": "{\\mathbf{\\vec{a}}}_{PS}={\\mathbf{\\vec{a}}}_{P{S}^{'}}+{\\mathbf{\\vec{a}}}_{{S}^{'}S}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "4.1",
+   "module": "m58289",
+   "title": "Displacement and Velocity Vectors",
+   "objectives": [
+    "Calculate position vectors in a multidimensional displacement problem.",
+    "Solve for the displacement in two or three dimensions.",
+    "Calculate the velocity vector given the position vector as a function of time.",
+    "Calculate the average velocity in multiple dimensions."
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{r}}(t)=x(t)\\mathbf{\\hat{i}}+y(t)\\mathbf{\\hat{j}}+z(t)\\mathbf{\\hat{k}}",
+    "\\Delta \\mathbf{\\vec{r}}=\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})",
+    "\\mathbf{\\vec{v}}(t)=\\lim _{\\Delta t\\to 0}\\frac{\\mathbf{\\vec{r}}(t+\\Delta t)-\\mathbf{\\vec{r}}(t)}{\\Delta t}=\\frac{d\\mathbf{\\vec{r}}(t)}{dt}",
+    "\\mathbf{\\vec{v}}(t)={v}_{x}(t)\\mathbf{\\hat{i}}+{v}_{y}(t)\\mathbf{\\hat{j}}+{v}_{z}(t)\\mathbf{\\hat{k}}",
+    "{v}_{x}(t)=\\frac{dx(t)}{dt},\\quad {v}_{y}(t)=\\frac{dy(t)}{dt},\\quad {v}_{z}(t)=\\frac{dz(t)}{dt}",
+    "{\\mathbf{\\vec{v}}}_{\\text{avg}}=\\frac{\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})}{{t}_{2}-{t}_{1}}"
+   ],
+   "examples": [
+    {
+     "title": "Polar Orbiting Satellite",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A satellite is in a circular polar orbit around Earth at an altitude of 400 km—meaning, it passes directly overhead at the North and South Poles. What is the magnitude and direction of the displacement vector from when it is directly over the North Pole to when it is at \\(-45^{\\circ}\\) latitude?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We make a picture of the problem to visualize the solution graphically. This will aid in our understanding of the displacement. We then use unit vectors to solve for the displacement.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The figure shows the surface of Earth and a circle that represents the orbit of the satellite. Although satellites are moving in three-dimensional space, they follow trajectories of ellipses, which can be graphed in two dimensions. The position vectors are drawn from the center of Earth, which we take to be the origin of the coordinate system, with the <i>y</i>-axis as north and the <i>x</i>-axis as east. The vector between them is the displacement of the satellite. We take the radius of Earth as 6370 km, so the length of each position vector is 6770 km.</p><figure><img src='img/CNX_UPhysics_04_01_Satorb.jpg' alt=\"An x y coordinate system, centered on the earth, is shown. Positive x is to the east and positive y to the north. A blue circle larger than and concentric with the earth is shown. Vector r of t 1 is an orange arrow from the origin to the location where the blue circle crosses the y axis (90 degrees counter clockwise from the positive x axis.) Vector r of t 2 is an orange arrow from the origin to the location on the blue circle at minus 45 degrees. Delta r vector is shown as a purple arrow pointing down and to the right, starting at the head of vector r of t 1 and ending at the head of vector r of t 2.\" loading='lazy'><figcaption>Two position vectors are drawn from the center of Earth, which is the origin of the coordinate system, with the <i>y</i>-axis as north and the <i>x</i>-axis as east. The vector between them is the displacement of the satellite.</figcaption></figure><p>In unit vector notation, the position vectors are</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ \\mathbf{\\vec{r}}({t}_{1})=6770.\\, \\text{km}\\mathbf{\\hat{j}} \\\\ \\mathbf{\\vec{r}}({t}_{2})=6770.\\, \\text{km}\\, (\\cos \\, (-45^{\\circ} ))\\mathbf{\\hat{i}}+6770.\\, \\text{km}\\, (\\sin (-45^{\\circ} ))\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>Evaluating the sine and cosine, we have</p><div class='eq'>\\[\\begin{array}{lll} \\\\ \\\\ \\mathbf{\\vec{r}}({t}_{1}) & = & 6770.\\mathbf{\\hat{j}} \\\\ \\mathbf{\\vec{r}}({t}_{2}) & = & 4787\\mathbf{\\hat{i}}-4787\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>Now we can find \\(\\Delta \\mathbf{\\vec{r}}\\), the displacement of the satellite:</p><div class='eq'>\\[\\Delta \\mathbf{\\vec{r}}=\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})=4787\\mathbf{\\hat{i}}-11,557\\mathbf{\\hat{j}}.\\]</div><p>The magnitude of the displacement is \\(|\\Delta \\mathbf{\\vec{r}}|=\\sqrt{{(4787)}^{2}+{(-11,557)}^{2}}=12,509\\, \\text{km}.\\) The angle the displacement makes with the <i>x-</i>axis is \\(\\theta ={\\tan}^{-1}(\\frac{-11,557}{4787})=-67.5^{\\circ} .\\)</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Plotting the displacement gives information and meaning to the unit vector solution to the problem. When plotting the displacement, we need to include its components as well as its magnitude and the angle it makes with a chosen axis—in this case, the <i>x</i>-axis (the figure).</p><figure><img src='img/CNX_UPhysics_04_01_Dispvec.jpg' alt=\"An x y coordinate system is shown. Positive x is to the east and positive y to the north. Vector delta r sub x points east and has magnitude 4787 kilometers. Vector delta r sub y points south and has magnitude 11,557 kilometers. Vector delta r points to the southeast, starting at the tail of delta r sub x and ending at the head of delta r sub y and has magnitude 12,509 kilometers.\" loading='lazy'><figcaption>Displacement vector with components, angle, and magnitude.</figcaption></figure><p>Note that the satellite took a curved path along its circular orbit to get from its initial position to its final position in this example. It also could have traveled 4787 km east, then 11,557 km south to arrive at the same location. Both of these paths are longer than the length of the displacement vector. In fact, the displacement vector gives the shortest path between two points in one, two, or three dimensions.</p><p>Many applications in physics can have a series of displacements, as discussed in the previous chapter. The total displacement is the sum of the individual displacements, only this time, we need to be careful, because we are adding vectors. We illustrate this concept with an example of Brownian motion.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Brownian Motion",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p><b>Brownian motion</b> is a chaotic random motion of particles suspended in a fluid, resulting from collisions with the molecules of the fluid. This motion is three-dimensional. The displacements in numerical order of a particle undergoing Brownian motion could look like the following, in micrometers (the figure):</p><div class='eq'>\\[\\begin{array}{lll} \\\\ \\\\ \\Delta {\\mathbf{\\vec{r}}}_{1} & = & 2.0\\mathbf{\\hat{i}}+\\mathbf{\\hat{j}}+3.0\\mathbf{\\hat{k}} \\\\ \\Delta {\\mathbf{\\vec{r}}}_{2} & = & -\\mathbf{\\hat{i}}+3.0\\mathbf{\\hat{k}} \\\\ \\Delta {\\mathbf{\\vec{r}}}_{3} & = & 4.0\\mathbf{\\hat{i}}-2.0\\mathbf{\\hat{j}}+\\mathbf{\\hat{k}} \\\\ \\Delta {\\mathbf{\\vec{r}}}_{4} & = & -3.0\\mathbf{\\hat{i}}+\\mathbf{\\hat{j}}+2.0\\mathbf{\\hat{k}}.\\end{array}\\]</div><p>What is the total displacement of the particle from the origin?</p><figure><img src='img/CNX_UPhysics_04_01_Browmot.jpg' alt=\"An x y z coordinate system with distances measured in micrometers and ranging from -10 to +10 micrometers is shown. The displacements delta r sub 1 equals 2 I hat plus j hat plus 9 k hat, delta r sub 2 equals -1 I hat plus 3 k hat, and delta r sub 3 equals -3 I hat plus j hat plus 2 k hat are shown as blue line segments. Vector r 1 hat starts at the origin. Each subsequent displacement starts where the previous one ends. Vector delta r total is shown as a red line starting at the origin and ending at the end of vector delta r 4. Delta r total equals 2 I hat plus 0 y hat plus 9 k hat.\" loading='lazy'><figcaption>Trajectory of a particle undergoing random displacements of Brownian motion. The total displacement is shown in red.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We form the sum of the displacements and add them as vectors:</p><div class='eq'>\\[\\begin{array}{ll}\\Delta {\\mathbf{\\vec{r}}}_{\\text{Total}} & =\\sum \\Delta {\\mathbf{\\vec{r}}}_{i}=\\Delta {\\mathbf{\\vec{r}}}_{1}+\\Delta {\\mathbf{\\vec{r}}}_{2}+\\Delta {\\mathbf{\\vec{r}}}_{3}+\\Delta {\\mathbf{\\vec{r}}}_{4} \\\\ & =(2.0-1.0+4.0-3.0)\\mathbf{\\hat{i}}+(1.0+0-2.0+1.0)\\mathbf{\\hat{j}}+(3.0+3.0+1.0+2.0)\\mathbf{\\hat{k}} \\\\ & =2.0\\mathbf{\\mathbf{\\hat{i}}}+0\\mathbf{\\mathbf{\\hat{j}}}+9.0\\mathbf{\\mathbf{\\hat{k}}}\\mu \\text{m}.\\end{array}\\]</div><p>To complete the solution, we express the displacement as a magnitude and direction,</p><div class='eq'>\\[|\\Delta {\\mathbf{\\vec{r}}}_{\\text{Total}}|=\\sqrt{{2.0}^{2}+{0}^{2}+{9.0}^{2}}=9.2\\, \\mu \\text{m,}\\quad \\theta ={\\tan}^{-1}(\\frac{9}{2})=77^{\\circ} ,\\]</div><p>with respect to the <i>x</i>-axis in the <i>xz-</i>plane.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>From the figure we can see the magnitude of the total displacement is less than the sum of the magnitudes of the individual displacements.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating the Velocity Vector",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The position function of a particle is \\(\\mathbf{\\vec{r}}(t)=2.0{t}^{2}\\mathbf{\\hat{i}}+(2.0+3.0t)\\mathbf{\\hat{j}}+5.0t\\mathbf{\\hat{k}}\\text{m}.\\) (a) What is the instantaneous velocity and speed at <i>t</i> = 2.0 s? (b) What is the average velocity between 1.0 s and 3.0 s?</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Using the equation and the equation, and taking the derivative of the position function with respect to time, we find</p><p>(a) \\(\\mathbf{\\vec{v}}(t)=\\frac{d\\text{r}(t)}{dt}=4.0t\\mathbf{\\hat{i}}+3.0\\mathbf{\\hat{j}}+5.0\\mathbf{\\hat{k}}\\text{m/s}\\)</p><p>\\(\\mathbf{\\vec{v}}(2.0s)=8.0\\mathbf{\\hat{i}}+3.0\\mathbf{\\hat{j}}+5.0\\mathbf{\\hat{k}}\\text{m/s}\\)</p><p>Speed \\(|\\mathbf{\\vec{v}}(2.0\\, \\text{s})|=\\sqrt{{8}^{2}+{3}^{2}+{5}^{2}}=9.9\\, \\text{m/s}.\\)</p><p>(b) From the equation,<br>\\(\\begin{array}{ll}{\\mathbf{\\vec{v}}}_{\\text{avg}} & =\\frac{\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})}{{t}_{2}-{t}_{1}}=\\frac{\\mathbf{\\vec{r}}(3.0\\, \\text{s})-\\mathbf{\\vec{r}}(1.0\\, \\text{s})}{3.0\\, \\text{s}-1.0\\, \\text{s}}=\\frac{(18\\mathbf{\\hat{i}}+11\\mathbf{\\hat{j}}+15\\mathbf{\\hat{k}})\\, \\text{m}-(2\\mathbf{\\hat{i}}+5\\mathbf{\\hat{j}}+5\\mathbf{\\hat{k}})\\, \\text{m}}{2.0\\, \\text{s}} \\\\ & =\\frac{(16\\mathbf{\\hat{i}}+6\\mathbf{\\hat{j}}+10\\mathbf{\\hat{k}})\\, \\text{m}}{2.0\\, \\text{s}}=8.0\\mathbf{\\hat{i}}+3.0\\mathbf{\\hat{j}}+5.0\\mathbf{\\hat{k}}\\text{m/s}.\\end{array}\\)</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We see the average velocity is the same as the instantaneous velocity at <i>t</i> = 2.0 s, as a result of the velocity function being linear. This need not be the case in general. In fact, most of the time, instantaneous and average velocities are not the same.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>The position function of a particle is \\(\\mathbf{\\vec{r}}(t)=3.0{t}^{3}\\mathbf{\\hat{i}}+4.0\\mathbf{\\hat{j}}.\\) (a) What is the instantaneous velocity at <i>t</i> = 3 s? (b) Is the average velocity between 2 s and 4 s equal to the instantaneous velocity at <i>t</i> = 3 s?</p>",
+     "a": "<p>(a) Taking the derivative with respect to time of the position function, we have \\(\\mathbf{\\vec{v}}(t)=9.0{t}^{2}\\mathbf{\\hat{i}}\\text{and}\\mathbf{\\vec{v}}\\text{(3.0s)}=81.0\\mathbf{\\hat{i}}\\text{m/s}.\\) (b) Since the velocity function is nonlinear, we suspect the average velocity is not equal to the instantaneous velocity. We check this and find<br> \\({\\mathbf{\\vec{v}}}_{\\text{avg}}=\\frac{\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})}{{t}_{2}-{t}_{1}}=\\frac{\\mathbf{\\vec{r}}(4.0\\, \\text{s})-\\mathbf{\\vec{r}}(2.0\\, \\text{s})}{4.0\\, \\text{s}-2.0\\, \\text{s}}=\\frac{[(192-24)\\mathbf{\\hat{i}}+(4-4)\\mathbf{\\hat{i}}]\\, \\text{m}}{2.0\\, \\text{s}}=84\\mathbf{\\hat{j}}\\text{m/s},\\)<br> which is different from \\(\\mathbf{\\vec{v}}\\text{(3.0s)}=81.0\\mathbf{\\hat{i}}\\text{m/s}.\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The position function \\(\\mathbf{\\vec{r}}(t)\\) gives the position as a function of time of a particle moving in two or three dimensions. Graphically, it is a vector from the origin of a chosen coordinate system to the point where the particle is located at a specific time.",
+    "The displacement vector \\(\\Delta \\mathbf{\\vec{r}}\\) gives the shortest distance between any two points on the trajectory of a particle in two or three dimensions.",
+    "Instantaneous velocity gives the speed and direction of a particle at a specific time on its trajectory in two or three dimensions, and is a vector in two and three dimensions.",
+    "The velocity vector is tangent to the trajectory of the particle.",
+    "Displacement \\(\\mathbf{\\vec{r}}(t)\\) can be written as a vector sum of the one-dimensional displacements \\(\\vec{x}(t),\\vec{y}(t),\\vec{z}(t)\\) along the <i>x</i>, <i>y</i>, and <i>z</i> directions.",
+    "Velocity \\(\\mathbf{\\vec{v}}(t)\\) can be written as a vector sum of the one-dimensional velocities \\({v}_{x}(t),{v}_{y}(t),{v}_{z}(t)\\) along the <i>x</i>, <i>y</i>, and <i>z</i> directions.",
+    "Motion in any given direction is independent of motion in a perpendicular direction."
+   ]
+  },
+  {
+   "num": "4.2",
+   "module": "m58290",
+   "title": "Acceleration Vector",
+   "objectives": [
+    "Calculate the acceleration vector given the velocity function in unit vector notation.",
+    "Describe the motion of a particle with a constant acceleration in three dimensions.",
+    "Use the one-dimensional motion equations along perpendicular axes to solve a problem in two or three dimensions with a constant acceleration.",
+    "Express the acceleration in unit vector notation."
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{a}}(t)=\\lim _{∆t\\to 0}\\frac{\\mathbf{\\vec{v}}(t+\\Delta t)-\\mathbf{\\vec{v}}(t)}{\\Delta t}=\\frac{d\\mathbf{\\vec{v}}(t)}{dt}",
+    "\\mathbf{\\vec{a}}(t)=\\text{​}\\frac{d{v}_{x}(t)}{dt}\\mathbf{\\hat{i}}+\\frac{d{v}_{y}(t)}{dt}\\mathbf{\\hat{j}}+\\frac{d{v}_{z}(t)}{dt}\\mathbf{\\hat{k}}",
+    "={a}_{x}(t)\\mathbf{\\hat{i}}+{a}_{y}(t)\\mathbf{\\hat{j}}+{a}_{z}(t)\\mathbf{\\hat{k}}",
+    "\\mathbf{\\vec{a}}(t)=\\frac{{d}^{2}x(t)}{d{t}^{2}}\\mathbf{\\hat{i}}+\\frac{{d}^{2}y(t)}{d{t}^{2}}\\mathbf{\\hat{j}}+\\frac{{d}^{2}z(t)}{d{t}^{2}}\\mathbf{\\hat{k}}"
+   ],
+   "examples": [
+    {
+     "title": "Finding an Acceleration Vector",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A particle has a velocity of \\(\\mathbf{\\vec{v}}(t)=5.0t\\mathbf{\\hat{i}}+{t}^{2}\\mathbf{\\hat{j}}-2.0{t}^{3}\\mathbf{\\hat{k}}\\text{m/s}.\\) (a) What is the acceleration function? (b) What is the acceleration vector at <i>t</i> = 2.0 s? Find its magnitude and direction.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>(a) We take the first derivative with respect to time of the velocity function to find the acceleration. The derivative is taken component by component:</p><div class='eq'>\\[\\mathbf{\\vec{a}}(t)=5.0\\mathbf{\\hat{i}}+2.0t\\mathbf{\\hat{j}}-6.0{t}^{2}\\mathbf{\\hat{k}}\\text{m/}{\\text{s}}^{2}.\\]</div><p>(b) Evaluating \\(\\mathbf{\\vec{a}}(2.0\\, \\text{s})=5.0\\mathbf{\\hat{i}}+4.0\\mathbf{\\hat{j}}-24.0\\mathbf{\\hat{k}}\\text{m/}{\\text{s}}^{2}\\) gives us the direction in unit vector notation. The magnitude of the acceleration is \\(|\\mathbf{\\vec{a}}(2.0\\, \\text{s})|=\\sqrt{{5.0}^{2}+{4.0}^{2}+{(-24.0)}^{2}}=24.8\\, \\text{m/}{\\text{s}}^{2}.\\)</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In this example we find that acceleration has a time dependence and is changing throughout the motion. Let’s consider a different velocity function for the particle.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Finding a Particle Acceleration",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A particle has a position function \\(\\mathbf{\\vec{r}}(t)=(10t-{t}^{2})\\mathbf{\\hat{i}}+5t\\mathbf{\\hat{j}}+5t\\text{​}\\mathbf{\\hat{k}}\\text{m}.\\) (a) What is the velocity? (b) What is the acceleration? (c) Describe the motion from <i>t</i> = 0 s.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can gain some insight into the problem by looking at the position function. It is linear in <i>y</i> and <i>z</i>, so we know the acceleration in these directions is zero when we take the second derivative. Also, note that the position in the <i>x</i> direction is zero for <i>t</i> = 0 s and <i>t</i> = 10 s.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>(a) Taking the derivative with respect to time of the position function, we find</p><div class='eq'>\\[\\mathbf{\\vec{v}}(t)=(10-2t)\\mathbf{\\hat{i}}+5\\mathbf{\\hat{j}}+5\\mathbf{\\hat{k}}\\, \\text{m/s}.\\]</div><p>The velocity function is linear in time in the <i>x</i> direction and is constant in the <i>y</i> and <i>z</i> directions.</p><p>(b) Taking the derivative of the velocity function, we find</p><div class='eq'>\\[\\mathbf{\\mathbf{\\vec{a}}}(t)=-2\\mathbf{\\mathbf{\\hat{i}}}\\, {\\text{m/s}}^{2}.\\]</div><p>The acceleration vector is a constant in the negative <i>x</i>-direction.</p><p>(c) The trajectory of the particle can be seen in the figure. Let’s look in the <i>y</i> and <i>z</i> directions first. The particle’s position increases steadily as a function of time with a constant velocity in these directions. In the <i>x</i> direction, however, the particle follows a path in positive <i>x</i> until <i>t</i> = 5 s, when it reverses direction. We know this from looking at the velocity function, which becomes zero at this time and negative thereafter. We also know this because the acceleration is negative and constant—meaning, the particle is accelerating in the opposite direction. The particle’s position reaches 25 m, where it then reverses direction and begins to accelerate in the negative <i>x</i> direction. The position reaches zero at <i>t</i> = 10 s.</p><figure><img src='img/CNX_UPhysics_04_02_Trajectory.jpg' alt=\"An x y z coordinate system is shown. All the axes show distance in meters and run from -50 to 50 meters. A series of 10 red stars are shown, with the sixth star is labeled as t = 6 s and the tenth as t = 10 s. The red series of stars starts at the origin and curves upward (both y and z increasing with time). Vertical dashed lines connect the red dots to a series of blue dots in the x y plane. The blue dots are all in the first quadrant (positive x and y). The dots are regularly spaced along the y coordinate, while the x coordinate starts at 0, increases, reaches a maximum of x = 25 m at t = 5, and then decreases back to x = 0 at t 10 s.\" loading='lazy'><figcaption>The particle starts at point (<i>x</i>, <i>y</i>, <i>z</i>) = (0, 0, 0) with position vector \\(\\mathbf{\\vec{r}}=0\\) as shown with red stars. The projection of the trajectory onto the <i>xy-</i>plane is shown with blue dots. The values of <i>y</i> and <i>z</i> increase linearly as a function of time, whereas <i>x</i> has a turning point at <i>t</i> = 5 s and 25 m, when it reverses direction. At this point, the <i>x</i> component of the velocity becomes negative. At <i>t</i> = 10 s, the particle is back to 0 m in the <i>x</i> direction.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>By graphing the trajectory of the particle, we can better understand its motion, given by the numerical results of the kinematic equations.</p>"
+      }
+     ]
+    },
+    {
+     "title": "A Skier",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure shows a skier moving with an acceleration of \\(2.1\\, \\text{m/}{\\text{s}}^{2}\\) down a slope of \\(15^{\\circ}\\) at <i>t</i> = 0. With the origin of the coordinate system at the front of the lodge, her initial position and velocity are</p><div class='eq'>\\[\\mathbf{\\vec{r}}(0)=(75.0\\mathbf{\\hat{i}}-20.0\\mathbf{\\hat{j}})\\, \\text{m}\\]</div><p>and</p><div class='eq'>\\[\\mathbf{\\mathbf{\\vec{v}}}(0)=(4.1\\mathbf{\\mathbf{\\hat{i}}}-1.1\\mathbf{\\mathbf{\\hat{j}}})\\, \\text{m/s}.\\]</div><p>(a) What are the <i>x-</i> and <i>y</i>-components of the skier’s position and velocity as functions of time? (b) What are her position and velocity at <i>t</i> = 10.0 s?</p><figure><img src='img/CNX_UPhysics_04_02_Skier.jpg' alt=\"An illustration of a skier in an x y coordinate system is shown. The skier is moving along a line that is 15 degrees below the horizontal x direction and has an acceleration of a = 2.1 meters per second squared also directed in his direction of motion. The acceleration is represented as a purple arrow.\" loading='lazy'><figcaption>A skier has an acceleration of \\(2.1\\, {\\text{m/s}}^{2}\\) down a slope of \\(15^{\\circ} .\\) The origin of the coordinate system is at the ski lodge.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since we are evaluating the components of the motion equations in the <i>x</i> and <i>y</i> directions, we need to find the components of the acceleration and put them into the kinematic equations. The components of the acceleration are found by referring to the coordinate system in the figure. Then, by inserting the components of the initial position and velocity into the motion equations, we can solve for her position and velocity at a later time <i>t</i>.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>(a) The origin of the coordinate system is at the top of the hill with <i>y-</i>axis vertically upward and the <i>x-</i>axis horizontal. By looking at the trajectory of the skier, the <i>x-</i>component of the acceleration is positive and the <i>y-</i>component is negative. Since the angle is \\(15^{\\circ}\\) down the slope, we find</p><div class='eq'>\\[{a}_{x}=(2.1\\, \\text{m/}{\\text{s}}^{2})\\, \\cos (15^{\\circ} )=2.0\\, \\text{m/}{\\text{s}}^{2}\\]</div><div class='eq'>\\[{a}_{y}=(-2.1\\, \\text{m/}{\\text{s}}^{2})\\, \\sin \\, 15^{\\circ} =-0.54\\, \\text{m/}{\\text{s}}^{2}.\\]</div><p>Inserting the initial position and velocity into the equation and the equation for <i>x</i>, we have</p><div class='eq'>\\[x(t)=75.0\\, \\text{m}+(4.1\\, \\text{m/s})t+\\frac{1}{2}(2.0\\, \\text{m/}{\\text{s}}^{2}){t}^{2}\\]</div><div class='eq'>\\[{v}_{x}(t)=4.1\\, \\text{m/s}+(2.0\\, \\text{m/}{\\text{s}}^{2})t.\\]</div><p>For <i>y</i>, we have</p><div class='eq'>\\[y(t)=-20.0\\, \\text{m}+(-1.1\\, \\text{m/s})t+\\frac{1}{2}(-0.54\\, \\text{m/}{\\text{s}}^{2}){t}^{2}\\]</div><div class='eq'>\\[{v}_{y}(t)=-1.1\\, \\text{m/s}+(-0.54\\, \\text{m/}{\\text{s}}^{2})t.\\]</div><p>(b) Now that we have the equations of motion for <i>x</i> and <i>y</i> as functions of time, we can evaluate them at <i>t</i> = 10.0 s:</p><div class='eq'>\\[x(10.0\\, \\text{s})=75.0\\, \\text{m}+(4.1\\, \\text{m/}{\\text{s}}^{2})(10.0\\, \\text{s})+\\frac{1}{2}(2.0\\, \\text{m/}{\\text{s}}^{2}){(10.0\\, \\text{s})}^{2}=216.0\\, \\text{m}\\]</div><div class='eq'>\\[{v}_{x}(10.0\\, \\text{s})=4.1\\, \\text{m/s}+(2.0\\, \\text{m/}{\\text{s}}^{2})(10.0\\, \\text{s})=24.1\\text{m}\\text{/s}\\]</div><div class='eq'>\\[y(10.0\\, \\text{s})=-20.0\\, \\text{m}+(-1.1\\, \\text{m/s})(10.0\\, \\text{s})+\\frac{1}{2}(-0.54\\, \\text{m/}{\\text{s}}^{2}){(10.0\\, \\text{s})}^{2}=-58.0\\, \\text{m}\\]</div><div class='eq'>\\[{v}_{y}(10.0\\, \\text{s})=-1.1\\, \\text{m/s}+(-0.54\\, \\text{m/}{\\text{s}}^{2})(10.0\\, \\text{s})=-6.5\\, \\text{m/s}.\\]</div><p>The position and velocity at <i>t</i> = 10.0 s are, finally,</p><div class='eq'>\\[\\mathbf{\\vec{r}}(10.0\\, \\text{s})=(216.0\\mathbf{\\hat{i}}-58.0\\mathbf{\\hat{j}})\\, \\text{m}\\]</div><div class='eq'>\\[\\mathbf{\\vec{v}}(10.0\\, \\text{s})=(24.1\\mathbf{\\hat{i}}-6.5\\mathbf{\\hat{j}})\\text{m/s}.\\]</div><p>The magnitude of the velocity of the skier at 10.0 s is 25 m/s, which is 60 mi/h.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>It is useful to know that, given the initial conditions of position, velocity, and acceleration of an object, we can find the position, velocity, and acceleration at any later time.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Suppose the acceleration function has the form \\(\\mathbf{\\vec{a}}(t)=a\\mathbf{\\hat{i}}+b\\mathbf{\\hat{j}}+c\\mathbf{\\hat{k}}\\text{m/}{\\text{s}}^{2},\\) where <i>a, b,</i> and <i>c</i> are constants. What can be said about the functional form of the velocity function?</p>",
+     "a": "<p>The acceleration vector is constant and doesn’t change with time. If <i>a, b</i>, and <i>c</i> are not zero, then the velocity function must be linear in time. We have \\(\\mathbf{\\vec{v}}(t)=\\int \\mathbf{\\vec{a}}dt=\\int (a\\mathbf{\\hat{i}}+b\\mathbf{\\hat{j}}+c\\mathbf{\\hat{k}})dt=(a\\mathbf{\\hat{i}}+b\\mathbf{\\hat{j}}+c\\mathbf{\\hat{k}})t\\, \\text{m/s},\\) since taking the derivative of the velocity function produces \\(\\mathbf{\\vec{a}}(t).\\) If any of the components of the acceleration are zero, then that component of the velocity would be a constant.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "In two and three dimensions, the acceleration vector can have an arbitrary direction and does not necessarily point along a given component of the velocity.",
+    "The instantaneous acceleration is produced by a change in velocity taken over a very short (infinitesimal) time period. Instantaneous acceleration is a vector in two or three dimensions. It is found by taking the derivative of the velocity function with respect to time.",
+    "In three dimensions, acceleration \\(\\mathbf{\\vec{a}}(t)\\) can be written as a vector sum of the one-dimensional accelerations \\({a}_{x}(t),{a}_{y}(t),\\text{and}\\, {a}_{z}(t)\\) along the <i>x-</i>, <i>y</i>-, and <i>z-</i>axes.",
+    "The kinematic equations for constant acceleration can be written as the vector sum of the constant acceleration equations in the <i>x</i>, <i>y</i>, and <i>z</i> directions."
+   ]
+  },
+  {
+   "num": "4.3",
+   "module": "m58291",
+   "title": "Projectile Motion",
+   "objectives": [
+    "Use one-dimensional motion in perpendicular directions to analyze projectile motion.",
+    "Calculate the range, time of flight, and maximum height of a projectile that is launched and impacts a flat, horizontal surface.",
+    "Find the time of flight and impact velocity of a projectile that lands at a different height from that of launch.",
+    "Calculate the trajectory of a projectile."
+   ],
+   "callouts": [
+    "{T}_{\\text{tof}}=\\frac{2({v}_{0}\\sin {\\theta}_{0})}{g}",
+    "y=(\\tan \\, {\\theta}_{0})x-[\\frac{g}{2{({v}_{0}\\cos \\, {\\theta}_{0})}^{2}}]{x}^{2}",
+    "R=\\frac{{v}_{0}^{2}\\sin 2{\\theta}_{0}}{g}"
+   ],
+   "examples": [
+    {
+     "title": "A Fireworks Projectile Explodes High and Away",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>During a fireworks display, a shell is shot into the air with an initial speed of 70.0 m/s at an angle of \\(75.0^{\\circ}\\) above the horizontal, as illustrated in the figure. The fuse is timed to ignite the shell just as it reaches its highest point above the ground. (a) Calculate the height at which the shell explodes. (b) How much time passes between the launch of the shell and the explosion? (c) What is the horizontal displacement of the shell when it explodes? (d) What is the total displacement from the point of launch to the highest point?</p><figure><img src='img/CNX_UPhysics_04_03_Fireworks.jpg' alt=\"The trajectory of a fireworks shell from its launch to its highest point is shown as the left half of a downward-opening parabola in a graph of y as a function of x. The maximum height is h = 233 meters and its x displacement at that time is x = 125 meters. The initial velocity vector v sub 0 is up and to the right, tangent to the trajectory curve, and makes an angle of theta sub 0 equal to 75 degrees.\" loading='lazy'><figcaption>The trajectory of a fireworks shell. The fuse is set to explode the shell at the highest point in its trajectory, which is found to be at a height of 233 m and 125 m away horizontally.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The motion can be broken into horizontal and vertical motions in which \\({a}_{x}=0\\) and \\({a}_{y}=-g.\\) We can then define \\({x}_{0}\\) and \\({y}_{0}\\) to be zero and solve for the desired quantities.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>(a) By “height” we mean the altitude or vertical position <i>y</i> above the starting point. The highest point in any trajectory, called the <i>apex</i>, is reached when \\({v}_{y}=0.\\) Since we know the initial and final velocities, as well as the initial position, we use the following equation to find <i>y</i>:</p><div class='eq'>\\[{v}_{y}^{2}={v}_{0y}^{2}-2g(y-{y}_{0}).\\]</div><p>Because \\({y}_{0}\\) and \\({v}_{y}\\) are both zero, the equation simplifies to</p><div class='eq'>\\[\\text{0}={v}_{0y}^{2}-2gy.\\]</div><p>Solving for <i>y</i> gives</p><div class='eq'>\\[y=\\frac{{v}_{0y}^{2}}{2g}.\\]</div><p>Now we must find \\({v}_{0y},\\) the component of the initial velocity in the <i>y</i> direction. It is given by \\({v}_{0y}={v}_{0}\\sin {\\theta}_{0},\\) where \\({v}_{0}\\) is the initial velocity of 70.0 m/s and \\({\\theta}_{0}=75^{\\circ}\\) is the initial angle. Thus,</p><div class='eq'>\\[{v}_{0y}={v}_{0}\\sin \\, \\theta =(70.0\\, \\text{m}\\text{/}\\text{s})\\sin \\, 75^{\\circ} =67.6\\, \\text{m}\\text{/}\\text{s}\\]</div><p>and <i>y</i> is</p><div class='eq'>\\[y=\\frac{{(67.6\\, \\text{m}\\text{/}\\text{s})}^{2}}{2(9.80\\, \\text{m}\\text{/}{\\text{s}}^{2})}.\\]</div><p>Thus, we have</p><div class='eq'>\\[y=233\\, \\text{m}\\text{.}\\]</div><p>Note that because up is positive, the initial vertical velocity is positive, as is the maximum height, but the acceleration resulting from gravity is negative. Note also that the maximum height depends only on the vertical component of the initial velocity, so that any projectile with a 67.6-m/s initial vertical component of velocity reaches a maximum height of 233 m (neglecting air resistance). The numbers in this example are reasonable for large fireworks displays, the shells of which do reach such heights before exploding. In practice, air resistance is not completely negligible, so the initial velocity would have to be somewhat larger than that given to reach the same height.</p><p>(b) As in many physics problems, there is more than one way to solve for the time the projectile reaches its highest point. In this case, the easiest method is to use \\({v}_{y}={v}_{0y}-gt.\\) Because \\({v}_{y}=0\\) at the apex, this equation reduces to simply</p><div class='eq'>\\[0={v}_{0y}-gt\\]</div><p>or</p><div class='eq'>\\[t=\\frac{{v}_{0y}}{g}=\\frac{67.6\\, \\text{m}\\text{/}\\text{s}}{9.80\\, \\text{m}\\text{/}{\\text{s}}^{2}}=6.90\\text{s}\\text{.}\\]</div><p>This time is also reasonable for large fireworks. If you are able to see the launch of fireworks, notice that several seconds pass before the shell explodes. Another way of finding the time is by using\\(y\\, \\text{=}\\, {y}_{0}+\\frac{1}{2}({v}_{0y}+{v}_{y})t.\\) This is left for you as an exercise to complete.</p><p>(c) Because air resistance is negligible, \\({a}_{x}=0\\) and the horizontal velocity is constant, as discussed earlier. The horizontal displacement is the horizontal velocity multiplied by time as given by \\(x={x}_{0}+{v}_{x}t,\\) where \\({x}_{0}\\) is equal to zero. Thus,</p><div class='eq'>\\[x={v}_{x}t,\\]</div><p>where \\({v}_{x}\\) is the <i>x</i>-component of the velocity, which is given by</p><div class='eq'>\\[{v}_{x}={v}_{0}\\cos \\, \\theta =(70.0\\, \\text{m}\\text{/}\\text{s})\\cos 75^{\\circ} =18.1\\, \\text{m}\\text{/}\\text{s}.\\]</div><p>Time <i>t</i> for both motions is the same, so <i>x</i> is</p><div class='eq'>\\[x=(18.1\\, \\text{m}\\text{/}\\text{s})6.90\\, \\text{s}=125\\, \\text{m}\\text{.}\\]</div><p>Horizontal motion is a constant velocity in the absence of air resistance. The horizontal displacement found here could be useful in keeping the fireworks fragments from falling on spectators. When the shell explodes, air resistance has a major effect, and many fragments land directly below.</p><p>(d) The horizontal and vertical components of the displacement were just calculated, so all that is needed here is to find the magnitude and direction of the displacement at the highest point:</p><div class='eq'>\\[\\mathbf{\\vec{s}}=125\\mathbf{\\hat{i}}+233\\mathbf{\\hat{j}}\\]</div><div class='eq'>\\[|\\mathbf{\\vec{s}}|=\\sqrt{{125}^{2}+{233}^{2}}=264\\, \\text{m}\\]</div><div class='eq'>\\[\\Phi ={\\tan}^{-1}(\\frac{233}{125})=61.8^{\\circ} .\\]</div><p>Note that the angle for the displacement vector is less than the initial angle of launch. To see why this is, review the figure, which shows the curvature of the trajectory toward the ground level.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Projectile Motion: Tennis Player",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A tennis player wins a match at Arthur Ashe stadium and hits a ball into the stands at 30 m/s and at an angle \\(45^{\\circ}\\) above the horizontal (the figure). On its way down, the ball is caught by a spectator 10 m above the point where the ball was hit. (a) Calculate the time it takes the tennis ball to reach the spectator. (b) What are the magnitude and direction of the ball’s velocity at impact?</p><figure><img src='img/CNX_UPhysics_04_03_Tenplay.jpg' alt=\"An illustration of a tennis ball launched into the stands. The player is to the left of the stands and hits the ball up and to the right at an angle of theta equal to 45 degrees and velocity of v sub 0 equal to 30 meters per second. The ball reaches a spectator who is seated 10 meters above the initial height of the ball.\" loading='lazy'><figcaption>The trajectory of a tennis ball hit into the stands.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Again, resolving this two-dimensional motion into two independent one-dimensional motions allows us to solve for the desired quantities. The time a projectile is in the air is governed by its vertical motion alone. Thus, we solve for <i>t</i> first. While the ball is rising and falling vertically, the horizontal motion continues at a constant velocity. This example asks for the final velocity. Thus, we recombine the vertical and horizontal results to obtain \\(\\vec{v}\\) at final time <i>t</i>, determined in the first part of the example.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>(a) While the ball is in the air, it rises and then falls to a final position 10.0 m higher than its starting altitude. We can find the time for this by using the equation:</p><div class='eq'>\\[y\\, \\text{=}\\, {y}_{0}\\, \\text{+}\\, {v}_{0y}t-\\frac{1}{2}g{t}^{2}.\\]</div><p>If we take the initial position \\({y}_{0}\\) to be zero, then the final position is <i>y</i> = 10 m. The initial vertical velocity is the vertical component of the initial velocity:</p><div class='eq'>\\[{v}_{0y}={v}_{0}\\sin \\, {\\theta}_{0}=(30.0\\, \\text{m}\\text{/}\\text{s})\\sin \\, 45^{\\circ} =21.2\\, \\text{m}\\text{/}\\text{s}.\\]</div><p>Substituting into the equation for <i>y</i> gives us</p><div class='eq'>\\[10.0\\, \\text{m}=(21.2\\, \\text{m/s})t-(4.90\\, {\\text{m/s}}^{\\text{2}}){t}^{2}.\\]</div><p>Rearranging terms gives a quadratic equation in <i>t</i>:</p><div class='eq'>\\[(4.90\\, {\\text{m/s}}^{\\text{2}}){t}^{2}-(21.2\\, \\text{m/s})t+10.0\\, \\text{m}=0.\\]</div><p>Use of the quadratic formula yields <i>t</i> = 3.79 s and <i>t</i> = 0.54 s. Since the ball is at a height of 10 m at two times during its trajectory—once on the way up and once on the way down—we take the longer solution for the time it takes the ball to reach the spectator:</p><div class='eq'>\\[t=3.79\\, \\text{s}\\text{.}\\]</div><p>The time for projectile motion is determined completely by the vertical motion. Thus, any projectile that has an initial vertical velocity of 21.2 m/s and lands 10.0 m above its starting altitude spends 3.79 s in the air.</p><p>(b) We can find the final horizontal and vertical velocities \\({v}_{x}\\) and \\({v}_{y}\\) with the use of the result from (a). Then, we can combine them to find the magnitude of the total velocity vector \\(\\mathbf{\\vec{v}}\\) and the angle \\(\\theta\\) it makes with the horizontal. Since \\({v}_{x}\\) is constant, we can solve for it at any horizontal location. We choose the starting point because we know both the initial velocity and the initial angle. Therefore,</p><div class='eq'>\\[{v}_{x}={v}_{0}\\cos {\\theta}_{0}=(30\\, \\text{m}\\text{/}\\text{s})\\cos \\, 45^{\\circ} =21.2\\, \\text{m}\\text{/}\\text{s}.\\]</div><p>The final vertical velocity is given by the equation:</p><div class='eq'>\\[{v}_{y}={v}_{0y}-gt.\\]</div><p>Since \\({v}_{0y}\\) was found in part (a) to be 21.2 m/s, we have</p><div class='eq'>\\[{v}_{y}=21.2\\, \\text{m}\\text{/}\\text{s}-9.8\\, \\text{m}\\text{/}{\\text{s}}^{2}(3.79\\, \\text{s})=-15.9\\, \\text{m}\\text{/}\\text{s}.\\]</div><p>The magnitude of the final velocity \\(\\mathbf{\\vec{v}}\\) is</p><div class='eq'>\\[v=\\sqrt{{v}_{x}^{2}+{v}_{y}^{2}}=\\sqrt{{(21.2\\, \\text{m}\\text{/}\\text{s})}^{2}+{(-\\, \\text{15}.9\\, \\text{m}\\text{/}\\text{s})}^{2}}=26.5\\, \\text{m}\\text{/}\\text{s}.\\]</div><p>The direction \\({\\theta}_{v}\\) is found using the inverse tangent:</p><div class='eq'>\\[{\\theta}_{v}={\\tan}^{-1}(\\frac{{v}_{y}}{{v}_{x}})={\\tan}^{-1}(\\frac{-15.9}{21.2})=36.9^{\\circ} below the horizon.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>(a) As mentioned earlier, the time for projectile motion is determined completely by the vertical motion. Thus, any projectile that has an initial vertical velocity of 21.2 m/s and lands 10.0 m above its starting altitude spends 3.79 s in the air. (b) The negative angle means the velocity is \\(36.9^{\\circ}\\) below the horizontal at the point of impact. This result is consistent with the fact that the ball is impacting at a point on the other side of the apex of the trajectory and therefore has a negative <i>y</i> component of the velocity. The magnitude of the velocity is less than the magnitude of the initial velocity we expect since it is impacting 10.0 m above the launch elevation.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Comparing Golf Shots",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A golfer encounters two different situations on different holes. On the second hole they are 120 m from the green and want to hit the ball 90 m and let it run onto the green. They angle the shot low to the ground at \\(30^{\\circ}\\) to the horizontal to let the ball roll after impact. On the fourth hole they are 90 m from the green and want to let the ball drop with a minimum amount of rolling after impact. Here, they angle the shot at \\(70^{\\circ}\\) to the horizontal to minimize rolling after impact. Both shots are hit and impacted on a level surface.</p><p>(a) What is the initial speed of the ball at the second hole?</p><p>(b) What is the initial speed of the ball at the fourth hole?</p><p>(c) Write the trajectory equation for both cases.</p><p>(d) Graph the trajectories.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We see that the range equation has the initial speed and angle, so we can solve for the initial speed for both (a) and (b). When we have the initial speed, we can use this value to write the trajectory equation.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>(a) \\(R=\\frac{{v}_{0}^{2}\\sin \\, 2{\\theta}_{0}}{g}\\Rightarrow {v}_{0}=\\sqrt{\\frac{Rg}{\\sin \\, 2{\\theta}_{0}}}=\\sqrt{\\frac{90.0\\, \\text{m}(9.8\\, \\text{m}\\text{/}{\\text{s}}^{2})}{\\sin (2(30^{\\circ} ))}}=31.9\\, \\text{m}\\text{/}\\text{s}\\)</p><p>(b) \\(R=\\frac{{v}_{0}^{2}\\sin \\, 2{\\theta}_{0}}{g}\\Rightarrow {v}_{0}=\\sqrt{\\frac{Rg}{\\sin \\, 2{\\theta}_{0}}}=\\sqrt{\\frac{90.0\\, \\text{m}(9.8\\, \\text{m}\\text{/}{\\text{s}}^{2})}{\\sin (2(70^{\\circ} ))}}=37.0\\, \\text{m}\\text{/}\\text{s}\\)</p><p>(c)<br>\\(\\begin{array}{l} \\\\ \\\\ \\\\ y=x[\\tan \\, {\\theta}_{0}-\\frac{g}{2{({v}_{0}\\cos \\, {\\theta}_{0})}^{2}}x] \\\\ \\text{Second hole:}\\, y=x[\\tan \\, 30^{\\circ} -\\frac{9.8\\, \\text{m}\\text{/}{\\text{s}}^{2}}{2{[(31.9\\, \\text{m}\\text{/}\\text{s)(}\\cos 30^{\\circ} )]}^{2}}x]=0.58x-0.0064{x}^{2} \\\\ \\text{Fourth hole:}\\, y=x[\\tan \\, 70^{\\circ} -\\frac{9.8\\, \\text{m}\\text{/}{\\text{s}}^{2}}{2{[(37.0\\, \\text{m}\\text{/}\\text{s)(}\\cos \\, 70^{\\circ} )]}^{2}}x]=2.75x-0.0306{x}^{2}\\end{array}\\)</p><p>(d) Using a graphing utility, we can compare the two trajectories, which are shown in the figure.</p><figure><img src='img/CNX_UPhysics_04_03_GolfShot.jpg' alt=\"Two parabolic functions are shown. The range for both trajectories is 90 meters. One shot travels much higher than the other. The higher shot has an initial velocity of 37 meters per second and an angle of 70 degrees. The lower shot has an initial velocity of 31.9 meters per second and an angle of 30 degrees.\" loading='lazy'><figcaption>Two trajectories of a golf ball with a range of 90 m. The impact points of both are at the same level as the launch point.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The initial speed for the shot at \\(70^{\\circ}\\) is greater than the initial speed of the shot at \\(30^{\\circ} .\\) Note from the figure that if the two projectiles were launched at the same speed but at different angles, the projectiles would have the same range as long as the angles were less than \\(90^{\\circ} .\\) The launch angles in this example add to give a number greater than \\(90^{\\circ} .\\) Thus, the shot at \\(70^{\\circ}\\) has to have a greater launch speed to reach 90 m, otherwise it would land at a shorter distance.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A rock is thrown horizontally off a cliff \\(100.0\\, \\text{m}\\) high with a velocity of 15.0 m/s. (a) Define the origin of the coordinate system. (b) Which equation describes the horizontal motion? (c) Which equations describe the vertical motion? (d) What is the rock’s velocity at the point of impact?</p>",
+     "a": "<p>(a) Choose the top of the cliff where the rock is thrown from the origin of the coordinate system. Although it is arbitrary, we typically choose time <i>t</i> = 0 to correspond to the origin. (b) The equation that describes the horizontal motion is \\(x={x}_{0}+{v}_{x}t.\\) With \\({x}_{0}=0,\\) this equation becomes \\(x={v}_{x}t.\\) (c) another section through another section and the equation describe the vertical motion, but since \\({y}_{0}=0\\, \\text{and}\\, {v}_{0y}=0,\\) these equations simplify greatly to become \\(y=\\frac{1}{2}({v}_{0y}+{v}_{y})t=\\frac{1}{2}{v}_{y}t,\\;\\)\\({v}_{y}=-gt,\\;\\)\\(y=-\\frac{1}{2}g{t}^{2},\\;\\) and \\({v}_{y}^{2}=-2gy.\\) (d) We use the kinematic equations to find the <i>x</i> and <i>y</i> components of the velocity at the point of impact. Using \\({v}_{y}^{2}=-2gy\\) and noting the point of impact is −100.0 m, we find the <i>y</i> component of the velocity at impact is \\({v}_{y}=44.3\\, \\text{m}\\text{/}\\text{s}.\\) We are given the <i>x</i> component, \\({v}_{x}=15.0\\, \\text{m}\\text{/}\\text{s},\\) so we can calculate the total velocity at impact: <i>v</i> = 46.8 m/s and \\(\\theta =71.3^{\\circ}\\) below the horizontal.</p>"
+    },
+    {
+     "q": "<p>If the two golf shots in the example <i>Comparing Golf Shots</i> were launched at the same speed, which shot would have the greatest range?</p>",
+     "a": "<p>The golf shot at \\(30^{\\circ} .\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Projectile motion is the motion of an object subject only to the acceleration of gravity, where the acceleration is constant, as near the surface of Earth.",
+    "To solve projectile motion problems, we analyze the motion of the projectile in the horizontal and vertical directions using the one-dimensional kinematic equations for <i>x</i> and <i>y</i>.",
+    "The time of flight of a projectile launched with initial vertical velocity \\({v}_{0y}\\) on an even surface is given by <div class='eq'>\\[{T}_{tof}=\\frac{2({v}_{0}\\sin \\, \\theta )}{g}.\\]</div> This equation is valid only when the projectile lands at the same elevation from which it was launched.",
+    "The maximum horizontal distance traveled by a projectile is called the range. Again, the equation for range is valid only when the projectile lands at the same elevation from which it was launched."
+   ]
+  },
+  {
+   "num": "4.4",
+   "module": "m58292",
+   "title": "Uniform and Nonuniform Circular Motion",
+   "objectives": [
+    "Solve for the centripetal acceleration of an object moving on a circular path.",
+    "Use the equations of circular motion to find the position, velocity, and acceleration of a particle executing circular motion.",
+    "Explain the differences between centripetal acceleration and tangential acceleration resulting from nonuniform circular motion.",
+    "Evaluate centripetal and tangential acceleration in nonuniform circular motion, and find the total acceleration vector."
+   ],
+   "callouts": [
+    "{a}_{\\text{c}}=\\frac{{v}^{2}}{r}",
+    "\\mathbf{\\vec{r}}(t)=A\\, \\cos \\, \\omega t\\mathbf{\\hat{i}}+A\\, \\sin \\, \\omega t\\mathbf{\\hat{j}}",
+    "\\mathbf{\\vec{v}}(t)=\\frac{d\\mathbf{\\vec{r}}(t)}{dt}=-A\\omega \\, \\sin \\, \\omega t\\mathbf{\\hat{i}}+A\\omega \\, \\cos \\, \\omega t\\mathbf{\\hat{j}}",
+    "\\mathbf{\\vec{a}}(t)=\\frac{d\\mathbf{\\vec{v}}(t)}{dt}=-A{\\omega}^{2}\\, \\cos \\, \\omega t\\mathbf{\\hat{i}}-A{\\omega}^{2}\\, \\sin \\, \\omega t\\mathbf{\\hat{j}}",
+    "{a}_{\\text{T}}=\\frac{d|\\mathbf{\\vec{v}}|}{dt}",
+    "\\mathbf{\\vec{a}}={\\mathbf{\\vec{a}}}_{\\text{c}}+{\\mathbf{\\vec{a}}}_{\\text{T}}"
+   ],
+   "examples": [
+    {
+     "title": "Creating an Acceleration of 1",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A jet is flying at 134.1 m/s along a straight line and makes a turn along a circular path level with the ground. What does the radius of the circle have to be to produce a centripetal acceleration of 1 <i>g</i> on the pilot and jet toward the center of the circular trajectory?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Given the speed of the jet, we can solve for the radius of the circle in the expression for the centripetal acceleration.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Set the centripetal acceleration equal to the acceleration of gravity: \\(9.8{\\, \\text{m/s}}^{2}={v}^{2}\\text{/}r.\\)</p><p>Solving for the radius, we find</p><div class='eq'>\\[r=\\frac{(134.1\\, \\text{m}\\text{/}{\\text{s})}^{2}}{9.8\\, \\text{m}\\text{/}{\\text{s}}^{2}}=1835\\, \\text{m}=1.835\\, \\text{km}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>To create a greater acceleration than <i>g</i> on the pilot, the jet would either have to decrease the radius of its circular trajectory or increase its speed on its existing trajectory or both.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Circular Motion of a Proton",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A proton has speed \\(5\\, \\times \\, {10}^{6}\\, \\text{m/s}\\) and is moving in a circle in the <i>xy</i> plane of radius <i>r</i> = 0.175 m. What is its position in the <i>xy</i> plane at time \\(t=2.0\\, \\times \\, {10}^{-7}\\, \\text{s}=200\\, \\text{ns?}\\) At <i>t</i> = 0, the position of the proton is \\(0.175\\, \\text{m}\\mathbf{\\hat{i}}\\) and it circles counterclockwise. Sketch the trajectory.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>According to another section,</p><div class='eq'>\\[\\text{Average speed}=\\frac{\\text{Total distance}}{\\text{Elapsed time}}.\\]</div><p>Since the period <i>T</i> is the time it takes an object to go once around a circle, and the distance around a circle is 2<i>πr</i>, we have:</p><div class='eq'>\\[v=\\frac{2\\pi r}{T}.\\]</div><p>From the given data, the proton has period and angular frequency:</p><div class='eq'>\\[T=\\frac{2\\pi r}{v}=\\frac{2\\pi (0.175\\, \\text{m})}{5.0\\, \\times \\, {10}^{6}\\, \\text{m}\\text{/}\\text{s}}=2.20\\, \\times \\, {10}^{-7}\\, \\text{s}\\]</div><div class='eq'>\\[\\omega =\\frac{2\\pi}{T}=\\frac{2\\pi}{2.20\\, \\times \\, {10}^{-7}\\, \\text{s}}=2.856\\, \\times \\, {10}^{7}\\, \\text{rad}\\text{/}\\text{s}.\\]</div><p>The position of the particle at \\(t=2.0\\, \\times \\, {10}^{-7}\\, \\text{s}\\) with <i>A</i> = 0.175 m is</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{r}}(2.0\\, \\times \\, {10}^{-7}\\text{s}) & =A\\, \\cos \\, \\omega (2.0\\, \\times \\, {10}^{-7}\\, \\text{s})\\mathbf{\\hat{i}}+A\\, \\sin \\, \\omega (2.0\\, \\times \\, {10}^{-7}\\, \\text{s})\\mathbf{\\hat{j}}\\, \\text{m} \\\\ & =0.175\\cos [(2.856\\, \\times \\, {10}^{7}\\, \\text{rad}\\text{/}\\text{s})(2.0\\, \\times \\, {10}^{-7}\\, \\text{s})]\\mathbf{\\hat{i}} \\\\ & +0.175\\sin [(2.856\\, \\times \\, {10}^{7}\\, \\text{rad}\\text{/}\\text{s})(2.0\\, \\times \\, {10}^{-7}\\, \\text{s})]\\mathbf{\\hat{j}}\\, \\text{m} \\\\ & =0.175\\cos (5.712\\, \\text{rad})\\mathbf{\\hat{i}}+0.175\\sin (5.712\\, \\text{rad})\\mathbf{\\hat{j}}=0.147\\mathbf{\\hat{i}}-0.095\\mathbf{\\hat{j}}\\, \\text{m}.\\end{array}\\]</div><p>From this result we see that the proton is located slightly below the <i>x</i>-axis. This is shown in the figure.</p><figure><img src='img/CNX_UPhysics_04_04_Posproton.jpg' alt=\"A graph of y position as a function of x position is shown. Both x and y are measured in meters and run from -0.2 to 0.2. A proton is moving in a counterclockwise circle centered on the origin is shown at 11 different times. At t = 0 s the particle is at x = 0.175 m and y = 0. At t = 200 nanoseconds, the particle is at a position given by vector 0.147 I hat minus 0.095 j hat meters.\" loading='lazy'><figcaption>Position vector of the proton at \\(t=2.0\\, \\times \\, {10}^{-7}\\text{s}=200\\, \\text{ns}\\text{.}\\) The trajectory of the proton is shown. The angle through which the proton travels along the circle is 5.712 rad, which a little less than one complete revolution.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We picked the initial position of the particle to be on the <i>x-</i>axis. This was completely arbitrary. If a different starting position were given, we would have a different final position at <i>t</i> = 200 ns.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Total Acceleration during Circular Motion",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A particle moves in a circle of radius <i>r</i> = 2.0 m. During the time interval from <i>t</i> = 1.5 s to <i>t</i> = 4.0 s its speed varies with time according to</p><div class='eq'>\\[v(t)={c}_{1}-\\frac{{c}_{2}}{{t}^{2}},\\; {c}_{1}=4.0\\, \\text{m}\\text{/}\\text{s,}\\; {c}_{2}=6.0\\, \\text{m}\\cdot \\text{s}\\text{.}\\]</div><p>What is the total acceleration of the particle at <i>t</i> = 2.0 s?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are given the speed of the particle and the radius of the circle, so we can calculate centripetal acceleration easily. The direction of the centripetal acceleration is toward the center of the circle. We find the magnitude of the tangential acceleration by taking the derivative with respect to time of \\(|v(t)|\\) using the equation and evaluating it at <i>t</i> = 2.0 s. We use this and the magnitude of the centripetal acceleration to find the total acceleration.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Centripetal acceleration is</p><div class='eq'>\\[v(2.0\\text{s})=(4.0-\\frac{6.0}{{(2.0)}^{2}})\\text{m}\\text{/}\\text{s}=2.5\\, \\text{m}\\text{/}\\text{s}\\]</div><div class='eq'>\\[{a}_{\\text{c}}=\\frac{{v}^{2}}{r}=\\frac{(2.5\\, \\text{m}\\text{/}{\\text{s})}^{2}}{2.0\\, \\text{m}}=3.1\\, \\text{m}\\text{/}{\\text{s}}^{2}\\]</div><p>directed toward the center of the circle. Tangential acceleration is</p><div class='eq'>\\[{a}_{\\text{T}}=|\\frac{d\\mathbf{\\vec{v}}}{dt}|=\\frac{2{c}_{2}}{{t}^{3}}=\\frac{12.0}{{(2.0)}^{3}}\\text{m}\\text{/}{\\text{s}}^{2}=1.5\\, \\text{m}\\text{/}{\\text{s}}^{2}.\\]</div><p>Total acceleration is</p><div class='eq'>\\[|\\mathbf{\\vec{a}}|=\\sqrt{{3.1}^{2}+{1.5}^{2}}\\text{m}\\text{/}{\\text{s}}^{2}=3.44\\, \\text{m}\\text{/}{\\text{s}}^{2}\\]</div><p>and \\(\\theta ={\\tan}^{-1}\\frac{3.1}{1.5}=64^{\\circ}\\) from the tangent to the circle. See the figure.</p><figure><img src='img/CNX_UPhysics_04_04_Totalacc.jpg' alt=\"The acceleration of a particle on a circle is shown along with its radial and tangential components. The centripetal acceleration a sub c points radially toward the center of the circle and has magnitude 3.1 meters per second squared. The tangential acceleration a sub T is tangential to the circle at the particle’s position and has magnitude 1.5 meters per second squared. The angle between the total acceleration a and the tangential acceleration a sub T is 64 degrees.\" loading='lazy'><figcaption>The tangential and centripetal acceleration vectors. The net acceleration \\(\\mathbf{\\mathbf{\\vec{a}}}\\) is the vector sum of the two accelerations.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The directions of centripetal and tangential accelerations can be described more conveniently in terms of a polar coordinate system, with unit vectors in the radial and tangential directions. This coordinate system, which is used for motion along curved paths, is discussed in detail later in the book.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A flywheel has a radius of 20.0 cm. What is the speed of a point on the edge of the flywheel if it experiences a centripetal acceleration of \\(900.0\\, {\\text{cm}\\text{/}\\text{s}}^{2}?\\)</p>",
+     "a": "<p>134.0 cm/s</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Uniform circular motion is motion in a circle at constant speed.",
+    "Centripetal acceleration \\({\\mathbf{\\vec{a}}}_{\\text{C}}\\) is the acceleration a particle must have to follow a circular path. Centripetal acceleration always points toward the center of rotation and has magnitude \\({a}_{\\text{C}}={v}^{2}\\text{/}r.\\)",
+    "Nonuniform circular motion occurs when there is tangential acceleration of an object executing circular motion such that the speed of the object is changing. This acceleration is called tangential acceleration \\({\\mathbf{\\vec{a}}}_{\\text{T}}.\\) The magnitude of tangential acceleration is the time rate of change of the magnitude of the velocity. The tangential acceleration vector is tangential to the circle, whereas the centripetal acceleration vector points radially inward toward the center of the circle. The total acceleration is the vector sum of tangential and centripetal accelerations.",
+    "An object executing uniform circular motion can be described with equations of motion. The position vector of the object is \\(\\mathbf{\\vec{r}}(t)=A\\, \\cos \\, \\omega t\\mathbf{\\hat{i}}+A\\, \\sin \\, \\omega t\\mathbf{\\hat{j}},\\) where <i>A</i> is the magnitude \\(|\\mathbf{\\vec{r}}(t)|,\\) which is also the radius of the circle, and \\(\\omega\\) is the angular frequency."
+   ]
+  },
+  {
+   "num": "4.5",
+   "module": "m58293",
+   "title": "Relative Motion in One and Two Dimensions",
+   "objectives": [
+    "Explain the concept of reference frames.",
+    "Write the position and velocity vector equations for relative motion.",
+    "Draw the position and velocity vectors for relative motion.",
+    "Analyze one-dimensional and two-dimensional relative motion problems using the position and velocity vector equations."
+   ],
+   "callouts": [
+    "{\\mathbf{\\vec{r}}}_{PS}={\\mathbf{\\vec{r}}}_{P{S}^{'}}+{\\mathbf{\\vec{r}}}_{{S}^{'}S}",
+    "{\\mathbf{\\vec{v}}}_{PS}={\\mathbf{\\vec{v}}}_{P{S}^{'}}+{\\mathbf{\\vec{v}}}_{{S}^{'}S}",
+    "{\\mathbf{\\vec{v}}}_{PC}={\\mathbf{\\vec{v}}}_{PA}+{\\mathbf{\\vec{v}}}_{AB}+{\\mathbf{\\vec{v}}}_{BC}",
+    "{\\mathbf{\\vec{a}}}_{PS}={\\mathbf{\\vec{a}}}_{P{S}^{'}}+{\\mathbf{\\vec{a}}}_{{S}^{'}S}"
+   ],
+   "examples": [
+    {
+     "title": "Motion of a Car Relative to a Truck",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A truck is traveling south at a speed of 70 km/h toward an intersection. A car is traveling east toward the intersection at a speed of 80 km/h (the figure). What is the velocity of the car relative to the truck?</p><figure><img src='img/CNX_UPhysics_04_05_Cartruck.jpg' alt=\"A truck is shown traveling south at a speed V sub T E of 70 km/h toward an intersection. A car is traveling east toward the intersection at a speed V sub C E of 80 km/h\" loading='lazy'><figcaption>A car travels east toward an intersection while a truck travels south toward the same intersection.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we must establish the reference frame common to both vehicles, which is Earth. Then, we write the velocities of each with respect to the reference frame of Earth, which enables us to form a vector equation that links the car, the truck, and Earth to solve for the velocity of the car with respect to the truck.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The velocity of the car with respect to Earth is \\({\\mathbf{\\vec{v}}}_{\\text{CE}}=80\\, \\text{km}\\text{/}\\text{h}\\, \\mathbf{\\hat{i}}.\\) The velocity of the truck with respect to Earth is \\({\\mathbf{\\vec{v}}}_{\\text{TE}}=-70\\, \\text{km}\\text{/}\\text{h}\\, \\mathbf{\\hat{j}}\\text{.}\\) Using the velocity addition rule, the relative motion equation we are seeking is</p><div class='eq'>\\[{\\mathbf{\\vec{v}}}_{\\text{CT}}={\\mathbf{\\vec{v}}}_{\\text{CE}}+{\\mathbf{\\vec{v}}}_{\\text{ET}}.\\]</div><p>Here, \\({\\mathbf{\\vec{v}}}_{\\text{CT}}\\) is the velocity of the car with respect to the truck, and Earth is the connecting reference frame. Since we have the velocity of the truck with respect to Earth, the negative of this vector is the velocity of Earth with respect to the truck: \\({\\mathbf{\\vec{v}}}_{\\text{ET}}=-{\\mathbf{\\vec{v}}}_{\\text{TE}}.\\) The vector diagram of this equation is shown in the figure.</p><figure><img src='img/CNX_UPhysics_04_05_Cartrrel_replace.jpg' alt=\"The right triangle formed by the vectors V sub C E to the right, V sub E T down, and V sub C T up and right is shown V sub C T is the hypotenuse and makes an angle of theta with V sub C E. The vector equation vector v sub C T equals vector C E plus vector E T is given. A compass is shown indicating north is up, east to the right, south down, and west to the left.\" loading='lazy'><figcaption>Vector diagram of the vector equation \\({\\mathbf{\\vec{v}}}_{\\text{CT}}={\\mathbf{\\vec{v}}}_{\\text{CE}}+{\\mathbf{\\vec{v}}}_{\\text{ET}}\\).</figcaption></figure><p>We can now solve for the velocity of the car with respect to the truck:</p><div class='eq'>\\[|{\\mathbf{\\vec{v}}}_{\\text{CT}}|=\\sqrt{(80.0\\, \\text{km}\\text{/}{\\text{h})}^{2}+(70.0\\, \\text{km}\\text{/}{\\text{h})}^{2}}=106.\\, \\text{km}\\text{/}\\text{h}\\]</div><p>and</p><div class='eq'>\\[\\theta ={\\tan}^{-1}(\\frac{70.0}{80.0})=41.2^{\\circ} \\, \\text{north of east.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Drawing a vector diagram showing the velocity vectors can help in understanding the relative velocity of the two objects.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Flying a Plane in a Wind",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A pilot must fly a plane due north to reach their destination. The plane can fly at 300 km/h in still air. A wind is blowing out of the northeast at 90 km/h. (a) In what direction must the pilot head the plane to fly due north? (b) What is the speed of the plane relative to the ground?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The pilot must point the plane somewhat east of north to compensate for the wind velocity. We need to construct a vector equation that contains the velocity of the plane with respect to the ground, the velocity of the plane with respect to the air, and the velocity of the air with respect to the ground. Since these last two quantities are known, we can solve for the velocity of the plane with respect to the ground. We can graph the vectors and use this diagram to evaluate the magnitude of the plane’s velocity with respect to the ground. The diagram will also tell us the angle the plane’s velocity makes with north with respect to the air, which is the direction the pilot must head the plane.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The vector equation is \\({\\mathbf{\\vec{v}}}_{\\text{PG}}={\\mathbf{\\vec{v}}}_{\\text{PA}}+{\\mathbf{\\vec{v}}}_{\\text{AG}},\\) where P = plane, A = air, and G = ground. From the geometry in the figure, we can solve easily for the magnitude of the velocity of the plane with respect to the ground and the angle of the plane’s heading, \\(\\theta .\\)</p><figure><img src='img/CNX_UPhysics_04_05_Planhead.jpg' alt=\"A compass shows north is up, east to the right, south down, and west to the left. Vectors V sub P G, V sub A G and V sub P A form a triangle. An airplane is shown on vector V sub P G, which points up. V sub P A points up and to the right, at an angle of theta to vector V sub P G. V sub A G points down and left, at an angle of 45 degrees below the horizontal. V sub P G is the vector sum of v sub P A and V sub A G.\" loading='lazy'><figcaption>Vector diagram for the equation showing the vectors \\({\\mathbf{\\vec{v}}}_{\\text{PA}}\\text{,}\\, {\\mathbf{\\vec{v}}}_{\\text{AG}},\\, \\text{and}\\, \\, {\\mathbf{\\vec{v}}}_{\\text{PG}}.\\)</figcaption></figure><p>Known quantities:</p><div class='eq'>\\[|{\\mathbf{\\vec{v}}}_{\\text{PA}}|=300\\, \\text{km}\\text{/}\\text{h}\\]</div><div class='eq'>\\[|{\\mathbf{\\vec{v}}}_{\\text{AG}}|=90\\, \\text{km}\\text{/}\\text{h}\\]</div><p>(a) In the <i>x</i> direction we have the following:</p><ul><li><p>\\(|{\\mathbf{\\vec{v}}}_{\\text{PA}}|\\sin \\, \\theta \\, -|{\\mathbf{\\vec{v}}}_{\\text{AG}}|\\sin \\, 45^{\\circ} =0\\)</p></li><li><p>\\(\\theta ={\\sin}^{-1}(90\\, \\text{km/h})(\\frac{\\sin \\, 45^{\\circ}}{300\\, \\text{km/h}})\\)</p></li><li><p>\\(\\theta =12^{\\circ}\\) east of north</p></li></ul><p>(b) In the <i>y</i> direction we have the following:</p><ul><li><p>\\(|{\\mathbf{\\vec{v}}}_{\\text{PG}}|=|{\\mathbf{\\vec{v}}}_{\\text{PA}}|\\cos \\, \\theta \\, -|{\\mathbf{\\vec{v}}}_{\\text{AG}}|\\cos \\, 45^{\\circ}\\)</p></li><li><p>\\(|{\\mathbf{\\vec{v}}}_{\\text{PG}}|=(300\\, \\text{km/h})(\\cos \\, 12^{\\circ} )-(90\\, \\text{km/h})(\\cos \\, 45^{\\circ} )\\)</p></li><li><p>\\(|{\\mathbf{\\vec{v}}}_{\\text{PG}}|=230\\, \\text{km/h}\\)</p></li></ul>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A boat heads due north, moving at 4.5 m/s relative to the water of a river that is running east at 3.0 m/s. What is the velocity of the boat with respect to Earth?</p>",
+     "a": "<p>Labeling subscripts for the vector equation, we have B = boat, R = river, and E = Earth. The vector equation becomes \\({\\mathbf{\\vec{v}}}_{\\text{BE}}={\\mathbf{\\vec{v}}}_{\\text{BR}}+{\\mathbf{\\vec{v}}}_{\\text{RE}}.\\) We have right triangle geometry shown in Figure 04_05_BoatRiv_img. Solving for \\({\\mathbf{\\vec{v}}}_{\\text{BE}}\\), we have<br> \\({v}_{\\text{BE}}=\\sqrt{{v}_{\\text{BR}}^{2}+{v}_{\\text{RE}}^{2}}=\\sqrt{{4.5}^{2}+{3.0}^{2}}\\)<br> \\({v}_{\\text{BE}}=5.4\\, \\text{m}\\text{/}\\text{s,}\\ \\theta ={\\tan}^{-1}(\\frac{3.0}{4.5})=33.7^{\\circ} .\\)<br> <figure><img src='img/CNX_UPhysics_04_05_Boatriv_img.jpg' alt=\"Vectors V sub B W, V sub W E and V sub B E form a right triangle. A boat is shown at the vertex where the tails of V sub B W and V sub B E meet. Vector V sub B W points up. V sub W E points to the right. V sub B E points up and right, at an angle to the vertical. V sub B E is the vector sum of v sub B W and V sub W E.\" loading='lazy'></figure></p>"
+    }
+   ],
+   "keyConcepts": [
+    "When analyzing motion of an object, the reference frame in terms of position, velocity, and acceleration needs to be specified.",
+    "Relative velocity is the velocity of an object as observed from a particular reference frame, and it varies with the choice of reference frame.",
+    "If <i>S</i> and \\({S}^{'}\\) are two reference frames moving relative to each other at a constant velocity, then the velocity of an object relative to <i>S</i> is equal to its velocity relative to \\({S}^{'}\\) plus the velocity of \\({S}^{'}\\) relative to <i>S.</i>",
+    "If two reference frames are moving relative to each other at a constant velocity, then the accelerations of an object as observed in both reference frames are equal."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_04_01_Browmot.jpg",
+  "CNX_UPhysics_04_01_Dispvec.jpg",
+  "CNX_UPhysics_04_01_Satorb.jpg",
+  "CNX_UPhysics_04_02_Skier.jpg",
+  "CNX_UPhysics_04_02_Trajectory.jpg",
+  "CNX_UPhysics_04_03_Fireworks.jpg",
+  "CNX_UPhysics_04_03_GolfShot.jpg",
+  "CNX_UPhysics_04_03_Tenplay.jpg",
+  "CNX_UPhysics_04_04_Posproton.jpg",
+  "CNX_UPhysics_04_04_Totalacc.jpg",
+  "CNX_UPhysics_04_05_Boatriv_img.jpg",
+  "CNX_UPhysics_04_05_Cartrrel_replace.jpg",
+  "CNX_UPhysics_04_05_Cartruck.jpg",
+  "CNX_UPhysics_04_05_Planhead.jpg"
+ ]
+}

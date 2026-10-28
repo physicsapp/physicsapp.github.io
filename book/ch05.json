@@ -1,0 +1,621 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 5,
+  "title": "Newton’s Laws of Motion"
+ },
+ "keyEquations": [
+  {
+   "name": "Net external force",
+   "tex": "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\sum \\mathbf{\\vec{F}}={\\mathbf{\\vec{F}}}_{1}+{\\mathbf{\\vec{F}}}_{2}+\\cdots"
+  },
+  {
+   "name": "Newton’s first law",
+   "tex": "\\mathbf{\\vec{v}}=\\, \\text{constant when}\\, {\\mathbf{\\vec{F}}}_{\\text{net}}=\\mathbf{\\vec{0}}\\, \\text{N}"
+  },
+  {
+   "name": "Newton’s second law, vector form",
+   "tex": "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\sum \\mathbf{\\vec{F}}=m\\mathbf{\\vec{a}}"
+  },
+  {
+   "name": "Newton’s second law, scalar form",
+   "tex": "{F}_{\\text{net}}=ma"
+  },
+  {
+   "name": "Newton’s second law, component form",
+   "tex": "\\sum {\\mathbf{\\vec{F}}}_{x}=m{\\mathbf{\\vec{a}}}_{x}\\text{,}\\, \\sum {\\mathbf{\\vec{F}}}_{y}=m{\\mathbf{\\vec{a}}}_{y},\\, \\text{and}\\, \\sum {\\mathbf{\\vec{F}}}_{z}=m{\\mathbf{\\vec{a}}}_{z}."
+  },
+  {
+   "name": "Newton’s second law, momentum form",
+   "tex": "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\frac{d\\mathbf{\\vec{p}}}{dt}"
+  },
+  {
+   "name": "Definition of weight, vector form",
+   "tex": "\\mathbf{\\vec{w}}=m\\mathbf{\\vec{g}}"
+  },
+  {
+   "name": "Definition of weight, scalar form",
+   "tex": "w=mg"
+  },
+  {
+   "name": "Newton’s third law",
+   "tex": "{\\mathbf{\\vec{F}}}_{\\text{AB}}=-{\\mathbf{\\vec{F}}}_{\\text{BA}}"
+  },
+  {
+   "name": "Normal force on an object resting on a horizontal surface, vector form",
+   "tex": "\\mathbf{\\vec{N}}=-m\\mathbf{\\vec{g}}"
+  },
+  {
+   "name": "Normal force on an object resting on a horizontal surface, scalar form",
+   "tex": "N=mg"
+  },
+  {
+   "name": "Normal force on an object resting on an inclined plane, scalar form",
+   "tex": "N=mg\\cos \\, \\theta"
+  },
+  {
+   "name": "Restoring force by a spring displaced by x from the relaxed position",
+   "tex": "\\mathbf{\\vec{F}}=-k\\mathbf{\\vec{x}}."
+  },
+  {
+   "name": "Tension in a cable supporting an object of mass m at rest, scalar form",
+   "tex": "T=w=mg"
+  }
+ ],
+ "sections": [
+  {
+   "num": "5.1",
+   "module": "m58295",
+   "title": "Forces",
+   "objectives": [
+    "Distinguish between kinematics and dynamics",
+    "Understand the definition of force",
+    "Identify simple free-body diagrams",
+    "Define the SI unit of force, the newton",
+    "Describe force as a vector"
+   ],
+   "callouts": [
+    "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\sum \\mathbf{\\vec{F}}={\\mathbf{\\vec{F}}}_{1}+{\\mathbf{\\vec{F}}}_{2}+\\cdots"
+   ],
+   "examples": [],
+   "checks": [
+    {
+     "q": "<p>Find the magnitude and direction of the net force in the ice skater example just given.</p>",
+     "a": "<p>14 N, \\(56^{\\circ}\\) measured from the positive <i>x</i>-axis</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Dynamics is the study of how forces affect the motion of objects, whereas kinematics simply describes the way objects move.",
+    "Force is a push or pull that can be defined in terms of various standards, and it is a vector that has both magnitude and direction.",
+    "External forces are any outside forces that act on a body. A free-body diagram is a drawing of all external forces acting on a body.",
+    "The SI unit of force is the newton (N)."
+   ]
+  },
+  {
+   "num": "5.2",
+   "module": "m58296",
+   "title": "Newton's First Law",
+   "objectives": [
+    "Describe Newton's first law of motion",
+    "Recognize friction as an external force",
+    "Define inertia",
+    "Identify inertial reference frames",
+    "Calculate equilibrium for a system"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{v}}=\\text{constant when}\\, {\\mathbf{\\vec{F}}}_{\\text{net}}=\\mathbf{\\vec{0}}\\, \\text{N}"
+   ],
+   "examples": [
+    {
+     "title": "When Does Newton’s First Law Apply to Your Car?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Newton’s laws can be applied to all physical processes involving force and motion, including something as mundane as driving a car.</p><p>(a) Your car is parked outside your house. Does Newton’s first law apply in this situation? Why or why not?</p><p>(b) Your car moves at constant velocity down the street. Does Newton’s first law apply in this situation? Why or why not?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>In (a), we are considering the first part of Newton’s first law, dealing with a body at rest; in (b), we look at the second part of Newton’s first law for a body in motion.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>When your car is parked, all forces on the car must be balanced; the vector sum is 0 N. Thus, the net force is zero, and Newton’s first law applies. The acceleration of the car is zero, and in this case, the velocity is also zero.</li><li>When your car is moving at constant velocity down the street, the net force must also be zero according to Newton’s first law. The car’s frictional force between the road and tires opposes the drag force on the car with the same magnitude, producing a net force of zero. The body continues in its state of constant velocity until the net force becomes nonzero. Realize that <i>a net force of zero means that an object is either at rest or moving with constant velocity, that is, it is not accelerating.</i> What do you suppose happens when the car accelerates? We explore this idea in the next section.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>As this example shows, there are two kinds of equilibrium. In (a), the car is at rest; we say it is in <i>static equilibrium</i>. In (b), the forces on the car are balanced, but the car is moving; we say that it is in <i>dynamic equilibrium</i>. (We examine this idea in more detail in Static Equilibrium and Elasticity.) Again, it is possible for two (or more) forces to act on an object yet for the object to move. In addition, a net force of zero cannot produce acceleration.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A skydiver opens their parachute, and shortly thereafter, they are moving at constant velocity. (a) What forces are acting on them? (b) Which force is bigger?</p>",
+     "a": "<p>a. Their weight acts downward, and the force of air resistance with the parachute acts upward. b. neither; the forces are equal in magnitude</p>"
+    }
+   ],
+   "keyConcepts": [
+    "According to Newton’s first law, there must be a cause for any change in velocity (a change in either magnitude or direction) to occur. This law is also known as the law of inertia.",
+    "Friction is an external force that causes an object to slow down.",
+    "Inertia is the tendency of an object to remain at rest or remain in motion. Inertia is related to an object’s mass.",
+    "If an object’s velocity relative to a given frame is constant, then the frame is inertial. This means that for an inertial reference frame, Newton’s first law is valid.",
+    "Equilibrium is achieved when the forces on a system are balanced.",
+    "A net force of zero means that an object is either at rest or moving with constant velocity; that is, it is not accelerating."
+   ]
+  },
+  {
+   "num": "5.3",
+   "module": "m58297",
+   "title": "Newton's Second Law",
+   "objectives": [
+    "Distinguish between external and internal forces",
+    "Describe Newton's second law of motion",
+    "Explain the dependence of acceleration on net force and mass"
+   ],
+   "callouts": [
+    "\\sum {\\mathbf{F}}_{x}=m{\\mathbf{a}}_{x},\\, \\sum {\\mathbf{F}}_{y}=m{\\mathbf{a}}_{y},\\, \\text{and}\\, \\sum {\\mathbf{F}}_{z}=m{\\mathbf{a}}_{z}",
+    "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\frac{d\\mathbf{\\vec{p}}}{dt}"
+   ],
+   "examples": [
+    {
+     "title": "What Acceleration Can a Person Produce When Pushing a Lawn Mower?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Suppose that the net external force (push minus friction) exerted on a lawn mower is 51 N (about 11 lb.) parallel to the ground (the figure). The mass of the mower is 24 kg. What is its acceleration?</p><figure><img src='img/CNX_UPhysics_05_03_Mower.jpg' alt=\"Figure a shows a person using a lawn mower on a lawn. Force F net points right, from the person’s hands. Figure b shows the force F net along the positive x axis.\" loading='lazy'><figcaption>(a) The net force on a lawn mower is 51 N to the right. At what rate does the lawn mower accelerate to the right? (b) The free-body diagram for this problem is shown.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>This problem involves only motion in the horizontal direction; we are also given the net force, indicated by the single vector, but we can suppress the vector nature and concentrate on applying Newton’s second law. Since \\({F}_{\\text{net}}\\) and <i>m</i> are given, the acceleration can be calculated directly from Newton’s second law as \\({F}_{\\text{net}}=ma.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The magnitude of the acceleration <i>a</i> is \\(a={F}_{\\text{net}}\\text{/}m\\). Entering known values gives</p><div class='eq'>\\[a=\\frac{51\\, \\text{N}}{24\\, \\text{kg}}.\\]</div><p>Substituting the unit of kilograms times meters per square second for newtons yields</p><div class='eq'>\\[a=\\frac{51\\, \\text{kg}\\cdot {\\text{m/s}}^{2}}{24\\, \\text{kg}}=2.1\\, {\\text{m/s}}^{2}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The direction of the acceleration is the same direction as that of the net force, which is parallel to the ground. This is a result of the vector relationship expressed in Newton’s second law, that is, the vector representing net force is the scalar multiple of the acceleration vector. There is no information given in this example about the individual external forces acting on the system, but we can say something about their relative magnitudes. For example, the force exerted by the person pushing the mower must be greater than the friction opposing the motion (since we know the mower moved forward), and the vertical forces must cancel because no acceleration occurs in the vertical direction (the mower is moving only horizontally). The acceleration found is small enough to be reasonable for a person pushing a mower. Such an effort would not last too long, because the person’s top speed would soon be reached.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Which Force Is Bigger?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>(a) The car shown in the figure is moving at a constant speed. Which force is bigger, \\({\\mathbf{\\vec{F}}}_{\\text{friction}}\\) or \\({\\mathbf{\\vec{F}}}_{\\text{drag}}\\)? Explain.</p><p>(b) The same car is now accelerating to the right. Which force is bigger, \\({\\mathbf{\\vec{F}}}_{\\text{friction}}\\) or \\({\\mathbf{\\vec{F}}}_{\\text{drag}}?\\) Explain.</p><figure><img src='img/CNX_UPhysics_05_03_RedCar_new.jpg' alt=\"Figure a shows a car with velocity 10 meters per second, moving right. F subscript engine right and F subscript friction points left. Figure b shows the car moving with an acceleration of 10 meters per second squared, towards the right. Forces F subscript engine and F subscript friction are the same as those in figure a.\" loading='lazy'><figcaption>A car is shown (a) moving at constant speed and (b) accelerating. How do the forces acting on the car compare in each case? (a) What does the knowledge that the car is moving at constant velocity tell us about the net horizontal force on the car compared to the friction force? (b) What does the knowledge that the car is accelerating tell us about the horizontal force on the car compared to the friction force?</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We must consider Newton’s first and second laws to analyze the situation. We need to decide which law applies; this, in turn, will tell us about the relationship between the forces.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The forces are equal. According to Newton’s first law, if the net force is zero, the velocity is constant.</li><li>In this case, \\({\\mathbf{\\vec{F}}}_{\\text{friction}}\\) must be larger than \\({\\mathbf{\\vec{F}}}_{\\text{drag}}.\\) According to Newton’s second law, a net force is required to cause acceleration.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>These questions may seem trivial, but they are commonly answered incorrectly. For a car or any other object to move, it must be accelerated from rest to the desired speed; this requires that the friction force be greater than the drag force. Once the car is moving at constant velocity, the net force must be zero; otherwise, the car will accelerate (gain speed). To solve problems involving Newton’s laws, we must understand whether to apply Newton’s first law (where \\(\\sum \\mathbf{\\vec{F}}=\\mathbf{\\vec{0}}\\)) or Newton’s second law (where \\(\\sum \\mathbf{\\vec{F}}\\) is not zero). This will be apparent as you see more examples and attempt to solve problems on your own.</p>"
+      }
+     ]
+    },
+    {
+     "title": "What Rocket Thrust Accelerates This Sled?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Before space flights carrying astronauts, rocket sleds were used to test aircraft, missile equipment, and physiological effects on human subjects at high speeds. They consisted of a platform that was mounted on one or two rails and propelled by several rockets.</p><p>Calculate the magnitude of force exerted by each rocket, called its thrust <i>T</i>, for the four-rocket propulsion system shown in the figure. The sled’s initial acceleration is \\(49\\, {\\text{m/s}}^{2}\\), the mass of the system is 2100 kg, and the force of friction opposing the motion is 650 N.</p><figure><img src='img/CNX_UPhysics_05_03_RocketSled.jpg' alt=\"Figure shows a sled going right. It has four rockets at the back, with each thrust vector having the same magnitude and pointing right. Friction f points left. The upward normal force N and downward weight, are both equal in magnitude. Acceleration a is towards the right. All these forces are also shown in a free body diagram.\" loading='lazy'><figcaption>A sled experiences a rocket thrust that accelerates it to the right. Each rocket creates an identical thrust <i>T</i>. The system here is the sled, its rockets, and its rider, so none of the forces between these objects are considered. The arrow representing friction \\((\\mathbf{\\vec{f}})\\) is drawn larger than scale.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Although forces are acting both vertically and horizontally, we assume the vertical forces cancel because there is no vertical acceleration. This leaves us with only horizontal forces and a simpler one-dimensional problem. Directions are indicated with plus or minus signs, with right taken as the positive direction. See the free-body diagram in the figure.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Since acceleration, mass, and the force of friction are given, we start with Newton’s second law and look for ways to find the thrust of the engines. We have defined the direction of the force and acceleration as acting “to the right,” so we need to consider only the magnitudes of these quantities in the calculations. Hence we begin with</p><div class='eq'>\\[{F}_{\\text{net}}=ma\\]</div><p>where \\({F}_{\\text{net}}\\) is the net force along the horizontal direction. We can see from the figure that the engine thrusts add, whereas friction opposes the thrust. In equation form, the net external force is</p><div class='eq'>\\[{F}_{\\text{net}}=4T-f.\\]</div><p>Substituting this into Newton’s second law gives us</p><div class='eq'>\\[{F}_{\\text{net}}=ma=4T-f.\\]</div><p>Using a little algebra, we solve for the total thrust 4<i>T</i>:</p><div class='eq'>\\[4T=ma+f.\\]</div><p>Substituting known values yields</p><div class='eq'>\\[4T=ma+f=(2100\\, \\text{kg})(49\\, {\\text{m}\\text{/}\\text{s}}^{2})+650\\, \\text{N}.\\]</div><p>Therefore, the total thrust is</p><div class='eq'>\\[4T=1.0\\, \\times \\, {10}^{5}\\, \\text{N},\\]</div><p>and the individual thrusts are</p><div class='eq'>\\[T=\\frac{1.0\\, \\times \\, {10}^{5}\\, \\text{N}}{4}=2.5\\, \\times \\, {10}^{4}\\, \\text{N}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The numbers are quite large, so the result might surprise you. Experiments such as this were performed in the early 1960s to test the limits of human endurance, and the setup was designed to protect human subjects in jet fighter emergency ejections. Speeds of 1000 km/h were obtained, with accelerations of 45 <i>g</i>’s. (Recall that <i>g</i>, acceleration due to gravity, is \\(9.80\\, {\\text{m/s}}^{2}\\). When we say that acceleration is 45 <i>g</i>’s, it is \\(45\\, \\times \\, 9.8\\, {\\text{m/s}}^{2},\\) which is approximately \\(440\\, {\\text{m/s}}^{2}\\).) Although living subjects are not used anymore, land speeds of 10,000 km/h have been obtained with a rocket sled.</p><p>In this example, as in the preceding one, the system of interest is obvious. We see in later examples that choosing the system of interest is crucial—and the choice is not always obvious.</p><p>Newton’s second law is more than a definition; it is a relationship among acceleration, force, and mass. It can help us make predictions. Each of those physical quantities can be defined independently, so the second law tells us something basic and universal about nature.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Force on a Soccer Ball",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 0.400-kg soccer ball is kicked across the field by a player; it undergoes acceleration given by \\(\\mathbf{\\vec{a}}=3.00\\mathbf{\\hat{i}}+7.00\\mathbf{\\hat{j}}\\, {\\text{m/s}}^{2}.\\) Find (a) the resultant force acting on the ball and (b) the magnitude and direction of the resultant force.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The vectors in \\(\\mathbf{\\hat{i}}\\) and \\(\\mathbf{\\hat{j}}\\) format, which indicate force direction along the <i>x</i>-axis and the <i>y</i>-axis, respectively, are involved, so we apply Newton’s second law in vector form.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>We apply Newton’s second law: <div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{net}}=m\\mathbf{\\vec{a}}=(0.400\\, \\text{kg})(3.00\\mathbf{\\hat{i}}+7.00\\mathbf{\\hat{j}}\\, {\\text{m/s}}^{2})=1.20\\mathbf{\\hat{i}}+2.80\\mathbf{\\hat{j}}\\, \\text{N}.\\]</div></li><li>Magnitude and direction are found using the components of \\({\\mathbf{\\vec{F}}}_{\\text{net}}\\):<br> <div class='eq'>\\[{F}_{\\text{net}}=\\sqrt{{(1.20\\, \\text{N})}^{2}+{(2.80\\, \\text{N})}^{2}}=3.05\\, \\text{N}\\, \\text{and}\\, \\theta ={\\tan}^{-1}(\\frac{2.80}{1.20})=66.8^{\\circ} .\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We must remember that Newton’s second law is a vector equation. In (a), we are multiplying a vector by a scalar to determine the net force in vector form. While the vector form gives a compact representation of the force vector, it does not tell us how “big” it is, or where it goes, in intuitive terms. In (b), we are determining the actual size (magnitude) of this force and the direction in which it travels.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Mass of a Car",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the mass of a car if a net force of \\(-600.0\\mathbf{\\hat{j}}\\, \\text{N}\\) produces an acceleration of \\(-0.2\\mathbf{\\hat{j}}\\, {\\text{m/s}}^{2}\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Vector division is not defined, so \\(m={\\mathbf{\\vec{F}}}_{\\text{net}}\\text{/}\\mathbf{\\vec{a}}\\) cannot be performed. However, mass <i>m</i> is a scalar, so we can use the scalar form of Newton’s second law, \\(m={F}_{\\text{net}}\\text{/}a\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We use \\(m={F}_{\\text{net}}\\text{/}a\\) and substitute the magnitudes of the two vectors: \\({F}_{\\text{net}}=600.0\\, \\text{N}\\) and \\(a=0.2\\, {\\text{m/s}}^{2}.\\) Therefore,</p><div class='eq'>\\[m=\\frac{{F}_{\\text{net}}}{a}=\\frac{600.0\\, \\text{N}}{0.2\\, {\\text{m/s}}^{2}}=3000\\, \\text{kg}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Force and acceleration were given in the \\(\\mathbf{\\hat{i}}\\) and \\(\\mathbf{\\hat{j}}\\) format, but the answer, mass <i>m</i>, is a scalar and thus is not given in \\(\\mathbf{\\hat{i}}\\) and \\(\\mathbf{\\hat{j}}\\) form.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Several Forces on a Particle",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A particle of mass \\(m=4.0\\, \\text{kg}\\) is acted upon by four forces of magnitudes. \\({F}_{1}=10.0\\, \\text{N},\\, {F}_{2}=40.0\\, \\text{N},\\, {F}_{3}=5.0\\, \\text{N},\\, \\text{and}\\, {F}_{4}=2.0\\, \\text{N}\\), with the directions as shown in the free-body diagram in the figure. What is the acceleration of the particle?</p><figure><img src='img/CNX_UPhysics_05_03_FourForces.jpg' alt=\"A particle is shown in the xy plane. Force F1 is at an angle of 30 degrees with the positive x axis, force F2 is in the downward direction, force F3 points left and force F4 points upwards.\" loading='lazy'><figcaption>Four forces in the <i>xy</i>-plane are applied to a 4.0-kg particle.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Because this is a two-dimensional problem, we must use a free-body diagram. First, \\({\\mathbf{\\vec{F}}}_{1}\\) must be resolved into <i>x</i>- and <i>y</i>-components. We can then apply the second law in each direction.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We draw a free-body diagram as shown in the figure. Now we apply Newton’s second law. We consider all vectors resolved into <i>x</i>- and <i>y</i>-components:</p><div class='eq'>\\[\\begin{array}{llll}\\sum {F}_{x}=m{a}_{x} & & & \\sum {F}_{y}=m{a}_{y} \\\\ {F}_{1x}-{F}_{3x}=m{a}_{x} & & & {F}_{1y}+{F}_{4y}-{F}_{2y}=m{a}_{y} \\\\ {F}_{1}\\, \\cos \\, 30^{\\circ} -{F}_{3x}=m{a}_{x} & & & {F}_{1}\\sin \\, 30^{\\circ} +{F}_{4y}-{F}_{2y}=m{a}_{y} \\\\ (10.0\\, \\text{N})(\\cos \\, 30^{\\circ} )-5.0\\, \\text{N}=(4.0\\, \\text{kg}){a}_{x} & & & (10.0\\, \\text{N})(\\sin \\, 30^{\\circ} )+2.0\\, \\text{N}-40.0\\, \\text{N}=(4.0\\, \\text{kg}){a}_{y} \\\\ {a}_{x}=0.92\\, \\text{m}\\text{/}{\\text{s}}^{2}. & & & {a}_{y}=-8.3\\, {\\text{m}\\text{/}\\text{s}}^{2}.\\end{array}\\]</div><p>Thus, the net acceleration is</p><div class='eq'>\\[\\mathbf{\\vec{a}}=(0.92\\mathbf{\\hat{i}}-8.3\\mathbf{\\hat{j}})\\, \\text{m}\\text{/}{\\text{s}}^{2},\\]</div><p>which is a vector of magnitude \\(8.4\\, {\\text{m/s}}^{2}\\) directed at \\(276^{\\circ}\\) to the positive <i>x</i>-axis.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Numerous examples in everyday life can be found that involve three or more forces acting on a single object, such as cables running from the Golden Gate Bridge or a football player being tackled by three defenders. We can see that the solution of this example is just an extension of what we have already done.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>At the time of its launch, the HMS <i>Titanic</i> was the most massive mobile object ever built, with a mass of \\(6.0\\, \\times \\, {10}^{7}\\, \\text{kg}\\). If a force of 6 MN \\((6\\, \\times \\, {10}^{6}\\, \\text{N})\\) was applied to the ship, what acceleration would it experience?</p>",
+     "a": "<p>\\(0.1\\, {\\text{m/s}}^{2}\\)</p>"
+    },
+    {
+     "q": "<p>A 550-kg sports car collides with a 2200-kg truck, and during the collision, the net force on each vehicle is the force exerted by the other. If the magnitude of the truck’s acceleration is \\(10\\, {\\text{m/s}}^{2},\\) what is the magnitude of the sports car’s acceleration?</p>",
+     "a": "<p>\\(40\\, {\\text{m/s}}^{2}\\)</p>"
+    },
+    {
+     "q": "<p>A car has forces acting on it, as shown below. The mass of the car is 1000.0 kg. The road is slick, so friction can be ignored. (a) What is the net force on the car? (b) What is the acceleration of the car?</p><figure><img src='img/CNX_UPhysics_05_03_RedCar3_img.jpg' alt=\"The top view of a car is shown. Two force vectors originate from the car and point upwards and outwards. A force of 450 newtons makes an angle of 30 degrees with the straight line motion of the car, towards the right. Another force of 360 newtons makes an angle of 10 degrees with the straight line motion of the car, towards the left.\" loading='lazy'></figure>",
+     "a": "<p>a. \\({F}_{\\text{net}}=159.0\\mathbf{\\hat{i}}+763.9\\mathbf{\\hat{j}}\\, \\text{N}\\); b. \\(a=0.1590\\mathbf{\\hat{i}}+0.7639\\mathbf{\\hat{j}}\\, {\\text{m/s}}^{2}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "An external force acts on a system from outside the system, as opposed to internal forces, which act between components within the system.",
+    "Newton’s second law of motion says that the net external force on an object with a certain mass is directly proportional to and in the same direction as the acceleration of the object.",
+    "Newton’s second law can also describe net force as the instantaneous rate of change of momentum. Thus, a net external force causes nonzero acceleration."
+   ]
+  },
+  {
+   "num": "5.4",
+   "module": "m58298",
+   "title": "Mass and Weight",
+   "objectives": [
+    "Explain the difference between mass and weight",
+    "Explain why objects falling through the air are never truly in free fall",
+    "Describe the concept of weightlessness"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Clearing a Field",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A farmer is lifting some moderately heavy rocks from a field to plant crops. He lifts a stone that weighs 40.0 lb. (about 180 N). What force does he apply if the stone accelerates at a rate of \\(1.5\\, {\\text{m/s}}^{2}?\\)</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We were given the weight of the stone, which we use in finding the net force on the stone. However, we also need to know its mass to apply Newton’s second law, so we must apply the equation for weight, \\(w=mg\\), to determine the mass.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>No forces act in the horizontal direction, so we can concentrate on vertical forces, as shown in the following free-body diagram. We label the acceleration to the side; technically, it is not part of the free-body diagram, but it helps to remind us that the object accelerates upward (so the net force is upward).</p><figure><img src='img/CNX_UPhysics_05_04_RockLift_img.jpg' alt=\"Figure shows a free-body diagram with vector w equal to 180 newtons pointing downwards and vector F of unknown magnitude pointing upwards. Acceleration a is equal to 1.5 meters per second squared.\" loading='lazy'></figure><div class='eq'>\\[\\begin{array}{lll}w & = & mg \\\\ m & = & \\frac{w}{g}=\\frac{180\\, \\text{N}}{9.8\\, {\\text{m/s}}^{2}}=18\\, \\text{kg} \\\\ \\sum F & = & ma \\\\ F-w & = & ma \\\\ F-180\\, \\text{N} & = & (18\\, \\text{kg})(1.5\\, {\\text{m/s}}^{2}) \\\\ F-180\\, \\text{N} & = & 27\\, \\text{N} \\\\ F & = & 207\\, \\text{N}=210\\, \\text{N to two significant figures}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>To apply Newton’s second law as the primary equation in solving a problem, we sometimes have to rely on other equations, such as the one for weight or one of the kinematic equations, to complete the solution.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>For the example <i>Clearing a Field</i>, find the acceleration when the farmer’s applied force is 230.0 N.</p>",
+     "a": "<p>\\(a=2.78\\, {\\text{m/s}}^{2}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Mass is the quantity of matter in a substance.",
+    "The weight of an object is the net force on a falling object, or its gravitational force. The object experiences acceleration due to gravity.",
+    "Some upward resistance force from the air acts on all falling objects on Earth, so they can never truly be in free fall.",
+    "Careful distinctions must be made between free fall and weightlessness using the definition of weight as force due to gravity acting on an object of a certain mass."
+   ]
+  },
+  {
+   "num": "5.5",
+   "module": "m58299",
+   "title": "Newton’s Third Law",
+   "objectives": [
+    "State Newton’s third law of motion",
+    "Identify the action and reaction forces in different situations",
+    "Apply Newton’s third law to define systems and solve problems of motion"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Forces on a Stationary Object",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The package in the figure is sitting on a scale. For the scale and package at rest (i.e., not accelerating), show that the scale indicates the weight of the package.</p><figure><img src='img/CNX_UPhysics_05_05_Package.jpg' alt=\"Figure a shows a package on a weighing scale on earth. The three objects are separated and the force vectors are shown. Force w acts downwards on the package and force s acts upwards on it. Force minus s acts downwards on the scale. Force minus w acts upwards from the earth. The pair w and s and the pair minus s and minus w are both labeled Newton’s first law pair. The pair s and minus s and the pair w and minus w are both labeled Newton’s third law pair. Figure b show two systems in isolation: the package scale system and the package earth system. The former has force s acting upwards and minus s acting downwards. The latter has force w acting downwards and force minus w acting upwards.\" loading='lazy'><figcaption>(a) The forces on a package sitting on a scale, along with their reaction forces. The force \\(\\mathbf{\\vec{w}}\\) is the weight of the package (the force due to Earth’s gravity) and \\(\\mathbf{\\vec{S}}\\) is the force of the scale on the package. (b) Isolation of the package-scale system and the package-Earth system makes the action and reaction pairs clear.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The forces on the package are \\(\\mathbf{\\vec{S}},\\) which is due to the scale, and \\(-\\mathbf{\\vec{w}},\\) which is due to Earth’s gravitational field. The reaction forces that the package exerts are \\(-\\mathbf{\\vec{S}}\\) on the scale and \\(\\mathbf{\\vec{w}}\\) on Earth. Because the package is not accelerating, application of the second law yields</p><div class='eq'>\\[\\mathbf{\\vec{S}}-\\mathbf{\\vec{w}}=m\\mathbf{\\vec{a}}=\\mathbf{\\vec{0}},\\]</div><p>so</p><div class='eq'>\\[\\mathbf{\\vec{S}}=\\mathbf{\\vec{w}}.\\]</div><p>The scale reading indicates the magnitude of the force \\(\\mathbf{\\vec{S}}\\), which is equal to the magnitude of the package’s weight.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The scale actually does not measure the weight of the package; it measures the force \\(-\\mathbf{\\vec{S}}\\) on its surface. If the system is accelerating, \\(\\mathbf{\\vec{S}}\\) and \\(-\\mathbf{\\vec{w}}\\) would not be equal, as explained in Applications of Newton’s Laws.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Getting Up to Speed: Choosing the Correct System",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A physics professor pushes a cart of demonstration equipment to a lecture hall (the figure). Her mass is 65.0 kg, the cart’s mass is 12.0 kg, and the equipment’s mass is 7.0 kg. Calculate the acceleration produced when the professor exerts a backward force of 150 N on the floor. All forces opposing the motion, such as friction on the cart’s wheels and air resistance, total 24.0 N.</p><figure><img src='img/CNX_UPhysics_05_05_ProfCart.jpg' alt=\"Figure shows a person pushing a cart from left to right. Near the feet of the person are the arrows labeled F subscript foot pointing left and F subscript floor pointing right. An arrow f pointing left is shown near the wheel of the cart. The arrows F subscript prof pointing right and F subscript cart pointing left are shown near her hands. The cart is circled and labeled system 2. The cart and person are circled together and this is labeled system 1. Two free body diagrams are shown. The first, of system 1 has F subscript floor pointing right, N pointing up, f pointing left and w pointing down. The second diagram, of system 2, has F subscript prof pointing right, N prime pointing up, f pointing left and w prime pointing down.\" loading='lazy'><figcaption>A professor pushes the cart with her demonstration equipment. The lengths of the arrows are proportional to the magnitudes of the forces (except for \\(\\mathbf{\\vec{f}}\\text{,}\\) because it is too small to be drawn to scale). System 1 is appropriate for this example, because it asks for the acceleration of the entire group of objects. Only \\({\\mathbf{\\vec{F}}}_{\\text{floor}}\\) and \\(\\mathbf{\\vec{f}}\\) are external forces acting on System 1 along the line of motion. All other forces either cancel or act on the outside world. System 2 is chosen for the next example so that \\({\\mathbf{\\vec{F}}}_{\\text{prof}}\\) is an external force and enters into Newton’s second law. The free-body diagrams, which serve as the basis for Newton’s second law, vary with the system chosen.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since they accelerate as a unit, we define the system to be the professor, cart, and equipment. This is System 1 in the figure. The professor pushes backward with a force \\({F}_{\\text{foot}}\\) of 150 N. According to Newton’s third law, the floor exerts a forward reaction force \\({F}_{\\text{floor}}\\) of 150 N on System 1. Because all motion is horizontal, we can assume there is no net force in the vertical direction. Therefore, the problem is one-dimensional along the horizontal direction. As noted, friction <i>f</i> opposes the motion and is thus in the opposite direction of \\({F}_{\\text{floor}}.\\) We do not include the forces \\({F}_{\\text{prof}}\\) or \\({F}_{\\text{cart}}\\) because these are internal forces, and we do not include \\({F}_{\\text{foot}}\\) because it acts on the floor, not on the system. There are no other significant forces acting on System 1. If the net external force can be found from all this information, we can use Newton’s second law to find the acceleration as requested. See the free-body diagram in the figure.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Newton’s second law is given by</p><div class='eq'>\\[a=\\frac{{F}_{\\text{net}}}{m}.\\]</div><p>The net external force on System 1 is deduced from the figure and the preceding discussion to be</p><div class='eq'>\\[{F}_{\\text{net}}={F}_{\\text{floor}}-f=150\\, \\text{N}-24.0\\, \\text{N}=126\\, \\text{N}\\text{.}\\]</div><p>The mass of System 1 is</p><div class='eq'>\\[m=(65.0+12.0+7.0)\\, \\text{kg}=84\\, \\text{kg}\\text{.}\\]</div><p>These values of \\({F}_{\\text{net}}\\) and <i>m</i> produce an acceleration of</p><div class='eq'>\\[a=\\frac{{F}_{\\text{net}}}{m}=\\frac{126\\, \\text{N}}{84\\, \\text{kg}}=1.5\\, {\\text{m/s}}^{2}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>None of the forces between components of System 1, such as between the professor’s hands and the cart, contribute to the net external force because they are internal to System 1. Another way to look at this is that forces between components of a system cancel because they are equal in magnitude and opposite in direction. For example, the force exerted by the professor on the cart results in an equal and opposite force back on the professor. In this case, both forces act on the same system and therefore cancel. Thus, internal forces (between components of a system) cancel. Choosing System 1 was crucial to solving this problem.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Force on the Cart: Choosing a New System",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Calculate the force the professor exerts on the cart in the figure, using data from the previous example if needed.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>If we define the system of interest as the cart plus the equipment (System 2 in the figure), then the net external force on System 2 is the force the professor exerts on the cart minus friction. The force she exerts on the cart, \\({F}_{\\text{prof}}\\), is an external force acting on System 2. \\({F}_{\\text{prof}}\\) was internal to System 1, but it is external to System 2 and thus enters Newton’s second law for this system.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Newton’s second law can be used to find \\({F}_{\\text{prof}}.\\) We start with</p><div class='eq'>\\[a=\\frac{{F}_{\\text{net}}}{m}.\\]</div><p>The magnitude of the net external force on System 2 is</p><div class='eq'>\\[{F}_{\\text{net}}={F}_{\\text{prof}}-f.\\]</div><p>We solve for \\({F}_{\\text{prof}}\\), the desired quantity:</p><div class='eq'>\\[{F}_{\\text{prof}}={F}_{\\text{net}}+f.\\]</div><p>The value of <i>f</i> is given, so we must calculate net \\({F}_{\\text{net}}.\\) That can be done because both the acceleration and the mass of System 2 are known. Using Newton’s second law, we see that</p><div class='eq'>\\[{F}_{\\text{net}}=ma,\\]</div><p>where the mass of System 2 is 19.0 kg (\\(m=12.0\\, \\text{kg}+7.0\\, \\text{kg}\\)) and its acceleration was found to be \\(a=1.5\\, {\\text{m/s}}^{2}\\) in the previous example. Thus,</p><div class='eq'>\\[{F}_{\\text{net}}=ma=(19.0\\, \\text{kg})(1.5\\, {\\text{m/s}}^{2})=29\\, \\text{N}\\text{.}\\]</div><p>Now we can find the desired force:</p><div class='eq'>\\[{F}_{\\text{prof}}={F}_{\\text{net}}+f=29\\, \\text{N}+24.0\\, \\text{N}=53\\, \\text{N}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This force is significantly less than the 150-N force the professor exerted backward on the floor. Not all of that 150-N force is transmitted to the cart; some of it accelerates the professor. The choice of a system is an important analytical step both in solving problems and in thoroughly understanding the physics of the situation (which are not necessarily the same things).</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Two blocks are at rest and in contact on a frictionless surface as shown below, with \\({m}_{1}=2.0\\, \\text{kg},\\) \\({m}_{2}=6.0\\, \\text{kg},\\) and applied force 24 N. (a) Find the acceleration of the system of blocks. (b) Suppose that the blocks are later separated. What force will give the second block, with the mass of 6.0 kg, the same acceleration as the system of blocks?</p><figure><img src='img/CNX_UPhysics_05_07_Blocks1_img.jpg' alt=\"Two squares are shown side by side, touching each other. The left one is smaller and is labeled m1. The one on the right is bigger and is labeled m2. Force F acts on m1 from left to right.\" loading='lazy'></figure>",
+     "a": "<p>a. \\(3.0\\, \\text{m}\\text{/}{\\text{s}}^{2}\\); b. 18 N</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Newton’s third law of motion represents a basic symmetry in nature, with an experienced force equal in magnitude and opposite in direction to an exerted force.",
+    "Two equal and opposite forces do not cancel because they act on different systems.",
+    "Action-reaction pairs include a swimmer pushing off a wall, helicopters creating lift by pushing air down, and an octopus propelling itself forward by ejecting water from its body. Rockets, airplanes, and cars are pushed forward by a thrust reaction force.",
+    "Choosing a system is an important analytical step in understanding the physics of a problem and solving it."
+   ]
+  },
+  {
+   "num": "5.6",
+   "module": "m58300",
+   "title": "Common Forces",
+   "objectives": [
+    "Define normal and tension forces",
+    "Distinguish between real and fictitious forces",
+    "Apply Newton’s laws of motion to solve problems involving a variety of forces"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{F}}=-k\\mathbf{\\vec{x}}"
+   ],
+   "examples": [
+    {
+     "title": "Weight on an Incline",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider the skier on the slope in the figure. Her mass including equipment is 60.0 kg. (a) What is her acceleration if friction is negligible? (b) What is her acceleration if friction is 45.0 N?</p><figure><img src='img/CNX_UPhysics_05_06_SkiSlope.jpg' alt=\"Figure shows a person skiing down a slope of 25 degrees to the horizontal. Force f is up and parallel to the slope, force N is up and perpendicular to the slope. Force w is straight down. Its component wx is down and parallel to the slope and component wy is down and perpendicular to the slope. All these forces are also shown in a free body diagram. X axis is taken to be parallel to the slope.\" loading='lazy'><figcaption>Since the acceleration is parallel to the slope and acting down the slope, it is most convenient to project all forces onto a coordinate system where one axis is parallel to the slope and the other is perpendicular to it (axes shown to the left of the skier). \\(\\mathbf{\\vec{N}}\\) is perpendicular to the slope and \\(\\mathbf{\\vec{f}}\\) is parallel to the slope, but \\(\\mathbf{\\vec{w}}\\) has components along both axes, namely, \\({w}_{y}\\) and \\({w}_{x}\\). Here, \\(\\mathbf{\\vec{w}}\\) has a squiggly line to show that it has been replaced by these components. The force \\(\\mathbf{\\vec{N}}\\) is equal in magnitude to \\({w}_{y}\\), so there is no acceleration perpendicular to the slope, but <i>f</i> is less than \\({w}_{x}\\), so there is a downslope acceleration (along the axis parallel to the slope).</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>This is a two-dimensional problem, since not all forces on the skier (the system of interest) are parallel. The approach we have used in two-dimensional kinematics also works well here. Choose a convenient coordinate system and project the vectors onto its axes, creating two one-dimensional problems to solve. The most convenient coordinate system for motion on an incline is one that has one coordinate parallel to the slope and one perpendicular to the slope. (Motions along mutually perpendicular axes are independent.) We use <i>x</i> and <i>y</i> for the parallel and perpendicular directions, respectively. This choice of axes simplifies this type of problem, because there is no motion perpendicular to the slope and the acceleration is downslope. Regarding the forces, friction is drawn in opposition to motion (friction always opposes forward motion) and is always parallel to the slope, \\({w}_{x}\\) is drawn parallel to the slope and downslope (it causes the motion of the skier down the slope), and \\({w}_{y}\\) is drawn as the component of weight perpendicular to the slope. Then, we can consider the separate problems of forces parallel to the slope and forces perpendicular to the slope.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The magnitude of the component of weight parallel to the slope is</p><div class='eq'>\\[{w}_{x}=w\\, \\sin \\, 25^{\\circ} =mg\\, \\sin \\, 25^{\\circ} ,\\]</div><p>and the magnitude of the component of the weight perpendicular to the slope is</p><div class='eq'>\\[{w}_{y}=w\\, \\cos \\, 25^{\\circ} =mg\\, \\cos \\, 25^{\\circ} .\\]</div><p>a. Neglect friction. Since the acceleration is parallel to the slope, we need only consider forces parallel to the slope. (Forces perpendicular to the slope add to zero, since there is no acceleration in that direction.) The forces parallel to the slope are the component of the skier’s weight parallel to slope \\({w}_{x}\\) and friction <i>f</i>. Using Newton’s second law, with subscripts to denote quantities parallel to the slope,</p><div class='eq'>\\[{a}_{x}=\\frac{{F}_{\\text{net}\\, x}}{m}\\]</div><p>where \\({F}_{\\text{net}\\, x}={w}_{x}=-mg\\, \\sin \\, 25^{\\circ} ,\\) assuming no friction for this part. Therefore,</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ \\\\ {a}_{x}=\\frac{{F}_{\\text{net}\\, x}}{m}=\\frac{mg\\, \\sin \\, 25^{\\circ}}{m}=g\\, \\sin \\, 25^{\\circ} \\\\ (9.80\\, {\\text{m/s}}^{2})(0.4226)=4.14\\, {\\text{m/s}}^{2}\\end{array}\\]</div><p>is the acceleration.</p><p>b. Include friction. We have a given value for friction, and we know its direction is parallel to the slope and it opposes motion between surfaces in contact. So the net external force is</p><div class='eq'>\\[{F}_{\\text{net}\\, x}={w}_{x}-f.\\]</div><p>Substituting this into Newton’s second law, \\({a}_{x}={F}_{\\text{net}\\, x}\\text{/}m,\\) gives</p><div class='eq'>\\[{a}_{x}=\\frac{{F}_{\\text{net}\\, x}}{m}=\\frac{{w}_{x}-f}{m}=\\frac{mg\\, \\sin \\, 25^{\\circ} -f}{m}.\\]</div><p>We substitute known values to obtain</p><div class='eq'>\\[{a}_{x}=\\frac{(60.0\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2})(0.4226)-45.0\\, \\text{N}}{60.0\\, \\text{kg}}.\\]</div><p>This gives us</p><div class='eq'>\\[{a}_{x}=3.39\\, {\\text{m/s}}^{2},\\]</div><p>which is the acceleration parallel to the incline when there is 45.0 N of opposing friction.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Since friction always opposes motion between surfaces, the acceleration is smaller when there is friction than when there is none. It is a general result that if friction on an incline is negligible, then the acceleration down the incline is \\(a=g\\, \\sin \\, \\theta\\), regardless of mass. As discussed previously, all objects fall with the same acceleration in the absence of air resistance. Similarly, all objects, regardless of mass, slide down a frictionless incline with the same acceleration (if the angle is the same).</p>"
+      }
+     ]
+    },
+    {
+     "title": "What Is the Tension in a Tightrope?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Calculate the tension in the wire supporting the 70.0-kg tightrope walker shown in the figure.</p><figure><img src='img/CNX_UPhysics_05_06_Tightrope.jpg' alt=\"Figure shows a man at the centre of a tightrope which is supported by two poles. The rope sags under his weight and makes an angle of 5 degrees with the horizontal at each pole. Arrows labeled TL and TR point roughly to the left and right respectively and are parallel to the rope. Arrow labeled w points straight down from the man. These three arrows are also shown in a free body diagram.\" loading='lazy'><figcaption>The weight of a tightrope walker causes a wire to sag by \\(5.0^{\\circ}\\). The system of interest is the point in the wire at which the tightrope walker is standing.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>As you can see in the figure, the wire is bent under the person’s weight. Thus, the tension on either side of the person has an upward component that can support his weight. As usual, forces are vectors represented pictorially by arrows that have the same direction as the forces and lengths proportional to their magnitudes. The system is the tightrope walker, and the only external forces acting on him are his weight \\(\\mathbf{\\vec{w}}\\) and the two tensions \\({\\mathbf{\\vec{T}}}_{\\text{L}}\\) (left tension) and \\({\\mathbf{\\vec{T}}}_{\\text{R}}\\) (right tension). It is reasonable to neglect the weight of the wire. The net external force is zero, because the system is static. We can use trigonometry to find the tensions. One conclusion is possible at the outset—we can see from the figure(b) that the magnitudes of the tensions \\({T}_{\\text{L}}\\) and \\({T}_{\\text{R}}\\) must be equal. We know this because there is no horizontal acceleration in the rope and the only forces acting to the left and right are \\({T}_{\\text{L}}\\) and \\({T}_{\\text{R}}\\). Thus, the magnitude of those horizontal components of the forces must be equal so that they cancel each other out.</p><p>Whenever we have two-dimensional vector problems in which no two vectors are parallel, the easiest method of solution is to pick a convenient coordinate system and project the vectors onto its axes. In this case, the best coordinate system has one horizontal axis (<i>x</i>) and one vertical axis (<i>y</i>).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First, we need to resolve the tension vectors into their horizontal and vertical components. It helps to look at a new free-body diagram showing all horizontal and vertical components of each force acting on the system (the figure).</p><figure><img src='img/CNX_UPhysics_05_06_TropeFBD.jpg' alt=\"There are three figures. The first one shows TL, at an angle of 5 degrees with the horizontal, pointing left. Two dotted arrows, TLx, pointing straight left and TLy pointing straight up, form a right triangle with TL. The second figure shows TR, at an angle of 5 degrees with the horizontal, pointing right. Two dotted arrows, TRx, pointing straight right and TRy pointing straight up, form a right triangle with TR. The third figure shows a free body diagram. TRx points right. TRy and TLy point up. TLx points left. W points down. Net Fx is equal to 0 and net Fy is qual to 0.\" loading='lazy'><figcaption>When the vectors are projected onto vertical and horizontal axes, their components along these axes must add to zero, since the tightrope walker is stationary. The small angle results in <i>T</i> being much greater than <i>w</i>.</figcaption></figure><p>Consider the horizontal components of the forces (denoted with a subscript <i>x</i>):</p><div class='eq'>\\[{F}_{\\text{net}\\, x}={T}_{\\text{R}x}-{T}_{\\text{L}x}.\\]</div><p>The net external horizontal force \\({F}_{\\text{net}\\, x}=0,\\) since the person is stationary. Thus,</p><div class='eq'>\\[\\begin{array}{lll}{F}_{\\text{net}\\, x} & = & 0={T}_{\\text{R}x}-{T}_{\\text{L}x} \\\\ {T}_{\\text{L}x} & = & {T}_{\\text{R}x}.\\end{array}\\]</div><p>Now observe the figure. You can use trigonometry to determine the magnitude of \\({T}_{\\text{L}}\\) and \\({T}_{\\text{R}}\\):</p><div class='eq'>\\[\\begin{array}{lll} \\\\ \\\\ \\cos \\, 5.0^{\\circ} & = & \\frac{{T}_{\\text{L}x}}{{T}_{\\text{L}}},\\; {T}_{\\text{L}x}={T}_{\\text{L}}\\cos \\, 5.0^{\\circ} \\\\ \\cos \\, 5.0^{\\circ} & = & \\frac{{T}_{\\text{R}x}}{{T}_{\\text{R}}},\\; {T}_{\\text{R}x}={T}_{\\text{R}}\\cos \\, 5.0^{\\circ} .\\end{array}\\]</div><p>Equating <i>T</i><sub>L<i>x</i></sub> and <i>T</i><sub>R<i>x</i></sub>:</p><div class='eq'>\\[{T}_{\\text{L}}\\cos \\, 5.0^{\\circ} ={T}_{\\text{R}}\\cos \\, 5.0^{\\circ} .\\]</div><p>Thus,</p><div class='eq'>\\[{T}_{\\text{L}}={T}_{\\text{R}}=T,\\]</div><p>as predicted. Now, considering the vertical components (denoted by a subscript <i>y</i>), we can solve for <i>T</i>. Again, since the person is stationary, Newton’s second law implies that \\({F}_{\\text{net}\\, y}=0\\). Thus, as illustrated in the free-body diagram,</p><div class='eq'>\\[{F}_{\\text{net}\\, y}={T}_{\\text{L}y}+{T}_{\\text{R}y}-w=0.\\]</div><p>We can use trigonometry to determine the relationships among \\({T}_{\\text{Ly}},{T}_{\\text{Ry}},\\) and <i>T</i>. As we determined from the analysis in the horizontal direction, \\({T}_{\\text{L}}={T}_{\\text{R}}=T\\):</p><div class='eq'>\\[\\begin{array}{lll} \\\\ \\sin \\, 5.0^{\\circ} & = & \\frac{{T}_{\\text{L}y}}{{T}_{\\text{L}}},\\; {T}_{\\text{L}y}={T}_{\\text{L}}\\sin \\, 5.0^{\\circ} =T\\, \\sin \\, 5.0^{\\circ} \\\\ \\sin \\, 5.0^{\\circ} & = & \\frac{{T}_{\\text{R}y}}{{T}_{\\text{R}}},\\; {T}_{\\text{R}y}={T}_{\\text{R}}\\sin \\, 5.0^{\\circ} =T\\, \\sin \\, 5.0^{\\circ} .\\end{array}\\]</div><p>Now we can substitute the vales for \\({T}_{\\text{Ly}}\\) and \\({T}_{\\text{Ry}}\\), into the net force equation in the vertical direction:</p><div class='eq'>\\[\\begin{array}{lll}{F}_{\\text{net}\\, y} & = & {T}_{\\text{L}y}+{T}_{\\text{R}y}-w=0 \\\\ {F}_{\\text{net}\\, y} & = & T\\, \\sin \\, 5.0^{\\circ} +T\\, \\sin \\, 5.0^{\\circ} -w=0 \\\\ 2T\\, \\sin \\, 5.0^{\\circ} -w & = & 0 \\\\ 2T\\, \\sin \\, 5.0^{\\circ} & = & w\\end{array}\\]</div><p>and</p><div class='eq'>\\[T=\\frac{w}{2\\, \\sin \\, 5.0^{\\circ}}=\\frac{mg}{2\\, \\sin \\, 5.0^{\\circ}},\\]</div><p>so</p><div class='eq'>\\[T=\\frac{(70.0\\, \\text{kg})(9.80\\, {\\text{m/s}}^{2})}{2(0.0872)},\\]</div><p>and the tension is</p><div class='eq'>\\[T=3930\\, \\text{N}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The vertical tension in the wire acts as a force that supports the weight of the tightrope walker. The tension is almost six times the 686-N weight of the tightrope walker. Since the wire is nearly horizontal, the vertical component of its tension is only a fraction of the tension in the wire. The large horizontal components are in opposite directions and cancel, so most of the tension in the wire is not used to support the weight of the tightrope walker.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A force of 1150 N acts parallel to a ramp to push a 250-kg gun safe into a moving van. The ramp is frictionless and inclined at \\(17^{\\circ} .\\) (a) What is the acceleration of the safe up the ramp? (b) If we consider friction in this problem, with a friction force of 120 N, what is the acceleration of the safe?</p>",
+     "a": "<p>a. \\(1.7\\, {\\text{m/s}}^{2};\\) b. \\(1.3\\, {\\text{m/s}}^{2}\\)</p>"
+    },
+    {
+     "q": "<p>One end of a 3.0-m rope is tied to a tree; the other end is tied to a car stuck in the mud. The motorist pulls sideways on the midpoint of the rope, displacing it a distance of 0.25 m. If he exerts a force of 200.0 N under these conditions, determine the force exerted on the car.</p>",
+     "a": "<p>\\(6.0\\, \\times \\, {10}^{2}\\) N</p>"
+    }
+   ],
+   "keyConcepts": [
+    "When an object rests on a surface, the surface applies a force to the object that supports the weight of the object. This supporting force acts perpendicular to and away from the surface. It is called a normal force.",
+    "When an object rests on a nonaccelerating horizontal surface, the magnitude of the normal force is equal to the weight of the object.",
+    "When an object rests on an inclined plane that makes an angle \\(\\theta\\) with the horizontal surface, the weight of the object can be resolved into components that act perpendicular and parallel to the surface of the plane.",
+    "The pulling force that acts along a stretched flexible connector, such as a rope or cable, is called tension. When a rope supports the weight of an object at rest, the tension in the rope is equal to the weight of the object. If the object is accelerating, tension is greater than weight, and if it is accelerating opposite to the motion, tension is less than weight.",
+    "The force of friction is a force experienced by a moving object (or an object that has a tendency to move) parallel to the interface opposing the motion (or its tendency).",
+    "The force developed in a spring obeys Hooke’s law, according to which its magnitude is proportional to the displacement and has a sense in the opposite direction of the displacement.",
+    "Real forces have a physical origin, whereas fictitious forces occur because the observer is in an accelerating or noninertial frame of reference."
+   ]
+  },
+  {
+   "num": "5.7",
+   "module": "m58301",
+   "title": "Drawing Free-Body Diagrams",
+   "objectives": [
+    "Explain the rules for drawing a free-body diagram",
+    "Construct free-body diagrams for different situations"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Two Blocks on an Inclined Plane",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Construct the free-body diagram for object A and object B in the figure. Assume that the rope pulls object A so that it slides upward, and that object B is sliding down the slope.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We follow the four steps listed in the problem-solving strategy.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We start by creating a diagram for the first object of interest. In the figure(a), object A is isolated (circled) and represented by a dot.</p><figure><img src='img/CNX_UPhysics_05_07_BlockAB.jpg' alt=\"Figure a shows two objects on an inclined plane, sloping down to the left. Object A is on top of object B. A free body diagram shows T pointing right and up, parallel to the plane, N subscript BA pointing left and up, perpendicular to the plane, f subscript BA pointing left and down, parallel to the plane and w subscript A pointing vertically down. W subscript A is weight of block A, T is tension, N subscript BA is normal force exerted by B on A, f subscript BA is friction force exerted by B on A. Figure b shows the objects on the slope in the same manner. A free body diagram has f subscript B and f subscript AB pointing right and up, parallel to the slope, N subscript B pointing left and up perpendicular to the slope, w subscript B pointing vertically down and N subscript AB pointing down and right, perpendicular to the slope. W subscript B is weight of block B, N subscript AB is normal force exerted by A on B, N subscript B is normal force exerted by the incline plane on B. f subscript AB is friction force exerted by A on B. f subscript B is friction force exerted by the incline plane on B.\" loading='lazy'><figcaption>(a) The free-body diagram for isolated object A. (b) The free-body diagram for isolated object B. Comparing the two drawings, we see that friction acts in the opposite direction in the two figures. Friction always acts opposite the direction of motion or intended motion. Because object A is moving to the right, friction by B must act to the left. Object B is moving to the left relative to B, so the friction by A on B is to the right. The friction force by object A on object B is the third law pair of the friction force by B on A, and therefore these two forces must be in opposite directions. Because object B is sliding down the incline, the friction force by the ramp must oppose it and act up the ramp.</figcaption></figure><p>We now include any force that acts on the body. Here, no applied force is present. The weight of the object acts as a force pointing vertically downward, and the presence of the cord indicates a force of tension pointing away from the object. Object A has one interface and hence experiences a normal force, directed away from the interface. The source of this force is object B, and this normal force is labeled accordingly. Since object B s sliding down and object A s sliding up with respect to the interface, so the friction \\({f}_{\\text{BA}}\\) is directed downward parallel to the inclined plane.</p><p>As noted in step 4 of the problem-solving strategy, we then construct the free-body diagram in the figure(b) using the same approach. Object B experiences two normal forces and two friction forces due to the presence of two contact surfaces. The interface with the inclined plane exerts external forces of \\({N}_{\\text{B}}\\) and \\({f}_{\\text{B}}\\), and the interface with object B exerts the normal force \\({N}_{\\text{AB}}\\) and friction \\({f}_{\\text{AB}}\\); \\({N}_{\\text{AB}}\\) is directed away from object B, and \\({f}_{\\text{AB}}\\) is opposing the tendency of the relative motion of object B with respect to object A.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The object under consideration in each part of this problem was circled in gray. When you are first learning how to draw free-body diagrams, you will find it helpful to circle the object before deciding what forces are acting on that particular object. This focuses your attention, preventing you from considering forces that are not acting on the body. If the objects were not sliding as described, we would need to know more about the strength of the tension force in order to determine the directions of the friction forces.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Two Blocks in Contact",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A force is applied to two blocks in contact, as shown. Draw the reaction forces between the two blocks.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Draw a free-body diagram for each block. Be sure to consider Newton’s third law at the interface where the two blocks touch.</p><figure><img src='img/CNX_UPhysics_05_07_Blocks1_img.jpg' alt=\"Two squares are shown in contact with each other. The left one is smaller and is labeled m1. The right one is bigger and is labeled m2. An arrow pointing right towards m1 is labeled F.\" loading='lazy'></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<figure><img src='img/CNX_UPhysics_05_07_Blocks2_img.jpg' alt=\"Figure shows two free body diagrams. The first one shows arrow A subscript 21 pointing left and arrow F pointing right. The second one shows arrow A 12 pointing right. Both diagrams also have arrows pointing up and down.\" loading='lazy'></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>\\({\\mathbf{\\vec{A}}}_{21}\\) is the action force of block 2 on block 1. \\({\\mathbf{\\vec{A}}}_{12}\\) is the reaction force of block 1 on block 2. We use these free-body diagrams in Applications of Newton’s Laws.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Block on the Table (Coupled Blocks)",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A block rests on the table, as shown. A light rope is attached to it and runs over a pulley. The other end of the rope is attached to a second block. The two blocks are said to be coupled. Block \\({m}_{2}\\) exerts a force due to its weight, which causes the system (two blocks and a string) to accelerate.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We assume that the string has no mass so that we do not have to consider it as a separate object. Draw a free-body diagram for each block.<br></p><figure><img src='img/CNX_UPhysics_05_07_CoupldBlkA_img.jpg' alt=\"Figure shows block m1 placed on a table. A string attached to it runs over a pulley and down the right side of the table. A block m2 is suspended from it. An arrow a1 points right and an arrow a2 points down.\" loading='lazy'></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<figure><img src='img/CNX_UPhysics_05_07_CoupldBlkB_img.jpg' alt=\"Figure a shows block m1. An arrow labeled N point upwards from it, an arrow m1g points downwards and an arrow T points right. Figure b shows block m2. An arrow T points upwards from it and an arrow m2g points downwards.\" loading='lazy'></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Each block accelerates (notice the labels shown for \\({\\mathbf{\\vec{a}}}_{1}\\) and \\({\\mathbf{\\vec{a}}}_{2}\\)); however, assuming the string remains taut, the magnitudes of acceleration are equal. Thus, we have \\(|{\\mathbf{\\vec{a}}}_{1}|=|{\\mathbf{\\vec{a}}}_{2}|\\). If we were to continue solving the problem, we could simply call the acceleration \\(\\mathbf{\\vec{a}}\\). Also, we use two free-body diagrams because we are usually finding tension <i>T</i>, which may require us to use a system of two equations in this type of problem. The tension is the same on both \\({m}_{1}\\, \\text{and}\\, {m}_{2}\\).</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>(a) Draw the free-body diagram for the situation shown. (b) Redraw it showing components; use <i>x</i>-axes parallel to the two ramps.</p><figure><img src='img/CNX_UPhysics_05_07_2Carts_img.jpg' alt=\"Two carts are tied with a rope which goes over a pulley on top of a hill. Each cart rests on one  slope of the hill on either side of the pulley. The cart on the left is labeled m1 and the one on the right is labeled m2.\" loading='lazy'></figure>",
+     "a": "<p><figure><img src='img/CNX_UPhysics_05_07_2Carts(a)_img.jpg' alt=\"Figure a shows a free body diagram of an object on a line that slopes down to the right. Arrow T from the object points right and up, parallel to the slope. Arrow N1 points left and up, perpendicular to the slope. Arrow w1 points vertically down. Figure b shows a free body diagram of an object on a line that slopes down to the left. Arrow N2 from the object points right and up, perpendicular to the slope. Arrow T points left and up, parallel to the slope. Arrow w2 points vertically down.\" loading='lazy'></figure>;<br> <figure><img src='img/CNX_UPhysics_05_07_2Carts(b)_img.jpg' alt=\"Figure a shows a free body diagram of an object on a line that slopes down to the right. Arrow T from the object points right and up, parallel to the slope. Arrow N1 points left and up, perpendicular to the slope. Arrow w1 points vertically down. Arrow w1x points left and down, parallel to the slope. Arrow w1y points right and down, perpendicular to the slope. Figure b shows a free body diagram of an object on a line that slopes down to the left. Arrow N2 from the object points right and up, perpendicular to the slope. Arrow T points left and up, parallel to the slope. Arrow w2 points vertically down. Arrow w2y points left and down, perpendicular to the slope. Arrow w2x points right and down, parallel to the slope.\" loading='lazy'></figure></p>"
+    }
+   ],
+   "keyConcepts": [
+    "To draw a free-body diagram, we draw the object of interest, draw all forces acting on that object, and resolve all force vectors into <i>x</i>- and <i>y</i>-components. We must draw a separate free-body diagram for each object in the problem.",
+    "A free-body diagram is a useful means of describing and analyzing all the forces that act on a body to determine equilibrium according to Newton’s first law or acceleration according to Newton’s second law."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_05_03_FourForces.jpg",
+  "CNX_UPhysics_05_03_Mower.jpg",
+  "CNX_UPhysics_05_03_RedCar3_img.jpg",
+  "CNX_UPhysics_05_03_RedCar_new.jpg",
+  "CNX_UPhysics_05_03_RocketSled.jpg",
+  "CNX_UPhysics_05_04_RockLift_img.jpg",
+  "CNX_UPhysics_05_05_Package.jpg",
+  "CNX_UPhysics_05_05_ProfCart.jpg",
+  "CNX_UPhysics_05_06_SkiSlope.jpg",
+  "CNX_UPhysics_05_06_Tightrope.jpg",
+  "CNX_UPhysics_05_06_TropeFBD.jpg",
+  "CNX_UPhysics_05_07_2Carts_img.jpg",
+  "CNX_UPhysics_05_07_BlockAB.jpg",
+  "CNX_UPhysics_05_07_Blocks1_img.jpg",
+  "CNX_UPhysics_05_07_Blocks2_img.jpg",
+  "CNX_UPhysics_05_07_CoupldBlkA_img.jpg",
+  "CNX_UPhysics_05_07_CoupldBlkB_img.jpg"
+ ]
+}
