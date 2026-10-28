@@ -763,12 +763,44 @@ function rocketSVG(have,label){
 
 /* ---------- review: garden home, sessions, summary ---------- */
 let SESS=null, GSEL=-1;
+/* an unfinished session is saved on this device, so a student can stop and come back later to the same question */
+const SKEY="session-ch3";
+function saveSess(){if(!SESS||SESS.done){store(SKEY,null);return;}
+  store(SKEY,Object.assign({},SESS,{queue:SESS.queue.map(q=>Object.assign({},q,{it:undefined,id:q.it.id}))}));}
+function loadSess(){
+  const s=store(SKEY);if(!s||!Array.isArray(s.queue)||s.done)return null;
+  const byId={};ITEMS.forEach(i=>byId[i.id]=i);
+  const queue=s.queue.filter(q=>byId[q.id]).map(q=>{const c=Object.assign({},q,{it:byId[q.id]});delete c.id;return c;});
+  let i=s.i;
+  if(queue.length!==s.queue.length)i=queue.findIndex(q=>!q.answered);
+  if(!queue.length||i<0||i>=queue.length)return null;
+  return Object.assign(s,{queue,i,paused:true});
+}
+function pausedSess(){return SESS&&!SESS.done&&SESS.paused?SESS:null;}
+function resumeLabel(P){return P.practice?"Keep practicing":`Keep growing ${P.sec}`;}
+function resumeSess(){SESS.paused=false;saveSess();GSEL=-1;
+  if(location.hash==="#review"){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash="review";}
+function renderPaused(){
+  const Ss=SESS;crumb.textContent="Paused";
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">${Ss.practice?"Practice":"Review"} paused</div><h1>Your spot is saved</h1>
+    <p class="muted">You're on question ${Ss.i+1} of ${Ss.queue.length}${Ss.sec?` in section ${Ss.sec}`:""}. Answers you already gave are counted. Come back any time, even after closing the app, and you'll pick up right here.</p></header>
+  <div class="row">
+    <button class="btn" id="resume">${resumeLabel(Ss)}</button>
+    <a class="btn quiet" href="#review" id="back">Back to your garden</a>
+  </div>`;
+  document.getElementById("resume").onclick=resumeSess;
+  document.getElementById("back").onclick=e=>{e.preventDefault();GSEL=-1;renderGarden();typeset(main);window.scrollTo(0,0);};
+}
 function secTitle(sec){const s=S.find(x=>x.num===sec);return s?s.title:"";}
 function bloomed(){return SECS.map(s=>secFrac(s)>=BLOOM);}
 const plural=(n,w)=>`${n} ${w}${n===1?"":"s"}`;
 function startCard(){
   const nx=nextSec(), allBloom=SECS.every(s=>secFrac(s)>=BLOOM);
   const practice=`<button class="btn quiet" id="practice">Practice anyway (doesn't grow plants)</button>`;
+  const P=pausedSess();
+  if(P)return `<button class="btn big" id="resume">${resumeLabel(P)} · question ${P.i+1} of ${P.queue.length}</button>
+    <p class="small muted">You stopped partway through, and your spot is saved. Tapping a different plant starts that section instead.</p>`;
   if(dayCapped())return `<h2>That's today's ${CFG.perDay===1?"review":plural(CFG.perDay,"review")}</h2>
     <p class="muted small">Come back tomorrow to keep growing. Practice is always open.</p>${practice}`;
   if(nx)return `<button class="btn big" id="go">Grow ${nx.sec} · ${plural(nx.n,"question")}</button>
@@ -787,7 +819,7 @@ function howGrow(){
 }
 
 function renderGarden(){
-  if(SESS&&!SESS.done)return renderSession();
+  if(SESS&&!SESS.done&&!SESS.paused)return renderSession();
   crumb.textContent="Your garden";
   const nx=nextSec(), have=bloomed(), nHave=have.filter(Boolean).length;
   main.innerHTML=`
@@ -822,6 +854,7 @@ function renderGarden(){
     </div></details>`;
   main.querySelectorAll(".pot").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;GSEL=GSEL===i?-1:i;renderGarden();typeset(main);});
   const go=document.getElementById("go");if(go)go.onclick=()=>startSession(nx.sec,false);
+  const rs=document.getElementById("resume");if(rs)rs.onclick=resumeSess;
   const pr=document.getElementById("practice");if(pr)pr.onclick=()=>startSession(null,true);
   const pv=document.getElementById("pvoff");if(pv)pv.onclick=()=>{PROG.preview=false;saveProg();renderGarden();};
   main.querySelectorAll("[data-focus]").forEach(b=>b.onclick=()=>startSession(b.dataset.focus,b.dataset.practice==="1"));
@@ -830,12 +863,13 @@ function renderGarden(){
 function potDetail(i){
   const s=SECS[i],l=secItems(s),t=today();
   const fresh=l.filter(it=>!PROG.items[it.id]).length;
-  const can=secFrac(s)<BLOOM&&!dayCapped()&&queueFor(s).length>0;
+  const P=pausedSess(),mine=P&&P.sec===s;
+  const can=mine?!P.practice:secFrac(s)<BLOOM&&!dayCapped()&&queueFor(s).length>0;
   return `<section class="card stack potdetail" aria-live="polite">
     <div class="eyebrow">Section ${s}</div><h2>${esc(secTitle(s))}</h2>
     <p class="small muted">${secCount(s)} of ${CFG.toBloom} right answers · ${plural(l.length,"question")}, ${fresh} not tried yet</p>
     <div class="row">
-      <button class="btn" data-focus="${s}" data-practice="${can?0:1}">${can?`Grow ${s}`:`Practice ${s}`}</button>
+      <button class="btn" data-focus="${s}" data-practice="${can?0:1}">${mine?`Continue ${s}`:can?`Grow ${s}`:`Practice ${s}`}</button>
       <a class="btn quiet" href="#sec-3-${i+1}">Read ${s}</a>
     </div></section>`;
 }
@@ -857,11 +891,14 @@ function wireBackup(){
 }
 
 function startSession(sec,practice){
+  const P=pausedSess();
+  if(P&&P.sec===sec&&!!P.practice===!!practice)return resumeSess();
   if(!practice&&dayCapped())practice=true;
   let items=practice?shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,CFG.perReview):queueFor(sec);
   if(!items.length){items=shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,CFG.perReview);practice=true;}
   const before={};SECS.forEach(s=>before[s]=secFrac(s));
   SESS={queue:items.map(it=>({it})),i:0,first:0,firstN:0,practice,sec,before,done:false};
+  saveSess();
   GSEL=-1;
   if(location.hash==="#review"){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash="review";
 }
@@ -890,7 +927,7 @@ function renderSession(){
     <div id="fb">${q.answered?feedback(q):""}</div>
   </article>
   ${q.answered?`<div class="nextbar"><button class="btn big" id="next">${Ss.i+1<Ss.queue.length?"Next":"Finish"}</button></div>`:""}`;
-  document.getElementById("quit").onclick=()=>{Ss.done=true;Ss.quit=true;renderSummary();typeset(main);};
+  document.getElementById("quit").onclick=()=>{Ss.paused=true;saveSess();renderPaused();typeset(main);window.scrollTo(0,0);};
   /* a tap only selects; the answer counts when the student presses Check answer */
   const showCheck=()=>{const w=document.getElementById("checkwrap");if(!w||w.firstChild)return;
     w.innerHTML=`<button class="btn big checkbtn" id="check">Check answer</button>`;
@@ -901,7 +938,7 @@ function renderSession(){
     main.querySelectorAll(".opt").forEach(o=>{const on=o===b;o.classList.toggle("chosen",on);o.setAttribute("aria-pressed",on?"true":"false");});
     showCheck();});
   if(it.tap&&!q.answered)wireTap(it,q,showCheck);
-  const nx=document.getElementById("next");if(nx){nx.onclick=()=>{Ss.i++;renderSession();typeset(main);window.scrollTo(0,0);};nx.focus({preventScroll:true});}
+  const nx=document.getElementById("next");if(nx){nx.onclick=()=>{Ss.i++;saveSess();renderSession();typeset(main);window.scrollTo(0,0);};nx.focus({preventScroll:true});}
 }
 function optBtn(q,j,text,ok){
   let cls="opt";
@@ -911,6 +948,7 @@ function optBtn(q,j,text,ok){
 function answer(q,ok){
   const Ss=SESS;q.answered=true;q.ok=ok;
   if(!q.retry){Ss.firstN++;if(ok)Ss.first++;if(!Ss.practice)record(q.it,ok);if(!ok)Ss.queue.push({it:q.it,retry:true});}
+  saveSess();
   renderSession();typeset(main);
   const fb=document.getElementById("fb");if(fb&&fb.scrollIntoView)fb.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
 }
@@ -963,12 +1001,14 @@ function renderSummary(){
   const Ss=SESS;
   if(!Ss.counted&&!Ss.practice&&Ss.firstN>0){Ss.counted=true;const t=today();PROG.days=PROG.days||{};PROG.days[t]=(PROG.days[t]||0)+1;
     for(const k of Object.keys(PROG.days))if(+k<t-30)delete PROG.days[k];saveProg();}
-  Ss.done=true;
+  Ss.done=true;saveSess();
   crumb.textContent="Session done";
   const after={};SECS.forEach(s=>after[s]=secFrac(s));
   const grown=SECS.map((s,i)=>({s,i,b:Ss.before[s],a:after[s]})).filter(x=>x.a>x.b+1e-9);
   const newBloom=grown.filter(x=>x.b<BLOOM&&x.a>=BLOOM);
-  const nx=dayCapped()?null:nextSec();
+  /* keep growing the same section until it blooms, then move on to the next one */
+  const same=!Ss.practice&&Ss.sec&&secFrac(Ss.sec)<BLOOM&&queueFor(Ss.sec).length?Ss.sec:null;
+  const nxSec=dayCapped()?null:(same||(nextSec()||{}).sec||null);
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">${Ss.practice?"Practice":"Review"} ${Ss.quit?"ended":"done"}</div>
     <h1>${Ss.firstN?`${Ss.first} of ${Ss.firstN} right on the first try`:"No items answered"}</h1></header>
@@ -978,11 +1018,11 @@ function renderSummary(){
   ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed. You earned the rocket's ${PARTS[x.i]}.</p>`).join("")}
   <div class="row">
     <a class="btn" href="#review" id="back">Back to your garden</a>
-    ${nx&&!Ss.practice?`<button class="btn quiet" id="again">Keep going: grow ${nx.sec}</button>`:""}
+    ${nxSec&&!Ss.practice?`<button class="btn quiet" id="again">${nxSec===Ss.sec?`Keep growing ${nxSec}`:`Next: grow ${nxSec}`}</button>`:""}
   </div>
   ${dayCapped()&&!Ss.practice?`<p class="small muted">That's today's ${CFG.perDay===1?"review":plural(CFG.perDay,"review")}. Come back tomorrow to keep growing.</p>`:""}`;
   document.getElementById("back").onclick=e=>{e.preventDefault();SESS=null;renderGarden();typeset(main);window.scrollTo(0,0);};
-  const ag=document.getElementById("again");if(ag)ag.onclick=()=>{SESS=null;startSession(nx.sec,false);};
+  const ag=document.getElementById("again");if(ag)ag.onclick=()=>{SESS=null;startSession(nxSec,false);};
   const cells=[...main.querySelectorAll(".pot.static")];
   if(!cells.length)return;
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,t0=performance.now(),dur=1400;
@@ -1159,6 +1199,7 @@ async function boot(){
     D=await b.json();S=D.sections;
     if(n.ok){const r=parseNotes(await n.text());SUMMARY=r.sum;ITEMS=r.items;NOTE_ERRS=r.errs;}
     else NOTE_ERRS=["notes/ch03.txt could not be loaded, so summaries and review items are missing."];
+    SESS=loadSess();
   }catch(e){main.innerHTML=`<p class="note err">The chapter content (${esc(e.message||"book/ch03.json")}) didn't load. If you opened index.html straight from your computer, open it through a web address instead, such as GitHub Pages.</p>`;return;}
   route();
   window.__fb={kinSolve,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
