@@ -522,7 +522,7 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],eqHint:"Search, for example “friction” or “drag”"}};
 const chx=()=>CHX[CH]||{};
-const eqSec=j=>(chx().eqSec||[])[j]||"";
+const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
 /* ---------- helpers ---------- */
 function typeset(el){
@@ -1499,7 +1499,7 @@ async function renderEqPicker(my){
   const B={};l.forEach((n,i)=>{if(books[i]&&books[i].keyEquations)B[n]=books[i];});
   const all=[];
   CHAPTERS.forEach(([n])=>{if(!B[n])return;const es=(CHX[n]||{}).eqSec||[];
-    B[n].keyEquations.forEach((e,j)=>all.push({n,e,sec:es[j]||"",key:(e.name+" "+(es[j]||"")+" chapter "+n).toLowerCase()}));});
+    B[n].keyEquations.forEach((e,j)=>{const sc=e.sec||es[j]||"";all.push({n,e,sec:sc,key:(e.name+" "+sc+" chapter "+n).toLowerCase()});});});
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">Key equations</div><h1>Equations</h1>
     <p class="muted">Pick a chapter, or search the key equations of every chapter at once.</p></header>
