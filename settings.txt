@@ -21,3 +21,17 @@ Reviews per day: 0
 # Show the class date on each section's page (from schedule.txt). yes or no.
 # Set it to no when the app is used outside your class.
 Show class dates: yes
+
+# ---------- Settings for one chapter only ----------
+#
+# The settings above apply to every chapter. To change something for just one
+# chapter, write a line with only the chapter, like "Chapter 4", then the
+# settings you want to change for it. Anything you leave out stays the same as
+# above. A chapter's settings end at the next "Chapter" line.
+#
+# Example: remove the # from the three lines below to make Chapter 4 reviews
+# longer and its flowers take 20 right answers to bloom.
+#
+# Chapter 4
+# Questions per review: 8
+# Right answers to grow a flower: 20

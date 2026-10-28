@@ -428,20 +428,30 @@ function makeDrill(d){
 /* ---------- progress and spaced review (saved on this device only) ---------- */
 /* ---------- settings.txt and schedule.txt: both optional, both yours to edit ---------- */
 const CFG={perReview:5,toBloom:15,perDay:0,showDates:true,year:new Date().getFullYear()};
-let CFG_ERRS=[],SCHED={},HAVE_SETTINGS=false,HAVE_SCHED=false;
+let CFG_ERRS=[],SCHED={},HAVE_SETTINGS=false,HAVE_SCHED=false,CFG_BASE=null;
+const CHSET={};/* settings that apply to one chapter only, from "Chapter N" lines in settings.txt */
+function applyChCfg(){if(!CFG_BASE)CFG_BASE={...CFG};Object.assign(CFG,CFG_BASE,CHSET[CH]||{});}
+function bloomFor(n){return ((CHSET[n]||{}).toBloom)||(CFG_BASE||CFG).toBloom;}
 const SETTING_KEYS={"questions per review":["perReview",1,50],"right answers to grow a flower":["toBloom",1,500],"reviews per day":["perDay",0,100]};
 function parseSettings(txt){
+  let cur=null;/* null means every chapter */
+  const put=(key,val)=>{if(cur==null)CFG[key]=val;else (CHSET[cur]=CHSET[cur]||{})[key]=val;};
+  const now=key=>cur!=null&&CHSET[cur]&&key in CHSET[cur]?CHSET[cur][key]:CFG[key];
   txt.replace(/\r/g,"").split("\n").forEach((raw,i)=>{
     const line=raw.replace(/#.*$/,"").trim();if(!line)return;
+    const ch=line.match(/^ch(?:apter|\.)?\s*(\d+)$/i);
+    if(ch){const n=+ch[1];if(!CHAPTERS.some(c=>c[0]===n)){CFG_ERRS.push(`settings.txt line ${i+1}: there is no Chapter ${n}, so the lines below it are skipped until the next chapter line`);cur=-1;}else cur=n;return;}
+    if(/^every\s*chapter$/i.test(line)){cur=null;return;}
     const m=line.match(/^([^:]+):\s*(.*)$/);
-    if(!m){CFG_ERRS.push(`settings.txt line ${i+1}: should look like "Questions per review: 5"`);return;}
+    if(!m){CFG_ERRS.push(`settings.txt line ${i+1}: should look like "Questions per review: 5" or "Chapter 4"`);return;}
+    if(cur===-1)return;
     const name=m[1].trim(),k=name.toLowerCase(),v=m[2].trim();
-    if(k==="show class dates"){if(/^(yes|no)$/i.test(v))CFG.showDates=/^yes$/i.test(v);else CFG_ERRS.push(`settings.txt line ${i+1}: Show class dates should be yes or no`);return;}
+    if(k==="show class dates"){if(/^(yes|no)$/i.test(v))put("showDates",/^yes$/i.test(v));else CFG_ERRS.push(`settings.txt line ${i+1}: Show class dates should be yes or no`);return;}
     const spec=SETTING_KEYS[k];
     if(!spec){CFG_ERRS.push(`settings.txt line ${i+1}: "${name}" isn't a setting the app knows`);return;}
     const n=Number(v);
-    if(v===""||!Number.isInteger(n)||n<spec[1]||n>spec[2]){CFG_ERRS.push(`settings.txt line ${i+1}: ${name} should be a whole number from ${spec[1]} to ${spec[2]}, so the app is using ${CFG[spec[0]]}`);return;}
-    CFG[spec[0]]=n;
+    if(v===""||!Number.isInteger(n)||n<spec[1]||n>spec[2]){CFG_ERRS.push(`settings.txt line ${i+1}: ${name} should be a whole number from ${spec[1]} to ${spec[2]}, so the app is using ${now(spec[0])}`);return;}
+    put(spec[0],n);
   });
 }
 function parseSchedule(txt){
@@ -1340,7 +1350,7 @@ function renderAbout(){
   ${NOTE_ERRS.length?`<p class="small">notes/ch${pad2(CH)}.txt loaded with ${NOTE_ERRS.length} problem${NOTE_ERRS.length===1?"":"s"}. Blocks with a problem are skipped until it's fixed.</p><ul class="bullets small">${NOTE_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:`<p class="small">notes/ch${pad2(CH)}.txt loaded with no problems: ${Object.keys(SUMMARY).length} summaries and ${ITEMS.length} review items.</p>`}
   </section>
   <section class="card stack"><h2>Settings check</h2>
-  <p class="small">${HAVE_SETTINGS?"settings.txt":"No settings.txt was found, so the app"} is using ${plural(CFG.perReview,"question")} per review, ${plural(CFG.toBloom,"right answer")} to grow a flower, and ${CFG.perDay?`a limit of ${plural(CFG.perDay,"review")} a day`:"no daily limit"}.
+  <p class="small">${HAVE_SETTINGS?"settings.txt":"No settings.txt was found, so the app"}${CHSET[CH]?` (with its own lines for Chapter ${CH})`:""} is using ${plural(CFG.perReview,"question")} per review, ${plural(CFG.toBloom,"right answer")} to grow a flower, and ${CFG.perDay?`a limit of ${plural(CFG.perDay,"review")} a day`:"no daily limit"}.
   ${HAVE_SCHED?(CFG.showDates?`Class dates from schedule.txt are shown (year ${CFG.year}).`:"Class dates are turned off in settings.txt."):"No schedule.txt was found, so no class dates are shown."}</p>
   ${CFG_ERRS.length?`<ul class="bullets small">${CFG_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:""}
   </section>
@@ -1368,7 +1378,8 @@ function loadSetup(){
   const soft=u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok?r.text():null).catch(()=>null);
   SETUP=Promise.all([soft("settings.txt"),soft("schedule.txt")]).then(([st,sc])=>{
     if(st!=null){HAVE_SETTINGS=true;parseSettings(st);}
-    if(sc!=null){HAVE_SCHED=true;parseSchedule(sc);}});
+    if(sc!=null){HAVE_SCHED=true;parseSchedule(sc);}
+    CFG_BASE={...CFG};if(CH)applyChCfg();});
   return SETUP;
 }
 /* returns "ok", "missing" (no book file yet), or "error" (the site couldn't be reached) */
@@ -1395,6 +1406,7 @@ function useChapter(n){
   PKEY="progress-ch"+n;SKEY="session-ch"+n;PROG=loadProg();SESS=loadSess();
   GSEL=-1;LP={k:0,m:null,pick:null,state:"pick",raf:0};
   store("last-chapter",n);
+  applyChCfg();
   setTabLinks();
 }
 function setTabLinks(){
@@ -1411,7 +1423,7 @@ function chStart(n){
 function chGrowth(n){
   const p=store("progress-ch"+n),meta=(store("chapters")||{})[n];
   if(!p||!p.grow)return "";
-  const b=Object.values(p.grow).filter(v=>v>=CFG.toBloom).length;
+  const b=Object.values(p.grow).filter(v=>v>=bloomFor(n)).length;
   if(meta&&meta.secs)return b===meta.secs?"Every plant in bloom":b?`${b} of ${meta.secs} plants in bloom`:"Garden started";
   return b?plural(b,"plant")+" in bloom":"Garden started";
 }
