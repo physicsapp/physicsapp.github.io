@@ -205,7 +205,8 @@ figcaption{font-size:.85rem;color:var(--muted)}
 .dot{width:10px;height:10px;border-radius:50%;background:var(--rule)}
 .dot.cur{background:var(--accent)} .dot.ok{background:var(--good)} .dot.no{background:var(--bad)}
 .qtext{font-size:1.08rem}
-.opt.chosen{border-color:var(--accent);background:var(--accent-soft)}
+.opt.chosen{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.checkbtn{width:100%;margin-top:4px}
 .graphwrap{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:6px}
 .graph{width:100%;height:auto;display:block;touch-action:manipulation}
 .graph.tappable{cursor:crosshair}
@@ -883,14 +884,23 @@ function renderSession(){
     <div class="probhead"><span>${it.sec} ${esc(secTitle(it.sec))}</span><span>${q.retry?"Try again":Ss.practice?"Practice":""}</span></div>
     <p class="qtext">${esc(prompt)}</p>
     ${it.plot?graphSVG(it,q):""}
-    ${it.tap&&!q.answered?`<p class="small muted">Tap the graph.</p>`:""}
+    ${it.tap&&!q.answered?`<p class="small muted">Tap the graph, then check your answer.</p>`:""}
     ${choices?`<div class="opts">${choices}</div>`:""}
+    ${q.answered?"":`<div id="checkwrap"></div>`}
     <div id="fb">${q.answered?feedback(q):""}</div>
   </article>
   ${q.answered?`<div class="nextbar"><button class="btn big" id="next">${Ss.i+1<Ss.queue.length?"Next":"Finish"}</button></div>`:""}`;
   document.getElementById("quit").onclick=()=>{Ss.done=true;Ss.quit=true;renderSummary();typeset(main);};
-  main.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{if(q.answered)return;q.pick=+b.dataset.j;answer(q,b.dataset.ok==="1");});
-  if(it.tap&&!q.answered)wireTap(it,q);
+  /* a tap only selects; the answer counts when the student presses Check answer */
+  const showCheck=()=>{const w=document.getElementById("checkwrap");if(!w||w.firstChild)return;
+    w.innerHTML=`<button class="btn big checkbtn" id="check">Check answer</button>`;
+    document.getElementById("check").onclick=()=>{if(q.answered)return;
+      if(it.tap){if(q.tapT==null)return;answer(q,it.tap.ts.some(x=>Math.abs(x-q.tapT)<=it.tap.tol));}
+      else{if(q.sel==null)return;const b=main.querySelector(`.opt[data-j="${q.sel}"]`);q.pick=q.sel;answer(q,!!b&&b.dataset.ok==="1");}};};
+  main.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{if(q.answered)return;q.sel=+b.dataset.j;
+    main.querySelectorAll(".opt").forEach(o=>{const on=o===b;o.classList.toggle("chosen",on);o.setAttribute("aria-pressed",on?"true":"false");});
+    showCheck();});
+  if(it.tap&&!q.answered)wireTap(it,q,showCheck);
   const nx=document.getElementById("next");if(nx){nx.onclick=()=>{Ss.i++;renderSession();typeset(main);window.scrollTo(0,0);};nx.focus({preventScroll:true});}
 }
 function optBtn(q,j,text,ok){
@@ -932,15 +942,16 @@ function graphSVG(it,q){
     g+=`<line x1="${X(q.tapT)}" x2="${X(q.tapT)}" y1="${T}" y2="${B}" stroke="${q.ok?"var(--good)":"var(--bad)"}" stroke-width="2.5"/><circle cx="${X(q.tapT)}" cy="${B}" r="5" fill="${q.ok?"var(--good)":"var(--bad)"}"/>`;
   }
   const tapAttrs=it.tap&&!q.answered?` class="graph tappable" tabindex="0" aria-label="Graph of ${p.name} versus time. Tap a moment, or use the left and right arrow keys and Enter."`:` class="graph" aria-label="Graph of ${p.name} versus time"`;
-  return `<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" role="img"${tapAttrs} data-l="${L}" data-r="${R}" data-b="${B}" data-t="${T}" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">${g}<line id="cursor" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="2" opacity=".6"/></svg></div>`;
+  return `<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" role="img"${tapAttrs} data-l="${L}" data-r="${R}" data-b="${B}" data-t="${T}" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">${g}<line id="cursor" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="2" opacity=".6"/><line id="selmark" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="3" visibility="hidden"/></svg></div>`;
 }
-function wireTap(it,q){
+function wireTap(it,q,onSel){
   const svg=main.querySelector("svg.tappable");if(!svg)return;
   const p=it.plot,L=+svg.dataset.l,R=+svg.dataset.r;
   const toT=x=>Math.max(p.t0,Math.min(p.t1,p.t0+(x-L)/(R-L)*(p.t1-p.t0)));
-  const cur=svg.querySelector("#cursor");let kt=(p.t0+p.t1)/2;
-  const place=t=>{const x=L+(t-p.t0)/(p.t1-p.t0)*(R-L);cur.setAttribute("x1",x);cur.setAttribute("x2",x);};
-  const pick=t=>{q.tapT=t;answer(q,it.tap.ts.some(x=>Math.abs(x-t)<=it.tap.tol));};
+  const cur=svg.querySelector("#cursor"),sel=svg.querySelector("#selmark");let kt=(p.t0+p.t1)/2;
+  const xOf=t=>L+(t-p.t0)/(p.t1-p.t0)*(R-L);
+  const place=t=>{const x=xOf(t);cur.setAttribute("x1",x);cur.setAttribute("x2",x);};
+  const pick=t=>{q.tapT=t;kt=t;const x=xOf(t);sel.setAttribute("x1",x);sel.setAttribute("x2",x);sel.removeAttribute("visibility");onSel&&onSel();};
   svg.addEventListener("click",e=>{const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const m=svg.getScreenCTM();if(!m)return;pick(toT(pt.matrixTransform(m.inverse()).x));});
   svg.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const m=svg.getScreenCTM();if(m)place(toT(pt.matrixTransform(m.inverse()).x));});
   svg.addEventListener("keydown",e=>{const st=(p.t1-p.t0)/40;
