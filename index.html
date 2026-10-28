@@ -543,7 +543,7 @@ function nextDue(){const t=today();let best=null,n=0;
 /* chapter extras: which section each key equation belongs to, the hero graph, the search hint, and the toy built from blooms */
 const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"],hero:()=>heroGraph(),eqHint:"Search, for example “free fall” or “average”",toy:"rocket"},
   1:{eqSec:["1.6"],eqHint:"Search, for example “uncertainty”",toy:"probe"},
-  2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”"},
+  2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”",toy:"sail"},
   4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”"},
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],eqHint:"Search, for example “friction” or “drag”"}};
@@ -980,6 +980,18 @@ function rocketSVG(have,label){
     ${on(4)?`<circle cx="60" cy="88" r="7" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="1.2"/>`:`<circle cx="60" cy="88" r="7" ${off}/>`}
   </svg>`;
 }
+function sailSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
+  const L=(k,d)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${P(2,"M64 34 Q92 80 104 122 L64 122 Z M56 46 L56 122 L20 122 Q36 84 56 46 Z","var(--card)")}
+    ${L(1,"M60 128 V18")}
+    ${P(3,"M61 18 l20 6 l-20 6 Z","var(--petal-2)")}
+    ${P(0,"M12 128 h96 l-15 22 h-66 Z","var(--petal-1)")}
+    <path d="M6 158 q9 -6 18 0 t18 0 t18 0 t18 0 t18 0 t18 0" fill="none" stroke="var(--petal-5)" stroke-width="1.6" opacity=".7"/>
+  </svg>`;
+}
 
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
@@ -988,7 +1000,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} rocket parts`,wait:"Each plant that blooms adds a part. When all six bloom, you can fly it."},
   probe:{eyebrow:"Mission control",thing:"probe",parts:["body","solar panels","antenna","heat shield","parachute","thrusters","landing legs"],svg:probeSVG,route:"land",
     ready:"Your Mars probe is ready",readyText:"Send it the right numbers and land it on Mars.",go:"Go to mission control",
-    count:(n,t)=>`${n} of ${t} probe parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can land it on Mars."}};
+    count:(n,t)=>`${n} of ${t} probe parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can land it on Mars."},
+  sail:{eyebrow:"The harbor",thing:"sailboat",parts:["hull","mast","sails","flag"],svg:sailSVG,route:"sail",
+    ready:"Your sailboat is ready",readyText:"Set a course with vectors and sail it to the island.",go:"Go to the harbor",
+    count:(n,t)=>`${n} of ${t} sailboat parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can sail it to the island."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -1488,6 +1503,134 @@ TOYS.probe.game={title:"Land it on Mars",intro:"The landing computer does exactl
   right:"Nice landing.",go:"Send the command",pickFirst:"Pick a number to send",again:"Land again with new numbers",cvLabel:"Probe landing",
   notReadyTitle:"Not ready to land yet",notReady:"Each plant in your garden that blooms adds a part to the probe. Bloom all seven to land it on Mars."};
 
+/* ---------- Chapter 2: sail to the island ----------
+   Map units are km, x east and y north. Each choice carries `end`, where the boat stops, and `aim`, where its bow points.
+   The boat reaches the island when it stops within ISLE_R × (distance to the island) of the island's center.
+   makeSail redraws until every wrong choice stops at least 2.5 island radii away, so a miss is always easy to see. */
+const SAIL_NAMES=["Plot the course","Beat the wind","Turn toward the island"], ISLE_R=0.08;
+const vecT=(x,y)=>{const t=[];if(x)t.push(`${x}\\hat{\\imath}`);if(y)t.push(`${y<0?"-":t.length?"+":""}${Math.abs(y)}\\hat{\\jmath}`);return t.length?t.join(""):"0";};
+const vecP=(x,y)=>vecT(x,y).replace(/\\hat\{\\imath\}/g,"î").replace(/\\hat\{\\jmath\}/g,"ĵ").replace(/-/g,"−").replace(/\+/g," + ").replace(/(\d)−/g,"$1 − ");
+const SAIL_INTV=[];for(let a=-13;a<=13;a++)for(let b=-13;b<=13;b++)if([25,100,169].includes(a*a+b*b))SAIL_INTV.push([a,b]);
+const rotV=(v,deg)=>{const r=deg*Math.PI/180,c=Math.cos(r),s=Math.sin(r);return[v[0]*c-v[1]*s,v[0]*s+v[1]*c];};
+function sailDraft(k){
+  if(k===0){const[a,b]=pickOne([[3,4],[4,3],[6,8],[8,6],[5,12],[12,5],[9,12],[12,9]]),sx=pickOne([1,-1]),sy=pickOne([1,-1]);
+    const X=sx*a,Y=sy*b,d=Math.hypot(a,b),th=Math.atan2(b,a)*180/Math.PI,ew=sx>0?"east":"west",ew2=sx>0?"west":"east",ns=sy>0?"north":"south";
+    const at=(dist,ang,s)=>[s*dist*Math.cos(ang*Math.PI/180),sy*dist*Math.sin(ang*Math.PI/180)];
+    const ch=[{t:`${d} km, ${fmtNum(th)}° ${ns} of ${ew}`,ok:true,end:[X,Y]},
+      {t:`${d} km, ${fmtNum(90-th)}° ${ns} of ${ew}`,end:at(d,90-th,sx),fb:`That angle is measured from the wrong line. Measured from the east west line, the side opposite the angle is the ${ns} distance, so tan θ = ${b}/${a}.`},
+      {t:`${a+b} km, ${fmtNum(th)}° ${ns} of ${ew}`,end:at(a+b,th,sx),fb:"Distances only add like plain numbers when they point the same way. These two legs are at a right angle, so use the Pythagorean theorem."},
+      {t:`${d} km, ${fmtNum(th)}° ${ns} of ${ew2}`,end:[-X,Y],fb:`The island is to the ${ew}. Heading ${ew2} flips the sign of the x component.`}];
+    ch.forEach(c=>c.aim=c.end);
+    return{kind:0,isle:[X,Y],choices:shuffle(ch),
+      q:`The island is \\(${a}\\ \\text{km}\\) ${ew} and \\(${b}\\ \\text{km}\\) ${ns} of the harbor. The boat sails in a straight line. What course should you set?`,
+      work:`\\begin{aligned}d&=\\sqrt{${a}^2+${b}^2}=${d}\\ \\text{km}\\\\\\theta&=\\tan^{-1}\\tfrac{${b}}{${a}}=${fmtNum(th,true)}^\\circ\\\\&\\phantom{=}\\ \\text{${ns} of ${ew}}\\end{aligned}`};}
+  if(k===1){const X=pickOne([4,5,6,7,8,9])*pickOne([1,-1]),Y=pickOne([3,4,5,6,7,8])*pickOne([1,-1]);
+    const wx=pickOne([-3,-2,-1,0,1,2,3]),wy=pickOne([-3,-2,-1,0,1,2,3]),Dx=X-wx,Dy=Y-wy;
+    const v=(x,y)=>`\\((${vecT(x,y)})\\ \\text{km}\\)`;
+    const ch=[{t:v(Dx,Dy),plain:vecP(Dx,Dy)+" km",ok:true,aim:[Dx,Dy],end:[X,Y]},
+      {t:v(X,Y),plain:vecP(X,Y)+" km",aim:[X,Y],end:[X+wx,Y+wy],fb:"That points straight at the island, but the wind pushes the boat \\(\\vec W\\) on top of whatever it sails. Sail \\(\\vec R-\\vec W\\) so the two add up to \\(\\vec R\\)."},
+      {t:v(X+wx,Y+wy),plain:vecP(X+wx,Y+wy)+" km",aim:[X+wx,Y+wy],end:[X+2*wx,Y+2*wy],fb:"Adding \\(\\vec W\\) counts the wind twice, since it already pushes the boat \\(\\vec W\\). Subtract it instead."},
+      {t:v(wx-X,wy-Y),plain:vecP(wx-X,wy-Y)+" km",aim:[wx-X,wy-Y],end:[2*wx-X,2*wy-Y],fb:"That is \\(\\vec W-\\vec R\\), the right vector pointing backward. Order matters when you subtract."}];
+    return{kind:1,isle:[X,Y],wind:[wx,wy],choices:dedupe(ch),
+      q:`The island is at \\(\\vec R=(${vecT(X,Y)})\\ \\text{km}\\) from the harbor. During the trip, wind and current also push the boat \\(\\vec W=(${vecT(wx,wy)})\\ \\text{km}\\). What displacement \\(\\vec D\\) should the boat sail through the water?`,
+      work:`\\begin{aligned}\\vec D+\\vec W&=\\vec R\\\\\\vec D=\\vec R-\\vec W&=(${vecT(Dx,Dy)})\\ \\text{km}\\end{aligned}`};}
+  const B=pickOne(SAIL_INTV),A=pickOne(SAIL_INTV.filter(p=>p[0]*p[0]+p[1]*p[1]>=100));
+  const nA=Math.hypot(...A),nB=Math.hypot(...B),dot=A[0]*B[0]+A[1]*B[1],cross=B[0]*A[1]-B[1]*A[0];
+  const th=Math.acos(Math.max(-1,Math.min(1,dot/(nA*nB))))*180/Math.PI;
+  if(cross<=0||th<25||th>80)return null;
+  const hB=B.map(x=>x/nB),turn=deg=>{const e=rotV(hB,deg).map(x=>x*nA);return{t:`${fmtNum(deg)}° left`,end:e,aim:e,deg};};
+  const ch=[Object.assign(turn(th),{ok:true}),
+    Object.assign(turn(90-th),{fb:"That angle has sin θ equal to the cosine you found, so it came from sin⁻¹. The dot product gives cos θ; use cos⁻¹."}),
+    Object.assign(turn(180-th),{fb:"That angle has the right size cosine with the wrong sign. Check the signs as you multiply the components."})];
+  const q2=dot/(nA*nA);if(nA!==nB&&Math.abs(q2)<=1)ch.push(Object.assign(turn(Math.acos(q2)*180/Math.PI),{fb:"Divide the dot product by both magnitudes, A times v, not by A twice."}));
+  if(ch.length<4){const e=rotV(hB,-th).map(x=>x*nA);ch.push({t:`${fmtNum(th)}° right`,end:e,aim:e,fb:"The size is right, but the island is to the left of the heading. The dot product gives the size of the angle; the picture tells you which side."});}
+  return{kind:2,isle:A,heading:B,choices:dedupe(ch),
+    q:`The boat is sailing with velocity \\(\\vec v=(${vecT(...B)})\\ \\text{km/h}\\). The island is at \\(\\vec A=(${vecT(...A)})\\ \\text{km}\\) from the boat, to the left of its heading. Use the dot product: how far should the boat turn left?`,
+    work:`\\begin{aligned}\\vec A\\cdot\\vec v&=(${A[0]})(${B[0]})+(${A[1]})(${B[1]})\\\\&=${dot}\\\\\\cos\\theta&=\\tfrac{\\vec A\\cdot\\vec v}{Av}=\\tfrac{${dot}}{(${fmtNum(nA,true)})(${fmtNum(nB,true)})}\\\\\\theta&=${fmtNum(th,true)}^\\circ\\end{aligned}`};
+}
+function makeSail(k){
+  for(let tries=0;tries<500;tries++){
+    const m=sailDraft(k);if(!m||m.choices.length<3)continue;
+    const R=ISLE_R*Math.hypot(...m.isle),far=c=>Math.hypot(c.end[0]-m.isle[0],c.end[1]-m.isle[1]);
+    if(!m.choices.every(c=>c.ok||far(c)>=2.5*R))continue;
+    const pts=[[0,0],m.isle];m.choices.forEach(c=>{pts.push(c.end);if(m.kind===1)pts.push(c.aim);});
+    m.box=[Math.min(...pts.map(p=>p[0])),Math.max(...pts.map(p=>p[0])),Math.min(...pts.map(p=>p[1])),Math.max(...pts.map(p=>p[1]))];
+    return m;}
+}
+function sailSim(m,c){
+  const e=c.end,ix=m.isle,R=ISLE_R*Math.hypot(...ix),miss=Math.hypot(e[0]-ix[0],e[1]-ix[1]);
+  const h1=Math.atan2(c.aim[1],c.aim[0]),h0=m.heading?Math.atan2(m.heading[1],m.heading[0]):h1;
+  let dh=h1-h0;while(dh>Math.PI)dh-=2*Math.PI;while(dh<=-Math.PI)dh+=2*Math.PI;
+  const tTurn=m.heading?0.3:0;
+  const at=t=>{if(t<tTurn)return{x:0,y:0,h:h0+dh*t/tTurn};const s=Math.min(1,(t-tTurn)/(1-tTurn));return{x:e[0]*s,y:e[1]*s,h:h1};};
+  return{at,tEnd:1,R,miss,hit:miss<=R};
+}
+function drawSail(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  /* fit the map: every possible stopping point, the harbor and the island, with room around them */
+  const span=Math.max(m.box[1]-m.box[0],m.box[3]-m.box[2]),padK=span*0.12+F.R;
+  const x0=m.box[0]-padK,x1=m.box[1]+padK,y0=m.box[2]-padK,y1=m.box[3]+padK;
+  const top=62,bot=H-12,lft=10,rgt=W-10,s=Math.min((rgt-lft)/(x1-x0),(bot-top)/(y1-y0));
+  const ox=lft+((rgt-lft)-s*(x1-x0))/2,oy=top+((bot-top)-s*(y1-y0))/2;
+  const X=x=>ox+(x-x0)*s,Y=y=>oy+(y1-y)*s;
+  ctx.fillStyle=col("--petal-5");ctx.globalAlpha=.12;ctx.fillRect(X(x0),Y(y1),s*(x1-x0),s*(y1-y0));ctx.globalAlpha=1;
+  const st=[1,2,5,10].find(v=>(x1-x0)/v<=8&&(y1-y0)/v<=8)||10;
+  ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;
+  for(let g=Math.ceil(x0/st)*st;g<=x1;g+=st){ctx.beginPath();ctx.moveTo(X(g),Y(y0));ctx.lineTo(X(g),Y(y1));ctx.stroke();}
+  for(let g=Math.ceil(y0/st)*st;g<=y1;g+=st){ctx.beginPath();ctx.moveTo(X(x0),Y(g));ctx.lineTo(X(x1),Y(g));ctx.stroke();}
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  /* scale bar and north arrow */
+  const sbx=X(x0)+8,sby=Y(y0)-10;ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(sbx,sby);ctx.lineTo(sbx+st*s,sby);ctx.stroke();
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`${st} km`,sbx+st*s+6,sby);
+  const nx=X(x1)-14,ny=Y(y1)+14;ctx.textAlign="center";ctx.fillText("N",nx,ny);arrowTo(ctx,nx,ny+30,nx,ny+9,col("--ink"),1.5);
+  const arrow=(ax,ay,bx,by,c,w,dash)=>{if(dash)ctx.setLineDash([5,4]);arrowTo(ctx,X(ax),Y(ay),X(bx),Y(by),c,w);ctx.setLineDash([]);};
+  /* island and harbor */
+  const ix=X(m.isle[0]),iy=Y(m.isle[1]),ir=Math.max(7,F.R*s);
+  ctx.fillStyle=col("--petal-2");ctx.globalAlpha=.6;ctx.beginPath();ctx.arc(ix,iy,ir,0,7);ctx.fill();ctx.globalAlpha=1;
+  ctx.strokeStyle=col("--petal-2");ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle=col("--leaf");ctx.beginPath();ctx.arc(ix,iy-2,Math.max(3,ir*0.35),0,7);ctx.fill();
+  ctx.fillStyle=col("--ink");ctx.textAlign="center";ctx.fillText("island",ix,iy+ir+10);
+  ctx.fillStyle=col("--muted");ctx.fillRect(X(0)-6,Y(0)-4,12,8);ctx.fillStyle=col("--ink");ctx.fillText("harbor",X(0),Y(0)+16);
+  const flying=LP.state==="flying",ended=t>=F.tEnd-1e-9&&LP.state!=="pick",c=LP.pick==null?null:m.choices[LP.pick];
+  if(m.kind===1){/* little arrows show which way the wind pushes */
+    const wl=Math.hypot(...m.wind),ux=m.wind[0]/wl,uy=m.wind[1]/wl;
+    const bx=W-24,by=30;ctx.beginPath();ctx.arc(bx,by,15,0,7);ctx.strokeStyle=col("--rule");ctx.lineWidth=1;ctx.stroke();
+    arrowTo(ctx,bx-ux*12,by+uy*12,bx+ux*12,by-uy*12,col("--muted"),1.8);
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("wind",bx-20,by);}
+  if(m.kind===2&&!ended){const hn=Math.hypot(...m.heading),L=Math.hypot(...m.isle)*0.45;arrow(0,0,m.heading[0]/hn*L,m.heading[1]/hn*L,col("--muted"),1.5,true);}
+  const p=F.at(t);
+  if(LP.state!=="pick"){ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X(0),Y(0));ctx.lineTo(X(p.x),Y(p.y));ctx.stroke();}
+  if(ended&&m.kind===1&&c){arrow(0,0,c.aim[0],c.aim[1],col("--accent"),1.6,true);arrow(c.aim[0],c.aim[1],c.end[0],c.end[1],col("--muted"),1.6);
+    ctx.font="italic 12px serif";ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText("D",X(c.aim[0]/2)-10,Y(c.aim[1]/2)-8);
+    ctx.fillStyle=col("--muted");ctx.fillText("W",X((c.aim[0]+c.end[0])/2)+10,Y((c.aim[1]+c.end[1])/2)-8);ctx.font="11px 'IBM Plex Mono', monospace";}
+  /* the boat, bow along its heading */
+  ctx.save();ctx.translate(X(p.x),Y(p.y));ctx.rotate(-p.h);
+  ctx.fillStyle=col("--petal-1");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;
+  ctx.beginPath();ctx.moveTo(11,0);ctx.lineTo(-8,-5);ctx.lineTo(-8,5);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--card");ctx.beginPath();ctx.moveTo(2,0);ctx.lineTo(-7,-9);ctx.lineTo(-7,0);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.restore();
+  if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.textAlign="left";ctx.fillStyle=col(F.hit?"--good":"--bad");
+    ctx.fillText(F.hit?"Land ho, right on the island":`Missed by ${fmtNum(F.miss)} km`,12,48);ctx.font="11px 'IBM Plex Mono', monospace";}
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  ctx.fillText(`x = ${fmtNum(p.x)} km   y = ${fmtNum(p.y)} km`,12,16);
+  if(c&&LP.state!=="pick"){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.plain||c.t}`,12,32);}
+}
+function arrowTo(ctx,ax,ay,bx,by,c,w){
+  const a=Math.atan2(by-ay,bx-ax),hl=7;ctx.strokeStyle=c;ctx.fillStyle=c;ctx.lineWidth=w;
+  ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx-Math.cos(a)*hl*0.6,by-Math.sin(a)*hl*0.6);ctx.stroke();
+  ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(bx-hl*Math.cos(a-0.4),by-hl*Math.sin(a-0.4));ctx.lineTo(bx-hl*Math.cos(a+0.4),by-hl*Math.sin(a+0.4));ctx.closePath();ctx.fill();
+}
+TOYS.sail.game={title:"Sail to the island",intro:"The boat goes exactly where you send it. Set the right course and it lands on the island.",
+  names:SAIL_NAMES,make:makeSail,ms:3400,
+  sim:m=>sailSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawSail,
+  outcome:F=>F.hit?"The boat landed right on the island.":`The boat stopped ${fmtNum(F.miss)} km from the island.`,
+  right:"Land ho!",go:"Set sail",pickFirst:"Pick a course to sail",again:"Sail again with new numbers",cvLabel:"Map of the boat's trip",
+  notReadyTitle:"Not ready to sail yet",notReady:"Each plant in your garden that blooms adds a part to the sailboat. Bloom all four to sail to the island."};
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -1744,7 +1887,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
