@@ -1,0 +1,621 @@
+# FREEBODY NOTES: CHAPTER 3, MOTION ALONG A STRAIGHT LINE
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 3.4. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(v = v_0 + at\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 3.1
+In short: Position \(x\) locates an object on an axis measured from an origin you choose. Displacement \(\Delta x = x_f - x_i\) is the change in position and carries a sign; distance traveled is the total path length and is never negative. Average velocity is displacement over elapsed time, so a round trip has zero average velocity even though you moved.
+Watch out: Average speed is total distance over elapsed time. It is not the magnitude of the average velocity.
+
+## SUMMARY 3.2
+In short: Instantaneous velocity is the derivative of position, \(v = dx/dt\), which is the slope of the tangent line on an \(x(t)\) graph. Instantaneous speed is its magnitude. Where \(x(t)\) has a maximum or minimum, \(v = 0\) and the object turns around.
+Watch out: A negative velocity means motion in the negative direction. It does not mean the object is slowing down.
+
+## SUMMARY 3.3
+In short: Acceleration is the rate of change of velocity: \(\bar a = \Delta v/\Delta t\) on average and \(a = dv/dt\) at an instant, the slope of the \(v(t)\) graph. An object speeds up when \(a\) and \(v\) have the same sign and slows down when the signs are opposite.
+Watch out: Negative acceleration is not the same as slowing down. Compare the signs of \(a\) and \(v\).
+
+## SUMMARY 3.4
+In short: With constant acceleration, four equations connect \(\Delta x\), \(v_0\), \(v\), \(a\), and \(t\). Each one leaves out a single quantity, so pick the equation that contains your unknown and leaves out the quantity you neither know nor need. For a pursuit problem, write \(x(t)\) for each object and set the positions equal.
+Watch out: Choose a positive direction before you start, and give every vector quantity its sign.
+
+## SUMMARY 3.5
+In short: Ignoring air resistance, every object near Earth's surface falls with the same constant acceleration of magnitude \(g = 9.8\ \text{m/s}^2\). With up as positive, \(a = -g\) and the constant acceleration equations apply with \(y\) in place of \(x\). At the top of a vertical toss \(v = 0\), but the acceleration is still \(-g\).
+Watch out: \(g\) itself is positive. The sign belongs in \(a = -g\), so don't write \(g = -9.8\) and then also subtract it.
+
+## SUMMARY 3.6
+In short: When acceleration changes with time, integrate: \(v(t) = \int a(t)\,dt + C_1\) and \(x(t) = \int v(t)\,dt + C_2\). The initial velocity and position fix the constants. The constant acceleration equations are the special case \(a(t) = a\).
+Watch out: Don't use the constant acceleration equations when \(a\) depends on time.
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: x = 4*t - t^2; t from 0 to 4; y from 0 to 5
+#         The letter before = (x, v, a, or y) labels the vertical axis.
+#         Add "; unit m/s" to change the unit on that axis.
+#   Then either
+#     Tap: t = 2          the student taps the graph; list several times with commas
+#                         and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+# ============================ 3.1 POSITION AND AVERAGE VELOCITY ============================
+
+## QUIZ 3.1
+Q: A runner completes one 400 m lap of a track in 80 s and stops where she started. What is her average velocity for the lap?
+A) 5.0 m/s
+B) 2.5 m/s
+C) 0 m/s
+D) It depends on the direction she ran
+Answer: C
+Why: Average velocity is displacement over time. She ends where she started, so \(\Delta x = 0\) and \(\bar v = 0\). Her average speed is 5.0 m/s.
+
+## QUIZ 3.1
+Q: How does average speed compare with the magnitude of average velocity over the same trip?
+A) Always equal
+B) Always greater than or equal
+C) Always less than or equal
+D) Either can be larger
+Answer: B
+Why: Distance traveled is at least as large as the magnitude of the displacement, so average speed is at least \(|\bar v|\). They are equal only when the motion never reverses.
+
+## QUIZ 3.1
+Q: Which of these is a vector quantity?
+A) Distance traveled
+B) Displacement
+C) Speed
+D) Elapsed time
+Answer: B
+Why: Displacement has a direction, shown by its sign in one dimension. Distance, speed, and time have size only.
+
+## QUIZ 3.1
+Q: Can the distance traveled ever be less than the magnitude of the displacement?
+A) Yes, when the object moves in the negative direction
+B) Yes, when the object turns around
+C) No, never
+D) Only when the object speeds up
+Answer: C
+Why: The straight line change in position is the shortest possible path, so distance traveled is always at least \(|\Delta x|\).
+
+## DRILL 3.1
+Q: You walk \({{a}}\ \text{m}\) east, then \({{b}}\ \text{m}\) west. Taking east as positive, what is your displacement?
+Let: a = 3 to 9 by 1; b = 1 to 8 by 1
+Answer: a - b
+Wrong: a + b | That's the distance you walked, not your displacement.
+Wrong: b - a | Check the sign. East is positive, and you ended up east of where you started only if a is larger.
+Wrong: a | That's only the first leg of the walk.
+Unit: m
+Work: \Delta x = (+{{a}}) + (-{{b}}) = {{answer}}\ \text{m}
+
+## DRILL 3.1
+Q: A cyclist rides from \(x = {{x1}}\ \text{m}\) to \(x = {{x2}}\ \text{m}\) in \({{t}}\ \text{s}\). What is the average velocity?
+Let: t = 2 to 5 by 1; k = 3 to 10 by 1; x1 = 10 to 50 by 10; x2 = x1 + k*t
+Answer: (x2 - x1)/t
+Wrong: x2/t | You used the final position instead of the change in position.
+Wrong: (x2 + x1)/t | Displacement is final minus initial, not the sum.
+Wrong: (x2 - x1)*t | Velocity is displacement divided by time, not multiplied.
+Unit: m/s
+Work: \bar v = \frac{x_2 - x_1}{t} = \frac{{{x2}} - {{x1}}}{{{t}}} = {{answer}}\ \text{m/s}
+
+## DRILL 3.1
+Q: You jog \({{d}}\ \text{m}\) out in \({{t1}}\ \text{s}\), then jog back to the start in \({{t2}}\ \text{s}\). What is your average speed for the whole trip?
+Let: d = one of 100, 200, 300; s = one of 2, 4, 5; t1 = 0.4*2*d/s; t2 = 0.6*2*d/s
+Answer: 2*d/(t1 + t2)
+Wrong: 0 | That's your average velocity. Average speed uses the total distance, not the displacement.
+Wrong: d/(t1 + t2) | You counted only one leg. The total distance is 2d.
+Wrong: (d/t1 + d/t2)/2 | Averaging the two speeds doesn't work when the legs take different times.
+Unit: m/s
+Work: \bar s = \frac{\text{total distance}}{\text{total time}} = \frac{2({{d}})}{{{t1}} + {{t2}}} = {{answer}}\ \text{m/s}
+
+## GRAPH 3.1
+Q: The graph shows an object's position. What is its average velocity from \(t = 0\) to \(t = 4\ \text{s}\)?
+Plot: x = 1 + 2*t; t from 0 to 4; y from 0 to 10
+A) 2 m/s
+B) 9 m/s
+C) 2.25 m/s
+D) 8 m/s
+Answer: A
+Why: Average velocity is \(\Delta x/\Delta t = (9 - 1)\ \text{m} / 4\ \text{s} = 2\ \text{m/s}\). Choice C divides the final position by the time instead of the displacement.
+
+## GRAPH 3.1
+Q: The graph shows an object's position. Tap the moment it passes through the origin.
+Plot: x = 6 - 3*t; t from 0 to 4; y from -6 to 6
+Tap: t = 2
+Why: The object is at the origin when \(x = 0\), which happens at \(t = 2\ \text{s}\). After that its position is negative.
+
+
+# ============================ 3.2 INSTANTANEOUS VELOCITY ============================
+
+## QUIZ 3.2
+Q: On a graph of position versus time, what gives the instantaneous velocity at a moment?
+A) The height of the curve at that moment
+B) The area under the curve up to that moment
+C) The slope of the tangent line at that moment
+D) The curvature at that moment
+Answer: C
+Why: \(v = dx/dt\), which is the slope of the tangent line to \(x(t)\).
+
+## QUIZ 3.2
+Q: On a position versus time graph, what gives the average velocity between two times?
+A) The slope of the straight line connecting the two points
+B) The slope of the tangent line at the later time
+C) The area under the curve between the two times
+D) The average of the two heights
+Answer: A
+Why: \(\bar v = \Delta x/\Delta t\), which is the slope of the straight line (the secant) between the two points.
+
+## QUIZ 3.2
+Q: A car's speedometer shows which quantity?
+A) Instantaneous velocity
+B) Instantaneous speed
+C) Average velocity
+D) Average speed
+Answer: B
+Why: It shows how fast you're going right now, with no direction. That's the magnitude of the instantaneous velocity.
+
+## QUIZ 3.2
+Q: An object has a velocity of \(-3\ \text{m/s}\). Which must be true?
+A) It is slowing down
+B) It is moving in the negative direction
+C) Its acceleration is negative
+D) It is at a negative position
+Answer: B
+Why: The sign of velocity tells the direction of motion, nothing more. It could be speeding up or slowing down, anywhere on the axis.
+
+## DRILL 3.2
+Q: A particle's position is \(x(t) = ({{b}}\ \text{m/s})\,t - ({{c}}\ \text{m/s}^2)\,t^2\). What is its velocity at \(t = {{t}}\ \text{s}\)?
+Let: b = 4 to 12 by 2; c = 1 to 3 by 1; t = 1 to 4 by 1
+Answer: b - 2*c*t
+Wrong: b - c*t | The derivative of \(t^2\) is \(2t\), so a factor of 2 is missing.
+Wrong: b*t - c*t^2 | That's the position at that time, not the velocity.
+Wrong: b + 2*c*t | Check the sign of the second term.
+Unit: m/s
+Work: v = \frac{dx}{dt} = {{b}} - 2({{c}})t = {{b}} - 2({{c}})({{t}}) = {{answer}}\ \text{m/s}
+
+## DRILL 3.2
+Q: A particle's position is \(x(t) = ({{c}}\ \text{m/s}^3)\,t^3\). What is its velocity at \(t = {{t}}\ \text{s}\)?
+Let: c = 1 to 3 by 1; t = 1 to 3 by 1
+Answer: 3*c*t^2
+Wrong: c*t^3 | That's the position, not the velocity.
+Wrong: c*t^2 | The derivative of \(t^3\) is \(3t^2\). The 3 is missing.
+Wrong: 3*c*t | The power drops by one: \(t^3\) becomes \(t^2\), not \(t\).
+Unit: m/s
+Work: v = \frac{dx}{dt} = 3({{c}})t^2 = 3({{c}})({{t}})^2 = {{answer}}\ \text{m/s}
+
+## GRAPH 3.2
+Q: The graph shows position versus time. Tap the moment the velocity is zero.
+Plot: x = 4*t - t^2; t from 0 to 4; y from 0 to 5
+Tap: t = 2
+Why: Velocity is the slope of \(x(t)\). The slope is zero at the top of the curve, \(t = 2\ \text{s}\), where the object turns around.
+
+## GRAPH 3.2
+Q: The graph shows position versus time. Tap a moment when the object is momentarily at rest.
+Plot: x = t^3 - 6*t^2 + 9*t; t from 0 to 4; y from 0 to 5
+Tap: t = 1, 3
+Why: At rest means \(v = 0\), where the tangent line is flat. That happens at the peak, \(t = 1\ \text{s}\), and at the valley, \(t = 3\ \text{s}\).
+
+## GRAPH 3.2
+Q: The graph shows position versus time. What is the object's velocity?
+Plot: x = 8 - 2*t; t from 0 to 4; y from 0 to 10
+A) \(-2\ \text{m/s}\)
+B) \(2\ \text{m/s}\)
+C) \(8\ \text{m/s}\)
+D) \(0\)
+Answer: A
+Why: The slope is \(\Delta x/\Delta t = (0 - 8)\ \text{m}/4\ \text{s} = -2\ \text{m/s}\). The object moves in the negative direction at constant speed.
+
+
+# ============================ 3.3 ACCELERATION ============================
+
+## QUIZ 3.3
+Q: A car moving in the negative \(x\) direction is slowing down. What is the sign of its acceleration?
+A) Negative
+B) Positive
+C) Zero
+D) It depends on the speed
+Answer: B
+Why: Slowing down means the acceleration points opposite to the velocity. The velocity is negative, so the acceleration is positive.
+
+## QUIZ 3.3
+Q: A velocity versus time graph is a horizontal line above the time axis. What does that describe?
+A) Constant positive velocity, zero acceleration
+B) Constant positive acceleration
+C) An object at rest
+D) Speeding up in the positive direction
+Answer: A
+Why: The velocity doesn't change, so the slope of \(v(t)\), the acceleration, is zero.
+
+## QUIZ 3.3
+Q: An object has a negative velocity and a negative acceleration. What is it doing?
+A) Speeding up
+B) Slowing down
+C) Staying at rest
+D) Moving at constant speed
+Answer: A
+Why: When velocity and acceleration have the same sign, the object speeds up, no matter which sign it is.
+
+## QUIZ 3.3
+Q: Can an object have zero velocity and nonzero acceleration at the same moment?
+A) No, zero velocity means zero acceleration
+B) Yes, for example a ball at the top of its flight
+C) Only far from Earth
+D) Only if it is speeding up
+Answer: B
+Why: At the top of a toss \(v = 0\) for an instant, but its velocity is still changing, so \(a = -g\).
+
+## DRILL 3.3
+Q: A cyclist speeds up from \({{v0}}\ \text{m/s}\) to \({{v}}\ \text{m/s}\) in \({{t}}\ \text{s}\). What is the average acceleration?
+Let: v0 = 2 to 8 by 2; t = 2 to 5 by 1; k = 1 to 4 by 1; v = v0 + k*t
+Answer: (v - v0)/t
+Wrong: v/t | Acceleration uses the change in velocity, not the final velocity.
+Wrong: (v + v0)/t | The change in velocity is final minus initial.
+Wrong: (v - v0)*t | Divide by the time, don't multiply.
+Unit: m/s²
+Work: \bar a = \frac{\Delta v}{\Delta t} = \frac{{{v}} - {{v0}}}{{{t}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 3.3
+Q: A car moving at \({{v}}\ \text{m/s}\) brakes to a stop in \({{t}}\ \text{s}\). Taking its direction of motion as positive, what is its average acceleration?
+Let: k = 2 to 6 by 1; t = 2 to 5 by 1; v = k*t
+Answer: -v/t
+Wrong: v/t | Check the sign. It's slowing down, so the acceleration points opposite to the motion.
+Wrong: -v*t | Divide by the time, don't multiply.
+Wrong: v*t | Divide by the time, and check the sign.
+Unit: m/s²
+Work: \bar a = \frac{v_f - v_0}{t} = \frac{0 - {{v}}}{{{t}}} = {{answer}}\ \text{m/s}^2
+
+## DRILL 3.3
+Q: A particle's velocity is \(v(t) = ({{c}}\ \text{m/s}^3)\,t^2\). What is its acceleration at \(t = {{t}}\ \text{s}\)?
+Let: c = 1 to 3 by 1; t = 2 to 4 by 1
+Answer: 2*c*t
+Wrong: c*t^2 | That's the velocity, not the acceleration.
+Wrong: c*t | The derivative of \(t^2\) is \(2t\). The 2 is missing.
+Wrong: 2*c | Keep the \(t\): the derivative of \(t^2\) is \(2t\), not 2.
+Unit: m/s²
+Work: a = \frac{dv}{dt} = 2({{c}})t = 2({{c}})({{t}}) = {{answer}}\ \text{m/s}^2
+
+## GRAPH 3.3
+Q: The graph shows velocity versus time. Tap the moment the acceleration is zero.
+Plot: v = 4*t - t^2; t from 0 to 4; y from 0 to 5
+Tap: t = 2
+Why: Acceleration is the slope of \(v(t)\). The slope is zero at the top of the curve, \(t = 2\ \text{s}\). The velocity is largest there, but it isn't zero.
+
+## GRAPH 3.3
+Q: The graph shows velocity versus time. What happens at \(t = 3\ \text{s}\)?
+Plot: v = 6 - 2*t; t from 0 to 5; y from -5 to 7
+A) The object stops and turns around
+B) The acceleration becomes zero
+C) The acceleration changes sign
+D) The object returns to where it started
+Answer: A
+Why: The velocity crosses zero, so the object stops for an instant and then moves the other way. The slope, the acceleration, stays \(-2\ \text{m/s}^2\) the whole time.
+
+
+# ============================ 3.4 CONSTANT ACCELERATION ============================
+
+## QUIZ 3.4
+Q: You know \(v_0\), \(a\), and \(\Delta x\), and you want \(v\). The time isn't given. Which equation goes straight to the answer?
+A) \(v = v_0 + at\)
+B) \(\Delta x = v_0t + \tfrac12at^2\)
+C) \(v^2 = v_0^2 + 2a\Delta x\)
+D) \(\Delta x = \tfrac12(v_0+v)t\)
+Answer: C
+Why: It is the only constant acceleration equation without \(t\).
+
+## QUIZ 3.4
+Q: You know \(\Delta x\), \(v_0\), and \(t\), and you want \(a\). Which equation goes straight to the answer?
+A) \(v = v_0 + at\)
+B) \(\Delta x = v_0t + \tfrac12at^2\)
+C) \(v^2 = v_0^2 + 2a\Delta x\)
+D) \(\Delta x = \tfrac12(v_0+v)t\)
+Answer: B
+Why: It contains \(\Delta x\), \(v_0\), \(t\), and \(a\), and leaves out the final velocity you don't know.
+
+## QUIZ 3.4
+Q: An object starts from rest with constant acceleration and travels 4.0 m in the first 2.0 s. How far has it traveled after 4.0 s?
+A) 8.0 m
+B) 12 m
+C) 16 m
+D) 32 m
+Answer: C
+Why: From rest, \(x = \tfrac12at^2\), so doubling the time multiplies the distance by 4: \(4 \times 4.0\ \text{m} = 16\ \text{m}\).
+
+## QUIZ 3.4
+Q: With constant acceleration, the average velocity over a time interval equals what?
+A) \((v_0 + v)/2\)
+B) \(v/2\), always
+C) \(v_0 + at\)
+D) \(\Delta x \cdot t\)
+Answer: A
+Why: Velocity changes at a steady rate, so its average is halfway between the start and end values. \(v/2\) only works when starting from rest.
+
+## QUIZ 3.4
+Q: Car 1 starts from rest and speeds up just as car 2 passes it at constant speed. When car 1 catches up, how do their speeds compare?
+A) They are equal
+B) Car 1 is faster
+C) Car 2 is faster
+D) It depends on the acceleration
+Answer: B
+Why: They cover the same distance in the same time, so their average velocities match. Car 1's average is half its final speed, so its final speed is twice car 2's.
+
+## DRILL 3.4
+Q: A car starts from rest and accelerates at \({{a}}\ \text{m/s}^2\) for \({{t}}\ \text{s}\). How far does it travel?
+Let: a = 2 to 6 by 2; t = 2 to 5 by 1
+Answer: 0.5*a*t^2
+Wrong: a*t^2 | You left out the \(\tfrac12\) in \(\tfrac12at^2\).
+Wrong: 0.5*a*t | The time should be squared.
+Wrong: a*t | That's the final velocity, not the distance.
+Unit: m
+Work: \Delta x = v_0t + \tfrac12at^2 = 0 + \tfrac12({{a}})({{t}})^2 = {{answer}}\ \text{m}
+
+## DRILL 3.4
+Q: A train moving at \({{v0}}\ \text{m/s}\) brakes with an acceleration of magnitude \({{a}}\ \text{m/s}^2\) until it stops. How far does it travel while braking?
+Let: v0 = one of 10, 20, 30; a = one of 2, 4, 5
+Answer: v0^2/(2*a)
+Wrong: v0^2/a | The 2 in \(2a\Delta x\) is missing.
+Wrong: v0/a | That's the time to stop, in seconds, not the distance.
+Wrong: v0*a/2 | Rearrange \(0 = v_0^2 - 2a\Delta x\) for \(\Delta x\).
+Unit: m
+Work: 0 = v_0^2 - 2a\Delta x \ \Rightarrow\ \Delta x = \frac{({{v0}})^2}{2({{a}})} = {{answer}}\ \text{m}
+
+## DRILL 3.4
+Q: A sprinter starts from rest and reaches \({{v}}\ \text{m/s}\) after \({{d}}\ \text{m}\) with constant acceleration. What is the acceleration?
+Let: v = one of 6, 8, 10; d = one of 10, 20, 25
+Answer: v^2/(2*d)
+Wrong: v^2/d | The 2 in \(2a\Delta x\) is missing.
+Wrong: v/d | Check the units: that gives 1/s, not m/s².
+Wrong: 2*d/v^2 | The fraction is upside down.
+Unit: m/s²
+Work: v^2 = v_0^2 + 2a\Delta x \ \Rightarrow\ a = \frac{({{v}})^2 - 0}{2({{d}})} = {{answer}}\ \text{m/s}^2
+
+## DRILL 3.4
+Q: A cart moving at \({{v0}}\ \text{m/s}\) speeds up at \({{a}}\ \text{m/s}^2\) for \({{t}}\ \text{s}\). What is its final velocity?
+Let: v0 = 2 to 10 by 2; a = 2 to 5 by 1; t = 2 to 6 by 1
+Answer: v0 + a*t
+Wrong: a*t | You left out the starting velocity.
+Wrong: v0 + 0.5*a*t | The \(\tfrac12\) belongs in the position equation, not this one.
+Wrong: v0 + a*t^2 | The time isn't squared in \(v = v_0 + at\).
+Unit: m/s
+Work: v = v_0 + at = {{v0}} + ({{a}})({{t}}) = {{answer}}\ \text{m/s}
+
+## DRILL 3.4
+Q: A cart rolling at \({{v0}}\ \text{m/s}\) slows down at \({{a}}\ \text{m/s}^2\). How long until it stops?
+Let: a = 1 to 4 by 1; k = 2 to 6 by 1; v0 = a*k
+Answer: v0/a
+Wrong: v0*a | Divide by the acceleration, don't multiply.
+Wrong: v0^2/(2*a) | That's the stopping distance in meters, not the time.
+Wrong: 2*v0/a | Use \(0 = v_0 - at\). There's no factor of 2.
+Unit: s
+Work: 0 = v_0 - at \ \Rightarrow\ t = \frac{{{v0}}}{{{a}}} = {{answer}}\ \text{s}
+
+## DRILL 3.4
+Q: A bike speeds up steadily from \({{v0}}\ \text{m/s}\) to \({{v}}\ \text{m/s}\) over \({{t}}\ \text{s}\). How far does it travel?
+Let: v0 = 2 to 8 by 2; dv = 2 to 6 by 2; v = v0 + dv; t = 2 to 6 by 2
+Answer: (v0 + v)/2*t
+Wrong: (v0 + v)*t | The average velocity is half the sum, \((v_0 + v)/2\).
+Wrong: v*t | That assumes it moved at the final speed the whole time.
+Wrong: (v - v0)/2*t | Average the two velocities, don't subtract them.
+Unit: m
+Work: \Delta x = \tfrac12(v_0 + v)t = \tfrac12({{v0}} + {{v}})({{t}}) = {{answer}}\ \text{m}
+
+
+# ============================ 3.5 FREE FALL ============================
+
+## QUIZ 3.5
+Q: A ball is thrown straight up. At the very top of its path, which is true?
+A) \(v = 0\) and \(a = 0\)
+B) \(v = 0\) and \(a = 9.8\ \text{m/s}^2\) downward
+C) \(v\) is largest and \(a = 0\)
+D) \(v = 0\) and \(a\) points up
+Answer: B
+Why: The velocity is momentarily zero, but gravity still acts. The acceleration is \(g\) downward the whole time.
+
+## QUIZ 3.5
+Q: From the same height, ball A is dropped and ball B is thrown straight down at 5 m/s. Ignoring air resistance, how do their accelerations compare?
+A) A's is larger
+B) B's is larger
+C) They are equal
+D) B's is larger at first, then they are equal
+Answer: C
+Why: Both are in free fall, so both accelerate at \(g\). The initial velocity doesn't change the acceleration.
+
+## QUIZ 3.5
+Q: With up as positive, what is the acceleration of a ball while it is still rising?
+A) \(+g\)
+B) \(-g\)
+C) Zero
+D) \(+g\) going up, then \(-g\) coming down
+Answer: B
+Why: Gravity pulls down the whole time, so \(a = -g\) on the way up, at the top, and on the way down.
+
+## QUIZ 3.5
+Q: A ball is thrown straight up and caught at the same height. Ignoring air resistance, how does its speed when caught compare with its launch speed?
+A) The same
+B) Smaller
+C) Larger
+D) It depends on the ball's mass
+Answer: A
+Why: The motion is symmetric. The ball loses speed at \(g\) going up and gains it back at \(g\) coming down, so it returns with the same speed, moving downward.
+
+## QUIZ 3.5
+Q: Ignoring air resistance, a bowling ball and a marble are dropped together from the same height. Which lands first?
+A) The bowling ball
+B) The marble
+C) They land together
+D) It depends on the height
+Answer: C
+Why: All objects in free fall have the same acceleration \(g\), regardless of mass.
+
+## DRILL 3.5
+Q: A stone is dropped from rest from a height of \({{h}}\ \text{m}\). How long does it take to reach the ground? Use \(g = 10\ \text{m/s}^2\).
+Let: t = 1 to 4 by 1; h = 5*t^2
+Answer: sqrt(2*h/10)
+Wrong: sqrt(h/10) | The 2 from \(h = \tfrac12gt^2\) is missing.
+Wrong: 2*h/10 | You forgot to take the square root.
+Wrong: h/10 | Solve \(h = \tfrac12gt^2\) for \(t\): that needs a square root.
+Unit: s
+Work: h = \tfrac12gt^2 \ \Rightarrow\ t = \sqrt{\frac{2({{h}})}{10}} = {{answer}}\ \text{s}
+
+## DRILL 3.5
+Q: A ball is thrown straight up at \({{v0}}\ \text{m/s}\). How high above the launch point does it rise? Use \(g = 10\ \text{m/s}^2\).
+Let: v0 = one of 10, 20, 30, 40
+Answer: v0^2/(2*10)
+Wrong: v0^2/10 | The 2 in \(2g\Delta y\) is missing.
+Wrong: v0/10 | That's the time to reach the top, in seconds.
+Wrong: v0/5 | That's the total time in the air, in seconds.
+Unit: m
+Work: 0 = v_0^2 - 2g\Delta y \ \Rightarrow\ \Delta y = \frac{({{v0}})^2}{2(10)} = {{answer}}\ \text{m}
+
+## DRILL 3.5
+Q: A ball is thrown straight up at \({{v0}}\ \text{m/s}\). How long does it take to reach the top? Use \(g = 10\ \text{m/s}^2\).
+Let: v0 = 10 to 50 by 10
+Answer: v0/10
+Wrong: 2*v0/10 | That's the whole trip up and back down.
+Wrong: v0^2/20 | That's the maximum height, in meters.
+Wrong: v0*10 | Divide by \(g\), don't multiply.
+Unit: s
+Work: 0 = v_0 - gt \ \Rightarrow\ t = \frac{{{v0}}}{10} = {{answer}}\ \text{s}
+
+## DRILL 3.5
+Q: A ball is dropped from rest. Taking up as positive, what is its velocity after \({{t}}\ \text{s}\)? Use \(g = 10\ \text{m/s}^2\).
+Let: t = 1 to 5 by 1
+Answer: -10*t
+Wrong: 10*t | Check the sign. It's moving down, and up is positive.
+Wrong: -5*t^2 | That's its displacement in meters, not its velocity.
+Wrong: -10*t^2 | The time isn't squared in \(v = v_0 - gt\).
+Unit: m/s
+Work: v = v_0 - gt = 0 - 10({{t}}) = {{answer}}\ \text{m/s}
+
+## DRILL 3.5
+Q: A ball is dropped from rest from a height of \({{h}}\ \text{m}\). How fast is it moving when it hits the ground? Use \(g = 10\ \text{m/s}^2\).
+Let: v = 10 to 40 by 10; h = v^2/20
+Answer: sqrt(2*10*h)
+Wrong: sqrt(10*h) | The 2 from \(v^2 = 2gh\) is missing.
+Wrong: 2*10*h | You forgot to take the square root.
+Wrong: 10*h | Use \(v^2 = v_0^2 + 2gh\), then take the square root.
+Unit: m/s
+Work: v^2 = 0 + 2gh \ \Rightarrow\ v = \sqrt{2(10)({{h}})} = {{answer}}\ \text{m/s}
+
+## GRAPH 3.5
+Q: This velocity graph is for a ball thrown straight up, with up as positive. Tap the moment it reaches its highest point.
+Plot: v = 20 - 10*t; t from 0 to 4; y from -25 to 25
+Tap: t = 2
+Why: At the top the velocity is zero. Before that it's positive, moving up; after that it's negative, coming down.
+
+
+# ============================ 3.6 VELOCITY AND DISPLACEMENT FROM ACCELERATION ============================
+
+## QUIZ 3.6
+Q: A particle starts from rest at \(t = 0\) with \(a(t) = (6\ \text{m/s}^3)\,t\). What is its velocity at \(t = 2.0\ \text{s}\)?
+A) 6.0 m/s
+B) 12 m/s
+C) 24 m/s
+D) 3.0 m/s
+Answer: B
+Why: \(v(t) = \int 6t\,dt + C_1 = 3t^2\) with \(C_1 = 0\) since it starts from rest. At 2.0 s, \(v = 3(2.0)^2 = 12\ \text{m/s}\).
+
+## QUIZ 3.6
+Q: You know \(a(t)\). What else do you need to find the position \(x(t)\)?
+A) The initial velocity and initial position
+B) Only the final velocity
+C) Nothing else
+D) The object's mass
+Answer: A
+Why: Each integration adds a constant. The initial velocity fixes the one in \(v(t)\), and the initial position fixes the one in \(x(t)\).
+
+## QUIZ 3.6
+Q: The area under an acceleration versus time graph between two times gives what?
+A) The change in velocity
+B) The change in position
+C) The average acceleration
+D) The final position
+Answer: A
+Why: \(\Delta v = \int a\,dt\), and an integral is the area under the curve.
+
+## QUIZ 3.6
+Q: The area under a velocity versus time graph between two times gives what?
+A) The acceleration
+B) The displacement
+C) The average velocity
+D) The final velocity
+Answer: B
+Why: \(\Delta x = \int v\,dt\), the area under \(v(t)\). Area below the time axis counts as negative displacement.
+
+## DRILL 3.6
+Q: A particle starts from rest at \(t = 0\) with acceleration \(a(t) = ({{k}}\ \text{m/s}^3)\,t\). What is its velocity at \(t = {{t}}\ \text{s}\)?
+Let: k = 2 to 6 by 2; t = 1 to 4 by 1
+Answer: 0.5*k*t^2
+Wrong: k*t^2 | Integrating \(t\) gives \(t^2/2\). The \(\tfrac12\) is missing.
+Wrong: k*t | That's the acceleration at that moment, not the velocity.
+Wrong: k | You took the derivative instead of integrating.
+Unit: m/s
+Work: v(t) = \int {{k}}t\,dt + C_1 = \tfrac{{{k}}}{2}t^2\ (C_1 = 0) \ \Rightarrow\ v = \tfrac{{{k}}}{2}({{t}})^2 = {{answer}}\ \text{m/s}
+
+## DRILL 3.6
+Q: A particle starts at \(x = 0\) with velocity \(v(t) = ({{c}}\ \text{m/s}^3)\,t^2\). Where is it at \(t = {{t}}\ \text{s}\)?
+Let: c = 3 to 9 by 3; t = 1 to 3 by 1
+Answer: c*t^3/3
+Wrong: c*t^3 | Integrating \(t^2\) gives \(t^3/3\). Divide by 3.
+Wrong: c*t^2 | That's the velocity at that moment, not the position.
+Wrong: 2*c*t | That's the acceleration. You took the derivative instead of integrating.
+Unit: m
+Work: x(t) = \int {{c}}t^2\,dt + C_2 = \tfrac{{{c}}}{3}t^3\ (C_2 = 0) \ \Rightarrow\ x = \tfrac{{{c}}}{3}({{t}})^3 = {{answer}}\ \text{m}
+
+## GRAPH 3.6
+Q: An object starts from rest and has the acceleration shown. What is its velocity at \(t = 4\ \text{s}\)?
+Plot: a = 2; t from 0 to 5; y from 0 to 3
+A) 8 m/s
+B) 2 m/s
+C) 16 m/s
+D) 4 m/s
+Answer: A
+Why: The change in velocity is the area under \(a(t)\): \(2\ \text{m/s}^2 \times 4\ \text{s} = 8\ \text{m/s}\). It started from rest, so \(v = 8\ \text{m/s}\).
+
+## GRAPH 3.6
+Q: The graph shows velocity versus time. How far does the object travel in the first 4 s?
+Plot: v = 3; t from 0 to 5; y from 0 to 4
+A) 12 m
+B) 3 m
+C) 0.75 m
+D) 7 m
+Answer: A
+Why: Displacement is the area under \(v(t)\): \(3\ \text{m/s} \times 4\ \text{s} = 12\ \text{m}\).

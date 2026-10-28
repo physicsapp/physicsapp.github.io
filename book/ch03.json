@@ -1,0 +1,639 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 3,
+  "title": "Motion Along a Straight Line"
+ },
+ "keyEquations": [
+  {
+   "name": "Displacement",
+   "tex": "\\Delta x={x}_{\\text{f}}-{x}_{\\text{i}}"
+  },
+  {
+   "name": "Total displacement",
+   "tex": "\\Delta {x}_{\\text{Total}}=\\sum \\Delta {x}_{\\text{i}}"
+  },
+  {
+   "name": "Average velocity",
+   "tex": "\\bar{v}=\\frac{\\Delta x}{\\Delta t}=\\frac{{x}_{2}-{x}_{1}}{{t}_{2}-{t}_{1}}"
+  },
+  {
+   "name": "Instantaneous velocity",
+   "tex": "v(t)=\\frac{dx(t)}{dt}"
+  },
+  {
+   "name": "Average speed",
+   "tex": "\\text{Average speed}=\\bar{s}=\\frac{\\text{Total distance}}{\\text{Elapsed time}}"
+  },
+  {
+   "name": "Instantaneous speed",
+   "tex": "\\text{Instantaneous speed}=|v(t)|"
+  },
+  {
+   "name": "Average acceleration",
+   "tex": "\\bar{a}=\\frac{\\Delta v}{\\Delta t}=\\frac{{v}_{f}-{v}_{0}}{{t}_{f}-{t}_{0}}"
+  },
+  {
+   "name": "Instantaneous acceleration",
+   "tex": "a(t)=\\frac{dv(t)}{dt}"
+  },
+  {
+   "name": "Position from average velocity",
+   "tex": "x={x}_{0}+\\bar{v}t"
+  },
+  {
+   "name": "Average velocity (for constant acceleration)",
+   "tex": "\\bar{v}=\\frac{{v}_{0}+v}{2}"
+  },
+  {
+   "name": "Velocity from acceleration",
+   "tex": "v={v}_{0}+at\\; (\\text{constant}\\, a\\text{)}"
+  },
+  {
+   "name": "Position from velocity and acceleration",
+   "tex": "x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}\\; (\\text{constant}\\, a\\text{)}"
+  },
+  {
+   "name": "Velocity from distance",
+   "tex": "{v}^{2}={v}_{0}^{2}+2a(x-{x}_{0})\\; (\\text{constant}\\, a\\text{)}"
+  },
+  {
+   "name": "Velocity of free fall",
+   "tex": "v={v}_{0}-gt\\, \\text{(positive upward)}"
+  },
+  {
+   "name": "Height of free fall",
+   "tex": "y={y}_{0}+{v}_{0}t-\\frac{1}{2}g{t}^{2}"
+  },
+  {
+   "name": "Velocity of free fall from height",
+   "tex": "{v}^{2}={v}_{0}^{2}-2g(y-{y}_{0})"
+  },
+  {
+   "name": "Velocity from acceleration",
+   "tex": "v(t)=\\int a(t)dt+{C}_{1}"
+  },
+  {
+   "name": "Position from velocity",
+   "tex": "x(t)=\\int v(t)dt+{C}_{2}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "3.1",
+   "module": "m58282",
+   "title": "Position, Displacement, and Average Velocity",
+   "objectives": [
+    "Define position, displacement, and distance traveled.",
+    "Calculate the total displacement given the position as a function of time.",
+    "Determine the total distance traveled.",
+    "Calculate the average velocity given the displacement and elapsed time."
+   ],
+   "callouts": [
+    "\\Delta {x}_{\\text{Total}}=\\sum \\Delta {x}_{\\text{i}}"
+   ],
+   "examples": [
+    {
+     "title": "Delivering Flyers",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Jill sets out from her home to deliver flyers for her yard sale, traveling due east along her street lined with houses. At \\(0.5\\) km and 9 minutes later she runs out of flyers and has to retrace her steps back to her house to get more. This takes an additional 9 minutes. After picking up more flyers, she sets out again on the same path, continuing where she left off, and ends up 1.0 km from her house. This third leg of her trip takes \\(15\\) minutes. At this point she turns back toward her house, heading west. After \\(1.75\\) km and \\(25\\) minutes she stops to rest.</p><ol type='a'><li>What is Jill’s total displacement to the point where she stops to rest?</li><li>What is the magnitude of the total displacement?</li><li>What is the average velocity during her entire trip?</li><li>What is the total distance traveled?</li><li>Make a graph of position versus time.</li></ol><p>A sketch of Jill’s movements is shown in the figure.</p><figure><img src='img/CNX_UPhysics_03_01_Flyers.jpg' alt=\"Figure shows a timeline of a person’s movement. First displacement is from the home to the right by 0.5 kilometers. Second displacement is back to the starting point. Third displacement is to the right by 1.0 kilometer. Fourth displacement is from the final point to the left by 1.75 kilometers.\" loading='lazy'><figcaption>Timeline of Jill’s movements.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The problem contains data on the various legs of Jill’s trip, so it would be useful to make a table of the physical quantities. We are given position and time in the wording of the problem so we can calculate the displacements and the elapsed time. We take east to be the positive direction. From this information we can find the total displacement and average velocity. Jill’s home is the starting point \\({x}_{0}\\). The following table gives Jill’s time and position in the first two columns, and the displacements are calculated in the third column.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>From the above table, the total displacement is <div class='eq'>\\[\\sum \\Delta {x}_{\\text{i}}=0.5-0.5+1.0-1.75\\, \\text{km}=-0.75\\, \\text{km}\\text{.}\\]</div></li><li>The magnitude of the total displacement is \\(|-0.75|\\, \\text{km}=0.75\\, \\text{km}\\).</li><li>\\(\\text{Average velocity}=\\frac{\\text{Total}\\, \\text{displacement}}{\\text{Elapsed}\\, \\text{time}}=\\bar{v}=\\frac{-0.75\\, \\text{km}}{58\\, \\min}=-0.013\\, \\text{km/min}\\)</li><li>The total distance traveled (sum of magnitudes of individual displacements) is \\({x}_{\\text{Total}}=\\sum |\\Delta {x}_{\\text{i}}|=0.5+0.5+1.0+1.75\\, \\text{km}=3.75\\, \\text{km}\\).</li><li>We can graph Jill’s position versus time as a useful aid to see the motion; the graph is shown in the figure.<br> <figure><img src='img/CNX_UPhysics_03_01_Pos.jpg' alt=\"Graph shows position in kilometers plotted as a function of time in minutes.\" loading='lazy'><figcaption>This graph depicts Jill’s position versus time. The average velocity is the slope of a line connecting the initial and final points.</figcaption></figure></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Jill’s total displacement is −0.75 km, which means at the end of her trip she ends up \\(0.75\\, \\text{km}\\) due west of her home. The average velocity means if someone was to walk due west at \\(0.013\\) km/min starting at the same time Jill left her home, they both would arrive at the final stopping point at the same time. Note that if Jill were to end her trip at her house, her total displacement would be zero, as well as her average velocity. The total distance traveled during the 58 minutes of elapsed time for her trip is 3.75 km.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A cyclist rides 3 km west and then turns around and rides 2 km east. (a) What is their displacement? (b) What is the distance traveled? (c) What is the magnitude of their displacement?</p><figure><img src='img/CNX_UPhysics_03_01_CYU1_img.jpg' alt=\"Figure shows timeline of cyclist’s movement. First displacement is to the left by 3.0 kilometers. Second displacement is from the final point to the right by 2.0 kilometers.\" loading='lazy'></figure>",
+     "a": "<p>(a) The rider’s displacement is \\(\\Delta x={x}_{\\text{f}}-{x}_{0}=-1\\, \\text{km}\\). (The displacement is negative because we take east to be positive and west to be negative.) (b) The distance traveled is 3 km + 2 km = 5 km. (c) The magnitude of the displacement is 1 km.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Kinematics is the description of motion without considering its causes. In this chapter, it is limited to motion along a straight line, called one-dimensional motion.",
+    "Displacement is the change in position of an object. The SI unit for displacement is the meter. Displacement has direction as well as magnitude.",
+    "Distance traveled is the total length of the path traveled between two positions.",
+    "Time is measured in terms of change. The time between two position points \\({x}_{1}\\) and \\({x}_{2}\\) is \\(\\Delta t={t}_{2}-{t}_{1}\\). Elapsed time for an event is \\(\\Delta t={t}_{\\text{f}}-{t}_{0}\\), where \\({t}_{\\text{f}}\\) is the final time and \\({t}_{0}\\) is the initial time. The initial time is often taken to be zero.",
+    "Average velocity \\(\\bar{v}\\) is defined as displacement divided by elapsed time. If \\({x}_{1},{t}_{1}\\) and \\({x}_{2},{t}_{2}\\) are two position time points, the average velocity between these points is <div class='eq'>\\[\\bar{v}=\\frac{\\Delta x}{\\Delta t}=\\frac{{x}_{2}-{x}_{1}}{{t}_{2}-{t}_{1}}.\\]</div>"
+   ]
+  },
+  {
+   "num": "3.2",
+   "module": "m58283",
+   "title": "Instantaneous Velocity and Speed",
+   "objectives": [
+    "Explain the difference between average velocity and instantaneous velocity.",
+    "Describe the difference between velocity and speed.",
+    "Calculate the instantaneous velocity given the mathematical equation for the position.",
+    "Calculate the speed given the instantaneous velocity."
+   ],
+   "callouts": [
+    "\\text{Average speed}=\\bar{s}=\\frac{\\text{Total distance}}{\\text{Elapsed time}}",
+    "\\text{Instantaneous speed}=|v(t)|",
+    "\\frac{d(A{t}^{n})}{dt}=An{t}^{n-1}"
+   ],
+   "examples": [
+    {
+     "title": "Finding Velocity from a Position-Versus-Time Graph",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Given the position-versus-time graph of the figure, find the velocity-versus-time graph.</p><figure><img src='img/CNX_UPhysics_03_02_PosGraph.jpg' alt=\"Graph shows position in kilometers plotted as a function of time at minutes. It starts at the origin, reaches 0.5 kilometers at 0.5 minutes, remains constant between 0.5 and 0.9 minutes, and decreases to 0 at 2.0 minutes.\" loading='lazy'><figcaption>The object starts out in the positive direction, stops for a short time, and then reverses direction, heading back toward the origin. Notice that the object comes to rest instantaneously, which would require an infinite force. Thus, the graph is an approximation of motion in the real world. (The concept of force is discussed in Newton’s Laws of Motion.)</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The graph contains three straight lines during three time intervals. We find the velocity during each time interval by taking the slope of the line using the grid.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Time interval 0 s to 0.5 s: \\(\\bar{v}=\\frac{\\Delta x}{\\Delta t}=\\frac{0.5\\, \\text{m}-0.0\\, \\text{m}}{0.5\\, \\text{s}-0.0\\, \\text{s}}=1.0\\, \\text{m/s}\\)</p><p>Time interval 0.5 s to 1.0 s: \\(\\bar{v}=\\frac{\\Delta x}{\\Delta t}=\\frac{0.5\\, \\text{m}-0.5\\, \\text{m}}{1.0\\, \\text{s}-0.5\\, \\text{s}}=0.0\\, \\text{m/s}\\)</p><p>Time interval 1.0 s to 2.0 s: \\(\\bar{v}=\\frac{\\Delta x}{\\Delta t}=\\frac{0.0\\, \\text{m}-0.5\\, \\text{m}}{2.0\\, \\text{s}-1.0\\, \\text{s}}=-0.5\\, \\text{m/s}\\)</p><p>The graph of these values of velocity versus time is shown in the figure.</p><figure><img src='img/CNX_UPhysics_03_02_VelGraph.jpg' alt=\"Graph shows velocity in meters per second plotted as a function of time at seconds. The velocity is 1 meter per second between 0 and 0.5 seconds, zero between 0.5 and 1.0 seconds, and -0.5 between 1.0 and 2.0 seconds.\" loading='lazy'><figcaption>The velocity is positive for the first part of the trip, zero when the object is stopped, and negative when the object reverses direction.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>During the time interval between 0 s and 0.5 s, the object’s position is moving away from the origin and the position-versus-time curve has a positive slope. At any point along the curve during this time interval, we can find the instantaneous velocity by taking its slope, which is +1 m/s, as shown in the figure. In the subsequent time interval, between 0.5 s and 1.0 s, the position doesn’t change and we see the slope is zero. From 1.0 s to 2.0 s, the object is moving back toward the origin and the slope is −0.5 m/s. The object has reversed direction and has a negative velocity.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Instantaneous Velocity Versus Average Velocity",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The position of a particle is given by \\(x(t)=(3.0\\, \\text{m/s})t\\, +\\, (0.50\\, {\\text{m/s}}^{3}){t}^{3}\\).</p><ol type='a'><li>Using the equation and the equation, find the instantaneous velocity at \\(t=2.0\\) s.</li><li>Calculate the average velocity between 1.0 s and 3.0 s.</li></ol>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The equation gives the instantaneous velocity of the particle as the derivative of the position function. Looking at the form of the position function given, we see that it is a polynomial in <i>t</i>. Therefore, we can use the equation, the power rule from calculus, to find the solution. We use the equation to calculate the average velocity of the particle.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(v(t)=\\frac{dx(t)}{dt}=(3.0\\, \\text{m/s})+(1.5\\, {\\text{m/s}}^{3}){t}^{2}\\).<br> Substituting <i>t</i> = 2.0 s into this equation gives \\(v(2.0\\, \\text{s})=(3.0\\, \\text{m/s})+(1.5\\, {\\text{m/s}}^{3}){(2.0\\text{ s})}^{2}=9.0\\, \\text{m/s}\\).</li><li>To determine the average velocity of the particle between 1.0 s and 3.0 s, we calculate the values of <i>x</i>(1.0 s) and <i>x</i>(3.0 s): <div class='eq'>\\[x(1.0\\, \\text{s})=[(3.0\\text{ m/s})(1.0\\text{ s})+(0.50\\, {\\text{m/s}}^{3}){(1.0\\text{ s})}^{3}]=3.5\\, \\text{m}\\]</div> <div class='eq'>\\[x(3.0\\, \\text{s})=[(3.0\\text{ m/s})(3.0\\text{ s})+(0.50\\, {\\text{m/s}}^{3}){(3.0\\text{ s})}^{3}]=22.5\\, \\text{m}\\]</div> Then the average velocity is <div class='eq'>\\[\\bar{v}=\\frac{x(3.0\\, \\text{s})-x(1.0\\, \\text{s})}{(3.0\\, \\text{s})-(1.0\\, \\text{s})}=\\frac{\\text{(22.5}-3.5\\text{)}\\, \\text{m}}{\\text{(3.0}-1.0\\text{)}\\, \\text{s}}=9.5\\, \\text{m/s}\\text{.}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In the limit that the time interval used to calculate \\(\\bar{v}\\) goes to zero, the value obtained for \\(\\bar{v}\\) converges to the value of <i>v.</i> The value of \\(9.0\\, \\text{m/s}\\) that we calculated in part a for the instantaneous value at \\(t=2.0\\, \\text{s}\\) is close to the average value of \\(9.5\\, \\text{m/s}\\) found in b for a short interval that includes \\(t=2.0\\, \\text{s}\\). If we were to make the interval shorter, the values in the calculation of the average would become even closer.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Instantaneous Velocity Versus Speed",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider the motion of a particle in which the position is \\(x(t)=(3.0\\, \\text{m/s})t\\, -\\, (3\\, {\\text{m/s}}^{2}){t}^{2}\\).</p><ol type='a'><li>What is the instantaneous velocity at <i>t</i> = 0.25 s, <i>t</i> = 0.50 s, and <i>t</i> = 1.0 s?</li><li>What is the speed of the particle at these times?</li></ol>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The instantaneous velocity is the derivative of the position function and the speed is the magnitude of the instantaneous velocity. We use the equation and the equation to solve for instantaneous velocity.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(v(t)=\\frac{dx(t)}{dt}=(3.0\\, \\text{m/s}\\, -\\, 6.0\\, {\\text{m/s}}^{2}t),\\, v(0.25\\, \\text{s})\\, =1.50\\, \\text{m/s,}\\)<br> \\(v(0.5\\, \\text{s})=0\\, \\text{m/s,}\\; v(1.0\\, \\text{s})=-3.0\\, \\text{m/s}\\)</li><li>\\(\\text{Speed}=|v(t)|=1.50\\, \\text{m/s},0.0\\, \\text{m/s,}\\, \\text{and}\\, 3.0\\, \\text{m/s}\\)</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The velocity of the particle gives us direction information, indicating the particle is moving to the left (west) or right (east). The speed gives the magnitude of the velocity. By graphing the position, velocity, and speed as functions of time, we can understand these concepts visually the figure. In (a), the graph shows the particle moving in the positive direction until <i>t</i> = 0.5 s, when it reverses direction. The reversal of direction can also be seen in (b) at 0.5 s where the velocity is zero and then turns negative. At 1.0 s it is back at the origin where it started. The particle’s velocity at 1.0 s in (b) is negative, because it is traveling in the negative direction. But in (c), however, its speed is positive and remains positive throughout the travel time. We can also interpret velocity as the slope of the position-versus-time graph. The slope of <i>x</i>(<i>t</i>) is decreasing toward zero, becoming zero at 0.5 s and increasingly negative thereafter. This analysis of comparing the graphs of position, velocity, and speed helps catch errors in calculations. The graphs must be consistent with each other and help interpret the calculations.</p><figure><img src='img/CNX_UPhysics_03_02_PosVelSp.jpg' alt=\"Graph A shows position in meters plotted versus time in seconds. It starts at the origin, reaches maximum at 0.5 seconds, and then start to decrease crossing x axis at 1 second. Graph B shows velocity in meters per second plotted as a function of time at seconds. Velocity linearly decreases from the left to the right. Graph C shows absolute velocity in meters per second plotted as a function of time at seconds. Graph has a V-leeter shape. Velocity decreases till 0.5 seconds; then it starts to increase.\" loading='lazy'><figcaption>(a) Position: <i>x</i>(<i>t</i>) versus time. (b) Velocity: <i>v</i>(<i>t</i>) versus time. The slope of the position graph is the velocity. A rough comparison of the slopes of the tangent lines in (a) at 0.25 s, 0.5 s, and 1.0 s with the values for velocity at the corresponding times indicates they are the same values. (c) Speed: \\(|v(t)|\\) versus time. Speed is always a positive number.</figcaption></figure>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>The position of an object as a function of time is \\(x(t)=\\, (-3\\, {\\text{m/s}}^{2}){t}^{2}\\). (a) What is the velocity of the object as a function of time? (b) Is the velocity ever positive? (c) What are the velocity and speed at <i>t</i> = 1.0 s?</p>",
+     "a": "<p>(a) Taking the derivative of <i>x</i>(<i>t</i>) gives <i>v</i>(<i>t</i>) = −6<i>t</i> m/s. (b) No, because time can never be negative. (c) The velocity is <i>v</i>(1.0 s) = −6 m/s and the speed is \\(|v(1.0\\, \\text{s})|=6\\, \\text{m/s}\\).</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Instantaneous velocity is a continuous function of time and gives the velocity at any point in time during a particle’s motion. We can calculate the instantaneous velocity at a specific time by taking the derivative of the position function, which gives us the functional form of instantaneous velocity <i>v</i>(<i>t</i>).",
+    "Instantaneous velocity is a vector and can be negative.",
+    "Instantaneous speed is found by taking the absolute value of instantaneous velocity, and it is always positive.",
+    "Average speed is total distance traveled divided by elapsed time.",
+    "The slope of a position-versus-time graph at a specific time gives instantaneous velocity at that time."
+   ]
+  },
+  {
+   "num": "3.3",
+   "module": "m58284",
+   "title": "Average and Instantaneous Acceleration",
+   "objectives": [
+    "Calculate the average acceleration between two points in time.",
+    "Calculate the instantaneous acceleration given the functional form of velocity.",
+    "Explain the vector nature of instantaneous acceleration and velocity.",
+    "Explain the difference between average acceleration and instantaneous acceleration.",
+    "Find instantaneous acceleration at a specified time on a graph of velocity versus time."
+   ],
+   "callouts": [
+    "a(t)=\\frac{d}{dt}v(t)"
+   ],
+   "examples": [
+    {
+     "title": "Calculating Average Acceleration: A Racehorse Leaves the Gate",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A racehorse coming out of the gate accelerates from rest to a velocity of 15.0 m/s due west in 1.80 s. What is its average acceleration?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First we draw a sketch and assign a coordinate system to the problem the figure. This is a simple problem, but it always helps to visualize it. Notice that we assign east as positive and west as negative. Thus, in this case, we have negative velocity.</p><figure><img src='img/CNX_UPhysics_03_03_ExGraphs.jpg' alt=\"Figure shows three vectors: a has the unknown value ans is directed to the west, vf is equal to – 15 m/s and is directed to the west, vo is equal to zero.\" loading='lazy'><figcaption>Identify the coordinate system, the given information, and what you want to determine.</figcaption></figure><p>We can solve this problem by identifying \\(\\Delta v\\, \\text{and}\\, \\Delta t\\) from the given information, and then calculating the average acceleration directly from the equation \\(\\bar{a}=\\frac{\\Delta v}{\\Delta t}=\\frac{{v}_{\\text{f}}-{v}_{0}}{{t}_{\\text{f}}-{t}_{0}}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First, identify the knowns: \\({v}_{0}=0,{v}_{\\text{f}}=-15.0\\, \\text{m/s}\\) (the negative sign indicates direction toward the west), Δ<i>t</i> = 1.80 s.</p><p>Second, find the change in velocity. Since the horse is going from zero to –15.0 m/s, its change in velocity equals its final velocity:</p><div class='eq'>\\[\\Delta v={v}_{\\text{f}}-{v}_{0}={v}_{\\text{f}}=-15.0\\, \\text{m/s}.\\]</div><p>Last, substitute the known values (\\(\\Delta v\\, \\text{and}\\, \\Delta t\\)) and solve for the unknown \\(\\bar{a}\\):</p><div class='eq'>\\[\\bar{a}=\\frac{\\Delta v}{\\Delta t}=\\frac{-15.0\\, \\text{m/s}}{1.80\\, \\text{s}}=-8.33{\\text{m/s}}^{2}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The negative sign for acceleration indicates that acceleration is toward the west. An acceleration of 8.33 m/s<sup>2</sup> due west means the horse increases its velocity by 8.33 m/s due west each second; that is, 8.33 meters per second per second, which we write as 8.33 m/s<sup>2</sup>. This is truly an average acceleration, because the ride is not smooth. We see later that an acceleration of this magnitude would require the rider to hang on with a force nearly equal to his weight.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Instantaneous Acceleration",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A particle is in motion and is accelerating. The functional form of the velocity is \\(v(t)=(20\\, {\\text{m/s}}^{2})t\\, -\\, \\text{(5}\\, {\\text{m/s}}^{3}\\text{)}{t}^{2}\\).</p><ol type='a'><li>Find the functional form of the acceleration.</li><li>Find the instantaneous velocity at <i>t</i> = 1, 2, 3, and 5 s.</li><li>Find the instantaneous acceleration at <i>t</i> = 1, 2, 3, and 5 s.</li><li>Interpret the results of (c) in terms of the directions of the acceleration and velocity vectors.</li></ol>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We find the functional form of acceleration by taking the derivative of the velocity function. Then, we calculate the values of instantaneous velocity and acceleration from the given functions for each. For part (d), we need to compare the directions of velocity and acceleration at each time.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(a(t)=\\frac{dv(t)}{dt}=\\text{(20}\\, {\\text{m/s}}^{2}\\text{)}\\, -\\, \\text{(10}\\, {\\text{m/s}}^{3}\\text{)}t\\)</li><li>\\(v(1\\, \\text{s})=15\\, \\text{m/s}\\), \\(v(2\\, \\text{s})=20\\, \\text{m/s}\\), \\(v(3\\, \\text{s})=15\\, \\text{m/s}\\), \\(v(5\\, \\text{s})=-25\\, \\text{m/s}\\)</li><li>\\(a(1\\, \\text{ s})=10{\\, \\text{ m/s}}^{2}\\), \\(a(2\\, \\text{ s})=0{\\, \\text{m/s}}^{2}\\), \\(a(3\\, \\text{ s})=-10{\\, \\text{m/s}}^{2}\\), \\(a(5\\, \\text{s})=-30{\\, \\text{m/s}}^{2}\\)</li><li>At <i>t</i> = 1 s, velocity \\(v(1\\, \\text{s)}=15\\, \\text{m/s}\\) is positive and acceleration is positive, so both velocity and acceleration are in the same direction. The particle is moving faster.</li></ol><p>At <i>t</i> = 2 s, velocity has increased to\\(v(2\\, \\text{s)}=20\\, \\text{m/s}\\), where it is maximum, which corresponds to the time when the acceleration is zero. We see that the maximum velocity occurs when the slope of the velocity function is zero, which is just the zero of the acceleration function.</p><p>At <i>t</i> = 3 s, velocity is \\(v(3\\, \\text{s)}=15\\, \\text{m/s}\\) and acceleration is negative. The particle has reduced its velocity and the acceleration vector is negative. The particle is slowing down.</p><p>At <i>t</i> = 5 s, velocity is \\(v(5\\, \\text{s)}=-25\\, \\text{m/s}\\) and acceleration is increasingly negative. Between the times <i>t =</i> 3 s and <i>t</i> = 5 s the particle has decreased its velocity to zero and then become negative, thus reversing its direction. The particle is now speeding up again, but in the opposite direction.</p><p>We can see these results graphically in the figure.</p><figure><img src='img/CNX_UPhysics_03_03_VelAcc.jpg' alt=\"Graph A shows velocity in meters per second plotted versus time in seconds. Velocity starts at zero, increases to 15 at 1 second, and reaches maximum of 20 at 2 seconds. It decreases to 15 at 3 seconds and continues to decrease to -25 at 5 seconds. Graph B shows acceleration in meters per second squared plotted versus time in seconds. Graph is linear and has a negative constant slope. Acceleration starts at 20 when time is zero, decreases to 10 at 1 second, to zero at 2 seconds, to -10 at 3 seconds, and to -30 and 5 seconds.\" loading='lazy'><figcaption>(a) Velocity versus time. Tangent lines are indicated at times 1, 2, and 3 s. The slopes of the tangent lines are the accelerations. At <i>t</i> = 3 s, velocity is positive. At <i>t</i> = 5 s, velocity is negative, indicating the particle has reversed direction. (b) Acceleration versus time. Comparing the values of accelerations given by the black dots with the corresponding slopes of the tangent lines (slopes of lines through black dots) in (a), we see they are identical.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>By doing both a numerical and graphical analysis of velocity and acceleration of the particle, we can learn much about its motion. The numerical analysis complements the graphical analysis in giving a total view of the motion. The zero of the acceleration function corresponds to the maximum of the velocity in this example. Also in this example, when acceleration is positive and in the same direction as velocity, velocity increases. As acceleration tends toward zero, eventually becoming negative, the velocity reaches a maximum, after which it starts decreasing. If we wait long enough, velocity also becomes negative, indicating a reversal of direction. A real-world example of this type of motion is a car with a velocity that is increasing to a maximum, after which it starts slowing down, comes to a stop, then reverses direction.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Protons in a linear accelerator are accelerated from rest to \\(2.0\\, \\times \\, {10}^{7}\\, \\text{m/s}\\) in 10<sup>–4</sup> s. What is the average acceleration of the protons?</p>",
+     "a": "<p>Inserting the knowns, we have<br> \\(\\bar{a}=\\frac{\\Delta v}{\\Delta t}=\\frac{2.0\\, \\times \\, {10}^{7}\\, \\text{m/s}-0}{{10}^{-4}\\, \\text{s}-0}=2.0\\, \\times \\, {10}^{11}{\\text{m/s}}^{2}.\\)</p>"
+    },
+    {
+     "q": "<p>An airplane lands on a runway traveling east. Describe its acceleration.</p>",
+     "a": "<p>If we take east to be positive, then the airplane has negative acceleration because it is accelerating toward the west. It is also acceleration opposite to the motion; its acceleration is opposite in direction to its velocity.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Acceleration is the rate at which velocity changes. The SI unit for acceleration is meters per second squared.",
+    "Acceleration is a vector. It has both magnitude and direction and so can be the rate of change of the magnitude or direction of the velocity, or both.",
+    "Instantaneous acceleration <i>a</i>(<i>t</i>) is a continuous function of time and gives the acceleration at any specific time during the motion. It is calculated from the derivative of the velocity function. Instantaneous acceleration is the slope of the velocity-versus-time graph.",
+    "Negative acceleration (sometimes called deceleration) is acceleration in the negative direction in the chosen coordinate system."
+   ]
+  },
+  {
+   "num": "3.4",
+   "module": "m58285",
+   "title": "Motion with Constant Acceleration",
+   "objectives": [
+    "Identify which equations of motion are to be used to solve for unknowns.",
+    "Use appropriate equations of motion to solve a two-body pursuit problem."
+   ],
+   "callouts": [
+    "x={x}_{0}+\\bar{v}t",
+    "\\bar{v}=\\frac{{v}_{0}+v}{2}",
+    "v={v}_{0}+at\\; (\\text{constant}\\, a)",
+    "x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}\\; (\\text{constant}\\, a)",
+    "{v}^{2}={v}_{0}^{2}+2a(x-{x}_{0})\\; (\\text{constant}\\, a)"
+   ],
+   "examples": [
+    {
+     "title": "Calculating Final Velocity",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>An airplane lands with an initial velocity of 70.0 m/s and then accelerates opposite to the motion at 1.50 m/s<sup>2</sup> for 40.0 s. What is its final velocity?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we identify the knowns: \\({v}_{0}=70\\, \\text{m/s,}\\, a=-1.50{\\, \\text{m/s}}^{2},t=40\\, \\text{s}\\).</p><p>Second, we identify the unknown; in this case, it is final velocity \\({v}_{\\text{f}}\\).</p><p>Last, we determine which equation to use. To do this we figure out which kinematic equation gives the unknown in terms of the knowns. We calculate the final velocity using the equation, \\(v={v}_{0}+at\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substitute the known values and solve:</p><div class='eq'>\\[v={v}_{0}+at=70.0\\, \\text{m/s}+(-1.50\\, \\text{m/}{\\text{s}}^{2})(40.0\\text{ s})=10.0\\text{ m/s.}\\]</div><p>The figure is a sketch that shows the acceleration and velocity vectors.</p><figure><img src='img/CNX_UPhysics_03_04_Ex1plane.jpg' alt=\"Figure shows airplane at two different time periods. At t equal zero seconds it has velocity of 70 meters per second and acceleration of -1.5 meters per second squared. At t equal 40 seconds it has velocity of 10 meters per second and acceleration of -1.5 meters per second squared.\" loading='lazy'><figcaption>The airplane lands with an initial velocity of 70.0 m/s and slows to a final velocity of 10.0 m/s before heading for the terminal. Note the acceleration is negative because its direction is opposite to its velocity, which is positive.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The final velocity is much less than the initial velocity, as desired when slowing down, but is still positive (see figure). With jet engines, reverse thrust can be maintained long enough to stop the plane and start moving it backward, which is indicated by a negative final velocity, but is not the case here.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Displacement of an Accelerating Object",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Dragsters can achieve an average acceleration of 26.0 m/s<sup>2</sup>. Suppose a dragster accelerates from rest at this rate for 5.56 s (the figure). How far does it travel in this time?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, let’s draw a sketch (the figure). We are asked to find displacement, which is <i>x</i> if we take \\({x}_{0}\\) to be zero. (Think about \\({x}_{0}\\) as the starting line of a race. It can be anywhere, but we call it zero and measure all other positions relative to it.) We can use the equation \\(x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}\\) when we identify \\({v}_{0}\\), \\(a\\), and <i>t</i> from the statement of the problem.</p><figure><img src='img/CNX_UPhysics_03_04_Ex2Sketch.jpg' alt=\"Figure shows race car with acceleration of 26 meters per second squared.\" loading='lazy'><figcaption>Sketch of an accelerating dragster.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First, we need to identify the knowns. Starting from rest means that \\({v}_{0}=0\\), <i>a</i> is given as 26.0 m/s<sup>2</sup> and <i>t</i> is given as 5.56 s.</p><p>Second, we substitute the known values into the equation to solve for the unknown:</p><div class='eq'>\\[x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}.\\]</div><p>Since the initial position and velocity are both zero, this equation simplifies to</p><div class='eq'>\\[x=\\frac{1}{2}a{t}^{2}.\\]</div><p>Substituting the identified values of <i>a</i> and <i>t</i> gives</p><div class='eq'>\\[x=\\frac{1}{2}(26.0{\\, \\text{m/s}}^{2}){(5.56\\, \\text{s})}^{2}=402\\, \\text{m}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>If we convert 402 m to miles, we find that the distance covered is very close to one-quarter of a mile, the standard distance for drag racing. So, our answer is reasonable. This is an impressive displacement to cover in only 5.56 s, but top-notch dragsters can do a quarter mile in even less time than this. If the dragster were given an initial velocity, this would add another term to the distance equation. If the same acceleration and time are used in the equation, the distance covered would be much greater.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Final Velocity",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Calculate the final velocity of the dragster in the example <i>Calculating Displacement of an Accelerating Object</i> without using information about time.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The equation \\({v}^{2}={v}_{0}^{2}+2a(x-{x}_{0})\\) is ideally suited to this task because it relates velocities, acceleration, and displacement, and no time information is required.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First, we identify the known values. We know that <i>v</i><sub>0</sub> = 0, since the dragster starts from rest. We also know that <i>x</i> − <i>x</i><sub>0</sub> = 402 m (this was the answer in the example <i>Calculating Displacement of an Accelerating Object</i>). The average acceleration was given by <i>a</i> = 26.0 m/s<sup>2</sup>.</p><p>Second, we substitute the knowns into the equation \\({v}^{2}={v}_{0}^{2}+2a(x-{x}_{0})\\) and solve for <i>v</i>:</p><div class='eq'>\\[{v}^{2}=0+2(26.0{\\, \\text{m/s}}^{2})(402\\, \\text{m}).\\]</div><p>Thus,</p><div class='eq'>\\[\\begin{array}{lll}{v}^{2} & = & 2.09\\, \\times \\, {10}^{4}\\, {\\text{m}}^{2}{\\text{/s}}^{2} \\\\ \\\\ v & = & \\sqrt{2.09\\, \\times \\, {10}^{4}{\\, \\text{m}}^{2}{\\text{/s}}^{2}}=145\\, \\text{m/s}\\text{.}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>A velocity of 145 m/s is about 522 km/h, or about 324 mi/h, but even this breakneck speed is short of the record for the quarter mile. Also, note that a square root has two values; we took the positive value to indicate a velocity in the same direction as the acceleration.</p>"
+      }
+     ]
+    },
+    {
+     "title": "How Far Does a Car Go?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>On dry concrete, a car can accelerate opposite to the motion at a rate of 7.00 m/s<sup>2</sup>, whereas on wet concrete it can accelerate opposite to the motion at only 5.00 m/s<sup>2</sup>. Find the distances necessary to stop a car moving at 30.0 m/s (about 110 km/h) on (a) dry concrete and (b) wet concrete. (c) Repeat both calculations and find the displacement from the point where the driver sees a traffic light turn red, taking into account their reaction time of 0.500 s to get their foot on the brake.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we need to draw a sketch the figure. To determine which equations are best to use, we need to list all the known values and identify exactly what we need to solve for.</p><figure><img src='img/CNX_UPhysics_03_04_Ex4Sketch.jpg' alt=\"Figure shows motor vehicle that moved with the speed of 30 meters per second. A stop light is located at the unknown distance delta x from the motor vehicle. Speed of motor vehicle is zero meters per second when it reaches stop light.\" loading='lazy'><figcaption>Sample sketch to visualize acceleration opposite to the motion and stopping distance of a car.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>First, we need to identify the knowns and what we want to solve for. We know that <i>v</i><sub>0</sub> = 30.0 m/s, <i>v</i> = 0, and <i>a</i> = −7.00 m/s<sup>2</sup> (<i>a</i> is negative because it is in a direction opposite to velocity). We take <i>x</i><sub>0</sub> to be zero. We are looking for displacement \\(\\Delta x\\), or <i>x</i> − <i>x</i><sub>0</sub>.<br> Second, we identify the equation that will help us solve the problem. The best equation to use is <div class='eq'>\\[{v}^{2}={v}_{0}^{2}+2a(x-{x}_{0}).\\]</div> This equation is best because it includes only one unknown, <i>x</i>. We know the values of all the other variables in this equation. (Other equations would allow us to solve for <i>x</i>, but they require us to know the stopping time, <i>t</i>, which we do not know. We could use them, but it would entail additional calculations.)<br> Third, we rearrange the equation to solve for <i>x</i>: <div class='eq'>\\[x-{x}_{0}=\\frac{{v}^{2}-{v}_{0}^{2}}{2a}\\]</div> and substitute the known values: <div class='eq'>\\[x-0=\\frac{{0}^{2}-{(30.0\\, \\text{m/s})}^{2}}{2(-7.00{\\text{m/s}}^{2})}.\\]</div> Thus, <div class='eq'>\\[x=64.3\\, \\text{m on dry concrete}\\text{.}\\]</div></li><li>This part can be solved in exactly the same manner as (a). The only difference is that the acceleration is −5.00 m/s<sup>2</sup>. The result is <div class='eq'>\\[{x}_{\\text{wet}}=90.0\\, \\text{m on wet concrete.}\\]</div></li><li>When the driver reacts, the stopping distance is the same as it is in (a) and (b) for dry and wet concrete. So, to answer this question, we need to calculate how far the car travels during the reaction time, and then add that to the stopping time. It is reasonable to assume the velocity remains constant during the driver’s reaction time.<br> To do this, we, again, identify the knowns and what we want to solve for. We know that \\(\\bar{v}=30.0\\, \\text{m/s}\\), \\({t}_{\\text{reaction}}=0.500\\, \\text{s}\\), and \\({a}_{\\text{reaction}}=0\\). We take \\({x}_{\\text{0-reaction}}\\) to be zero. We are looking for \\({x}_{\\text{reaction}}\\).<br> Second, as before, we identify the best equation to use. In this case, \\(x={x}_{0}+\\bar{v}t\\) works well because the only unknown value is <i>x</i>, which is what we want to solve for.<br> Third, we substitute the knowns to solve the equation: <div class='eq'>\\[x=0+(30.0\\, \\text{m/s})(0.500\\, \\text{s})=15.0\\, \\text{m}.\\]</div> This means the car travels 15.0 m while the driver reacts, making the total displacements in the two cases of dry and wet concrete 15.0 m greater than if he reacted instantly.<br> Last, we then add the displacement during the reaction time to the displacement when braking (the figure), <div class='eq'>\\[{x}_{\\text{braking}}+{x}_{\\text{reaction}}={x}_{\\text{total}},\\]</div> and find (a) to be 64.3 m + 15.0 m = 79.3 m when dry and (b) to be 90.0 m + 15.0 m = 105 m when wet.</li></ol><figure><img src='img/CNX_UPhysics_03_04_CarHalt.jpg' alt=\"Top figure shows cars located at 64.3 meters and 90 meters from the starting point for dry and wet conditions, respectively. Bottom figure shows cars located at 79.3 meters and 105 meters from the starting point for dry and wet conditions, respectively.\" loading='lazy'><figcaption>The distance necessary to stop a car varies greatly, depending on road conditions and driver reaction time. Shown here are the braking distances for dry and wet pavement, as calculated in this example, for a car traveling initially at 30.0 m/s. Also shown are the total distances traveled from the point when the driver first sees a light turn red, assuming a 0.500-s reaction time.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The displacements found in this example seem reasonable for stopping a fast-moving car. It should take longer to stop a car on wet pavement than dry. It is interesting that reaction time adds significantly to the displacements, but more important is the general approach to solving problems. We identify the knowns and the quantities to be determined, then find an appropriate equation. If there is more than one unknown, we need as many independent equations as there are unknowns to solve. There is often more than one way to solve a problem. The various parts of this example can, in fact, be solved by other methods, but the solutions presented here are the shortest.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Time",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Suppose a car merges into freeway traffic on a 200-m-long ramp. If its initial velocity is 10.0 m/s and it accelerates at 2.00 m/s<sup>2</sup>, how long does it take the car to travel the 200 m up the ramp? (Such information might be useful to a traffic engineer.)</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we draw a sketch the figure. We are asked to solve for time <i>t</i>. As before, we identify the known quantities to choose a convenient physical relationship (that is, an equation with one unknown, <i>t</i>.)</p><figure><img src='img/CNX_UPhysics_03_04_Ex5Sketch.jpg' alt=\"Figure shows car accelerating from the speed of 10 meters per second at a rate of 2 meters per second squared. Acceleration distance is 200 meters.\" loading='lazy'><figcaption>Sketch of a car accelerating on a freeway ramp.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Again, we identify the knowns and what we want to solve for. We know that \\({x}_{0}=0,\\)<br>\\({v}_{0}=10\\, \\text{m/s},a=2.00\\, \\text{m/}{\\text{s}}^{2}\\), and <i>x</i> = 200 m.</p><p>We need to solve for <i>t</i>. The equation \\(x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}\\) works best because the only unknown in the equation is the variable <i>t</i>, for which we need to solve. From this insight we see that when we input the knowns into the equation, we end up with a quadratic equation.</p><p>We need to rearrange the equation to solve for <i>t</i>, then substituting the knowns into the equation:</p><div class='eq'>\\[200\\, \\text{m}=0\\, \\text{m}+(10.0\\, \\text{m/s})t+\\frac{1}{2}(2.00\\, {\\text{m/s}}^{2}){t}^{2}.\\]</div><p>We then simplify the equation. The units of meters cancel because they are in each term. We can get the units of seconds to cancel by taking <i>t</i> = <i>t</i> s, where <i>t</i> is the magnitude of time and s is the unit. Doing so leaves</p><div class='eq'>\\[200=10t+{t}^{2}.\\]</div><p>We then use the quadratic formula to solve for <i>t</i>,</p><div class='eq'>\\[\\begin{array}{l}{t}^{2}+10t-200=0 \\\\ \\\\ \\\\ t=\\frac{-b\\pm \\sqrt{{b}^{2}-4ac}}{2a},\\end{array}\\]</div><p>which yields two solutions: <i>t</i> = 10.0 and <i>t</i> = −20.0. A negative value for time is unreasonable, since it would mean the event happened 20 s before the motion began. We can discard that solution. Thus,</p><div class='eq'>\\[t=10.0\\, \\text{s}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Whenever an equation contains an unknown squared, there are two solutions. In some problems both solutions are meaningful; in others, only one solution is reasonable. The 10.0-s answer seems reasonable for a typical freeway on-ramp.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Acceleration of a Spaceship",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A spaceship has left Earth’s orbit and is on its way to the Moon. It accelerates at 20 m/s<sup>2</sup> for 2 min and covers a distance of 1000 km. What are the initial and final velocities of the spaceship?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are asked to find the initial and final velocities of the spaceship. Looking at the kinematic equations, we see that one equation will not give the answer. We must use one kinematic equation to solve for one of the velocities and substitute it into another kinematic equation to get the second velocity. Thus, we solve two of the kinematic equations simultaneously.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First we solve for \\({v}_{0}\\) using \\(x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}:\\)</p><div class='eq'>\\[x-{x}_{0}={v}_{0}t+\\frac{1}{2}a{t}^{2}\\]</div><div class='eq'>\\[1.0\\, \\times \\, {10}^{6}\\, \\text{m}={v}_{0}(120.0\\, \\text{s})+\\frac{1}{2}(20.0\\, {\\text{m/s}}^{2}){(120.0\\, \\text{s})}^{2}\\]</div><div class='eq'>\\[{v}_{0}=7133.3\\, \\text{m/s}\\text{.}\\]</div><p>Then we substitute \\({v}_{0}\\) into \\(v={v}_{0}+at\\) to solve for the final velocity:</p><div class='eq'>\\[v={v}_{0}+at=7133.3\\, \\text{m/s}+(20.0\\, {\\text{m/s}}^{2})(120.0\\, \\text{s})=9533.3\\, \\text{m/s.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>There are six variables in displacement, time, velocity, and acceleration that describe motion in one dimension. The initial conditions of a given problem can be many combinations of these variables. Because of this diversity, solutions may not be as easy as simple substitutions into one of the equations. This example illustrates that solutions to kinematics may require solving two simultaneous kinematic equations.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Cheetah Catching a Gazelle",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A cheetah waits in hiding behind a bush. The cheetah spots a gazelle running past at 10 m/s. At the instant the gazelle passes the cheetah, the cheetah accelerates from rest at 4 m/s<sup>2</sup> to catch the gazelle. (a) How long does it take the cheetah to catch the gazelle? (b) What is the displacement of the gazelle and cheetah?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the set of equations for constant acceleration to solve this problem. Since there are two objects in motion, we have separate equations of motion describing each animal. But what links the equations is a common parameter that has the same value for each animal. If we look at the problem closely, it is clear the common parameter to each animal is their position <i>x</i> at a later time <i>t</i>. Since they both start at \\({x}_{0}=0\\), their displacements are the same at a later time <i>t</i>, when the cheetah catches up with the gazelle. If we pick the equation of motion that solves for the displacement for each animal, we can then set the equations equal to each other and solve for the unknown, which is time.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Equation for the gazelle: The gazelle has a constant velocity, which is its average velocity, since it is not accelerating. Therefore, we use the equation with \\({x}_{0}=0\\): <div class='eq'>\\[x={x}_{0}+\\bar{v}t=\\bar{v}t.\\]</div> Equation for the cheetah: The cheetah is accelerating from rest, so we use the equation with \\({x}_{0}=0\\) and \\({v}_{0}=0\\): <div class='eq'>\\[x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}=\\frac{1}{2}a{t}^{2}.\\]</div> Now we have an equation of motion for each animal with a common parameter, which can be eliminated to find the solution. In this case, we solve for <i>t</i>: <div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ x=\\bar{v}t=\\frac{1}{2}a{t}^{2} \\\\ t=\\frac{2\\bar{v}}{a}.\\end{array}\\]</div> The gazelle has a constant velocity of 10 m/s, which is its average velocity. The acceleration of the cheetah is 4 m/s<sup>2</sup>. Evaluating <i>t</i>, the time for the cheetah to reach the gazelle, we have <div class='eq'>\\[t=\\frac{2\\bar{v}}{a}=\\frac{2(10\\text{ m/s})}{4{\\text{m/s}}^{2}}=5\\, \\text{s}\\text{.}\\]</div></li><li>To get the displacement, we use either the equation of motion for the cheetah or the gazelle, since they should both give the same answer.<br> Displacement of the cheetah: <div class='eq'>\\[x=\\frac{1}{2}a{t}^{2}=\\frac{1}{2}(4{\\text{m/s}}^{2}){(5)}^{2}=50\\, \\text{m}\\text{.}\\]</div> Displacement of the gazelle: <div class='eq'>\\[x=\\bar{v}t=10\\text{ m/s}(5)=50\\, \\text{m}\\text{.}\\]</div> We see that both displacements are equal, as expected.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>It is important to analyze the motion of each object and to use the appropriate kinematic equations to describe the individual motion. It is also important to have a good visual perspective of the two-body pursuit problem to see the common parameter that links the motion of both objects.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A rocket accelerates at a rate of 20 m/s<sup>2</sup> during launch. How long does it take the rocket to reach a velocity of 400 m/s?</p>",
+     "a": "<p>To answer this, choose an equation that allows us to solve for time <i>t</i>, given only <i>a</i> , <i>v</i><sub>0</sub> , and <i>v</i>:<br> \\(v={v}_{0}+at.\\)<br> Rearrange to solve for <i>t</i>:<br> \\(t=\\frac{v-{v}_{0}}{a}=\\frac{400\\, \\text{m/s}-0\\, \\text{m/s}}{20{\\, \\text{m/s}}^{2}}=20\\, \\text{s}\\text{.}\\)</p>"
+    },
+    {
+     "q": "<p>A bicycle has a constant velocity of 10 m/s. A person starts from rest and begins to run to catch up to the bicycle in 30 s when the bicycle is at the same position as the person. What is the acceleration of the person?</p>",
+     "a": "<p>\\(a=\\frac{2}{3}{\\, \\text{m/s}}^{2}\\).</p>"
+    }
+   ],
+   "keyConcepts": [
+    "When analyzing one-dimensional motion with constant acceleration, identify the known quantities and choose the appropriate equations to solve for the unknowns. Either one or two of the kinematic equations are needed to solve for the unknowns, depending on the known and unknown quantities.",
+    "Two-body pursuit problems always require two equations to be solved simultaneously for the unknowns."
+   ]
+  },
+  {
+   "num": "3.5",
+   "module": "m58286",
+   "title": "Free Fall",
+   "objectives": [
+    "Use the kinematic equations with the variables y and g to analyze free-fall motion.",
+    "Describe how the values of the position, velocity, and acceleration change during a free fall.",
+    "Solve for the position, velocity, and acceleration as functions of time when an object is in a free fall."
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Free Fall of a Ball",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure shows the positions of a ball, at 1-s intervals, with an initial velocity of 4.9 m/s downward, that is thrown from the top of a 98-m-high building. (a) How much time elapses before the ball reaches the ground? (b) What is the velocity when it arrives at the ground?</p><figure><img src='img/CNX_UPhysics_03_05_Building.jpg' alt=\"Figure shows the ball thrown downward from a tall building at a speed of - 4.9 meters per second. After one second, ball is lower by 9.8 meters and has a speed of -14.7 meters per second. After two seconds, ball is lower by 29.4 meters and has a speed of -24.5 meters per second. After three seconds, ball is lower by 58.8 meters and has a speed of -34.5 meters per second.\" loading='lazy'><figcaption>The positions and velocities at 1-s intervals of a ball thrown downward from a tall building at 4.9 m/s.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Choose the origin at the top of the building with the positive direction upward and the negative direction downward. To find the time when the position is −98 m, we use the equation, with \\({y}_{0}=0,{v}_{0}=-4.9\\, \\text{m/s,}\\, \\text{and}\\, g=9.8\\, {\\text{m/s}}^{2}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Substitute the given values into the equation: <div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ y={y}_{0}+{v}_{0}t-\\frac{1}{2}g{t}^{2} \\\\ -98.0\\, \\text{m}=0-(4.9\\, \\text{m/s})t-\\frac{1}{2}(9.8\\, {\\text{m/s}}^{2}){t}^{2}.\\end{array}\\]</div> This simplifies to <div class='eq'>\\[{t}^{2}+t-20=0.\\]</div> This is a quadratic equation with roots \\(t=-5.0\\, \\mathrm{s}\\, \\text{and}\\, t=4.0\\, \\mathrm{s}\\). The positive root is the one we are interested in, since time \\(t=0\\) is the time when the ball is released at the top of the building. (The time \\(t=-5.0\\, \\mathrm{s}\\) represents the fact that a ball thrown upward from the ground would have been in the air for 5.0 s when it passed by the top of the building moving downward at 4.9 m/s.)</li><li>Using the equation, we have <div class='eq'>\\[v={v}_{0}-gt=-4.9\\, \\text{m/s}-(9.8\\, {\\text{m/s}}^{2})(4.0\\, \\text{s})=-44.1\\, \\text{m/s}\\text{.}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>For situations when two roots are obtained from a quadratic equation in the time variable, we must look at the physical significance of both roots to determine which is correct. Since \\(t=0\\) corresponds to the time when the ball was released, the negative root would correspond to a time before the ball was released, which is not physically meaningful. When the ball hits the ground, its velocity is not immediately zero, but as soon as the ball interacts with the ground, its acceleration is not <i>g</i> and it accelerates with a different value over a short time to zero velocity. This problem shows how important it is to establish the correct coordinate system and to keep the signs of <i>g</i> in the kinematic equations consistent.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Vertical Motion of a Baseball",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A batter hits a baseball straight upward at home plate and the ball is caught 5.0 s after it is struck (the figure). (a) What is the initial velocity of the ball? (b) What is the maximum height the ball reaches? (c) How long does it take to reach the maximum height? (d) What is the acceleration at the top of its path? (e) What is the velocity of the ball when it is caught? Assume the ball is hit and caught at the same location.</p><figure><img src='img/CNX_UPhysics_03_05_Batter.jpg' alt=\"Left picture shows a baseball player hitting the ball at time equal zero seconds. Right picture shows a baseball player catching the ball at time equal five seconds.\" loading='lazy'><figcaption>A baseball hit straight up is caught by the catcher 5.0 s later.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Choose a coordinate system with a positive <i>y</i>-axis that is straight up and with an origin that is at the spot where the ball is hit and caught.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The equation gives <div class='eq'>\\[y={y}_{0}+{v}_{0}t-\\frac{1}{2}g{t}^{2}\\]</div> <div class='eq'>\\[0=0+{v}_{0}(5.0\\, \\text{s})-\\frac{1}{2}(9.8\\, \\text{m}\\text{/}{\\text{s}}^{2}){(5.0\\, \\text{s})}^{2},\\]</div> which gives \\({v}_{0}=24.5\\, \\text{m/s}\\).</li><li>At the maximum height, \\(v=0\\). With \\({v}_{0}=24.5\\, \\text{m/s}\\), the equation gives <div class='eq'>\\[{v}^{2}={v}_{0}^{2}-2\\, g(y-{y}_{0})\\]</div> <div class='eq'>\\[0={(24.5\\, \\text{m/s})}^{2}-2(9.8\\, {\\text{m/s}}^{2})(y-0)\\]</div> or <div class='eq'>\\[y=30.6\\, \\text{m}\\text{.}\\]</div></li><li>To find the time when \\(v=0\\), we use the equation: <div class='eq'>\\[v={v}_{0}-gt\\]</div> <div class='eq'>\\[0=24.5\\, \\text{m/s}-(9.8\\, {\\text{m/s}}^{2})t.\\]</div> This gives \\(t=2.5\\, \\text{s}\\). Since the ball rises for 2.5 s, the time to fall is 2.5 s.</li><li>The acceleration is 9.8 m/s<sup>2</sup> everywhere, even when the velocity is zero at the top of the path. Although the velocity is zero at the top, it is changing at the rate of 9.8 m/s<sup>2</sup> downward.</li><li>The velocity at \\(t=5.0\\mathrm{s}\\) can be determined with the equation: <div class='eq'>\\[\\begin{array}{ll}v & ={v}_{0}-gt \\\\ & =24.5\\, \\text{m/s}-9.8\\, {\\text{m/s}}^{2}(5.0\\, \\text{s}) \\\\ & =-24.5\\, \\text{m/s}.\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The ball returns with the speed it had when it left. This is a general property of free fall for any initial velocity. We used a single equation to go from throw to catch, and did not have to break the motion into two segments, upward and downward. We are used to thinking that the effect of gravity is to create free fall downward toward Earth. It is important to understand, as illustrated in this example, that objects moving upward away from Earth are also in a state of free fall.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Rocket Booster",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A small rocket with a booster blasts off and heads straight upward. When at a height of \\(5.0\\, \\text{km}\\) and velocity of 200.0 m/s, it releases its booster. (a) What is the maximum height the booster attains? (b) What is the velocity of the booster at a height of 6.0 km? Neglect air resistance.</p><figure><img src='img/CNX_UPhysics_03_05_Rocket.jpg' alt=\"Figure shows a rocket releasing a booster.\" loading='lazy'><figcaption>A rocket releases its booster at a given height and velocity. How high and how fast does the booster go?</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We need to select the coordinate system for the acceleration of gravity, which we take as negative downward. We are given the initial velocity of the booster and its height. We consider the point of release as the origin. We know the velocity is zero at the maximum position within the acceleration interval; thus, the velocity of the booster is zero at its maximum height, so we can use this information as well. From these observations, we use the equation, which gives us the maximum height of the booster. We also use the equation to give the velocity at 6.0 km. The initial velocity of the booster is 200.0 m/s.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>From the equation, \\({v}^{2}={v}_{0}^{2}-2g(y-{y}_{0})\\). With \\(v=0\\, \\text{and}\\, {y}_{0}=0\\), we can solve for <i>y</i>: <div class='eq'>\\[y=\\frac{{v}_{0}^{2}}{2g}=\\frac{(2.0\\, \\times \\, {10}^{2}\\text{m}\\text{/}{\\text{s})}^{2}}{2(9.8\\, \\text{m}\\text{/}{\\text{s}}^{2})}=2040.8\\, \\text{m}\\text{.}\\]</div> This solution gives the maximum height of the booster in our coordinate system, which has its origin at the point of release, so the maximum height of the booster is roughly 7.0 km.</li><li>An altitude of 6.0 km corresponds to\\(y=1.0\\, \\times \\, {10}^{3}\\, \\text{m}\\) in the coordinate system we are using. The other initial conditions are\\({y}_{0}=0,\\, \\text{and}\\, {v}_{0}=200.0\\, \\text{m/s}\\).<br> We have, from the equation, <div class='eq'>\\[{v}^{2}={(200.0\\, \\text{m}\\text{/}\\text{s})}^{2}-2(9.8\\, \\text{m}\\text{/}{\\text{s}}^{2})(1.0\\, \\times \\, {10}^{3}\\, \\text{m})\\Rightarrow v=\\pm 142.8\\, \\text{m}\\text{/}\\text{s}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We have both a positive and negative solution in (b). Since our coordinate system has the positive direction upward, the +142.8 m/s corresponds to a positive upward velocity at 6000 m during the upward leg of the trajectory of the booster. The value <i>v</i> = −142.8 m/s corresponds to the velocity at 6000 m on the downward leg. This example is also important in that an object is given an initial velocity at the origin of our coordinate system, but the origin is at an altitude above the surface of Earth, which must be taken into account when forming the solution.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A chunk of ice breaks off a glacier and falls 30.0 m before it hits the water. Assuming it falls freely (there is no air resistance), how long does it take to hit the water? Which quantity increases faster, the speed of the ice chunk or its distance traveled?</p>",
+     "a": "<p>It takes 2.47 s to hit the water. The quantity distance traveled increases faster.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "An object in free fall experiences constant acceleration if air resistance is negligible.",
+    "On Earth, all free-falling objects have an acceleration <i>g</i> due to gravity, which averages \\(g=9.81\\, {\\text{m/s}}^{2}\\).",
+    "For objects in free fall, the upward direction is normally taken as positive for displacement, velocity, and acceleration."
+   ]
+  },
+  {
+   "num": "3.6",
+   "module": "m58287",
+   "title": "Finding Velocity and Displacement from Acceleration",
+   "objectives": [
+    "Derive the kinematic equations for constant acceleration using integral calculus.",
+    "Use the integral formulation of the kinematic equations in analyzing motion.",
+    "Find the functional form of velocity versus time given the acceleration function.",
+    "Find the functional form of position versus time given the velocity function."
+   ],
+   "callouts": [
+    "v(t)=\\int a(t)dt+{C}_{1}",
+    "x(t)=\\int v(t)dt+{C}_{2}"
+   ],
+   "examples": [
+    {
+     "title": "Motion of a Motorboat",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A motorboat is traveling at a constant velocity of 5.0 m/s when it starts to accelerate opposite to the motion to arrive at the dock. Its acceleration is \\(a(t)=-\\frac{1}{4}t\\, \\text{m/}{\\text{s}}^{3}\\). (a) What is the velocity function of the motorboat? (b) At what time does the velocity reach zero? (c) What is the position function of the motorboat? (d) What is the displacement of the motorboat from the time it begins to accelerate opposite to the motion to when the velocity is zero? (e) Graph the velocity and position functions.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>(a) To get the velocity function we must integrate and use initial conditions to find the constant of integration. (b) We set the velocity function equal to zero and solve for <i>t</i>. (c) Similarly, we must integrate to find the position function and use initial conditions to find the constant of integration. (d) Since the initial position is taken to be zero, we only have to evaluate the position function at the time when the velocity is zero.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We take <i>t</i> = 0 to be the time when the boat starts to accelerate opposite to the motion.</p><ol type='a'><li>From the functional form of the acceleration we can solve the equation to get <i>v</i>(<i>t</i>): <div class='eq'>\\[v(t)=\\int a(t)dt+{C}_{1}=\\int -\\frac{1}{4}t\\, \\text{m/}{\\text{s}}^{3}\\, dt+{C}_{1}=-\\frac{1}{8}\\, \\text{m/}{\\text{s}}^{3}\\, {t}^{2}+{C}_{1}.\\]</div> At <i>t</i> = 0 we have <i>v</i>(0) = 5.0 m/s = 0 + <i>C</i><sub>1</sub>, so <i>C</i><sub>1</sub> = 5.0 m/s or \\(v(t)=5.0\\, \\text{m/}\\text{s}-\\frac{1}{8}\\, \\text{m/}{\\text{s}}^{3}\\, {t}^{2}\\).</li><li>\\(v(t)=0=5.0\\, \\text{m/}\\text{s}-\\frac{1}{8}{t}^{2}\\text{m/}{\\text{s}}^{3}\\Rightarrow t=6.3\\, \\text{s}\\)</li><li>Solve the equation: <div class='eq'>\\[x(t)=\\int v(t)dt+{C}_{2}=\\int (5.0-\\frac{1}{8}{t}^{2})dt+{C}_{2}=5.0tm/s-\\frac{1}{24}{t}^{3}\\text{m/}{\\text{s}}^{3}+{C}_{2}.\\]</div> At <i>t</i> = 0, we set <i>x</i>(0) = 0 = <i>x</i><sub>0</sub>, since we are only interested in the displacement from when the boat starts to accelerate opposite to the motion. We have <div class='eq'>\\[x(0)=0={C}_{2}.\\]</div> Therefore, the equation for the position is <div class='eq'>\\[x(t)=5.0t\\, \\text{m/s}\\, -\\frac{1}{24}{t}^{3}\\, \\text{m/}{\\text{s}}^{3}\\, .\\]</div></li><li>Since the initial position is taken to be zero, we only have to evaluate the position function at the time when the velocity is zero. This occurs at <i>t</i> = 6.3 s. Therefore, the displacement is <div class='eq'>\\[x(6.3)=5.0t\\, \\text{m/s}\\, (6.3s)-\\frac{1}{24}{t}^{3}\\, \\text{m/}{\\text{s}}^{s}\\, (6.3s{)}^{3}=21.1\\, \\text{m}\\text{.}\\]</div></li></ol><figure><img src='img/CNX_UPhysics_03_06_Ex1.jpg' alt=\"Graph A is a plot of velocity in meters per second as a function of time in seconds. Velocity is five meters per second at the beginning and decreases to zero. Graph B is a plot of position in meters as a function of time in seconds. Position is zero at the beginning, increases reaching maximum between six and seven seconds, and then starts to decrease.\" loading='lazy'><figcaption>(a) Velocity of the motorboat as a function of time. The motorboat decreases its velocity to zero in 6.3 s. At times greater than this, velocity becomes negative—meaning, the boat is reversing direction. (b) Position of the motorboat as a function of time. At <i>t</i> = 6.3 s, the velocity is zero and the boat has stopped. At times greater than this, the velocity becomes negative—meaning, if the boat continues to move with the same acceleration, it reverses direction and heads back toward where it originated.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The acceleration function is linear in time so the integration involves simple polynomials. In the figure, we see that if we extend the solution beyond the point when the velocity is zero, the velocity becomes negative and the boat reverses direction. This tells us that solutions can give us information outside our immediate interest and we should be careful when interpreting them.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A particle starts from rest and has an acceleration function \\(a(t)=(5-(10\\frac{1}{s})t)\\frac{m}{{s}^{2}}\\). (a) What is the velocity function? (b) What is the position function? (c) When is the velocity zero?</p>",
+     "a": "<ol type='a'><li>The velocity function is the integral of the acceleration function plus a constant of integration. By the equation,<br> \\(v(t)=\\int a(t)dt+{C}_{1}=\\int (5-10t)dt+{C}_{1}=5t-5{t}^{2}+{C}_{1}.\\)<br> Since <i>v</i>(0) = 0, we have <i>C</i><sub>1</sub> = 0; so,<br> \\(v(t)=5t-5{t}^{2}.\\)</li><li>By the equation,<br> \\(x(t)=\\int v(t)dt+{C}_{2}=\\int (5t-5{t}^{2})dt+{C}_{2}=\\frac{5}{2}{t}^{2}-\\frac{5}{3}{t}^{3}+{C}_{2}\\).<br> Since <i>x</i>(0) = 0, we have <i>C</i><sub>2</sub> = 0, and<br> \\(x(t)=\\frac{5}{2}{t}^{2}-\\frac{5}{3}{t}^{3}.\\)</li><li>The velocity can be written as <i>v</i>(<i>t</i>) = 5<i>t</i>(1 – <i>t</i>), which equals zero at <i>t</i> = 0, and <i>t</i> = 1 s.</li></ol>"
+    }
+   ],
+   "keyConcepts": [
+    "Integral calculus gives us a more complete formulation of kinematics.",
+    "If acceleration <i>a</i>(<i>t</i>) is known, we can use integral calculus to derive expressions for velocity <i>v</i>(<i>t</i>) and position <i>x</i>(<i>t</i>).",
+    "If acceleration is constant, the integral equations reduce to another section and another section for motion with constant acceleration."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_03_01_CYU1_img.jpg",
+  "CNX_UPhysics_03_01_Flyers.jpg",
+  "CNX_UPhysics_03_01_Pos.jpg",
+  "CNX_UPhysics_03_02_PosGraph.jpg",
+  "CNX_UPhysics_03_02_PosVelSp.jpg",
+  "CNX_UPhysics_03_02_VelGraph.jpg",
+  "CNX_UPhysics_03_03_ExGraphs.jpg",
+  "CNX_UPhysics_03_03_VelAcc.jpg",
+  "CNX_UPhysics_03_04_CarHalt.jpg",
+  "CNX_UPhysics_03_04_Ex1plane.jpg",
+  "CNX_UPhysics_03_04_Ex2Sketch.jpg",
+  "CNX_UPhysics_03_04_Ex4Sketch.jpg",
+  "CNX_UPhysics_03_04_Ex5Sketch.jpg",
+  "CNX_UPhysics_03_05_Batter.jpg",
+  "CNX_UPhysics_03_05_Building.jpg",
+  "CNX_UPhysics_03_05_Rocket.jpg",
+  "CNX_UPhysics_03_06_Ex1.jpg"
+ ]
+}

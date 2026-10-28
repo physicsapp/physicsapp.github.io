@@ -1,0 +1,1082 @@
+<!--repo-head--><!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<!--/repo-head-->
+<title>Freebody Physics</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: phone app shell. Sticky top bar, one reading column (max 720px), fixed bottom tab bar. Graph paper motif marks "worked on paper" areas. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#15202e; --muted:#5b6878; --rule:#d9e0e7;
+  --grid:rgba(32,96,140,.09); --accent:#0d6e7a; --accent-ink:#ffffff; --accent-soft:#e1f0f1;
+  --eq-bg:#eef3f7; --good:#1f7a3f; --good-soft:#e3f3e8; --bad:#b3261e; --bad-soft:#fbe7e5;
+  --font-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --font-body:"Source Sans 3","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --tabbar-h:60px; --grid-line:rgba(21,32,46,.08);
+  --pot:#c7d3dc; --pot-shade:#aebdc9; --soil:#6e5a45; --soil-seed:#a88a5e; --stem:#4c8a48; --leaf:#5aa055; --leaf2:#7dbd6c;
+  --petal-1:#e46a52; --petal-2:#e9a92a; --petal-3:#8a6ad0; --petal-4:#dc5b98; --petal-5:#3a93d2; --petal-6:#f0873a; --center:#f3cf4b;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#10161d; --card:#18212b; --ink:#e4eaf0; --muted:#98a6b5; --rule:#2a3542;
+  --grid:rgba(120,190,230,.07); --accent:#4cc0c8; --accent-ink:#0b1a1d; --accent-soft:#16343a;
+  --eq-bg:#1d2833; --good:#6fd394; --good-soft:#173525; --bad:#ff8a80; --bad-soft:#3a1c1a; --grid-line:rgba(228,234,240,.08);
+  --pot:#3d4955; --pot-shade:#2f3a45; --soil:#4d3d2f; --soil-seed:#8a704c; --stem:#6aae64; --leaf:#74bd6c; --leaf2:#93d185;
+  --petal-1:#ff8a73; --petal-2:#f5bf4a; --petal-3:#a98bf0; --petal-4:#f07ab0; --petal-5:#5fb2ee; --petal-6:#ffa25c; --center:#f6d860; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#10161d; --card:#18212b; --ink:#e4eaf0; --muted:#98a6b5; --rule:#2a3542;
+  --grid:rgba(120,190,230,.07); --accent:#4cc0c8; --accent-ink:#0b1a1d; --accent-soft:#16343a;
+  --eq-bg:#1d2833; --good:#6fd394; --good-soft:#173525; --bad:#ff8a80; --bad-soft:#3a1c1a; --grid-line:rgba(228,234,240,.08);
+  --pot:#3d4955; --pot-shade:#2f3a45; --soil:#4d3d2f; --soil-seed:#8a704c; --stem:#6aae64; --leaf:#74bd6c; --leaf2:#93d185;
+  --petal-1:#ff8a73; --petal-2:#f5bf4a; --petal-3:#a98bf0; --petal-4:#f07ab0; --petal-5:#5fb2ee; --petal-6:#ffa25c; --center:#f6d860; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;
+  padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom,0px) + 24px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--font-display);font-stretch:85%;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:1.75rem;font-weight:800}
+h2{font-size:1.2rem;font-weight:700}
+h3{font-size:1.02rem;font-weight:700}
+p{margin:0}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:10px}
+.brand{font-family:var(--font-display);font-weight:800;font-stretch:80%;font-size:1.1rem;letter-spacing:.01em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:8px}
+.brand svg{flex:none}
+.crumb{flex:1;min-width:0;color:var(--muted);font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iconbtn{border:1px solid var(--rule);background:var(--card);border-radius:999px;width:34px;height:34px;display:grid;place-items:center;cursor:pointer;text-decoration:none;color:var(--ink);font-family:var(--font-display);font-weight:700}
+
+main{display:flex;flex-direction:column;gap:22px;padding-block:20px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-family:var(--font-display);font-stretch:80%;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* graph paper surfaces */
+.paper{background-color:var(--card);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:16px 16px;border:1px solid var(--rule);border-radius:14px}
+.hero{padding:18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
+.hero .num{font-family:var(--font-mono);color:var(--muted);font-size:.85rem}
+.hero svg{width:132px;height:auto;max-width:100%}
+@media (max-width:420px){.hero{grid-template-columns:1fr}.hero svg{width:100%;max-width:260px}}
+
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:16px;min-width:0}
+.seclist{display:flex;flex-direction:column;gap:10px}
+.secrow{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px}
+.secrow:hover{border-color:var(--accent)}
+.secrow .n{font-family:var(--font-mono);font-weight:500;font-size:1.05rem;color:var(--accent)}
+.secrow .t{font-weight:600;line-height:1.3;min-width:0}
+.secrow .meta{font-size:.82rem;color:var(--muted);font-weight:400;margin-top:2px}
+.chev{color:var(--muted)}
+
+.objectives{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.inshort{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.watch{display:flex;gap:8px;font-size:.95rem}
+.watch b{font-family:var(--font-display);font-stretch:85%;white-space:nowrap}
+.bullets{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:8px}
+
+.eqbox{background:var(--eq-bg);border-radius:10px;padding:10px 12px;overflow-x:auto;overflow-y:hidden}
+.eqgrid{display:flex;flex-direction:column;gap:8px}
+.eq{overflow-x:auto;overflow-y:hidden;max-width:100%}
+mjx-container[display="true"]{margin:.4em 0!important}
+mjx-container{max-width:100%}
+mjx-container.wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}
+mjx-container{position:relative}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}
+
+details.ex{background:var(--card);border:1px solid var(--rule);border-radius:12px;min-width:0}
+details.ex>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:10px;align-items:baseline}
+details.ex>summary::-webkit-details-marker{display:none}
+details.ex>summary .k{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);flex:none}
+details.ex>summary .tt{flex:1;font-weight:600}
+details.ex>summary .plus{font-family:var(--font-mono);color:var(--accent);transition:transform .2s}
+details.ex[open]>summary .plus{transform:rotate(45deg)}
+.exbody{padding:0 16px 16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.part{display:flex;flex-direction:column;gap:8px;min-width:0}
+.part>.lbl{font-family:var(--font-display);font-stretch:80%;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.rich{display:flex;flex-direction:column;gap:8px;min-width:0}
+.rich ol,.rich ul{margin:0;padding-left:1.3em}
+figure{margin:4px 0;display:flex;flex-direction:column;gap:6px}
+figure img{border-radius:8px;background:#fff;border:1px solid var(--rule)}
+figcaption{font-size:.85rem;color:var(--muted)}
+
+.reveal{margin-top:8px}
+.reveal>summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:.95rem;width:max-content}
+.reveal .ans{margin-top:8px;padding:12px;border-radius:10px;background:var(--eq-bg)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:10px;padding:10px 16px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:600;cursor:pointer;text-decoration:none;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.quiet{border-color:var(--rule);background:var(--card);color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pager a{text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px;font-size:.9rem;min-width:0}
+.pager a span{display:block;font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+.pager a.next{text-align:right}
+
+.attrib{font-size:.8rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+
+/* segmented + chips */
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--eq-bg);border-radius:12px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;border-radius:9px;padding:9px 6px;font-weight:600;cursor:pointer;color:var(--muted);min-height:40px}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.chip{flex:none;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:6px 12px;font-family:var(--font-mono);font-size:.82rem;cursor:pointer;min-height:36px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* equations */
+.search{width:100%;border:1px solid var(--rule);background:var(--card);border-radius:10px;padding:12px 14px;font:inherit;color:var(--ink)}
+.eqcard{display:flex;flex-direction:column;gap:6px}
+.eqcard .head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.eqcard .tag{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);flex:none}
+.eqcard .go{font-size:.85rem;font-weight:600;color:var(--accent);background:none;border:0;padding:4px 0;cursor:pointer;text-align:left;width:max-content}
+
+/* solver */
+.vars{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.var{display:flex;flex-direction:column;gap:4px;min-width:0}
+.var label{font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
+.var label .u{font-family:var(--font-mono)}
+.inp{display:flex;border:1px solid var(--rule);border-radius:10px;background:var(--card);overflow:hidden}
+.inp:focus-within{border-color:var(--accent)}
+.inp input{flex:1;min-width:0;border:0;background:transparent;padding:10px 12px;font-family:var(--font-mono);font-size:1rem;color:var(--ink);outline:none}
+.inp button{border:0;border-left:1px solid var(--rule);background:var(--eq-bg);width:42px;cursor:pointer;font-family:var(--font-mono)}
+.inp.locked{opacity:.75}
+.result{display:flex;flex-direction:column;gap:10px}
+.resrow{display:flex;flex-direction:column;gap:2px}
+.resrow .val{font-family:var(--font-mono);font-size:1.15rem;font-weight:500}
+.note{font-size:.9rem;padding:10px 12px;border-radius:10px;background:var(--eq-bg)}
+.note.err{background:var(--bad-soft);color:var(--bad)}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;font-size:.92rem}
+.tbl th,.tbl td{padding:8px 6px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:middle}
+.tbl th{font-family:var(--font-display);font-stretch:85%;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tbl td.miss{font-family:var(--font-mono);color:var(--accent);font-weight:500;text-align:center}
+
+/* practice */
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{text-align:left;border:1px solid var(--rule);background:var(--card);border-radius:10px;padding:12px 14px;cursor:pointer;min-height:48px}
+.opt:hover:not([disabled]){border-color:var(--accent)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt[disabled]{cursor:default}
+.fb{padding:12px 14px;border-radius:10px;display:flex;flex-direction:column;gap:6px}
+.fb.good{background:var(--good-soft)} .fb.bad{background:var(--bad-soft)}
+.fb b{font-family:var(--font-display);font-stretch:85%}
+.score{font-family:var(--font-mono);font-size:.85rem;color:var(--muted)}
+.probhead{display:flex;justify-content:space-between;gap:10px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.toggle{display:flex;gap:8px;align-items:center;font-size:.92rem;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+
+/* tab bar */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--card);border-top:1px solid var(--rule);
+  padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+.tabs nav{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--tabbar-h)}
+.tabs a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--muted);font-size:.75rem;font-weight:600}
+.tabs a svg{width:22px;height:22px}
+.tabs a[aria-current="page"]{color:var(--accent)}
+/* garden and review */
+.garden{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:12px 8px}
+.garden.grown{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}
+.pot{border:1px solid transparent;background:transparent;border-radius:12px;padding:4px 2px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
+.pot.static{cursor:default}
+.pot svg{width:100%;max-width:120px;height:auto}
+.pot.sel,.pot:hover:not(.static){border-color:var(--accent);background:var(--card)}
+.potlbl{font-size:.78rem;color:var(--muted);text-align:center;line-height:1.2}
+.potlbl b{font-family:var(--font-mono);color:var(--ink);font-weight:500;display:block}
+.btn.big{width:100%;min-height:52px;font-size:1.05rem}
+.btn[disabled]{opacity:.55;cursor:default}
+.startcard{text-align:left}
+.rocketcard{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center}
+.rocketcard svg{width:96px;height:auto}
+.howgrow summary,.card>summary{cursor:pointer}
+.code{width:100%;font-family:var(--font-mono);font-size:.8rem;border:1px solid var(--rule);border-radius:10px;padding:10px;background:var(--eq-bg);color:var(--ink);resize:vertical}
+.linkbtn{border:0;background:none;color:var(--accent);font-weight:600;cursor:pointer;padding:6px 0}
+.note.good{background:var(--good-soft);color:var(--ink)}
+.sesshead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dots{display:flex;flex-wrap:wrap;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--rule)}
+.dot.cur{background:var(--accent)} .dot.ok{background:var(--good)} .dot.no{background:var(--bad)}
+.qtext{font-size:1.08rem}
+.opt.chosen{border-color:var(--accent);background:var(--accent-soft)}
+.graphwrap{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:6px}
+.graph{width:100%;height:auto;display:block;touch-action:manipulation}
+.graph.tappable{cursor:crosshair}
+.nextbar{position:sticky;bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom,0px) + 10px);z-index:4}
+.flightwrap{padding:0;overflow:hidden}
+.flightwrap canvas{display:block;width:100%;height:340px}
+.chip[disabled]{opacity:.45;cursor:default}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#learn" aria-label="Freebody Physics home">
+    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="7" y="7" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 7V1M11 15v6M15 11h6M7 11H1" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
+    Freebody
+  </a>
+  <div class="crumb" id="crumb"></div>
+  <a class="iconbtn" href="#about" aria-label="About and license">i</a>
+</div></header>
+
+<main class="wrap" id="main"></main>
+
+<div class="tabs"><nav aria-label="Main">
+  <a href="#learn" data-tab="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>Learn</a>
+  <a href="#equations" data-tab="equations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h7M7.5 3.5v7M14 6h6M14 16h6M14 19h6M4.5 15.5l6 6M10.5 15.5l-6 6"/></svg>Equations</a>
+  <a href="#solver" data-tab="solver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg>Solver</a>
+  <a href="#review" data-tab="review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12c0-4 2.5-6.5 7-6.5 0 4.5-2.5 7-7 6.5z"/><path d="M12 14.5c0-3.2-2-5.2-6.5-5.2 0 3.6 2 5.6 6.5 5.2z"/><path d="M7 21h10"/></svg>Review</a>
+</nav></div>
+
+<script>
+window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"},startup:{typeset:false},options:{enableMenu:false}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" async></script>
+<script>
+(function(){
+"use strict";
+let D=null,S=[];
+const main=document.getElementById("main");
+const crumb=document.getElementById("crumb");
+const G=9.80;
+
+const SLUGS=["3-1-position-displacement-and-average-velocity","3-2-instantaneous-velocity-and-speed","3-3-average-and-instantaneous-acceleration","3-4-motion-with-constant-acceleration","3-5-free-fall","3-6-finding-velocity-and-displacement-from-acceleration"];
+const bookUrl=i=>"https://openstax.org/books/university-physics-volume-1/pages/"+SLUGS[i];
+
+/* Short summaries written for this app (adapted, same license as the book). */
+let SUMMARY={},ITEMS=[],NOTE_ERRS=[];
+const SECS=["3.1","3.2","3.3","3.4","3.5","3.6"];
+
+/* ---------- notes file parser: summaries and review items you can edit ---------- */
+function hashStr(s){let h=2166136261;for(const c of s){h^=c.codePointAt(0);h=Math.imul(h,16777619);}return (h>>>0).toString(36);}
+function parsePlot(spec){
+  if(!spec)throw new Error('GRAPH needs a "Plot:" line');
+  const parts=spec.split(";").map(s=>s.trim()).filter(Boolean);
+  const m=parts[0].match(/^([A-Za-z])\s*(?:\(\s*t\s*\))?\s*=\s*(.+)$/);
+  if(!m)throw new Error(`Plot: should start like "x = 4*t - t^2"`);
+  const p={name:m[1],expr:m[2],t0:0,t1:4,y0:null,y1:null,unit:{x:"m",y:"m",v:"m/s",a:"m/s²"}[m[1]]||""};
+  for(const part of parts.slice(1)){
+    let r;
+    if((r=part.match(/^t\s+from\s+(.+?)\s+to\s+(.+)$/i))){p.t0=evalExpr(r[1],{});p.t1=evalExpr(r[2],{});}
+    else if((r=part.match(/^y\s+from\s+(.+?)\s+to\s+(.+)$/i))){p.y0=evalExpr(r[1],{});p.y1=evalExpr(r[2],{});}
+    else if((r=part.match(/^unit\s+(.+)$/i))){p.unit=r[1].trim();}
+    else throw new Error(`Plot: "${part}" isn't understood. Use "t from 0 to 4", "y from 0 to 5", or "unit m/s"`);
+  }
+  if(!(p.t1>p.t0))throw new Error("Plot: the t range should go from low to high");
+  let lo=Infinity,hi=-Infinity;
+  for(let i=0;i<=60;i++){const t=p.t0+(p.t1-p.t0)*i/60;const y=evalExpr(p.expr,{t});if(!isFinite(y))throw new Error(`Plot: the formula isn't a number at t = ${clean(t)}`);lo=Math.min(lo,y);hi=Math.max(hi,y);}
+  if(p.y0==null){const pad=(hi-lo)*0.1||1;p.y0=Math.min(0,lo-pad);p.y1=hi+pad;}
+  if(!(p.y1>p.y0))throw new Error("Plot: the y range should go from low to high");
+  return p;
+}
+function parseTap(s,plot){
+  const m=s.match(/^\s*t\s*=\s*(.+?)(?:\s+within\s+(.+))?\s*$/i);
+  if(!m)throw new Error('Tap: should look like "t = 2" or "t = 1, 3 within 0.3"');
+  const ts=m[1].split(",").map(x=>evalExpr(x,{}));
+  const tol=m[2]?evalExpr(m[2],{}):0.08*(plot.t1-plot.t0);
+  if(ts.some(t=>!(t>=plot.t0&&t<=plot.t1)))throw new Error("Tap: the time is outside the graph's t range");
+  return{ts,tol};
+}
+function parseNotes(txt){
+  const errs=[],sum={},items=[];
+  const lines=txt.replace(/\r/g,"").split("\n");
+  let blk=null,key=null;
+  const choices=(blk,L)=>{
+    const letters=Object.keys(blk.opts);
+    const ans=(blk.f["answer"]||"").trim().toUpperCase().replace(/[^A-F]/g,"");
+    if(letters.length<2)throw new Error("needs at least two choices like A) and B)");
+    if(!ans||!blk.opts[ans])throw new Error(`"Answer:" should be one of the letters ${letters.join(", ")}`);
+    return{o:letters.map(k=>blk.opts[k]),c:letters.indexOf(ans)};
+  };
+  const finish=()=>{if(!blk)return;
+    const f=blk.f,L=blk.line,T=blk.type;
+    try{
+      if(T==="SUMMARY"){
+        if(!blk.sec)throw new Error("SUMMARY needs a section number, like ## SUMMARY 3.4");
+        if(!f["in short"])throw new Error(`SUMMARY ${blk.sec} has no "In short:" line`);
+        sum[blk.sec]={s:f["in short"],w:f["watch out"]||""};
+      }else{
+        if(!blk.sec)throw new Error(`${T} needs a section number, like ## ${T} 3.4`);
+        if(!SECS.includes(blk.sec))throw new Error(`section ${blk.sec} isn't part of this chapter`);
+        if(!f.q)throw new Error(`${T} has no "Q:" line`);
+        const base={id:hashStr(T+blk.sec+f.q),type:T,sec:blk.sec,q:f.q,why:f["why"]||"",line:L};
+        if(T==="QUIZ"){items.push({...base,...choices(blk,L)});}
+        else if(T==="GRAPH"){
+          const plot=parsePlot(f["plot"]);
+          if(f["tap"])items.push({...base,plot,tap:parseTap(f["tap"],plot)});
+          else items.push({...base,plot,...choices(blk,L)});
+        }else if(T==="DRILL"){
+          if(!f["answer"])throw new Error('DRILL has no "Answer:" line');
+          const wrong=(blk.wrong||[]).map(w=>{const i=w.indexOf("|");return i<0?{f:w.trim(),fb:""}:{f:w.slice(0,i).trim(),fb:w.slice(i+1).trim()};});
+          const d={...base,let:f["let"]||"",answer:f["answer"],wrong,u:f["unit"]||"",work:f["work"]||""};
+          for(let k=0;k<6;k++)makeDrill(d);
+          items.push(d);
+        }
+      }
+    }catch(e){errs.push(`Line ${L}: ${T} problem: ${e.message}`);}
+    blk=null;key=null;};
+  lines.forEach((raw,i)=>{
+    const n=i+1,line=raw.trimEnd();
+    if(/^##/.test(line)){finish();
+      const m=line.replace(/^##\s*/,"").match(/^(SUMMARY|QUIZ|DRILL|GRAPH)\b\s*([0-9]+\.[0-9]+)?/i);
+      if(!m){errs.push(`Line ${n}: "${line}" isn't a known block. Use ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH`);return;}
+      blk={type:m[1].toUpperCase(),sec:m[2]||"",f:{},opts:{},wrong:[],line:n};return;}
+    if(/^#/.test(line)||!blk)return;
+    if(!line.trim()){key=null;return;}
+    const opt=line.match(/^\s*([A-Fa-f])\)\s*(.*)$/);
+    if((blk.type==="QUIZ"||blk.type==="GRAPH")&&opt){key="opt:"+opt[1].toUpperCase();blk.opts[opt[1].toUpperCase()]=opt[2];return;}
+    const kv=line.match(/^\s*(Q|In short|Watch out|Answer|Why|Let|Unit|Work|Wrong|Plot|Tap)\s*:\s*(.*)$/i);
+    if(kv){key=kv[1].toLowerCase();if(key==="wrong")blk.wrong.push(kv[2]);else blk.f[key]=kv[2];return;}
+    if(key&&key.startsWith("opt:")){blk.opts[key.slice(4)]+=" "+line.trim();return;}
+    if(key==="wrong"){blk.wrong[blk.wrong.length-1]+=" "+line.trim();return;}
+    if(key){blk.f[key]+=" "+line.trim();return;}
+    errs.push(`Line ${n}: this line doesn't start with a label like Q:, Why:, or A)`);
+  });
+  finish();
+  return{sum,items,errs};
+}
+
+/* small, safe formula evaluator: + - * / ^ ( ) and a few functions */
+const FN={sqrt:Math.sqrt,abs:Math.abs,sin:Math.sin,cos:Math.cos,tan:Math.tan,asin:Math.asin,acos:Math.acos,atan:Math.atan,ln:Math.log,log:Math.log10,exp:Math.exp};
+function evalExpr(src,vars){
+  const toks=String(src).replace(/−/g,"-").match(/\d*\.?\d+(?:e[+-]?\d+)?|[A-Za-z_]\w*|[-+*/^(),]|\S/gi)||[];
+  let p=0;
+  const peek=()=>toks[p],take=()=>toks[p++];
+  const expect=t=>{if(take()!==t)throw new Error(`expected "${t}" in ${src}`);};
+  function expr(){let v=term();while(peek()==="+"||peek()==="-"){const o=take(),r=term();v=o==="+"?v+r:v-r;}return v;}
+  function term(){let v=unary();while(peek()==="*"||peek()==="/"){const o=take(),r=unary();v=o==="*"?v*r:v/r;}return v;}
+  function unary(){if(peek()==="-"){take();return -unary();}if(peek()==="+"){take();return unary();}return power();}
+  function power(){const b=atom();if(peek()==="^"){take();return Math.pow(b,unary());}return b;}
+  function atom(){const t=take();
+    if(t===undefined)throw new Error(`formula ended early: ${src}`);
+    if(/^\d|^\./.test(t))return parseFloat(t);
+    if(t==="("){const v=expr();expect(")");return v;}
+    if(/^[A-Za-z_]/.test(t)){
+      if(t==="pi")return Math.PI;
+      if(FN[t]){expect("(");const v=expr();expect(")");return FN[t](v);}
+      if(t in vars)return vars[t];
+      throw new Error(`"${t}" isn't defined in Let:`);}
+    throw new Error(`unexpected "${t}" in ${src}`);}
+  const v=expr();if(p<toks.length)throw new Error(`unexpected "${toks[p]}" in ${src}`);return v;
+}
+const clean=x=>String(Math.round(x*1000)/1000);
+function fmtNum(x,tex){if(Math.abs(x)<1e-9)return "0";let s=String(Number(x.toPrecision(3)));return tex?s:s.replace("-","−");}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function drawVars(d){
+  const vars={};
+  for(const part of d.let.split(";").map(s=>s.trim()).filter(Boolean)){
+    const m=part.match(/^([A-Za-z_]\w*)\s*=\s*(.+)$/);
+    if(!m)throw new Error(`Let: "${part}" should look like a = 1 to 5 by 0.5`);
+    const list=m[2].match(/^one\s+of\s+(.+)$/i);
+    const rng=m[2].match(/^(.+?)\s+to\s+(.+?)(?:\s+by\s+(.+))?$/i);
+    if(list){const opts=list[1].split(",").map(x=>evalExpr(x,vars));vars[m[1]]=opts[Math.floor(Math.random()*opts.length)];}
+    else if(rng){const lo=evalExpr(rng[1],vars),hi=evalExpr(rng[2],vars),st=rng[3]?evalExpr(rng[3],vars):1;
+      if(!(st>0)||hi<lo)throw new Error(`Let: "${part}" needs a positive step and a range from low to high`);
+      vars[m[1]]=Math.round((lo+Math.floor(Math.random()*(Math.round((hi-lo)/st)+1))*st)*1000)/1000;}
+    else vars[m[1]]=evalExpr(m[2],vars);
+  }
+  return vars;
+}
+function makeDrill(d){
+  let vars,ans,wr;
+  for(let k=0;k<40;k++){
+    vars=drawVars(d);ans=evalExpr(d.answer,vars);
+    if(!isFinite(ans)){if(k===39)throw new Error("the answer is not a number for some values");continue;}
+    wr=d.wrong.length?d.wrong.map(w=>({v:evalExpr(w.f,vars),fb:w.fb})):[{v:ans*2,fb:"Check for a missing or extra factor of 2."},{v:ans/2,fb:"Check for a missing or extra factor of 2."},{v:-ans,fb:"Check the sign."}];
+    wr=wr.filter(w=>isFinite(w.v));
+    const texts=[ans,...wr.map(w=>w.v)].map(x=>fmtNum(x));
+    if(new Set(texts).size===texts.length)break;
+  }
+  const unit=d.u?" "+d.u:"";
+  const seen=new Set([fmtNum(ans)]);
+  const choices=[{t:fmtNum(ans)+unit,ok:true,fb:""}];
+  for(const w of wr){const s=fmtNum(w.v);if(seen.has(s))continue;seen.add(s);choices.push({t:s+unit,ok:false,fb:w.fb});}
+  if(choices.length<2)throw new Error("every wrong answer came out equal to the right one");
+  const fill=s=>s.replace(/\{\{\s*(\w+)\s*\}\}/g,(_,k)=>k==="answer"?fmtNum(ans,true):(k in vars?clean(vars[k]):"?"));
+  return{q:fill(d.q),choices:shuffle(choices),work:d.work?fill(d.work):""};
+}
+
+/* ---------- progress and spaced review (saved on this device only) ---------- */
+const PKEY="progress-ch3",SESSION_LEN=8,MIN_NEW=4,MAX_PTS=3,GAP=[0,1,3,7,14],BLOOM=0.75;
+let DAY_OFF=0;
+function loadProg(){const p=store(PKEY);return(p&&typeof p==="object"&&p.items)?Object.assign({missions:{},preview:false},p):{v:1,items:{},missions:{},preview:false};}
+let PROG=loadProg();
+function saveProg(){store(PKEY,PROG);}
+function today(){const d=new Date();return Math.floor((d.getTime()-d.getTimezoneOffset()*6e4)/864e5)+DAY_OFF;}
+function itemPts(it){const r=PROG.items[it.id];if(!r)return 0;return Math.min(MAX_PTS,(r.best||0)+(r.cb?1:0));}
+function secItems(sec){return ITEMS.filter(i=>i.sec===sec);}
+function secFrac(sec){if(PROG.preview)return 1;const l=secItems(sec);if(!l.length)return 0;return l.reduce((s,i)=>s+itemPts(i),0)/(MAX_PTS*l.length);}
+function isDue(it,t){const r=PROG.items[it.id];return !!r&&r.due<=t;}
+function record(it,ok){
+  const t=today();let r=PROG.items[it.id];
+  if(!r)r=PROG.items[it.id]={box:0,best:0,due:t,miss:0,cb:0,last:-1,n:0};
+  r.n++;
+  if(ok){
+    if(r.box===0||r.due<=t){
+      if(r.miss&&r.last>=0&&r.last<t)r.cb=1;
+      r.box=Math.min(4,r.box+1);r.best=Math.max(r.best,r.box);r.due=t+GAP[r.box];
+    }
+  }else{r.box=Math.min(r.box,1);r.miss=1;r.due=t+1;}
+  r.last=t;saveProg();
+}
+function queueFor(sec){
+  const t=today(),pool=ITEMS.filter(i=>!sec||i.sec===sec);
+  const due=pool.filter(i=>isDue(i,t)).sort((a,b)=>PROG.items[a.id].due-PROG.items[b.id].due);
+  const fresh=pool.filter(i=>!PROG.items[i.id]);
+  const q=due.slice(0,SESSION_LEN-Math.min(fresh.length,MIN_NEW));
+  return q.concat(fresh.slice(0,SESSION_LEN-q.length));
+}
+function nextDue(){const t=today();let best=null,n=0;
+  for(const i of ITEMS){const r=PROG.items[i.id];if(!r||r.due<=t)continue;if(best===null||r.due<best){best=r.due;n=1;}else if(r.due===best)n++;}
+  return best===null?null:{days:best-t,n};}
+
+const EQ_SEC=["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"];
+const EQ_SOLVER=new Set([8,9,10,11,12,13,14,15]);
+
+/* ---------- helpers ---------- */
+function typeset(el){
+  const go=()=>{try{window.MathJax.typesetClear&&window.MathJax.typesetClear([el]);return window.MathJax.typesetPromise([el]).then(()=>fitMath(el)).catch(()=>{});}catch(e){}};
+  if(window.MathJax&&window.MathJax.startup&&window.MathJax.startup.promise){window.MathJax.startup.promise.then(go);}
+  else{setTimeout(()=>typeset(el),150);}
+}
+function fitMath(el){el.querySelectorAll("mjx-container:not([display])").forEach(m=>{const box=m.parentElement&&m.parentElement.closest(".rich,p,li,.card,.inshort,.fb,.opt,.ans,section");if(!box)return;const w=box.getBoundingClientRect().width;if(m.getBoundingClientRect().width>w-4)m.classList.add("wide");});}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem("fb:"+k));localStorage.setItem("fb:"+k,JSON.stringify(v));}catch(e){return null}}
+
+/* number formatting: 3 significant figures, like the book */
+function sig(x){
+  if(!isFinite(x))return "?";
+  if(x===0)return "0";
+  const a=Math.abs(x);
+  if(a>=1e5||a<1e-3){const [m,e]=x.toExponential(2).split("e");return m+"\\times10^{"+parseInt(e,10)+"}";}
+  if(a>=1000)return String(Math.round(Number(x.toPrecision(3))));
+  return x.toPrecision(3);
+}
+const sigText=x=>sig(x).replace("\\times10^{","×10^").replace("}","");
+const P=x=>"("+sig(x)+")";
+const r=(lo,hi,st)=>Math.round((lo+Math.floor(Math.random()*(Math.round((hi-lo)/st)+1))*st)*1000)/1000;
+
+/* ---------- views ---------- */
+function heroGraph(){
+  // x = t^2 (a = 2 m/s^2 from rest), t from 0 to 4 s, x from 0 to 16 m, drawn to scale
+  const X=t=>30+t*25, Y=x=>96-x*5;
+  let d="";for(let i=0;i<=40;i++){const t=i/10;d+=(i?"L":"M")+X(t).toFixed(1)+" "+Y(t*t).toFixed(1);}
+  let ticks="";for(let t=0;t<=4;t++)ticks+=`<line x1="${X(t)}" y1="96" x2="${X(t)}" y2="100" stroke="var(--muted)"/><text x="${X(t)}" y="110" text-anchor="middle">${t}</text>`;
+  for(let x=0;x<=16;x+=8)ticks+=`<line x1="26" y1="${Y(x)}" x2="30" y2="${Y(x)}" stroke="var(--muted)"/><text x="23" y="${Y(x)+3}" text-anchor="end">${x}</text>`;
+  return `<svg viewBox="0 0 140 122" role="img" aria-label="Position versus time graph for constant acceleration from rest, a parabola from 0 to 16 meters over 4 seconds" font-family="IBM Plex Mono, monospace" font-size="8" fill="var(--muted)">
+  <line x1="30" y1="96" x2="132" y2="96" stroke="var(--ink)"/><line x1="30" y1="96" x2="30" y2="10" stroke="var(--ink)"/>${ticks}
+  <path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+  <circle cx="${X(4)}" cy="${Y(16)}" r="3" fill="var(--accent)"/>
+  <text x="134" y="92" text-anchor="end">t (s)</text><text x="34" y="8">x (m)</text></svg>`;
+}
+
+function renderLearn(){
+  crumb.textContent="Chapter 3";
+  main.innerHTML=`
+  <section class="paper hero">
+    <div class="stack">
+      <div class="eyebrow">University Physics, Volume 1</div>
+      <h1>Motion Along a Straight Line</h1>
+      <p class="muted small">Chapter 3 · 6 sections · ${D.keyEquations.length} key equations</p>
+    </div>
+    ${heroGraph()}
+  </section>
+  <nav class="seclist" aria-label="Sections">
+    ${S.map((s,i)=>`<a class="secrow" href="#sec-3-${i+1}">
+      <span class="n">${s.num}</span>
+      <span class="t">${esc(s.title)}<span class="meta" style="display:block">${s.examples.length} worked example${s.examples.length===1?"":"s"} · ${secItems(s.num).length} review items</span></span>
+      <span class="chev" aria-hidden="true">›</span></a>`).join("")}
+  </nav>
+  <div class="row">
+    <a class="btn" href="#solver">Open the kinematics solver</a>
+    <a class="btn ghost" href="#review">Open your garden</a>
+  </div>
+  ${attrib()}`;
+}
+function attrib(){return `<p class="attrib">Adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="${D.licenseUrl}" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">What changed</a></p>`;}
+
+function renderSection(i){
+  const s=S[i], sm=SUMMARY[s.num];
+  crumb.textContent=s.num+" "+s.title;
+  let callouts=s.callouts;
+  if(!callouts.length)callouts=D.keyEquations.filter((e,j)=>EQ_SEC[j]===s.num).map(e=>e.tex);
+  main.innerHTML=`
+  <header class="stack">
+    <div class="eyebrow">Section ${s.num}</div>
+    <h1>${esc(s.title)}</h1>
+  </header>
+  ${s.objectives.length?`<section class="stack"><h2>By the end you can</h2><ul class="objectives">${s.objectives.map(o=>`<li>${o}</li>`).join("")}</ul></section>`:""}
+  ${sm?`<section class="inshort">
+    <div class="eyebrow">In short</div>
+    <p>${esc(sm.s)}</p>
+    ${sm.w?`<p class="watch"><b>Watch out</b><span>${esc(sm.w)}</span></p>`:""}
+  </section>`:""}
+  <section class="stack"><h2>Key ideas from the book</h2><ul class="bullets">${s.keyConcepts.map(k=>`<li>${k}</li>`).join("")}</ul></section>
+  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(t=>`<div class="eqbox">\\[${t}\\]</div>`).join("")}</div>${s.num==="3.4"||s.num==="3.5"?`<a class="btn ghost" href="#solver" style="width:max-content">Solve with these in the solver</a>`:""}</section>`:""}
+  ${s.examples.length?`<section class="stack"><h2>Worked examples</h2>${s.examples.map((ex,j)=>`
+    <details class="ex"${j===0?" open":""}><summary><span class="k">${s.num}.${j+1}</span><span class="tt">${esc(ex.title||"Example")}</span><span class="plus" aria-hidden="true">+</span></summary>
+    <div class="exbody">${ex.parts.map(p=>`<div class="part"><div class="lbl">${esc(p.label)}</div><div class="rich">${p.html}</div></div>`).join("")}</div></details>`).join("")}</section>`:""}
+  ${s.checks.length?`<section class="stack"><h2>Check your understanding</h2>${s.checks.map(c=>`<div class="card"><div class="rich">${c.q}</div>${c.a?`<details class="reveal"><summary>Show answer</summary><div class="ans rich">${c.a}</div></details>`:""}</div>`).join("")}</section>`:""}
+  <section class="row">
+    <button class="btn" id="goReview">Quick review of ${s.num}</button>
+    <a class="btn quiet" href="${bookUrl(i)}" target="_blank" rel="noopener">Read the full section</a>
+  </section>
+  <nav class="pager">
+    ${i>0?`<a href="#sec-3-${i}"><span>${S[i-1].num}</span>${esc(S[i-1].title)}</a>`:`<a href="#learn"><span>Chapter</span>All sections</a>`}
+    ${i<S.length-1?`<a class="next" href="#sec-3-${i+2}"><span>${S[i+1].num}</span>${esc(S[i+1].title)}</a>`:`<a class="next" href="#review"><span>Next</span>Your garden</a>`}
+  </nav>
+  ${attrib()}`;
+  document.getElementById("goReview").onclick=()=>startSession(s.num,false);
+}
+
+function renderEquations(){
+  crumb.textContent="Key equations";
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">Chapter 3</div><h1>Key equations</h1></header>
+  <input class="search" id="eqq" type="search" placeholder="Search, for example “free fall” or “average”" aria-label="Search equations">
+  <div class="stack" id="eqlist">
+  ${D.keyEquations.map((e,j)=>`<article class="card eqcard" data-name="${esc(e.name.toLowerCase())} ${EQ_SEC[j]}">
+    <div class="head"><h3>${esc(e.name)}</h3><span class="tag">${EQ_SEC[j]}</span></div>
+    <div class="eq">\\[${e.tex}\\]</div>
+    ${EQ_SOLVER.has(j)?`<button class="go" data-ff="${j>=13?1:0}">Use in the solver ›</button>`:""}
+  </article>`).join("")}
+  </div>
+  <p class="muted small" id="eqnone" hidden>No equation matches that search.</p>
+  ${attrib()}`;
+  const q=document.getElementById("eqq");
+  q.addEventListener("input",()=>{const v=q.value.trim().toLowerCase();let n=0;
+    main.querySelectorAll(".eqcard").forEach(c=>{const ok=!v||c.dataset.name.includes(v);c.hidden=!ok;if(ok)n++;});
+    document.getElementById("eqnone").hidden=n>0;});
+  main.querySelectorAll(".go").forEach(b=>b.onclick=()=>{SV.ff=b.dataset.ff==="1";SV.vals=null;location.hash="solver";});
+}
+
+/* ---------- kinematics solver ---------- */
+const VARS=["dx","v0","v","a","t"];
+const SV={ff:false,vals:null};
+const EXAMPLE={dx:"",v0:"70.0",v:"",a:"-1.50",t:"40.0"};
+const EXAMPLE_FF={dx:"",v0:"15.0",v:"",a:"",t:"5.00"};
+function vmeta(ff){return{
+  dx:{tex:ff?"\\Delta y":"\\Delta x",name:"Displacement",u:"m"},
+  v0:{tex:"v_0",name:"Initial velocity",u:"m/s"},
+  v:{tex:"v",name:"Final velocity",u:"m/s"},
+  a:{tex:"a",name:"Acceleration",u:"m/s²"},
+  t:{tex:"t",name:"Time",u:"s"}};}
+function num(s){if(s==null)return null;s=String(s).trim().replace(/−|–/g,"-").replace(/,/g,"");if(s==="")return null;const x=Number(s);return isFinite(x)?x:NaN;}
+
+function kinSolve(k){
+  const U=VARS.filter(n=>k[n]==null), key=U.join(",");
+  const out=[]; const T=t=>t>=-1e-12;
+  const add=(o)=>out.push(o);
+  const {dx,v0,v,a,t}=k;
+  if(k.t!=null&&k.t<0)return{err:"Time has to be zero or positive."};
+  switch(key){
+    case "dx,v0":{const V0=v-a*t;add({v0:V0,dx:0.5*(V0+v)*t,steps:[["v0","v_0=v-at",`${P(v)}-${P(a)}${P(t)}`],["dx","\\Delta x=\\tfrac12(v_0+v)t",`\\tfrac12(${P(V0)}+${P(v)})${P(t)}`]]});break;}
+    case "dx,v":{const V=v0+a*t;add({v:V,dx:v0*t+0.5*a*t*t,steps:[["v","v=v_0+at",`${P(v0)}+${P(a)}${P(t)}`],["dx","\\Delta x=v_0t+\\tfrac12at^2",`${P(v0)}${P(t)}+\\tfrac12${P(a)}${P(t)}^2`]]});break;}
+    case "dx,a":{if(t===0)return{err:"With t = 0 there is no way to find the acceleration."};const A=(v-v0)/t;add({a:A,dx:0.5*(v0+v)*t,steps:[["a","a=\\dfrac{v-v_0}{t}",`\\dfrac{${P(v)}-${P(v0)}}{${P(t)}}`],["dx","\\Delta x=\\tfrac12(v_0+v)t",`\\tfrac12(${P(v0)}+${P(v)})${P(t)}`]]});break;}
+    case "dx,t":{if(a===0)return{err:v===v0?"With zero acceleration and equal velocities, time and displacement can be anything. Enter one of them.":"With zero acceleration the velocity cannot change, so these values are inconsistent."};
+      const Tm=(v-v0)/a;if(!T(Tm))return{err:"These values need negative time. Check the signs of a, v₀, and v."};
+      add({t:Tm,dx:(v*v-v0*v0)/(2*a),steps:[["t","t=\\dfrac{v-v_0}{a}",`\\dfrac{${P(v)}-${P(v0)}}{${P(a)}}`],["dx","\\Delta x=\\dfrac{v^2-v_0^2}{2a}",`\\dfrac{${P(v)}^2-${P(v0)}^2}{2${P(a)}}`]]});break;}
+    case "v0,v":{if(t===0)return{err:"With t = 0 the velocities can't be found from the displacement."};const V0=(dx-0.5*a*t*t)/t;add({v0:V0,v:V0+a*t,steps:[["v0","v_0=\\dfrac{\\Delta x-\\tfrac12at^2}{t}",`\\dfrac{${P(dx)}-\\tfrac12${P(a)}${P(t)}^2}{${P(t)}}`],["v","v=v_0+at",`${P(V0)}+${P(a)}${P(t)}`]]});break;}
+    case "v0,a":{if(t===0)return{err:"With t = 0 there is no way to find the acceleration."};const V0=2*dx/t-v;const A=(v-V0)/t;add({v0:V0,a:A,steps:[["v0","v_0=\\dfrac{2\\Delta x}{t}-v",`\\dfrac{2${P(dx)}}{${P(t)}}-${P(v)}`],["a","a=\\dfrac{v-v_0}{t}",`\\dfrac{${P(v)}-${P(V0)}}{${P(t)}}`]]});break;}
+    case "v0,t":{const disc=v*v-2*a*dx;if(disc<0)return{err:"No real solution: v² − 2aΔx is negative, so the object can't have this final velocity after this displacement."};
+      for(const sgn of disc===0?[1]:[1,-1]){const V0=sgn*Math.sqrt(disc);let Tm;
+        if(Math.abs(V0+v)>1e-12)Tm=2*dx/(V0+v);else if(a!==0)Tm=(v-V0)/a;else continue;
+        if(!T(Tm))continue;
+        add({v0:V0,t:Tm,steps:[["v0","v_0=\\pm\\sqrt{v^2-2a\\Delta x}",`${sgn<0?"-":""}\\sqrt{${P(v)}^2-2${P(a)}${P(dx)}}`],["t","t=\\dfrac{2\\Delta x}{v_0+v}",`\\dfrac{2${P(dx)}}{${P(V0)}+${P(v)}}`]]});}
+      if(!out.length)return{err:"Every solution needs negative time. Check the signs."};break;}
+    case "v,a":{if(t===0)return{err:"With t = 0 there is no way to find the acceleration."};const A=2*(dx-v0*t)/(t*t);add({a:A,v:v0+A*t,steps:[["a","a=\\dfrac{2(\\Delta x-v_0t)}{t^2}",`\\dfrac{2(${P(dx)}-${P(v0)}${P(t)})}{${P(t)}^2}`],["v","v=v_0+at",`${P(v0)}+${P(A)}${P(t)}`]]});break;}
+    case "v,t":{if(a===0){if(v0===0)return{err:"With zero acceleration and zero initial velocity the object never moves."};const Tm=dx/v0;if(!T(Tm))return{err:"The object is moving away from that position, so it never gets there."};add({v:v0,t:Tm,steps:[["v","v=v_0\\ (a=0)",`${P(v0)}`],["t","t=\\dfrac{\\Delta x}{v_0}",`\\dfrac{${P(dx)}}{${P(v0)}}`]]});break;}
+      const disc=v0*v0+2*a*dx;if(disc<0)return{err:"No real solution: the object turns around before it reaches that displacement."};
+      for(const sgn of disc===0?[1]:[1,-1]){const V=sgn*Math.sqrt(disc);const Tm=(V-v0)/a;if(!T(Tm))continue;
+        add({v:V,t:Tm,steps:[["v","v=\\pm\\sqrt{v_0^2+2a\\Delta x}",`${sgn<0?"-":""}\\sqrt{${P(v0)}^2+2${P(a)}${P(dx)}}`],["t","t=\\dfrac{v-v_0}{a}",`\\dfrac{${P(V)}-${P(v0)}}{${P(a)}}`]]});}
+      if(!out.length)return{err:"Every solution needs negative time. Check the signs."};break;}
+    case "a,t":{if(Math.abs(v0+v)<1e-12)return{err:dx===0?"Not enough information: try entering the time instead.":"With v₀ = −v the average velocity is zero, so the displacement would have to be zero."};
+      const Tm=2*dx/(v0+v);if(!T(Tm))return{err:"These values need negative time. Check the sign of the displacement."};
+      if(Tm===0)return{err:"Zero displacement with these velocities gives zero time, so the acceleration is undefined."};
+      add({t:Tm,a:(v-v0)/Tm,steps:[["t","t=\\dfrac{2\\Delta x}{v_0+v}",`\\dfrac{2${P(dx)}}{${P(v0)}+${P(v)}}`],["a","a=\\dfrac{v^2-v_0^2}{2\\Delta x}",`\\dfrac{${P(v)}^2-${P(v0)}^2}{2${P(dx)}}`]]});break;}
+    default:return{err:"Enter exactly three of the five quantities and leave the two you want blank."};
+  }
+  return{sols:out};
+}
+
+function renderSolver(){
+  crumb.textContent="Kinematics solver";
+  const ff=SV.ff, M=vmeta(ff);
+  if(!SV.vals)SV.vals=Object.assign({},ff?EXAMPLE_FF:EXAMPLE);
+  if(ff)SV.vals.a=String(-G);
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">Constant acceleration</div><h1>Kinematics solver</h1>
+  <p class="muted">Enter any three values and leave two blank. The solver picks the right equations and shows each step.</p></header>
+  <div class="seg" role="group" aria-label="Motion type">
+    <button id="m-x" aria-pressed="${!ff}">Along x</button>
+    <button id="m-y" aria-pressed="${ff}">Free fall (up is +)</button>
+  </div>
+  <form class="card stack" id="sform" novalidate>
+    <div class="vars">
+    ${VARS.map(n=>`<div class="var"><label for="in-${n}"><span>\\(${M[n].tex}\\) ${M[n].name}</span><span class="u">${M[n].u}</span></label>
+      <div class="inp${ff&&n==="a"?" locked":""}"><input id="in-${n}" inputmode="decimal" autocomplete="off" value="${esc(SV.vals[n]||"")}" ${ff&&n==="a"?"readonly":""} placeholder="unknown">
+      ${ff&&n==="a"?"":`<button type="button" data-flip="${n}" aria-label="Flip sign of ${M[n].name}">±</button>`}</div></div>`).join("")}
+    </div>
+    ${ff?`<p class="small muted">In free fall the acceleration is fixed at \\(a=-g=-9.80\\ \\text{m/s}^2\\) with up as the positive direction.</p>`:""}
+    <div class="row"><button class="btn" type="submit">Solve</button><button class="btn quiet" type="button" id="sclear">Clear</button><button class="btn ghost" type="button" id="sex">Load book example</button></div>
+  </form>
+  <section class="card result" id="sout" aria-live="polite"></section>
+  <section class="stack"><h2>Which equation leaves out what</h2>
+  <p class="muted small">Each constant acceleration equation is missing one quantity. Use the one that is missing the quantity you don't know and don't need.</p>
+  <div class="tbl card"><table><thead><tr><th>Equation</th><th>Leaves out</th></tr></thead><tbody>
+    <tr><td>\\(v=v_0+at\\)</td><td class="miss">\\(${M.dx.tex}\\)</td></tr>
+    <tr><td>\\(${M.dx.tex}=v_0t+\\tfrac12at^2\\)</td><td class="miss">\\(v\\)</td></tr>
+    <tr><td>\\(v^2=v_0^2+2a${M.dx.tex}\\)</td><td class="miss">\\(t\\)</td></tr>
+    <tr><td>\\(${M.dx.tex}=\\tfrac12(v_0+v)t\\)</td><td class="miss">\\(a\\)</td></tr>
+  </tbody></table></div></section>
+  ${attrib()}`;
+  document.getElementById("m-x").onclick=()=>{SV.ff=false;SV.vals=null;renderSolverAndType();};
+  document.getElementById("m-y").onclick=()=>{SV.ff=true;SV.vals=null;renderSolverAndType();};
+  const form=document.getElementById("sform");
+  const read=()=>{VARS.forEach(n=>SV.vals[n]=document.getElementById("in-"+n).value);};
+  form.addEventListener("submit",e=>{e.preventDefault();read();runSolver();});
+  form.querySelectorAll("[data-flip]").forEach(b=>b.onclick=()=>{const i=document.getElementById("in-"+b.dataset.flip);const s=i.value.trim();if(!s)return;i.value=s.startsWith("-")||s.startsWith("−")?s.slice(1):"-"+s;});
+  document.getElementById("sclear").onclick=()=>{VARS.forEach(n=>{if(!(ff&&n==="a"))document.getElementById("in-"+n).value="";});read();document.getElementById("sout").innerHTML=`<p class="muted">Enter three values and press Solve.</p>`;};
+  document.getElementById("sex").onclick=()=>{SV.vals=Object.assign({},ff?EXAMPLE_FF:EXAMPLE);if(ff)SV.vals.a=String(-G);VARS.forEach(n=>document.getElementById("in-"+n).value=SV.vals[n]);runSolver();};
+  runSolver(true);
+}
+function renderSolverAndType(){renderSolver();typeset(main);}
+function runSolver(quiet){
+  const out=document.getElementById("sout"), M=vmeta(SV.ff);
+  const k={};let bad=null;
+  for(const n of VARS){const x=num(SV.vals[n]);if(Number.isNaN(x))bad=M[n].name;k[n]=x;}
+  if(SV.ff)k.a=-G;
+  if(bad){out.innerHTML=`<p class="note err">${esc(bad)} isn't a number. Use digits, a decimal point, and a minus sign if needed.</p>`;typeset(out);return;}
+  const res=kinSolve(k);
+  if(res.err){out.innerHTML=`<p class="note err">${res.err}</p>`;typeset(out);return;}
+  const known=VARS.filter(n=>k[n]!=null).map(n=>`\\(${M[n].tex}=${sig(k[n])}\\ \\text{${M[n].u.replace("²","}^2\\text{")}}\\)`).join(", ");
+  const sx=SV.ff?(s=>s.replace(/\\Delta x/g,"\\Delta y")):(s=>s);
+  out.innerHTML=`<div class="eyebrow">Result</div><p class="small muted">Known: ${known}</p>`+
+   res.sols.map((sol,si)=>`${res.sols.length>1?`<h3>Solution ${si+1} of ${res.sols.length}</h3>`:""}
+    ${sol.steps.map(([n,form,sub])=>{const u=M[n].u.replace("²","}^2\\text{");
+      return `<div class="resrow"><span class="small muted">${M[n].name}</span><span class="val">\\(${M[n].tex}=${sig(sol[n])}\\ \\text{${u}}\\)</span><div class="eqbox">\\[\\begin{aligned}${sx(form).replace("=","&=")}\\\\ &=${sx(sub)}\\\\ &=${sig(sol[n])}\\ \\text{${u}}\\end{aligned}\\]</div></div>`;}).join("")}`).join("")+
+   (res.sols.length>1?`<p class="note">Two answers satisfy the equations. Decide which one fits the physical situation, for example on the way up or on the way down.</p>`:"")+
+   `<p class="small muted">Results are rounded to three significant figures.</p>`;
+  if(!quiet)typeset(out);
+}
+
+/* ---------- garden drawing ---------- */
+const PETALS=[5,6,8,5,6,10];
+const PARTS=["launch pad","body","fins","engine","window","nose cone"];
+const ease=x=>1-Math.pow(1-x,2);
+function stageName(f){return f<=0?"Seed":f<0.2?"Sprout":f<0.4?"Growing":f<0.58?"Leafy":f<BLOOM?"Budding":"In bloom";}
+function plantSVG(f,idx,label){
+  f=Math.max(0,Math.min(1,f));
+  const petal=`var(--petal-${idx+1})`, top=92;
+  const H=f>0?12+60*ease(f):0, tipY=top-H, sway=(idx%2?1:-1)*4*ease(f);
+  let g=`<path d="M22 92 L78 92 L72 118 L28 118 Z" fill="var(--pot)"/><rect x="18" y="86" width="64" height="8" rx="2" fill="var(--pot-shade)"/><ellipse cx="50" cy="90" rx="28" ry="3.2" fill="var(--soil)"/>`;
+  if(f<=0){g+=`<ellipse cx="50" cy="88" rx="4" ry="2.6" fill="var(--soil-seed)"/>`;}
+  else{
+    const cx=50+sway;
+    g+=`<path d="M50 ${top-1} Q${50-sway} ${top-H*0.55} ${cx} ${tipY}" fill="none" stroke="var(--stem)" stroke-width="${1.6+1.6*f}" stroke-linecap="round"/>`;
+    const nLeaves=Math.min(6,Math.floor(f*7.5)+1);
+    for(let k=0;k<nLeaves;k++){
+      const s=(k+1)/(nLeaves+1.4), y=top-H*s, x=50+(cx-50)*s*s-((50-sway)-50)*2*s*(1-s)*-1;
+      const side=k%2?1:-1, L=(6+9*f)*(1-0.25*s);
+      g+=`<path d="M${x.toFixed(1)} ${y.toFixed(1)} q${(side*L*0.5).toFixed(1)} ${(-L*0.55).toFixed(1)} ${(side*L).toFixed(1)} ${(-L*0.15).toFixed(1)} q${(-side*L*0.45).toFixed(1)} ${(L*0.45).toFixed(1)} ${(-side*L).toFixed(1)} ${(L*0.15).toFixed(1)}Z" fill="${k%2?"var(--leaf)":"var(--leaf2)"}"/>`;
+    }
+    if(f>=0.58&&f<BLOOM){const r=3+5*(f-0.58)/(BLOOM-0.58);g+=`<ellipse cx="${cx}" cy="${tipY-r*0.6}" rx="${r*0.75}" ry="${r}" fill="${petal}" opacity=".85"/><path d="M${cx-r*0.75} ${tipY} q${r*0.75} ${-r*0.9} ${r*1.5} 0" fill="var(--leaf2)"/>`;}
+    if(f>=BLOOM){const n=PETALS[idx],R=9+5*(f-BLOOM)/(1-BLOOM),cy=tipY-R*0.5;
+      for(let k=0;k<n;k++){const a=k*360/n;g+=`<ellipse cx="${cx}" cy="${cy-R*0.55}" rx="${R*0.32}" ry="${R*0.6}" fill="${petal}" transform="rotate(${a} ${cx} ${cy})"/>`;}
+      g+=`<circle cx="${cx}" cy="${cy}" r="${R*0.32}" fill="var(--center)"/>`;}
+  }
+  return `<svg viewBox="0 0 100 120" role="img" aria-label="${esc(label)}">${g}</svg>`;
+}
+function rocketSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${P(0,"M18 160 h84 v7 h-84 Z M30 167 l-6 8 M90 167 l6 8","var(--muted)")}
+    ${P(2,"M46 118 L30 150 L46 146 Z M74 118 L90 150 L74 146 Z","var(--accent)")}
+    ${P(1,"M46 62 h28 v88 h-28 Z","var(--card)")}
+    ${P(3,"M50 150 h20 l5 10 h-30 Z","var(--muted)")}
+    ${P(5,"M46 62 Q60 18 74 62 Z","var(--petal-1)")}
+    ${on(4)?`<circle cx="60" cy="88" r="7" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="1.2"/>`:`<circle cx="60" cy="88" r="7" ${off}/>`}
+  </svg>`;
+}
+
+/* ---------- review: garden home, sessions, summary ---------- */
+let SESS=null, GSEL=-1;
+function secTitle(sec){const s=S.find(x=>x.num===sec);return s?s.title:"";}
+function counts(){const t=today();let due=0,fresh=0;for(const i of ITEMS){const r=PROG.items[i.id];if(!r)fresh++;else if(r.due<=t)due++;}return{due,fresh};}
+function bloomed(){return SECS.map(s=>secFrac(s)>=BLOOM);}
+function whenText(d){return d<=0?"today":d===1?"tomorrow":`in ${d} days`;}
+
+function renderGarden(){
+  if(SESS&&!SESS.done)return renderSession();
+  crumb.textContent="Your garden";
+  const c=counts(), avail=Math.min(SESSION_LEN,c.due+c.fresh), nd=nextDue(), have=bloomed(), nHave=have.filter(Boolean).length;
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">Chapter 3 · only you can see this</div><h1>Your garden</h1></header>
+  ${PROG.preview?`<p class="note">Preview mode is on: every plant shows fully grown. <button class="linkbtn" id="pvoff">Turn it off</button></p>`:""}
+  <section class="paper garden" aria-label="Plants, one per section">
+    ${SECS.map((s,i)=>{const f=secFrac(s);return `<button class="pot${GSEL===i?" sel":""}" data-i="${i}" aria-expanded="${GSEL===i}">
+      ${plantSVG(f,i,`Section ${s} plant, ${stageName(f)}`)}<span class="potlbl"><b>${s}</b> ${stageName(f)}</span></button>`;}).join("")}
+  </section>
+  ${GSEL>=0?potDetail(GSEL):""}
+  <section class="card stack startcard">
+    ${avail>0?`<button class="btn big" id="go">Start review · ${avail} item${avail===1?"":"s"}</button>
+      <p class="small muted">${c.due?`${Math.min(c.due,SESSION_LEN)} due again`:"Nothing due again yet"}${avail-Math.min(c.due,SESSION_LEN)>0?`, ${avail-Math.min(c.due,SESSION_LEN)} new`:""}. About ${Math.max(1,Math.round(avail*0.4))} minutes.</p>`
+    :`<h2>All caught up</h2><p class="muted small">${nd?`Next review ${whenText(nd.days)}: ${nd.n} item${nd.n===1?"":"s"}.`:"Nothing scheduled."} Coming back on a later day is what grows the garden most.</p>
+      <button class="btn quiet" id="practice">Practice anyway (doesn't grow plants)</button>`}
+  </section>
+  <section class="card rocketcard">
+    ${rocketSVG(have,`Rocket with ${nHave} of 6 parts`)}
+    <div class="stack" style="min-width:0">
+      <div class="eyebrow">Launch pad</div>
+      <h2>${nHave===6?"Your rocket is ready":`${nHave} of 6 rocket parts`}</h2>
+      <p class="small muted">${nHave===6?"Predict how high it will fly, then launch it.":"Each plant that blooms adds a part. When all six bloom, you can fly it."}</p>
+      ${nHave===6?`<a class="btn" href="#launch" style="width:max-content">Go to the launch pad</a>`:""}
+    </div>
+  </section>
+  <details class="card howgrow"><summary><b>How the garden grows</b></summary>
+    <ul class="bullets small">
+      <li>Each section has its own plant. Right answers on review items from that section make it grow.</li>
+      <li>Getting an item right again on a later day counts the most. Items come back after 1, 3, 7, and 14 days. One review a day blooms the whole garden in about three weeks; two a day, in about ten days.</li>
+      <li>A wrong answer never shrinks a plant. The item just comes back sooner, and getting it right later earns a bonus.</li>
+      <li>Your garden is saved on this device only. Nobody else can see it.</li>
+    </ul></details>
+  <details class="card"><summary><b>Back up or move your garden</b></summary>
+    <div class="stack" style="margin-top:10px">
+      <p class="small muted">Copy this code somewhere safe. Paste it here on another device, or after clearing your browser, to get your garden back.</p>
+      <textarea class="code" id="bk-out" readonly rows="3" aria-label="Your backup code"></textarea>
+      <div class="row"><button class="btn quiet" id="bk-copy">Copy code</button><span class="small muted" id="bk-msg" aria-live="polite"></span></div>
+      <label class="small" for="bk-in">Restore from a code</label>
+      <textarea class="code" id="bk-in" rows="3" placeholder="Paste a backup code"></textarea>
+      <div class="row"><button class="btn quiet" id="bk-restore">Restore</button></div>
+      <div id="bk-confirm"></div>
+    </div></details>`;
+  main.querySelectorAll(".pot").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;GSEL=GSEL===i?-1:i;renderGarden();typeset(main);});
+  const go=document.getElementById("go");if(go)go.onclick=()=>startSession(null,false);
+  const pr=document.getElementById("practice");if(pr)pr.onclick=()=>startSession(null,true);
+  const pv=document.getElementById("pvoff");if(pv)pv.onclick=()=>{PROG.preview=false;saveProg();renderGarden();};
+  main.querySelectorAll("[data-focus]").forEach(b=>b.onclick=()=>startSession(b.dataset.focus,b.dataset.practice==="1"));
+  wireBackup();
+}
+function potDetail(i){
+  const s=SECS[i],l=secItems(s),t=today();
+  const started=l.filter(it=>(PROG.items[it.id]||{}).best>0).length;
+  const due=l.filter(it=>isDue(it,t)).length, fresh=l.filter(it=>!PROG.items[it.id]).length;
+  const can=due+fresh>0;
+  return `<section class="card stack potdetail" aria-live="polite">
+    <div class="eyebrow">Section ${s}</div><h2>${esc(secTitle(s))}</h2>
+    <p class="small muted">${started} of ${l.length} items answered right at least once · ${due} due · ${fresh} new</p>
+    <div class="row">
+      <button class="btn" data-focus="${s}" data-practice="${can?0:1}">${can?`Review ${s} only`:`Practice ${s}`}</button>
+      <a class="btn quiet" href="#sec-3-${i+1}">Read ${s}</a>
+    </div></section>`;
+}
+function wireBackup(){
+  const out=document.getElementById("bk-out");if(!out)return;
+  const code=(()=>{try{return "FB1:"+btoa(unescape(encodeURIComponent(JSON.stringify(PROG))));}catch(e){return "";}})();
+  out.value=code;
+  const msg=document.getElementById("bk-msg");
+  document.getElementById("bk-copy").onclick=()=>{
+    const fallback=()=>{out.focus();out.select();msg.textContent="Selected. Copy it with your phone's menu.";};
+    try{navigator.clipboard.writeText(code).then(()=>{msg.textContent="Copied.";},fallback);}catch(e){fallback();}
+  };
+  document.getElementById("bk-restore").onclick=()=>{
+    const box=document.getElementById("bk-confirm"),raw=document.getElementById("bk-in").value.trim();
+    let p=null;try{if(!raw.startsWith("FB1:"))throw 0;p=JSON.parse(decodeURIComponent(escape(atob(raw.slice(4)))));if(!p||!p.items)throw 0;}catch(e){box.innerHTML=`<p class="note err">That code isn't valid. Copy the whole code, starting with FB1:</p>`;return;}
+    box.innerHTML=`<p class="note">This replaces the garden on this device. <button class="btn quiet" id="bk-yes">Replace it</button></p>`;
+    document.getElementById("bk-yes").onclick=()=>{PROG=Object.assign({missions:{},preview:false},p);saveProg();GSEL=-1;renderGarden();typeset(main);};
+  };
+}
+
+function startSession(sec,practice){
+  let items=practice?shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,6):queueFor(sec);
+  if(!items.length){items=shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,6);practice=true;}
+  const before={};SECS.forEach(s=>before[s]=secFrac(s));
+  SESS={queue:items.map(it=>({it})),i:0,first:0,firstN:0,practice,sec,before,done:false};
+  GSEL=-1;
+  if(location.hash==="#review"){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash="review";
+}
+function renderSession(){
+  const Ss=SESS;
+  crumb.textContent=Ss.practice?"Practice":"Review";
+  if(Ss.i>=Ss.queue.length)return renderSummary();
+  const q=Ss.queue[Ss.i],it=q.it;
+  if(it.type==="DRILL"&&!q.inst){try{q.inst=makeDrill(it);}catch(e){Ss.i++;return renderSession();}}
+  const prompt=it.type==="DRILL"?q.inst.q:it.q;
+  let choices="";
+  if(it.type==="DRILL")choices=q.inst.choices.map((c,j)=>optBtn(q,j,c.t,c.ok)).join("");
+  else if(!it.tap)choices=it.o.map((o,j)=>optBtn(q,j,o,j===it.c)).join("");
+  main.innerHTML=`
+  <div class="sesshead">
+    <div class="dots" aria-label="Item ${Ss.i+1} of ${Ss.queue.length}">${Ss.queue.map((x,j)=>`<span class="dot${j<Ss.i?(x.ok?" ok":" no"):j===Ss.i?" cur":""}"></span>`).join("")}</div>
+    <button class="linkbtn" id="quit">End</button>
+  </div>
+  <article class="card stack qcard">
+    <div class="probhead"><span>${it.sec} ${esc(secTitle(it.sec))}</span><span>${q.retry?"Try again":Ss.practice?"Practice":""}</span></div>
+    <p class="qtext">${esc(prompt)}</p>
+    ${it.plot?graphSVG(it,q):""}
+    ${it.tap&&!q.answered?`<p class="small muted">Tap the graph.</p>`:""}
+    ${choices?`<div class="opts">${choices}</div>`:""}
+    <div id="fb">${q.answered?feedback(q):""}</div>
+  </article>
+  ${q.answered?`<div class="nextbar"><button class="btn big" id="next">${Ss.i+1<Ss.queue.length?"Next":"Finish"}</button></div>`:""}`;
+  document.getElementById("quit").onclick=()=>{Ss.done=true;Ss.quit=true;renderSummary();typeset(main);};
+  main.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{if(q.answered)return;q.pick=+b.dataset.j;answer(q,b.dataset.ok==="1");});
+  if(it.tap&&!q.answered)wireTap(it,q);
+  const nx=document.getElementById("next");if(nx){nx.onclick=()=>{Ss.i++;renderSession();typeset(main);window.scrollTo(0,0);};nx.focus({preventScroll:true});}
+}
+function optBtn(q,j,text,ok){
+  let cls="opt";
+  if(q.answered){if(ok)cls+=" right";else if(q.pick===j)cls+=" wrong";}
+  return `<button class="${cls}" data-j="${j}" data-ok="${ok?1:0}" ${q.answered?"disabled":""}>${esc(text)}</button>`;
+}
+function answer(q,ok){
+  const Ss=SESS;q.answered=true;q.ok=ok;
+  if(!q.retry){Ss.firstN++;if(ok)Ss.first++;if(!Ss.practice)record(q.it,ok);if(!ok)Ss.queue.push({it:q.it,retry:true});}
+  renderSession();typeset(main);
+  const fb=document.getElementById("fb");if(fb&&fb.scrollIntoView)fb.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+function feedback(q){
+  const it=q.it;let extra="";
+  if(it.type==="DRILL"&&!q.ok){const c=q.inst.choices[q.pick];if(c&&c.fb)extra=`<p>${esc(c.fb)}</p>`;}
+  const work=it.type==="DRILL"&&q.inst.work?`<div class="eqbox">\\[${q.inst.work}\\]</div>`:"";
+  const why=it.why?`<p>${esc(it.why)}</p>`:"";
+  const head=q.ok?(q.retry?"Got it this time":"Correct"):(q.retry?"Not quite. It'll come back tomorrow.":"Not quite. You'll get another try at the end.");
+  return `<div class="fb ${q.ok?"good":"bad"}"><b>${head}</b>${extra}${why}${work}</div>`;
+}
+
+/* graph items */
+function graphSVG(it,q){
+  const p=it.plot,W=320,H=214,L=44,R=308,T=24,B=184;
+  const X=t=>L+(t-p.t0)/(p.t1-p.t0)*(R-L), Y=y=>B-(y-p.y0)/(p.y1-p.y0)*(B-T);
+  const step=(lo,hi)=>{const span=hi-lo;for(const s of [0.5,1,2,5,10,20,25,50,100])if(span/s<=7)return s;return span/5;};
+  const ts=step(p.t0,p.t1),ys=step(p.y0,p.y1);
+  let g="";
+  for(let y=Math.ceil(p.y0/ys)*ys;y<=p.y1+1e-9;y+=ys){g+=`<line x1="${L}" x2="${R}" y1="${Y(y)}" y2="${Y(y)}" stroke="var(--grid-line)"/><text x="${L-6}" y="${Y(y)+4}" text-anchor="end">${fmtNum(y)}</text>`;}
+  for(let t=Math.ceil(p.t0/ts)*ts;t<=p.t1+1e-9;t+=ts){g+=`<line y1="${T}" y2="${B}" x1="${X(t)}" x2="${X(t)}" stroke="var(--grid-line)"/><text x="${X(t)}" y="${B+16}" text-anchor="middle">${fmtNum(t)}</text>`;}
+  const zero=p.y0<0&&p.y1>0?Y(0):B;
+  g+=`<line x1="${L}" x2="${R}" y1="${zero}" y2="${zero}" stroke="var(--ink)" stroke-width="1.2"/><line x1="${L}" x2="${L}" y1="${T}" y2="${B}" stroke="var(--ink)" stroke-width="1.2"/>`;
+  let d="";for(let k=0;k<=120;k++){const t=p.t0+(p.t1-p.t0)*k/120;let y=evalExpr(p.expr,{t});y=Math.max(p.y0-1e3,Math.min(p.y1+1e3,y));d+=(k?"L":"M")+X(t).toFixed(1)+" "+Y(y).toFixed(1);}
+  g+=`<clipPath id="clip"><rect x="${L}" y="${T}" width="${R-L}" height="${B-T}"/></clipPath><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.6" clip-path="url(#clip)"/>`;
+  g+=`<text x="${L}" y="${T-9}" text-anchor="start" font-weight="600">${p.name} (${esc(p.unit)})</text><text x="${R}" y="${H-2}" text-anchor="end" font-weight="600">t (s)</text>`;
+  if(it.tap&&q.answered){
+    for(const t of it.tap.ts)g+=`<line x1="${X(t)}" x2="${X(t)}" y1="${T}" y2="${B}" stroke="var(--good)" stroke-width="2" stroke-dasharray="5 4"/>`;
+    g+=`<line x1="${X(q.tapT)}" x2="${X(q.tapT)}" y1="${T}" y2="${B}" stroke="${q.ok?"var(--good)":"var(--bad)"}" stroke-width="2.5"/><circle cx="${X(q.tapT)}" cy="${B}" r="5" fill="${q.ok?"var(--good)":"var(--bad)"}"/>`;
+  }
+  const tapAttrs=it.tap&&!q.answered?` class="graph tappable" tabindex="0" aria-label="Graph of ${p.name} versus time. Tap a moment, or use the left and right arrow keys and Enter."`:` class="graph" aria-label="Graph of ${p.name} versus time"`;
+  return `<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" role="img"${tapAttrs} data-l="${L}" data-r="${R}" data-b="${B}" data-t="${T}" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">${g}<line id="cursor" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="2" opacity=".6"/></svg></div>`;
+}
+function wireTap(it,q){
+  const svg=main.querySelector("svg.tappable");if(!svg)return;
+  const p=it.plot,L=+svg.dataset.l,R=+svg.dataset.r;
+  const toT=x=>Math.max(p.t0,Math.min(p.t1,p.t0+(x-L)/(R-L)*(p.t1-p.t0)));
+  const cur=svg.querySelector("#cursor");let kt=(p.t0+p.t1)/2;
+  const place=t=>{const x=L+(t-p.t0)/(p.t1-p.t0)*(R-L);cur.setAttribute("x1",x);cur.setAttribute("x2",x);};
+  const pick=t=>{q.tapT=t;answer(q,it.tap.ts.some(x=>Math.abs(x-t)<=it.tap.tol));};
+  svg.addEventListener("click",e=>{const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const m=svg.getScreenCTM();if(!m)return;pick(toT(pt.matrixTransform(m.inverse()).x));});
+  svg.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const m=svg.getScreenCTM();if(m)place(toT(pt.matrixTransform(m.inverse()).x));});
+  svg.addEventListener("keydown",e=>{const st=(p.t1-p.t0)/40;
+    if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();kt=Math.max(p.t0,Math.min(p.t1,kt+(e.key==="ArrowRight"?st:-st)));place(kt);}
+    else if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(kt);}});
+}
+
+function renderSummary(){
+  const Ss=SESS;Ss.done=true;
+  crumb.textContent="Session done";
+  const after={};SECS.forEach(s=>after[s]=secFrac(s));
+  const grown=SECS.map((s,i)=>({s,i,b:Ss.before[s],a:after[s]})).filter(x=>x.a>x.b+1e-9);
+  const newBloom=grown.filter(x=>x.b<BLOOM&&x.a>=BLOOM);
+  const c=counts(),more=c.due+c.fresh>0;
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">${Ss.practice?"Practice":"Review"} ${Ss.quit?"ended":"done"}</div>
+    <h1>${Ss.firstN?`${Ss.first} of ${Ss.firstN} right on the first try`:"No items answered"}</h1></header>
+  ${grown.length?`<section class="paper garden grown">${grown.map(x=>`<div class="pot static" data-i="${x.i}" data-b="${x.b}" data-a="${x.a}">${plantSVG(x.b,x.i,"")}<span class="potlbl"><b>${x.s}</b> grew</span></div>`).join("")}</section>`
+    :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed items come back tomorrow, and getting them right then earns a bonus."}</p>`}
+  ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed. You earned the rocket's ${PARTS[x.i]}.</p>`).join("")}
+  <div class="row">
+    <a class="btn" href="#review" id="back">Back to your garden</a>
+    ${more&&!Ss.practice?`<button class="btn quiet" id="again">Another round</button>`:""}
+  </div>`;
+  document.getElementById("back").onclick=e=>{e.preventDefault();SESS=null;renderGarden();typeset(main);window.scrollTo(0,0);};
+  const ag=document.getElementById("again");if(ag)ag.onclick=()=>{SESS=null;startSession(null,false);};
+  const cells=[...main.querySelectorAll(".pot.static")];
+  if(!cells.length)return;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,t0=performance.now(),dur=1400;
+  const frame=now=>{const k=reduce?1:Math.min(1,(now-t0)/dur),e=ease(k);
+    cells.forEach(c=>{const b=+c.dataset.b,a=+c.dataset.a,i=+c.dataset.i;const svg=c.querySelector("svg");if(svg)svg.outerHTML=plantSVG(b+(a-b)*e,i,`Section ${SECS[i]} plant`);});
+    if(k<1)requestAnimationFrame(frame);};
+  setTimeout(()=>requestAnimationFrame(frame),reduce?0:350);
+}
+
+/* ---------- launch pad ---------- */
+const pickOne=a=>a[Math.floor(Math.random()*a.length)];
+const MISSION_NAMES=["Straight up","Engine burn","Round trip"];
+function makeMission(k){
+  if(k===0){const v0=pickOne([20,30,40,50]),h=v0*v0/20;
+    return{kind:"height",value:h,sim:{v0,a:0,tb:0},
+      q:`The engine fires in one quick kick, so the rocket leaves the pad at \\(${v0}\\ \\text{m/s}\\) straight up. How high will it go? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      choices:dedupe([{t:fmtNum(h)+" m",ok:true},{t:fmtNum(v0*v0/10)+" m",fb:"The 2 in \\(v_0^2 = 2g\\,y_{max}\\) is missing."},{t:fmtNum(v0/10)+" m",fb:"\\(v_0/g\\) is the time to reach the top, in seconds, not a height."},{t:fmtNum(v0*v0/40)+" m",fb:"Divide \\(v_0^2\\) by \\(2g = 20\\), not by 40."}]),
+      work:`y_{max} = \\frac{v_0^2}{2g} = \\frac{(${v0})^2}{2(10)} = ${fmtNum(h,true)}\\ \\text{m}`};}
+  if(k===1){const a=pickOne([10,20]),tb=pickOne([1,2,3]),hb=0.5*a*tb*tb,vb=a*tb,hc=vb*vb/20,H=hb+hc;
+    return{kind:"height",value:H,sim:{v0:0,a,tb},
+      q:`The engine burns for \\(${tb}\\ \\text{s}\\), giving the rocket a net upward acceleration of \\(${a}\\ \\text{m/s}^2\\). Then it shuts off and the rocket coasts. How high will it go? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      choices:dedupe([{t:fmtNum(H)+" m",ok:true},{t:fmtNum(hb)+" m",fb:"That's only the height when the engine shuts off. The rocket is still moving up, so it keeps coasting higher."},{t:fmtNum(hc)+" m",fb:"That's only the coasting part. Add the height gained during the burn."},{t:fmtNum(a*tb*tb+hc)+" m",fb:"The burn height is \\(\\tfrac12at^2\\). The \\(\\tfrac12\\) is missing."}]),
+      work:`\\begin{aligned}y_{burn}&=\\tfrac12at^2=\\tfrac12(${a})(${tb})^2=${fmtNum(hb,true)}\\ \\text{m},\\quad v=at=${vb}\\ \\text{m/s}\\\\ y_{coast}&=\\frac{v^2}{2g}=\\frac{(${vb})^2}{20}=${fmtNum(hc,true)}\\ \\text{m}\\\\ y_{max}&=${fmtNum(hb,true)}+${fmtNum(hc,true)}=${fmtNum(H,true)}\\ \\text{m}\\end{aligned}`};}
+  const v0=pickOne([20,30,40,50]),Tt=v0/5;
+  return{kind:"time",value:Tt,sim:{v0,a:0,tb:0},
+    q:`The rocket leaves the pad at \\(${v0}\\ \\text{m/s}\\) straight up and falls back onto the pad. How long is it in the air? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+    choices:dedupe([{t:fmtNum(Tt)+" s",ok:true},{t:fmtNum(v0/10)+" s",fb:"That's only the trip up. Coming back down takes just as long."},{t:fmtNum(2*Tt)+" s",fb:"That's twice too long. The time up is \\(v_0/g\\), and the whole flight is twice that."},{t:fmtNum(v0*v0/20)+" s",fb:"\\(v_0^2/2g\\) is the maximum height in meters, not a time."}]),
+    work:`t_{up}=\\frac{v_0}{g}=\\frac{${v0}}{10}=${fmtNum(v0/10,true)}\\ \\text{s},\\qquad t_{total}=2t_{up}=${fmtNum(Tt,true)}\\ \\text{s}`};
+}
+function dedupe(cs){const seen=new Set();return shuffle(cs.filter(c=>{if(seen.has(c.t))return false;seen.add(c.t);return true;}));}
+function flight(sim){
+  const yb=0.5*sim.a*sim.tb*sim.tb, vb=sim.tb>0?sim.a*sim.tb:sim.v0;
+  const tApex=sim.tb+vb/10, apex=yb+vb*vb/20, tLand=sim.tb+(vb+Math.sqrt(vb*vb+20*yb))/10;
+  const at=t=>{if(t<sim.tb)return{y:0.5*sim.a*t*t,v:sim.a*t,burn:true};const u=Math.min(t,tLand)-sim.tb;return{y:Math.max(0,yb+vb*u-5*u*u),v:vb-10*u,burn:t<sim.tb+0.15&&sim.tb===0};};
+  return{at,tApex,apex,tLand};
+}
+let LP={k:0,m:null,pick:null,state:"pick",raf:0};
+function renderLaunch(){
+  crumb.textContent="Launch pad";
+  cancelAnimationFrame(LP.raf);
+  const have=bloomed();
+  if(!have.every(Boolean)){
+    main.innerHTML=`<header class="stack"><div class="eyebrow">Launch pad</div><h1>Not ready to fly yet</h1></header>
+    <section class="card rocketcard">${rocketSVG(have,"Rocket parts collected")}<div class="stack"><p>Each plant in your garden that blooms adds a part to the rocket. Bloom all six to launch.</p><a class="btn" href="#review" style="width:max-content">Back to your garden</a></div></section>`;return;}
+  const M=PROG.missions||{};
+  if(!LP.m)LP.m=makeMission(LP.k);
+  const m=LP.m,flown=LP.state!=="pick";
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">Launch pad</div><h1>Predict, then launch</h1></header>
+  <div class="chips" role="group" aria-label="Missions">
+    ${MISSION_NAMES.map((n,k)=>{const open=k===0||(M[k-1]&&M[k-1].flown);return `<button class="chip" data-k="${k}" aria-pressed="${LP.k===k}" ${open?"":"disabled"}>${k+1}. ${n}${M[k]&&M[k].star?" ★":""}</button>`;}).join("")}
+  </div>
+  <section class="card stack">
+    <p class="qtext">${m.q}</p>
+    <div class="opts">${m.choices.map((c,j)=>`<button class="opt${flown?(c.ok?" right":LP.pick===j?" wrong":""):(LP.pick===j?" chosen":"")}" data-j="${j}" ${flown?"disabled":""} aria-pressed="${LP.pick===j}">${esc(c.t)}</button>`).join("")}</div>
+    ${LP.state==="pick"?`<button class="btn big" id="launch" ${LP.pick==null?"disabled":""}>${LP.pick==null?"Pick a prediction to launch":"Launch"}</button>`:""}
+  </section>
+  <div class="flightwrap paper"><canvas id="cv" aria-label="Rocket flight" role="img"></canvas></div>
+  <div id="lres" aria-live="polite">${LP.state==="done"?launchResult():""}</div>
+  <a class="btn quiet" href="#review" style="width:max-content">Back to your garden</a>`;
+  main.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{LP={k:+b.dataset.k,m:null,pick:null,state:"pick",raf:0};renderLaunch();typeset(main);});
+  main.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{LP.pick=+b.dataset.j;renderLaunch();typeset(main);});
+  const lb=document.getElementById("launch");if(lb)lb.onclick=()=>fly();
+  const nb=document.getElementById("again");if(nb)nb.onclick=()=>{LP={k:LP.k,m:null,pick:null,state:"pick",raf:0};renderLaunch();typeset(main);};
+  const nx=document.getElementById("nextm");if(nx)nx.onclick=()=>{LP={k:LP.k+1,m:null,pick:null,state:"pick",raf:0};renderLaunch();typeset(main);};
+  const F=flight(m.sim);
+  drawFlight(LP.state==="done"?F.tLand:0,F,m);
+}
+function launchResult(){
+  const m=LP.m,c=m.choices[LP.pick],F=flight(m.sim);
+  const actual=m.kind==="height"?`It peaked at ${fmtNum(F.apex)} m.`:`It landed after ${fmtNum(F.tLand)} s.`;
+  return `<div class="fb ${c.ok?"good":"bad"}"><b>${c.ok?"Right on.":"Not this time."} ${actual}</b>${c.ok?"":`<p>${esc(c.fb||"")}</p>`}<div class="eqbox">\\[${m.work}\\]</div></div>
+  <div class="row" style="margin-top:10px"><button class="btn quiet" id="again">Fly again with new numbers</button>${LP.k<2?`<button class="btn" id="nextm">Next mission</button>`:""}</div>`;
+}
+function fly(){
+  const m=LP.m,F=flight(m.sim);LP.state="flying";
+  main.querySelectorAll(".opt").forEach(b=>b.disabled=true);
+  const lb=document.getElementById("launch");if(lb)lb.remove();
+  const cvEl=document.getElementById("cv");if(cvEl&&cvEl.scrollIntoView)cvEl.scrollIntoView({block:"center",behavior:"smooth"});
+  const done=()=>{LP.state="done";const k=LP.k;PROG.missions=PROG.missions||{};const prev=PROG.missions[k]||{};PROG.missions[k]={flown:true,star:prev.star||!!m.choices[LP.pick].ok};saveProg();renderLaunch();typeset(main);const lr=document.getElementById("lres");if(lr&&lr.scrollIntoView)lr.scrollIntoView({block:"nearest"});};
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){done();return;}
+  const real=3600,t0=performance.now();
+  const step=now=>{const k=Math.min(1,(now-t0)/real);drawFlight(k*F.tLand,F,m);if(k<1)LP.raf=requestAnimationFrame(step);else setTimeout(done,500);};
+  LP.raf=requestAnimationFrame(step);
+}
+function drawFlight(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const guess=m.kind==="height"&&LP.pick!=null?parseFloat(m.choices[LP.pick].t.replace("−","-")):0;
+  const top=50,bot=H-26;let maxY=Math.max(F.apex,guess||0)*1.12;
+  const steps=[5,10,20,25,50,100,200];let st=steps.find(s=>maxY/s<=6)||200;maxY=Math.ceil(maxY/st)*st;
+  const Y=y=>bot-(y/maxY)*(bot-top);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  for(let y=0;y<=maxY+1e-9;y+=st){ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(44,Y(y));ctx.lineTo(W-10,Y(y));ctx.stroke();ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`${y} m`,40,Y(y));}
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(44,bot);ctx.lineTo(W-10,bot);ctx.stroke();
+  const rx=W*0.42,sx=W*0.78;
+  if(guess&&LP.state!=="pick"){ctx.setLineDash([6,5]);ctx.strokeStyle=col("--accent");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(44,Y(guess));ctx.lineTo(W-10,Y(guess));ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`your guess ${fmtNum(guess)} m`,50,Y(guess)+11);}
+  if(t>=F.tApex&&LP.state!=="pick"){ctx.strokeStyle=col("--good");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(44,Y(F.apex));ctx.lineTo(W-10,Y(F.apex));ctx.stroke();ctx.fillStyle=col("--good");ctx.textAlign="left";ctx.fillText(`peak ${fmtNum(F.apex)} m`,50,Y(F.apex)-9);}
+  ctx.fillStyle=col("--muted");
+  for(let s=0;s<=t+1e-9;s+=0.5){const p=F.at(s);ctx.beginPath();ctx.arc(sx+(s>F.tApex?10:0),Y(p.y),3,0,7);ctx.fill();}
+  ctx.textAlign="right";ctx.fillText("dots: every 0.5 s",W-12,top-30);
+  const p=F.at(t),ry=Y(p.y);
+  if(p.burn&&LP.state==="flying"){ctx.fillStyle=col("--petal-6");ctx.beginPath();ctx.moveTo(rx-5,ry+4);ctx.lineTo(rx,ry+20+Math.random()*6);ctx.lineTo(rx+5,ry+4);ctx.fill();}
+  ctx.fillStyle=col("--card");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.3;
+  ctx.beginPath();ctx.rect(rx-6,ry-24,12,26);ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--petal-1");ctx.beginPath();ctx.moveTo(rx-6,ry-24);ctx.quadraticCurveTo(rx,ry-40,rx+6,ry-24);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--accent");ctx.beginPath();ctx.moveTo(rx-6,ry-6);ctx.lineTo(rx-12,ry+3);ctx.lineTo(rx-6,ry+2);ctx.closePath();ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(rx+6,ry-6);ctx.lineTo(rx+12,ry+3);ctx.lineTo(rx+6,ry+2);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  ctx.fillText(`t = ${t.toFixed(1)} s`,12,top-36);
+  ctx.fillText(`y = ${p.y.toFixed(0)} m   v = ${(Math.abs(p.v)<0.05?0:p.v).toFixed(0)} m/s`,12,top-20);
+  if(m.kind==="time"&&LP.pick!=null&&LP.state!=="pick"){ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText(`your guess: ${m.choices[LP.pick].t}`,W-12,top-14);}
+}
+
+function renderAbout(){
+  crumb.textContent="About";
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">About</div><h1>Freebody Physics</h1>
+  <p>A free study companion for calculus based introductory physics: short summaries, every key equation, worked examples, a step by step solver, and quick review that grows a garden. Nothing is locked.</p></header>
+  <section class="card stack"><h2>Source and license</h2>
+  <p>Content is adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener"><i>University Physics Volume 1</i></a> by Samuel J. Ling, Jeff Sanny, and William Moebs, published by OpenStax at Rice University. Access for free at openstax.org.</p>
+  <p>The book is licensed under <a href="${D.licenseUrl}" target="_blank" rel="noopener">Creative Commons Attribution NonCommercial ShareAlike 4.0</a>, and this adapted content is shared under the same license. It may not be used commercially.</p>
+  <p class="small muted">Freebody Physics is not affiliated with or endorsed by OpenStax or Rice University.</p></section>
+  <section class="card stack"><h2>What changed from the book</h2>
+  <ul class="bullets small">
+    <li>Learning objectives, key concepts, key equations, worked examples, and Check Your Understanding items are taken from the book and reformatted for phones.</li>
+    <li>Figure references inside the text are reworded because figure numbers are not shown.</li>
+    <li>Photos credited to third parties are left out; diagrams and graphs made by OpenStax are included and resized.</li>
+    <li>The “In short” summaries, the review items, the garden and launch pad, and the kinematics solver are new. Quick review items use g = 10 m/s².</li>
+    <li>The full explanatory text of each section is not included. Each section links to it on openstax.org.</li>
+  </ul></section>
+  <section class="card stack"><h2>Notes file check</h2>
+  ${NOTE_ERRS.length?`<p class="small">The notes file loaded with ${NOTE_ERRS.length} problem${NOTE_ERRS.length===1?"":"s"}. Blocks with a problem are skipped until it's fixed.</p><ul class="bullets small">${NOTE_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:`<p class="small">notes/ch03.txt loaded with no problems: ${Object.keys(SUMMARY).length} summaries and ${ITEMS.length} review items.</p>`}
+  </section>
+  <section class="card stack"><h2>For teachers: preview the garden</h2>
+  <p class="small">Turn this on to see every plant fully grown and try the launch pad. Real progress is kept and comes back when you turn it off.</p>
+  <label class="toggle"><input type="checkbox" id="pv" ${PROG.preview?"checked":""}> Show a fully grown garden</label></section>
+  <section class="card stack"><h2>Prototype status</h2>
+  <p class="small">This build covers Chapter 3 only. The content is generated from the OpenStax source files by a script, so later chapters can be added the same way.</p></section>`;
+  document.getElementById("pv").onchange=e=>{PROG.preview=e.target.checked;saveProg();};
+}
+
+/* ---------- router ---------- */
+function setTab(t){document.querySelectorAll(".tabs a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
+function route(){
+  const h=(location.hash||"").slice(1)||"learn";let m;
+  if((m=h.match(/^sec-3-([1-6])$/))){renderSection(+m[1]-1);setTab("learn");}
+  else if(h==="equations"){renderEquations();setTab("equations");}
+  else if(h==="solver"){renderSolver();setTab("solver");}
+  else if(h==="review"||h==="practice"){renderGarden();setTab("review");}
+  else if(h==="launch"){renderLaunch();setTab("review");}
+  else if(h==="about"){renderAbout();setTab("");}
+  else{renderLearn();setTab("learn");}
+  window.scrollTo(0,0);
+  typeset(main);
+}
+window.addEventListener("hashchange",()=>{if(D)route();});
+async function boot(){
+  main.innerHTML=`<p class="muted">Loading chapter…</p>`;
+  try{
+    const opt={cache:"no-cache"};
+    const [b,n]=await Promise.all([fetch("book/ch03.json",opt),fetch("notes/ch03.txt",opt)]);
+    if(!b.ok)throw new Error("book/ch03.json");
+    D=await b.json();S=D.sections;
+    if(n.ok){const r=parseNotes(await n.text());SUMMARY=r.sum;ITEMS=r.items;NOTE_ERRS=r.errs;}
+    else NOTE_ERRS=["notes/ch03.txt could not be loaded, so summaries and review items are missing."];
+  }catch(e){main.innerHTML=`<p class="note err">The chapter content (${esc(e.message||"book/ch03.json")}) didn't load. If you opened index.html straight from your computer, open it through a web address instead, such as GitHub Pages.</p>`;return;}
+  route();
+  window.__fb={kinSolve,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+}
+boot();
+})();
+</script>
