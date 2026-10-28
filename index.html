@@ -544,7 +544,7 @@ function nextDue(){const t=today();let best=null,n=0;
 const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"],hero:()=>heroGraph(),eqHint:"Search, for example “free fall” or “average”",toy:"rocket"},
   1:{eqSec:["1.6"],eqHint:"Search, for example “uncertainty”",toy:"probe"},
   2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”",toy:"sail"},
-  4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”"},
+  4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",toy:"catapult"},
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],eqHint:"Search, for example “friction” or “drag”"}};
 const chx=()=>CHX[CH]||{};
@@ -993,6 +993,21 @@ function sailSVG(have,label){
   </svg>`;
 }
 
+function catSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
+  const L=(k,d)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="3" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${L(1,"M38 136 L60 92 L82 136 M46 120 h28")}
+    ${L(2,"M24 116 L100 48")}
+    ${P(4,"M14 106 h20 v20 h-20 Z","var(--muted)")}
+    ${P(3,"M92 44 q9 -9 18 -2 l-4 11 q-7 3 -12 -2 Z","var(--petal-5)")}
+    ${on(2)?`<circle cx="60" cy="98" r="3" fill="var(--ink)"/>`:""}
+    ${P(0,"M10 136 h100 v10 h-100 Z M20 152 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z M80 152 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z","var(--petal-6)")}
+    <path d="M4 164 h112" stroke="var(--rule)" stroke-width="1.5"/>
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1003,7 +1018,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} probe parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can land it on Mars."},
   sail:{eyebrow:"The harbor",thing:"sailboat",parts:["hull","mast","sails","flag"],svg:sailSVG,route:"sail",
     ready:"Your sailboat is ready",readyText:"Set a course with vectors and sail it to the island.",go:"Go to the harbor",
-    count:(n,t)=>`${n} of ${t} sailboat parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can sail it to the island."}};
+    count:(n,t)=>`${n} of ${t} sailboat parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can sail it to the island."},
+  catapult:{eyebrow:"The castle field",thing:"catapult",parts:["base and wheels","frame","throwing arm","bucket","counterweight"],svg:catSVG,route:"fire",
+    ready:"Your catapult is ready",readyText:"Predict where the stone goes, then fire it.",go:"Go to the castle field",
+    count:(n,t)=>`${n} of ${t} catapult parts`,wait:"Each plant that blooms adds a part. When all five bloom, you can fire it."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -1631,6 +1649,121 @@ TOYS.sail.game={title:"Sail to the island",intro:"The boat goes exactly where yo
   right:"Land ho!",go:"Set sail",pickFirst:"Pick a course to sail",again:"Sail again with new numbers",cvLabel:"Map of the boat's trip",
   notReadyTitle:"Not ready to sail yet",notReady:"Each plant in your garden that blooms adds a part to the sailboat. Bloom all four to sail to the island."};
 
+/* ---------- Chapter 4: catapult ----------
+   Side view in meters, g = 10 m/s² as in the Ch 4 notes. The stone always leaves at about 53° (cos 0.6, sin 0.8),
+   so components come out as whole numbers. Mission 0: put the target where it lands. Mission 1: put the window
+   where it reaches the wall. Mission 2: pick the arm's turn time; the stone leaves at 2πr/T and must reach the flag.
+   makeCat redraws until every wrong choice misses by at least 2.5 times the hit tolerance. */
+const CAT_NAMES=["Where will it land?","Hit the window","Spin the arm"], CAT_G=10;
+const catTol=m=>m.kind===1?0.8:0.04*m.R;
+function catFlight(v,stopX){
+  const vx=0.6*v,vy=0.8*v,tLand=2*vy/CAT_G,R=vx*tLand,tEnd=stopX!=null&&stopX<R?stopX/vx:tLand;
+  return{vx,vy,R,tLand,tEnd,at:t=>{const u=Math.min(t,tEnd);return{x:vx*u,y:Math.max(0,vy*u-0.5*CAT_G*u*u)};}};
+}
+const catComp=v=>`v_x&=0.6(${v})=${fmtNum(0.6*v,true)}\\ \\text{m/s}\\\\v_y&=0.8(${v})=${fmtNum(0.8*v,true)}\\ \\text{m/s}\\\\`;
+const CAT_ANG="about \\(53^\\circ\\) above level ground \\((\\cos 53^\\circ = 0.6,\\ \\sin 53^\\circ = 0.8)\\)";
+function catDraft(k){
+  if(k===0){const v=pickOne([15,20,25,30]),f=catFlight(v),t=f.tLand,R=f.R;
+    const ch=[{x:R,ok:true},
+      {x:f.vx*f.vy/CAT_G,fb:"That is how far it goes while rising. Coming back down takes just as long, so the whole flight lasts \\(t = 2v_y/g\\)."},
+      {x:v*t,fb:"Only the x component of the velocity carries the stone sideways. Use \\(v_x = v\\cos\\theta\\), not the full speed."},
+      {x:f.vy*t,fb:"That uses the y component for the sideways motion. Sideways it moves at \\(v_x = v\\cos\\theta\\)."}];
+    ch.forEach(c=>c.t=`${fmtNum(c.x)} m`);
+    return{kind:0,v,R,choices:dedupe(ch),
+      q:`The catapult throws a stone at \\(${v}\\ \\text{m/s}\\), ${CAT_ANG}. Where should you put the target? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}${catComp(v)}t&=\\tfrac{2v_y}{g}=\\tfrac{2(${fmtNum(f.vy,true)})}{10}=${fmtNum(t,true)}\\ \\text{s}\\\\x&=v_xt=${fmtNum(R,true)}\\ \\text{m}\\end{aligned}`};}
+  if(k===1){const v=pickOne([20,25,30]),f0=catFlight(v),t=pickOne([1,1.5,2,2.5,3]);if(t>=f0.tLand-0.3)return null;
+    const d=f0.vx*t,y=f0.vy*t-5*t*t,t2=d/v;
+    const ch=[{y,ok:true},
+      {y:f0.vy*t,fb:"That leaves out gravity. In t seconds the stone falls \\(\\tfrac12 gt^2\\) below a straight line path."},
+      {y:f0.vy*t-10*t*t,fb:"Gravity's drop is \\(\\tfrac12 gt^2\\), not \\(gt^2\\)."},
+      {y:f0.vy*t2-5*t2*t2,fb:"The time to reach the wall comes from the x motion alone: \\(t = d/v_x\\), not \\(d/v\\)."}];
+    if(y<3||ch.some(c=>c.y<0.5))return null;
+    ch.forEach(c=>c.t=`${fmtNum(c.y)} m`);
+    return{kind:1,v,d,yTrue:y,R:f0.R,choices:dedupe(ch),
+      q:`A castle wall stands \\(${fmtNum(d)}\\ \\text{m}\\) away. The stone leaves at \\(${v}\\ \\text{m/s}\\), ${CAT_ANG}. How high up the wall should the open window be so the stone flies right through it? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}${catComp(v)}t&=\\tfrac{d}{v_x}=\\tfrac{${fmtNum(d,true)}}{${fmtNum(f0.vx,true)}}=${fmtNum(t,true)}\\ \\text{s}\\\\y&=v_yt-\\tfrac12gt^2=${fmtNum(y,true)}\\ \\text{m}\\end{aligned}`};}
+  const r=pickOne([2,2.5,3,4]),v=pickOne([15,20,25]),R=catFlight(v).R,T=2*Math.PI*r/v;
+  const ch=[{T,ok:true},
+    {T:r/v,fb:"In one turn the tip goes all the way around the circle, a distance \\(2\\pi r\\), not \\(r\\)."},
+    {T:Math.PI*r/v,fb:"\\(\\pi r\\) is only half a circle. In one full turn the tip travels \\(2\\pi r\\)."},
+    {T:v/(2*Math.PI*r),fb:"That is upside down. \\(v/(2\\pi r)\\) is the number of turns per second, the frequency, not the time for one turn."}];
+  ch.forEach(c=>{c.t=`${fmtNum(c.T)} s`;c.speed=2*Math.PI*r/c.T;});
+  return{kind:2,v,r,R,choices:dedupe(ch),
+    q:`The flag is \\(${fmtNum(R)}\\ \\text{m}\\) away. To land there, the stone must leave the arm at \\(${v}\\ \\text{m/s}\\). The tip of the arm moves at a steady speed in a circle of radius \\(${r}\\ \\text{m}\\). How long should one full turn take?`,
+    work:`\\begin{aligned}v&=\\tfrac{2\\pi r}{T}\\\\T&=\\tfrac{2\\pi r}{v}=\\tfrac{2\\pi(${r})}{${v}}=${fmtNum(T,true)}\\ \\text{s}\\end{aligned}`};
+}
+function catSim(m,c){
+  if(m.kind===1){const f=catFlight(m.v,m.d),yw=f.at(f.tEnd).y;return Object.assign(f,{aim:c.y,yHit:yw,miss:Math.abs(c.y-yw),hit:Math.abs(c.y-yw)<=catTol(m)});}
+  const f=catFlight(m.kind===2?c.speed:m.v),aim=m.kind===0?c.x:m.R;
+  /* a very fast throw flies off the map; the animation stops once it has left */
+  const xMax=catView(m).xMax;if(f.R>xMax*1.05)f.tEnd=Math.min(f.tLand,xMax*1.05/f.vx);
+  return Object.assign(f,{aim,miss:Math.abs(f.R-aim),hit:Math.abs(f.R-aim)<=catTol(m),off:f.R>xMax*1.05});
+}
+function catView(m){
+  if(m.kind===0)return{xMax:Math.max(...m.choices.map(c=>c.x))*1.1};
+  if(m.kind===1)return{xMax:m.d*1.25};
+  return{xMax:m.R*1.6};
+}
+function makeCat(k){
+  for(let tries=0;tries<500;tries++){
+    const m=catDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=catTol(m);
+    if(!m.choices.every(c=>c.ok||catSim(m,c).miss>=2.5*tol))continue;
+    return m;}
+}
+function drawCat(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre;
+  /* same scale both ways so the arc has its true shape */
+  const xMax=catView(m).xMax,yTop=Math.max(catFlight(m.v).vy**2/(2*CAT_G),m.kind===1?Math.max(...m.choices.map(q=>q.y)):0)*1.25;
+  const top=70,bot=H-30,lft=22,s=Math.min((W-lft-14)/xMax,(bot-top)/yTop);
+  const X=x=>lft+x*s,Y=y=>bot-y*s;
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  const st=[2,5,10,20,25,50,100].find(v=>v*s>=46)||100;
+  ctx.textAlign="center";
+  for(let g=0;g<=xMax;g+=st){ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(X(g),top-6);ctx.lineTo(X(g),bot);ctx.stroke();ctx.fillStyle=col("--muted");ctx.fillText(`${g} m`,X(g),bot+14);}
+  ctx.fillStyle=col("--leaf");ctx.globalAlpha=.25;ctx.fillRect(0,bot,W,H-bot);ctx.globalAlpha=1;
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,bot);ctx.lineTo(W,bot);ctx.stroke();
+  /* the catapult */
+  ctx.fillStyle=col("--petal-6");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.fillRect(X(0)-12,bot-6,24,5);ctx.strokeRect(X(0)-12,bot-6,24,5);
+  ctx.lineWidth=2.4;ctx.beginPath();ctx.moveTo(X(0)-10,bot-16);ctx.lineTo(X(0)+9,bot-29);ctx.stroke();
+  /* targets */
+  const flag=(x,lab,color)=>{const fx=X(x);ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(fx,bot);ctx.lineTo(fx,bot-30);ctx.stroke();
+    ctx.fillStyle=col(color);ctx.beginPath();ctx.moveTo(fx,bot-30);ctx.lineTo(fx+14,bot-25);ctx.lineTo(fx,bot-20);ctx.closePath();ctx.fill();
+    const w=Math.max(6,catTol(m)*s);ctx.globalAlpha=.35;ctx.fillRect(fx-w,bot-3,2*w,6);ctx.globalAlpha=1;
+    ctx.fillStyle=col("--ink");ctx.textAlign="center";ctx.fillText(lab,Math.min(Math.max(fx,30),W-30),bot-40);};
+  if(m.kind===0&&c)flag(c.x,"target","--accent");
+  if(m.kind===2)flag(m.R,"flag","--petal-1");
+  if(m.kind===1){const wx=X(m.d),wh=Math.max(...m.choices.map(q=>q.y))+4;
+    ctx.fillStyle=col("--muted");ctx.globalAlpha=.5;ctx.fillRect(wx,Y(wh),12,wh*s);ctx.globalAlpha=1;ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.strokeRect(wx,Y(wh),12,wh*s);
+    for(let b=0;b<3;b++)ctx.strokeRect(wx+b*4,Y(wh)-5,4,5);
+    ctx.fillStyle=col("--ink");ctx.textAlign="center";ctx.fillText("wall",wx+6,Y(wh)-14);
+    if(c){const hh=Math.max(8,1.6*s),wy=Y(c.y);ctx.fillStyle=col("--accent");ctx.fillRect(wx-1,wy-hh/2,14,hh);ctx.textAlign="right";ctx.fillText(`window ${fmtNum(c.y)} m`,wx-6,wy);}}
+  /* path: about 20 dots over the whole flight */
+  const p=F.at(t),dt=[0.1,0.2,0.25,0.5,1].find(d=>F.tEnd/d<=20)||1;
+  if(!pre){ctx.fillStyle=col("--muted");for(let u=0;u<=t+1e-9;u+=dt){const q=F.at(u);ctx.beginPath();ctx.arc(X(q.x),Y(q.y),2,0,7);ctx.fill();}
+    ctx.fillStyle=col("--ink");ctx.beginPath();ctx.arc(X(p.x),Y(p.y),5,0,7);ctx.fill();}
+  else{ctx.fillStyle=col("--ink");ctx.beginPath();ctx.arc(X(0)+10,bot-32,5,0,7);ctx.fill();}
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  ctx.fillText(`t = ${t.toFixed(2)} s   x = ${fmtNum(p.x)} m   y = ${fmtNum(p.y)} m`,12,14);
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.t}`,12,30);ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`dots every ${dt} s`,W-12,30);ctx.textAlign="left";}
+  if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.fillStyle=col(F.hit?"--good":"--bad");
+    ctx.fillText(F.hit?(m.kind===1?"Through the window":"Bull's eye"):F.off?"Flew right off the field":`Missed by ${fmtNum(F.miss)} m`,12,46);ctx.font="11px 'IBM Plex Mono', monospace";}
+}
+TOYS.catapult.game={title:"Fire the catapult",intro:"The stone follows the physics exactly. Predict right and it lands on target.",
+  names:CAT_NAMES,make:makeCat,ms:3400,
+  sim:m=>catSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawCat,
+  outcome:(F,m)=>m.kind===1?(F.hit?`It reached the wall ${fmtNum(F.yHit)} m up, right through the window.`:`It reached the wall ${fmtNum(F.yHit)} m up, but the window was at ${fmtNum(F.aim)} m.`)
+    :m.kind===0?(F.hit?`It landed ${fmtNum(F.R)} m away, right on the target.`:`It landed ${fmtNum(F.R)} m away, but the target was at ${fmtNum(F.aim)} m.`)
+    :(F.hit?`The stone left at ${fmtNum(m.v)} m/s and landed on the flag.`:`With that turn time the tip moved at ${fmtNum(F.vx/0.6)} m/s, so the stone landed ${fmtNum(F.R)} m away instead of ${fmtNum(m.R)} m.`),
+  right:"Bull's eye!",go:"Fire",pickFirst:"Pick an answer to fire",again:"Fire again with new numbers",cvLabel:"Catapult shot",
+  notReadyTitle:"Not ready to fire yet",notReady:"Each plant in your garden that blooms adds a part to the catapult. Bloom all five to fire it."};
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -1887,7 +2020,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
