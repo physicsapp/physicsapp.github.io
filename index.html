@@ -150,28 +150,44 @@ a.chip[aria-current="page"]{background:var(--ink);color:var(--paper);border-colo
 .eqcard{display:flex;flex-direction:column;gap:6px}
 .eqcard .head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .eqcard .tag{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);flex:none}
-.eqcard .go{font-size:.85rem;font-weight:600;color:var(--accent);background:none;border:0;padding:4px 0;cursor:pointer;text-align:left;width:max-content}
 
-/* solver */
-.vars{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.var{display:flex;flex-direction:column;gap:4px;min-width:0}
-.var label{font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
-.var label .u{font-family:var(--font-mono)}
-.inp{display:flex;border:1px solid var(--rule);border-radius:10px;background:var(--card);overflow:hidden}
-.inp:focus-within{border-color:var(--accent)}
-.inp input{flex:1;min-width:0;border:0;background:transparent;padding:10px 12px;font-family:var(--font-mono);font-size:1rem;color:var(--ink);outline:none}
-.inp button{border:0;border-left:1px solid var(--rule);background:var(--eq-bg);width:42px;cursor:pointer;font-family:var(--font-mono)}
-.inp.locked{opacity:.75}
-.result{display:flex;flex-direction:column;gap:10px}
-.resrow{display:flex;flex-direction:column;gap:2px}
-.resrow .val{font-family:var(--font-mono);font-size:1.15rem;font-weight:500}
 .note{font-size:.9rem;padding:10px 12px;border-radius:10px;background:var(--eq-bg)}
 .note.err{background:var(--bad-soft);color:var(--bad)}
-.tbl{overflow-x:auto}
-.tbl table{border-collapse:collapse;width:100%;font-size:.92rem}
-.tbl th,.tbl td{padding:8px 6px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:middle}
-.tbl th{font-family:var(--font-display);font-stretch:85%;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.tbl td.miss{font-family:var(--font-mono);color:var(--accent);font-weight:500;text-align:center}
+
+/* calculator */
+.calchead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.angseg{width:124px;flex:none}
+.calcbox{display:flex;flex-direction:column;gap:10px}
+.calcdisp{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:10px 14px 8px}
+.calcdisp:focus-within{border-color:var(--accent)}
+.cx{width:100%;border:0;background:transparent;font-family:var(--font-mono);font-size:1.3rem;color:var(--ink);text-align:right;outline:none;padding:6px 0}
+.cres{min-height:62px;text-align:right;display:flex;flex-direction:column;gap:2px}
+.cres .cval{font-family:var(--font-mono);font-size:1.05rem;color:var(--muted);overflow-wrap:anywhere}
+.cres .cval.big{font-size:1.55rem;color:var(--ink);font-weight:500}
+.c3{font-size:.8rem;color:var(--muted);font-family:var(--font-mono)}
+.cerr{color:var(--bad);font-size:.88rem}
+.cmode{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left}
+.prefixes{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}
+.pk{min-height:42px;border:1px solid var(--rule);background:var(--card);color:var(--accent);border-radius:10px;font-family:var(--font-mono);font-size:1rem;font-weight:600;cursor:pointer;padding:0}
+.keypad{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.key{min-height:50px;border:0;border-radius:12px;background:var(--card);color:var(--ink);font-family:var(--font-mono);font-size:1.15rem;cursor:pointer;box-shadow:inset 0 0 0 1px var(--rule);padding:0;touch-action:manipulation}
+.key.fn,.key.fnk{background:var(--eq-bg);font-size:.95rem}
+.key.op{background:var(--eq-bg)}
+.key.sci{font-size:.95rem}
+.key.eq{background:var(--accent);color:var(--accent-ink);box-shadow:none;font-weight:600}
+.key[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.key:active,.pk:active,.crow:active{transform:scale(.97)}
+.cpnote{margin:2px 0}
+.clist{display:flex;flex-direction:column;gap:8px}
+.crow{display:grid;grid-template-columns:56px 1fr;column-gap:10px;row-gap:2px;align-items:baseline;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:10px 12px;color:var(--ink);font:inherit;cursor:pointer;min-height:48px;width:100%}
+.crow .sym{grid-row:span 2;font-family:var(--font-mono);font-weight:600;color:var(--accent);font-size:1rem}
+.crow .cname{font-weight:600;font-size:.92rem}
+.crow .cnote{display:block;font-weight:400;font-size:.8rem;color:var(--muted)}
+.crow .cval{font-family:var(--font-mono);font-size:.88rem;color:var(--muted)}
+.crow .u{font-family:var(--font-body,inherit)}
+.hrow{grid-template-columns:1fr}
+.hrow .hx{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+.hrow .cval{color:var(--ink);font-size:1rem}
 
 /* practice */
 .opts{display:flex;flex-direction:column;gap:8px}
@@ -244,7 +260,7 @@ a.chip[aria-current="page"]{background:var(--ink);color:var(--paper);border-colo
 <div class="tabs"><nav aria-label="Main">
   <a href="#learn" data-tab="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>Learn</a>
   <a href="#equations" data-tab="equations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h7M7.5 3.5v7M14 6h6M14 16h6M14 19h6M4.5 15.5l6 6M10.5 15.5l-6 6"/></svg>Equations</a>
-  <a href="#solver" data-tab="solver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg>Solver</a>
+  <a href="#calc" data-tab="calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg>Calculator</a>
   <a href="#review" data-tab="review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12c0-4 2.5-6.5 7-6.5 0 4.5-2.5 7-7 6.5z"/><path d="M12 14.5c0-3.2-2-5.2-6.5-5.2 0 3.6 2 5.6 6.5 5.2z"/><path d="M7 21h10"/></svg>Review</a>
 </nav></div>
 
@@ -524,11 +540,11 @@ function nextDue(){const t=today();let best=null,n=0;
   for(const i of ITEMS){const r=PROG.items[i.id];if(!r||r.due<=t)continue;if(best===null||r.due<best){best=r.due;n=1;}else if(r.due===best)n++;}
   return best===null?null:{days:best-t,n};}
 
-/* chapter extras: which section each key equation belongs to, the hero graph, the solver links, and the toy built from blooms */
-const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"],eqSolver:new Set([8,9,10,11,12,13,14,15]),hero:()=>heroGraph(),solver:true,eqHint:"Search, for example “free fall” or “average”",toy:"rocket"},
+/* chapter extras: which section each key equation belongs to, the hero graph, the search hint, and the toy built from blooms */
+const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"],hero:()=>heroGraph(),eqHint:"Search, for example “free fall” or “average”",toy:"rocket"},
   1:{eqSec:["1.6"],eqHint:"Search, for example “uncertainty”",toy:"probe"},
   2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”"},
-  4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",solver:true},
+  4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”"},
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],eqHint:"Search, for example “friction” or “drag”"}};
 const chx=()=>CHX[CH]||{};
@@ -591,8 +607,7 @@ function renderLearn(){
       <span class="chev" aria-hidden="true">›</span></a>`).join("")}
   </nav>
   <div class="row">
-    ${X.solver?`<a class="btn" href="#solver">Open the kinematics solver</a>`:""}
-    <a class="btn${X.solver?" ghost":""}" href="${H("review")}">Open your garden</a>
+    <a class="btn" href="${H("review")}">Open your garden</a>
   </div>
   ${attrib()}`;
 }
@@ -615,7 +630,7 @@ function renderSection(i){
     ${sm.w?`<p class="watch"><b>Watch out</b><span>${esc(sm.w)}</span></p>`:""}
   </section>`:""}
   <section class="stack"><h2>Key ideas from the book</h2><ul class="bullets">${s.keyConcepts.map(k=>`<li>${k}</li>`).join("")}</ul></section>
-  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(t=>`<div class="eqbox">\\[${t}\\]</div>`).join("")}</div>${CH===3&&(s.num==="3.4"||s.num==="3.5")?`<a class="btn ghost" href="#solver" style="width:max-content">Solve with these in the solver</a>`:""}</section>`:""}
+  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(t=>`<div class="eqbox">\\[${t}\\]</div>`).join("")}</div></section>`:""}
   ${s.examples.length?`<section class="stack"><h2>Worked examples</h2>${s.examples.map((ex,j)=>`
     <details class="ex"><summary><span class="k">${s.num}.${j+1}</span><span class="tt">${esc(ex.title||"Example")}</span><span class="plus" aria-hidden="true">+</span></summary>
     <div class="exbody">${ex.parts.map(p=>`<div class="part"><div class="lbl">${esc(p.label)}</div><div class="rich">${p.html}</div></div>`).join("")}</div></details>`).join("")}</section>`:""}
@@ -642,7 +657,6 @@ function renderEquations(){
   ${D.keyEquations.map((e,j)=>`<article class="card eqcard" data-name="${esc(e.name.toLowerCase())} ${eqSec(j)}">
     <div class="head"><h3>${esc(e.name)}</h3>${eqSec(j)?`<span class="tag">${eqSec(j)}</span>`:""}</div>
     <div class="eq">\\[${e.tex}\\]</div>
-    ${chx().eqSolver&&chx().eqSolver.has(j)?`<button class="go" data-ff="${j>=13?1:0}">Use in the solver ›</button>`:""}
   </article>`).join("")}
   </div>
   <p class="muted small" id="eqnone" hidden>No equation matches that search.</p>
@@ -651,117 +665,262 @@ function renderEquations(){
   q.addEventListener("input",()=>{const v=q.value.trim().toLowerCase();let n=0;
     main.querySelectorAll(".eqcard").forEach(c=>{const ok=!v||c.dataset.name.includes(v);c.hidden=!ok;if(ok)n++;});
     document.getElementById("eqnone").hidden=n>0;});
-  main.querySelectorAll(".go").forEach(b=>b.onclick=()=>{SV.ff=b.dataset.ff==="1";SV.vals=null;location.hash="solver";});
 }
 
-/* ---------- kinematics solver ---------- */
-const VARS=["dx","v0","v","a","t"];
-const SV={ff:false,vals:null};
-const EXAMPLE={dx:"",v0:"70.0",v:"",a:"-1.50",t:"40.0"};
-const EXAMPLE_FF={dx:"",v0:"15.0",v:"",a:"",t:"5.00"};
-function vmeta(ff){return{
-  dx:{tex:ff?"\\Delta y":"\\Delta x",name:"Displacement",u:"m"},
-  v0:{tex:"v_0",name:"Initial velocity",u:"m/s"},
-  v:{tex:"v",name:"Final velocity",u:"m/s"},
-  a:{tex:"a",name:"Acceleration",u:"m/s²"},
-  t:{tex:"t",name:"Time",u:"s"}};}
-function num(s){if(s==null)return null;s=String(s).trim().replace(/−|–/g,"-").replace(/,/g,"");if(s==="")return null;const x=Number(s);return isFinite(x)?x:NaN;}
-
-function kinSolve(k){
-  const U=VARS.filter(n=>k[n]==null), key=U.join(",");
-  const out=[]; const T=t=>t>=-1e-12;
-  const add=(o)=>out.push(o);
-  const {dx,v0,v,a,t}=k;
-  if(k.t!=null&&k.t<0)return{err:"Time has to be zero or positive."};
-  switch(key){
-    case "dx,v0":{const V0=v-a*t;add({v0:V0,dx:0.5*(V0+v)*t,steps:[["v0","v_0=v-at",`${P(v)}-${P(a)}${P(t)}`],["dx","\\Delta x=\\tfrac12(v_0+v)t",`\\tfrac12(${P(V0)}+${P(v)})${P(t)}`]]});break;}
-    case "dx,v":{const V=v0+a*t;add({v:V,dx:v0*t+0.5*a*t*t,steps:[["v","v=v_0+at",`${P(v0)}+${P(a)}${P(t)}`],["dx","\\Delta x=v_0t+\\tfrac12at^2",`${P(v0)}${P(t)}+\\tfrac12${P(a)}${P(t)}^2`]]});break;}
-    case "dx,a":{if(t===0)return{err:"With t = 0 there is no way to find the acceleration."};const A=(v-v0)/t;add({a:A,dx:0.5*(v0+v)*t,steps:[["a","a=\\dfrac{v-v_0}{t}",`\\dfrac{${P(v)}-${P(v0)}}{${P(t)}}`],["dx","\\Delta x=\\tfrac12(v_0+v)t",`\\tfrac12(${P(v0)}+${P(v)})${P(t)}`]]});break;}
-    case "dx,t":{if(a===0)return{err:v===v0?"With zero acceleration and equal velocities, time and displacement can be anything. Enter one of them.":"With zero acceleration the velocity cannot change, so these values are inconsistent."};
-      const Tm=(v-v0)/a;if(!T(Tm))return{err:"These values need negative time. Check the signs of a, v₀, and v."};
-      add({t:Tm,dx:(v*v-v0*v0)/(2*a),steps:[["t","t=\\dfrac{v-v_0}{a}",`\\dfrac{${P(v)}-${P(v0)}}{${P(a)}}`],["dx","\\Delta x=\\dfrac{v^2-v_0^2}{2a}",`\\dfrac{${P(v)}^2-${P(v0)}^2}{2${P(a)}}`]]});break;}
-    case "v0,v":{if(t===0)return{err:"With t = 0 the velocities can't be found from the displacement."};const V0=(dx-0.5*a*t*t)/t;add({v0:V0,v:V0+a*t,steps:[["v0","v_0=\\dfrac{\\Delta x-\\tfrac12at^2}{t}",`\\dfrac{${P(dx)}-\\tfrac12${P(a)}${P(t)}^2}{${P(t)}}`],["v","v=v_0+at",`${P(V0)}+${P(a)}${P(t)}`]]});break;}
-    case "v0,a":{if(t===0)return{err:"With t = 0 there is no way to find the acceleration."};const V0=2*dx/t-v;const A=(v-V0)/t;add({v0:V0,a:A,steps:[["v0","v_0=\\dfrac{2\\Delta x}{t}-v",`\\dfrac{2${P(dx)}}{${P(t)}}-${P(v)}`],["a","a=\\dfrac{v-v_0}{t}",`\\dfrac{${P(v)}-${P(V0)}}{${P(t)}}`]]});break;}
-    case "v0,t":{const disc=v*v-2*a*dx;if(disc<0)return{err:"No real solution: v² − 2aΔx is negative, so the object can't have this final velocity after this displacement."};
-      for(const sgn of disc===0?[1]:[1,-1]){const V0=sgn*Math.sqrt(disc);let Tm;
-        if(Math.abs(V0+v)>1e-12)Tm=2*dx/(V0+v);else if(a!==0)Tm=(v-V0)/a;else continue;
-        if(!T(Tm))continue;
-        add({v0:V0,t:Tm,steps:[["v0","v_0=\\pm\\sqrt{v^2-2a\\Delta x}",`${sgn<0?"-":""}\\sqrt{${P(v)}^2-2${P(a)}${P(dx)}}`],["t","t=\\dfrac{2\\Delta x}{v_0+v}",`\\dfrac{2${P(dx)}}{${P(V0)}+${P(v)}}`]]});}
-      if(!out.length)return{err:"Every solution needs negative time. Check the signs."};break;}
-    case "v,a":{if(t===0)return{err:"With t = 0 there is no way to find the acceleration."};const A=2*(dx-v0*t)/(t*t);add({a:A,v:v0+A*t,steps:[["a","a=\\dfrac{2(\\Delta x-v_0t)}{t^2}",`\\dfrac{2(${P(dx)}-${P(v0)}${P(t)})}{${P(t)}^2}`],["v","v=v_0+at",`${P(v0)}+${P(A)}${P(t)}`]]});break;}
-    case "v,t":{if(a===0){if(v0===0)return{err:"With zero acceleration and zero initial velocity the object never moves."};const Tm=dx/v0;if(!T(Tm))return{err:"The object is moving away from that position, so it never gets there."};add({v:v0,t:Tm,steps:[["v","v=v_0\\ (a=0)",`${P(v0)}`],["t","t=\\dfrac{\\Delta x}{v_0}",`\\dfrac{${P(dx)}}{${P(v0)}}`]]});break;}
-      const disc=v0*v0+2*a*dx;if(disc<0)return{err:"No real solution: the object turns around before it reaches that displacement."};
-      for(const sgn of disc===0?[1]:[1,-1]){const V=sgn*Math.sqrt(disc);const Tm=(V-v0)/a;if(!T(Tm))continue;
-        add({v:V,t:Tm,steps:[["v","v=\\pm\\sqrt{v_0^2+2a\\Delta x}",`${sgn<0?"-":""}\\sqrt{${P(v0)}^2+2${P(a)}${P(dx)}}`],["t","t=\\dfrac{v-v_0}{a}",`\\dfrac{${P(V)}-${P(v0)}}{${P(a)}}`]]});}
-      if(!out.length)return{err:"Every solution needs negative time. Check the signs."};break;}
-    case "a,t":{if(Math.abs(v0+v)<1e-12)return{err:dx===0?"Not enough information: try entering the time instead.":"With v₀ = −v the average velocity is zero, so the displacement would have to be zero."};
-      const Tm=2*dx/(v0+v);if(!T(Tm))return{err:"These values need negative time. Check the sign of the displacement."};
-      if(Tm===0)return{err:"Zero displacement with these velocities gives zero time, so the acceleration is undefined."};
-      add({t:Tm,a:(v-v0)/Tm,steps:[["t","t=\\dfrac{2\\Delta x}{v_0+v}",`\\dfrac{2${P(dx)}}{${P(v0)}+${P(v)}}`],["a","a=\\dfrac{v^2-v_0^2}{2\\Delta x}",`\\dfrac{${P(v)}^2-${P(v0)}^2}{2${P(dx)}}`]]});break;}
-    default:return{err:"Enter exactly three of the five quantities and leave the two you want blank."};
+/* ---------- calculator ----------
+   A small parser of its own (never eval). Expressions use the same symbols shown on the keys:
+   + − × ÷ ^ ² ⁻¹ √ π e ( ) sin cos tan sin⁻¹ cos⁻¹ tan⁻¹ ln log Ans.
+   A number written as 6.67×10^−11 is read as ONE number, like the EE key on a handheld calculator,
+   so 1÷2×10^3 is 1 divided by 2000. Missing closing parentheses are added at the end. */
+const CALC={deg:true,inv:false,ans:0,hist:[],panel:"keys",expr:"",pos:0,shown:null};
+(function(){const s=store("calc");if(s){CALC.deg=s.deg!==false;CALC.ans=+s.ans||0;CALC.hist=Array.isArray(s.hist)?s.hist.slice(0,20):[];}})();
+function saveCalc(){store("calc",{deg:CALC.deg,ans:CALC.ans,hist:CALC.hist});}
+function calcErr(m){const e=new Error(m);e.calc=true;return e;}
+const SUP={"⁰":"0","¹":"1","²":"2","³":"3","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9","⁻":"-"};
+function calcLex(src){
+  const T=[];let i=0;const s=src;
+  const isD=c=>c>="0"&&c<="9";
+  while(i<s.length){
+    const c=s[i];
+    if(/\s/.test(c)){i++;continue;}
+    if(isD(c)||(c==="."&&isD(s[i+1]||""))){
+      let j=i;while(j<s.length&&(isD(s[j])||s[j]==="."))j++;
+      const txt=s.slice(i,j);if((txt.match(/\./g)||[]).length>1)throw calcErr("A number has two decimal points.");
+      let v=parseFloat(txt);
+      /* scientific notation glued to the number: 3×10^8, 3*10^-8, 3E8, 3e-8 */
+      let m=s.slice(j).match(/^\s*[×*xX]\s*10\s*\^\s*\(?\s*([−\-+]?)\s*(\d+(?:\.\d+)?)\s*(\)?)/);
+      if(m&&(!m[0].includes("(")||m[3])){v=v*Math.pow(10,(m[1]==="−"||m[1]==="-"?-1:1)*parseFloat(m[2]));j+=m[0].length;}
+      else if((m=s.slice(j).match(/^[eE]([−\-+]?)(\d+)/))){v=v*Math.pow(10,(m[1]==="−"||m[1]==="-"?-1:1)*parseInt(m[2]));j+=m[0].length;}
+      T.push({t:"num",v});i=j;continue;
+    }
+    if(/[a-zA-Zπ√]/.test(c)){
+      if(c==="π"){T.push({t:"num",v:Math.PI});i++;continue;}
+      if(c==="√"){T.push({t:"fn",v:"sqrt"});i++;continue;}
+      let j=i;while(j<s.length&&/[a-zA-Z]/.test(s[j]))j++;
+      let w=s.slice(i,j).toLowerCase();
+      if(s.slice(j,j+2)==="⁻¹"&&/^(sin|cos|tan)$/.test(w)){w="a"+w;j+=2;}
+      const names={sin:"sin",cos:"cos",tan:"tan",asin:"asin",acos:"acos",atan:"atan",arcsin:"asin",arccos:"acos",arctan:"atan",ln:"ln",log:"log",sqrt:"sqrt"};
+      if(names[w]){T.push({t:"fn",v:names[w]});i=j;continue;}
+      if(w==="ans"){T.push({t:"num",v:CALC.ans,ans:true});i=j;continue;}
+      if(w==="pi"){T.push({t:"num",v:Math.PI});i=j;continue;}
+      if(w==="e"){T.push({t:"num",v:Math.E});i=j;continue;}
+      throw calcErr(`“${s.slice(i,j)}” isn't something this calculator knows.`);
+    }
+    if(c==="²"||c==="³"){T.push({t:"post",v:c==="²"?2:3});i++;continue;}
+    if(c==="⁻"&&s[i+1]==="¹"){T.push({t:"post",v:-1});i+=2;continue;}
+    if(c in SUP){let j=i,e="";while(j<s.length&&s[j] in SUP){e+=SUP[s[j]];j++;}T.push({t:"op",v:"^"});T.push({t:"num",v:parseFloat(e)});i=j;continue;}
+    const ops={"+":"+","-":"-","−":"-","–":"-","×":"*","*":"*","·":"*","÷":"/","/":"/","^":"^","(":"(",")":")","[":"(","]":")","!":"!"};
+    if(ops[c]){T.push({t:"op",v:ops[c]});i++;continue;}
+    throw calcErr(`“${c}” can't be used here.`);
   }
-  return{sols:out};
+  return T;
 }
-
-function renderSolver(){
-  crumb.textContent="Kinematics solver";
-  const ff=SV.ff, M=vmeta(ff);
-  if(!SV.vals)SV.vals=Object.assign({},ff?EXAMPLE_FF:EXAMPLE);
-  if(ff)SV.vals.a=String(-G);
+function calcEval(src,deg){
+  const T=calcLex(src);let i=0;
+  const peek=()=>T[i],eat=()=>T[i++];
+  const isOp=(t,v)=>t&&t.t==="op"&&t.v===v;
+  const startsPrimary=t=>t&&(t.t==="num"||t.t==="fn"||isOp(t,"("));
+  const toR=x=>deg?x*Math.PI/180:x, fromR=x=>deg?x*180/Math.PI:x;
+  const snap=x=>Math.abs(x)<1e-12?0:x;
+  function fn(name,x){
+    switch(name){
+      case "sin":return snap(Math.sin(toR(x)));
+      case "cos":return snap(Math.cos(toR(x)));
+      case "tan":{if(deg&&Math.abs(((x%180)+180)%180-90)<1e-9)throw calcErr(`tan of ${sig(x)}° is undefined.`);return snap(Math.tan(toR(x)));}
+      case "asin":if(x<-1||x>1)throw calcErr("sin⁻¹ needs a value from −1 to 1.");return fromR(Math.asin(x));
+      case "acos":if(x<-1||x>1)throw calcErr("cos⁻¹ needs a value from −1 to 1.");return fromR(Math.acos(x));
+      case "atan":return fromR(Math.atan(x));
+      case "ln":if(x<=0)throw calcErr("ln needs a positive number.");return Math.log(x);
+      case "log":if(x<=0)throw calcErr("log needs a positive number.");return Math.log10(x);
+      case "sqrt":if(x<0)throw calcErr("The square root of a negative number isn't a real number.");return Math.sqrt(x);
+    }
+  }
+  function expr(){let v=term();for(;;){const t=peek();if(isOp(t,"+")){eat();v+=term();}else if(isOp(t,"-")){eat();v-=term();}else return v;}}
+  function term(){let v=unary();for(;;){const t=peek();
+    if(isOp(t,"*")){eat();v*=unary();}
+    else if(isOp(t,"/")){eat();const d=unary();if(d===0)throw calcErr("Can't divide by zero.");v/=d;}
+    else if(startsPrimary(t)){v*=power();}/* written side by side, like 2π or 3(4) */
+    else return v;}}
+  function unary(){const t=peek();if(isOp(t,"-")){eat();return -unary();}if(isOp(t,"+")){eat();return unary();}return power();}
+  function power(){const b=postfix();if(isOp(peek(),"^")){eat();const e=unary();const r=Math.pow(b,e);if(Number.isNaN(r))throw calcErr("A negative number can't be raised to that power.");return r;}return b;}
+  function postfix(){let v=primary();for(;;){const t=peek();
+    if(t&&t.t==="post"){eat();if(t.v===-1&&v===0)throw calcErr("Can't divide by zero.");v=Math.pow(v,t.v);}
+    else if(isOp(t,"!")){eat();if(v<0||v!==Math.floor(v)||v>170)throw calcErr("! needs a whole number from 0 to 170.");let f=1;for(let k=2;k<=v;k++)f*=k;v=f;}
+    else return v;}}
+  function primary(){
+    const t=eat();
+    if(!t)throw calcErr("The expression ends too soon.");
+    if(t.t==="num")return t.v;
+    if(t.t==="fn")return fn(t.v,unary());
+    if(isOp(t,"(")){if(isOp(peek(),")"))throw calcErr("Empty parentheses.");const v=expr();if(isOp(peek(),")"))eat();else if(peek())throw calcErr("Check the parentheses.");return v;}
+    if(isOp(t,")"))throw calcErr("There's a “)” without a matching “(”.");
+    throw calcErr(`“${{"*":"×","/":"÷","^":"^","-":"−","+":"+","!":"!"}[t.v]||t.v}” needs a number before it.`);
+  }
+  if(!T.length)return null;
+  const v=expr();
+  if(i<T.length)throw calcErr(isOp(T[i],")")?"There's a “)” without a matching “(”.":"Check the expression near the end.");
+  if(!isFinite(v))throw calcErr("The result is too big to show.");
+  return v;
+}
+/* display: up to 10 significant figures, scientific notation for very big or very small numbers */
+const SUPD={"0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","-":"⁻"};
+function calcSci(m,e){return`${m.replace("-","−")} × 10${String(e).split("").map(ch=>SUPD[ch]).join("")}`;}
+function calcFmt(x,p=10,keep=false){
+  if(x===0)return"0";
+  const [mm,ee]=x.toExponential(p-1).split("e"),e=+ee;
+  const m=keep?mm:mm.replace(/(\.\d*?)0+$/,"$1").replace(/\.$/,"");
+  if(e>=10||e<-4||(keep&&e>=p))return calcSci(m,e);
+  return(keep?x.toPrecision(p):String(+x.toPrecision(p))).replace("-","−");
+}
+/* a constant as the book writes it, keeping its significant figures: 9.80, 1.000 × 10³ */
+function calcShowTxt(t){const m=t.match(/^(.*)×10\^(−?\d+)$/);return m?calcSci(m[1],m[2].replace("−","-")):t;}
+/* what gets typed back into the expression for a value (Ans, history, constants) */
+function calcInsertText(x){
+  if(x===0)return"0";
+  const [mm,ee]=x.toExponential(9).split("e"),e=+ee;
+  if(e>=10||e<-4)return`${mm.replace(/(\.\d*?)0+$/,"$1").replace(/\.$/,"").replace("-","−")}×10^${e<0?"−"+(-e):e}`;
+  return String(+x.toPrecision(10)).replace("-","−");
+}
+const CONSTS=[
+  {k:"g",name:"Free fall acceleration near Earth",val:9.80,txt:"9.80",unit:"m/s²",note:"Quick review items round this to 10."},
+  {k:"G",name:"Gravitational constant",val:6.67428e-11,txt:"6.67428×10^−11",unit:"N·m²/kg²"},
+  {k:"c",name:"Speed of light in vacuum",val:2.99792458e8,txt:"2.99792458×10^8",unit:"m/s"},
+  {k:"M_E",tex:"M<sub>E</sub>",name:"Mass of Earth",val:5.97e24,txt:"5.97×10^24",unit:"kg"},
+  {k:"R_E",tex:"R<sub>E</sub>",name:"Average radius of Earth",val:6.37e6,txt:"6.37×10^6",unit:"m"},
+  {k:"M_S",tex:"M<sub>Sun</sub>",name:"Mass of the Sun",val:1.99e30,txt:"1.99×10^30",unit:"kg"},
+  {k:"ρ",tex:"ρ<sub>water</sub>",name:"Density of water (4 °C)",val:1.000e3,txt:"1.000×10^3",unit:"kg/m³"},
+  {k:"p",tex:"p<sub>atm</sub>",name:"Atmospheric pressure at sea level",val:1.013e5,txt:"1.013×10^5",unit:"Pa"}];
+const PREFIX=[["p",-12,"pico"],["n",-9,"nano"],["μ",-6,"micro"],["m",-3,"milli"],["c",-2,"centi"],["k",3,"kilo"],["M",6,"mega"],["G",9,"giga"]];
+const KEYS=[
+  [["deg","DEG","Switch between degrees and radians","fn"],["inv","inv","Inverse functions","fn"],["π","π","Pi"],["e","e","Euler's number e"],["⁻¹","x⁻¹","Reciprocal"]],
+  [["sin(","sin","Sine","fnk"],["cos(","cos","Cosine","fnk"],["tan(","tan","Tangent","fnk"],["ln(","ln","Natural log","fnk"],["log(","log","Log base 10","fnk"]],
+  [["(","(","Open parenthesis"],[")",")","Close parenthesis"],["²","x²","Square"],["^","xʸ","Power"],["√(","√","Square root"]],
+  [["7","7"],["8","8"],["9","9"],["bs","⌫","Backspace","op"],["ac","AC","Clear","op"]],
+  [["4","4"],["5","5"],["6","6"],["×","×","Times","op"],["÷","÷","Divide","op"]],
+  [["1","1"],["2","2"],["3","3"],["+","+","Plus","op"],["−","−","Minus","op"]],
+  [["0","0"],[".",".","Decimal point"],["×10^","×10ⁿ","Times ten to the power","sci"],["Ans","Ans","Last answer"],["=","=","Equals","eq"]]];
+const INVK={"sin(":["sin⁻¹(","sin⁻¹"],"cos(":["cos⁻¹(","cos⁻¹"],"tan(":["tan⁻¹(","tan⁻¹"],"ln(":["e^(","eˣ"],"log(":["10^(","10ˣ"]};
+function renderCalc(){
+  crumb.textContent="Calculator";
+  CALC.panel="keys";
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">Constant acceleration</div><h1>Kinematics solver</h1>
-  <p class="muted">Enter any three values and leave two blank. The solver picks the right equations and shows each step.</p></header>
-  <div class="seg" role="group" aria-label="Motion type">
-    <button id="m-x" aria-pressed="${!ff}">Along x</button>
-    <button id="m-y" aria-pressed="${ff}">Free fall (up is +)</button>
-  </div>
-  <form class="card stack" id="sform" novalidate>
-    <div class="vars">
-    ${VARS.map(n=>`<div class="var"><label for="in-${n}"><span>\\(${M[n].tex}\\) ${M[n].name}</span><span class="u">${M[n].u}</span></label>
-      <div class="inp${ff&&n==="a"?" locked":""}"><input id="in-${n}" inputmode="decimal" autocomplete="off" value="${esc(SV.vals[n]||"")}" ${ff&&n==="a"?"readonly":""} placeholder="unknown">
-      ${ff&&n==="a"?"":`<button type="button" data-flip="${n}" aria-label="Flip sign of ${M[n].name}">±</button>`}</div></div>`).join("")}
+  <header class="calchead"><div><div class="eyebrow">SI units only</div><h1>Calculator</h1></div>
+    <div class="seg angseg" role="group" aria-label="Angle unit"><button type="button" data-ang="deg" aria-pressed="${CALC.deg}">DEG</button><button type="button" data-ang="rad" aria-pressed="${!CALC.deg}">RAD</button></div></header>
+  <section class="calcbox" aria-label="Calculator">
+    <div class="calcdisp">
+      <input id="cx" class="cx" type="text" inputmode="none" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Expression" placeholder="0" value="${esc(CALC.expr)}">
+      <div class="cres" id="cres" aria-live="polite"></div>
     </div>
-    ${ff?`<p class="small muted">In free fall the acceleration is fixed at \\(a=-g=-9.80\\ \\text{m/s}^2\\) with up as the positive direction.</p>`:""}
-    <div class="row"><button class="btn" type="submit">Solve</button><button class="btn quiet" type="button" id="sclear">Clear</button><button class="btn ghost" type="button" id="sex">Load book example</button></div>
-  </form>
-  <section class="card result" id="sout" aria-live="polite"></section>
-  <section class="stack"><h2>Which equation leaves out what</h2>
-  <p class="muted small">Each constant acceleration equation is missing one quantity. Use the one that is missing the quantity you don't know and don't need.</p>
-  <div class="tbl card"><table><thead><tr><th>Equation</th><th>Leaves out</th></tr></thead><tbody>
-    <tr><td>\\(v=v_0+at\\)</td><td class="miss">\\(${M.dx.tex}\\)</td></tr>
-    <tr><td>\\(${M.dx.tex}=v_0t+\\tfrac12at^2\\)</td><td class="miss">\\(v\\)</td></tr>
-    <tr><td>\\(v^2=v_0^2+2a${M.dx.tex}\\)</td><td class="miss">\\(t\\)</td></tr>
-    <tr><td>\\(${M.dx.tex}=\\tfrac12(v_0+v)t\\)</td><td class="miss">\\(a\\)</td></tr>
-  </tbody></table></div></section>
-  ${attrib()}`;
-  document.getElementById("m-x").onclick=()=>{SV.ff=false;SV.vals=null;renderSolverAndType();};
-  document.getElementById("m-y").onclick=()=>{SV.ff=true;SV.vals=null;renderSolverAndType();};
-  const form=document.getElementById("sform");
-  const read=()=>{VARS.forEach(n=>SV.vals[n]=document.getElementById("in-"+n).value);};
-  form.addEventListener("submit",e=>{e.preventDefault();read();runSolver();});
-  form.querySelectorAll("[data-flip]").forEach(b=>b.onclick=()=>{const i=document.getElementById("in-"+b.dataset.flip);const s=i.value.trim();if(!s)return;i.value=s.startsWith("-")||s.startsWith("−")?s.slice(1):"-"+s;});
-  document.getElementById("sclear").onclick=()=>{VARS.forEach(n=>{if(!(ff&&n==="a"))document.getElementById("in-"+n).value="";});read();document.getElementById("sout").innerHTML=`<p class="muted">Enter three values and press Solve.</p>`;};
-  document.getElementById("sex").onclick=()=>{SV.vals=Object.assign({},ff?EXAMPLE_FF:EXAMPLE);if(ff)SV.vals.a=String(-G);VARS.forEach(n=>document.getElementById("in-"+n).value=SV.vals[n]);runSolver();};
-  runSolver(true);
+    <div class="prefixes" role="group" aria-label="SI prefixes">
+      ${PREFIX.map(([s,n,w])=>`<button type="button" class="pk" data-pre="${n}" aria-label="${w}, times ten to the ${n}" title="${w} ×10${String(n).split("").map(c=>SUPD[c]).join("")}">${s}</button>`).join("")}
+    </div>
+    <div class="seg calcseg" role="group" aria-label="Show">
+      <button type="button" data-panel="keys" aria-pressed="true">Keys</button><button type="button" data-panel="consts" aria-pressed="false">Constants</button><button type="button" data-panel="hist" aria-pressed="false">History</button></div>
+    <div id="cpanel"></div>
+  </section>
+  <p class="small muted">Values of the constants are from OpenStax <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> (Appendices B and D, Sections 13.2 and 14.1).</p>`;
+  const cx=document.getElementById("cx");
+  CALC.pos=Math.min(CALC.pos||CALC.expr.length,CALC.expr.length);
+  const keepPos=()=>{CALC.pos=cx.selectionStart??cx.value.length;};
+  ["keyup","click","select","focus"].forEach(ev=>cx.addEventListener(ev,keepPos));
+  cx.addEventListener("input",()=>{
+    const p=cx.selectionStart;const v=cx.value.replace(/\*/g,"×").replace(/\//g,"÷").replace(/-/g,"−");
+    if(v!==cx.value){cx.value=v;cx.setSelectionRange(p,p);}
+    CALC.expr=cx.value;CALC.shown=null;keepPos();calcPreview();});
+  cx.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key==="="){e.preventDefault();calcEquals();}else if(e.key==="Escape"){e.preventDefault();calcPress("ac");}});
+  main.querySelectorAll("[data-ang]").forEach(b=>b.onclick=()=>{CALC.deg=b.dataset.ang==="deg";saveCalc();main.querySelectorAll("[data-ang]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.ang===(CALC.deg?"deg":"rad")));calcDrawKeys();calcPreview();});
+  main.querySelectorAll("[data-pre]").forEach(b=>b.onclick=()=>{const n=+b.dataset.pre,e=n<0?"−"+(-n):String(n);
+    /* glued to a number it reads as 4.5×10^3; with nothing before it, as 10^3 */
+    const before=CALC.expr.slice(0,Math.min(CALC.pos,CALC.expr.length));
+    calcInsert(CALC.shown!==null||/[0-9.)πe²³¹s]$/.test(before)?"×10^"+e:"10^"+e);});
+  main.querySelectorAll("[data-panel]").forEach(b=>b.onclick=()=>calcPanel(b.dataset.panel));
+  calcPanel("keys");calcPreview();
 }
-function renderSolverAndType(){renderSolver();typeset(main);}
-function runSolver(quiet){
-  const out=document.getElementById("sout"), M=vmeta(SV.ff);
-  const k={};let bad=null;
-  for(const n of VARS){const x=num(SV.vals[n]);if(Number.isNaN(x))bad=M[n].name;k[n]=x;}
-  if(SV.ff)k.a=-G;
-  if(bad){out.innerHTML=`<p class="note err">${esc(bad)} isn't a number. Use digits, a decimal point, and a minus sign if needed.</p>`;typeset(out);return;}
-  const res=kinSolve(k);
-  if(res.err){out.innerHTML=`<p class="note err">${res.err}</p>`;typeset(out);return;}
-  const known=VARS.filter(n=>k[n]!=null).map(n=>`\\(${M[n].tex}=${sig(k[n])}\\ \\text{${M[n].u.replace("²","}^2\\text{")}}\\)`).join(", ");
-  const sx=SV.ff?(s=>s.replace(/\\Delta x/g,"\\Delta y")):(s=>s);
-  out.innerHTML=`<div class="eyebrow">Result</div><p class="small muted">Known: ${known}</p>`+
-   res.sols.map((sol,si)=>`${res.sols.length>1?`<h3>Solution ${si+1} of ${res.sols.length}</h3>`:""}
-    ${sol.steps.map(([n,form,sub])=>{const u=M[n].u.replace("²","}^2\\text{");
-      return `<div class="resrow"><span class="small muted">${M[n].name}</span><span class="val">\\(${M[n].tex}=${sig(sol[n])}\\ \\text{${u}}\\)</span><div class="eqbox">\\[\\begin{aligned}${sx(form).replace("=","&=")}\\\\ &=${sx(sub)}\\\\ &=${sig(sol[n])}\\ \\text{${u}}\\end{aligned}\\]</div></div>`;}).join("")}`).join("")+
-   (res.sols.length>1?`<p class="note">Two answers satisfy the equations. Decide which one fits the physical situation, for example on the way up or on the way down.</p>`:"")+
-   `<p class="small muted">Results are rounded to three significant figures.</p>`;
-  if(!quiet)typeset(out);
+function calcPanel(p){
+  CALC.panel=p;
+  main.querySelectorAll("[data-panel]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.panel===p));
+  const el=document.getElementById("cpanel");
+  if(p==="keys"){el.innerHTML=`<div class="keypad" id="keypad"></div>`;calcDrawKeys();return;}
+  if(p==="consts"){
+    el.innerHTML=`<p class="small muted cpnote">Tap a constant to put its value in the expression.</p><div class="clist">${CONSTS.map((c,i)=>`<button type="button" class="crow" data-c="${i}">
+      <span class="sym">${c.tex||esc(c.k)}</span><span class="cname">${esc(c.name)}${c.note?`<span class="cnote">${esc(c.note)}</span>`:""}</span>
+      <span class="cval">${calcShowTxt(c.txt)} <span class="u">${esc(c.unit)}</span></span></button>`).join("")}</div>`;
+    el.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{calcInsert(CONSTS[+b.dataset.c].txt);calcPanel("keys");});
+    return;
+  }
+  el.innerHTML=CALC.hist.length?`<p class="small muted cpnote">Tap a result to use it again.</p><div class="clist">${CALC.hist.map((h,i)=>`<button type="button" class="crow hrow" data-h="${i}">
+      <span class="hx">${esc(h.x)}</span><span class="cval">= ${calcFmt(h.v)}</span></button>`).join("")}</div>
+      <button type="button" class="linkbtn" id="hclear">Clear history</button>`:`<p class="small muted cpnote">Results you work out show up here.</p>`;
+  el.querySelectorAll("[data-h]").forEach(b=>b.onclick=()=>{calcInsert(calcInsertText(CALC.hist[+b.dataset.h].v));calcPanel("keys");});
+  const hc=document.getElementById("hclear");if(hc)hc.onclick=()=>{CALC.hist=[];saveCalc();calcPanel("hist");};
+}
+function calcDrawKeys(){
+  const kp=document.getElementById("keypad");if(!kp)return;
+  kp.innerHTML=KEYS.flat().map(([k,l,a,cls])=>{
+    let key=k,lab=l;
+    if(CALC.inv&&INVK[k]){key=INVK[k][0];lab=INVK[k][1];}
+    if(k==="deg")lab=CALC.deg?"DEG":"RAD";
+    const pressed=k==="inv"?` aria-pressed="${CALC.inv}"`:"";
+    const al=k==="deg"?`Angles in ${CALC.deg?"degrees":"radians"}, tap to switch`:(CALC.inv&&INVK[k]?lab:a||l);
+    return `<button type="button" class="key${cls?" "+cls:""}" data-k="${esc(key)}"${pressed} aria-label="${esc(al)}">${lab}</button>`;}).join("");
+  kp.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>calcPress(b.dataset.k));
+}
+const CALC_TOKENS=["sin⁻¹(","cos⁻¹(","tan⁻¹(","sin(","cos(","tan(","ln(","log(","10^(","e^(","√(","Ans","×10^","⁻¹"];
+function calcPress(k){
+  const cx=document.getElementById("cx");
+  if(k==="deg"){CALC.deg=!CALC.deg;saveCalc();main.querySelectorAll("[data-ang]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.ang===(CALC.deg?"deg":"rad")));calcDrawKeys();calcPreview();return;}
+  if(k==="inv"){CALC.inv=!CALC.inv;calcDrawKeys();return;}
+  if(k==="ac"){CALC.expr="";CALC.pos=0;CALC.shown=null;cx.value="";calcPreview();return;}
+  if(k==="="){calcEquals();return;}
+  if(k==="bs"){
+    let p=CALC.pos,v=CALC.expr;if(p<=0)return;
+    const t=CALC_TOKENS.find(t=>v.slice(0,p).endsWith(t));const n=t?t.length:1;
+    CALC.expr=v.slice(0,p-n)+v.slice(p);CALC.pos=p-n;CALC.shown=null;cx.value=CALC.expr;cx.setSelectionRange(CALC.pos,CALC.pos);calcPreview();return;}
+  /* after a result, an operator continues from it and a number starts over */
+  if(CALC.shown!==null&&CALC.pos===CALC.expr.length){
+    if(/^[×÷+−^²⁻]/.test(k)){CALC.expr="Ans";CALC.pos=3;}
+    else{CALC.expr="";CALC.pos=0;}
+    CALC.shown=null;cx.value=CALC.expr;
+  }
+  if(CALC.inv&&/[(]$/.test(k)){CALC.inv=false;calcDrawKeys();}
+  calcInsert(k);
+}
+function calcInsert(t){
+  const cx=document.getElementById("cx");if(!cx)return;
+  if(CALC.shown!==null&&CALC.pos===CALC.expr.length){CALC.expr=/^×10\^/.test(t)?"Ans":"";CALC.pos=CALC.expr.length;}
+  CALC.shown=null;
+  const p=Math.min(CALC.pos,CALC.expr.length);
+  CALC.expr=CALC.expr.slice(0,p)+t+CALC.expr.slice(p);CALC.pos=p+t.length;
+  cx.value=CALC.expr;
+  /* keep the phone keyboard closed while still showing the cursor spot */
+  try{cx.setSelectionRange(CALC.pos,CALC.pos);}catch(e){}
+  if(document.activeElement!==cx)cx.scrollLeft=cx.scrollWidth;
+  calcPreview();
+}
+function calcResultHTML(v,big){
+  const three=calcFmt(v,3,true),full=calcFmt(v);
+  return `<div class="cval ${big?"big":""}">= ${full}</div>${three!==full&&v!==0?`<div class="c3">3 sig figs: ${three}</div>`:""}`;
+}
+function calcPreview(){
+  const out=document.getElementById("cres");if(!out)return;
+  if(CALC.shown!==null){out.innerHTML=calcResultHTML(CALC.shown,true)+`<div class="cmode">${CALC.deg?"Degrees":"Radians"}</div>`;return;}
+  let v=null,err="";
+  try{v=calcEval(CALC.expr,CALC.deg);}catch(e){if(e.calc)err=e.message;else err="Check the expression.";}
+  out.innerHTML=(v!=null?calcResultHTML(v,false):err?`<div class="cerr">${esc(err)}</div>`:`<div class="c3">&nbsp;</div>`)+`<div class="cmode">${CALC.deg?"Degrees":"Radians"}</div>`;
+}
+function calcEquals(){
+  const out=document.getElementById("cres");
+  let v;try{v=calcEval(CALC.expr,CALC.deg);}catch(e){out.innerHTML=`<div class="cerr">${esc(e.calc?e.message:"Check the expression.")}</div><div class="cmode">${CALC.deg?"Degrees":"Radians"}</div>`;return;}
+  if(v==null)return;
+  /* close any parentheses left open so the history reads cleanly */
+  const opens=(CALC.expr.match(/\(/g)||[]).length-(CALC.expr.match(/\)/g)||[]).length;
+  const x=CALC.expr+(opens>0?")".repeat(opens):"");
+  CALC.ans=v;
+  if(!(CALC.hist[0]&&CALC.hist[0].x===x&&CALC.hist[0].v===v))CALC.hist.unshift({x,v});
+  CALC.hist=CALC.hist.slice(0,20);saveCalc();
+  CALC.expr=x;CALC.pos=x.length;CALC.shown=v;
+  const cx=document.getElementById("cx");cx.value=x;
+  calcPreview();
 }
 
 /* ---------- garden drawing ---------- */
@@ -1333,7 +1492,7 @@ function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">About</div><h1>Freebody Physics</h1>
-  <p>A free study companion for calculus based introductory physics: short summaries, every key equation, worked examples, a step by step solver, and quick review that grows a garden. Nothing is locked.</p></header>
+  <p>A free study companion for calculus based introductory physics: short summaries, every key equation, worked examples, a scientific calculator, and quick review that grows a garden. Nothing is locked.</p></header>
   <section class="card stack"><h2>Source and license</h2>
   <p>Content is adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener"><i>University Physics Volume 1</i></a> by Samuel J. Ling, Jeff Sanny, and William Moebs, published by OpenStax at Rice University. Access for free at openstax.org.</p>
   <p>The book is licensed under <a href="${D.licenseUrl}" target="_blank" rel="noopener">Creative Commons Attribution NonCommercial ShareAlike 4.0</a>, and this adapted content is shared under the same license. It may not be used commercially.</p>
@@ -1343,7 +1502,7 @@ function renderAbout(){
     <li>Key concepts, key equations, worked examples, and Check Your Understanding items are taken from the book and reformatted for phones. Learning objectives are left out and stay in the book.</li>
     <li>Figure references inside the text are reworded because figure numbers are not shown.</li>
     <li>Photos credited to third parties are left out; diagrams and graphs made by OpenStax are included and resized.</li>
-    <li>The “In short” summaries, the review items, the garden and launch pad, and the kinematics solver are new. Quick review items use g = 10 m/s².</li>
+    <li>The “In short” summaries, the review items, the garden, and its minigames are new. Quick review items use g = 10 m/s².</li>
     <li>The full explanatory text of each section is not included. Each section links to it on openstax.org.</li>
   </ul></section>
   <section class="card stack"><h2>Notes file check, Chapter ${CH}</h2>
@@ -1541,7 +1700,7 @@ function loadFail(what){
 }
 
 /* ---------- router ---------- */
-/* Addresses: #chapters is the menu, #equations and #review pick a chapter, #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
+/* Addresses: #chapters is the menu, #equations and #review pick a chapter, #calc is the calculator (#solver goes there), #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
    Older links like #learn and #sec-3-2 still work and are sent to the matching new address. */
 function setTab(t){document.querySelectorAll(".tabs a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
 let ROUTE_N=0;
@@ -1556,6 +1715,8 @@ async function route(){
   if(!h||h==="chapters"){setTab("learn");await renderMenu(my);if(my===ROUTE_N)done();return;}
   if(h==="equations"){setTab("equations");await renderEqPicker(my);if(my===ROUTE_N)done();return;}
   if(h==="review"){setTab("review");await renderReviewPicker(my);if(my===ROUTE_N)done();return;}
+  if(h==="solver"){location.replace("#calc");return;}
+  if(h==="calc"){setTab("calc");renderCalc();window.scrollTo(0,0);return;}
   /* every other page needs a chapter: the one in the address, or the last one opened */
   m=h.match(/^ch(\d+)(?:\/(.*))?$/);
   const want=m?+m[1]:(CH||lastCh()),sub=m?(m[2]||""):h;
@@ -1570,8 +1731,7 @@ async function route(){
     if(st==="missing"){setTab("learn");renderSoon(want);done();return;}
     if(st==="error"){loadFail(`book/ch${pad2(want)}.json`);return;}
   }
-  if(sub==="solver"){renderSolver();setTab("solver");}
-  else if(sub==="about"){renderAbout();setTab("");}
+  if(sub==="about"){renderAbout();setTab("");}
   else if(!m){location.replace("#chapters");return;}
   else if((m=sub.match(/^(\d+)\.(\d+)$/))&&S.some(x=>x.num===sub)){renderSection(S.findIndex(x=>x.num===sub));setTab("learn");}
   else if(sub==="equations"){renderEquations();setTab("equations");}
@@ -1584,7 +1744,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();
   route();
-  window.__fb={kinSolve,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
