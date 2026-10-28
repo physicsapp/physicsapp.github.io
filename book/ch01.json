@@ -10,6 +10,7 @@
  "keyEquations": [
   {
    "name": "Percent uncertainty",
+   "sec": "1.6",
    "tex": "\\text{Percent uncertainty}=\\frac{\\delta A}{A}\\, \\times \\, 100%"
   }
  ],

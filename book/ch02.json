@@ -10,126 +10,157 @@
  "keyEquations": [
   {
    "name": "Multiplication by a scalar (vector equation)",
+   "sec": "2.1",
    "tex": "\\mathbf{\\vec{B}}=\\alpha \\mathbf{\\vec{A}}"
   },
   {
    "name": "Multiplication by a scalar (scalar equation for magnitudes)",
+   "sec": "2.1",
    "tex": "B=|\\alpha |A"
   },
   {
    "name": "Resultant of two vectors",
+   "sec": "2.1",
    "tex": "{\\mathbf{\\vec{D}}}_{AD}={\\mathbf{\\vec{D}}}_{AC}+{\\mathbf{\\vec{D}}}_{CD}"
   },
   {
    "name": "Commutative law",
+   "sec": "2.1",
    "tex": "\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}}=\\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}"
   },
   {
    "name": "Associative law",
+   "sec": "2.1",
    "tex": "(\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}})+\\mathbf{\\vec{C}}=\\mathbf{\\vec{A}}+(\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})"
   },
   {
    "name": "Distributive law",
+   "sec": "2.1",
    "tex": "{\\alpha}_{1}\\mathbf{\\vec{A}}+{\\alpha}_{2}\\mathbf{\\vec{A}}=({\\alpha}_{1}+{\\alpha}_{2})\\mathbf{\\vec{A}}"
   },
   {
    "name": "The component form of a vector in two dimensions",
+   "sec": "2.2",
    "tex": "\\mathbf{\\vec{A}}={A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}}"
   },
   {
    "name": "Scalar components of a vector in two dimensions",
+   "sec": "2.2",
    "tex": "\\begin{cases}{A}_{x}={x}_{e}-{x}_{b} \\\\ {A}_{y}={y}_{e}-{y}_{b}\\end{cases}"
   },
   {
    "name": "Magnitude of a vector in a plane",
+   "sec": "2.2",
    "tex": "A=\\sqrt{{A}_{x}^{2}+{A}_{y}^{2}}"
   },
   {
    "name": "The direction angle of a vector in a plane",
+   "sec": "2.2",
    "tex": "{\\theta}_{A}={\\tan}^{-1}(\\frac{{A}_{y}}{{A}_{x}})"
   },
   {
    "name": "Scalar components of a vector in a plane",
+   "sec": "2.2",
    "tex": "\\begin{cases}{A}_{x}=A\\, \\cos \\, {\\theta}_{A} \\\\ {A}_{y}=A\\, \\sin \\, {\\theta}_{A}\\end{cases}"
   },
   {
    "name": "Polar coordinates in a plane",
+   "sec": "2.2",
    "tex": "\\begin{cases}x=r\\, \\cos \\, \\phi \\\\ y=r\\, \\sin \\, \\phi \\end{cases}"
   },
   {
    "name": "The component form of a vector in three dimensions",
+   "sec": "2.2",
    "tex": "\\mathbf{\\vec{A}}={A}_{x}\\mathbf{\\hat{i}}+{A}_{y}\\mathbf{\\hat{j}}+{A}_{z}\\mathbf{\\hat{k}}"
   },
   {
    "name": "The scalar z-component of a vector in three dimensions",
+   "sec": "2.2",
    "tex": "{A}_{z}={z}_{e}-{z}_{b}"
   },
   {
    "name": "Magnitude of a vector in three dimensions",
+   "sec": "2.2",
    "tex": "A=\\sqrt{{A}_{x}^{2}+{A}_{y}^{2}+{A}_{z}^{2}}"
   },
   {
    "name": "Distributive property",
+   "sec": "2.3",
    "tex": "\\alpha (\\mathbf{\\vec{A}}+\\mathbf{\\vec{B}})=\\alpha \\mathbf{\\vec{A}}+\\alpha \\mathbf{\\vec{B}}"
   },
   {
    "name": "Antiparallel vector to A→",
+   "sec": "2.3",
    "tex": "-\\mathbf{\\vec{A}}=-{A}_{x}\\mathbf{\\hat{i}}-{A}_{y}\\mathbf{\\hat{j}}-{A}_{z}\\mathbf{\\hat{k}}"
   },
   {
    "name": "Equal vectors",
+   "sec": "2.3",
    "tex": "\\mathbf{\\vec{A}}=\\mathbf{\\vec{B}}\\; ⇔\\; \\begin{cases}{A}_{x}={B}_{x} \\\\ {A}_{y}={B}_{y} \\\\ {A}_{z}={B}_{z}\\end{cases}"
   },
   {
    "name": "Components of the resultant of N vectors",
+   "sec": "2.3",
    "tex": "\\begin{cases}{F}_{Rx}={\\sum}_{k=1}^{N}{F}_{kx}={F}_{1x}+{F}_{2x}+\\ldots +{F}_{Nx} \\\\ {F}_{Ry}={\\sum}_{k=1}^{N}{F}_{ky}={F}_{1y}+{F}_{2y}+\\ldots +{F}_{Ny} \\\\ {F}_{Rz}={\\sum}_{k=1}^{N}{F}_{kz}={F}_{1z}+{F}_{2z}+\\ldots +{F}_{Nz}\\end{cases}"
   },
   {
    "name": "General unit vector",
+   "sec": "2.3",
    "tex": "\\mathbf{\\hat{V}}=\\frac{\\mathbf{\\vec{V}}}{V}"
   },
   {
    "name": "Definition of the scalar product",
+   "sec": "2.4",
    "tex": "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}=AB\\, \\cos \\, \\phi"
   },
   {
    "name": "Commutative property of the scalar product",
+   "sec": "2.4",
    "tex": "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}=\\mathbf{\\vec{B}}\\cdot \\mathbf{\\vec{A}}"
   },
   {
    "name": "Distributive property of the scalar product",
+   "sec": "2.4",
    "tex": "\\mathbf{\\vec{A}}\\cdot (\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})=\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{C}}"
   },
   {
    "name": "Scalar product in terms of scalar components of vectors",
+   "sec": "2.4",
    "tex": "\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}={A}_{x}{B}_{x}+{A}_{y}{B}_{y}+{A}_{z}{B}_{z}"
   },
   {
    "name": "Cosine of the angle between two vectors",
+   "sec": "2.4",
    "tex": "\\cos \\, \\phi =\\frac{\\mathbf{\\vec{A}}\\cdot \\mathbf{\\vec{B}}}{AB}"
   },
   {
    "name": "Dot products of unit vectors",
+   "sec": "2.4",
    "tex": "\\mathbf{\\hat{i}}\\cdot \\mathbf{\\hat{j}}=\\mathbf{\\hat{j}}\\cdot \\mathbf{\\hat{k}}=\\mathbf{\\hat{k}}\\cdot \\mathbf{\\hat{i}}=0"
   },
   {
    "name": "Magnitude of the vector product (definition)",
+   "sec": "2.4",
    "tex": "|\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}|=AB\\, \\sin \\, \\phi"
   },
   {
    "name": "Anticommutative property of the vector product",
+   "sec": "2.4",
    "tex": "\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}=-\\mathbf{\\vec{B}}\\, \\times \\, \\mathbf{\\vec{A}}"
   },
   {
    "name": "Distributive property of the vector product",
+   "sec": "2.4",
    "tex": "\\mathbf{\\vec{A}}\\, \\times \\, (\\mathbf{\\vec{B}}+\\mathbf{\\vec{C}})=\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}+\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{C}}"
   },
   {
    "name": "Cross products of unit vectors",
+   "sec": "2.4",
    "tex": "\\begin{cases}\\mathbf{\\hat{i}}\\, \\times \\, \\mathbf{\\hat{j}}=+\\mathbf{\\hat{k}}, \\\\ \\mathbf{\\hat{j}}\\, \\times \\, \\mathbf{\\hat{k}}=+\\mathbf{\\hat{i}}, \\\\ \\mathbf{\\hat{k}}\\, \\times \\, \\mathbf{\\hat{i}}=+\\mathbf{\\hat{j}}.\\end{cases}"
   },
   {
    "name": "The cross product in terms of scalar components of vectors",
+   "sec": "2.4",
    "tex": "\\mathbf{\\vec{A}}\\, \\times \\, \\mathbf{\\vec{B}}=({A}_{y}{B}_{z}-{A}_{z}{B}_{y})\\mathbf{\\hat{i}}+({A}_{z}{B}_{x}-{A}_{x}{B}_{z})\\mathbf{\\hat{j}}+({A}_{x}{B}_{y}-{A}_{y}{B}_{x})\\mathbf{\\hat{k}}"
   }
  ],

@@ -10,58 +10,72 @@
  "keyEquations": [
   {
    "name": "Net external force",
+   "sec": "5.1",
    "tex": "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\sum \\mathbf{\\vec{F}}={\\mathbf{\\vec{F}}}_{1}+{\\mathbf{\\vec{F}}}_{2}+\\cdots"
   },
   {
    "name": "Newton’s first law",
+   "sec": "5.2",
    "tex": "\\mathbf{\\vec{v}}=\\, \\text{constant when}\\, {\\mathbf{\\vec{F}}}_{\\text{net}}=\\mathbf{\\vec{0}}\\, \\text{N}"
   },
   {
    "name": "Newton’s second law, vector form",
+   "sec": "5.3",
    "tex": "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\sum \\mathbf{\\vec{F}}=m\\mathbf{\\vec{a}}"
   },
   {
    "name": "Newton’s second law, scalar form",
+   "sec": "5.3",
    "tex": "{F}_{\\text{net}}=ma"
   },
   {
    "name": "Newton’s second law, component form",
+   "sec": "5.3",
    "tex": "\\sum {\\mathbf{\\vec{F}}}_{x}=m{\\mathbf{\\vec{a}}}_{x}\\text{,}\\, \\sum {\\mathbf{\\vec{F}}}_{y}=m{\\mathbf{\\vec{a}}}_{y},\\, \\text{and}\\, \\sum {\\mathbf{\\vec{F}}}_{z}=m{\\mathbf{\\vec{a}}}_{z}."
   },
   {
    "name": "Newton’s second law, momentum form",
+   "sec": "5.3",
    "tex": "{\\mathbf{\\vec{F}}}_{\\text{net}}=\\frac{d\\mathbf{\\vec{p}}}{dt}"
   },
   {
    "name": "Definition of weight, vector form",
+   "sec": "5.4",
    "tex": "\\mathbf{\\vec{w}}=m\\mathbf{\\vec{g}}"
   },
   {
    "name": "Definition of weight, scalar form",
+   "sec": "5.4",
    "tex": "w=mg"
   },
   {
    "name": "Newton’s third law",
+   "sec": "5.5",
    "tex": "{\\mathbf{\\vec{F}}}_{\\text{AB}}=-{\\mathbf{\\vec{F}}}_{\\text{BA}}"
   },
   {
    "name": "Normal force on an object resting on a horizontal surface, vector form",
+   "sec": "5.6",
    "tex": "\\mathbf{\\vec{N}}=-m\\mathbf{\\vec{g}}"
   },
   {
    "name": "Normal force on an object resting on a horizontal surface, scalar form",
+   "sec": "5.6",
    "tex": "N=mg"
   },
   {
    "name": "Normal force on an object resting on an inclined plane, scalar form",
+   "sec": "5.6",
    "tex": "N=mg\\cos \\, \\theta"
   },
   {
    "name": "Restoring force by a spring displaced by x from the relaxed position",
+   "sec": "5.6",
    "tex": "\\mathbf{\\vec{F}}=-k\\mathbf{\\vec{x}}."
   },
   {
    "name": "Tension in a cable supporting an object of mass m at rest, scalar form",
+   "sec": "5.6",
    "tex": "T=w=mg"
   }
  ],

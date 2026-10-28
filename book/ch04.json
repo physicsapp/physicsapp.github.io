@@ -10,90 +10,112 @@
  "keyEquations": [
   {
    "name": "Position vector",
+   "sec": "4.1",
    "tex": "\\mathbf{\\vec{r}}(t)=x(t)\\mathbf{\\hat{i}}+y(t)\\mathbf{\\hat{j}}+z(t)\\mathbf{\\hat{k}}"
   },
   {
    "name": "Displacement vector",
+   "sec": "4.1",
    "tex": "\\Delta \\mathbf{\\vec{r}}=\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})"
   },
   {
    "name": "Velocity vector",
+   "sec": "4.1",
    "tex": "\\mathbf{\\vec{v}}(t)=\\lim _{\\Delta t\\to 0}\\frac{\\mathbf{\\vec{r}}(t+\\Delta t)-\\mathbf{\\vec{r}}(t)}{\\Delta t}=\\frac{d\\mathbf{\\vec{r}}}{dt}"
   },
   {
    "name": "Velocity in terms of components",
+   "sec": "4.1",
    "tex": "\\mathbf{\\vec{v}}(t)={v}_{x}(t)\\mathbf{\\hat{i}}+{v}_{y}(t)\\mathbf{\\hat{j}}+{v}_{z}(t)\\mathbf{\\hat{k}}"
   },
   {
    "name": "Velocity components",
+   "sec": "4.1",
    "tex": "{v}_{x}(t)=\\frac{dx(t)}{dt}\\; {v}_{y}(t)=\\frac{dy(t)}{dt}\\; {v}_{z}(t)=\\frac{dz(t)}{dt}"
   },
   {
    "name": "Average velocity",
+   "sec": "4.1",
    "tex": "{\\mathbf{\\vec{v}}}_{\\text{avg}}=\\frac{\\mathbf{\\vec{r}}({t}_{2})-\\mathbf{\\vec{r}}({t}_{1})}{{t}_{2}-{t}_{1}}"
   },
   {
    "name": "Instantaneous acceleration",
+   "sec": "4.2",
    "tex": "\\mathbf{\\vec{a}}(t)=\\lim _{t\\to 0}\\frac{\\mathbf{\\vec{v}}(t+\\Delta t)-\\mathbf{\\vec{v}}(t)}{\\Delta t}=\\frac{d\\mathbf{\\vec{v}}(t)}{dt}"
   },
   {
    "name": "Instantaneous acceleration, component form",
+   "sec": "4.2",
    "tex": "\\mathbf{\\vec{a}}(t)=\\frac{d{v}_{x}(t)}{dt}\\mathbf{\\hat{i}}+\\frac{d{v}_{y}(t)}{dt}\\mathbf{\\hat{j}}+\\frac{d{v}_{z}(t)}{dt}\\mathbf{\\hat{k}}"
   },
   {
    "name": "Instantaneous acceleration as second derivatives of position",
+   "sec": "4.2",
    "tex": "\\mathbf{\\vec{a}}(t)=\\frac{{d}^{2}x(t)}{d{t}^{2}}\\mathbf{\\hat{i}}+\\frac{{d}^{2}y(t)}{d{t}^{2}}\\mathbf{\\hat{j}}+\\frac{{d}^{2}z(t)}{d{t}^{2}}\\mathbf{\\hat{k}}"
   },
   {
    "name": "Time of flight",
+   "sec": "4.3",
    "tex": "{T}_{\\text{tof}}=\\frac{2({v}_{0}\\sin {\\theta}_{0})}{g}"
   },
   {
    "name": "Trajectory",
+   "sec": "4.3",
    "tex": "y=(\\tan {\\theta}_{0})x-[\\frac{g}{2{({v}_{0}\\cos {\\theta}_{0})}^{2}}]{x}^{2}"
   },
   {
    "name": "Range",
+   "sec": "4.3",
    "tex": "R=\\frac{{v}_{0}^{2}\\sin \\, 2{\\theta}_{0}}{g}"
   },
   {
    "name": "Centripetal acceleration",
+   "sec": "4.4",
    "tex": "{a}_{\\text{C}}=\\frac{{v}^{2}}{r}"
   },
   {
    "name": "Position vector, uniform circular motion",
+   "sec": "4.4",
    "tex": "\\mathbf{\\vec{r}}(t)=A\\cos \\, \\omega t\\, \\mathbf{\\hat{i}}+A\\, \\sin \\, \\omega t\\mathbf{\\hat{j}}"
   },
   {
    "name": "Velocity vector, uniform circular motion",
+   "sec": "4.4",
    "tex": "\\mathbf{\\vec{v}}(t)=\\frac{d\\mathbf{\\vec{r}}(t)}{dt}=-A\\omega \\, \\sin \\, \\omega t\\mathbf{\\hat{i}}+A\\omega \\, \\cos \\, \\omega t\\mathbf{\\hat{j}}"
   },
   {
    "name": "Acceleration vector, uniform circular motion",
+   "sec": "4.4",
    "tex": "\\mathbf{\\vec{a}}(t)=\\frac{d\\mathbf{\\vec{v}}(t)}{dt}=-A{\\omega}^{2}\\, \\cos \\, \\omega t\\mathbf{\\hat{i}}-A{\\omega}^{2}\\, \\sin \\, \\omega t\\mathbf{\\hat{j}}"
   },
   {
    "name": "Tangential acceleration",
+   "sec": "4.4",
    "tex": "{a}_{\\text{T}}=\\frac{d|\\mathbf{\\vec{v}}|}{dt}"
   },
   {
    "name": "Total acceleration",
+   "sec": "4.4",
    "tex": "\\mathbf{\\vec{a}}={\\mathbf{\\vec{a}}}_{\\text{C}}+{\\mathbf{\\vec{a}}}_{\\text{T}}"
   },
   {
    "name": "Position vector in frame S is the position vector in frame S′ plus the vector from the origin of S to the origin of S′",
+   "sec": "4.5",
    "tex": "{\\mathbf{\\vec{r}}}_{PS}={\\mathbf{\\vec{r}}}_{P{S}^{'}}+{\\mathbf{\\vec{r}}}_{{S}^{'}S}"
   },
   {
    "name": "Relative velocity equation connecting two reference frames",
+   "sec": "4.5",
    "tex": "{\\mathbf{\\vec{v}}}_{PS}={\\mathbf{\\vec{v}}}_{P{S}^{'}}+{\\mathbf{\\vec{v}}}_{{S}^{'}S}"
   },
   {
    "name": "Relative velocity equation connecting more than two reference frames",
+   "sec": "4.5",
    "tex": "{\\mathbf{\\vec{v}}}_{PC}={\\mathbf{\\vec{v}}}_{PA}+{\\mathbf{\\vec{v}}}_{AB}+{\\mathbf{\\vec{v}}}_{BC}"
   },
   {
    "name": "Relative acceleration equation",
+   "sec": "4.5",
    "tex": "{\\mathbf{\\vec{a}}}_{PS}={\\mathbf{\\vec{a}}}_{P{S}^{'}}+{\\mathbf{\\vec{a}}}_{{S}^{'}S}"
   }
  ],

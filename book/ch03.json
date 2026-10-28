@@ -10,74 +10,92 @@
  "keyEquations": [
   {
    "name": "Displacement",
+   "sec": "3.1",
    "tex": "\\Delta x={x}_{\\text{f}}-{x}_{\\text{i}}"
   },
   {
    "name": "Total displacement",
+   "sec": "3.1",
    "tex": "\\Delta {x}_{\\text{Total}}=\\sum \\Delta {x}_{\\text{i}}"
   },
   {
    "name": "Average velocity",
+   "sec": "3.1",
    "tex": "\\bar{v}=\\frac{\\Delta x}{\\Delta t}=\\frac{{x}_{2}-{x}_{1}}{{t}_{2}-{t}_{1}}"
   },
   {
    "name": "Instantaneous velocity",
+   "sec": "3.2",
    "tex": "v(t)=\\frac{dx(t)}{dt}"
   },
   {
    "name": "Average speed",
+   "sec": "3.1",
    "tex": "\\text{Average speed}=\\bar{s}=\\frac{\\text{Total distance}}{\\text{Elapsed time}}"
   },
   {
    "name": "Instantaneous speed",
+   "sec": "3.2",
    "tex": "\\text{Instantaneous speed}=|v(t)|"
   },
   {
    "name": "Average acceleration",
+   "sec": "3.3",
    "tex": "\\bar{a}=\\frac{\\Delta v}{\\Delta t}=\\frac{{v}_{f}-{v}_{0}}{{t}_{f}-{t}_{0}}"
   },
   {
    "name": "Instantaneous acceleration",
+   "sec": "3.3",
    "tex": "a(t)=\\frac{dv(t)}{dt}"
   },
   {
    "name": "Position from average velocity",
+   "sec": "3.4",
    "tex": "x={x}_{0}+\\bar{v}t"
   },
   {
    "name": "Average velocity (for constant acceleration)",
+   "sec": "3.4",
    "tex": "\\bar{v}=\\frac{{v}_{0}+v}{2}"
   },
   {
    "name": "Velocity from acceleration",
+   "sec": "3.4",
    "tex": "v={v}_{0}+at\\; (\\text{constant}\\, a\\text{)}"
   },
   {
    "name": "Position from velocity and acceleration",
+   "sec": "3.4",
    "tex": "x={x}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}\\; (\\text{constant}\\, a\\text{)}"
   },
   {
    "name": "Velocity from distance",
+   "sec": "3.4",
    "tex": "{v}^{2}={v}_{0}^{2}+2a(x-{x}_{0})\\; (\\text{constant}\\, a\\text{)}"
   },
   {
    "name": "Velocity of free fall",
+   "sec": "3.5",
    "tex": "v={v}_{0}-gt\\, \\text{(positive upward)}"
   },
   {
    "name": "Height of free fall",
+   "sec": "3.5",
    "tex": "y={y}_{0}+{v}_{0}t-\\frac{1}{2}g{t}^{2}"
   },
   {
    "name": "Velocity of free fall from height",
+   "sec": "3.5",
    "tex": "{v}^{2}={v}_{0}^{2}-2g(y-{y}_{0})"
   },
   {
    "name": "Velocity from acceleration",
+   "sec": "3.6",
    "tex": "v(t)=\\int a(t)dt+{C}_{1}"
   },
   {
    "name": "Position from velocity",
+   "sec": "3.6",
    "tex": "x(t)=\\int v(t)dt+{C}_{2}"
   }
  ],

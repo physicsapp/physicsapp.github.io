@@ -10,26 +10,32 @@
  "keyEquations": [
   {
    "name": "Magnitude of static friction",
+   "sec": "6.2",
    "tex": "{f}_{\\text{s}}\\le {\\mu}_{\\text{s}}N"
   },
   {
    "name": "Magnitude of kinetic friction",
+   "sec": "6.2",
    "tex": "{f}_{k}={\\mu}_{k}N"
   },
   {
    "name": "Centripetal force",
+   "sec": "6.3",
    "tex": "{F}_{\\text{c}}=m\\frac{{v}^{2}}{r}\\; \\text{or}\\; {F}_{\\text{c}}=mr{\\omega}^{2}"
   },
   {
    "name": "Ideal angle of a banked curve",
+   "sec": "6.3",
    "tex": "\\tan \\, \\theta =\\frac{{v}^{2}}{rg}"
   },
   {
    "name": "Drag force",
+   "sec": "6.4",
    "tex": "{F}_{D}=\\frac{1}{2}C\\rho A{v}^{2}"
   },
   {
    "name": "Stokes’ law",
+   "sec": "6.4",
    "tex": "{F}_{\\text{s}}=6\\pi r\\eta v"
   }
  ],
