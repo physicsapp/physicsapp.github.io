@@ -136,6 +136,14 @@ figcaption{font-size:.85rem;color:var(--muted)}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .chip{flex:none;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:6px 12px;font-family:var(--font-mono);font-size:.82rem;cursor:pointer;min-height:36px}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+/* chapter switcher and pickers */
+.chswitch{display:flex;align-items:center;gap:10px;min-width:0}
+.chswitch .lbl{font-size:.82rem;color:var(--muted);font-weight:600;flex:none}
+.chswitch .chips{flex:1;min-width:0;gap:6px}
+a.chip{display:inline-grid;place-items:center;min-width:42px;min-height:44px;padding:0 12px;text-decoration:none;color:var(--ink);font-size:.95rem}
+a.chip[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.secrow.cur{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent)}
+.eqhit .open{font-size:.85rem;font-weight:600;color:var(--accent);text-decoration:none;padding:6px 0;width:max-content}
 
 /* equations */
 .search{width:100%;border:1px solid var(--rule);background:var(--card);border-radius:10px;padding:12px 14px;font:inherit;color:var(--ink)}
@@ -617,6 +625,7 @@ function renderSection(i){
 function renderEquations(){
   crumb.textContent="Key equations";
   main.innerHTML=`
+  ${chSwitch("equations")}
   <header class="stack"><div class="eyebrow">Chapter ${CH}</div><h1>Key equations</h1></header>
   <input class="search" id="eqq" type="search" placeholder="${esc(chx().eqHint||"Search the equations")}" aria-label="Search equations">
   <div class="stack" id="eqlist">
@@ -876,6 +885,7 @@ function renderGarden(){
   const nx=nextSec(), have=bloomed(), nHave=have.filter(Boolean).length, T=toy(), nAll=have.length;
   const cols=nAll<=3?nAll:nAll===4?2:3;
   main.innerHTML=`
+  ${chSwitch("review")}
   <header class="stack"><div class="eyebrow">Chapter ${CH} · only you can see this</div><h1>Your garden</h1></header>
   ${PROG.preview?`<p class="note">Preview mode is on: every plant shows fully grown. <button class="linkbtn" id="pvoff">Turn it off</button></p>`:""}
   <section class="paper garden" aria-label="Plants, one per section" style="grid-template-columns:repeat(${cols},1fr)">
@@ -1345,12 +1355,12 @@ function renderAbout(){
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
-let READY=null;
+let READY=null,READY_V=null;
 function probeReady(){
   if(READY)return READY;
   READY=Promise.all(CHAPTERS.map(([n])=>CACHE[n]?Promise.resolve([n,true]):
     fetch(`book/ch${pad2(n)}.json`,{method:"HEAD",cache:"no-cache"}).then(r=>[n,r.ok]).catch(()=>[n,null])))
-    .then(l=>Object.fromEntries(l));
+    .then(l=>(READY_V=Object.fromEntries(l)));
   return READY;
 }
 function loadSetup(){
@@ -1388,7 +1398,7 @@ function useChapter(n){
   setTabLinks();
 }
 function setTabLinks(){
-  const t={learn:H(""),equations:H("equations"),review:H("review")};
+  const t={learn:H(""),equations:"#equations",review:"#review"};
   document.querySelectorAll(".tabs a").forEach(a=>{if(t[a.dataset.tab])a.setAttribute("href",t[a.dataset.tab]);});
 }
 function chTitle(n){const c=CHAPTERS.find(x=>x[0]===n);return c?c[1]:"";}
@@ -1436,24 +1446,104 @@ function renderSoon(n){
   <div class="row"><a class="btn" href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">Open the book on OpenStax</a>
   <a class="btn quiet" href="#chapters">All chapters</a></div>`;
 }
+/* ---------- chapter switcher (Equations and Garden pages) ---------- */
+function readyList(r){return CHAPTERS.map(c=>c[0]).filter(n=>r&&r[n]!==false);}
+function chipsHTML(sub,r){
+  const l=readyList(r);if(l.length<2)return "";
+  return `<span class="lbl">Chapter</span><div class="chips">${l.map(n=>`<a class="chip" href="#ch${n}/${sub}"${n===CH?` aria-current="page"`:""} aria-label="Chapter ${n}, ${esc(chTitle(n))}">${n}</a>`).join("")}</div>`;
+}
+function showCur(el){const c=el&&el.querySelector('[aria-current="page"]'),box=el&&el.querySelector(".chips");if(c&&box)box.scrollLeft=c.offsetLeft-box.offsetLeft-box.clientWidth/2+c.offsetWidth/2;}
+function chSwitch(sub){
+  if(READY_V){const h=chipsHTML(sub,READY_V);if(!h)return "";setTimeout(()=>showCur(main.querySelector(".chswitch")),0);return `<nav class="chswitch" aria-label="Switch chapter">${h}</nav>`;}
+  probeReady().then(r=>{const el=main.querySelector(".chswitch");if(!el)return;const h=chipsHTML(sub,r);if(h){el.innerHTML=h;el.hidden=false;showCur(el);}});
+  return `<nav class="chswitch" aria-label="Switch chapter" hidden></nav>`;
+}
+
+/* ---------- chapter pickers for the Equations and Review tabs ---------- */
+const BOOK={};
+function fetchBook(n){
+  if(CACHE[n]&&CACHE[n].D)return Promise.resolve(CACHE[n].D);
+  if(BOOK[n])return BOOK[n];
+  BOOK[n]=fetch(`book/ch${pad2(n)}.json`,{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null);
+  return BOOK[n];
+}
+function pickOrder(r){const l=readyList(r),last=+store("last-chapter");return l.includes(last)?[last,...l.filter(n=>n!==last)]:l;}
+function pickRow(n,href,meta,cur){
+  meta=[cur?"Last opened":"",meta].filter(Boolean).join(" · ");
+  return `<a class="secrow${cur?" cur":""}" href="${href}">
+    <span class="n">${n}</span>
+    <span class="t">${esc(chTitle(n))}${meta?`<span class="meta" style="display:block">${meta}</span>`:""}</span>
+    <span class="chev" aria-hidden="true">›</span></a>`;
+}
+const PICK_ATTRIB=`<p class="attrib">Adapted from <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a></p>`;
+async function renderReviewPicker(my){
+  crumb.textContent="Review";
+  main.innerHTML=`<p class="muted">Loading chapters…</p>`;
+  const r=await probeReady();if(my!==ROUTE_N)return;
+  const l=pickOrder(r),last=+store("last-chapter");
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">Review</div><h1>Pick a garden</h1>
+    <p class="muted">Each chapter has its own garden. Quick reviews of a chapter grow its plants.</p></header>
+  ${l.length?`<nav class="seclist chlist" aria-label="Chapters to review">
+    ${l.map(n=>pickRow(n,`#ch${n}/review`,chGrowth(n)||"Not started yet",n===last)).join("")}
+  </nav>`:`<p class="note">No chapters could be found. Check your connection and reload.</p>`}
+  <a class="btn quiet" href="#chapters" style="width:max-content">All chapters</a>
+  ${PICK_ATTRIB}`;
+}
+async function renderEqPicker(my){
+  crumb.textContent="Key equations";
+  main.innerHTML=`<p class="muted">Loading chapters…</p>`;
+  const r=await probeReady();if(my!==ROUTE_N)return;
+  const l=pickOrder(r),last=+store("last-chapter");
+  const books=await Promise.all(l.map(fetchBook));if(my!==ROUTE_N)return;
+  const B={};l.forEach((n,i)=>{if(books[i]&&books[i].keyEquations)B[n]=books[i];});
+  const all=[];
+  CHAPTERS.forEach(([n])=>{if(!B[n])return;const es=(CHX[n]||{}).eqSec||[];
+    B[n].keyEquations.forEach((e,j)=>all.push({n,e,sec:es[j]||"",key:(e.name+" "+(es[j]||"")+" chapter "+n).toLowerCase()}));});
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">Key equations</div><h1>Equations</h1>
+    <p class="muted">Pick a chapter, or search the key equations of every chapter at once.</p></header>
+  <input class="search" id="eqall" type="search" placeholder="Search all chapters" aria-label="Search the key equations of all chapters">
+  <div class="stack" id="eqhits" hidden></div>
+  <nav class="seclist chlist" id="eqchs" aria-label="Chapters">
+    ${l.map(n=>pickRow(n,`#ch${n}/equations`,B[n]?plural(B[n].keyEquations.length,"key equation"):"",n===last)).join("")}
+  </nav>
+  ${PICK_ATTRIB}`;
+  const q=document.getElementById("eqall"),hits=document.getElementById("eqhits"),chs=document.getElementById("eqchs");
+  const MAX=30;let tm=0;
+  q.addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(()=>{
+    const words=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if(!words.length){hits.hidden=true;hits.innerHTML="";chs.hidden=false;return;}
+    const f=all.filter(x=>words.every(w=>x.key.includes(w)));
+    chs.hidden=true;hits.hidden=false;
+    hits.innerHTML=`<p class="muted small" aria-live="polite">${f.length?(f.length>MAX?`Showing ${MAX} of ${f.length} matches. Add a word to narrow it down.`:f.length+(f.length===1?" match":" matches")+" in "+plural(new Set(f.map(x=>x.n)).size,"chapter")):"No equation matches that search."}</p>`+
+      f.slice(0,MAX).map(x=>`<article class="card eqcard eqhit">
+        <div class="head"><h3>${esc(x.e.name)}</h3><span class="tag">${x.sec||"Ch "+x.n}</span></div>
+        <div class="eq">\\[${x.e.tex}\\]</div>
+        <a class="open" href="#ch${x.n}/equations">Chapter ${x.n} equations ›</a></article>`).join("");
+    typeset(hits);},200);});
+}
+
 function loadFail(what){
   main.innerHTML=`<p class="note err">The chapter content (${esc(what)}) didn't load. If you opened index.html straight from your computer, open it through a web address instead, such as GitHub Pages. Otherwise check your connection and reload.</p>`;
 }
 
 /* ---------- router ---------- */
-/* Addresses: #chapters is the menu, #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
-   Older links like #learn, #review, and #sec-3-2 still work and are sent to the matching new address. */
+/* Addresses: #chapters is the menu, #equations and #review pick a chapter, #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
+   Older links like #learn and #sec-3-2 still work and are sent to the matching new address. */
 function setTab(t){document.querySelectorAll(".tabs a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
 let ROUTE_N=0;
 async function route(){
   const my=++ROUTE_N;
   const h=decodeURIComponent((location.hash||"").slice(1));let m;
   if((m=h.match(/^sec-(\d+)-(\d+)$/))){location.replace(`#ch${+m[1]}/${+m[1]}.${+m[2]}`);return;}
-  if(/^(learn|equations|review|practice|launch)$/.test(h)){location.replace(`#ch${lastCh()}`+(h==="learn"?"":"/"+(h==="practice"?"review":h)));return;}
+  if(/^(learn|practice|launch)$/.test(h)){location.replace(`#ch${lastCh()}`+(h==="learn"?"":"/"+(h==="practice"?"review":h)));return;}
   await loadSetup();
   if(my!==ROUTE_N)return;
   const done=()=>{window.scrollTo(0,0);typeset(main);};
   if(!h||h==="chapters"){setTab("learn");await renderMenu(my);if(my===ROUTE_N)done();return;}
+  if(h==="equations"){setTab("equations");await renderEqPicker(my);if(my===ROUTE_N)done();return;}
+  if(h==="review"){setTab("review");await renderReviewPicker(my);if(my===ROUTE_N)done();return;}
   /* every other page needs a chapter: the one in the address, or the last one opened */
   m=h.match(/^ch(\d+)(?:\/(.*))?$/);
   const want=m?+m[1]:(CH||lastCh()),sub=m?(m[2]||""):h;
