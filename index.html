@@ -78,7 +78,7 @@ main{display:flex;flex-direction:column;gap:22px;padding-block:20px}
 .secrow .meta{font-size:.82rem;color:var(--muted);font-weight:400;margin-top:2px}
 .chev{color:var(--muted)}
 
-.objectives{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.classdate{margin:0;font-family:var(--font-mono);font-size:.85rem;color:var(--accent)}
 .inshort{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
 .watch{display:flex;gap:8px;font-size:.95rem}
 .watch b{font-family:var(--font-display);font-stretch:85%;white-space:nowrap}
@@ -403,35 +403,89 @@ function makeDrill(d){
 }
 
 /* ---------- progress and spaced review (saved on this device only) ---------- */
-const PKEY="progress-ch3",SESSION_LEN=8,MIN_NEW=4,MAX_PTS=3,GAP=[0,1,3,7,14],BLOOM=0.75;
+/* ---------- settings.txt and schedule.txt: both optional, both yours to edit ---------- */
+const CFG={perReview:5,toBloom:15,perDay:0,showDates:true,year:new Date().getFullYear()};
+let CFG_ERRS=[],SCHED={},HAVE_SETTINGS=false,HAVE_SCHED=false;
+const SETTING_KEYS={"questions per review":["perReview",1,50],"right answers to grow a flower":["toBloom",1,500],"reviews per day":["perDay",0,100]};
+function parseSettings(txt){
+  txt.replace(/\r/g,"").split("\n").forEach((raw,i)=>{
+    const line=raw.replace(/#.*$/,"").trim();if(!line)return;
+    const m=line.match(/^([^:]+):\s*(.*)$/);
+    if(!m){CFG_ERRS.push(`settings.txt line ${i+1}: should look like "Questions per review: 5"`);return;}
+    const name=m[1].trim(),k=name.toLowerCase(),v=m[2].trim();
+    if(k==="show class dates"){if(/^(yes|no)$/i.test(v))CFG.showDates=/^yes$/i.test(v);else CFG_ERRS.push(`settings.txt line ${i+1}: Show class dates should be yes or no`);return;}
+    const spec=SETTING_KEYS[k];
+    if(!spec){CFG_ERRS.push(`settings.txt line ${i+1}: "${name}" isn't a setting the app knows`);return;}
+    const n=Number(v);
+    if(v===""||!Number.isInteger(n)||n<spec[1]||n>spec[2]){CFG_ERRS.push(`settings.txt line ${i+1}: ${name} should be a whole number from ${spec[1]} to ${spec[2]}, so the app is using ${CFG[spec[0]]}`);return;}
+    CFG[spec[0]]=n;
+  });
+}
+function parseSchedule(txt){
+  const add=(k,d)=>{(SCHED[k]=SCHED[k]||[]).push(d);};
+  txt.replace(/\r/g,"").split("\n").forEach((raw,i)=>{
+    const line=raw.replace(/#.*$/,"").trim();if(!line)return;
+    let m;
+    if((m=line.match(/^year\s*:\s*(\d{4})$/i))){CFG.year=+m[1];return;}
+    m=line.match(/^(\d{1,2})\/(\d{1,2})\s*:\s*(.+)$/);
+    if(!m){CFG_ERRS.push(`schedule.txt line ${i+1}: should look like "1/29: 3.1, 3.2"`);return;}
+    const d={mo:+m[1],dy:+m[2]};
+    if(d.mo<1||d.mo>12||d.dy<1||d.dy>31){CFG_ERRS.push(`schedule.txt line ${i+1}: ${m[1]}/${m[2]} isn't a real date`);return;}
+    for(const part of m[3].split(",").map(s=>s.trim()).filter(Boolean)){
+      let r;
+      if((r=part.match(/^ch(?:apter)?\.?\s*(\d+)$/i)))add("ch"+(+r[1]),d);
+      else if((r=part.match(/^(\d+)\.(\d+)\s+to\s+(?:(\d+)\.)?(\d+)$/i))){
+        if(r[3]&&r[3]!==r[1]){CFG_ERRS.push(`schedule.txt line ${i+1}: "${part}" should stay inside one chapter`);continue;}
+        const a=+r[2],b=+r[4];if(b<a){CFG_ERRS.push(`schedule.txt line ${i+1}: "${part}" should go from low to high`);continue;}
+        for(let k=a;k<=b;k++)add(r[1]+"."+k,d);}
+      else if((r=part.match(/^(\d+)\.(\d+)$/)))add(+r[1]+"."+(+r[2]),d);
+      else CFG_ERRS.push(`schedule.txt line ${i+1}: "${part}" should be a section like 3.1, a range like 3.3 to 3.6, or a chapter like Ch. 1`);
+    }
+  });
+}
+const WD=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function classDates(sec){
+  if(!CFG.showDates)return "";
+  const l=SCHED[sec]||SCHED["ch"+sec.split(".")[0]];if(!l)return "";
+  return l.map(d=>`${WD[new Date(CFG.year,d.mo-1,d.dy).getDay()]} ${d.mo}/${d.dy}`).join(" and ");
+}
+
+/* ---------- progress and growth (saved on this device only) ---------- */
+const PKEY="progress-ch3",GAP=[0,1,3,7,14],BLOOM=1;
 let DAY_OFF=0;
-function loadProg(){const p=store(PKEY);return(p&&typeof p==="object"&&p.items)?Object.assign({missions:{},preview:false},p):{v:1,items:{},missions:{},preview:false};}
+function loadProg(){const p=store(PKEY);return Object.assign({v:2,items:{},missions:{},preview:false,grow:{},days:{}},(p&&typeof p==="object"&&p.items)?p:{});}
 let PROG=loadProg();
 function saveProg(){store(PKEY,PROG);}
 function today(){const d=new Date();return Math.floor((d.getTime()-d.getTimezoneOffset()*6e4)/864e5)+DAY_OFF;}
-function itemPts(it){const r=PROG.items[it.id];if(!r)return 0;return Math.min(MAX_PTS,(r.best||0)+(r.cb?1:0));}
 function secItems(sec){return ITEMS.filter(i=>i.sec===sec);}
-function secFrac(sec){if(PROG.preview)return 1;const l=secItems(sec);if(!l.length)return 0;return l.reduce((s,i)=>s+itemPts(i),0)/(MAX_PTS*l.length);}
+function secCount(sec){return Math.min(CFG.toBloom,(PROG.grow||{})[sec]||0);}
+function secFrac(sec){if(PROG.preview)return 1;return Math.min(1,secCount(sec)/CFG.toBloom);}
 function isDue(it,t){const r=PROG.items[it.id];return !!r&&r.due<=t;}
+/* A question with fixed choices grows a plant once a day. A drill draws new numbers every time, so it counts every time. */
+function canGrow(it,t){const r=PROG.items[it.id];return it.type==="DRILL"||!r||r.lastRight!==t;}
+function reviewsToday(){return (PROG.days||{})[today()]||0;}
+function dayCapped(){return CFG.perDay>0&&reviewsToday()>=CFG.perDay;}
 function record(it,ok){
   const t=today();let r=PROG.items[it.id];
-  if(!r)r=PROG.items[it.id]={box:0,best:0,due:t,miss:0,cb:0,last:-1,n:0};
+  const grows=ok&&canGrow(it,t);
+  if(!r)r=PROG.items[it.id]={box:0,due:t,last:-1,n:0};
   r.n++;
   if(ok){
-    if(r.box===0||r.due<=t){
-      if(r.miss&&r.last>=0&&r.last<t)r.cb=1;
-      r.box=Math.min(4,r.box+1);r.best=Math.max(r.best,r.box);r.due=t+GAP[r.box];
-    }
-  }else{r.box=Math.min(r.box,1);r.miss=1;r.due=t+1;}
+    if(r.box===0||r.due<=t){r.box=Math.min(GAP.length-1,r.box+1);r.due=t+GAP[r.box];}
+    if(grows){PROG.grow=PROG.grow||{};PROG.grow[it.sec]=(PROG.grow[it.sec]||0)+1;r.lastRight=t;}
+  }else{r.box=Math.min(r.box,1);r.due=t+1;}
   r.last=t;saveProg();
 }
+/* questions due again first, then new ones, then any others that can still grow the plant today */
 function queueFor(sec){
   const t=today(),pool=ITEMS.filter(i=>!sec||i.sec===sec);
-  const due=pool.filter(i=>isDue(i,t)).sort((a,b)=>PROG.items[a.id].due-PROG.items[b.id].due);
+  const due=pool.filter(i=>isDue(i,t)&&canGrow(i,t)).sort((a,b)=>PROG.items[a.id].due-PROG.items[b.id].due);
   const fresh=pool.filter(i=>!PROG.items[i.id]);
-  const q=due.slice(0,SESSION_LEN-Math.min(fresh.length,MIN_NEW));
-  return q.concat(fresh.slice(0,SESSION_LEN-q.length));
+  const rest=shuffle(pool.filter(i=>PROG.items[i.id]&&!isDue(i,t)&&canGrow(i,t)));
+  return due.concat(fresh,rest).slice(0,CFG.perReview);
 }
+/* the next plant to grow: the first section, in book order, that hasn't bloomed and still has questions for today */
+function nextSec(){for(const s of SECS){if(secFrac(s)>=BLOOM)continue;const n=queueFor(s).length;if(n)return{sec:s,n};}return null;}
 function nextDue(){const t=today();let best=null,n=0;
   for(const i of ITEMS){const r=PROG.items[i.id];if(!r||r.due<=t)continue;if(best===null||r.due<best){best=r.due;n=1;}else if(r.due===best)n++;}
   return best===null?null:{days:best-t,n};}
@@ -490,7 +544,7 @@ function renderLearn(){
   <nav class="seclist" aria-label="Sections">
     ${S.map((s,i)=>`<a class="secrow" href="#sec-3-${i+1}">
       <span class="n">${s.num}</span>
-      <span class="t">${esc(s.title)}<span class="meta" style="display:block">${s.examples.length} worked example${s.examples.length===1?"":"s"} · ${secItems(s.num).length} review items</span></span>
+      <span class="t">${esc(s.title)}<span class="meta" style="display:block">${classDates(s.num,true)?`In class ${classDates(s.num,true)} · `:""}${s.examples.length} worked example${s.examples.length===1?"":"s"} · ${secItems(s.num).length} review items</span></span>
       <span class="chev" aria-hidden="true">›</span></a>`).join("")}
   </nav>
   <div class="row">
@@ -510,8 +564,8 @@ function renderSection(i){
   <header class="stack">
     <div class="eyebrow">Section ${s.num}</div>
     <h1>${esc(s.title)}</h1>
+    ${classDates(s.num)?`<p class="classdate">In class ${classDates(s.num)}</p>`:""}
   </header>
-  ${s.objectives.length?`<section class="stack"><h2>By the end you can</h2><ul class="objectives">${s.objectives.map(o=>`<li>${o}</li>`).join("")}</ul></section>`:""}
   ${sm?`<section class="inshort">
     <div class="eyebrow">In short</div>
     <p>${esc(sm.s)}</p>
@@ -520,7 +574,7 @@ function renderSection(i){
   <section class="stack"><h2>Key ideas from the book</h2><ul class="bullets">${s.keyConcepts.map(k=>`<li>${k}</li>`).join("")}</ul></section>
   ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(t=>`<div class="eqbox">\\[${t}\\]</div>`).join("")}</div>${s.num==="3.4"||s.num==="3.5"?`<a class="btn ghost" href="#solver" style="width:max-content">Solve with these in the solver</a>`:""}</section>`:""}
   ${s.examples.length?`<section class="stack"><h2>Worked examples</h2>${s.examples.map((ex,j)=>`
-    <details class="ex"${j===0?" open":""}><summary><span class="k">${s.num}.${j+1}</span><span class="tt">${esc(ex.title||"Example")}</span><span class="plus" aria-hidden="true">+</span></summary>
+    <details class="ex"><summary><span class="k">${s.num}.${j+1}</span><span class="tt">${esc(ex.title||"Example")}</span><span class="plus" aria-hidden="true">+</span></summary>
     <div class="exbody">${ex.parts.map(p=>`<div class="part"><div class="lbl">${esc(p.label)}</div><div class="rich">${p.html}</div></div>`).join("")}</div></details>`).join("")}</section>`:""}
   ${s.checks.length?`<section class="stack"><h2>Check your understanding</h2>${s.checks.map(c=>`<div class="card"><div class="rich">${c.q}</div>${c.a?`<details class="reveal"><summary>Show answer</summary><div class="ans rich">${c.a}</div></details>`:""}</div>`).join("")}</section>`:""}
   <section class="row">
@@ -686,8 +740,8 @@ function plantSVG(f,idx,label){
       const side=k%2?1:-1, L=(6+9*f)*(1-0.25*s);
       g+=`<path d="M${x.toFixed(1)} ${y.toFixed(1)} q${(side*L*0.5).toFixed(1)} ${(-L*0.55).toFixed(1)} ${(side*L).toFixed(1)} ${(-L*0.15).toFixed(1)} q${(-side*L*0.45).toFixed(1)} ${(L*0.45).toFixed(1)} ${(-side*L).toFixed(1)} ${(L*0.15).toFixed(1)}Z" fill="${k%2?"var(--leaf)":"var(--leaf2)"}"/>`;
     }
-    if(f>=0.58&&f<BLOOM){const r=3+5*(f-0.58)/(BLOOM-0.58);g+=`<ellipse cx="${cx}" cy="${tipY-r*0.6}" rx="${r*0.75}" ry="${r}" fill="${petal}" opacity=".85"/><path d="M${cx-r*0.75} ${tipY} q${r*0.75} ${-r*0.9} ${r*1.5} 0" fill="var(--leaf2)"/>`;}
-    if(f>=BLOOM){const n=PETALS[idx],R=9+5*(f-BLOOM)/(1-BLOOM),cy=tipY-R*0.5;
+    if(f>=0.58&&f<BLOOM){const r=3+5*(f-0.58)/(1-0.58);g+=`<ellipse cx="${cx}" cy="${tipY-r*0.6}" rx="${r*0.75}" ry="${r}" fill="${petal}" opacity=".85"/><path d="M${cx-r*0.75} ${tipY} q${r*0.75} ${-r*0.9} ${r*1.5} 0" fill="var(--leaf2)"/>`;}
+    if(f>=BLOOM){const n=PETALS[idx],R=14,cy=tipY-R*0.5;
       for(let k=0;k<n;k++){const a=k*360/n;g+=`<ellipse cx="${cx}" cy="${cy-R*0.55}" rx="${R*0.32}" ry="${R*0.6}" fill="${petal}" transform="rotate(${a} ${cx} ${cy})"/>`;}
       g+=`<circle cx="${cx}" cy="${cy}" r="${R*0.32}" fill="var(--center)"/>`;}
   }
@@ -709,14 +763,32 @@ function rocketSVG(have,label){
 /* ---------- review: garden home, sessions, summary ---------- */
 let SESS=null, GSEL=-1;
 function secTitle(sec){const s=S.find(x=>x.num===sec);return s?s.title:"";}
-function counts(){const t=today();let due=0,fresh=0;for(const i of ITEMS){const r=PROG.items[i.id];if(!r)fresh++;else if(r.due<=t)due++;}return{due,fresh};}
 function bloomed(){return SECS.map(s=>secFrac(s)>=BLOOM);}
-function whenText(d){return d<=0?"today":d===1?"tomorrow":`in ${d} days`;}
+const plural=(n,w)=>`${n} ${w}${n===1?"":"s"}`;
+function startCard(){
+  const nx=nextSec(), allBloom=SECS.every(s=>secFrac(s)>=BLOOM);
+  const practice=`<button class="btn quiet" id="practice">Practice anyway (doesn't grow plants)</button>`;
+  if(dayCapped())return `<h2>That's today's ${CFG.perDay===1?"review":plural(CFG.perDay,"review")}</h2>
+    <p class="muted small">Come back tomorrow to keep growing. Practice is always open.</p>${practice}`;
+  if(nx)return `<button class="btn big" id="go">Grow ${nx.sec} · ${plural(nx.n,"question")}</button>
+    <p class="small muted">${esc(secTitle(nx.sec))}: ${secCount(nx.sec)} of ${CFG.toBloom} right answers so far. About ${Math.max(1,Math.round(nx.n*0.4))} minutes.</p>`;
+  if(allBloom)return `<h2>Every plant is in bloom</h2><p class="muted small">Practice any time to keep it fresh.</p>${practice}`;
+  return `<h2>All caught up for today</h2><p class="muted small">You've answered every question that can still grow a plant today. Come back tomorrow, or tap a plant to practice it.</p>${practice}`;
+}
+function howGrow(){
+  const per=CFG.perReview,need=CFG.toBloom,n=Math.ceil(need/per);
+  return `<li>Each section has its own plant. Every question you get right on the first try grows it a little, and ${plural(need,"right answer")} make it bloom.</li>
+      <li>A review is ${plural(per,"question")}, so a plant can bloom in ${n===1?"one review":`about ${n} reviews`}. Go as fast as you like.</li>
+      <li>A question with set choices grows a plant once a day. Number drills get new numbers every time, so they count every time.</li>
+      <li>A wrong answer never shrinks a plant. The question just comes back tomorrow.</li>
+      ${CFG.perDay>0?`<li>You can do ${CFG.perDay===1?"one review":`up to ${CFG.perDay} reviews`} a day. Practice is always open.</li>`:""}
+      <li>Your garden is saved on this device only. Nobody else can see it.</li>`;
+}
 
 function renderGarden(){
   if(SESS&&!SESS.done)return renderSession();
   crumb.textContent="Your garden";
-  const c=counts(), avail=Math.min(SESSION_LEN,c.due+c.fresh), nd=nextDue(), have=bloomed(), nHave=have.filter(Boolean).length;
+  const nx=nextSec(), have=bloomed(), nHave=have.filter(Boolean).length;
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">Chapter 3 · only you can see this</div><h1>Your garden</h1></header>
   ${PROG.preview?`<p class="note">Preview mode is on: every plant shows fully grown. <button class="linkbtn" id="pvoff">Turn it off</button></p>`:""}
@@ -725,12 +797,7 @@ function renderGarden(){
       ${plantSVG(f,i,`Section ${s} plant, ${stageName(f)}`)}<span class="potlbl"><b>${s}</b> ${stageName(f)}</span></button>`;}).join("")}
   </section>
   ${GSEL>=0?potDetail(GSEL):""}
-  <section class="card stack startcard">
-    ${avail>0?`<button class="btn big" id="go">Start review · ${avail} item${avail===1?"":"s"}</button>
-      <p class="small muted">${c.due?`${Math.min(c.due,SESSION_LEN)} due again`:"Nothing due again yet"}${avail-Math.min(c.due,SESSION_LEN)>0?`, ${avail-Math.min(c.due,SESSION_LEN)} new`:""}. About ${Math.max(1,Math.round(avail*0.4))} minutes.</p>`
-    :`<h2>All caught up</h2><p class="muted small">${nd?`Next review ${whenText(nd.days)}: ${nd.n} item${nd.n===1?"":"s"}.`:"Nothing scheduled."} Coming back on a later day is what grows the garden most.</p>
-      <button class="btn quiet" id="practice">Practice anyway (doesn't grow plants)</button>`}
-  </section>
+  <section class="card stack startcard">${startCard()}</section>
   <section class="card rocketcard">
     ${rocketSVG(have,`Rocket with ${nHave} of 6 parts`)}
     <div class="stack" style="min-width:0">
@@ -741,12 +808,7 @@ function renderGarden(){
     </div>
   </section>
   <details class="card howgrow"><summary><b>How the garden grows</b></summary>
-    <ul class="bullets small">
-      <li>Each section has its own plant. Right answers on review items from that section make it grow.</li>
-      <li>Getting an item right again on a later day counts the most. Items come back after 1, 3, 7, and 14 days. One review a day blooms the whole garden in about three weeks; two a day, in about ten days.</li>
-      <li>A wrong answer never shrinks a plant. The item just comes back sooner, and getting it right later earns a bonus.</li>
-      <li>Your garden is saved on this device only. Nobody else can see it.</li>
-    </ul></details>
+    <ul class="bullets small">${howGrow()}</ul></details>
   <details class="card"><summary><b>Back up or move your garden</b></summary>
     <div class="stack" style="margin-top:10px">
       <p class="small muted">Copy this code somewhere safe. Paste it here on another device, or after clearing your browser, to get your garden back.</p>
@@ -758,7 +820,7 @@ function renderGarden(){
       <div id="bk-confirm"></div>
     </div></details>`;
   main.querySelectorAll(".pot").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;GSEL=GSEL===i?-1:i;renderGarden();typeset(main);});
-  const go=document.getElementById("go");if(go)go.onclick=()=>startSession(null,false);
+  const go=document.getElementById("go");if(go)go.onclick=()=>startSession(nx.sec,false);
   const pr=document.getElementById("practice");if(pr)pr.onclick=()=>startSession(null,true);
   const pv=document.getElementById("pvoff");if(pv)pv.onclick=()=>{PROG.preview=false;saveProg();renderGarden();};
   main.querySelectorAll("[data-focus]").forEach(b=>b.onclick=()=>startSession(b.dataset.focus,b.dataset.practice==="1"));
@@ -766,14 +828,13 @@ function renderGarden(){
 }
 function potDetail(i){
   const s=SECS[i],l=secItems(s),t=today();
-  const started=l.filter(it=>(PROG.items[it.id]||{}).best>0).length;
-  const due=l.filter(it=>isDue(it,t)).length, fresh=l.filter(it=>!PROG.items[it.id]).length;
-  const can=due+fresh>0;
+  const fresh=l.filter(it=>!PROG.items[it.id]).length;
+  const can=secFrac(s)<BLOOM&&!dayCapped()&&queueFor(s).length>0;
   return `<section class="card stack potdetail" aria-live="polite">
     <div class="eyebrow">Section ${s}</div><h2>${esc(secTitle(s))}</h2>
-    <p class="small muted">${started} of ${l.length} items answered right at least once · ${due} due · ${fresh} new</p>
+    <p class="small muted">${secCount(s)} of ${CFG.toBloom} right answers · ${plural(l.length,"question")}, ${fresh} not tried yet</p>
     <div class="row">
-      <button class="btn" data-focus="${s}" data-practice="${can?0:1}">${can?`Review ${s} only`:`Practice ${s}`}</button>
+      <button class="btn" data-focus="${s}" data-practice="${can?0:1}">${can?`Grow ${s}`:`Practice ${s}`}</button>
       <a class="btn quiet" href="#sec-3-${i+1}">Read ${s}</a>
     </div></section>`;
 }
@@ -795,8 +856,9 @@ function wireBackup(){
 }
 
 function startSession(sec,practice){
-  let items=practice?shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,6):queueFor(sec);
-  if(!items.length){items=shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,6);practice=true;}
+  if(!practice&&dayCapped())practice=true;
+  let items=practice?shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,CFG.perReview):queueFor(sec);
+  if(!items.length){items=shuffle(ITEMS.filter(i=>!sec||i.sec===sec)).slice(0,CFG.perReview);practice=true;}
   const before={};SECS.forEach(s=>before[s]=secFrac(s));
   SESS={queue:items.map(it=>({it})),i:0,first:0,firstN:0,practice,sec,before,done:false};
   GSEL=-1;
@@ -887,24 +949,29 @@ function wireTap(it,q){
 }
 
 function renderSummary(){
-  const Ss=SESS;Ss.done=true;
+  const Ss=SESS;
+  if(!Ss.counted&&!Ss.practice&&Ss.firstN>0){Ss.counted=true;const t=today();PROG.days=PROG.days||{};PROG.days[t]=(PROG.days[t]||0)+1;
+    for(const k of Object.keys(PROG.days))if(+k<t-30)delete PROG.days[k];saveProg();}
+  Ss.done=true;
   crumb.textContent="Session done";
   const after={};SECS.forEach(s=>after[s]=secFrac(s));
   const grown=SECS.map((s,i)=>({s,i,b:Ss.before[s],a:after[s]})).filter(x=>x.a>x.b+1e-9);
   const newBloom=grown.filter(x=>x.b<BLOOM&&x.a>=BLOOM);
-  const c=counts(),more=c.due+c.fresh>0;
+  const nx=dayCapped()?null:nextSec();
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">${Ss.practice?"Practice":"Review"} ${Ss.quit?"ended":"done"}</div>
     <h1>${Ss.firstN?`${Ss.first} of ${Ss.firstN} right on the first try`:"No items answered"}</h1></header>
   ${grown.length?`<section class="paper garden grown">${grown.map(x=>`<div class="pot static" data-i="${x.i}" data-b="${x.b}" data-a="${x.a}">${plantSVG(x.b,x.i,"")}<span class="potlbl"><b>${x.s}</b> grew</span></div>`).join("")}</section>`
-    :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed items come back tomorrow, and getting them right then earns a bonus."}</p>`}
+    :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed questions come back tomorrow."}</p>`}
+  ${!Ss.practice&&Ss.sec?`<p class="small muted">Section ${Ss.sec}: ${secCount(Ss.sec)} of ${CFG.toBloom} right answers.</p>`:""}
   ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed. You earned the rocket's ${PARTS[x.i]}.</p>`).join("")}
   <div class="row">
     <a class="btn" href="#review" id="back">Back to your garden</a>
-    ${more&&!Ss.practice?`<button class="btn quiet" id="again">Another round</button>`:""}
-  </div>`;
+    ${nx&&!Ss.practice?`<button class="btn quiet" id="again">Keep going: grow ${nx.sec}</button>`:""}
+  </div>
+  ${dayCapped()&&!Ss.practice?`<p class="small muted">That's today's ${CFG.perDay===1?"review":plural(CFG.perDay,"review")}. Come back tomorrow to keep growing.</p>`:""}`;
   document.getElementById("back").onclick=e=>{e.preventDefault();SESS=null;renderGarden();typeset(main);window.scrollTo(0,0);};
-  const ag=document.getElementById("again");if(ag)ag.onclick=()=>{SESS=null;startSession(null,false);};
+  const ag=document.getElementById("again");if(ag)ag.onclick=()=>{SESS=null;startSession(nx.sec,false);};
   const cells=[...main.querySelectorAll(".pot.static")];
   if(!cells.length)return;
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,t0=performance.now(),dur=1400;
@@ -1032,7 +1099,7 @@ function renderAbout(){
   <p class="small muted">Freebody Physics is not affiliated with or endorsed by OpenStax or Rice University.</p></section>
   <section class="card stack"><h2>What changed from the book</h2>
   <ul class="bullets small">
-    <li>Learning objectives, key concepts, key equations, worked examples, and Check Your Understanding items are taken from the book and reformatted for phones.</li>
+    <li>Key concepts, key equations, worked examples, and Check Your Understanding items are taken from the book and reformatted for phones. Learning objectives are left out and stay in the book.</li>
     <li>Figure references inside the text are reworded because figure numbers are not shown.</li>
     <li>Photos credited to third parties are left out; diagrams and graphs made by OpenStax are included and resized.</li>
     <li>The “In short” summaries, the review items, the garden and launch pad, and the kinematics solver are new. Quick review items use g = 10 m/s².</li>
@@ -1040,6 +1107,11 @@ function renderAbout(){
   </ul></section>
   <section class="card stack"><h2>Notes file check</h2>
   ${NOTE_ERRS.length?`<p class="small">The notes file loaded with ${NOTE_ERRS.length} problem${NOTE_ERRS.length===1?"":"s"}. Blocks with a problem are skipped until it's fixed.</p><ul class="bullets small">${NOTE_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:`<p class="small">notes/ch03.txt loaded with no problems: ${Object.keys(SUMMARY).length} summaries and ${ITEMS.length} review items.</p>`}
+  </section>
+  <section class="card stack"><h2>Settings check</h2>
+  <p class="small">${HAVE_SETTINGS?"settings.txt":"No settings.txt was found, so the app"} is using ${plural(CFG.perReview,"question")} per review, ${plural(CFG.toBloom,"right answer")} to grow a flower, and ${CFG.perDay?`a limit of ${plural(CFG.perDay,"review")} a day`:"no daily limit"}.
+  ${HAVE_SCHED?(CFG.showDates?`Class dates from schedule.txt are shown (year ${CFG.year}).`:"Class dates are turned off in settings.txt."):"No schedule.txt was found, so no class dates are shown."}</p>
+  ${CFG_ERRS.length?`<ul class="bullets small">${CFG_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:""}
   </section>
   <section class="card stack"><h2>For teachers: preview the garden</h2>
   <p class="small">Turn this on to see every plant fully grown and try the launch pad. Real progress is kept and comes back when you turn it off.</p>
@@ -1068,7 +1140,10 @@ async function boot(){
   main.innerHTML=`<p class="muted">Loading chapter…</p>`;
   try{
     const opt={cache:"no-cache"};
-    const [b,n]=await Promise.all([fetch("book/ch03.json",opt),fetch("notes/ch03.txt",opt)]);
+    const soft=u=>fetch(u,opt).then(r=>r.ok?r.text():null).catch(()=>null);
+    const [b,n,st,sc]=await Promise.all([fetch("book/ch03.json",opt),fetch("notes/ch03.txt",opt),soft("settings.txt"),soft("schedule.txt")]);
+    if(st!=null){HAVE_SETTINGS=true;parseSettings(st);}
+    if(sc!=null){HAVE_SCHED=true;parseSchedule(sc);}
     if(!b.ok)throw new Error("book/ch03.json");
     D=await b.json();S=D.sections;
     if(n.ok){const r=parseNotes(await n.text());SUMMARY=r.sum;ITEMS=r.items;NOTE_ERRS=r.errs;}

@@ -1,0 +1,89 @@
+# FREEBODY CLASS SCHEDULE
+#
+# Each line is a class date and the sections taught that day, so students can match
+# a section to that day's notes. The app shows it on the section's page, like "In class Fri 1/29".
+#
+# How to write a line:
+#   1/29: 3.1, 3.2          two sections
+#   2/1: 3.3 to 3.6         a range inside one chapter
+#   1/25: Ch. 1             a whole chapter
+# A section taught on two days just appears on both lines, like 4.3 below.
+# Anything after a # is a note for you. The app ignores it.
+# To hide dates without deleting this file, set "Show class dates: no" in settings.txt.
+
+Year: 2027
+
+# Week 1
+1/25: Ch. 1          # Introduction, Units and Measurements
+1/27: 2.1 to 2.3     # Vectors
+1/29: 3.1, 3.2       # Position, Velocity
+
+# Week 2
+2/1: 3.3 to 3.6      # Acceleration, Free Fall
+2/3: 4.1, 4.2        # 2D Motion
+2/5: 4.3             # Projectile Motion
+
+# Week 3
+2/8: 4.3             # Projectile Motion
+2/10: 4.4            # Circular Motion
+2/12: 5.1 to 5.3     # Newton's Laws
+
+# Week 4
+2/15: 5.4 to 5.6     # Newton's Laws
+2/17: 5.7            # Free Body Diagrams
+2/19: 6.2            # Friction
+
+# Week 5
+2/22: 6.2            # Friction
+2/24: 6.1            # Pulleys
+2/26: 6.3            # Circular Dynamics
+
+# Week 6
+3/1: 6.4             # Drag Force
+# 3/3 Review, 3/5 Exam 1 (Ch. 1 to 6)
+
+# Week 7
+3/8: 2.4, 7.1        # Work and Dot Product
+3/10: 7.2            # Kinetic Energy
+3/12: 7.4            # Power
+
+# Week 8
+3/15: 8.1            # Potential Energy
+3/17: 8.3            # Conservation of Energy
+3/19: 8.3 to 8.5     # Energy Conservation
+
+# Week 9
+3/22: 9.1, 9.2       # Linear Momentum
+3/24: 9.3, 9.4       # Collisions
+3/26: 9.5, 9.6       # Collisions, Center of Mass
+# 3/29 to 4/2 Spring Break
+
+# Week 10
+4/5: 10.1 to 10.3    # Rotation
+4/7: 10.4, 10.5      # Moment of Inertia
+4/9: 2.4, 10.6 to 10.8   # Torque and Cross Product
+
+# Week 11
+4/12: 11.1           # Rolling Motion
+4/14: 11.2           # Angular Momentum
+4/16: 11.3           # Conservation of Angular Momentum
+
+# Week 12
+4/19: 12.1, 12.2     # Static Equilibrium
+# 4/21 Review, 4/23 Exam 2 (Ch. 7 to 12)
+
+# Week 13
+4/26: 13.1, 13.2     # Gravitation
+4/28: 13.3           # Gravitational Energy
+4/30: 13.4, 13.7     # Orbits, Einstein's Theory of Gravity
+
+# Week 14
+5/3: 14.1 to 14.3    # Pressure
+5/5: 14.4            # Buoyancy
+5/7: 14.5, 14.6      # Fluid Dynamics
+
+# Week 15
+5/10: 15.1           # Simple Harmonic Motion
+5/12: 15.2, 15.3     # Energy in SHM
+5/14: 15.4           # Pendulums
+# 5/19 Final Exam (cumulative)

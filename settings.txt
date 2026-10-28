@@ -1,0 +1,23 @@
+# FREEBODY SETTINGS
+#
+# Change a number, press Commit changes on GitHub, and the site updates in a few minutes.
+# A line starting with # is a note for you. The app ignores it.
+# If a value doesn't make sense, the app says so on its About page (the "i" button)
+# and keeps using the number it had.
+
+# How many questions are in one review session.
+Questions per review: 5
+
+# How many right answers grow one flower (one section) all the way to full bloom.
+# With 5 questions per review and 15 here, one review grows a flower by about a third,
+# and three reviews make it bloom.
+Right answers to grow a flower: 15
+
+# How many growing reviews a student can do each day. 0 means no limit,
+# so a student can grow their garden as fast as they can answer.
+# Practice is always open and never counts toward this.
+Reviews per day: 0
+
+# Show the class date on each section's page (from schedule.txt). yes or no.
+# Set it to no when the app is used outside your class.
+Show class dates: yes

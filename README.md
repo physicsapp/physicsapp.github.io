@@ -15,6 +15,8 @@ This first version covers Chapter 3, Motion Along a Straight Line.
 | Path | What it is | Do you edit it? |
 |---|---|---|
 | `notes/ch03.txt` | Your summaries and review items | **Yes, this is the one** |
+| `settings.txt` | Questions per review, right answers to grow a flower, daily limit, class dates on or off | **Yes** |
+| `schedule.txt` | The class date for each section | **Yes** |
 | `book/ch03.json` | Content taken from the OpenStax book by the extraction script | No, regenerate it with the script |
 | `img/` | Figures from the book, resized | No |
 | `index.html` | The app itself | Only to change how the app works |
@@ -65,17 +67,38 @@ skips that block and lists the problem with its line number on the **About** pag
 
 ## How the garden works
 
-- A review session serves up to 8 items: ones due again first, then at least 4 new ones
-  when there are new ones left.
-- Items come back after 1, 3, 7, and 14 days. Right answers on later days grow the plant most.
-- Wrong answers never shrink a plant; the item comes back the next day, and getting it
-  right then earns a bonus.
-- A plant blooms at 75% of its section's possible growth. One session a day blooms the
-  whole chapter in about three weeks; two a day, in about ten days. These numbers are at
-  the top of the review code in `index.html` (`SESSION_LEN`, `MIN_NEW`, `GAP`, `BLOOM`).
+- Each section has its own plant. Every question answered right on the first try grows it,
+  and a set number of right answers makes it bloom. Each bloom adds a rocket part, and a
+  full rocket unlocks the launch pad, where students predict a flight with real kinematics.
+- The Grow button picks the first section that hasn't bloomed yet. Students can also tap any
+  plant to grow that section.
+- A question with set choices grows a plant once a day, so students can't bloom a flower by
+  repeating one question. Number drills get new numbers every time, so they count every time.
+- Wrong answers never shrink a plant; the question comes back the next day.
 - Progress is saved in the student's browser only. There are no accounts and nothing is
   sent anywhere. Students can copy a backup code to move their garden to another device.
 - Teachers can turn on a fully grown preview garden from the About page.
+
+### Changing the pace: `settings.txt`
+
+```
+Questions per review: 5
+Right answers to grow a flower: 15
+Reviews per day: 0
+Show class dates: yes
+```
+
+With these numbers one review grows a flower by about a third, and three reviews bloom it.
+`Reviews per day: 0` means no limit, so anyone can grow their garden as fast as they can
+answer. Set it to 1 or 2 to slow students down. Practice is always open and never grows plants.
+
+### Class dates: `schedule.txt`
+
+Each line is a date and the sections taught that day, like `1/29: 3.1, 3.2`,
+`2/1: 3.3 to 3.6`, or `1/25: Ch. 1`. The date shows on the section's page so students can
+find that day's notes. Set `Show class dates: no` in `settings.txt` to hide them.
+
+If either file has a mistake, the About page (the "i" button) lists the line number.
 
 ## Putting it online with GitHub Pages (one time setup, easiest on a computer)
 
