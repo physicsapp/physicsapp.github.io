@@ -545,8 +545,8 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   1:{eqSec:["1.6"],eqHint:"Search, for example “uncertainty”",toy:"probe"},
   2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”",toy:"sail"},
   4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",toy:"catapult"},
-  5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],eqHint:"Search, for example “weight” or “second law”"},
-  6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],eqHint:"Search, for example “friction” or “drag”"}};
+  5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],toy:"elevator",eqHint:"Search, for example “weight” or “second law”"},
+  6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],toy:"race",eqHint:"Search, for example “friction” or “drag”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
@@ -673,8 +673,8 @@ function renderEquations(){
    A number written as 6.67×10^−11 is read as ONE number, like the EE key on a handheld calculator,
    so 1÷2×10^3 is 1 divided by 2000. Missing closing parentheses are added at the end. */
 const CALC={deg:true,inv:false,ans:0,hist:[],panel:"keys",expr:"",pos:0,shown:null};
-(function(){const s=store("calc");if(s){CALC.deg=s.deg!==false;CALC.ans=+s.ans||0;CALC.hist=Array.isArray(s.hist)?s.hist.slice(0,20):[];}})();
-function saveCalc(){store("calc",{deg:CALC.deg,ans:CALC.ans,hist:CALC.hist});}
+(function(){const s=store("calc");if(s){CALC.deg=s.deg!==false;CALC.ans=+s.ans||0;CALC.hist=Array.isArray(s.hist)?s.hist.slice(0,20):[];if(typeof s.expr==="string"){CALC.expr=s.expr;CALC.pos=s.expr.length;}}})();
+function saveCalc(){store("calc",{deg:CALC.deg,ans:CALC.ans,hist:CALC.hist,expr:CALC.expr});}
 function calcErr(m){const e=new Error(m);e.calc=true;return e;}
 const SUP={"⁰":"0","¹":"1","²":"2","³":"3","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9","⁻":"-"};
 function calcLex(src){
@@ -802,7 +802,6 @@ const KEYS=[
 const INVK={"sin(":["sin⁻¹(","sin⁻¹"],"cos(":["cos⁻¹(","cos⁻¹"],"tan(":["tan⁻¹(","tan⁻¹"],"ln(":["e^(","eˣ"],"log(":["10^(","10ˣ"]};
 function renderCalc(){
   crumb.textContent="Calculator";
-  CALC.panel="keys";
   main.innerHTML=`
   <header class="calchead"><div><div class="eyebrow">SI units only</div><h1>Calculator</h1></div>
     <div class="seg angseg" role="group" aria-label="Angle unit"><button type="button" data-ang="deg" aria-pressed="${CALC.deg}">DEG</button><button type="button" data-ang="rad" aria-pressed="${!CALC.deg}">RAD</button></div></header>
@@ -834,7 +833,7 @@ function renderCalc(){
     const before=CALC.expr.slice(0,Math.min(CALC.pos,CALC.expr.length));
     calcInsert(CALC.shown!==null||/[0-9.)πe²³¹s]$/.test(before)?"×10^"+e:"10^"+e);});
   main.querySelectorAll("[data-panel]").forEach(b=>b.onclick=()=>calcPanel(b.dataset.panel));
-  calcPanel("keys");calcPreview();
+  calcPanel(CALC.panel||"keys");calcPreview();
 }
 function calcPanel(p){
   CALC.panel=p;
@@ -1008,6 +1007,35 @@ function catSVG(have,label){
   </svg>`;
 }
 
+function elvSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
+  const L=(k,d,w)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="${w||2.6}" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${L(0,"M28 20 V164 M92 20 V164 M28 20 H92 M28 62 h-6 M28 104 h-6 M28 146 h-6")}
+    ${P(1,"M50 12 h20 v8 h-20 Z M53 30 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0 Z","var(--muted)")}
+    ${L(2,"M60 37 V74",1.8)}
+    ${P(3,"M36 74 h48 v62 h-48 Z","var(--accent-soft)")}
+    ${P(4,"M39 79 h9 v54 h-9 Z M72 79 h9 v54 h-9 Z","var(--petal-6)")}
+    ${P(5,"M98 108 h12 v22 h-12 Z","var(--muted)")}${on(5)?`<circle cx="104" cy="114" r="2.4" fill="var(--petal-2)"/><circle cx="104" cy="124" r="2.4" fill="var(--petal-2)"/>`:""}
+    ${P(6,"M51 126 h18 v6 h-18 Z","var(--petal-5)")}
+    <path d="M4 164 h112" stroke="var(--rule)" stroke-width="1.5"/>
+  </svg>`;
+}
+
+function raceSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}"><g transform="translate(0 -26)">
+    ${P(3,"M4 92 h26 v7 h-26 Z M15 99 h4 v18 h-4 Z","var(--muted)")}
+    ${P(2,"M65 95 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0 Z M81 104 l7 -7 l2 2 l-7 7 Z","var(--petal-2)")}
+    ${P(0,"M8 134 L14 118 L50 112 L62 102 L86 102 L94 114 L114 122 L114 134 Z","var(--petal-1)")}
+    ${P(1,"M19 136 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0 Z M83 136 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0 Z","var(--ink)")}
+    ${on(1)?`<circle cx="30" cy="136" r="4" fill="var(--muted)"/><circle cx="94" cy="136" r="4" fill="var(--muted)"/>`:""}
+    <path d="M4 147 h112" stroke="var(--rule)" stroke-width="1.5"/>
+  </g></svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1021,7 +1049,13 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} sailboat parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can sail it to the island."},
   catapult:{eyebrow:"The castle field",thing:"catapult",parts:["base and wheels","frame","throwing arm","bucket","counterweight"],svg:catSVG,route:"fire",
     ready:"Your catapult is ready",readyText:"Predict where the stone goes, then fire it.",go:"Go to the castle field",
-    count:(n,t)=>`${n} of ${t} catapult parts`,wait:"Each plant that blooms adds a part. When all five bloom, you can fire it."}};
+    count:(n,t)=>`${n} of ${t} catapult parts`,wait:"Each plant that blooms adds a part. When all five bloom, you can fire it."},
+  elevator:{eyebrow:"The tower",thing:"elevator",parts:["shaft","pulley and motor","cable","car","doors","floor buttons","bathroom scale"],svg:elvSVG,route:"ride",
+    ready:"Your elevator is ready",readyText:"Predict what the scale reads, then ride.",go:"Go to the tower",
+    count:(n,t)=>`${n} of ${t} elevator parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can ride it."},
+  race:{eyebrow:"The race track",thing:"race car",parts:["body","tires","steering and driver","rear wing"],svg:raceSVG,route:"race",
+    ready:"Your race car is ready",readyText:"Find the fastest safe speed, then race.",go:"Go to the track",
+    count:(n,t)=>`${n} of ${t} race car parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can race it."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -1222,11 +1256,13 @@ function renderSession(){
     main.querySelectorAll(".opt").forEach(o=>{const on=o===b;o.classList.toggle("chosen",on);o.setAttribute("aria-pressed",on?"true":"false");});
     showCheck();});
   if(it.tap&&!q.answered)wireTap(it,q,showCheck);
+  if(!q.answered&&(it.tap?q.tapT!=null:q.sel!=null))showCheck();
   const nx=document.getElementById("next");if(nx){nx.onclick=()=>{Ss.i++;saveSess();renderSession();typeset(main);window.scrollTo(0,0);};nx.focus({preventScroll:true});}
 }
 function optBtn(q,j,text,ok){
   let cls="opt";
   if(q.answered){if(ok)cls+=" right";else if(q.pick===j)cls+=" wrong";}
+  else if(q.sel===j)cls+=" chosen";
   return `<button class="${cls}" data-j="${j}" data-ok="${ok?1:0}" ${q.answered?"disabled":""}>${esc(text)}</button>`;
 }
 function answer(q,ok){
@@ -1279,6 +1315,7 @@ function wireTap(it,q,onSel){
   svg.addEventListener("keydown",e=>{const st=(p.t1-p.t0)/40;
     if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();kt=Math.max(p.t0,Math.min(p.t1,kt+(e.key==="ArrowRight"?st:-st)));place(kt);}
     else if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(kt);}});
+  if(q.tapT!=null)pick(q.tapT);
 }
 
 function renderSummary(){
@@ -1350,6 +1387,7 @@ function renderGame(){
   const T=toy(),G=T.game;
   crumb.textContent=T.eyebrow;
   cancelAnimationFrame(LP.raf);
+  if(LP.state==="flying"&&LP.m)recordFlight();
   const have=bloomed();
   if(!have.every(Boolean)){
     main.innerHTML=`<header class="stack"><div class="eyebrow">${T.eyebrow}</div><h1>${G.notReadyTitle}</h1></header>
@@ -1378,6 +1416,7 @@ function renderGame(){
   const F=G.sim(m);
   G.draw(LP.state==="done"?F.tEnd:0,F,m);
 }
+function recordFlight(){const m=LP.m;LP.state="done";const k=LP.k;PROG.missions=PROG.missions||{};const prev=PROG.missions[k]||{};PROG.missions[k]={flown:true,star:prev.star||!!m.choices[LP.pick].ok};saveProg();}
 function gameResult(){
   const G=toy().game,m=LP.m,c=m.choices[LP.pick],F=G.sim(m);
   return `<div class="fb ${c.ok?"good":"bad"}"><b>${c.ok?G.right:"Not this time."} ${G.outcome(F,m)}</b>${c.ok?"":`<p>${esc(c.fb||"")}</p>`}<div class="eqbox">\\[${m.work}\\]</div>${m.after?`<p>${m.after}</p>`:""}</div>
@@ -1388,9 +1427,9 @@ function runGame(){
   main.querySelectorAll(".opt").forEach(b=>b.disabled=true);
   const lb=document.getElementById("launch");if(lb)lb.remove();
   const cvEl=document.getElementById("cv");if(cvEl&&cvEl.scrollIntoView)cvEl.scrollIntoView({block:"center",behavior:"smooth"});
-  const done=()=>{LP.state="done";const k=LP.k;PROG.missions=PROG.missions||{};const prev=PROG.missions[k]||{};PROG.missions[k]={flown:true,star:prev.star||!!m.choices[LP.pick].ok};saveProg();renderGame();typeset(main);const lr=document.getElementById("lres");if(lr&&lr.scrollIntoView)lr.scrollIntoView({block:"nearest"});};
+  const done=()=>{if(LP.m!==m||LP.state!=="flying")return;recordFlight();if(!document.getElementById("cv"))return;renderGame();typeset(main);const lr=document.getElementById("lres");if(lr&&lr.scrollIntoView)lr.scrollIntoView({block:"nearest"});};
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){done();return;}
-  const real=G.ms||3600,t0=performance.now();
+  const real=(typeof G.ms==="function"?G.ms(m):G.ms)||3600,t0=performance.now();
   const step=now=>{const k=Math.min(1,(now-t0)/real);G.draw(k*F.tEnd,F,m);if(k<1)LP.raf=requestAnimationFrame(step);else setTimeout(done,500);};
   LP.raf=requestAnimationFrame(step);
 }
@@ -1764,6 +1803,340 @@ TOYS.catapult.game={title:"Fire the catapult",intro:"The stone follows the physi
   right:"Bull's eye!",go:"Fire",pickFirst:"Pick an answer to fire",again:"Fire again with new numbers",cvLabel:"Catapult shot",
   notReadyTitle:"Not ready to fire yet",notReady:"Each plant in your garden that blooms adds a part to the catapult. Bloom all five to fire it."};
 
+/* ---------- Chapter 5: elevator ----------
+   g = 10 m/s² as in the Ch 5 notes, up is positive. Every ride: 0.5 s at rest, 2 s speeding up at a, 1.5 s at steady speed,
+   2 s slowing down at a, 0.5 s at rest, so the car travels 7a meters. The scale reads N = m(g + a_up).
+   Mission 0: predict the scale while speeding up on the way up. Mission 1: one of the other three cases.
+   Mission 2: pick the cable tension so the car (car plus riders) speeds up at a; it must reach the floor sensor after 3 s.
+   makeElv redraws until every wrong choice misses by at least 2.5 times the tolerance. */
+const ELV_NAMES=["Going up","Heavier or lighter?","Set the motor"], ELV_G=10;
+const elvN2=x=>String(Math.round(x*100)/100);
+const elvN=x=>{const r=Math.round(x*10)/10;return (Number.isInteger(r)?String(r):r.toFixed(1)).replace("-","−");};
+const ELV_CASE=[{dir:1,ph:0,w:"speeding up on the way up",short:"speeding up"},{dir:1,ph:1,w:"slowing down as it nears the top floor",short:"slowing down"},
+  {dir:-1,ph:0,w:"speeding up on the way down",short:"speeding up"},{dir:-1,ph:1,w:"slowing down as it nears the ground floor",short:"slowing down"}];
+function elvRide(dir,a){
+  const t1=0.5,t2=2.5,t3=4,t4=6,tEnd=6.5,v=2*a,D=7*a;
+  const at=t=>{t=Math.max(0,Math.min(t,tEnd));let s,sp,acc;
+    if(t<t1){s=0;sp=0;acc=0;}
+    else if(t<t2){const u=t-t1;s=0.5*a*u*u;sp=a*u;acc=a;}
+    else if(t<t3){s=2*a+v*(t-t2);sp=v;acc=0;}
+    else if(t<t4){const u=t-t3;s=5*a+v*u-0.5*a*u*u;sp=v-a*u;acc=-a;}
+    else{s=D;sp=0;acc=0;}
+    return{pos:dir>0?s:D-s,vUp:dir*sp,aUp:dir*acc};};
+  return{tEnd,dir,a,D,band:[[t1,t2],[t3,t4]],at};
+}
+const elvTol=m=>m.kind===2?Math.max(0.3,0.05*m.h):0.03*m.Ntrue;
+function elvDraft(k){
+  if(k<2){
+    const cs=k===0?ELV_CASE[0]:pickOne(ELV_CASE.slice(1));
+    const mass=pickOne([50,60,70,80,90]),a=pickOne([1,1.5,2,2.5]),aUp=cs.dir*(cs.ph===0?a:-a),up=aUp>0;
+    const N=mass*(ELV_G+aUp),Nw=mass*(ELV_G-aUp),mg=mass*ELV_G;
+    const ch=[{N,ok:true},
+      {N:mg,fb:"That is the reading at a steady speed. While the speed changes, the scale also has to supply the net force \\(ma\\)."},
+      {N:Nw,fb:up?(cs.dir>0?"The acceleration points up here, so the scale pushes on you harder than gravity pulls: \\(N - mg = ma\\) with \\(a\\) positive."
+          :"Slowing down on the way down means the acceleration points up, so the scale reads more than your weight: \\(N = m(g + a)\\).")
+        :(cs.dir>0?"Moving up does not make you heavier. Slowing down on the way up means the acceleration points down, so the scale reads less than your weight."
+          :"Speeding up on the way down means the acceleration points down, so the scale reads less than your weight: \\(N = m(g - a)\\).")},
+      {N:mass*Math.abs(aUp),fb:"That is only the net force. The scale also holds you up against gravity, so \\(N = mg + ma\\) with up as positive."}];
+    ch.forEach(c=>{c.t=`${elvN(c.N)} N`;});
+    const aTx=`${up?"":"-"}${a}`;
+    return{kind:k,mass,a,aUp,cs,Ntrue:N,mg,choices:dedupe(ch),
+      q:`You stand on a bathroom scale in an elevator. Your mass is \\(${mass}\\ \\text{kg}\\). The elevator is ${cs.w}, and the size of its acceleration is \\(${a}\\ \\text{m/s}^2\\). What does the scale read? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}a&=${aTx}\\ \\text{m/s}^2\\ \\text{(${up?"up":"down"})}\\\\N-mg&=ma\\\\N&=m(g+a)\\\\&=${mass}(10${up?"+":"-"}${a})\\\\&=${elvN(N).replace("−","-")}\\ \\text{N}\\end{aligned}`,
+      after:`At a steady speed, or at rest, the scale reads your weight, \\(mg = ${mg}\\ \\text{N}\\).`};
+  }
+  const Mc=pickOne([500,600,700,800]),Mr=pickOne([200,250,300,350,400]),M=Mc+Mr,a=pickOne([1,1.5,2,2.5]);
+  const T=M*(ELV_G+a),h=0.5*a*9;
+  const ch=[{T,ok:true},
+    {T:M*a,fb:"That is only the net force. The cable must also hold up the weight \\(Mg\\), so \\(T - Mg = Ma\\)."},
+    {T:M*ELV_G,fb:"That only balances the weight. With zero net force the car stays at rest. To speed up going up, \\(T\\) must be bigger than \\(Mg\\)."},
+    {T:Mc*(ELV_G+a),fb:"The cable lifts the car and everyone in it. Use the total mass, car plus riders."}];
+  ch.forEach(c=>{c.t=`${elvN(c.T)} N`;});
+  return{kind:2,Mc,Mr,M,a,T,h,choices:dedupe(ch),
+    q:`An elevator car has a mass of \\(${Mc}\\ \\text{kg}\\) and carries riders with a total mass of \\(${Mr}\\ \\text{kg}\\). It starts from rest and should speed up going up at \\(${a}\\ \\text{m/s}^2\\). What tension should the motor put in the cable? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+    work:`\\begin{aligned}M&=${Mc}+${Mr}=${M}\\ \\text{kg}\\\\T-Mg&=Ma\\\\T&=M(g+a)\\\\&=${M}(10+${a})\\\\&=${elvN(T)}\\ \\text{N}\\end{aligned}`,
+    after:`A floor sensor sits \\(${elvN2(h)}\\ \\text{m}\\) up, where the car should be after \\(3\\ \\text{s}\\): \\(y = \\tfrac12at^2\\).`};
+}
+function elvSim(m,c){
+  if(m.kind<2){const R=elvRide(m.cs.dir,m.a);
+    return Object.assign(R,{N:t=>m.mass*(ELV_G+R.at(t).aUp),aim:c.N,miss:Math.abs(c.N-m.Ntrue),hit:Math.abs(c.N-m.Ntrue)<=elvTol(m)});}
+  const a2=c.T/m.M-ELV_G,t0=0.5,tEnd=3.5;
+  const at=t=>{const u=Math.max(0,Math.min(t,tEnd)-t0);let y=0.5*a2*u*u,v=a2*u,acc=u>0?a2:0,caught=false;
+    if(a2<0&&y<-0.5){caught=true;y=-0.5;v=0;acc=0;}
+    return{pos:y,vUp:v,aUp:acc,caught};};
+  const yEnd=at(tEnd).pos;
+  return{kind:2,tEnd,a2,at,yEnd,aim:m.h,miss:Math.abs(yEnd-m.h),hit:Math.abs(yEnd-m.h)<=elvTol(m),sank:a2<-1e-9,still:Math.abs(a2)<1e-9};
+}
+function makeElv(k){
+  for(let tries=0;tries<500;tries++){
+    const m=elvDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=elvTol(m);
+    if(!m.choices.every(c=>c.ok||elvSim(m,c).miss>=2.5*tol))continue;
+    return m;}
+}
+function drawElv(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre;
+  const tt=pre?0:t,p=F.at(tt);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  /* the shaft, on the left */
+  const sx=14,sw=86,top=70,bot=H-16,ch=50,cw=56;
+  const yLo=m.kind<2?0:-0.8,yHi=m.kind<2?F.D:Math.max(m.h*1.18,1);
+  const Yb=y=>bot-6-(y-yLo)/(yHi-yLo)*(bot-top-ch-14);
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.strokeRect(sx,top,sw,bot-top);
+  ctx.fillStyle=col("--muted");ctx.globalAlpha=.12;ctx.fillRect(sx,top,sw,bot-top);ctx.globalAlpha=1;
+  const land=(y,lab)=>{const yy=Yb(y);ctx.strokeStyle=col("--muted");ctx.lineWidth=1;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(sx,yy);ctx.lineTo(sx+sw,yy);ctx.stroke();ctx.setLineDash([]);
+    if(lab){ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText(lab,sx+sw+4,yy);}};
+  if(m.kind<2){land(0,"");land(F.D,"");}
+  else{land(0,"start");const yy=Yb(m.h);ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(sx,yy);ctx.lineTo(sx+sw,yy);ctx.stroke();
+    ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText("sensor",sx+sw+4,yy-7);ctx.fillText(`${elvN2(m.h)} m`,sx+sw+4,yy+7);}
+  /* car, cable and pulley */
+  const cx=sx+sw/2,cb=Yb(p.pos),ct=cb-ch;
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(cx,top+9,7,0,7);ctx.stroke();
+  ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(cx,top+16);ctx.lineTo(cx,ct);ctx.stroke();
+  ctx.fillStyle=col("--accent-soft");ctx.fillRect(cx-cw/2,ct,cw,ch);ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.strokeRect(cx-cw/2,ct,cw,ch);
+  if(p.caught){ctx.fillStyle=col("--bad");ctx.fillRect(cx-cw/2-5,cb-8,4,8);ctx.fillRect(cx+cw/2+1,cb-8,4,8);}
+  if(m.kind<2){
+    /* rider on a scale, with the scale's reading above */
+    ctx.fillStyle=col("--petal-5");ctx.fillRect(cx-11,cb-6,22,5);ctx.strokeStyle=col("--ink");ctx.lineWidth=1;ctx.strokeRect(cx-11,cb-6,22,5);
+    ctx.lineWidth=1.6;ctx.beginPath();ctx.arc(cx,ct+20,3.5,0,7);ctx.moveTo(cx,ct+24);ctx.lineTo(cx,ct+34);ctx.moveTo(cx-6,ct+28);ctx.lineTo(cx+6,ct+28);ctx.moveTo(cx,ct+34);ctx.lineTo(cx-4,cb-6);ctx.moveTo(cx,ct+34);ctx.lineTo(cx+4,cb-6);ctx.stroke();
+    ctx.fillStyle=col("--ink");ctx.textAlign="center";ctx.font="bold 11px 'IBM Plex Mono', monospace";ctx.fillText(`${elvN(F.N(tt))} N`,cx,ct+8);ctx.font="11px 'IBM Plex Mono', monospace";
+  }else{ctx.fillStyle=col("--ink");ctx.textAlign="center";ctx.fillText(`${m.M} kg`,cx,ct+ch/2);}
+  /* right side: a graph of the scale reading (missions 0 and 1) or the car's free body diagram (mission 2) */
+  const gx=154,gr=W-12,gt=96,gb=H-40;
+  if(m.kind<2){
+    const nMax=Math.max(m.mass*(ELV_G+m.a),...m.choices.map(q=>q.N))*1.12;
+    const GX=u=>gx+u/F.tEnd*(gr-gx),GY=n=>gb-n/nMax*(gb-gt);
+    const [b0,b1]=F.band[m.cs.ph];
+    ctx.fillStyle=col("--accent");ctx.globalAlpha=.13;ctx.fillRect(GX(b0),gt,GX(b1)-GX(b0),gb-gt);ctx.globalAlpha=1;
+    ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText(m.cs.short,(GX(b0)+GX(b1))/2,gt-8);
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(gx,gt-2);ctx.lineTo(gx,gb);ctx.lineTo(gr,gb);ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("0",gx-4,gb);
+    ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(gx,GY(m.mg));ctx.lineTo(gr,GY(m.mg));ctx.stroke();
+    ctx.fillText(`mg ${m.mg}`,gx-4,GY(m.mg));
+    ctx.textAlign="left";ctx.fillText("scale (N)",gx-36,gt-24);
+    ctx.textAlign="center";for(let s=0;s<=6;s+=2)ctx.fillText(`${s} s`,GX(s),gb+12);
+    if(c){ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(GX(b0),GY(c.N));ctx.lineTo(GX(b1),GY(c.N));ctx.stroke();ctx.setLineDash([]);
+      const ly=GY(c.N),lx=Math.abs(ly-GY(m.mg))<14?(b0<1?GX(b1)+4:GX(b0)-4):(GX(b0)+GX(b1))/2;
+      ctx.fillStyle=col("--accent");ctx.textAlign=Math.abs(ly-GY(m.mg))<14?(b0<1?"left":"right"):"center";ctx.fillText("you",lx,ly-9);}
+    if(!pre){ctx.strokeStyle=col("--ink");ctx.lineWidth=2.2;ctx.beginPath();
+      for(let u=0;u<=tt+1e-9;u+=0.02){const x=GX(Math.min(u,tt)),y=GY(F.N(Math.min(u,tt)));if(u===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();}
+  }else{
+    const Tsel=c?c.T:null,wgt=m.M*ELV_G,big=Math.max(wgt,...m.choices.map(q=>q.T)),L=v=>12+v/big*((gb-gt)/2-18);
+    const bx=(gx+gr)/2,by=(gt+gb)/2+4;
+    ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText("forces on the car",bx,gt-8);
+    ctx.fillStyle=col("--accent-soft");ctx.fillRect(bx-18,by-14,36,28);ctx.strokeStyle=col("--ink");ctx.lineWidth=1.4;ctx.strokeRect(bx-18,by-14,36,28);
+    const arrow=(y0,dy,color,lab)=>{ctx.strokeStyle=col(color);ctx.fillStyle=col(color);ctx.lineWidth=2.4;ctx.beginPath();ctx.moveTo(bx,y0);ctx.lineTo(bx,y0+dy);ctx.stroke();
+      const s=Math.sign(dy);ctx.beginPath();ctx.moveTo(bx,y0+dy+s*2);ctx.lineTo(bx-5,y0+dy-s*7);ctx.lineTo(bx+5,y0+dy-s*7);ctx.closePath();ctx.fill();
+      ctx.textAlign="left";ctx.fillText(lab,bx+9,y0+dy-s*4);};
+    arrow(by+14,L(wgt),"--ink",`Mg ${elvN(wgt)} N`);
+    if(Tsel!=null)arrow(by-14,-L(Tsel),"--accent",`T ${elvN(Tsel)} N`);
+  }
+  /* readouts */
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  const dirw=v=>Math.abs(v)<1e-9?"":v>0?" up":" down";
+  ctx.fillText(m.kind<2?`t = ${tt.toFixed(2)} s   v = ${elvN(Math.abs(p.vUp))} m/s${dirw(p.vUp)}   a = ${elvN(Math.abs(p.aUp))}${dirw(p.aUp)}`
+    :`t = ${tt.toFixed(2)} s   y = ${elvN(p.pos)} m   v = ${elvN(p.vUp)} m/s`,12,14);
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.t}`,12,30);
+    if(m.kind===2){ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`a = T/M − g = ${elvN(F.a2)} m/s²`,W-12,30);ctx.textAlign="left";}}
+  if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.fillStyle=col(F.hit?"--good":"--bad");
+    ctx.fillText(F.hit?(m.kind<2?"Spot on":"Right at the sensor"):m.kind<2?`Off by ${elvN(F.miss)} N`:F.sank?"Safety brakes caught it":F.still?"It never moved":`Missed the sensor by ${elvN(F.miss)} m`,12,46);
+    ctx.font="11px 'IBM Plex Mono', monospace";}
+}
+TOYS.elevator.game={title:"Ride the elevator",intro:"The elevator follows Newton's laws exactly. Predict right and the ride matches your answer.",
+  names:ELV_NAMES,make:makeElv,ms:m=>m.kind<2?5200:3600,
+  sim:m=>elvSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawElv,
+  outcome:(F,m)=>{
+    if(m.kind<2){const n=elvN(m.Ntrue);return F.hit?`While it was ${m.cs.short}, the scale read ${n} N, just as you said.`:`While it was ${m.cs.short}, the scale read ${n} N, not ${elvN(F.aim)} N.`;}
+    if(F.hit)return `The car reached the sensor ${elvN2(m.h)} m up right on time.`;
+    if(F.sank)return "The cable couldn't even hold the car up. It sank until the safety brakes caught it.";
+    if(F.still)return "The car just hung there. The tension only balanced its weight.";
+    return `The car rose only ${elvN(F.yEnd)} m in 3 s instead of ${elvN2(m.h)} m.`;},
+  right:"Spot on!",go:"Ride",pickFirst:"Pick an answer to ride",again:"Ride again with new numbers",cvLabel:"Elevator ride",
+  notReadyTitle:"The elevator isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the elevator. Bloom all seven to ride it."};
+
+/* ---------- Chapter 6: race car ----------
+   g = 10 m/s² as in the Ch 6 notes. Top view in meters, same scale both ways. The track: a straight going up (x = r),
+   a half circle of radius r around the origin, and a straight coming back down (x = −r).
+   On a curve the car can turn with at most a_max sideways: μs·g on a flat curve, exactly g·tanθ on an icy banked one.
+   It follows a circle of radius v²/a_max (never tighter than the track on a flat curve, where friction can be smaller),
+   so too fast drifts outward and, on the icy bank, too slow drifts inward. Leaving the track edge ends the run.
+   Mission 0: fastest speed on a flat curve (a rival car drives the right speed). Mission 1: the speed for an icy banked curve.
+   Mission 2: top speed on the straight, where the engine's push balances drag: v = √(2F/(CρA)).
+   makeRace redraws until every wrong choice misses by at least 2.5 times the tolerance (2.5% of the right speed). */
+const RACE_NAMES=["Flat curve","Banked turn","Top speed"], RACE_G=10, RACE_RHO=1.2;
+const raceTol=m=>0.025*m.vok;
+function raceDraft(k){
+  if(k===0){const r=pickOne([40,50,60,80,100]),[mus,muk]=pickOne([[0.9,0.7],[0.8,0.6],[0.7,0.5],[0.6,0.4]]);
+    const vok=Math.sqrt(mus*r*RACE_G);
+    const ch=[{v:vok,ok:true},
+      {v:Math.sqrt(muk*r*RACE_G),fb:"Tires that roll without slipping grip with static friction, so use \\(\\mu_s\\), not \\(\\mu_k\\). That speed was safe but slow, and the rival passed you."},
+      {v:Math.sqrt(r*RACE_G),fb:"The most friction can give is \\(\\mu_sN\\), not \\(N\\). Without \\(\\mu_s\\) the speed is too high and the car slides off."},
+      {v:Math.sqrt(mus*RACE_G/r),fb:"From \\(\\mu_sg = v^2/r\\), multiply both sides by \\(r\\): \\(v^2 = \\mu_srg\\)."}];
+    ch.forEach(c=>{c.t=`${fmtNum(c.v)} m/s`;});
+    return{kind:0,r,mus,muk,vok,amax:mus*RACE_G,choices:dedupe(ch),
+      q:`A race car takes a flat curve of radius \\(${r}\\ \\text{m}\\). Between its tires and the track \\(\\mu_s = ${mus}\\) and \\(\\mu_k = ${muk}\\). What is the fastest speed it can take the curve without sliding? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}\\mu_smg&=\\tfrac{mv^2}{r}\\\\v&=\\sqrt{\\mu_srg}\\\\&=\\sqrt{${mus}(${r})(10)}\\\\&=${fmtNum(vok,true)}\\ \\text{m/s}\\end{aligned}`,
+      after:`The mass cancels, so a heavy car and a light car have the same top speed on this curve.`};}
+  if(k===1){const r=pickOne([50,80,100,120,150]),th=pickOne([30,35,40]),tn=+Math.tan(th*Math.PI/180).toFixed(3);
+    const vok=Math.sqrt(r*RACE_G*tn);
+    const ch=[{v:vok,ok:true},
+      {v:Math.sqrt(r*RACE_G),fb:"Only the sideways part of the normal force, \\(N\\sin\\theta\\), turns the car. Dividing it by the vertical part, \\(N\\cos\\theta = mg\\), brings in \\(\\tan\\theta\\)."},
+      {v:Math.sqrt(r*RACE_G/tn),fb:"Dividing \\(N\\sin\\theta = mv^2/r\\) by \\(N\\cos\\theta = mg\\) gives \\(\\tan\\theta = v^2/(rg)\\), so \\(\\tan\\theta\\) multiplies \\(rg\\)."},
+      {v:Math.sqrt(r*RACE_G*Math.sin(th*Math.PI/180)),fb:"On a bank the normal force is not \\(mg\\). Its vertical part balances gravity, \\(N\\cos\\theta = mg\\), and that turns \\(\\sin\\theta\\) into \\(\\tan\\theta\\)."}];
+    ch.forEach(c=>{c.t=`${fmtNum(c.v)} m/s`;});
+    return{kind:1,r,th,tn,vok,amax:RACE_G*tn,choices:dedupe(ch),
+      q:`A curve of radius \\(${r}\\ \\text{m}\\) is banked at \\(${th}^\\circ\\ (\\tan ${th}^\\circ = ${tn})\\). The track is icy, so there is no friction. At what speed can a car take the curve without sliding up or down the bank? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}N\\cos\\theta&=mg\\\\N\\sin\\theta&=\\tfrac{mv^2}{r}\\\\\\tan\\theta&=\\tfrac{v^2}{rg}\\\\v&=\\sqrt{rg\\tan\\theta}\\\\&=\\sqrt{${r}(10)(${tn})}\\\\&=${fmtNum(vok,true)}\\ \\text{m/s}\\end{aligned}`,
+      after:`Faster than that the car slides up the bank, slower and it slides down. Real tracks have friction, which allows a range of speeds around this one.`};}
+  const F=pickOne([3000,4000,5000,6000]),C=pickOne([0.3,0.35,0.4]),A=pickOne([1.8,2,2.2]),mass=pickOne([700,750,800]);
+  const vok=Math.sqrt(2*F/(C*RACE_RHO*A));
+  const ch=[{v:vok,ok:true},
+    {v:Math.sqrt(F/(C*RACE_RHO*A)),fb:"Drag is \\(\\tfrac12C\\rho Av^2\\). Solving for \\(v\\) puts a 2 on top: \\(v = \\sqrt{2F/(C\\rho A)}\\)."},
+    {v:Math.sqrt(2*F/(RACE_RHO*A)),fb:"The drag coefficient \\(C\\) belongs in the drag force. Leaving it out makes the drag look smaller, so the top speed comes out too high."},
+    {v:Math.sqrt(2*F/(C*A)),fb:"Drag depends on the density of the air, \\(\\rho\\). Without it the units don't even come out as a speed."}];
+  ch.forEach(c=>{c.t=`${fmtNum(c.v)} m/s`;});
+  return{kind:2,F,C,A,mass,vok,choices:dedupe(ch),
+    q:`On the long straight, the engine of a \\(${mass}\\ \\text{kg}\\) race car pushes it forward with \\(${F}\\ \\text{N}\\). Air drag is \\(\\tfrac12C\\rho Av^2\\) with \\(C = ${C}\\), \\(A = ${A}\\ \\text{m}^2\\), and \\(\\rho = 1.2\\ \\text{kg/m}^3\\). What is the car's top speed?`,
+    work:`\\begin{aligned}F&=\\tfrac12C\\rho Av^2\\\\v&=\\sqrt{\\tfrac{2F}{C\\rho A}}\\\\&=\\sqrt{\\tfrac{2(${F})}{(${C})(1.2)(${A})}}\\\\&=${fmtNum(vok,true)}\\ \\text{m/s}\\end{aligned}`,
+    after:`At top speed the push and the drag balance, so the net force is zero and the car stops speeding up. That's about ${Math.round(vok*3.6)} km/h. The mass only sets how long it takes to get there.`};
+}
+/* the path of a car on the track at speed v: position and heading after driving a distance s */
+function racePath(m,v){
+  const r=m.r,L=0.7*r,hw=Math.max(5,0.08*r),need=v*v/r;
+  let rp=r;
+  if(m.kind===0){if(need>m.amax)rp=v*v/m.amax;}else rp=v*v/m.amax;
+  const S=2*L+Math.PI*r;
+  const at0=s=>{
+    if(s<=L)return{x:r,y:-L+s,h:Math.PI/2};
+    if(Math.abs(rp-r)<1e-9*r){const u=s-L;if(u<=Math.PI*r){const f=u/r;return{x:r*Math.cos(f),y:r*Math.sin(f),h:f+Math.PI/2};}
+      return{x:-r,y:-(u-Math.PI*r),h:-Math.PI/2};}
+    const f=(s-L)/rp;return{x:r-rp+rp*Math.cos(f),y:rp*Math.sin(f),h:f+Math.PI/2};};
+  /* where it leaves the track, if it does */
+  let sOff=null;
+  if(Math.abs(rp-r)>1e-9*r){for(let s=L;s<=L+Math.PI*rp*1.2;s+=r/400){const p=at0(s),d=Math.hypot(p.x,p.y);if(d>r+hw||d<r-hw){sOff=s;break;}}}
+  /* after leaving the track: skids on into the gravel (flat), stops at the wall (bank, too fast), or slides down into the infield (bank, too slow) */
+  let sEnd=S,at=at0;
+  if(sOff!=null){const b=at0(sOff),d=Math.hypot(b.x,b.y),outw=d>r,ux=b.x/d,uy=b.y/d,tx=Math.cos(b.h),ty=Math.sin(b.h);
+    const fwd=0.14*r,side=(outw?1:-1)*(m.kind===1?0.16:0.1)*r,D=m.kind===1&&outw?0:Math.hypot(fwd,side);
+    sEnd=sOff+D;
+    at=s=>{if(s<=sOff)return at0(s);const u=D?Math.min(1,(s-sOff)/D):0,e=u*(2-u);return{x:b.x+e*(fwd*tx+side*ux),y:b.y+e*(fwd*ty+side*uy),h:b.h};};}
+  return{r,L,hw,rp,S,sOff,sEnd,at,need};
+}
+function raceSim(m,c){
+  if(m.kind===2){const vt=m.vok,k=m.F/(m.mass*vt),tEnd=Math.ceil(2.65/k/10)*10;
+    const v=t=>vt*Math.tanh(k*t),x=t=>Math.log(Math.cosh(k*t))*vt/k;
+    return{kind:2,tEnd,vAt:v,xAt:x,vt,aim:c.v,miss:Math.abs(c.v-vt),hit:Math.abs(c.v-vt)<=raceTol(m)};}
+  const P=racePath(m,c.v),G=racePath(m,m.vok);
+  const tG=G.S/m.vok,tCar=P.sEnd/c.v;
+  const off=P.sOff!=null,tEnd=off?tCar:Math.min(tCar,1.4*tG);
+  const hit=Math.abs(c.v-m.vok)<=raceTol(m);
+  return{kind:m.kind,P,G,tG,tEnd,off,slow:!off&&!hit,done:!off&&tCar<=tEnd+1e-9,
+    out:off&&Math.hypot(P.at(P.sOff).x,P.at(P.sOff).y)>P.r,aim:c.v,miss:Math.abs(c.v-m.vok),hit};
+}
+function makeRace(k){
+  for(let tries=0;tries<500;tries++){
+    const m=raceDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=raceTol(m);
+    if(!m.choices.every(c=>c.ok||Math.abs(c.v-m.vok)>=2.5*tol))continue;
+    /* every wrong choice must fail where you can see it: slide off, or lose to the rival on the flat curve */
+    if(!m.choices.every(c=>{if(c.ok)return true;const F=raceSim(m,c);return m.kind===2||F.off||(m.kind===0&&F.slow);}))continue;
+    return m;}
+}
+function drawRaceCar(ctx,x,y,h,s,fill,ink,alpha){
+  ctx.save();ctx.globalAlpha=alpha||1;ctx.translate(x,y);ctx.rotate(-h);
+  const l=Math.max(16,4.6*s),w=Math.max(9,2*s);
+  ctx.fillStyle=ink;ctx.fillRect(-l*0.32-3,-w/2-2,6,3);ctx.fillRect(-l*0.32-3,w/2-1,6,3);ctx.fillRect(l*0.3-3,-w/2-2,6,3);ctx.fillRect(l*0.3-3,w/2-1,6,3);
+  ctx.fillStyle=fill;ctx.strokeStyle=ink;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(-l/2,-w/2);ctx.lineTo(l*0.3,-w/2);ctx.lineTo(l/2,0);ctx.lineTo(l*0.3,w/2);ctx.lineTo(-l/2,w/2);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.fillStyle=ink;ctx.fillRect(-l/2-1,-w/2-1,3,w+2);
+  ctx.restore();
+}
+function drawRace(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre;
+  const tt=pre?0:Math.min(t,F.tEnd);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  if(m.kind===2){
+    /* the straight: lane marks slide by at the car's speed */
+    const v=F.vAt(tt),x=F.xAt(tt),ry=70,rh=56,ppm=5;
+    ctx.fillStyle=col("--muted");ctx.globalAlpha=.25;ctx.fillRect(0,ry,W,rh);ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,ry);ctx.lineTo(W,ry);ctx.moveTo(0,ry+rh);ctx.lineTo(W,ry+rh);ctx.stroke();
+    ctx.strokeStyle=col("--ink");ctx.globalAlpha=.35;ctx.lineWidth=2;const off=(x*ppm)%40;
+    for(let gx=-off;gx<W;gx+=40){ctx.beginPath();ctx.moveTo(gx,ry+rh/2);ctx.lineTo(gx+20,ry+rh/2);ctx.stroke();}ctx.globalAlpha=1;
+    drawRaceCar(ctx,W*0.32,ry+rh/2+12,0,4,col("--petal-1"),col("--ink"));
+    const gx=46,gr=W-14,gt=160,gb=H-34,vMax=Math.max(F.vt,...m.choices.map(q=>q.v))*1.12;
+    const GX=u=>gx+u/F.tEnd*(gr-gx),GY=s=>gb-s/vMax*(gb-gt);
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(gx,gt-4);ctx.lineTo(gx,gb);ctx.lineTo(gr,gb);ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText("speed (m/s)",gx-34,gt-18);
+    const step=[25,50,100].find(s=>vMax/s<=4)||100;ctx.textAlign="right";
+    for(let s=0;s<=vMax;s+=step){ctx.fillText(String(s),gx-5,GY(s));if(s){ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(gx,GY(s));ctx.lineTo(gr,GY(s));ctx.stroke();}}
+    const ts=F.tEnd<=60?10:20;ctx.textAlign="center";for(let s=0;s<=F.tEnd;s+=ts)ctx.fillText(`${s} s`,GX(s),gb+12);
+    if(c){ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(gx,GY(c.v));ctx.lineTo(gr,GY(c.v));ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText("you",gr,GY(c.v)+(c.v>F.vt?-9:9));}
+    if(!pre){ctx.strokeStyle=col("--ink");ctx.lineWidth=2.2;ctx.beginPath();for(let u=0;u<=tt;u+=F.tEnd/300){const y=GY(F.vAt(u));if(u===0)ctx.moveTo(GX(u),y);else ctx.lineTo(GX(u),y);}ctx.lineTo(GX(tt),GY(v));ctx.stroke();}
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";
+    ctx.fillText(`t = ${tt.toFixed(1)} s   v = ${fmtNum(v)} m/s   drag = ${fmtNum(0.5*m.C*RACE_RHO*m.A*v*v)} N`,12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.t}`,12,30);ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`push ${m.F} N`,W-12,30);ctx.textAlign="left";}
+    if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.fillStyle=col(F.hit?"--good":"--bad");
+      ctx.fillText(F.hit?"Right on the top speed":`Top speed ${fmtNum(F.vt)} m/s, off by ${fmtNum(F.miss)} m/s`,12,46);ctx.font="11px 'IBM Plex Mono', monospace";}
+    return;
+  }
+  /* top view of the curve */
+  const P=F.P,G=F.G,r=P.r,hw=P.hw,mg=Math.max(10,0.22*r);
+  const x0=-r-hw-mg,x1=r+hw+mg,y0=-P.L-Math.max(8,0.1*r),y1=r+hw+mg,top=60,bot=H-8;
+  const s=Math.min((W-16)/(x1-x0),(bot-top)/(y1-y0)),ox=(W-(x1-x0)*s)/2;
+  const X=x=>ox+(x-x0)*s,Y=y=>bot-(y-y0)*s;
+  const ring=(rad)=>{ctx.beginPath();ctx.moveTo(X(rad),Y(y0));ctx.lineTo(X(rad),Y(0));ctx.arc(X(0),Y(0),rad*s,0,Math.PI,true);ctx.lineTo(X(-rad),Y(y0));};
+  /* outside: gravel (flat) or a wall (banked); inside: grass */
+  ctx.fillStyle=col("--leaf");ctx.globalAlpha=.22;ctx.fillRect(0,top-4,W,bot-top+8);ctx.globalAlpha=1;
+  ctx.fillStyle=col(m.kind===0?"--soil-seed":"--muted");ctx.globalAlpha=.35;ring(r+hw+Math.min(mg,0.12*r));ctx.lineTo(X(r+hw+Math.min(mg,0.12*r)),Y(y0));ctx.closePath();
+  ctx.save();ctx.clip();ctx.fillRect(0,0,W,H);ctx.restore();ctx.globalAlpha=1;
+  ctx.fillStyle=col("--leaf");ctx.globalAlpha=.22;ring(r-hw);ctx.closePath();ctx.fill();ctx.globalAlpha=1;
+  /* the track itself */
+  ctx.strokeStyle=col("--muted");ctx.globalAlpha=.55;ctx.lineWidth=2*hw*s;ctx.lineCap="butt";ring(r);ctx.stroke();ctx.globalAlpha=1;
+  if(m.kind===1){/* shading shows the bank: darker toward the outside */
+    for(let i=0;i<4;i++){ctx.strokeStyle=col("--ink");ctx.globalAlpha=0.05*(i+1);ctx.lineWidth=hw*s/2;ring(r-hw+hw*(i+0.5)/2);ctx.stroke();}ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=3;ring(r+hw);ctx.stroke();}
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ring(r+hw);ctx.stroke();ring(r-hw);ctx.stroke();
+  ctx.strokeStyle=col("--rule");ctx.lineWidth=1;ctx.setLineDash([6,6]);ring(r);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=col("--ink");ctx.textAlign="center";
+  ctx.fillText(m.kind===0?`flat, r = ${r} m`:`banked ${m.th}°, r = ${r} m`,X(0),Y(r*0.25));
+  ctx.fillStyle=col("--muted");ctx.fillText(m.kind===0?"grass":"infield",X(0),Y(r*0.25)+16);
+  /* tire marks of the run so far, the rival, then the car */
+  if(!pre&&c){const sNow=Math.min(c.v*tt,P.sEnd);ctx.strokeStyle=col("--accent");ctx.globalAlpha=.6;ctx.lineWidth=2;ctx.beginPath();
+    for(let u=0;u<=sNow;u+=r/60){const q=P.at(Math.min(u,sNow));if(u===0)ctx.moveTo(X(q.x),Y(q.y));else ctx.lineTo(X(q.x),Y(q.y));}const q=P.at(sNow);ctx.lineTo(X(q.x),Y(q.y));ctx.stroke();ctx.globalAlpha=1;}
+  if(m.kind===0){const sg=Math.min(m.vok*tt,G.S),q=G.at(sg);drawRaceCar(ctx,X(q.x)+(pre?-14:0),Y(q.y),q.h,s,col("--muted"),col("--ink"),.55);}
+  const sc=pre?0:Math.min((c?c.v:0)*tt,P.sEnd),q=P.at(sc);
+  drawRaceCar(ctx,X(q.x)+(m.kind===0&&pre?14:0),Y(q.y),q.h,s,col("--petal-1"),col("--ink"));
+  /* readouts */
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  ctx.fillText(`t = ${tt.toFixed(1)} s   v = ${c&&!pre?fmtNum(c.v):"0"} m/s${c&&!pre?`   needs v²/r = ${String(Math.round(c.v*c.v/r*100)/100)} m/s²`:""}`,12,14);
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.t}`,12,30);ctx.fillStyle=col("--muted");ctx.textAlign="right";
+    ctx.fillText(`${m.kind===0?"grip gives at most μg":"bank gives g tanθ"} = ${String(Math.round(m.amax*100)/100)} m/s²`,W-12,30);ctx.textAlign="left";}
+  if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.fillStyle=col(F.hit?"--good":"--bad");
+    ctx.fillText(F.hit?(m.kind===0?"Flat out, and it held":"Right on the line"):F.off?(F.out?(m.kind===0?"Slid off into the gravel":"Slid up into the wall"):"Slid down into the infield"):"The rival got there first",12,46);
+    ctx.font="11px 'IBM Plex Mono', monospace";}
+}
+TOYS.race.game={title:"Race the curves",intro:"The tires and the track follow the physics exactly. Pick the right speed and you take every curve flat out.",
+  names:RACE_NAMES,make:makeRace,ms:4600,
+  sim:m=>raceSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawRace,
+  outcome:(F,m)=>{const v=fmtNum(m.vok);
+    if(m.kind===2)return F.hit?`It topped out at ${v} m/s, just as you said.`:`It topped out at ${v} m/s, not ${fmtNum(F.aim)} m/s.`;
+    if(F.hit)return m.kind===0?`At ${v} m/s friction gave every bit of grip it had, and the car held the curve.`:`At ${v} m/s the bank alone turned the car, with no friction needed.`;
+    if(F.off)return F.out?`At ${fmtNum(F.aim)} m/s the car needed more sideways force than ${m.kind===0?"friction":"the bank"} could give, so it slid outward.`
+      :`At ${fmtNum(F.aim)} m/s the bank pushed the car inward more than the turn needed, so it slid down the bank.`;
+    return `The curve was safe at ${fmtNum(F.aim)} m/s, but the rival took it at ${v} m/s and won.`;},
+  right:"Fastest line!",go:"Race",pickFirst:"Pick a speed to race",again:"Race again with new numbers",cvLabel:"Race car on the curve",
+  notReadyTitle:"The race car isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the race car. Bloom all four to race it."};
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -1834,18 +2207,21 @@ async function fetchChapter(n){
   const meta=store("chapters")||{};meta[n]={secs:secs.length};store("chapters",meta);
   return "ok";
 }
+const CHMEM={};
 function useChapter(n){
   if(CH===n)return;
-  const c=CACHE[n];
+  const c=CACHE[n],CH0=CH;
   CH=n;D=c.D;S=D.sections;SECS=c.secs;SUMMARY=c.sum;ITEMS=c.items;NOTE_ERRS=c.errs;
-  PKEY="progress-ch"+n;SKEY="session-ch"+n;PROG=loadProg();SESS=loadSess();
-  GSEL=-1;LP={k:0,m:null,pick:null,state:"pick",raf:0};
+  if(CH0)CHMEM[CH0]={SESS,GSEL,LP};
+  PKEY="progress-ch"+n;SKEY="session-ch"+n;PROG=loadProg();
+  const kept=CHMEM[n];
+  if(kept){SESS=kept.SESS;GSEL=kept.GSEL;LP=kept.LP;}else{SESS=loadSess();GSEL=-1;LP={k:0,m:null,pick:null,state:"pick",raf:0};}
   store("last-chapter",n);
   applyChCfg();
   setTabLinks();
 }
 function setTabLinks(){
-  const t={learn:H(""),equations:"#equations",review:"#review"};
+  const t={learn:TABM.learn||(CH?H(""):"#chapters"),equations:TABM.equations||"#equations",calc:TABM.calc||"#calc",review:TABM.review||"#review"};
   document.querySelectorAll(".tabs a").forEach(a=>{if(t[a.dataset.tab])a.setAttribute("href",t[a.dataset.tab]);});
 }
 function chTitle(n){const c=CHAPTERS.find(x=>x[0]===n);return c?c[1]:"";}
@@ -1978,21 +2354,69 @@ function loadFail(what){
 /* ---------- router ---------- */
 /* Addresses: #chapters is the menu, #equations and #review pick a chapter, #calc is the calculator (#solver goes there), #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
    Older links like #learn and #sec-3-2 still work and are sent to the matching new address. */
-function setTab(t){document.querySelectorAll(".tabs a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
+/* ---------- tab memory ----------
+   Each tab remembers the last page shown in it (TABM, saved as fb:tabs). Tapping a different tab goes back to that page
+   and puts back what it looked like: scroll position, open worked examples and answers, and search words (VIEW, per address,
+   kept while the app is open). Tapping the tab you are already on goes up one level (tabUp): section to chapter to menu,
+   minigame to garden to chapter picker, chapter equations to picker. */
+const TABROOT={learn:()=>"#chapters",equations:()=>"#equations",calc:()=>"#calc",review:()=>"#review"};
+function tabUp(t,h){
+  const m=h.match(/^#ch(\d+)(?:\/(.+))?$/);
+  if(!m)return TABROOT[t]();
+  if(t==="learn")return m[2]&&m[2]!=="about"?"#ch"+m[1]:"#chapters";
+  if(t==="review")return m[2]&&m[2]!=="review"?"#ch"+m[1]+"/review":"#review";
+  return TABROOT[t]();
+}
+let TABM=store("tabs")||{},CURTAB="",LASTHASH=null,RESTORE=false;
+const VIEW={};
+function setTab(t){
+  CURTAB=t;
+  if(t){TABM[t]=location.hash||"#chapters";store("tabs",TABM);}
+  document.querySelectorAll(".tabs a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
+  setTabLinks();
+}
+function snapView(){
+  if(LASTHASH==null)return;
+  VIEW[LASTHASH]={y:window.scrollY,open:[...main.querySelectorAll("details")].map(d=>d.open),
+    q:[...main.querySelectorAll("input[type=search]")].map(i=>[i.id,i.value])};
+  LASTHASH=null;
+}
+function restoreView(h){
+  const v=VIEW[h];if(!v){window.scrollTo(0,0);return;}
+  const ds=main.querySelectorAll("details");if(ds.length===v.open.length)ds.forEach((d,i)=>{d.open=v.open[i];});
+  v.q.forEach(([id,val])=>{const el=id&&document.getElementById(id);if(el&&val){el.value=val;el.dispatchEvent(new Event("input"));}});
+  /* math and search results change the page height for a moment, so try the scroll a few times unless the student moves first */
+  let moved=false;const stop=()=>{moved=true;};
+  ["wheel","touchstart","keydown"].forEach(e=>window.addEventListener(e,stop,{once:true,passive:true}));
+  [0,120,350,800,1400].forEach(ms=>setTimeout(()=>{if(!moved&&LASTHASH===h)window.scrollTo(0,v.y);},ms));
+}
+function wireTabs(){
+  document.querySelectorAll(".tabs a").forEach(a=>a.addEventListener("click",e=>{
+    const t=a.dataset.tab;
+    if(t===CURTAB){e.preventDefault();const r=tabUp(t,location.hash||"#chapters");
+      if(location.hash!==r)location.hash=r;else window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});return;}
+    RESTORE=true;}));
+  const keep=()=>{snapView0();saveCalc();};
+  window.addEventListener("pagehide",keep);
+  document.addEventListener("visibilitychange",()=>{if(document.hidden)keep();});
+}
+/* a snapshot that does not end the page (used when the app is put in the background) */
+function snapView0(){const h=LASTHASH;if(h==null)return;snapView();LASTHASH=h;}
 let ROUTE_N=0;
 async function route(){
   const my=++ROUTE_N;
+  snapView();cancelAnimationFrame(LP.raf);
   const h=decodeURIComponent((location.hash||"").slice(1));let m;
   if((m=h.match(/^sec-(\d+)-(\d+)$/))){location.replace(`#ch${+m[1]}/${+m[1]}.${+m[2]}`);return;}
   if(/^(learn|practice|launch)$/.test(h)){location.replace(`#ch${lastCh()}`+(h==="learn"?"":"/"+(h==="practice"?"review":h)));return;}
   await loadSetup();
   if(my!==ROUTE_N)return;
-  const done=()=>{window.scrollTo(0,0);typeset(main);};
+  const done=()=>{const r=RESTORE;RESTORE=false;LASTHASH=location.hash;if(r)restoreView(LASTHASH);else window.scrollTo(0,0);typeset(main);};
   if(!h||h==="chapters"){setTab("learn");await renderMenu(my);if(my===ROUTE_N)done();return;}
   if(h==="equations"){setTab("equations");await renderEqPicker(my);if(my===ROUTE_N)done();return;}
   if(h==="review"){setTab("review");await renderReviewPicker(my);if(my===ROUTE_N)done();return;}
   if(h==="solver"){location.replace("#calc");return;}
-  if(h==="calc"){setTab("calc");renderCalc();window.scrollTo(0,0);return;}
+  if(h==="calc"){setTab("calc");renderCalc();done();return;}
   /* every other page needs a chapter: the one in the address, or the last one opened */
   m=h.match(/^ch(\d+)(?:\/(.*))?$/);
   const want=m?+m[1]:(CH||lastCh()),sub=m?(m[2]||""):h;
@@ -2018,9 +2442,9 @@ async function route(){
 }
 window.addEventListener("hashchange",route);
 function boot(){
-  setTabLinks();
+  setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
