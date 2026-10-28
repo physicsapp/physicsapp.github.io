@@ -8,23 +8,25 @@ a step by step kinematics solver, and quick review sessions built for a phone: a
 one plant per section, and a fully bloomed garden unlocks a rocket launch pad where
 students predict a flight with real kinematics. Nothing is behind a paywall.
 
-This first version covers Chapter 3, Motion Along a Straight Line.
+The app opens on a chapter list for all 15 chapters of the course. Chapters 1 through 6 are
+written so far; the others say "Coming soon" until their files are added.
+Each chapter has its own address, like `https://physicsapp.github.io/#ch3`, and its own garden.
 
 ## What's in this folder
 
 | Path | What it is | Do you edit it? |
 |---|---|---|
-| `notes/ch03.txt` | Your summaries and review items | **Yes, this is the one** |
+| `notes/chNN.txt` | Your summaries and review items, one file per chapter | **Yes, this is the one** |
 | `settings.txt` | Questions per review, right answers to grow a flower, daily limit, class dates on or off | **Yes** |
 | `schedule.txt` | The class date for each section | **Yes** |
-| `book/ch03.json` | Content taken from the OpenStax book by the extraction script | No, regenerate it with the script |
+| `book/chNN.json` | Content taken from the OpenStax book by the extraction script | No, regenerate it with the script |
 | `img/` | Figures from the book, resized | No |
 | `index.html` | The app itself | Only to change how the app works |
-| `tools/` | Scripts that read the OpenStax source files and build `book/ch03.json` | Only to add chapters |
+| `tools/` | Scripts that read the OpenStax source files and build `book/chNN.json` | Only to add chapters |
 
 ## Editing your content
 
-Everything you'd want to change as a teacher is in `notes/ch03.txt`. The top of that
+Everything you'd want to change as a teacher is in the `notes` folder, one file per chapter, like `notes/ch03.txt`. The top of that
 file explains the format. There are four kinds of blocks, each tagged with its section:
 
 ```
@@ -77,6 +79,7 @@ skips that block and lists the problem with its line number on the **About** pag
 - Wrong answers never shrink a plant; the question comes back the next day.
 - Progress is saved in the student's browser only. There are no accounts and nothing is
   sent anywhere. Students can copy a backup code to move their garden to another device.
+  One code holds the gardens from every chapter.
 - Teachers can turn on a fully grown preview garden from the About page.
 
 ### Changing the pace: `settings.txt`
@@ -123,7 +126,10 @@ python3 tools/extract.py osbooks-university-physics-bundle book/ch04.json m58289
 The module ids for each chapter are listed in
 `collections/university-physics-volume-1.collection.xml` in that repository.
 Skip each chapter's first module, which is its introduction.
-The app currently loads Chapter 3 only; supporting several chapters is the next code change.
+A chapter appears in the app's chapter list as soon as `book/chNN.json` is on the site
+(two digits, like `ch04`). Add `notes/chNN.txt` for its summaries and review items, in the
+same format as `notes/ch03.txt`. Files inside a folder have to be uploaded from inside that
+folder on GitHub.
 
 ## Licenses
 

@@ -76,6 +76,11 @@ main{display:flex;flex-direction:column;gap:22px;padding-block:20px}
 .secrow .n{font-family:var(--font-mono);font-weight:500;font-size:1.05rem;color:var(--accent)}
 .secrow .t{font-weight:600;line-height:1.3;min-width:0}
 .secrow .meta{font-size:.82rem;color:var(--muted);font-weight:400;margin-top:2px}
+.secrow.soon{background:transparent;border-style:dashed}
+.secrow.soon .n,.secrow.soon .t{color:var(--muted)}
+.hero.plain{grid-template-columns:1fr}
+.backlink{font-size:.9rem;color:var(--accent);text-decoration:none;font-weight:600;width:max-content}
+.backlink:hover{text-decoration:underline}
 .chev{color:var(--muted)}
 
 .classdate{margin:0;font-family:var(--font-mono);font-size:.85rem;color:var(--accent)}
@@ -218,7 +223,7 @@ figcaption{font-size:.85rem;color:var(--muted)}
 </style>
 
 <header class="top"><div class="wrap">
-  <a class="brand" href="#learn" aria-label="Freebody Physics home">
+  <a class="brand" href="#chapters" aria-label="Freebody Physics, all chapters">
     <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="7" y="7" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 7V1M11 15v6M15 11h6M7 11H1" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
     Freebody
   </a>
@@ -247,12 +252,21 @@ const main=document.getElementById("main");
 const crumb=document.getElementById("crumb");
 const G=9.80;
 
-const SLUGS=["3-1-position-displacement-and-average-velocity","3-2-instantaneous-velocity-and-speed","3-3-average-and-instantaneous-acceleration","3-4-motion-with-constant-acceleration","3-5-free-fall","3-6-finding-velocity-and-displacement-from-acceleration"];
-const bookUrl=i=>"https://openstax.org/books/university-physics-volume-1/pages/"+SLUGS[i];
+/* OpenStax page names follow the section number and title, like 3-1-position-displacement-and-average-velocity */
+const slug=s=>s.num.replace(".","-")+"-"+s.title.toLowerCase().replace(/['’]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+const bookUrl=i=>"https://openstax.org/books/university-physics-volume-1/pages/"+slug(S[i]);
+
+/* ---------- chapters ---------- */
+/* A chapter appears in the menu as soon as book/chNN.json is on the site. notes/chNN.txt adds its summaries and review items. */
+const CHAPTERS=[[1,"Units and Measurement"],[2,"Vectors"],[3,"Motion Along a Straight Line"],[4,"Motion in Two and Three Dimensions"],[5,"Newton’s Laws of Motion"],[6,"Applications of Newton’s Laws"],[7,"Work and Kinetic Energy"],[8,"Potential Energy and Conservation of Energy"],[9,"Linear Momentum and Collisions"],[10,"Fixed Axis Rotation"],[11,"Angular Momentum"],[12,"Static Equilibrium and Elasticity"],[13,"Gravitation"],[14,"Fluid Mechanics"],[15,"Oscillations"]];
+const pad2=n=>String(n).padStart(2,"0");
+let CH=0;
+const H=r=>"#ch"+(CH||lastCh())+(r?"/"+r:"");
+function lastCh(){const n=+store("last-chapter");return CHAPTERS.some(c=>c[0]===n)?n:3;}
 
 /* Short summaries written for this app (adapted, same license as the book). */
 let SUMMARY={},ITEMS=[],NOTE_ERRS=[];
-const SECS=["3.1","3.2","3.3","3.4","3.5","3.6"];
+let SECS=[];
 
 /* ---------- notes file parser: summaries and review items you can edit ---------- */
 function hashStr(s){let h=2166136261;for(const c of s){h^=c.codePointAt(0);h=Math.imul(h,16777619);}return (h>>>0).toString(36);}
@@ -452,10 +466,11 @@ function classDates(sec){
 }
 
 /* ---------- progress and growth (saved on this device only) ---------- */
-const PKEY="progress-ch3",GAP=[0,1,3,7,14],BLOOM=1;
+/* each chapter keeps its own garden: fb:progress-ch3, fb:progress-ch4, and so on */
+let PKEY="progress-ch3";const GAP=[0,1,3,7,14],BLOOM=1;
 let DAY_OFF=0;
 function loadProg(){const p=store(PKEY);return Object.assign({v:2,items:{},missions:{},preview:false,grow:{},days:{}},(p&&typeof p==="object"&&p.items)?p:{});}
-let PROG=loadProg();
+let PROG=loadProg();/* replaced when a chapter loads */
 function saveProg(){store(PKEY,PROG);}
 function today(){const d=new Date();return Math.floor((d.getTime()-d.getTimezoneOffset()*6e4)/864e5)+DAY_OFF;}
 function secItems(sec){return ITEMS.filter(i=>i.sec===sec);}
@@ -491,8 +506,15 @@ function nextDue(){const t=today();let best=null,n=0;
   for(const i of ITEMS){const r=PROG.items[i.id];if(!r||r.due<=t)continue;if(best===null||r.due<best){best=r.due;n=1;}else if(r.due===best)n++;}
   return best===null?null:{days:best-t,n};}
 
-const EQ_SEC=["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"];
-const EQ_SOLVER=new Set([8,9,10,11,12,13,14,15]);
+/* chapter extras: which section each key equation belongs to, the hero graph, the solver links, and the toy built from blooms */
+const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"],eqSolver:new Set([8,9,10,11,12,13,14,15]),hero:()=>heroGraph(),solver:true,eqHint:"Search, for example “free fall” or “average”",toy:"rocket"},
+  1:{eqSec:["1.6"],eqHint:"Search, for example “uncertainty”"},
+  2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”"},
+  4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",solver:true},
+  5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],eqHint:"Search, for example “weight” or “second law”"},
+  6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],eqHint:"Search, for example “friction” or “drag”"}};
+const chx=()=>CHX[CH]||{};
+const eqSec=j=>(chx().eqSec||[])[j]||"";
 
 /* ---------- helpers ---------- */
 function typeset(el){
@@ -532,25 +554,27 @@ function heroGraph(){
 }
 
 function renderLearn(){
-  crumb.textContent="Chapter 3";
+  crumb.textContent="Chapter "+CH;
+  const X=chx();
   main.innerHTML=`
-  <section class="paper hero">
+  <a class="backlink" href="#chapters">‹ All chapters</a>
+  <section class="paper hero${X.hero?"":" plain"}">
     <div class="stack">
       <div class="eyebrow">University Physics, Volume 1</div>
-      <h1>Motion Along a Straight Line</h1>
-      <p class="muted small">Chapter 3 · 6 sections · ${D.keyEquations.length} key equations</p>
+      <h1>${esc(D.chapter.title)}</h1>
+      <p class="muted small">Chapter ${CH} · ${plural(S.length,"section")} · ${plural(D.keyEquations.length,"key equation")}</p>
     </div>
-    ${heroGraph()}
+    ${X.hero?X.hero():""}
   </section>
   <nav class="seclist" aria-label="Sections">
-    ${S.map((s,i)=>`<a class="secrow" href="#sec-3-${i+1}">
+    ${S.map((s,i)=>`<a class="secrow" href="${H(s.num)}">
       <span class="n">${s.num}</span>
       <span class="t">${esc(s.title)}<span class="meta" style="display:block">${classDates(s.num,true)?`In class ${classDates(s.num,true)} · `:""}${s.examples.length} worked example${s.examples.length===1?"":"s"} · ${secItems(s.num).length} review items</span></span>
       <span class="chev" aria-hidden="true">›</span></a>`).join("")}
   </nav>
   <div class="row">
-    <a class="btn" href="#solver">Open the kinematics solver</a>
-    <a class="btn ghost" href="#review">Open your garden</a>
+    ${X.solver?`<a class="btn" href="#solver">Open the kinematics solver</a>`:""}
+    <a class="btn${X.solver?" ghost":""}" href="${H("review")}">Open your garden</a>
   </div>
   ${attrib()}`;
 }
@@ -560,7 +584,7 @@ function renderSection(i){
   const s=S[i], sm=SUMMARY[s.num];
   crumb.textContent=s.num+" "+s.title;
   let callouts=s.callouts;
-  if(!callouts.length)callouts=D.keyEquations.filter((e,j)=>EQ_SEC[j]===s.num).map(e=>e.tex);
+  if(!callouts.length)callouts=D.keyEquations.filter((e,j)=>eqSec(j)===s.num).map(e=>e.tex);
   main.innerHTML=`
   <header class="stack">
     <div class="eyebrow">Section ${s.num}</div>
@@ -573,7 +597,7 @@ function renderSection(i){
     ${sm.w?`<p class="watch"><b>Watch out</b><span>${esc(sm.w)}</span></p>`:""}
   </section>`:""}
   <section class="stack"><h2>Key ideas from the book</h2><ul class="bullets">${s.keyConcepts.map(k=>`<li>${k}</li>`).join("")}</ul></section>
-  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(t=>`<div class="eqbox">\\[${t}\\]</div>`).join("")}</div>${s.num==="3.4"||s.num==="3.5"?`<a class="btn ghost" href="#solver" style="width:max-content">Solve with these in the solver</a>`:""}</section>`:""}
+  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(t=>`<div class="eqbox">\\[${t}\\]</div>`).join("")}</div>${CH===3&&(s.num==="3.4"||s.num==="3.5")?`<a class="btn ghost" href="#solver" style="width:max-content">Solve with these in the solver</a>`:""}</section>`:""}
   ${s.examples.length?`<section class="stack"><h2>Worked examples</h2>${s.examples.map((ex,j)=>`
     <details class="ex"><summary><span class="k">${s.num}.${j+1}</span><span class="tt">${esc(ex.title||"Example")}</span><span class="plus" aria-hidden="true">+</span></summary>
     <div class="exbody">${ex.parts.map(p=>`<div class="part"><div class="lbl">${esc(p.label)}</div><div class="rich">${p.html}</div></div>`).join("")}</div></details>`).join("")}</section>`:""}
@@ -583,8 +607,8 @@ function renderSection(i){
     <a class="btn quiet" href="${bookUrl(i)}" target="_blank" rel="noopener">Read the full section</a>
   </section>
   <nav class="pager">
-    ${i>0?`<a href="#sec-3-${i}"><span>${S[i-1].num}</span>${esc(S[i-1].title)}</a>`:`<a href="#learn"><span>Chapter</span>All sections</a>`}
-    ${i<S.length-1?`<a class="next" href="#sec-3-${i+2}"><span>${S[i+1].num}</span>${esc(S[i+1].title)}</a>`:`<a class="next" href="#review"><span>Next</span>Your garden</a>`}
+    ${i>0?`<a href="${H(S[i-1].num)}"><span>${S[i-1].num}</span>${esc(S[i-1].title)}</a>`:`<a href="${H("")}"><span>Chapter ${CH}</span>All sections</a>`}
+    ${i<S.length-1?`<a class="next" href="${H(S[i+1].num)}"><span>${S[i+1].num}</span>${esc(S[i+1].title)}</a>`:`<a class="next" href="${H("review")}"><span>Next</span>Your garden</a>`}
   </nav>
   ${attrib()}`;
   document.getElementById("goReview").onclick=()=>startSession(s.num,false);
@@ -593,13 +617,13 @@ function renderSection(i){
 function renderEquations(){
   crumb.textContent="Key equations";
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">Chapter 3</div><h1>Key equations</h1></header>
-  <input class="search" id="eqq" type="search" placeholder="Search, for example “free fall” or “average”" aria-label="Search equations">
+  <header class="stack"><div class="eyebrow">Chapter ${CH}</div><h1>Key equations</h1></header>
+  <input class="search" id="eqq" type="search" placeholder="${esc(chx().eqHint||"Search the equations")}" aria-label="Search equations">
   <div class="stack" id="eqlist">
-  ${D.keyEquations.map((e,j)=>`<article class="card eqcard" data-name="${esc(e.name.toLowerCase())} ${EQ_SEC[j]}">
-    <div class="head"><h3>${esc(e.name)}</h3><span class="tag">${EQ_SEC[j]}</span></div>
+  ${D.keyEquations.map((e,j)=>`<article class="card eqcard" data-name="${esc(e.name.toLowerCase())} ${eqSec(j)}">
+    <div class="head"><h3>${esc(e.name)}</h3>${eqSec(j)?`<span class="tag">${eqSec(j)}</span>`:""}</div>
     <div class="eq">\\[${e.tex}\\]</div>
-    ${EQ_SOLVER.has(j)?`<button class="go" data-ff="${j>=13?1:0}">Use in the solver ›</button>`:""}
+    ${chx().eqSolver&&chx().eqSolver.has(j)?`<button class="go" data-ff="${j>=13?1:0}">Use in the solver ›</button>`:""}
   </article>`).join("")}
   </div>
   <p class="muted small" id="eqnone" hidden>No equation matches that search.</p>
@@ -728,7 +752,7 @@ const ease=x=>1-Math.pow(1-x,2);
 function stageName(f){return f<=0?"Seed":f<0.2?"Sprout":f<0.4?"Growing":f<0.58?"Leafy":f<BLOOM?"Budding":"In bloom";}
 function plantSVG(f,idx,label){
   f=Math.max(0,Math.min(1,f));
-  const petal=`var(--petal-${idx+1})`, top=92;
+  const petal=`var(--petal-${idx%6+1})`, top=92;
   const H=f>0?12+60*ease(f):0, tipY=top-H, sway=(idx%2?1:-1)*4*ease(f);
   let g=`<path d="M22 92 L78 92 L72 118 L28 118 Z" fill="var(--pot)"/><rect x="18" y="86" width="64" height="8" rx="2" fill="var(--pot-shade)"/><ellipse cx="50" cy="90" rx="28" ry="3.2" fill="var(--soil)"/>`;
   if(f<=0){g+=`<ellipse cx="50" cy="88" rx="4" ry="2.6" fill="var(--soil-seed)"/>`;}
@@ -742,7 +766,7 @@ function plantSVG(f,idx,label){
       g+=`<path d="M${x.toFixed(1)} ${y.toFixed(1)} q${(side*L*0.5).toFixed(1)} ${(-L*0.55).toFixed(1)} ${(side*L).toFixed(1)} ${(-L*0.15).toFixed(1)} q${(-side*L*0.45).toFixed(1)} ${(L*0.45).toFixed(1)} ${(-side*L).toFixed(1)} ${(L*0.15).toFixed(1)}Z" fill="${k%2?"var(--leaf)":"var(--leaf2)"}"/>`;
     }
     if(f>=0.58&&f<BLOOM){const r=3+5*(f-0.58)/(1-0.58);g+=`<ellipse cx="${cx}" cy="${tipY-r*0.6}" rx="${r*0.75}" ry="${r}" fill="${petal}" opacity=".85"/><path d="M${cx-r*0.75} ${tipY} q${r*0.75} ${-r*0.9} ${r*1.5} 0" fill="var(--leaf2)"/>`;}
-    if(f>=BLOOM){const n=PETALS[idx],R=14,cy=tipY-R*0.5;
+    if(f>=BLOOM){const n=PETALS[idx%PETALS.length],R=14,cy=tipY-R*0.5;
       for(let k=0;k<n;k++){const a=k*360/n;g+=`<ellipse cx="${cx}" cy="${cy-R*0.55}" rx="${R*0.32}" ry="${R*0.6}" fill="${petal}" transform="rotate(${a} ${cx} ${cy})"/>`;}
       g+=`<circle cx="${cx}" cy="${cy}" r="${R*0.32}" fill="var(--center)"/>`;}
   }
@@ -761,10 +785,17 @@ function rocketSVG(have,label){
   </svg>`;
 }
 
+/* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
+const TOYS={
+  rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
+    ready:"Your rocket is ready",readyText:"Predict how high it will fly, then launch it.",go:"Go to the launch pad",
+    count:(n,t)=>`${n} of ${t} rocket parts`,wait:"Each plant that blooms adds a part. When all six bloom, you can fly it."}};
+const toy=()=>TOYS[chx().toy]||null;
+
 /* ---------- review: garden home, sessions, summary ---------- */
 let SESS=null, GSEL=-1;
 /* an unfinished session is saved on this device, so a student can stop and come back later to the same question */
-const SKEY="session-ch3";
+let SKEY="session-ch3";
 function saveSess(){if(!SESS||SESS.done){store(SKEY,null);return;}
   store(SKEY,Object.assign({},SESS,{queue:SESS.queue.map(q=>Object.assign({},q,{it:undefined,id:q.it.id}))}));}
 function loadSess(){
@@ -779,7 +810,7 @@ function loadSess(){
 function pausedSess(){return SESS&&!SESS.done&&SESS.paused?SESS:null;}
 function resumeLabel(P){return P.practice?"Keep practicing":`Keep growing ${P.sec}`;}
 function resumeSess(){SESS.paused=false;saveSess();GSEL=-1;
-  if(location.hash==="#review"){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash="review";}
+  if(location.hash===H("review")){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash=H("review");}
 function renderPaused(){
   const Ss=SESS;crumb.textContent="Paused";
   main.innerHTML=`
@@ -787,7 +818,7 @@ function renderPaused(){
     <p class="muted">You're on question ${Ss.i+1} of ${Ss.queue.length}${Ss.sec?` in section ${Ss.sec}`:""}. Answers you already gave are counted. Come back any time, even after closing the app, and you'll pick up right here.</p></header>
   <div class="row">
     <button class="btn" id="resume">${resumeLabel(Ss)}</button>
-    <a class="btn quiet" href="#review" id="back">Back to your garden</a>
+    <a class="btn quiet" href="${H("review")}" id="back">Back to your garden</a>
   </div>`;
   document.getElementById("resume").onclick=resumeSess;
   document.getElementById("back").onclick=e=>{e.preventDefault();GSEL=-1;renderGarden();typeset(main);window.scrollTo(0,0);};
@@ -821,30 +852,31 @@ function howGrow(){
 function renderGarden(){
   if(SESS&&!SESS.done&&!SESS.paused)return renderSession();
   crumb.textContent="Your garden";
-  const nx=nextSec(), have=bloomed(), nHave=have.filter(Boolean).length;
+  const nx=nextSec(), have=bloomed(), nHave=have.filter(Boolean).length, T=toy(), nAll=have.length;
+  const cols=nAll<=3?nAll:nAll===4?2:3;
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">Chapter 3 · only you can see this</div><h1>Your garden</h1></header>
+  <header class="stack"><div class="eyebrow">Chapter ${CH} · only you can see this</div><h1>Your garden</h1></header>
   ${PROG.preview?`<p class="note">Preview mode is on: every plant shows fully grown. <button class="linkbtn" id="pvoff">Turn it off</button></p>`:""}
-  <section class="paper garden" aria-label="Plants, one per section">
+  <section class="paper garden" aria-label="Plants, one per section" style="grid-template-columns:repeat(${cols},1fr)">
     ${SECS.map((s,i)=>{const f=secFrac(s);return `<button class="pot${GSEL===i?" sel":""}" data-i="${i}" aria-expanded="${GSEL===i}">
       ${plantSVG(f,i,`Section ${s} plant, ${stageName(f)}`)}<span class="potlbl"><b>${s}</b> ${stageName(f)}</span></button>`;}).join("")}
   </section>
   ${GSEL>=0?potDetail(GSEL):""}
   <section class="card stack startcard">${startCard()}</section>
-  <section class="card rocketcard">
-    ${rocketSVG(have,`Rocket with ${nHave} of 6 parts`)}
+  ${T?`<section class="card rocketcard">
+    ${T.svg(have,`${T.thing[0].toUpperCase()+T.thing.slice(1)} with ${nHave} of ${nAll} parts`)}
     <div class="stack" style="min-width:0">
-      <div class="eyebrow">Launch pad</div>
-      <h2>${nHave===6?"Your rocket is ready":`${nHave} of 6 rocket parts`}</h2>
-      <p class="small muted">${nHave===6?"Predict how high it will fly, then launch it.":"Each plant that blooms adds a part. When all six bloom, you can fly it."}</p>
-      ${nHave===6?`<a class="btn" href="#launch" style="width:max-content">Go to the launch pad</a>`:""}
+      <div class="eyebrow">${T.eyebrow}</div>
+      <h2>${nHave===nAll?T.ready:T.count(nHave,nAll)}</h2>
+      <p class="small muted">${nHave===nAll?T.readyText:T.wait}</p>
+      ${nHave===nAll?`<a class="btn" href="${H(T.route)}" style="width:max-content">${T.go}</a>`:""}
     </div>
-  </section>
+  </section>`:""}
   <details class="card howgrow"><summary><b>How the garden grows</b></summary>
     <ul class="bullets small">${howGrow()}</ul></details>
   <details class="card"><summary><b>Back up or move your garden</b></summary>
     <div class="stack" style="margin-top:10px">
-      <p class="small muted">Copy this code somewhere safe. Paste it here on another device, or after clearing your browser, to get your garden back.</p>
+      <p class="small muted">Copy this code somewhere safe. It holds your gardens from every chapter. Paste it here on another device, or after clearing your browser, to get them back.</p>
       <textarea class="code" id="bk-out" readonly rows="3" aria-label="Your backup code"></textarea>
       <div class="row"><button class="btn quiet" id="bk-copy">Copy code</button><span class="small muted" id="bk-msg" aria-live="polite"></span></div>
       <label class="small" for="bk-in">Restore from a code</label>
@@ -870,12 +902,12 @@ function potDetail(i){
     <p class="small muted">${secCount(s)} of ${CFG.toBloom} right answers · ${plural(l.length,"question")}, ${fresh} not tried yet</p>
     <div class="row">
       <button class="btn" data-focus="${s}" data-practice="${can?0:1}">${mine?`Continue ${s}`:can?`Grow ${s}`:`Practice ${s}`}</button>
-      <a class="btn quiet" href="#sec-3-${i+1}">Read ${s}</a>
+      <a class="btn quiet" href="${H(s)}">Read ${s}</a>
     </div></section>`;
 }
 function wireBackup(){
   const out=document.getElementById("bk-out");if(!out)return;
-  const code=(()=>{try{return "FB1:"+btoa(unescape(encodeURIComponent(JSON.stringify(PROG))));}catch(e){return "";}})();
+  const code=backupCode();
   out.value=code;
   const msg=document.getElementById("bk-msg");
   document.getElementById("bk-copy").onclick=()=>{
@@ -884,12 +916,31 @@ function wireBackup(){
   };
   document.getElementById("bk-restore").onclick=()=>{
     const box=document.getElementById("bk-confirm"),raw=document.getElementById("bk-in").value.trim();
-    let p=null;try{if(!raw.startsWith("FB1:"))throw 0;p=JSON.parse(decodeURIComponent(escape(atob(raw.slice(4)))));if(!p||!p.items)throw 0;}catch(e){box.innerHTML=`<p class="note err">That code isn't valid. Copy the whole code, starting with FB1:</p>`;return;}
-    box.innerHTML=`<p class="note">This replaces the garden on this device. <button class="btn quiet" id="bk-yes">Replace it</button></p>`;
-    document.getElementById("bk-yes").onclick=()=>{PROG=Object.assign({missions:{},preview:false},p);saveProg();GSEL=-1;renderGarden();typeset(main);};
+    const got=readBackup(raw);
+    if(!got){box.innerHTML=`<p class="note err">That code isn't valid. Copy the whole code, starting with FB2: (or FB1: for an older code).</p>`;return;}
+    const chs=Object.keys(got).map(Number).sort((a,b)=>a-b);
+    box.innerHTML=`<p class="note">This replaces the ${chs.length===1?`Chapter ${chs[0]} garden`:`gardens for Chapters ${chs.join(", ")}`} on this device. <button class="btn quiet" id="bk-yes">Replace</button></p>`;
+    document.getElementById("bk-yes").onclick=()=>{
+      for(const n of chs)store("progress-ch"+n,Object.assign({missions:{},preview:false},got[n]));
+      PROG=loadProg();GSEL=-1;renderGarden();typeset(main);};
   };
 }
 
+/* One backup code holds every chapter. FB1 codes came from the first version, which only had Chapter 3. */
+function backupCode(){
+  const all={};for(const [n] of CHAPTERS){const p=store("progress-ch"+n);if(p&&p.items)all[n]=p;}
+  try{return "FB2:"+btoa(unescape(encodeURIComponent(JSON.stringify({v:2,ch:all}))));}catch(e){return "";}
+}
+function readBackup(raw){
+  try{
+    const m=raw.replace(/\s+/g,"").match(/^FB([12]):(.+)$/);if(!m)return null;
+    const p=JSON.parse(decodeURIComponent(escape(atob(m[2]))));
+    if(m[1]==="1")return p&&p.items?{3:p}:null;
+    if(!p||!p.ch||typeof p.ch!=="object")return null;
+    const out={};for(const k of Object.keys(p.ch)){const n=+k;if(CHAPTERS.some(c=>c[0]===n)&&p.ch[k]&&p.ch[k].items)out[n]=p.ch[k];}
+    return Object.keys(out).length?out:null;
+  }catch(e){return null;}
+}
 function startSession(sec,practice){
   const P=pausedSess();
   if(P&&P.sec===sec&&!!P.practice===!!practice)return resumeSess();
@@ -900,7 +951,7 @@ function startSession(sec,practice){
   SESS={queue:items.map(it=>({it})),i:0,first:0,firstN:0,practice,sec,before,done:false};
   saveSess();
   GSEL=-1;
-  if(location.hash==="#review"){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash="review";
+  if(location.hash===H("review")){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash=H("review");
 }
 function renderSession(){
   const Ss=SESS;
@@ -1015,9 +1066,9 @@ function renderSummary(){
   ${grown.length?`<section class="paper garden grown">${grown.map(x=>`<div class="pot static" data-i="${x.i}" data-b="${x.b}" data-a="${x.a}">${plantSVG(x.b,x.i,"")}<span class="potlbl"><b>${x.s}</b> grew</span></div>`).join("")}</section>`
     :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed questions come back tomorrow."}</p>`}
   ${!Ss.practice&&Ss.sec?`<p class="small muted">Section ${Ss.sec}: ${secCount(Ss.sec)} of ${CFG.toBloom} right answers.</p>`:""}
-  ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed. You earned the rocket's ${PARTS[x.i]}.</p>`).join("")}
+  ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed.${toy()&&toy().parts[x.i]?` You earned the ${toy().thing}'s ${toy().parts[x.i]}.`:""}</p>`).join("")}
   <div class="row">
-    <a class="btn" href="#review" id="back">Back to your garden</a>
+    <a class="btn" href="${H("review")}" id="back">Back to your garden</a>
     ${nxSec&&!Ss.practice?`<button class="btn quiet" id="again">${nxSec===Ss.sec?`Keep growing ${nxSec}`:`Next: grow ${nxSec}`}</button>`:""}
   </div>
   ${dayCapped()&&!Ss.practice?`<p class="small muted">That's today's ${CFG.perDay===1?"review":plural(CFG.perDay,"review")}. Come back tomorrow to keep growing.</p>`:""}`;
@@ -1066,7 +1117,7 @@ function renderLaunch(){
   const have=bloomed();
   if(!have.every(Boolean)){
     main.innerHTML=`<header class="stack"><div class="eyebrow">Launch pad</div><h1>Not ready to fly yet</h1></header>
-    <section class="card rocketcard">${rocketSVG(have,"Rocket parts collected")}<div class="stack"><p>Each plant in your garden that blooms adds a part to the rocket. Bloom all six to launch.</p><a class="btn" href="#review" style="width:max-content">Back to your garden</a></div></section>`;return;}
+    <section class="card rocketcard">${rocketSVG(have,"Rocket parts collected")}<div class="stack"><p>Each plant in your garden that blooms adds a part to the rocket. Bloom all six to launch.</p><a class="btn" href="${H("review")}" style="width:max-content">Back to your garden</a></div></section>`;return;}
   const M=PROG.missions||{};
   if(!LP.m)LP.m=makeMission(LP.k);
   const m=LP.m,flown=LP.state!=="pick";
@@ -1082,7 +1133,7 @@ function renderLaunch(){
   </section>
   <div class="flightwrap paper"><canvas id="cv" aria-label="Rocket flight" role="img"></canvas></div>
   <div id="lres" aria-live="polite">${LP.state==="done"?launchResult():""}</div>
-  <a class="btn quiet" href="#review" style="width:max-content">Back to your garden</a>`;
+  <a class="btn quiet" href="${H("review")}" style="width:max-content">Back to your garden</a>`;
   main.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{LP={k:+b.dataset.k,m:null,pick:null,state:"pick",raf:0};renderLaunch();typeset(main);});
   main.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{LP.pick=+b.dataset.j;renderLaunch();typeset(main);});
   const lb=document.getElementById("launch");if(lb)lb.onclick=()=>fly();
@@ -1156,8 +1207,8 @@ function renderAbout(){
     <li>The “In short” summaries, the review items, the garden and launch pad, and the kinematics solver are new. Quick review items use g = 10 m/s².</li>
     <li>The full explanatory text of each section is not included. Each section links to it on openstax.org.</li>
   </ul></section>
-  <section class="card stack"><h2>Notes file check</h2>
-  ${NOTE_ERRS.length?`<p class="small">The notes file loaded with ${NOTE_ERRS.length} problem${NOTE_ERRS.length===1?"":"s"}. Blocks with a problem are skipped until it's fixed.</p><ul class="bullets small">${NOTE_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:`<p class="small">notes/ch03.txt loaded with no problems: ${Object.keys(SUMMARY).length} summaries and ${ITEMS.length} review items.</p>`}
+  <section class="card stack"><h2>Notes file check, Chapter ${CH}</h2>
+  ${NOTE_ERRS.length?`<p class="small">notes/ch${pad2(CH)}.txt loaded with ${NOTE_ERRS.length} problem${NOTE_ERRS.length===1?"":"s"}. Blocks with a problem are skipped until it's fixed.</p><ul class="bullets small">${NOTE_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:`<p class="small">notes/ch${pad2(CH)}.txt loaded with no problems: ${Object.keys(SUMMARY).length} summaries and ${ITEMS.length} review items.</p>`}
   </section>
   <section class="card stack"><h2>Settings check</h2>
   <p class="small">${HAVE_SETTINGS?"settings.txt":"No settings.txt was found, so the app"} is using ${plural(CFG.perReview,"question")} per review, ${plural(CFG.toBloom,"right answer")} to grow a flower, and ${CFG.perDay?`a limit of ${plural(CFG.perDay,"review")} a day`:"no daily limit"}.
@@ -1165,44 +1216,154 @@ function renderAbout(){
   ${CFG_ERRS.length?`<ul class="bullets small">${CFG_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:""}
   </section>
   <section class="card stack"><h2>For teachers: preview the garden</h2>
-  <p class="small">Turn this on to see every plant fully grown and try the launch pad. Real progress is kept and comes back when you turn it off.</p>
+  <p class="small">Turn this on to see every plant in Chapter ${CH} fully grown${toy()?" and try the "+toy().eyebrow.toLowerCase():""}. Real progress is kept and comes back when you turn it off.</p>
   <label class="toggle"><input type="checkbox" id="pv" ${PROG.preview?"checked":""}> Show a fully grown garden</label></section>
-  <section class="card stack"><h2>Prototype status</h2>
-  <p class="small">This build covers Chapter 3 only. The content is generated from the OpenStax source files by a script, so later chapters can be added the same way.</p></section>`;
+  <section class="card stack"><h2>Chapters</h2>
+  <p class="small">Chapters are added as they're written. The book content is generated from the OpenStax source files by a script, and a chapter shows up in the <a href="#chapters">chapter list</a> as soon as its files are on the site.</p></section>`;
   document.getElementById("pv").onchange=e=>{PROG.preview=e.target.checked;saveProg();};
 }
 
-/* ---------- router ---------- */
-function setTab(t){document.querySelectorAll(".tabs a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
-function route(){
-  const h=(location.hash||"").slice(1)||"learn";let m;
-  if((m=h.match(/^sec-3-([1-6])$/))){renderSection(+m[1]-1);setTab("learn");}
-  else if(h==="equations"){renderEquations();setTab("equations");}
-  else if(h==="solver"){renderSolver();setTab("solver");}
-  else if(h==="review"||h==="practice"){renderGarden();setTab("review");}
-  else if(h==="launch"){renderLaunch();setTab("review");}
-  else if(h==="about"){renderAbout();setTab("");}
-  else{renderLearn();setTab("learn");}
-  window.scrollTo(0,0);
-  typeset(main);
+/* ---------- chapter menu and loading ---------- */
+const CACHE={};let SETUP=null;
+/* chapters whose book file is on the site: checked once per visit */
+let READY=null;
+function probeReady(){
+  if(READY)return READY;
+  READY=Promise.all(CHAPTERS.map(([n])=>CACHE[n]?Promise.resolve([n,true]):
+    fetch(`book/ch${pad2(n)}.json`,{method:"HEAD",cache:"no-cache"}).then(r=>[n,r.ok]).catch(()=>[n,null])))
+    .then(l=>Object.fromEntries(l));
+  return READY;
 }
-window.addEventListener("hashchange",()=>{if(D)route();});
-async function boot(){
-  main.innerHTML=`<p class="muted">Loading chapter…</p>`;
-  try{
-    const opt={cache:"no-cache"};
-    const soft=u=>fetch(u,opt).then(r=>r.ok?r.text():null).catch(()=>null);
-    const [b,n,st,sc]=await Promise.all([fetch("book/ch03.json",opt),fetch("notes/ch03.txt",opt),soft("settings.txt"),soft("schedule.txt")]);
+function loadSetup(){
+  if(SETUP)return SETUP;
+  const soft=u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok?r.text():null).catch(()=>null);
+  SETUP=Promise.all([soft("settings.txt"),soft("schedule.txt")]).then(([st,sc])=>{
     if(st!=null){HAVE_SETTINGS=true;parseSettings(st);}
-    if(sc!=null){HAVE_SCHED=true;parseSchedule(sc);}
-    if(!b.ok)throw new Error("book/ch03.json");
-    D=await b.json();S=D.sections;
-    if(n.ok){const r=parseNotes(await n.text());SUMMARY=r.sum;ITEMS=r.items;NOTE_ERRS=r.errs;}
-    else NOTE_ERRS=["notes/ch03.txt could not be loaded, so summaries and review items are missing."];
-    SESS=loadSess();
-  }catch(e){main.innerHTML=`<p class="note err">The chapter content (${esc(e.message||"book/ch03.json")}) didn't load. If you opened index.html straight from your computer, open it through a web address instead, such as GitHub Pages.</p>`;return;}
+    if(sc!=null){HAVE_SCHED=true;parseSchedule(sc);}});
+  return SETUP;
+}
+/* returns "ok", "missing" (no book file yet), or "error" (the site couldn't be reached) */
+async function fetchChapter(n){
+  if(CACHE[n])return "ok";
+  const opt={cache:"no-cache"};let b,nt;
+  try{[b,nt]=await Promise.all([fetch(`book/ch${pad2(n)}.json`,opt),fetch(`notes/ch${pad2(n)}.txt`,opt).catch(()=>null)]);}catch(e){return "error";}
+  if(b.status===404)return "missing";
+  if(!b.ok)return "error";
+  let d;try{d=await b.json();}catch(e){CACHE[n]={bad:`book/ch${pad2(n)}.json has a mistake in it (${e.message}). A single backslash in that file breaks it; every backslash there must be doubled.`};return "ok";}
+  const secs=d.sections.map(x=>x.num);
+  const keepSecs=SECS;SECS=secs;
+  let r={sum:{},items:[],errs:[`notes/ch${pad2(n)}.txt could not be loaded, so summaries and review items are missing.`]};
+  if(nt&&nt.ok)r=parseNotes(await nt.text());
+  SECS=keepSecs;
+  CACHE[n]={D:d,secs,sum:r.sum,items:r.items,errs:r.errs};
+  const meta=store("chapters")||{};meta[n]={secs:secs.length};store("chapters",meta);
+  return "ok";
+}
+function useChapter(n){
+  if(CH===n)return;
+  const c=CACHE[n];
+  CH=n;D=c.D;S=D.sections;SECS=c.secs;SUMMARY=c.sum;ITEMS=c.items;NOTE_ERRS=c.errs;
+  PKEY="progress-ch"+n;SKEY="session-ch"+n;PROG=loadProg();SESS=loadSess();
+  GSEL=-1;LP={k:0,m:null,pick:null,state:"pick",raf:0};
+  store("last-chapter",n);
+  setTabLinks();
+}
+function setTabLinks(){
+  const t={learn:H(""),equations:H("equations"),review:H("review")};
+  document.querySelectorAll(".tabs a").forEach(a=>{if(t[a.dataset.tab])a.setAttribute("href",t[a.dataset.tab]);});
+}
+function chTitle(n){const c=CHAPTERS.find(x=>x[0]===n);return c?c[1]:"";}
+function chStart(n){
+  if(!CFG.showDates)return "";
+  let best=null;
+  for(const k of Object.keys(SCHED)){if(k!=="ch"+n&&!k.startsWith(n+"."))continue;for(const d of SCHED[k])if(!best||d.mo*40+d.dy<best.mo*40+best.dy)best=d;}
+  return best?`${WD[new Date(CFG.year,best.mo-1,best.dy).getDay()]} ${best.mo}/${best.dy}`:"";
+}
+function chGrowth(n){
+  const p=store("progress-ch"+n),meta=(store("chapters")||{})[n];
+  if(!p||!p.grow)return "";
+  const b=Object.values(p.grow).filter(v=>v>=CFG.toBloom).length;
+  if(meta&&meta.secs)return b===meta.secs?"Every plant in bloom":b?`${b} of ${meta.secs} plants in bloom`:"Garden started";
+  return b?plural(b,"plant")+" in bloom":"Garden started";
+}
+async function renderMenu(my){
+  crumb.textContent="Chapters";
+  const last=+store("last-chapter");
+  main.innerHTML=`<p class="muted">Loading chapters…</p>`;
+  const ready=await probeReady();
+  if(my!==ROUTE_N)return;
+  const cont=last&&ready[last]!==false&&CHAPTERS.some(c=>c[0]===last);
+  main.innerHTML=`
+  <header class="stack"><div class="eyebrow">University Physics, Volume 1</div><h1>Chapters</h1>
+    <p class="muted">Pick a chapter to read the key ideas, practice, and grow its garden. Each chapter has its own garden.</p></header>
+  ${cont?`<a class="btn big" href="#ch${last}">Back to Chapter ${last}: ${esc(chTitle(last))}</a>`:""}
+  <nav class="seclist chlist" aria-label="Chapters">
+    ${CHAPTERS.map(([n,t])=>{const ok=ready[n]!==false,st=chStart(n),g=ok?chGrowth(n):"";
+      const meta=[ok?"":"Coming soon",st?`In class from ${st}`:"",g].filter(Boolean).join(" · ");
+      return `<a class="secrow${ok?"":" soon"}" href="#ch${n}"${ok?"":` aria-label="Chapter ${n}, ${esc(t)}, coming soon"`}>
+      <span class="n">${n}</span>
+      <span class="t">${esc(t)}${meta?`<span class="meta" style="display:block">${meta}</span>`:""}</span>
+      <span class="chev" aria-hidden="true">›</span></a>`;}).join("")}
+  </nav>
+  <p class="attrib">Adapted from <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a></p>`;
+}
+function renderSoon(n){
+  crumb.textContent="Chapter "+n;
+  main.innerHTML=`
+  <a class="backlink" href="#chapters">‹ All chapters</a>
+  <header class="stack"><div class="eyebrow">Chapter ${n}</div><h1>${esc(chTitle(n))}</h1>
+    ${chStart(n)?`<p class="classdate">In class from ${chStart(n)}</p>`:""}
+    <p class="muted">This chapter is coming soon. Until then, you can read it free on OpenStax.</p></header>
+  <div class="row"><a class="btn" href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">Open the book on OpenStax</a>
+  <a class="btn quiet" href="#chapters">All chapters</a></div>`;
+}
+function loadFail(what){
+  main.innerHTML=`<p class="note err">The chapter content (${esc(what)}) didn't load. If you opened index.html straight from your computer, open it through a web address instead, such as GitHub Pages. Otherwise check your connection and reload.</p>`;
+}
+
+/* ---------- router ---------- */
+/* Addresses: #chapters is the menu, #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
+   Older links like #learn, #review, and #sec-3-2 still work and are sent to the matching new address. */
+function setTab(t){document.querySelectorAll(".tabs a").forEach(a=>{if(a.dataset.tab===t)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
+let ROUTE_N=0;
+async function route(){
+  const my=++ROUTE_N;
+  const h=decodeURIComponent((location.hash||"").slice(1));let m;
+  if((m=h.match(/^sec-(\d+)-(\d+)$/))){location.replace(`#ch${+m[1]}/${+m[1]}.${+m[2]}`);return;}
+  if(/^(learn|equations|review|practice|launch)$/.test(h)){location.replace(`#ch${lastCh()}`+(h==="learn"?"":"/"+(h==="practice"?"review":h)));return;}
+  await loadSetup();
+  if(my!==ROUTE_N)return;
+  const done=()=>{window.scrollTo(0,0);typeset(main);};
+  if(!h||h==="chapters"){setTab("learn");await renderMenu(my);if(my===ROUTE_N)done();return;}
+  /* every other page needs a chapter: the one in the address, or the last one opened */
+  m=h.match(/^ch(\d+)(?:\/(.*))?$/);
+  const want=m?+m[1]:(CH||lastCh()),sub=m?(m[2]||""):h;
+  if(m&&!CHAPTERS.some(c=>c[0]===want)){location.replace("#chapters");return;}
+  if(want!==CH){
+    main.innerHTML=`<p class="muted">Loading chapter…</p>`;
+    let st=await fetchChapter(want);
+    if(my!==ROUTE_N)return;
+    if(st!=="ok"&&!m&&want!==3){st=await fetchChapter(3);if(my!==ROUTE_N)return;if(st==="ok"){useChapter(3);}}
+    else if(st==="ok"&&CACHE[want].bad){setTab("learn");loadFail(CACHE[want].bad);return;}
+    else if(st==="ok")useChapter(want);
+    if(st==="missing"){setTab("learn");renderSoon(want);done();return;}
+    if(st==="error"){loadFail(`book/ch${pad2(want)}.json`);return;}
+  }
+  if(sub==="solver"){renderSolver();setTab("solver");}
+  else if(sub==="about"){renderAbout();setTab("");}
+  else if(!m){location.replace("#chapters");return;}
+  else if((m=sub.match(/^(\d+)\.(\d+)$/))&&S.some(x=>x.num===sub)){renderSection(S.findIndex(x=>x.num===sub));setTab("learn");}
+  else if(sub==="equations"){renderEquations();setTab("equations");}
+  else if(sub==="review"||sub==="practice"){renderGarden();setTab("review");}
+  else if(sub==="launch"&&toy()){toy().route==="launch"&&renderLaunch();setTab("review");}
+  else{if(sub)return location.replace(H(""));renderLearn();setTab("learn");}
+  done();
+}
+window.addEventListener("hashchange",route);
+function boot(){
+  setTabLinks();
   route();
-  window.__fb={kinSolve,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={kinSolve,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
