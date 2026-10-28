@@ -508,7 +508,7 @@ function nextDue(){const t=today();let best=null,n=0;
 
 /* chapter extras: which section each key equation belongs to, the hero graph, the solver links, and the toy built from blooms */
 const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4","3.4","3.4","3.4","3.5","3.5","3.5","3.6","3.6"],eqSolver:new Set([8,9,10,11,12,13,14,15]),hero:()=>heroGraph(),solver:true,eqHint:"Search, for example “free fall” or “average”",toy:"rocket"},
-  1:{eqSec:["1.6"],eqHint:"Search, for example “uncertainty”"},
+  1:{eqSec:["1.6"],eqHint:"Search, for example “uncertainty”",toy:"probe"},
   2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”"},
   4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",solver:true},
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],eqHint:"Search, for example “weight” or “second law”"},
@@ -772,6 +772,24 @@ function plantSVG(f,idx,label){
   }
   return `<svg viewBox="0 0 100 120" role="img" aria-label="${esc(label)}">${g}</svg>`;
 }
+function probeSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
+  const L=(k,d)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${L(4,"M44 72 L34 34 M76 72 L86 34 M60 72 L60 34")}
+    ${P(4,"M24 36 Q60 -6 96 36 Q78 30 60 36 Q42 30 24 36 Z","var(--petal-4)")}
+    ${L(6,"M44 110 L26 150 M76 110 L94 150 M18 150 h16 M86 150 h16")}
+    ${P(5,"M44 118 h12 l2 10 h-16 Z M64 118 h12 l2 10 h-16 Z","var(--muted)")}
+    ${P(3,"M34 106 h52 l-8 12 h-36 Z","var(--petal-6)")}
+    ${P(1,"M6 80 h30 v18 h-30 Z M84 80 h30 v18 h-30 Z M16 80 v18 M26 80 v18 M94 80 v18 M104 80 v18","var(--petal-5)")}
+    ${P(0,"M38 72 h44 v34 h-44 Z","var(--card)")}
+    ${on(0)?`<circle cx="60" cy="89" r="5" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="1.2"/>`:""}
+    ${L(2,"M74 72 L80 58")}
+    ${P(2,"M70 60 Q80 44 92 54 Z","var(--accent-soft)")}
+    <path d="M8 162 h104" stroke="var(--rule)" stroke-width="1.5"/>
+  </svg>`;
+}
 function rocketSVG(have,label){
   const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
   const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
@@ -789,7 +807,10 @@ function rocketSVG(have,label){
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
     ready:"Your rocket is ready",readyText:"Predict how high it will fly, then launch it.",go:"Go to the launch pad",
-    count:(n,t)=>`${n} of ${t} rocket parts`,wait:"Each plant that blooms adds a part. When all six bloom, you can fly it."}};
+    count:(n,t)=>`${n} of ${t} rocket parts`,wait:"Each plant that blooms adds a part. When all six bloom, you can fly it."},
+  probe:{eyebrow:"Mission control",thing:"probe",parts:["body","solar panels","antenna","heat shield","parachute","thrusters","landing legs"],svg:probeSVG,route:"land",
+    ready:"Your Mars probe is ready",readyText:"Send it the right numbers and land it on Mars.",go:"Go to mission control",
+    count:(n,t)=>`${n} of ${t} probe parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can land it on Mars."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -1111,52 +1132,54 @@ function flight(sim){
   return{at,tApex,apex,tLand};
 }
 let LP={k:0,m:null,pick:null,state:"pick",raf:0};
-function renderLaunch(){
-  crumb.textContent="Launch pad";
+/* Every toy's minigame works the same way: pick a mission, pick a prediction or a command, run it, see the result.
+   Each toy gives a game object: title, names, make(k), sim(m) returning {tEnd,...}, draw(t,F,m), outcome(F,m), and button words. */
+function renderGame(){
+  const T=toy(),G=T.game;
+  crumb.textContent=T.eyebrow;
   cancelAnimationFrame(LP.raf);
   const have=bloomed();
   if(!have.every(Boolean)){
-    main.innerHTML=`<header class="stack"><div class="eyebrow">Launch pad</div><h1>Not ready to fly yet</h1></header>
-    <section class="card rocketcard">${rocketSVG(have,"Rocket parts collected")}<div class="stack"><p>Each plant in your garden that blooms adds a part to the rocket. Bloom all six to launch.</p><a class="btn" href="${H("review")}" style="width:max-content">Back to your garden</a></div></section>`;return;}
+    main.innerHTML=`<header class="stack"><div class="eyebrow">${T.eyebrow}</div><h1>${G.notReadyTitle}</h1></header>
+    <section class="card rocketcard">${T.svg(have,`${T.thing[0].toUpperCase()+T.thing.slice(1)} parts collected`)}<div class="stack"><p>${G.notReady}</p><a class="btn" href="${H("review")}" style="width:max-content">Back to your garden</a></div></section>`;return;}
   const M=PROG.missions||{};
-  if(!LP.m)LP.m=makeMission(LP.k);
+  if(!LP.m)LP.m=G.make(LP.k);
   const m=LP.m,flown=LP.state!=="pick";
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">Launch pad</div><h1>Predict, then launch</h1></header>
+  <header class="stack"><div class="eyebrow">${T.eyebrow}</div><h1>${G.title}</h1>${G.intro?`<p class="muted">${G.intro}</p>`:""}</header>
   <div class="chips" role="group" aria-label="Missions">
-    ${MISSION_NAMES.map((n,k)=>{const open=k===0||(M[k-1]&&M[k-1].flown);return `<button class="chip" data-k="${k}" aria-pressed="${LP.k===k}" ${open?"":"disabled"}>${k+1}. ${n}${M[k]&&M[k].star?" ★":""}</button>`;}).join("")}
+    ${G.names.map((n,k)=>{const open=k===0||(M[k-1]&&M[k-1].flown);return `<button class="chip" data-k="${k}" aria-pressed="${LP.k===k}" ${open?"":"disabled"}>${k+1}. ${n}${M[k]&&M[k].star?" ★":""}</button>`;}).join("")}
   </div>
   <section class="card stack">
     <p class="qtext">${m.q}</p>
     <div class="opts">${m.choices.map((c,j)=>`<button class="opt${flown?(c.ok?" right":LP.pick===j?" wrong":""):(LP.pick===j?" chosen":"")}" data-j="${j}" ${flown?"disabled":""} aria-pressed="${LP.pick===j}">${esc(c.t)}</button>`).join("")}</div>
-    ${LP.state==="pick"?`<button class="btn big" id="launch" ${LP.pick==null?"disabled":""}>${LP.pick==null?"Pick a prediction to launch":"Launch"}</button>`:""}
+    ${LP.state==="pick"?`<button class="btn big" id="launch" ${LP.pick==null?"disabled":""}>${LP.pick==null?G.pickFirst:G.go}</button>`:""}
   </section>
-  <div class="flightwrap paper"><canvas id="cv" aria-label="Rocket flight" role="img"></canvas></div>
-  <div id="lres" aria-live="polite">${LP.state==="done"?launchResult():""}</div>
+  <div class="flightwrap paper"><canvas id="cv" aria-label="${G.cvLabel}" role="img"></canvas></div>
+  <div id="lres" aria-live="polite">${LP.state==="done"?gameResult():""}</div>
   <a class="btn quiet" href="${H("review")}" style="width:max-content">Back to your garden</a>`;
-  main.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{LP={k:+b.dataset.k,m:null,pick:null,state:"pick",raf:0};renderLaunch();typeset(main);});
-  main.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{LP.pick=+b.dataset.j;renderLaunch();typeset(main);});
-  const lb=document.getElementById("launch");if(lb)lb.onclick=()=>fly();
-  const nb=document.getElementById("again");if(nb)nb.onclick=()=>{LP={k:LP.k,m:null,pick:null,state:"pick",raf:0};renderLaunch();typeset(main);};
-  const nx=document.getElementById("nextm");if(nx)nx.onclick=()=>{LP={k:LP.k+1,m:null,pick:null,state:"pick",raf:0};renderLaunch();typeset(main);};
-  const F=flight(m.sim);
-  drawFlight(LP.state==="done"?F.tLand:0,F,m);
+  main.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{LP={k:+b.dataset.k,m:null,pick:null,state:"pick",raf:0};renderGame();typeset(main);});
+  main.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{LP.pick=+b.dataset.j;renderGame();typeset(main);});
+  const lb=document.getElementById("launch");if(lb)lb.onclick=()=>runGame();
+  const nb=document.getElementById("again");if(nb)nb.onclick=()=>{LP={k:LP.k,m:null,pick:null,state:"pick",raf:0};renderGame();typeset(main);};
+  const nx=document.getElementById("nextm");if(nx)nx.onclick=()=>{LP={k:LP.k+1,m:null,pick:null,state:"pick",raf:0};renderGame();typeset(main);};
+  const F=G.sim(m);
+  G.draw(LP.state==="done"?F.tEnd:0,F,m);
 }
-function launchResult(){
-  const m=LP.m,c=m.choices[LP.pick],F=flight(m.sim);
-  const actual=m.kind==="height"?`It peaked at ${fmtNum(F.apex)} m.`:`It landed after ${fmtNum(F.tLand)} s.`;
-  return `<div class="fb ${c.ok?"good":"bad"}"><b>${c.ok?"Right on.":"Not this time."} ${actual}</b>${c.ok?"":`<p>${esc(c.fb||"")}</p>`}<div class="eqbox">\\[${m.work}\\]</div></div>
-  <div class="row" style="margin-top:10px"><button class="btn quiet" id="again">Fly again with new numbers</button>${LP.k<2?`<button class="btn" id="nextm">Next mission</button>`:""}</div>`;
+function gameResult(){
+  const G=toy().game,m=LP.m,c=m.choices[LP.pick],F=G.sim(m);
+  return `<div class="fb ${c.ok?"good":"bad"}"><b>${c.ok?G.right:"Not this time."} ${G.outcome(F,m)}</b>${c.ok?"":`<p>${esc(c.fb||"")}</p>`}<div class="eqbox">\\[${m.work}\\]</div>${m.after?`<p>${m.after}</p>`:""}</div>
+  <div class="row" style="margin-top:10px"><button class="btn quiet" id="again">${G.again}</button>${LP.k<G.names.length-1?`<button class="btn" id="nextm">Next mission</button>`:""}</div>`;
 }
-function fly(){
-  const m=LP.m,F=flight(m.sim);LP.state="flying";
+function runGame(){
+  const G=toy().game,m=LP.m,F=G.sim(m);LP.state="flying";
   main.querySelectorAll(".opt").forEach(b=>b.disabled=true);
   const lb=document.getElementById("launch");if(lb)lb.remove();
   const cvEl=document.getElementById("cv");if(cvEl&&cvEl.scrollIntoView)cvEl.scrollIntoView({block:"center",behavior:"smooth"});
-  const done=()=>{LP.state="done";const k=LP.k;PROG.missions=PROG.missions||{};const prev=PROG.missions[k]||{};PROG.missions[k]={flown:true,star:prev.star||!!m.choices[LP.pick].ok};saveProg();renderLaunch();typeset(main);const lr=document.getElementById("lres");if(lr&&lr.scrollIntoView)lr.scrollIntoView({block:"nearest"});};
+  const done=()=>{LP.state="done";const k=LP.k;PROG.missions=PROG.missions||{};const prev=PROG.missions[k]||{};PROG.missions[k]={flown:true,star:prev.star||!!m.choices[LP.pick].ok};saveProg();renderGame();typeset(main);const lr=document.getElementById("lres");if(lr&&lr.scrollIntoView)lr.scrollIntoView({block:"nearest"});};
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){done();return;}
-  const real=3600,t0=performance.now();
-  const step=now=>{const k=Math.min(1,(now-t0)/real);drawFlight(k*F.tLand,F,m);if(k<1)LP.raf=requestAnimationFrame(step);else setTimeout(done,500);};
+  const real=G.ms||3600,t0=performance.now();
+  const step=now=>{const k=Math.min(1,(now-t0)/real);G.draw(k*F.tEnd,F,m);if(k<1)LP.raf=requestAnimationFrame(step);else setTimeout(done,500);};
   LP.raf=requestAnimationFrame(step);
 }
 function drawFlight(t,F,m){
@@ -1189,6 +1212,102 @@ function drawFlight(t,F,m){
   ctx.fillText(`y = ${p.y.toFixed(0)} m   v = ${(Math.abs(p.v)<0.05?0:p.v).toFixed(0)} m/s`,12,top-20);
   if(m.kind==="time"&&LP.pick!=null&&LP.state!=="pick"){ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText(`your guess: ${m.choices[LP.pick].t}`,W-12,top-14);}
 }
+
+TOYS.rocket.game={title:"Predict, then launch",names:MISSION_NAMES,make:makeMission,
+  sim:m=>{const F=flight(m.sim);F.tEnd=F.tLand;return F;},draw:drawFlight,
+  outcome:(F,m)=>m.kind==="height"?`It peaked at ${fmtNum(F.apex)} m.`:`It landed after ${fmtNum(F.tLand)} s.`,
+  right:"Right on.",go:"Launch",pickFirst:"Pick a prediction to launch",again:"Fly again with new numbers",cvLabel:"Rocket flight",
+  notReadyTitle:"Not ready to fly yet",notReady:"Each plant in your garden that blooms adds a part to the rocket. Bloom all six to launch."};
+
+/* ---------- Chapter 1: Mars landing ----------
+   The landing computer brakes at a steady rate a = r × v²/(2h), where r is (number sent) ÷ (right number).
+   r = 1 stops the probe right at the ground. r < 1 brakes too gently and it hits the ground.
+   r > 1 stops it too high; the computer thinks it has landed, cuts the engine, and the probe falls. Mars g = 3.71 m/s². */
+const MARS_G=3.71, LAND_NAMES=["Speed check","Formula check","Pounds or newtons"];
+const big=x=>Number(x.toPrecision(3)).toLocaleString("en-US"), bigT=x=>big(x).replace(/,/g,"{,}");
+function landSim(v0,h0,r){
+  const a=r*v0*v0/(2*h0), t0=0.25*h0/v0, top=h0*1.25;
+  let ts,hs,tImp,kind,speed;
+  if(Math.abs(r-1)<1e-9){ts=2*h0/v0;hs=0;tImp=ts;kind="land";speed=0;}
+  else if(r<1){const d=v0*v0-2*a*h0;tImp=(v0-Math.sqrt(d))/a;ts=tImp;hs=0;kind="crash";speed=Math.sqrt(d);}
+  else{ts=v0/a;hs=h0-v0*v0/(2*a);tImp=ts+Math.sqrt(2*hs/MARS_G);kind="stall";speed=MARS_G*(tImp-ts);}
+  const at=t=>{
+    if(t<t0)return{y:top-v0*t,v:-v0,burn:false};
+    const u=Math.min(t-t0,tImp);
+    if(u<ts)return{y:Math.max(0,h0-v0*u+0.5*a*u*u),v:-v0+a*u,burn:true};
+    const w=u-ts;return{y:Math.max(0,hs-0.5*MARS_G*w*w),v:-MARS_G*w,burn:false};};
+  return{at,tEnd:t0+tImp,tStop:t0+ts,h0,top,hs,kind,speed,v0};
+}
+function makeLanding(k){
+  const H0=300;
+  if(k===0){const kmh=pickOne([72,108,144,180,216]),v=kmh/3.6;
+    const ch=[{t:fmtNum(v)+" m/s",ok:true,r:1},
+      {t:fmtNum(kmh*3.6)+" m/s",r:3.6*3.6*3.6*3.6,fb:"Multiplying by 3.6 goes the wrong way. A meter per second is bigger than a kilometer per hour, so the speed in m/s is the smaller number."},
+      {t:fmtNum(kmh)+" m/s",r:3.6*3.6,fb:"That's the speed in km/h with the label changed. The computer read it as m/s, a speed 3.6 times too big, so it braked far too hard."},
+      {t:fmtNum(kmh/3600)+" m/s",r:Math.pow(1/1000,2),fb:"Dividing by 3600 changes hours to seconds, but the kilometers never became meters. Multiply by 1000 too."}];
+    return{h0:H0,v0:v,choices:dedupe(ch),
+      q:`The probe is falling at \\(${kmh}\\ \\text{km/h}\\) when its braking engine starts, ${H0} m above the ground. The landing computer only reads meters per second. What speed should mission control send?`,
+      work:`\\begin{aligned}v&=${kmh}\\ \\tfrac{\\text{km}}{\\text{h}}\\times\\tfrac{1000\\ \\text{m}}{1\\ \\text{km}}\\times\\tfrac{1\\ \\text{h}}{3600\\ \\text{s}}\\\\&=${fmtNum(v,true)}\\ \\text{m/s}\\end{aligned}`};}
+  if(k===1){const v=pickOne([20,30,40]),h=pickOne([150,250,300]),a=v*v/(2*h);
+    const ch=[{t:"\\(a = \\dfrac{v^2}{2h}\\)",plain:"a = v²/(2h)",ok:true,r:1},
+      {t:"\\(a = \\dfrac{v}{2h}\\)",plain:"a = v/(2h)",r:1/v,fb:"Check the units: \\(\\frac{\\text{m/s}}{\\text{m}}=\\text{s}^{-1}\\). That isn't an acceleration, so the number the computer got was far too small."},
+      {t:"\\(a = \\dfrac{2h}{v^2}\\)",plain:"a = 2h/v²",r:4*h*h/Math.pow(v,4),fb:"Check the units: \\(\\frac{\\text{m}}{\\text{m}^2/\\text{s}^2}=\\text{s}^2/\\text{m}\\). The formula is upside down."},
+      {t:"\\(a = \\dfrac{v^2 h}{2}\\)",plain:"a = v²h/2",r:h*h,fb:"Check the units: \\(\\frac{\\text{m}^2}{\\text{s}^2}\\cdot\\text{m}=\\text{m}^3/\\text{s}^2\\). That isn't an acceleration, so the computer braked far too hard."}];
+    return{h0:h,v0:v,choices:shuffle(ch),
+      q:`The probe is falling at \\(${v}\\ \\text{m/s}\\) when its engine starts, \\(${h}\\ \\text{m}\\) above the ground. The computer needs a steady braking acceleration that stops the probe right at the ground. Which formula should it use? Check the units of each one.`,
+      work:`\\begin{aligned}\\left[\\tfrac{v^2}{2h}\\right]&=\\tfrac{(\\text{m/s})^2}{\\text{m}}=\\tfrac{\\text{m}}{\\text{s}^2}\\\\a&=\\tfrac{(${v})^2}{2(${h})}=${fmtNum(a,true)}\\ \\text{m/s}^2\\end{aligned}`};}
+  const J=pickOne([1500,2000,2500,3000]),N=J*4.448;
+  const ch=[{t:big(N)+" N·s",ok:true,r:1},
+    {t:big(J)+" N·s",r:1/4.448,fb:"That's the impulse in pound force seconds, sent as if it were newton seconds. It's 4.448 times too small. This is the real mistake that lost NASA's Mars Climate Orbiter in 1999."},
+    {t:big(J/4.448)+" N·s",r:1/(4.448*4.448),fb:"Dividing goes the wrong way. A pound force is bigger than a newton, so the impulse in newton seconds is the bigger number."},
+    {t:big(J*0.4536)+" N·s",r:0.4536/4.448,fb:"0.4536 changes pounds of mass into kilograms. A pound force is a force, and 1 lbf = 4.448 N."}];
+  return{h0:H0,v0:50,choices:dedupe(ch),
+    q:`Final approach. The engine team's software gives the braking impulse as \\(${bigT(J)}\\ \\text{lbf}\\cdot\\text{s}\\) (pound force seconds). The landing computer works only in newton seconds, and \\(1\\ \\text{lbf} = 4.448\\ \\text{N}\\). What should mission control send?`,
+    work:`\\begin{aligned}&${bigT(J)}\\ \\text{lbf}\\cdot\\text{s}\\times\\tfrac{4.448\\ \\text{N}}{1\\ \\text{lbf}}\\\\&=${bigT(N)}\\ \\text{N}\\cdot\\text{s}\\end{aligned}`,
+    after:`True story: in 1999 one team's software gave thruster impulses in pound force seconds while the navigation team expected newton seconds. NASA's Mars Climate Orbiter flew too close to Mars and was lost. <a href="https://science.nasa.gov/mission/mars-climate-orbiter/" target="_blank" rel="noopener">Read about the mission</a>.`};
+}
+function drawLanding(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const top=82,bot=H-34;let maxY=F.top*1.05;
+  const steps=[25,50,100];const st=steps.find(s=>maxY/s<=6)||100;maxY=Math.ceil(maxY/st)*st;
+  const Y=y=>bot-(y/maxY)*(bot-top);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  for(let y=0;y<=maxY+1e-9;y+=st){ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(44,Y(y));ctx.lineTo(W-10,Y(y));ctx.stroke();ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`${y} m`,40,Y(y)-(y===0?9:0));}
+  /* Mars ground with a few rocks */
+  ctx.fillStyle=col("--petal-6");ctx.globalAlpha=.35;ctx.fillRect(0,bot,W,H-bot);ctx.globalAlpha=1;
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,bot);ctx.lineTo(W,bot);ctx.stroke();
+  ctx.fillStyle=col("--petal-6");[[0.28,3],[0.66,4],[0.86,6]].forEach(([fx,r])=>{ctx.beginPath();ctx.arc(W*fx,bot+r*0.6,r,Math.PI,0);ctx.fill();});
+  const px=W*0.5,p=F.at(t),py=Y(p.y),flying=LP.state==="flying",ended=t>=F.tEnd-1e-9&&LP.state!=="pick";
+  /* where the burn starts */
+  ctx.setLineDash([4,5]);ctx.strokeStyle=col("--accent");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(44,Y(F.h0));ctx.lineTo(W-10,Y(F.h0));ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText("engine starts",W-12,Y(F.h0)-9);
+  if(F.kind==="stall"&&LP.state!=="pick"&&t>=F.tStop){ctx.fillStyle=col("--bad");ctx.textAlign="left";ctx.fillText(`stopped ${fmtNum(F.hs)} m up`,50,Y(F.hs)-10);}
+  /* probe */
+  if(p.burn&&flying){ctx.fillStyle=col("--petal-6");ctx.beginPath();ctx.moveTo(px-7,py+2);ctx.lineTo(px,py+16+Math.random()*8);ctx.lineTo(px+7,py+2);ctx.fill();}
+  const crashed=ended&&F.kind!=="land";
+  ctx.save();ctx.translate(px,py);if(crashed)ctx.rotate(0.5);
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(-8,-6);ctx.lineTo(-14,0);ctx.moveTo(8,-6);ctx.lineTo(14,0);ctx.stroke();
+  ctx.lineWidth=1.2;ctx.fillStyle=col("--petal-5");ctx.fillRect(-26,-19,12,7);ctx.strokeRect(-26,-19,12,7);ctx.fillRect(14,-19,12,7);ctx.strokeRect(14,-19,12,7);
+  ctx.fillStyle=col("--card");ctx.fillRect(-10,-22,20,14);ctx.strokeRect(-10,-22,20,14);
+  ctx.fillStyle=col("--petal-6");ctx.beginPath();ctx.moveTo(-12,-8);ctx.lineTo(12,-8);ctx.lineTo(9,-4);ctx.lineTo(-9,-4);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.restore();
+  if(crashed){ctx.fillStyle=col("--muted");ctx.globalAlpha=.45;[[-16,6],[0,9],[15,7],[-6,5],[9,4]].forEach(([dx,r])=>{ctx.beginPath();ctx.arc(px+dx,bot-r*0.5,r,0,7);ctx.fill();});ctx.globalAlpha=1;}
+  if(ended){ctx.font="bold 13px 'IBM Plex Mono', monospace";ctx.textAlign="center";ctx.fillStyle=col(F.kind==="land"?"--good":"--bad");ctx.fillText(F.kind==="land"?"Touchdown":"Crash",px,bot-40);ctx.font="11px 'IBM Plex Mono', monospace";}
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  ctx.fillText(`t = ${t.toFixed(1)} s`,12,16);
+  ctx.fillText(`height = ${p.y.toFixed(0)} m   speed = ${Math.abs(p.v).toFixed(1)} m/s`,12,32);
+  if(LP.pick!=null&&LP.state!=="pick"){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`sent: ${m.choices[LP.pick].plain||m.choices[LP.pick].t}`,12,48);}
+}
+TOYS.probe.game={title:"Land it on Mars",intro:"The landing computer does exactly what it's told. Send it the right number and the probe touches down gently.",
+  names:LAND_NAMES,make:makeLanding,ms:3800,
+  sim:m=>landSim(m.v0,m.h0,m.choices[LP.pick==null?0:LP.pick].r),draw:drawLanding,
+  outcome:F=>F.kind==="land"?"The probe touched down at 0 m/s, safe on Mars.":F.kind==="crash"?`The engine braked too gently, and the probe hit the ground at ${fmtNum(F.speed)} m/s.`:`The engine braked so hard that the probe stopped ${fmtNum(F.hs)} m up. The computer thought it had landed and shut the engine off, so the probe fell and hit at ${fmtNum(F.speed)} m/s.`,
+  right:"Nice landing.",go:"Send the command",pickFirst:"Pick a number to send",again:"Land again with new numbers",cvLabel:"Probe landing",
+  notReadyTitle:"Not ready to land yet",notReady:"Each plant in your garden that blooms adds a part to the probe. Bloom all seven to land it on Mars."};
 
 function renderAbout(){
   crumb.textContent="About";
@@ -1355,7 +1474,7 @@ async function route(){
   else if((m=sub.match(/^(\d+)\.(\d+)$/))&&S.some(x=>x.num===sub)){renderSection(S.findIndex(x=>x.num===sub));setTab("learn");}
   else if(sub==="equations"){renderEquations();setTab("equations");}
   else if(sub==="review"||sub==="practice"){renderGarden();setTab("review");}
-  else if(sub==="launch"&&toy()){toy().route==="launch"&&renderLaunch();setTab("review");}
+  else if(toy()&&sub===toy().route){renderGame();setTab("review");}
   else{if(sub)return location.replace(H(""));renderLearn();setTab("learn");}
   done();
 }
@@ -1363,7 +1482,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();
   route();
-  window.__fb={kinSolve,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={kinSolve,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,backupCode,readBackup,get CH(){return CH},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
