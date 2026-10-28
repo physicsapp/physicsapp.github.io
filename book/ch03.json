@@ -145,7 +145,7 @@
    "callouts": [
     "\\text{Average speed}=\\bar{s}=\\frac{\\text{Total distance}}{\\text{Elapsed time}}",
     "\\text{Instantaneous speed}=|v(t)|",
-    "\\frac{d(C{t}^{n})}{dt}=n\cdotC{t}^{n-1}"
+    "\\frac{d(C{t}^{n})}{dt}=n\\cdot C{t}^{n-1}"
    ],
    "examples": [
     {
