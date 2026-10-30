@@ -217,10 +217,11 @@ a.chip[aria-current="page"]{background:var(--ink);color:var(--paper);border-colo
 .pot{border:1px solid transparent;background:transparent;border-radius:12px;padding:4px 2px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
 .pot.static{cursor:default}
 .field{display:grid;gap:4px;padding:10px 6px}
-.plot{display:flex;flex-direction:column;align-items:center;gap:0;text-decoration:none;color:var(--ink);border:1px solid transparent;border-radius:10px;padding:2px 0 4px;min-width:0}
+.plot{display:flex;flex-direction:column;align-items:center;gap:0;color:var(--ink);border:0;background:transparent;font:inherit;border-radius:10px;padding:2px 0 4px;min-width:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .plot svg{width:100%;height:auto;display:block}
-.plot.cur{border-color:var(--accent);background:var(--card)}
-.plot:hover{border-color:var(--accent)}
+.plot[aria-pressed="true"]{background:var(--accent-soft)}
+.plot[aria-pressed="true"] .plotlbl{color:var(--ink);font-weight:700}
+@media (hover:hover){.plot:hover:not([aria-pressed="true"]){background:var(--card)}}
 .plot.soon .plotlbl{opacity:.75}
 .plot.soon svg{opacity:.6}
 .plotlbl{font-size:.72rem;line-height:1.2;color:var(--muted);font-family:var(--font-mono);white-space:nowrap}
@@ -2310,7 +2311,17 @@ function pickRow(n,href,meta,cur){
 }
 const PICK_ATTRIB=`<p class="attrib">Adapted from <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a></p>`;
 /* ---------- the whole garden: every chapter's plants in one field (Review picker) ---------- */
-let BIGCOLS=+store("bigcols")===3?3:5;
+let BIGCOLS=+store("bigcols")===3?3:5,FSEL=0;
+function pickCard(r){
+  const n=FSEL;
+  if(!n)return `<p class="muted" style="margin:0">Tap a plot to pick a chapter.</p>`;
+  const ok=r[n]!==false,st=chStart(n);
+  const meta=[ok?(chGrowth(n)||"Not started yet"):"Coming soon",st?`In class from ${st}`:""].filter(Boolean).join(" · ");
+  return `<div class="eyebrow">Chapter ${n}</div><h2>${esc(chTitle(n))}</h2>
+    <p class="small muted" style="margin:0">${meta}</p>
+    ${ok?`<a class="btn" id="fieldgo" href="#ch${n}/review" style="width:max-content">Open this garden</a>`
+       :`<a class="btn quiet" id="fieldgo" href="#ch${n}" style="width:max-content">See the chapter page</a>`}`;
+}
 function rnd01(a){const x=Math.sin(a*12.9898+78.233)*43758.5453;return x-Math.floor(x);}
 function clumpRows(k){if(k<=3)return [k];if(k<=8){const a=Math.floor(k/2);return [a,k-a];}const a=Math.floor(k/3),b=Math.floor((k-a)/2);return [a,b,k-a-b];}
 function miniPlant(x,y,f,i,s){
@@ -2328,12 +2339,24 @@ function miniPlant(x,y,f,i,s){
     g+=`<circle cx="${F(tx)}" cy="${F(cy)}" r="${F(R*0.32)}" fill="var(--center)"/>`;}
   return g;
 }
+function grassSVG(n,g){
+  if(g<=0)return "";
+  const F=v=>v.toFixed(1);let o="";
+  for(let i=0;i<16;i++){
+    const a=rnd01(n*53+i*11)*Math.PI*2,rr=0.35+0.6*Math.sqrt(rnd01(n*29+i*5));
+    const x=50+Math.cos(a)*38*rr,y=72+Math.sin(a)*15*rr,h=(1.5+5.5*g)*(0.75+0.5*rnd01(n+i*3));
+    const c=i%2?"--leaf":"--leaf2";
+    o+=`<path d="M${F(x-2.2)} ${F(y)} Q${F(x-2)} ${F(y-h*0.6)} ${F(x-3)} ${F(y-h*0.9)} M${F(x)} ${F(y)} Q${F(x+0.3)} ${F(y-h*0.7)} ${F(x+0.4)} ${F(y-h)} M${F(x+2.2)} ${F(y)} Q${F(x+2)} ${F(y-h*0.6)} ${F(x+3.2)} ${F(y-h*0.85)}" fill="none" stroke="var(${c})" stroke-width="1.1" stroke-linecap="round"/>`;
+  }
+  return o;
+}
 /* fr: growth of each section (0 to 1), or null for a chapter that isn't ready yet */
 function plotSVG(n,fr,label){
   const bed=`<path d="M8 70 C8 56 26 52 50 52 C74 52 92 56 92 70 C92 86 76 92 50 92 C24 92 8 86 8 70 Z" fill="var(--soil)"/>`;
   let g=bed;
   if(!fr){g+=[62,71,80].map(y=>`<path d="M${22-(y-62)*0.5} ${y} H${78+(y-62)*0.5}" stroke="var(--soil-seed)" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="3 4" opacity=".7"/>`).join("");}
   else{
+    if(fr.length)g+=grassSVG(n,fr.reduce((a,b)=>a+b,0)/fr.length);
     const rows=clumpRows(fr.length),ys=rows.length===1?[76]:rows.length===2?[64,81]:[60,71,83];
     let i=0;
     rows.forEach((m,r)=>{const sc=0.8+0.2*(r+1)/rows.length,gap=Math.min(20,(rows.length>1&&r===0?60:70)/Math.max(1,m-0.4));
@@ -2358,13 +2381,13 @@ function chFracs(n){
   return secs.map(s=>p.preview?1:Math.min(1,((p.grow||{})[s]||0)/b));
 }
 function fieldHTML(r){
-  const last=+store("last-chapter");let tot=0,bl=0;
+  let tot=0,bl=0;
   const cells=CHAPTERS.map(([n,t])=>{
     const ok=r[n]!==false,fr=ok?chFracs(n):null;
-    if(!ok)return `<a class="plot soon" href="#ch${n}" aria-label="Chapter ${n}, ${esc(t)}, coming soon">${plotSVG(n,null,`Chapter ${n} plot, empty`)}<span class="plotlbl">soon</span></a>`;
+    if(!ok)return `<button type="button" class="plot soon" data-n="${n}" aria-pressed="${FSEL===n}" aria-label="Chapter ${n}, ${esc(t)}, coming soon">${plotSVG(n,null,`Chapter ${n} plot, empty`)}<span class="plotlbl">soon</span></button>`;
     const k=fr?fr.length:0,b=fr?fr.filter(f=>f>=BLOOM).length:0;tot+=k;bl+=b;
     const txt=fr?(BIGCOLS===3?`${b} of ${k}`:`${b}/${k}`):"";
-    return `<a class="plot${n===last?" cur":""}" href="#ch${n}/review" aria-label="Chapter ${n}, ${esc(t)}${fr?`, ${b} of ${k} plants in bloom`:""}">${plotSVG(n,fr||[],`Chapter ${n} plot`)}<span class="plotlbl">${txt||"&nbsp;"}</span></a>`;});
+    return `<button type="button" class="plot" data-n="${n}" aria-pressed="${FSEL===n}" aria-label="Chapter ${n}, ${esc(t)}${fr?`, ${b} of ${k} plants in bloom`:""}">${plotSVG(n,fr||[],`Chapter ${n} plot`)}<span class="plotlbl">${txt||"&nbsp;"}</span></button>`;});
   return {cells:cells.join(""),tot,bl};
 }
 function fieldSection(r){
@@ -2373,11 +2396,17 @@ function fieldSection(r){
     <div class="fieldhead"><div><h2>The whole garden</h2><p class="small muted" id="fieldsum">${f.tot?`${f.bl} of ${plural(f.tot,"flower")} in bloom`:""}</p></div>
       <div class="seg" role="group" aria-label="Garden layout"><button type="button" data-cols="5" aria-pressed="${BIGCOLS===5}">5 across</button><button type="button" data-cols="3" aria-pressed="${BIGCOLS===3}">3 across</button></div></div>
     <div class="paper field" id="fieldgrid" style="grid-template-columns:repeat(${BIGCOLS},minmax(0,1fr))">${f.cells}</div>
+    <section class="card stack" id="fieldpick" aria-live="polite">${pickCard(r)}</section>
   </section>`;
 }
 function wireField(r,my){
   const redraw=()=>{const g=document.getElementById("fieldgrid");if(!g)return;const f=fieldHTML(r);g.style.gridTemplateColumns=`repeat(${BIGCOLS},minmax(0,1fr))`;g.innerHTML=f.cells;
-    const s=document.getElementById("fieldsum");if(s)s.textContent=f.tot?`${f.bl} of ${plural(f.tot,"flower")} in bloom`:"";};
+    const s=document.getElementById("fieldsum");if(s)s.textContent=f.tot?`${f.bl} of ${plural(f.tot,"flower")} in bloom`:"";wirePlots();};
+  const wireGo=()=>{const go=document.getElementById("fieldgo");if(go)go.addEventListener("click",()=>{FSEL=0;});};
+  const wirePlots=()=>main.querySelectorAll(".plot").forEach(b=>b.onclick=()=>{const n=+b.dataset.n;FSEL=FSEL===n?0:n;
+    main.querySelectorAll(".plot").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.n===FSEL));
+    const c=document.getElementById("fieldpick");if(c){c.innerHTML=pickCard(r);wireGo();if(FSEL)c.scrollIntoView({block:"nearest",behavior:"smooth"});}});
+  wirePlots();wireGo();
   main.querySelectorAll("[data-cols]").forEach(b=>b.onclick=()=>{BIGCOLS=+b.dataset.cols;store("bigcols",BIGCOLS);
     main.querySelectorAll("[data-cols]").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.cols===BIGCOLS));redraw();});
   /* chapters never opened on this device: read their section count from the book */
@@ -2392,11 +2421,8 @@ async function renderReviewPicker(my){
   const l=pickOrder(r),last=+store("last-chapter");
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">Review</div><h1>Pick a garden</h1>
-    <p class="muted">Each chapter has its own garden. Quick reviews of a chapter grow its plants.</p></header>
-  ${fieldSection(r)}
-  ${l.length?`<nav class="seclist chlist" aria-label="Chapters to review">
-    ${l.map(n=>pickRow(n,`#ch${n}/review`,chGrowth(n)||"Not started yet",n===last)).join("")}
-  </nav>`:`<p class="note">No chapters could be found. Check your connection and reload.</p>`}
+    <p class="muted">Each chapter has its own garden. Quick reviews of a chapter grow its plants. Tap a plot, then open its garden.</p></header>
+  ${l.length?fieldSection(r):`<p class="note">No chapters could be found. Check your connection and reload.</p>`}
   <a class="btn quiet" href="#chapters" style="width:max-content">All chapters</a>
   ${PICK_ATTRIB}`;
   wireField(r,my);
