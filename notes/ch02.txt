@@ -68,7 +68,7 @@ Magnitude in three dimensions: \(A = \sqrt{A_x^2 + A_y^2 + A_z^2}\)
 Distributive property: \(\alpha(\vec{A} + \vec{B}) = \alpha \vec{A} + \alpha \vec{B}\)
 Antiparallel vector: \(-\vec{A} = -A_x \hat{i} - A_y \hat{j} - A_z \hat{k}\)
 Equal vectors: \(A_x = B_x, \quad A_y = B_y, \quad A_z = B_z\)
-* Resultant of N vectors: \(\begin{aligned} F_{Rx} &= \textstyle\sum_{k=1}^{N} F_{kx} \\ F_{Ry} &= \textstyle\sum_{k=1}^{N} F_{ky} \\ F_{Rz} &= \textstyle\sum_{k=1}^{N} F_{kz} \end{aligned}\)
+Resultant of N vectors: \(\begin{aligned} F_{Rx} &= \textstyle\sum_{k=1}^{N} F_{kx} \\ F_{Ry} &= \textstyle\sum_{k=1}^{N} F_{ky} \\ F_{Rz} &= \textstyle\sum_{k=1}^{N} F_{kz} \end{aligned}\)
 Unit vector: \(\hat{V} = \frac{\vec{V}}{V}\)
 
 ## EQUATIONS 2.4
@@ -82,7 +82,7 @@ Dot products of unit vectors: \(\begin{aligned} \hat{i} \cdot \hat{i} = \hat{j} 
 Anticommutative property of the cross product: \(\vec{A} \times \vec{B} = -\vec{B} \times \vec{A}\)
 Distributive property of the cross product: \(\vec{A} \times (\vec{B} + \vec{C}) = \vec{A} \times \vec{B} + \vec{A} \times \vec{C}\)
 Cross products of unit vectors: \(\hat{i} \times \hat{j} = \hat{k}, \quad \hat{j} \times \hat{k} = \hat{i}, \quad \hat{k} \times \hat{i} = \hat{j}\)
-Cross product from components: \(\begin{aligned} \vec{A} \times \vec{B} = {} & (A_y B_z - A_z B_y)\hat{i} \\ & + (A_z B_x - A_x B_z)\hat{j} \\ & + (A_x B_y - A_y B_x)\hat{k} \end{aligned}\)
+* Cross product from components: \(\begin{aligned} \vec{A} \times \vec{B} = {} & (A_y B_z - A_z B_y)\hat{i} \\ & + (A_z B_x - A_x B_z)\hat{j} \\ & + (A_x B_y - A_y B_x)\hat{k} \end{aligned}\)
 
 
 # ============================ ITEM FORMATS ============================
