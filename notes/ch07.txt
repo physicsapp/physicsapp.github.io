@@ -1,0 +1,583 @@
+# FREEBODY NOTES: CHAPTER 7, WORK AND KINETIC ENERGY
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 7.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(W = Fd\cos\theta\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 7.1
+In short: A force does work on an object when the object moves. For a constant force, \(W = Fd\cos\theta\), where \(\theta\) is the angle between the force and the displacement. A force along the motion does positive work, a force against it does negative work, and a force at right angles to the motion (like the normal force on a level floor) does none. Work is measured in joules, \(1\ \text{J} = 1\ \text{N·m}\). Gravity does \(-mg(y_B - y_A)\), whatever the path. Kinetic friction does \(-f_k\) times the length of the path, so a longer path means more negative work. A spring does \(-\tfrac12k(x_B^2 - x_A^2)\). When the force changes along the way, the work is the area under the force versus position graph.
+Watch out: Holding a heavy box still does no work on it, even though your arms get tired. No displacement, no work.
+
+## SUMMARY 7.2
+In short: Kinetic energy is the energy of motion, \(K = \tfrac12mv^2\). It goes as the speed squared, so doubling the speed makes it four times as large. It's a scalar and never negative. In terms of momentum, \(K = p^2/(2m)\). The kinetic energy of a system is the sum of the kinetic energies of its parts. Speed depends on the frame of reference, so kinetic energy does too.
+Watch out: Kinetic energy has no direction. A car going north and an identical car going south at the same speed have the same \(K\).
+
+## SUMMARY 7.3
+In short: The work energy theorem: the net work done on an object equals the change in its kinetic energy, \(W_\text{net} = K_B - K_A\). Add up the work done by every force, or find the net force and multiply by the displacement. Positive net work speeds the object up, negative net work slows it down, and zero net work leaves its speed the same. This connects forces and speeds directly, with no need to find the acceleration or the time.
+Watch out: Use the net work from all the forces, not the work of just one. A box pushed at constant speed against friction gains no kinetic energy: your positive work and friction's negative work cancel.
+
+## SUMMARY 7.4
+In short: Power is how fast work gets done, \(P = dW/dt\); over a time interval, the average power is \(W/\Delta t\). Its unit is the watt, \(1\ \text{W} = 1\ \text{J/s}\). A force on a moving object delivers power \(P = \vec{F}\cdot\vec{v} = Fv\cos\theta\), so a car climbing a hill at steady speed needs more power the faster it goes. Walking or running up the same stairs takes the same work, but running takes more power. The work done over a time is the area under the power versus time graph.
+Watch out: Power and energy are different things. A kilowatt hour is an amount of energy, \(3.6 \times 10^6\ \text{J}\), not a power.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 7.1
+* Work done by a constant force: \(W = \vec{F}\cdot\vec{d} = Fd\cos\theta\)
+Dot product in components: \(\vec{A}\cdot\vec{B} = A_xB_x + A_yB_y + A_zB_z\)
+* Work done by a force along a path: \(W_{AB} = \int_A^B \vec{F}\cdot d\vec{r}\)
+Work done by a varying force in one dimension: \(W = \int_{x_A}^{x_B} F_x\,dx\)
+* Work done by kinetic friction: \(W_\text{fr} = -f_k\,|\ell_{AB}|\)
+* Work done by gravity near Earth: \(W_\text{grav} = -mg(y_B - y_A)\)
+* Work done by a spring: \(W_\text{spring} = -\tfrac{1}{2}k(x_B^2 - x_A^2)\)
+
+## EQUATIONS 7.2
+* Kinetic energy: \(K = \tfrac{1}{2}mv^2 = \frac{p^2}{2m}\)
+
+## EQUATIONS 7.3
+* Work energy theorem: \(W_\text{net} = K_B - K_A\)
+
+## EQUATIONS 7.4
+* Power: \(P = \frac{dW}{dt}\)
+* Average power: \(P_\text{avg} = \frac{W}{\Delta t}\)
+* Power delivered by a force: \(P = \vec{F}\cdot\vec{v} = Fv\cos\theta\)
+Work from power: \(W = \int P\,dt\)
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+# ============================ 7.1 WORK ============================
+
+## QUIZ 7.1
+Q: You carry a box across a level room at constant velocity. How much work does your upward force do on the box?
+A) Zero
+B) Positive
+C) Negative
+D) It depends on how fast you walk
+Answer: A
+Why: Your force points up and the box moves sideways. At \(90^\circ\), \(\cos\theta = 0\), so the work is zero.
+
+## QUIZ 7.1
+Q: A ball is thrown straight up. While it rises, what is the sign of the work done on it by gravity?
+A) Positive
+B) Negative
+C) Zero
+D) It changes sign halfway up
+Answer: B
+Why: Gravity points down and the ball moves up, so \(\theta = 180^\circ\) and \(W = -mgh\).
+
+## QUIZ 7.1
+Q: You lift a book from the floor to a shelf, once straight up and once along a winding path. How does the work done by gravity compare?
+A) More negative for the winding path
+B) Less negative for the winding path
+C) The same both times
+D) Zero both times
+Answer: C
+Why: Gravity's work depends only on the change in height: \(W = -mg(y_B - y_A)\). The path doesn't matter.
+
+## QUIZ 7.1
+Q: You slide a box across a rough floor from A to B, once in a straight line and once along a longer curved path. How does the work done by kinetic friction compare?
+A) More negative on the longer path
+B) The same both times
+C) Less negative on the longer path
+D) Zero both times
+Answer: A
+Why: Friction always opposes the motion, so its work is \(-f_k\) times the path length. A longer path means more negative work.
+
+## QUIZ 7.1
+Q: A satellite moves in a circular orbit at constant speed. How much work does gravity do on it during one quarter of the orbit?
+A) Positive
+B) Negative
+C) Zero
+D) It depends on the orbit's radius
+Answer: C
+Why: Gravity points toward the center, at right angles to the velocity at every moment, so it does no work.
+
+## QUIZ 7.1
+Q: Which of these is equal to one joule?
+A) \(1\ \text{N·m}\)
+B) \(1\ \text{N/m}\)
+C) \(1\ \text{kg·m/s}\)
+D) \(1\ \text{kg·m/s}^2\)
+Answer: A
+Why: Work is force times distance, so \(1\ \text{J} = 1\ \text{N·m} = 1\ \text{kg·m}^2/\text{s}^2\). Choice C is a unit of momentum and choice D is a newton.
+
+## DRILL 7.1
+Q: You push a cart with a force of \({{F}}\ \text{N}\) directed \(60^\circ\) below the horizontal, and it rolls \({{d}}\ \text{m}\) along a level floor. How much work does your force do? (\(\cos 60^\circ = 0.5\))
+Let: F = 10 to 50 by 10; d = 2 to 10 by 2
+Answer: F*d*0.5
+Wrong: F*d | Only the part of the force along the motion does work: multiply by \(\cos\theta\).
+Wrong: F*d*0.87 | \(\sin 60^\circ\) gives the vertical part. Use \(\cos 60^\circ\) for the part along the floor.
+Wrong: F*0.5 | That's the force along the motion. Multiply by the distance.
+Unit: J
+Work: W = Fd\cos\theta = ({{F}})({{d}})(0.5) = {{answer}}\ \text{J}
+
+## DRILL 7.1
+Q: A \({{m}}\ \text{kg}\) box is lifted \({{h}}\ \text{m}\) straight up. How much work does gravity do on the box? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 2, 4, 5, 10, 20; h = 1 to 5 by 1
+Answer: -m*10*h
+Wrong: m*10*h | Gravity points down while the box moves up, so its work is negative.
+Wrong: -m*h | Use the weight, \(mg\), not the mass.
+Wrong: 0 | Gravity does work whenever the height changes.
+Unit: J
+Work: W_\text{grav} = -mg(y_B - y_A) = -({{m}})(10)({{h}}) = {{answer}}\ \text{J}
+
+## DRILL 7.1
+Q: A \({{m}}\ \text{kg}\) box slides \({{d}}\ \text{m}\) across a floor with \(\mu_k = {{mu}}\). How much work does kinetic friction do on it? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 5, 10, 20; mu = one of 0.1, 0.2, 0.4, 0.5; d = one of 2, 3, 5
+Answer: -mu*m*10*d
+Wrong: mu*m*10*d | Friction points against the motion, so its work is negative.
+Wrong: -mu*m*d | Friction is \(\mu_kN = \mu_kmg\). Include \(g\).
+Wrong: -m*10*d | Friction is \(\mu_kmg\), not \(mg\). Include \(\mu_k\).
+Unit: J
+Work: W_\text{fr} = -\mu_kmg\,d = -({{mu}})({{m}})(10)({{d}}) = {{answer}}\ \text{J}
+
+## DRILL 7.1
+Q: A spring with \(k = {{k}}\ \text{N/m}\) is stretched from its relaxed length by \({{x}}\ \text{m}\). How much work does the spring do on the hand that stretches it?
+Let: k = one of 100, 200, 400, 500; x = one of 0.1, 0.2, 0.3
+Answer: -0.5*k*x^2
+Wrong: -k*x^2 | The spring force grows from zero as you stretch, so the work has a \(\tfrac12\).
+Wrong: -0.5*k*x | The stretch is squared: \(\tfrac12kx^2\).
+Wrong: 0.5*k*x^2 | The spring pulls back while the hand moves out, so its work is negative.
+Unit: J
+Work: W_\text{spring} = -\tfrac12k(x_B^2 - x_A^2) = -\tfrac12({{k}})({{x}})^2 = {{answer}}\ \text{J}
+
+## DRILL 7.1
+Q: A spring with \(k = {{k}}\ \text{N/m}\) is stretched further, from \({{a}}\ \text{m}\) to \({{b}}\ \text{m}\) past its relaxed length. How much work does the spring do?
+Let: k = one of 100, 200, 400; a = one of 0.1, 0.2; s = one of 0.1, 0.2; b = a + s; aa = a^2; bb = b^2
+Answer: -0.5*k*(b^2 - a^2)
+Wrong: -0.5*k*(b - a)^2 | Square each position first, then subtract: \(x_B^2 - x_A^2\).
+Wrong: -0.5*k*b^2 | The spring was already stretched to \(x_A\). Subtract \(x_A^2\).
+Wrong: 0.5*k*(b^2 - a^2) | The spring pulls back while the end moves out, so its work is negative.
+Unit: J
+Work: W_\text{spring} = -\tfrac12k(x_B^2 - x_A^2) = -\tfrac12({{k}})({{bb}} - {{aa}}) = {{answer}}\ \text{J}
+
+## DRILL 7.1
+Q: A force \(\vec{F} = ({{Fx}}\,\hat{i} + {{Fy}}\,\hat{j})\ \text{N}\) acts on an object while it moves \(\vec{d} = ({{dx}}\,\hat{i} + {{dy}}\,\hat{j})\ \text{m}\). How much work does the force do?
+Let: Fx = 2 to 6 by 1; Fy = 1 to 5 by 1; dx = 2 to 5 by 1; dy = 1 to 4 by 1
+Answer: Fx*dx + Fy*dy
+Wrong: Fx*dx | Include the \(y\) parts too: \(F_xd_x + F_yd_y\).
+Wrong: Fx*dy + Fy*dx | Multiply matching components: \(x\) with \(x\), \(y\) with \(y\).
+Wrong: (Fx + Fy)*(dx + dy) | The dot product multiplies matching components, then adds.
+Unit: J
+Work: W = F_xd_x + F_yd_y = ({{Fx}})({{dx}}) + ({{Fy}})({{dy}}) = {{answer}}\ \text{J}
+
+## GRAPH 7.1
+Q: The graph shows the force on a cart along its direction of motion. How much work does the force do from \(x = 0\) to \(x = 4\ \text{m}\)?
+Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+A) 32 J
+B) 64 J
+C) 16 J
+D) 8 J
+Answer: A
+Why: Work is the area under the force versus position graph, a triangle: \(\tfrac12(4\ \text{m})(16\ \text{N}) = 32\ \text{J}\). Choice B uses the final force for the whole trip.
+
+## GRAPH 7.1
+Q: The graph shows the force on a cart; positive means along its motion. Tap the position where the force switches from speeding the cart up to slowing it down.
+Plot: F = 6 - 3*x; x from 0 to 4; y from -6 to 6
+Tap: x = 2
+Why: Where the force is positive it does positive work, and where it is negative it does negative work. It changes sign at \(x = 2\ \text{m}\).
+
+
+# ============================ 7.2 KINETIC ENERGY ============================
+
+## QUIZ 7.2
+Q: A car doubles its speed. By what factor does its kinetic energy change?
+A) 2
+B) 4
+C) 8
+D) \(\sqrt{2}\)
+Answer: B
+Why: \(K = \tfrac12mv^2\), so doubling \(v\) multiplies \(K\) by \(2^2 = 4\).
+
+## QUIZ 7.2
+Q: A truck has twice the mass of a car, and both move at the same speed. How do their kinetic energies compare?
+A) The truck has twice as much
+B) The truck has four times as much
+C) They are equal
+D) The truck has half as much
+Answer: A
+Why: \(K\) is proportional to the mass, so twice the mass at the same speed gives twice the kinetic energy.
+
+## QUIZ 7.2
+Q: Can an object's kinetic energy be negative?
+A) Yes, when it moves in the negative direction
+B) Yes, when it slows down
+C) No, never
+D) Only in some frames of reference
+Answer: C
+Why: Mass is positive and \(v^2\) can't be negative, so \(K = \tfrac12mv^2\) is never negative.
+
+## QUIZ 7.2
+Q: A ball moves north at 5 m/s. An identical ball moves south at 5 m/s. How do their kinetic energies compare?
+A) The north one has more
+B) They are equal
+C) They are opposite in sign
+D) The south one has more
+Answer: B
+Why: Kinetic energy is a scalar that depends on speed only, not direction.
+
+## QUIZ 7.2
+Q: A passenger walks toward the front of a moving train. Compared with her kinetic energy relative to the train, her kinetic energy relative to the ground is
+A) Greater
+B) Less
+C) The same
+D) Zero
+Answer: A
+Why: Relative to the ground her speed is her walking speed plus the train's speed, so her kinetic energy is larger in that frame.
+
+## DRILL 7.2
+Q: What is the kinetic energy of a \({{m}}\ \text{kg}\) object moving at \({{v}}\ \text{m/s}\)?
+Let: m = one of 2, 4, 5, 10, 50; v = 2 to 10 by 2
+Answer: 0.5*m*v^2
+Wrong: m*v^2 | Kinetic energy has a \(\tfrac12\).
+Wrong: 0.5*m*v | The speed is squared.
+Wrong: m*v | That's the momentum, in kg·m/s.
+Unit: J
+Work: K = \tfrac12mv^2 = \tfrac12({{m}})({{v}})^2 = {{answer}}\ \text{J}
+
+## DRILL 7.2
+Q: A \({{m}}\ \text{kg}\) cart has \({{K}}\ \text{J}\) of kinetic energy. How fast is it moving?
+Let: m = one of 1, 2, 4, 5; v = 2 to 10 by 2; K = 0.5*m*v^2
+Answer: sqrt(2*K/m)
+Wrong: sqrt(K/m) | Solve \(K = \tfrac12mv^2\): the 2 goes in the numerator.
+Wrong: 2*K/m | That's \(v^2\). Take the square root.
+Wrong: K/m | Kinetic energy goes as \(v^2\), so a square root is needed.
+Unit: m/s
+Work: v = \sqrt{\frac{2K}{m}} = \sqrt{\frac{2({{K}})}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 7.2
+Q: A \({{m}}\ \text{kg}\) object has a momentum of \({{p}}\ \text{kg·m/s}\). What is its kinetic energy?
+Let: m = one of 2, 4, 5; v = 2 to 6 by 1; p = m*v
+Answer: p^2/(2*m)
+Wrong: p^2/m | \(K = p^2/(2m)\). Include the 2.
+Wrong: p/(2*m) | The momentum is squared.
+Wrong: p^2/2 | Divide by the mass too.
+Unit: J
+Work: K = \frac{p^2}{2m} = \frac{({{p}})^2}{2({{m}})} = {{answer}}\ \text{J}
+
+## DRILL 7.2
+Q: A runner has \({{K}}\ \text{J}\) of kinetic energy. What is her kinetic energy at \({{n}}\) times that speed?
+Let: K = one of 100, 200, 250, 400; n = one of 2, 3
+Answer: K*n^2
+Wrong: K*n | Kinetic energy goes as \(v^2\), so multiply by \(n^2\).
+Wrong: K*n^3 | Kinetic energy goes as \(v^2\), not \(v^3\).
+Wrong: K*2*n | Square the speed factor instead of doubling it.
+Unit: J
+Work: K' = K\left(\frac{v'}{v}\right)^2 = ({{K}})({{n}})^2 = {{answer}}\ \text{J}
+
+## DRILL 7.2
+Q: A \({{m}}\ \text{kg}\) car speeds up from \({{v1}}\ \text{m/s}\) to \({{v2}}\ \text{m/s}\). By how much does its kinetic energy increase?
+Let: m = one of 1000, 2000; v1 = one of 10, 20; dv = one of 10, 20; v2 = v1 + dv; s1 = v1^2; s2 = v2^2
+Answer: 0.5*m*(v2^2 - v1^2)
+Wrong: 0.5*m*(v2 - v1)^2 | Find each kinetic energy first, then subtract. \(v_2^2 - v_1^2\) is not \((v_2 - v_1)^2\).
+Wrong: 0.5*m*v2^2 | That's the final kinetic energy. Subtract what the car had at the start.
+Wrong: m*(v2^2 - v1^2) | Kinetic energy has a \(\tfrac12\).
+Unit: J
+Work: \Delta K = \tfrac12m(v_2^2 - v_1^2) = \tfrac12({{m}})({{s2}} - {{s1}}) = {{answer}}\ \text{J}
+
+## GRAPH 7.2
+Q: The graph shows the velocity of a 2 kg cart. What is its kinetic energy at \(t = 3\ \text{s}\)?
+Plot: v = 2*t; t from 0 to 4; y from 0 to 10
+A) 36 J
+B) 6 J
+C) 72 J
+D) 12 J
+Answer: A
+Why: At \(t = 3\ \text{s}\) the graph reads \(v = 6\ \text{m/s}\), so \(K = \tfrac12(2)(6)^2 = 36\ \text{J}\). Choice D is the momentum, \(mv\).
+
+
+# ============================ 7.3 WORK ENERGY THEOREM ============================
+
+## QUIZ 7.3
+Q: The net work done on an object is zero. What can you say about its speed?
+A) It stays the same
+B) It is zero
+C) It increases
+D) It decreases
+Answer: A
+Why: \(W_\text{net} = \Delta K\). Zero net work means no change in kinetic energy, so the speed stays the same, whatever it is.
+
+## QUIZ 7.3
+Q: You push a box across a rough floor at constant speed. How does the work you do compare with the work friction does?
+A) Equal in size, opposite in sign
+B) Yours is larger
+C) Friction's is larger
+D) Both are zero
+Answer: A
+Why: The speed doesn't change, so the net work is zero. Your positive work exactly cancels friction's negative work.
+
+## QUIZ 7.3
+Q: A car brakes to a stop. What is the sign of the net work done on it?
+A) Positive
+B) Negative
+C) Zero
+D) It depends on the direction it was going
+Answer: B
+Why: The car loses all its kinetic energy, so \(W_\text{net} = \Delta K < 0\).
+
+## QUIZ 7.3
+Q: Two identical cars brake with the same force. One was going twice as fast. How do their stopping distances compare?
+A) Twice as far
+B) Four times as far
+C) The same
+D) \(\sqrt{2}\) times as far
+Answer: B
+Why: \(Fd = \tfrac12mv^2\), so the stopping distance goes as \(v^2\). Twice the speed takes four times the distance.
+
+## QUIZ 7.3
+Q: A ball is dropped from rest. Ignoring air resistance, how does its speed after falling \(4h\) compare with its speed after falling \(h\)?
+A) Twice as fast
+B) Four times as fast
+C) \(\sqrt{2}\) times as fast
+D) Sixteen times as fast
+Answer: A
+Why: Gravity does work \(mgh\), so \(v = \sqrt{2gh}\). Four times the height gives \(\sqrt{4} = 2\) times the speed.
+
+## DRILL 7.3
+Q: A \({{m}}\ \text{kg}\) car moving at \({{v}}\ \text{m/s}\) brakes with a steady force of \({{F}}\ \text{N}\). How far does it go before it stops?
+Let: m = one of 1000, 1500, 2000; v = one of 10, 20, 30; F = one of 5000, 10000
+Answer: m*v^2/(2*F)
+Wrong: m*v^2/F | The kinetic energy is \(\tfrac12mv^2\). Include the \(\tfrac12\).
+Wrong: m*v/(2*F) | The speed is squared.
+Wrong: v^2/(2*F) | Kinetic energy needs the mass.
+Unit: m
+Work: Fd = \tfrac12mv^2\ \Rightarrow\ d = \frac{mv^2}{2F} = \frac{({{m}})({{v}})^2}{2({{F}})} = {{answer}}\ \text{m}
+
+## DRILL 7.3
+Q: A ball is dropped from rest and falls \({{h}}\ \text{m}\). Ignoring air resistance, how fast is it moving? Use \(g = 10\ \text{m/s}^2\).
+Let: h = one of 5, 20, 45, 80
+Answer: sqrt(2*10*h)
+Wrong: sqrt(10*h) | Set \(mgh = \tfrac12mv^2\). The 2 stays in: \(v = \sqrt{2gh}\).
+Wrong: 2*10*h | That's \(v^2\). Take the square root.
+Wrong: sqrt(2*h) | Include \(g\).
+Unit: m/s
+Work: mgh = \tfrac12mv^2\ \Rightarrow\ v = \sqrt{2gh} = \sqrt{2(10)({{h}})} = {{answer}}\ \text{m/s}
+
+## DRILL 7.3
+Q: A \({{F}}\ \text{N}\) force pushes a \({{m}}\ \text{kg}\) box from rest for \({{d}}\ \text{m}\) along a frictionless floor. How fast is the box moving at the end?
+Let: m = one of 2, 4, 5, 8; v = 2 to 6 by 2; d = one of 2, 4; F = 0.5*m*v^2/d
+Answer: sqrt(2*F*d/m)
+Wrong: sqrt(F*d/m) | Set \(Fd = \tfrac12mv^2\). The 2 goes in the numerator.
+Wrong: 2*F*d/m | That's \(v^2\). Take the square root.
+Wrong: F*d/m | Solve \(Fd = \tfrac12mv^2\) for \(v\); it needs a square root.
+Unit: m/s
+Work: Fd = \tfrac12mv^2\ \Rightarrow\ v = \sqrt{\frac{2Fd}{m}} = \sqrt{\frac{2({{F}})({{d}})}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 7.3
+Q: You push a \({{m}}\ \text{kg}\) box from rest with a horizontal \({{F}}\ \text{N}\) force for \({{d}}\ \text{m}\). The floor has \(\mu_k = {{mu}}\). How much kinetic energy does the box have at the end? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 5, 10, 20; mu = one of 0.2, 0.5; k = one of 10, 20, 30; F = mu*m*10 + k; d = one of 2, 4, 5
+Answer: (F - mu*m*10)*d
+Wrong: F*d | That's only your work. Friction does negative work too.
+Wrong: (F + mu*m*10)*d | Friction opposes the motion, so its work is subtracted.
+Wrong: mu*m*10*d | That's the size of friction's work. Use the net work.
+Unit: J
+Work: K = W_\text{net} = (F - \mu_kmg)d = \big({{F}} - ({{mu}})({{m}})(10)\big)({{d}}) = {{answer}}\ \text{J}
+
+## DRILL 7.3
+Q: A \({{m}}\ \text{kg}\) ball moving at \({{v1}}\ \text{m/s}\) has \({{W}}\ \text{J}\) of net work done on it. How fast is it moving afterward?
+Let: m = one of 2, 4; v1 = one of 3, 6; v2 = v1*5/3; W = 0.5*m*(v2^2 - v1^2)
+Answer: sqrt(v1^2 + 2*W/m)
+Wrong: sqrt(2*W/m) | The ball already had kinetic energy. Add the work to \(\tfrac12mv_1^2\).
+Wrong: v1 + sqrt(2*W/m) | Energies add, speeds don't. Find the final kinetic energy first.
+Wrong: sqrt(v1^2 + W/m) | \(\Delta K = \tfrac12m(v_2^2 - v_1^2)\), so \(v_2^2 = v_1^2 + 2W/m\).
+Unit: m/s
+Work: \tfrac12mv_2^2 = \tfrac12mv_1^2 + W\ \Rightarrow\ v_2 = \sqrt{({{v1}})^2 + \frac{2({{W}})}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 7.3
+Q: A \({{m}}\ \text{kg}\) block is pressed \({{x}}\ \text{m}\) into a spring with \(k = {{k}}\ \text{N/m}\) on a frictionless floor, then released. How fast does it leave the spring?
+Let: k = one of 100, 400; m = one of 1, 4; x = one of 0.1, 0.2, 0.5
+Answer: x*sqrt(k/m)
+Wrong: sqrt(k*x/m) | The spring's work is \(\tfrac12kx^2\). Square the compression.
+Wrong: x*k/m | Set \(\tfrac12kx^2 = \tfrac12mv^2\) and take the square root.
+Wrong: x*sqrt(k/(2*m)) | Both sides have a \(\tfrac12\), so they cancel.
+Unit: m/s
+Work: \tfrac12kx^2 = \tfrac12mv^2\ \Rightarrow\ v = x\sqrt{\frac{k}{m}} = ({{x}})\sqrt{\frac{{{k}}}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## GRAPH 7.3
+Q: The graph shows the velocity of a 1 kg cart. How much net work is done on it from \(t = 0\) to \(t = 4\ \text{s}\)?
+Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+A) \(-8\ \text{J}\)
+B) \(8\ \text{J}\)
+C) \(-4\ \text{J}\)
+D) \(0\)
+Answer: A
+Why: The cart starts with \(K = \tfrac12(1)(4)^2 = 8\ \text{J}\) and ends at rest, so \(W_\text{net} = \Delta K = -8\ \text{J}\). It's negative because the cart slows down. Choice C uses \(m\Delta v\) instead of the change in kinetic energy.
+
+
+# ============================ 7.4 POWER ============================
+
+## QUIZ 7.4
+Q: You walk up a flight of stairs, then run up the same stairs. Compare the work you do against gravity and your power.
+A) Same work, more power running
+B) More work and more power running
+C) Same work, same power
+D) More work running, same power
+Answer: A
+Why: The work is \(mgh\) either way. Running does it in less time, so the power, \(W/\Delta t\), is larger.
+
+## QUIZ 7.4
+Q: Your electric bill charges by the kilowatt hour. What does a kilowatt hour measure?
+A) Energy
+B) Power
+C) Force
+D) Time
+Answer: A
+Why: A kilowatt hour is a power times a time: \((1000\ \text{J/s})(3600\ \text{s}) = 3.6 \times 10^6\ \text{J}\) of energy.
+
+## QUIZ 7.4
+Q: A car climbs a hill at steady speed. If it climbs at twice the speed, against the same forces, how does the engine's power change?
+A) It doubles
+B) It quadruples
+C) It stays the same
+D) It halves
+Answer: A
+Why: \(P = Fv\). The same force at twice the speed takes twice the power.
+
+## QUIZ 7.4
+Q: A string whirls a ball in a horizontal circle at constant speed. What power does the tension deliver to the ball?
+A) Zero
+B) \(Tv\)
+C) \(Tv^2\)
+D) It depends on the radius
+Answer: A
+Why: The tension points toward the center, at right angles to the velocity, so \(P = \vec{F}\cdot\vec{v} = 0\).
+
+## QUIZ 7.4
+Q: Which of these equals one watt?
+A) \(1\ \text{J/s}\)
+B) \(1\ \text{J·s}\)
+C) \(1\ \text{N·s}\)
+D) \(1\ \text{N/m}\)
+Answer: A
+Why: Power is work per time, so \(1\ \text{W} = 1\ \text{J/s}\).
+
+## DRILL 7.4
+Q: A \({{m}}\ \text{kg}\) climber goes up \({{h}}\ \text{m}\) at steady speed in \({{t}}\ \text{s}\). What average power does she supply against gravity? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 50, 60, 80; h = one of 3, 4, 5, 6; t = one of 2, 4, 5
+Answer: m*10*h/t
+Wrong: m*h/t | Use the weight, \(mg\), not the mass.
+Wrong: m*10*h | That's the work. Divide by the time.
+Wrong: m*10*h*t | Power is work divided by time, not times.
+Unit: W
+Work: P = \frac{mgh}{\Delta t} = \frac{({{m}})(10)({{h}})}{{{t}}} = {{answer}}\ \text{W}
+
+## DRILL 7.4
+Q: A horizontal force of \({{F}}\ \text{N}\) pushes a crate along at a steady \({{v}}\ \text{m/s}\). What power does the force deliver?
+Let: F = 100 to 500 by 100; v = 2 to 10 by 2
+Answer: F*v
+Wrong: F/v | Power is force times velocity.
+Wrong: 0.5*F*v | There's no \(\tfrac12\) in \(P = Fv\).
+Wrong: F*v^2 | The velocity isn't squared.
+Unit: W
+Work: P = Fv = ({{F}})({{v}}) = {{answer}}\ \text{W}
+
+## DRILL 7.4
+Q: A rope pulls a sled with a force of \({{F}}\ \text{N}\) at \(60^\circ\) above the horizontal while the sled moves at \({{v}}\ \text{m/s}\) along level snow. What power does the rope deliver? (\(\cos 60^\circ = 0.5\))
+Let: F = 20 to 100 by 20; v = 1 to 5 by 1
+Answer: F*v*0.5
+Wrong: F*v | Only the part of the force along the motion delivers power: \(P = Fv\cos\theta\).
+Wrong: F*v*0.87 | \(\sin 60^\circ\) is the vertical part. Use \(\cos 60^\circ\).
+Wrong: F*0.5 | That's the force along the motion. Multiply by the speed.
+Unit: W
+Work: P = Fv\cos\theta = ({{F}})({{v}})(0.5) = {{answer}}\ \text{W}
+
+## DRILL 7.4
+Q: A \({{P}}\ \text{W}\) appliance runs for \({{t}}\) minutes. How much energy does it use?
+Let: P = one of 60, 100, 500, 1000; t = one of 1, 2, 5, 10
+Answer: P*t*60
+Wrong: P*t | Convert minutes to seconds: a watt is a joule per second.
+Wrong: P*t*3600 | That treats the time as hours. One minute is 60 s.
+Wrong: P/(t*60) | Energy is power times time.
+Unit: J
+Work: W = P\Delta t = ({{P}})({{t}} \times 60) = {{answer}}\ \text{J}
+
+## DRILL 7.4
+Q: At its top speed on a level road, a car's engine delivers \({{P}}\ \text{W}\) and the resisting forces add up to \({{F}}\ \text{N}\). What is the top speed?
+Let: F = one of 500, 1000, 2000; v = one of 20, 25, 30, 40; P = F*v
+Answer: P/F
+Wrong: F/P | The fraction is upside down. Solve \(P = Fv\) for \(v\).
+Wrong: P/(2*F) | There's no \(\tfrac12\) in \(P = Fv\).
+Wrong: sqrt(P/F) | \(P = Fv\) is linear in \(v\), so no square root.
+Unit: m/s
+Work: P = Fv\ \Rightarrow\ v = \frac{P}{F} = \frac{{{P}}}{{{F}}} = {{answer}}\ \text{m/s}
+
+## GRAPH 7.4
+Q: The graph shows the power a motor delivers. How much work does it do in the first \(4\ \text{s}\)?
+Plot: P = 50; t from 0 to 4; y from 0 to 60
+A) 200 J
+B) 50 J
+C) 12.5 J
+D) 54 J
+Answer: A
+Why: Work is the area under the power versus time graph: \((50\ \text{W})(4\ \text{s}) = 200\ \text{J}\).
+
+## GRAPH 7.4
+Q: The graph shows the power delivered to a cart. How much work is done on it from \(t = 0\) to \(t = 4\ \text{s}\)?
+Plot: P = 10*t; t from 0 to 4; y from 0 to 50
+A) 80 J
+B) 160 J
+C) 40 J
+D) 10 J
+Answer: A
+Why: The area under the graph is a triangle: \(\tfrac12(4\ \text{s})(40\ \text{W}) = 80\ \text{J}\). Choice B forgets the \(\tfrac12\).
+
+## GRAPH 7.4
+Q: The graph shows the power a motor delivers. Tap the moment the motor is doing work fastest.
+Plot: P = 8*t - 2*t^2; t from 0 to 4; y from 0 to 10
+Tap: t = 2
+Why: Power is the rate of doing work, so the work is done fastest where the power is largest, at \(t = 2\ \text{s}\).
