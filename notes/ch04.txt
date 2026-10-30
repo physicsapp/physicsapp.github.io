@@ -50,15 +50,15 @@ Watch out: \(\vec v_{AB} = -\vec v_{BA}\). Reversing the subscripts reverses the
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
 
 ## EQUATIONS 4.1
-* Position vector: \(\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}\)
-* Displacement vector: \(\Delta\vec{r} = \vec{r}(t_2) - \vec{r}(t_1)\)
-* Velocity vector: \(\vec{v}(t) = \lim_{\Delta t \to 0} \frac{\vec{r}(t + \Delta t) - \vec{r}(t)}{\Delta t} = \frac{d\vec{r}}{dt}\)
+Position vector: \(\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}\)
+Displacement vector: \(\Delta\vec{r} = \vec{r}(t_2) - \vec{r}(t_1)\)
+Velocity vector: \(\vec{v}(t) = \lim_{\Delta t \to 0} \frac{\vec{r}(t + \Delta t) - \vec{r}(t)}{\Delta t} = \frac{d\vec{r}}{dt}\)
 Velocity in components: \(\vec{v}(t) = v_x(t)\hat{i} + v_y(t)\hat{j} + v_z(t)\hat{k}\)
 Velocity components: \(v_x = \frac{dx}{dt}, \quad v_y = \frac{dy}{dt}, \quad v_z = \frac{dz}{dt}\)
-* Average velocity: \(\vec{v}_{\text{avg}} = \frac{\vec{r}(t_2) - \vec{r}(t_1)}{t_2 - t_1}\)
+Average velocity: \(\vec{v}_{\text{avg}} = \frac{\vec{r}(t_2) - \vec{r}(t_1)}{t_2 - t_1}\)
 
 ## EQUATIONS 4.2
-* Acceleration vector: \(\vec{a}(t) = \lim_{\Delta t \to 0} \frac{\vec{v}(t + \Delta t) - \vec{v}(t)}{\Delta t} = \frac{d\vec{v}}{dt}\)
+Acceleration vector: \(\vec{a}(t) = \lim_{\Delta t \to 0} \frac{\vec{v}(t + \Delta t) - \vec{v}(t)}{\Delta t} = \frac{d\vec{v}}{dt}\)
 Acceleration in components: \(\begin{aligned} \vec{a}(t) &= \frac{dv_x}{dt}\hat{i} + \frac{dv_y}{dt}\hat{j} + \frac{dv_z}{dt}\hat{k} \\ &= a_x\hat{i} + a_y\hat{j} + a_z\hat{k} \end{aligned}\)
 Acceleration as a second derivative: \(\vec{a}(t) = \frac{d^2x}{dt^2}\hat{i} + \frac{d^2y}{dt^2}\hat{j} + \frac{d^2z}{dt^2}\hat{k}\)
 
@@ -76,12 +76,12 @@ Trajectory: \(y = (\tan\theta_0)x - \frac{g}{2(v_0\cos\theta_0)^2}x^2\)
 Position, uniform circular motion: \(\vec{r}(t) = A\cos\omega t\,\hat{i} + A\sin\omega t\,\hat{j}\)
 Velocity, uniform circular motion: \(\vec{v}(t) = -A\omega\sin\omega t\,\hat{i} + A\omega\cos\omega t\,\hat{j}\)
 Acceleration, uniform circular motion: \(\vec{a}(t) = -A\omega^2\cos\omega t\,\hat{i} - A\omega^2\sin\omega t\,\hat{j}\)
-* Tangential acceleration: \(a_T = \frac{d|\vec{v}|}{dt}\)
-* Total acceleration: \(\vec{a} = \vec{a}_c + \vec{a}_T\)
+Tangential acceleration: \(a_T = \frac{d|\vec{v}|}{dt}\)
+Total acceleration: \(\vec{a} = \vec{a}_c + \vec{a}_T\)
 
 ## EQUATIONS 4.5
 Relative position: \(\vec{r}_{PS} = \vec{r}_{PS'} + \vec{r}_{S'S}\)
-* Relative velocity: \(\vec{v}_{PS} = \vec{v}_{PS'} + \vec{v}_{S'S}\)
+Relative velocity: \(\vec{v}_{PS} = \vec{v}_{PS'} + \vec{v}_{S'S}\)
 Relative velocity, more than two frames: \(\vec{v}_{PC} = \vec{v}_{PA} + \vec{v}_{AB} + \vec{v}_{BC}\)
 Relative acceleration: \(\vec{a}_{PS} = \vec{a}_{PS'} + \vec{a}_{S'S}\)
 
