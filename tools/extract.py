@@ -1,6 +1,7 @@
 """Extract one chapter of OpenStax University Physics (CNXML source) into app JSON.
 
 Usage: python3 -I extract.py <book_bundle_dir> <out_json> <first_module> <last_module> <chapter_number> <chapter_title> [--with-problems]
+       <first_module> may instead be a comma list in section order (m58719,m58308,m58309,m58310); put - for <last_module>.
 
 The JSON holds, per section: learning objectives, key concepts, boxed equations,
 worked examples, and check your understanding items. Add --with-problems to also
@@ -285,8 +286,13 @@ def entry_text(el):
 
 def main():
     bundle, out, first, last, chnum, chtitle = sys.argv[1:7]
-    a, b = int(first[1:]), int(last[1:])
-    mids = [f"m{i}" for i in range(a, b + 1)]
+    if "," in first:
+        # Some chapters are not numbered in order (Ch 7 starts with m58719), so a
+        # comma list of module ids in section order is accepted; <last_module> is then ignored.
+        mids = [m.strip() for m in first.split(",") if m.strip()]
+    else:
+        a, b = int(first[1:]), int(last[1:])
+        mids = [f"m{i}" for i in range(a, b + 1)]
     sections = [extract_section(bundle, mid, f"{chnum}.{n}") for n, mid in enumerate(mids, 1)]
 
     key_equations = []
