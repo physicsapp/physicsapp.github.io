@@ -91,6 +91,7 @@ main{display:flex;flex-direction:column;gap:22px;padding-block:20px}
 
 .eqbox{background:var(--eq-bg);border-radius:10px;padding:10px 12px;overflow-x:auto;overflow-y:hidden}
 .eqgrid{display:flex;flex-direction:column;gap:8px}
+.eqname{font-size:.8rem;color:var(--muted);margin-bottom:-2px}
 .eq{overflow-x:auto;overflow-y:hidden;max-width:100%}
 mjx-container[display="true"]{margin:.4em 0!important}
 mjx-container{max-width:100%}
@@ -300,7 +301,14 @@ const H=r=>"#ch"+(CH||lastCh())+(r?"/"+r:"");
 function lastCh(){const n=+store("last-chapter");return CHAPTERS.some(c=>c[0]===n)?n:3;}
 
 /* Short summaries written for this app (adapted, same license as the book). */
-let SUMMARY={},ITEMS=[],NOTE_ERRS=[];
+let SUMMARY={},ITEMS=[],NOTE_ERRS=[],EQS={};
+/* The chapter's equation sheet (Equations tab): lines starred with * in the notes' ## EQUATIONS blocks,
+   in section order. A chapter with no EQUATIONS blocks falls back to the book's key equations. */
+function sheetOf(n){const c=CACHE[n];if(!c||!c.D)return[];
+  const E=c.eqs||{},secs=c.secs.filter(x=>E[x]);
+  if(secs.length)return secs.flatMap(x=>E[x].filter(e=>e.sheet));
+  const es=(CHX[n]||{}).eqSec||[];
+  return(c.D.keyEquations||[]).map((e,j)=>({name:e.name,tex:e.tex,sec:e.sec||es[j]||""}));}
 let SECS=[];
 
 /* ---------- notes file parser: summaries and review items you can edit ---------- */
@@ -334,7 +342,7 @@ function parseTap(s,plot){
   return{ts,tol};
 }
 function parseNotes(txt){
-  const errs=[],sum={},items=[];
+  const errs=[],sum={},items=[],eqs={};
   const lines=txt.replace(/\r/g,"").split("\n");
   let blk=null,key=null;
   const choices=(blk,L)=>{
@@ -347,7 +355,11 @@ function parseNotes(txt){
   const finish=()=>{if(!blk)return;
     const f=blk.f,L=blk.line,T=blk.type;
     try{
-      if(T==="SUMMARY"){
+      if(T==="EQUATIONS"){
+        if(!blk.sec)throw new Error("EQUATIONS needs a section number, like ## EQUATIONS 3.4");
+        if(!SECS.includes(blk.sec))throw new Error(`section ${blk.sec} isn't part of this chapter`);
+        (eqs[blk.sec]=eqs[blk.sec]||[]).push(...blk.eqs);
+      }else if(T==="SUMMARY"){
         if(!blk.sec)throw new Error("SUMMARY needs a section number, like ## SUMMARY 3.4");
         if(!f["in short"])throw new Error(`SUMMARY ${blk.sec} has no "In short:" line`);
         sum[blk.sec]={s:f["in short"],w:f["watch out"]||""};
@@ -374,11 +386,16 @@ function parseNotes(txt){
   lines.forEach((raw,i)=>{
     const n=i+1,line=raw.trimEnd();
     if(/^##/.test(line)){finish();
-      const m=line.replace(/^##\s*/,"").match(/^(SUMMARY|QUIZ|DRILL|GRAPH)\b\s*([0-9]+\.[0-9]+)?/i);
-      if(!m){errs.push(`Line ${n}: "${line}" isn't a known block. Use ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH`);return;}
-      blk={type:m[1].toUpperCase(),sec:m[2]||"",f:{},opts:{},wrong:[],line:n};return;}
+      const m=line.replace(/^##\s*/,"").match(/^(SUMMARY|EQUATIONS|QUIZ|DRILL|GRAPH)\b\s*([0-9]+\.[0-9]+)?/i);
+      if(!m){errs.push(`Line ${n}: "${line}" isn't a known block. Use ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH`);return;}
+      blk={type:m[1].toUpperCase(),sec:m[2]||"",f:{},opts:{},wrong:[],eqs:[],line:n};return;}
     if(/^#/.test(line)||!blk)return;
     if(!line.trim()){key=null;return;}
+    if(blk.type==="EQUATIONS"){
+      const e=line.match(/^\s*(\*)?\s*(.*?)\s*\\\((.*)\\\)\s*$/);
+      if(!e)errs.push(`Line ${n}: an equation line looks like  Name: \\(math\\)  with a * in front to put it on the equation sheet`);
+      else blk.eqs.push({name:e[2].replace(/:\s*$/,"").trim(),tex:e[3].trim(),sheet:!!e[1],sec:blk.sec,line:n});
+      return;}
     const opt=line.match(/^\s*([A-Fa-f])\)\s*(.*)$/);
     if((blk.type==="QUIZ"||blk.type==="GRAPH")&&opt){key="opt:"+opt[1].toUpperCase();blk.opts[opt[1].toUpperCase()]=opt[2];return;}
     const kv=line.match(/^\s*(Q|In short|Watch out|Answer|Why|Let|Unit|Work|Wrong|Plot|Tap)\s*:\s*(.*)$/i);
@@ -389,7 +406,7 @@ function parseNotes(txt){
     errs.push(`Line ${n}: this line doesn't start with a label like Q:, Why:, or A)`);
   });
   finish();
-  return{sum,items,errs};
+  return{sum,items,errs,eqs};
 }
 
 /* small, safe formula evaluator: + - * / ^ ( ) and a few functions */
@@ -610,7 +627,7 @@ function renderLearn(){
     <div class="stack">
       <div class="eyebrow">University Physics, Volume 1</div>
       <h1>${esc(D.chapter.title)}</h1>
-      <p class="muted small">Chapter ${CH} · ${plural(S.length,"section")} · ${plural(D.keyEquations.length,"key equation")}</p>
+      <p class="muted small">Chapter ${CH} · ${plural(S.length,"section")} · ${plural(sheetOf(CH).length,"key equation")}</p>
     </div>
     ${X.hero?X.hero():""}
   </section>
@@ -630,8 +647,9 @@ function attrib(){return `<p class="attrib">Adapted from <a href="${D.bookUrl}" 
 function renderSection(i){
   const s=S[i], sm=SUMMARY[s.num];
   crumb.textContent=s.num+" "+s.title;
-  let callouts=s.callouts;
-  if(!callouts.length)callouts=D.keyEquations.filter((e,j)=>eqSec(j)===s.num).map(e=>e.tex);
+  let callouts=(EQS[s.num]||[]).map(e=>({name:e.name,tex:e.tex}));
+  if(!EQS[s.num]){callouts=s.callouts.map(t=>({tex:t}));
+    if(!callouts.length)callouts=D.keyEquations.filter((e,j)=>eqSec(j)===s.num).map(e=>({name:e.name,tex:e.tex}));}
   main.innerHTML=`
   <header class="stack">
     <div class="eyebrow">Section ${s.num}</div>
@@ -644,7 +662,7 @@ function renderSection(i){
     ${sm.w?`<p class="watch"><b>Watch out</b><span>${esc(sm.w)}</span></p>`:""}
   </section>`:""}
   <section class="stack"><h2>Key ideas from the book</h2><ul class="bullets">${s.keyConcepts.map(k=>`<li>${k}</li>`).join("")}</ul></section>
-  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(t=>`<div class="eqbox">\\[${t}\\]</div>`).join("")}</div></section>`:""}
+  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(e=>`<div class="eqbox">${e.name?`<div class="eqname">${esc(e.name)}</div>`:""}\\[${e.tex}\\]</div>`).join("")}</div></section>`:""}
   ${s.examples.length?`<section class="stack"><h2>Worked examples</h2>${s.examples.map((ex,j)=>`
     <details class="ex"><summary><span class="k">${s.num}.${j+1}</span><span class="tt">${esc(ex.title||"Example")}</span><span class="plus" aria-hidden="true">+</span></summary>
     <div class="exbody">${ex.parts.map(p=>`<div class="part"><div class="lbl">${esc(p.label)}</div><div class="rich">${p.html}</div></div>`).join("")}</div></details>`).join("")}</section>`:""}
@@ -665,11 +683,12 @@ function renderEquations(){
   crumb.textContent="Key equations";
   main.innerHTML=`
   ${chSwitch("equations")}
-  <header class="stack"><div class="eyebrow">Chapter ${CH}</div><h1>Key equations</h1></header>
+  <header class="stack"><div class="eyebrow">Chapter ${CH}</div><h1>Key equations</h1>
+    <p class="muted small">The equation sheet for this chapter. Each section page in Learn lists every equation from that section.</p></header>
   <input class="search" id="eqq" type="search" placeholder="${esc(chx().eqHint||"Search the equations")}" aria-label="Search equations">
   <div class="stack" id="eqlist">
-  ${D.keyEquations.map((e,j)=>`<article class="card eqcard" data-name="${esc(e.name.toLowerCase())} ${eqSec(j)}">
-    <div class="head"><h3>${esc(e.name)}</h3>${eqSec(j)?`<span class="tag">${eqSec(j)}</span>`:""}</div>
+  ${sheetOf(CH).map(e=>`<article class="card eqcard" data-name="${esc(e.name.toLowerCase())} ${e.sec}">
+    <div class="head"><h3>${esc(e.name)}</h3>${e.sec?`<span class="tag">${e.sec}</span>`:""}</div>
     <div class="eq">\\[${e.tex}\\]</div>
   </article>`).join("")}
   </div>
@@ -2214,11 +2233,11 @@ async function fetchChapter(n){
   if(!b.ok)return "error";
   let d;try{d=await b.json();}catch(e){CACHE[n]={bad:`book/ch${pad2(n)}.json has a mistake in it (${e.message}). A single backslash in that file breaks it; every backslash there must be doubled.`};return "ok";}
   const secs=d.sections.map(x=>x.num);
-  const keepSecs=SECS;SECS=secs;
-  let r={sum:{},items:[],errs:[`notes/ch${pad2(n)}.txt could not be loaded, so summaries and review items are missing.`]};
-  if(nt&&nt.ok)r=parseNotes(await nt.text());
-  SECS=keepSecs;
-  CACHE[n]={D:d,secs,sum:r.sum,items:r.items,errs:r.errs};
+  let r={sum:{},items:[],eqs:{},errs:[`notes/ch${pad2(n)}.txt could not be loaded, so summaries and review items are missing.`]};
+  const txt=nt&&nt.ok?await nt.text().catch(()=>null):null;
+  if(CACHE[n])return "ok";
+  if(txt!==null){const keepSecs=SECS;SECS=secs;try{r=parseNotes(txt);}finally{SECS=keepSecs;}}
+  CACHE[n]={D:d,secs,sum:r.sum,items:r.items,errs:r.errs,eqs:r.eqs||{}};
   const meta=store("chapters")||{};meta[n]={secs:secs.length};store("chapters",meta);
   return "ok";
 }
@@ -2226,7 +2245,7 @@ const CHMEM={};
 function useChapter(n){
   if(CH===n)return;
   const c=CACHE[n],CH0=CH;
-  CH=n;D=c.D;S=D.sections;SECS=c.secs;SUMMARY=c.sum;ITEMS=c.items;NOTE_ERRS=c.errs;
+  CH=n;D=c.D;S=D.sections;SECS=c.secs;SUMMARY=c.sum;ITEMS=c.items;NOTE_ERRS=c.errs;EQS=c.eqs||{};
   if(CH0)CHMEM[CH0]={SESS,GSEL,LP};
   PKEY="progress-ch"+n;SKEY="session-ch"+n;PROG=loadProg();
   const kept=CHMEM[n];
@@ -2440,18 +2459,18 @@ async function renderEqPicker(my){
   main.innerHTML=`<p class="muted">Loading chapters…</p>`;
   const r=await probeReady();if(my!==ROUTE_N)return;
   const l=pickOrder(r),last=+store("last-chapter");
-  const books=await Promise.all(l.map(fetchBook));if(my!==ROUTE_N)return;
-  const B={};l.forEach((n,i)=>{if(books[i]&&books[i].keyEquations)B[n]=books[i];});
+  await Promise.all(l.map(fetchChapter));if(my!==ROUTE_N)return;
+  const B={};l.forEach(n=>{if(CACHE[n]&&CACHE[n].D)B[n]=sheetOf(n);});
   const all=[];
-  CHAPTERS.forEach(([n])=>{if(!B[n])return;const es=(CHX[n]||{}).eqSec||[];
-    B[n].keyEquations.forEach((e,j)=>{const sc=e.sec||es[j]||"";all.push({n,e,sec:sc,key:(e.name+" "+sc+" chapter "+n).toLowerCase()});});});
+  CHAPTERS.forEach(([n])=>{if(!B[n])return;
+    B[n].forEach(e=>{const sc=e.sec||"";all.push({n,e,sec:sc,key:(e.name+" "+sc+" chapter "+n).toLowerCase()});});});
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">Key equations</div><h1>Equations</h1>
     <p class="muted">Pick a chapter, or search the key equations of every chapter at once.</p></header>
   <input class="search" id="eqall" type="search" placeholder="Search all chapters" aria-label="Search the key equations of all chapters">
   <div class="stack" id="eqhits" hidden></div>
   <nav class="seclist chlist" id="eqchs" aria-label="Chapters">
-    ${l.map(n=>pickRow(n,`#ch${n}/equations`,B[n]?plural(B[n].keyEquations.length,"key equation"):"",n===last)).join("")}
+    ${l.map(n=>pickRow(n,`#ch${n}/equations`,B[n]?plural(B[n].length,"key equation"):"",n===last)).join("")}
   </nav>
   ${PICK_ATTRIB}`;
   const q=document.getElementById("eqall"),hits=document.getElementById("eqhits"),chs=document.getElementById("eqchs");
