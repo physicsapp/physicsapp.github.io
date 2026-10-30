@@ -66,8 +66,8 @@ Acceleration as a second derivative: \(\vec{a}(t) = \frac{d^2x}{dt^2}\hat{i} + \
 * Launch velocity components: \(v_{0x} = v_0\cos\theta_0, \quad v_{0y} = v_0\sin\theta_0\)
 * Horizontal motion: \(x = x_0 + v_{0x}t\)
 * Vertical motion: \(\begin{aligned} y &= y_0 + v_{0y}t - \tfrac{1}{2}gt^2 \\ v_y &= v_{0y} - gt \end{aligned}\)
-Time of flight (level ground): \(T_{\text{tof}} = \frac{2v_0\sin\theta_0}{g}\)
-Trajectory: \(y = (\tan\theta_0)x - \frac{g}{2(v_0\cos\theta_0)^2}x^2\)
+* Time of flight (level ground): \(T_{\text{tof}} = \frac{2v_0\sin\theta_0}{g}\)
+* Trajectory: \(y = (\tan\theta_0)x - \frac{g}{2(v_0\cos\theta_0)^2}x^2\)
 * Range (level ground): \(R = \frac{v_0^2\sin 2\theta_0}{g}\)
 
 ## EQUATIONS 4.4
