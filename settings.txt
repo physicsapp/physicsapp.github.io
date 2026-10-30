@@ -35,3 +35,19 @@ Show class dates: yes
 # Chapter 4
 # Questions per review: 8
 # Right answers to grow a flower: 20
+
+Chapter 1
+Questions per review: 3
+Right answers to grow a flower: 9
+
+Chapter 3
+Questions per review: 4
+Right answers to grow a flower: 12
+
+Chapter 4
+Questions per review: 4
+Right answers to grow a flower: 12
+
+Chapter 5
+Questions per review: 3
+Right answers to grow a flower: 9
