@@ -318,23 +318,23 @@ function parsePlot(spec){
   const parts=spec.split(";").map(s=>s.trim()).filter(Boolean);
   const m=parts[0].match(/^([A-Za-z])\s*(?:\(\s*t\s*\))?\s*=\s*(.+)$/);
   if(!m)throw new Error(`Plot: should start like "x = 4*t - t^2"`);
-  const p={name:m[1],expr:m[2],t0:0,t1:4,y0:null,y1:null,unit:{x:"m",y:"m",v:"m/s",a:"m/s²"}[m[1]]||""};
+  const p={name:m[1],expr:m[2],t0:0,t1:4,y0:null,y1:null,unit:{x:"m",y:"m",v:"m/s",a:"m/s²",F:"N",P:"W",K:"J",W:"J"}[m[1]]||"",h:"t"};
   for(const part of parts.slice(1)){
     let r;
-    if((r=part.match(/^t\s+from\s+(.+?)\s+to\s+(.+)$/i))){p.t0=evalExpr(r[1],{});p.t1=evalExpr(r[2],{});}
+    if((r=part.match(/^([tx])\s+from\s+(.+?)\s+to\s+(.+)$/))){p.h=r[1];p.t0=evalExpr(r[2],{});p.t1=evalExpr(r[3],{});}
     else if((r=part.match(/^y\s+from\s+(.+?)\s+to\s+(.+)$/i))){p.y0=evalExpr(r[1],{});p.y1=evalExpr(r[2],{});}
     else if((r=part.match(/^unit\s+(.+)$/i))){p.unit=r[1].trim();}
-    else throw new Error(`Plot: "${part}" isn't understood. Use "t from 0 to 4", "y from 0 to 5", or "unit m/s"`);
+    else throw new Error(`Plot: "${part}" isn't understood. Use "t from 0 to 4" (or "x from 0 to 4" for a position axis), "y from 0 to 5", or "unit m/s"`);
   }
   if(!(p.t1>p.t0))throw new Error("Plot: the t range should go from low to high");
   let lo=Infinity,hi=-Infinity;
-  for(let i=0;i<=60;i++){const t=p.t0+(p.t1-p.t0)*i/60;const y=evalExpr(p.expr,{t});if(!isFinite(y))throw new Error(`Plot: the formula isn't a number at t = ${clean(t)}`);lo=Math.min(lo,y);hi=Math.max(hi,y);}
+  for(let i=0;i<=60;i++){const t=p.t0+(p.t1-p.t0)*i/60;const y=evalExpr(p.expr,{t,x:t});if(!isFinite(y))throw new Error(`Plot: the formula isn't a number at ${p.h} = ${clean(t)}`);lo=Math.min(lo,y);hi=Math.max(hi,y);}
   if(p.y0==null){const pad=(hi-lo)*0.1||1;p.y0=Math.min(0,lo-pad);p.y1=hi+pad;}
   if(!(p.y1>p.y0))throw new Error("Plot: the y range should go from low to high");
   return p;
 }
 function parseTap(s,plot){
-  const m=s.match(/^\s*t\s*=\s*(.+?)(?:\s+within\s+(.+))?\s*$/i);
+  const m=s.match(/^\s*[tx]\s*=\s*(.+?)(?:\s+within\s+(.+))?\s*$/i);
   if(!m)throw new Error('Tap: should look like "t = 2" or "t = 1, 3 within 0.3"');
   const ts=m[1].split(",").map(x=>evalExpr(x,{}));
   const tol=m[2]?evalExpr(m[2],{}):0.08*(plot.t1-plot.t0);
@@ -577,7 +577,8 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   2:{eqSec:["2.1", "2.1", "2.1", "2.1", "2.1", "2.1", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.2", "2.3", "2.3", "2.3", "2.3", "2.3", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4", "2.4"],eqHint:"Search, for example “dot product” or “magnitude”",toy:"sail"},
   4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",toy:"catapult"},
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],toy:"elevator",eqHint:"Search, for example “weight” or “second law”"},
-  6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],toy:"race",eqHint:"Search, for example “friction” or “drag”"}};
+  6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],toy:"race",eqHint:"Search, for example “friction” or “drag”"},
+  7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],eqHint:"Search, for example “spring” or “power”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
@@ -587,7 +588,26 @@ function typeset(el){
   if(window.MathJax&&window.MathJax.startup&&window.MathJax.startup.promise){window.MathJax.startup.promise.then(go);}
   else{setTimeout(()=>typeset(el),150);}
 }
-function fitMath(el){el.querySelectorAll("mjx-container:not([display])").forEach(m=>{const box=m.parentElement&&m.parentElement.closest(".rich,p,li,.card,.inshort,.fb,.opt,.ans,section");if(!box)return;const w=box.getBoundingClientRect().width;if(m.getBoundingClientRect().width>w-4)m.classList.add("wide");});}
+/* A drill's Work line is one equation. If it's wider than the screen once typeset, fitMath swaps in
+   this stacked version: one "=" per line, lines lined up on the left, a new line at \Rightarrow and after ",\quad" or ",\ ". */
+function stackTex(t,first){
+  const rows=[];let row="",eq=false,d=0;
+  const end=()=>{rows.push(row.replace(/^(\\ |\s)+|(\\ |\s)+$/g,""));row="";eq=false;};
+  for(let i=0;i<t.length;i++){
+    const c=t[i];
+    if(c==="\\"&&d===0&&t.startsWith("\\Rightarrow",i)){if(row.trim())end();row="\\Rightarrow";i+=10;continue;}
+    if(c===","&&d===0&&t.startsWith(",\\quad",i)){row+=",";end();i+=5;continue;}
+    if(c===","&&d===0&&t.startsWith(",\\ ",i)){row+=",";end();i+=2;continue;}
+    if(c==="\\"){row+=c+(t[i+1]||"");i++;continue;}
+    if(c==="{")d++;else if(c==="}")d--;
+    if(c==="="&&d===0){if(eq||first){end();row="\\quad= ";eq=true;}else{row+="=";eq=true;}continue;}
+    row+=c;
+  }
+  if(row.trim())end();
+  if(rows.filter(Boolean).length<2&&!first)return stackTex(t,true);
+  return "\\begin{aligned}"+rows.filter(Boolean).map(r=>"&"+r).join(" \\\\ ")+"\\end{aligned}";
+}
+function fitMath(el){if(el.querySelectorAll)el.querySelectorAll(".eqbox[data-stack]").forEach(b=>{const m=b.querySelector("mjx-container");const tex=b.dataset.stack;b.removeAttribute("data-stack");if(m&&m.scrollWidth>m.clientWidth+1){b.innerHTML="\\["+tex+"\\]";typeset(b);}});el.querySelectorAll("mjx-container:not([display])").forEach(m=>{const box=m.parentElement&&m.parentElement.closest(".rich,p,li,.card,.inshort,.fb,.opt,.ans,section");if(!box)return;const w=box.getBoundingClientRect().width;if(m.getBoundingClientRect().width>w-4)m.classList.add("wide");});}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem("fb:"+k));localStorage.setItem("fb:"+k,JSON.stringify(v));}catch(e){return null}}
 
@@ -1309,7 +1329,7 @@ function answer(q,ok){
 function feedback(q){
   const it=q.it;let extra="";
   if(it.type==="DRILL"&&!q.ok){const c=q.inst.choices[q.pick];if(c&&c.fb)extra=`<p>${esc(c.fb)}</p>`;}
-  const work=it.type==="DRILL"&&q.inst.work?`<div class="eqbox">\\[${q.inst.work}\\]</div>`:"";
+  const work=it.type==="DRILL"&&q.inst.work?`<div class="eqbox" data-stack="${esc(stackTex(q.inst.work))}">\\[${q.inst.work}\\]</div>`:"";
   const why=it.why?`<p>${esc(it.why)}</p>`:"";
   const head=q.ok?(q.retry?"Got it this time":"Correct"):(SESS&&SESS.practice?"Not quite.":"Not quite. This one will come back soon for another try.");
   return `<div class="fb ${q.ok?"good":"bad"}"><b>${head}</b>${extra}${why}${work}</div>`;
@@ -1326,14 +1346,14 @@ function graphSVG(it,q){
   for(let t=Math.ceil(p.t0/ts)*ts;t<=p.t1+1e-9;t+=ts){g+=`<line y1="${T}" y2="${B}" x1="${X(t)}" x2="${X(t)}" stroke="var(--grid-line)"/><text x="${X(t)}" y="${B+16}" text-anchor="middle">${fmtNum(t)}</text>`;}
   const zero=p.y0<0&&p.y1>0?Y(0):B;
   g+=`<line x1="${L}" x2="${R}" y1="${zero}" y2="${zero}" stroke="var(--ink)" stroke-width="1.2"/><line x1="${L}" x2="${L}" y1="${T}" y2="${B}" stroke="var(--ink)" stroke-width="1.2"/>`;
-  let d="";for(let k=0;k<=120;k++){const t=p.t0+(p.t1-p.t0)*k/120;let y=evalExpr(p.expr,{t});y=Math.max(p.y0-1e3,Math.min(p.y1+1e3,y));d+=(k?"L":"M")+X(t).toFixed(1)+" "+Y(y).toFixed(1);}
+  let d="";for(let k=0;k<=120;k++){const t=p.t0+(p.t1-p.t0)*k/120;let y=evalExpr(p.expr,{t,x:t});y=Math.max(p.y0-1e3,Math.min(p.y1+1e3,y));d+=(k?"L":"M")+X(t).toFixed(1)+" "+Y(y).toFixed(1);}
   g+=`<clipPath id="clip"><rect x="${L}" y="${T}" width="${R-L}" height="${B-T}"/></clipPath><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.6" clip-path="url(#clip)"/>`;
-  g+=`<text x="${L}" y="${T-9}" text-anchor="start" font-weight="600">${p.name} (${esc(p.unit)})</text><text x="${R}" y="${H-2}" text-anchor="end" font-weight="600">t (s)</text>`;
+  g+=`<text x="${L}" y="${T-9}" text-anchor="start" font-weight="600">${p.name} (${esc(p.unit)})</text><text x="${R}" y="${H-2}" text-anchor="end" font-weight="600">${p.h==="x"?"x (m)":"t (s)"}</text>`;
   if(it.tap&&q.answered){
     for(const t of it.tap.ts)g+=`<line x1="${X(t)}" x2="${X(t)}" y1="${T}" y2="${B}" stroke="var(--good)" stroke-width="2" stroke-dasharray="5 4"/>`;
     g+=`<line x1="${X(q.tapT)}" x2="${X(q.tapT)}" y1="${T}" y2="${B}" stroke="${q.ok?"var(--good)":"var(--bad)"}" stroke-width="2.5"/><circle cx="${X(q.tapT)}" cy="${B}" r="5" fill="${q.ok?"var(--good)":"var(--bad)"}"/>`;
   }
-  const tapAttrs=it.tap&&!q.answered?` class="graph tappable" tabindex="0" aria-label="Graph of ${p.name} versus time. Tap a moment, or use the left and right arrow keys and Enter."`:` class="graph" aria-label="Graph of ${p.name} versus time"`;
+  const tapAttrs=it.tap&&!q.answered?` class="graph tappable" tabindex="0" aria-label="Graph of ${p.name} versus ${p.h==="x"?"position. Tap a position":"time. Tap a moment"}, or use the left and right arrow keys and Enter."`:` class="graph" aria-label="Graph of ${p.name} versus ${p.h==="x"?"position":"time"}"`;
   return `<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" role="img"${tapAttrs} data-l="${L}" data-r="${R}" data-b="${B}" data-t="${T}" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">${g}<line id="cursor" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="2" opacity=".6"/><line id="selmark" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="3" visibility="hidden"/></svg></div>`;
 }
 function wireTap(it,q,onSel){
