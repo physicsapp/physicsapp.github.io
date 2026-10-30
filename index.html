@@ -2341,12 +2341,16 @@ function miniPlant(x,y,f,i,s){
 }
 function grassSVG(n,g){
   if(g<=0)return "";
-  const F=v=>v.toFixed(1);let o="";
-  for(let i=0;i<16;i++){
-    const a=rnd01(n*53+i*11)*Math.PI*2,rr=0.35+0.6*Math.sqrt(rnd01(n*29+i*5));
-    const x=50+Math.cos(a)*38*rr,y=72+Math.sin(a)*15*rr,h=(1.5+5.5*g)*(0.75+0.5*rnd01(n+i*3));
-    const c=i%2?"--leaf":"--leaf2";
-    o+=`<path d="M${F(x-2.2)} ${F(y)} Q${F(x-2)} ${F(y-h*0.6)} ${F(x-3)} ${F(y-h*0.9)} M${F(x)} ${F(y)} Q${F(x+0.3)} ${F(y-h*0.7)} ${F(x+0.4)} ${F(y-h)} M${F(x+2.2)} ${F(y)} Q${F(x+2)} ${F(y-h*0.6)} ${F(x+3.2)} ${F(y-h*0.85)}" fill="none" stroke="var(${c})" stroke-width="1.1" stroke-linecap="round"/>`;
+  const F=v=>v.toFixed(1);
+  /* a green layer fades in under the tufts, so a fully grown chapter has no bare dirt */
+  let o=`<path d="M8 70 C8 56 26 52 50 52 C74 52 92 56 92 70 C92 86 76 92 50 92 C24 92 8 86 8 70 Z" fill="var(--leaf2)" opacity="${F(Math.pow(g,1.6))}"/>`;
+  const N=Math.round(10+60*g);
+  for(let i=0;i<N;i++){
+    /* sunflower spacing spreads the tufts evenly over the bed */
+    const rr=0.95*Math.sqrt((i+0.5)/N),a=i*2.39996+rnd01(n*53+i)*0.6;
+    const x=50+Math.cos(a)*38*rr,y=72+Math.sin(a)*15*rr,h=(1.5+5*g)*(0.75+0.5*rnd01(n+i*3));
+    const c=i%2?"--leaf":"--stem";
+    o+=`<path d="M${F(x-2)} ${F(y)} Q${F(x-1.8)} ${F(y-h*0.6)} ${F(x-2.8)} ${F(y-h*0.9)} M${F(x)} ${F(y)} Q${F(x+0.3)} ${F(y-h*0.7)} ${F(x+0.4)} ${F(y-h)} M${F(x+2)} ${F(y)} Q${F(x+1.8)} ${F(y-h*0.6)} ${F(x+3)} ${F(y-h*0.85)}" fill="none" stroke="var(${c})" stroke-width="1" stroke-linecap="round"/>`;
   }
   return o;
 }
