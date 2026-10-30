@@ -18,20 +18,20 @@
   --font-body:"Source Sans 3","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   --tabbar-h:60px; --grid-line:rgba(21,32,46,.08);
-  --pot:#c7d3dc; --pot-shade:#aebdc9; --soil:#6e5a45; --soil-seed:#a88a5e; --stem:#4c8a48; --leaf:#5aa055; --leaf2:#7dbd6c;
+  --pot:#c7d3dc; --pot-shade:#aebdc9; --soil:#6e5a45; --soil-seed:#a88a5e; --stem:#4c8a48; --turf:#5b8550; --leaf:#5aa055; --leaf2:#7dbd6c;
   --petal-1:#e46a52; --petal-2:#e9a92a; --petal-3:#8a6ad0; --petal-4:#dc5b98; --petal-5:#3a93d2; --petal-6:#f0873a; --center:#f3cf4b;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#10161d; --card:#18212b; --ink:#e4eaf0; --muted:#98a6b5; --rule:#2a3542;
   --grid:rgba(120,190,230,.07); --accent:#4cc0c8; --accent-ink:#0b1a1d; --accent-soft:#16343a;
   --eq-bg:#1d2833; --good:#6fd394; --good-soft:#173525; --bad:#ff8a80; --bad-soft:#3a1c1a; --grid-line:rgba(228,234,240,.08);
-  --pot:#3d4955; --pot-shade:#2f3a45; --soil:#4d3d2f; --soil-seed:#8a704c; --stem:#6aae64; --leaf:#74bd6c; --leaf2:#93d185;
+  --pot:#3d4955; --pot-shade:#2f3a45; --soil:#4d3d2f; --soil-seed:#8a704c; --stem:#6aae64; --turf:#3d6438; --leaf:#74bd6c; --leaf2:#93d185;
   --petal-1:#ff8a73; --petal-2:#f5bf4a; --petal-3:#a98bf0; --petal-4:#f07ab0; --petal-5:#5fb2ee; --petal-6:#ffa25c; --center:#f6d860; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#10161d; --card:#18212b; --ink:#e4eaf0; --muted:#98a6b5; --rule:#2a3542;
   --grid:rgba(120,190,230,.07); --accent:#4cc0c8; --accent-ink:#0b1a1d; --accent-soft:#16343a;
   --eq-bg:#1d2833; --good:#6fd394; --good-soft:#173525; --bad:#ff8a80; --bad-soft:#3a1c1a; --grid-line:rgba(228,234,240,.08);
-  --pot:#3d4955; --pot-shade:#2f3a45; --soil:#4d3d2f; --soil-seed:#8a704c; --stem:#6aae64; --leaf:#74bd6c; --leaf2:#93d185;
+  --pot:#3d4955; --pot-shade:#2f3a45; --soil:#4d3d2f; --soil-seed:#8a704c; --stem:#6aae64; --turf:#3d6438; --leaf:#74bd6c; --leaf2:#93d185;
   --petal-1:#ff8a73; --petal-2:#f5bf4a; --petal-3:#a98bf0; --petal-4:#f07ab0; --petal-5:#5fb2ee; --petal-6:#ffa25c; --center:#f6d860; color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -534,16 +534,19 @@ function record(it,ok){
   if(ok){
     if(r.box===0||r.due<=t){r.box=Math.min(GAP.length-1,r.box+1);r.due=t+GAP[r.box];}
     if(grows){PROG.grow=PROG.grow||{};PROG.grow[it.sec]=(PROG.grow[it.sec]||0)+1;r.lastRight=t;}
-  }else{r.box=Math.min(r.box,1);r.due=t+1;}
+    delete r.miss;
+  }else{r.box=Math.min(r.box,1);r.due=t;r.miss=true;}/* a miss can come back in the very next review */
   r.last=t;saveProg();
 }
-/* questions due again first, then new ones, then any others that can still grow the plant today */
+/* A random pick of the questions that can still grow the plant today. Missed questions are about twice as
+   likely to be picked as a new one, and questions due for spaced review a bit more likely, but none is certain,
+   so other questions still come up in between. The order is shuffled. */
+const W_MISS=2,W_DUE=1.5;
 function queueFor(sec){
-  const t=today(),pool=ITEMS.filter(i=>!sec||i.sec===sec);
-  const due=pool.filter(i=>isDue(i,t)&&canGrow(i,t)).sort((a,b)=>PROG.items[a.id].due-PROG.items[b.id].due);
-  const fresh=pool.filter(i=>!PROG.items[i.id]);
-  const rest=shuffle(pool.filter(i=>PROG.items[i.id]&&!isDue(i,t)&&canGrow(i,t)));
-  return due.concat(fresh,rest).slice(0,CFG.perReview);
+  const t=today(),pool=ITEMS.filter(i=>(!sec||i.sec===sec)&&canGrow(i,t));
+  const w=i=>{const r=PROG.items[i.id];return !r?1:r.miss?W_MISS:r.due<=t?W_DUE:1;};
+  const pick=pool.map(i=>({i,k:Math.pow(Math.random(),1/w(i))})).sort((a,b)=>b.k-a.k).slice(0,CFG.perReview).map(x=>x.i);
+  return shuffle(pick);
 }
 /* the next plant to grow: the first section, in book order, that hasn't bloomed and still has questions for today */
 function nextSec(){for(const s of SECS){if(secFrac(s)>=BLOOM)continue;const n=queueFor(s).length;if(n)return{sec:s,n};}return null;}
@@ -1078,7 +1081,8 @@ function saveSess(){if(!SESS||SESS.done){store(SKEY,null);return;}
 function loadSess(){
   const s=store(SKEY);if(!s||!Array.isArray(s.queue)||s.done)return null;
   const byId={};ITEMS.forEach(i=>byId[i.id]=i);
-  const queue=s.queue.filter(q=>byId[q.id]).map(q=>{const c=Object.assign({},q,{it:byId[q.id]});delete c.id;return c;});
+  /* older builds added a retry at the end for each miss; drop any not yet answered */
+  const queue=s.queue.filter(q=>byId[q.id]&&!(q.retry&&!q.answered)).map(q=>{const c=Object.assign({},q,{it:byId[q.id]});delete c.id;return c;});
   let i=s.i;
   if(queue.length!==s.queue.length)i=queue.findIndex(q=>!q.answered);
   if(!queue.length||i<0||i>=queue.length)return null;
@@ -1121,7 +1125,7 @@ function howGrow(){
   return `<li>Each section has its own plant. Every question you get right on the first try grows it a little, and ${plural(need,"right answer")} make it bloom.</li>
       <li>A review is ${plural(per,"question")}, so a plant can bloom in ${n===1?"one review":`about ${n} reviews`}. Go as fast as you like.</li>
       <li>A question with set choices grows a plant once a day. Number drills get new numbers every time, so they count every time.</li>
-      <li>A wrong answer never shrinks a plant. The question just comes back tomorrow.</li>
+      <li>A wrong answer never shrinks a plant. The question comes back soon, mixed in with the others, for another try.</li>
       ${CFG.perDay>0?`<li>You can do ${CFG.perDay===1?"one review":`up to ${CFG.perDay} reviews`} a day. Practice is always open.</li>`:""}
       <li>Your garden is saved on this device only. Nobody else can see it.</li>`;
 }
@@ -1278,7 +1282,7 @@ function optBtn(q,j,text,ok){
 }
 function answer(q,ok){
   const Ss=SESS;q.answered=true;q.ok=ok;
-  if(!q.retry){Ss.firstN++;if(ok)Ss.first++;if(!Ss.practice)record(q.it,ok);if(!ok)Ss.queue.push({it:q.it,retry:true});}
+  if(!q.retry){Ss.firstN++;if(ok)Ss.first++;if(!Ss.practice)record(q.it,ok);}
   saveSess();
   renderSession();typeset(main);
   const fb=document.getElementById("fb");if(fb&&fb.scrollIntoView)fb.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
@@ -1288,7 +1292,7 @@ function feedback(q){
   if(it.type==="DRILL"&&!q.ok){const c=q.inst.choices[q.pick];if(c&&c.fb)extra=`<p>${esc(c.fb)}</p>`;}
   const work=it.type==="DRILL"&&q.inst.work?`<div class="eqbox">\\[${q.inst.work}\\]</div>`:"";
   const why=it.why?`<p>${esc(it.why)}</p>`:"";
-  const head=q.ok?(q.retry?"Got it this time":"Correct"):(q.retry?"Not quite. It'll come back tomorrow.":"Not quite. You'll get another try at the end.");
+  const head=q.ok?(q.retry?"Got it this time":"Correct"):(SESS&&SESS.practice?"Not quite.":"Not quite. This one will come back soon for another try.");
   return `<div class="fb ${q.ok?"good":"bad"}"><b>${head}</b>${extra}${why}${work}</div>`;
 }
 
@@ -1345,7 +1349,7 @@ function renderSummary(){
   <header class="stack"><div class="eyebrow">${Ss.practice?"Practice":"Review"} ${Ss.quit?"ended":"done"}</div>
     <h1>${Ss.firstN?`${Ss.first} of ${Ss.firstN} right on the first try`:"No items answered"}</h1></header>
   ${grown.length?`<section class="paper garden grown">${grown.map(x=>`<div class="pot static" data-i="${x.i}" data-b="${x.b}" data-a="${x.a}">${plantSVG(x.b,x.i,"")}<span class="potlbl"><b>${x.s}</b> grew</span></div>`).join("")}</section>`
-    :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed questions come back tomorrow."}</p>`}
+    :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed questions come back soon, mixed in with the others."}</p>`}
   ${!Ss.practice&&Ss.sec?`<p class="small muted">Section ${Ss.sec}: ${secCount(Ss.sec)} of ${CFG.toBloom} right answers.</p>`:""}
   ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed.${toy()&&toy().parts[x.i]?` You earned the ${toy().thing}'s ${toy().parts[x.i]}.`:""}</p>`).join("")}
   <div class="row">
@@ -2343,7 +2347,7 @@ function grassSVG(n,g){
   if(g<=0)return "";
   const F=v=>v.toFixed(1);
   /* a green layer fades in under the tufts, so a fully grown chapter has no bare dirt */
-  let o=`<path d="M8 70 C8 56 26 52 50 52 C74 52 92 56 92 70 C92 86 76 92 50 92 C24 92 8 86 8 70 Z" fill="var(--leaf2)" opacity="${F(Math.pow(g,1.6))}"/>`;
+  let o=`<path d="M8 70 C8 56 26 52 50 52 C74 52 92 56 92 70 C92 86 76 92 50 92 C24 92 8 86 8 70 Z" fill="var(--turf)" opacity="${F(Math.pow(g,1.6))}"/>`;
   const N=Math.round(10+60*g);
   for(let i=0;i<N;i++){
     /* sunflower spacing spreads the tufts evenly over the bed */
