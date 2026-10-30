@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 1.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -49,6 +49,19 @@ Watch out: Leading zeros, like those in 0.0052, are not significant. Trailing ze
 ## SUMMARY 1.7
 In short: Solve problems in three stages. Strategy: figure out what is asked, what is known, and which physical principles connect them. Solution: do the algebra first, then put in numbers with units. Significance: check that the units are right and that the size and sign of the answer make sense.
 Watch out: Carry units through every step. If the units of your answer come out wrong, the algebra is wrong somewhere.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 1.6
+* Percent uncertainty: \(\text{Percent uncertainty} = \frac{\delta A}{A} \times 100\%\)
+# To add your own, write a line like the two below (remove the # to turn one on).
+# * Uncertainty of a product: \(\frac{\delta Q}{Q} = \frac{\delta A}{A} + \frac{\delta B}{B}\)
+# * Uncertainty of a power: \(\frac{\delta Q}{Q} = n\,\frac{\delta A}{A}\)
 
 
 # ============================ ITEM FORMATS ============================

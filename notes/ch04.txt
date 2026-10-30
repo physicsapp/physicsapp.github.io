@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 4.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -41,6 +41,49 @@ Watch out: Centripetal acceleration points toward the center, not outward. Nothi
 ## SUMMARY 4.5
 In short: Velocity depends on who is measuring. If frame \(S'\) moves with velocity \(\vec v_{S'S}\) relative to frame \(S\), an object's velocity relative to \(S\) is \(\vec v_{PS} = \vec v_{PS'} + \vec v_{S'S}\). The subscripts chain like dominoes: the inner letters match and drop out. Frames moving at constant velocity relative to each other measure the same acceleration.
 Watch out: \(\vec v_{AB} = -\vec v_{BA}\). Reversing the subscripts reverses the vector.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 4.1
+* Position vector: \(\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}\)
+* Displacement vector: \(\Delta\vec{r} = \vec{r}(t_2) - \vec{r}(t_1)\)
+* Velocity vector: \(\vec{v}(t) = \lim_{\Delta t \to 0} \frac{\vec{r}(t + \Delta t) - \vec{r}(t)}{\Delta t} = \frac{d\vec{r}}{dt}\)
+Velocity in components: \(\vec{v}(t) = v_x(t)\hat{i} + v_y(t)\hat{j} + v_z(t)\hat{k}\)
+Velocity components: \(v_x = \frac{dx}{dt}, \quad v_y = \frac{dy}{dt}, \quad v_z = \frac{dz}{dt}\)
+* Average velocity: \(\vec{v}_{\text{avg}} = \frac{\vec{r}(t_2) - \vec{r}(t_1)}{t_2 - t_1}\)
+
+## EQUATIONS 4.2
+* Acceleration vector: \(\vec{a}(t) = \lim_{\Delta t \to 0} \frac{\vec{v}(t + \Delta t) - \vec{v}(t)}{\Delta t} = \frac{d\vec{v}}{dt}\)
+Acceleration in components: \(\begin{aligned} \vec{a}(t) &= \frac{dv_x}{dt}\hat{i} + \frac{dv_y}{dt}\hat{j} + \frac{dv_z}{dt}\hat{k} \\ &= a_x\hat{i} + a_y\hat{j} + a_z\hat{k} \end{aligned}\)
+Acceleration as a second derivative: \(\vec{a}(t) = \frac{d^2x}{dt^2}\hat{i} + \frac{d^2y}{dt^2}\hat{j} + \frac{d^2z}{dt^2}\hat{k}\)
+
+## EQUATIONS 4.3
+* Launch velocity components: \(v_{0x} = v_0\cos\theta_0, \quad v_{0y} = v_0\sin\theta_0\)
+* Horizontal motion: \(x = x_0 + v_{0x}t\)
+* Vertical motion: \(\begin{aligned} y &= y_0 + v_{0y}t - \tfrac{1}{2}gt^2 \\ v_y &= v_{0y} - gt \end{aligned}\)
+Time of flight (level ground): \(T_{\text{tof}} = \frac{2v_0\sin\theta_0}{g}\)
+Trajectory: \(y = (\tan\theta_0)x - \frac{g}{2(v_0\cos\theta_0)^2}x^2\)
+* Range (level ground): \(R = \frac{v_0^2\sin 2\theta_0}{g}\)
+
+## EQUATIONS 4.4
+* Centripetal acceleration: \(a_c = \frac{v^2}{r}\)
+* Speed and period: \(v = \frac{2\pi r}{T}\)
+Position, uniform circular motion: \(\vec{r}(t) = A\cos\omega t\,\hat{i} + A\sin\omega t\,\hat{j}\)
+Velocity, uniform circular motion: \(\vec{v}(t) = -A\omega\sin\omega t\,\hat{i} + A\omega\cos\omega t\,\hat{j}\)
+Acceleration, uniform circular motion: \(\vec{a}(t) = -A\omega^2\cos\omega t\,\hat{i} - A\omega^2\sin\omega t\,\hat{j}\)
+* Tangential acceleration: \(a_T = \frac{d|\vec{v}|}{dt}\)
+* Total acceleration: \(\vec{a} = \vec{a}_c + \vec{a}_T\)
+
+## EQUATIONS 4.5
+Relative position: \(\vec{r}_{PS} = \vec{r}_{PS'} + \vec{r}_{S'S}\)
+* Relative velocity: \(\vec{v}_{PS} = \vec{v}_{PS'} + \vec{v}_{S'S}\)
+Relative velocity, more than two frames: \(\vec{v}_{PC} = \vec{v}_{PA} + \vec{v}_{AB} + \vec{v}_{BC}\)
+Relative acceleration: \(\vec{a}_{PS} = \vec{a}_{PS'} + \vec{a}_{S'S}\)
 
 
 # ============================ ITEM FORMATS ============================

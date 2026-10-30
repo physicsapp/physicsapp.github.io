@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 3.4. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -46,6 +46,44 @@ Watch out: \(g\) itself is positive. The sign belongs in \(a = -g\), so don't wr
 ## SUMMARY 3.6
 In short: When acceleration changes with time, integrate: \(v(t) = \int a(t)\,dt + C_1\) and \(x(t) = \int v(t)\,dt + C_2\). The initial velocity and position fix the constants. The constant acceleration equations are the special case \(a(t) = a\).
 Watch out: Don't use the constant acceleration equations when \(a\) depends on time.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 3.1
+* Displacement: \(\Delta x = x_f - x_i\)
+Total displacement: \(\Delta x_{\text{total}} = \sum \Delta x_i\)
+* Average velocity: \(\bar{v} = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}\)
+* Average speed: \(\bar{s} = \frac{\text{total distance}}{\text{elapsed time}}\)
+
+## EQUATIONS 3.2
+* Instantaneous velocity: \(v(t) = \frac{dx(t)}{dt}\)
+Instantaneous speed: \(\text{speed} = |v(t)|\)
+Power rule for derivatives: \(\frac{d}{dt}\left(Ct^n\right) = nCt^{n-1}\)
+
+## EQUATIONS 3.3
+* Average acceleration: \(\bar{a} = \frac{\Delta v}{\Delta t} = \frac{v_f - v_0}{t_f - t_0}\)
+* Instantaneous acceleration: \(a(t) = \frac{dv(t)}{dt}\)
+
+## EQUATIONS 3.4
+* Position from average velocity: \(x = x_0 + \bar{v}t\)
+* Average velocity, constant acceleration: \(\bar{v} = \frac{v_0 + v}{2}\)
+* Velocity, constant acceleration: \(v = v_0 + at\)
+* Position, constant acceleration: \(x = x_0 + v_0 t + \tfrac{1}{2}at^2\)
+* Velocity and position, constant acceleration: \(v^2 = v_0^2 + 2a(x - x_0)\)
+
+## EQUATIONS 3.5
+Velocity in free fall (up is positive): \(v = v_0 - gt\)
+Height in free fall: \(y = y_0 + v_0 t - \tfrac{1}{2}gt^2\)
+Velocity and height in free fall: \(v^2 = v_0^2 - 2g(y - y_0)\)
+
+## EQUATIONS 3.6
+* Velocity from acceleration: \(v(t) = \int a(t)\,dt + C_1\)
+* Position from velocity: \(x(t) = \int v(t)\,dt + C_2\)
 
 
 # ============================ ITEM FORMATS ============================

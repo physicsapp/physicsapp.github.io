@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 5.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -49,6 +49,39 @@ Watch out: The normal force is not always equal to \(mg\). Check the angle and w
 ## SUMMARY 5.7
 In short: To draw a free body diagram, draw the object as a dot or box, then draw every force acting on it as an arrow starting at the object, each labeled. Choose axes, ideally with one along the acceleration, and split each force into components. Draw a separate diagram for each object in a problem.
 Watch out: Don't draw "the force of motion" or \(m\vec a\) as a force. Every force must come from something touching the object, or from gravity.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 5.1
+* Net external force: \(\vec{F}_{\text{net}} = \sum \vec{F} = \vec{F}_1 + \vec{F}_2 + \cdots\)
+
+## EQUATIONS 5.2
+Newton's first law: \(\vec{v} = \text{constant when } \vec{F}_{\text{net}} = 0\)
+
+## EQUATIONS 5.3
+* Newton's second law: \(\vec{F}_{\text{net}} = \sum \vec{F} = m\vec{a}\)
+* Second law in components: \(\begin{aligned} \textstyle\sum F_x &= ma_x \\ \textstyle\sum F_y &= ma_y \\ \textstyle\sum F_z &= ma_z \end{aligned}\)
+Second law, scalar form: \(F_{\text{net}} = ma\)
+Second law, momentum form: \(\vec{F}_{\text{net}} = \frac{d\vec{p}}{dt}\)
+
+## EQUATIONS 5.4
+Weight, vector form: \(\vec{w} = m\vec{g}\)
+* Weight: \(w = mg\)
+
+## EQUATIONS 5.5
+* Newton's third law: \(\vec{F}_{AB} = -\vec{F}_{BA}\)
+
+## EQUATIONS 5.6
+Normal force on a level surface, vector form: \(\vec{N} = -m\vec{g}\)
+Normal force on a level surface: \(N = mg\)
+Normal force on an incline: \(N = mg\cos\theta\)
+* Spring force (Hooke's law): \(\vec{F} = -k\vec{x}\)
+Tension holding a mass at rest: \(T = w = mg\)
 
 
 # ============================ ITEM FORMATS ============================

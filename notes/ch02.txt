@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 2.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -37,6 +37,52 @@ Watch out: Add components, not magnitudes. \(|\vec A + \vec B|\) is not \(A + B\
 ## SUMMARY 2.4
 In short: The scalar (dot) product \(\vec A\cdot\vec B = AB\cos\varphi = A_xB_x + A_yB_y + A_zB_z\) is a number. It is zero for perpendicular vectors and negative when the angle is more than \(90^\circ\). The vector (cross) product \(\vec A\times\vec B\) has magnitude \(AB\sin\varphi\) and points perpendicular to both vectors, by the right hand rule. Swapping the order flips its sign: \(\vec B\times\vec A = -\vec A\times\vec B\).
 Watch out: Parallel vectors have a cross product of zero, and perpendicular vectors have a dot product of zero. Don't mix up which is which.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 2.1
+Multiplying a vector by a scalar: \(\vec{B} = \alpha \vec{A}\)
+Magnitude after multiplying by a scalar: \(B = |\alpha| A\)
+Resultant of two displacements: \(\vec{D}_{AD} = \vec{D}_{AC} + \vec{D}_{CD}\)
+Commutative law: \(\vec{A} + \vec{B} = \vec{B} + \vec{A}\)
+Associative law: \((\vec{A} + \vec{B}) + \vec{C} = \vec{A} + (\vec{B} + \vec{C})\)
+Distributive law: \(\alpha_1 \vec{A} + \alpha_2 \vec{A} = (\alpha_1 + \alpha_2)\vec{A}\)
+
+## EQUATIONS 2.2
+* Component form in two dimensions: \(\vec{A} = A_x \hat{i} + A_y \hat{j}\)
+Components from the tail and head: \(A_x = x_e - x_b, \quad A_y = y_e - y_b\)
+* Magnitude in a plane: \(A = \sqrt{A_x^2 + A_y^2}\)
+* Direction angle in a plane: \(\theta_A = \tan^{-1}\!\left(\frac{A_y}{A_x}\right)\)
+* Components from magnitude and angle: \(A_x = A \cos\theta_A, \quad A_y = A \sin\theta_A\)
+Polar coordinates: \(x = r\cos\varphi, \quad y = r\sin\varphi\)
+* Component form in three dimensions: \(\vec{A} = A_x \hat{i} + A_y \hat{j} + A_z \hat{k}\)
+The z component: \(A_z = z_e - z_b\)
+* Magnitude in three dimensions: \(A = \sqrt{A_x^2 + A_y^2 + A_z^2}\)
+
+## EQUATIONS 2.3
+Distributive property: \(\alpha(\vec{A} + \vec{B}) = \alpha \vec{A} + \alpha \vec{B}\)
+Antiparallel vector: \(-\vec{A} = -A_x \hat{i} - A_y \hat{j} - A_z \hat{k}\)
+Equal vectors: \(A_x = B_x, \quad A_y = B_y, \quad A_z = B_z\)
+* Resultant of N vectors: \(\begin{aligned} F_{Rx} &= \textstyle\sum_{k=1}^{N} F_{kx} \\ F_{Ry} &= \textstyle\sum_{k=1}^{N} F_{ky} \\ F_{Rz} &= \textstyle\sum_{k=1}^{N} F_{kz} \end{aligned}\)
+* Unit vector: \(\hat{V} = \frac{\vec{V}}{V}\)
+
+## EQUATIONS 2.4
+* Scalar (dot) product: \(\vec{A} \cdot \vec{B} = AB\cos\varphi\)
+Commutative property of the dot product: \(\vec{A} \cdot \vec{B} = \vec{B} \cdot \vec{A}\)
+Distributive property of the dot product: \(\vec{A} \cdot (\vec{B} + \vec{C}) = \vec{A} \cdot \vec{B} + \vec{A} \cdot \vec{C}\)
+* Dot product from components: \(\vec{A} \cdot \vec{B} = A_x B_x + A_y B_y + A_z B_z\)
+* Angle between two vectors: \(\cos\varphi = \frac{\vec{A} \cdot \vec{B}}{AB}\)
+Dot products of unit vectors: \(\begin{aligned} \hat{i} \cdot \hat{i} = \hat{j} \cdot \hat{j} = \hat{k} \cdot \hat{k} &= 1 \\ \hat{i} \cdot \hat{j} = \hat{j} \cdot \hat{k} = \hat{k} \cdot \hat{i} &= 0 \end{aligned}\)
+* Magnitude of the vector (cross) product: \(|\vec{A} \times \vec{B}| = AB\sin\varphi\)
+Anticommutative property of the cross product: \(\vec{A} \times \vec{B} = -\vec{B} \times \vec{A}\)
+Distributive property of the cross product: \(\vec{A} \times (\vec{B} + \vec{C}) = \vec{A} \times \vec{B} + \vec{A} \times \vec{C}\)
+* Cross products of unit vectors: \(\hat{i} \times \hat{j} = \hat{k}, \quad \hat{j} \times \hat{k} = \hat{i}, \quad \hat{k} \times \hat{i} = \hat{j}\)
+* Cross product from components: \(\begin{aligned} \vec{A} \times \vec{B} = {} & (A_y B_z - A_z B_y)\hat{i} \\ & + (A_z B_x - A_x B_z)\hat{j} \\ & + (A_x B_y - A_y B_x)\hat{k} \end{aligned}\)
 
 
 # ============================ ITEM FORMATS ============================

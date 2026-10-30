@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 6.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -37,6 +37,25 @@ Watch out: Never draw "centripetal force" as an extra arrow on a free body diagr
 ## SUMMARY 6.4
 In short: An object moving through air or water feels a drag force opposite its velocity. For everyday objects in air, \(F_D = \tfrac12C\rho Av^2\), so drag grows with the square of speed. A falling object speeds up until drag equals its weight; then the net force is zero and it falls at a steady terminal velocity. For tiny objects moving slowly in a thick fluid, drag follows Stokes' law, \(F_s = 6\pi r\eta v\), proportional to \(v\).
 Watch out: At terminal velocity the object is still moving fast. It's the acceleration that is zero.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 6.2
+* Static friction: \(f_s \le \mu_s N\)
+* Kinetic friction: \(f_k = \mu_k N\)
+
+## EQUATIONS 6.3
+* Centripetal force: \(F_c = \frac{mv^2}{r} = mr\omega^2\)
+* Ideal angle of a banked curve: \(\tan\theta = \frac{v^2}{rg}\)
+
+## EQUATIONS 6.4
+* Drag force: \(F_D = \tfrac{1}{2}C\rho Av^2\)
+Stokes' law: \(F_s = 6\pi r\eta v\)
 
 
 # ============================ ITEM FORMATS ============================
