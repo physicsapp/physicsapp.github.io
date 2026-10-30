@@ -1,0 +1,429 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 7,
+  "title": "Work and Kinetic Energy"
+ },
+ "keyEquations": [
+  {
+   "name": "Work done by a force over an infinitesimal displacement",
+   "tex": "dW=\\vec{\\mathbf{F}}\\cdot d\\vec{\\mathbf{r}}=|\\vec{\\mathbf{F}}||d\\vec{\\mathbf{r}}|\\cos \\, \\theta"
+  },
+  {
+   "name": "Work done by a force acting along a path from A to B",
+   "tex": "{W}_{AB}=\\int _{\\text{path}AB}\\mathbf{\\vec{F}}\\cdot d\\mathbf{\\vec{r}}"
+  },
+  {
+   "name": "Work done by a constant force of kinetic friction",
+   "tex": "{W}_{\\text{fr}}=-{f}_{k}|{l}_{AB}|"
+  },
+  {
+   "name": "Work done going from A to B by Earth’s gravity, near its surface",
+   "tex": "{W}_{\\text{grav,}AB}=-mg({y}_{B}-{y}_{A})"
+  },
+  {
+   "name": "Work done going from A to B by one-dimensional spring force",
+   "tex": "{W}_{\\text{spring,}AB}=-(\\frac{1}{2}k)({x}_{B}^{2}-{x}_{A}^{2})"
+  },
+  {
+   "name": "Kinetic energy of a non-relativistic particle",
+   "tex": "K=\\frac{1}{2}m{v}^{2}=\\frac{{p}^{2}}{2m}"
+  },
+  {
+   "name": "Work-energy theorem",
+   "tex": "{W}_{\\text{net}}={K}_{B}-{K}_{A}"
+  },
+  {
+   "name": "Power as rate of doing work",
+   "tex": "P=\\frac{dW}{dt}"
+  },
+  {
+   "name": "Power as the dot product of force and velocity",
+   "tex": "P=\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{v}}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "7.1",
+   "module": "m58719",
+   "title": "Work",
+   "objectives": [
+    "Represent the work done by any force",
+    "Evaluate the work done for various forces"
+   ],
+   "callouts": [
+    "dW=\\vec{\\mathbf{F}}\\cdot d\\mathbf{\\vec{r}}=|\\vec{\\mathbf{F}}||d\\mathbf{\\vec{r}}|\\cos \\, \\theta",
+    "{W}_{\\text{fr}}={\\int}_{A}^{B}{\\mathbf{\\vec{f}}}_{k}\\cdot d\\mathbf{\\vec{r}}=-{f}_{k}{\\int}_{A}^{B}|dr|=-{f}_{k}|{l}_{AB}|",
+    "{W}_{\\text{grav},AB}=-mg\\hat{\\mathbf{j}}\\cdot ({\\mathbf{\\vec{r}}}_{B}-{\\mathbf{\\vec{r}}}_{A})=-mg({y}_{B}-{y}_{A})",
+    "{W}_{\\text{spring},AB}={\\int}_{A}^{B}{F}_{x}dx=-k{\\int}_{A}^{B}xdx=-k{\\frac{{x}^{2}}{2}|}_{A}^{B}=-\\frac{1}{2}k({x}_{B}^{2}-{x}_{A}^{2})"
+   ],
+   "examples": [
+    {
+     "title": "Calculating the Work You Do to Push a Lawn Mower",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>How much work is done on the lawn mower by the person in the figure(a) if he exerts a constant force of 75.0 N at an angle \\(35^{\\circ}\\) below the horizontal and pushes the mower 25.0 m on level ground?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can solve this problem by substituting the given values into the definition of work done on an object by a constant force, stated in the equation \\(W=Fd\\, \\cos \\, \\theta\\). The force, angle, and displacement are given, so that only the work <i>W</i> is unknown.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The equation for the work is</p><div class='eq'>\\[W=Fd\\, \\cos \\, \\theta .\\]</div><p>Substituting the known values gives</p><div class='eq'>\\[W=(75.0\\, \\text{N})(25.0\\, \\text{m})\\cos (35.0^{\\circ} )=1.54\\, \\times \\, {10}^{3}\\, \\text{J}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Even though one and a half kilojoules may seem like a lot of work, we will see in Potential Energy and Conservation of Energy that it’s only about as much work as you could do by burning one sixth of a gram of fat.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Moving a Couch",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>You decide to move your couch to a new position on your horizontal living room floor. The normal force on the couch is 1 kN and the coefficient of friction is 0.6. (a) You first push the couch 3 m parallel to a wall and then 1 m perpendicular to the wall (<i>A</i> to <i>B</i> in the figure). How much work is done by the frictional force? (b) You don’t like the new position, so you move the couch straight back to its original position (<i>B</i> to <i>A</i> in the figure). What was the total work done against friction moving the couch away from its original position and back again?</p><figure><img src='img/CNX_UPhysics_07_01_Couch.jpg' alt=\"Points A and B are connected by a segment to the right, length 3 m, and a vertical segment up of length 1 m. These segments are path a, shown in blue. A and B are also connected by a straight segment, shown in orange as path b. the segments of path a form the sides of a right triangle, and path b is the hypotenuse of the triangle.\" loading='lazy'><figcaption>Top view of paths for moving a couch.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The magnitude of the force of kinetic friction on the couch is constant, equal to the coefficient of friction times the normal force, \\({f}_{K}={\\mu}_{K}N\\). Therefore, the work done by it is \\({W}_{\\text{fr}}=-{f}_{K}d\\), where <i>d</i> is the path length traversed. The segments of the paths are the sides of a right triangle, so the path lengths are easily calculated. In part (b), you can use the fact that the work done against a force is the negative of the work done by the force.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The work done by friction i <div class='eq'>\\[W=-(0.6)(1\\, \\text{kN})(3\\, \\text{m}\\, +1\\, \\text{m})=-2.4\\, \\text{kJ}\\text{.}\\]</div></li><li>The length of the path along the hypotenuse is \\(\\sqrt{10}\\, \\text{m}\\), so the total work done against friction is <div class='eq'>\\[W=(0.6)(1\\, \\text{kN})(3\\, \\text{m}\\, +1\\, \\text{m}\\, +\\sqrt{10}\\, \\text{m})=4.3\\, \\text{kJ}\\text{.}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The total path over which the work of friction was evaluated began and ended at the same point (it was a closed path), so that the total displacement of the couch was zero. However, the total work was not zero. The reason is that forces like friction are classified as nonconservative forces, or dissipative forces, as we discuss in the next chapter.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Shelving a Book",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>You lift an oversized library book, weighing 20 N, 1 m vertically down from a shelf, and carry it 3 m horizontally to a table (the figure). (a) How much work does gravity do on the book? (b) When you’re finished, you move the book in a straight line back to its original place on the shelf. What was the total work done against gravity, moving the book away from its original position on the shelf and back again?</p><figure><img src='img/CNX_UPhysics_07_01_Shelf.jpg' alt=\"Point A is at a shelf at the top of a bookcase. Point B is a location on a table, to the right of the bookcase. The vertical distance from the shelf to the level of the table is 1 m, and the horizontal distance from the bookcase to the table is 3 m. Path a is a straight line from the shelf down 1 m. Path b is a horizontal segment from the bookcase to the table, and then diagonally up and to the left to the shelf.\" loading='lazy'><figcaption>Side view of the paths for moving a book to and from a shelf.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We have just seen that the work done by a constant force of gravity depends only on the weight of the object moved and the difference in height for the path taken, \\({W}_{AB}=-mg({y}_{B}-{y}_{A})\\). We can evaluate the difference in height to answer (a) and (b).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Since the book starts on the shelf and is lifted down \\({y}_{B}-{y}_{A}=-1\\, \\text{m}\\), we have <div class='eq'>\\[W=-(20\\, \\text{N})(-1\\, \\text{m})=20\\, \\text{J}\\text{.}\\]</div></li><li>There is zero difference in height for any path that begins and ends at the same place on the shelf, so \\(W=0.\\)</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Gravity does positive work (20 J) when the book moves down from the shelf. The gravitational force between two objects is an attractive force, which does positive work when the objects get closer together. Gravity does zero work (0 J) when the book moves horizontally from the shelf to the table and negative work (−20 J) when the book moves from the table back to the shelf. The total work done by gravity is zero \\([20\\, \\text{J}+0\\, \\text{J}+(-20\\, \\text{J})=0].\\) Unlike friction or other dissipative forces, described in the example <i>Moving a Couch</i>, the total work done against gravity, over any closed path, is zero. Positive work is done against gravity on the upward parts of a closed path, but an equal amount of negative work is done against gravity on the downward parts. In other words, work done <i>against</i> gravity, lifting an object <i>up</i>, is “given back” when the object comes back down. Forces like gravity (those that do zero work over any closed path) are classified as conservative forces and play an important role in physics.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Work Done by a Variable Force over a Curved Path",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>An object moves along a parabolic path \\(y=(0.5\\, {\\text{m}}^{-1}){x}^{2}\\) from the origin \\(A=(0,0)\\) to the point \\(B=(2\\, \\text{m,}\\, 2\\, \\text{m})\\) under the action of a force \\(\\mathbf{\\vec{F}}=(5\\, \\text{N/m})y\\mathbf{\\hat{i}}+(10\\, \\text{N/m})x\\mathbf{\\hat{j}}\\) (the figure). Calculate the work done.</p><figure><img src='img/CNX_UPhysics_07_01_VarForce.jpg' alt=\"A graph of y in meters versus x in meters is shown. A parabolic path labeled as y of x starts at 0, 0 and curves up and to the right. The point (2, 2) is on the parabola. Vector F of x, y is shown at a point between the origin and coordinate 2, 2. Vector F points to the right and up, at some angle to the curve y of x.\" loading='lazy'><figcaption>The parabolic path of a particle acted on by a given force.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The components of the force are given functions of <i>x</i> and <i>y</i>. We can use the equation of the path to express <i>y</i> and <i>dy</i> in terms of <i>x</i> and <i>dx</i>; namely,</p><div class='eq'>\\[y=(0.5\\, {\\text{m}}^{-1}){x}^{2}\\, \\text{and}\\, dy=2(0.5\\, {\\text{m}}^{-1})xdx.\\]</div><p>Then, the integral for the work is just a definite integral of a function of <i>x</i>.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The infinitesimal element of work is</p><div class='eq'>\\[\\begin{array}{ll}dW & ={F}_{x}dx+{F}_{y}dy=(5\\, \\text{N/m})ydx+(10\\, \\text{N/m})xdy \\\\ & =(5\\, \\text{N/m})(0.5\\, {\\text{m}}^{-1}){x}^{2}dx+(10\\, \\text{N/m})2(0.5\\, {\\text{m}}^{-1}){x}^{2}dx=(12.5\\, {\\text{N/m}}^{2}){x}^{2}dx.\\end{array}\\]</div><p>The integral of \\({x}^{2}\\) is \\({x}^{3}\\text{/}3,\\) so</p><div class='eq'>\\[W={\\int}_{0}^{2\\, \\text{m}}(12.5\\, {\\text{N/m}}^{2}){x}^{2}dx=(12.5\\, {\\text{N/m}}^{2}){\\frac{{x}^{3}}{3}|}_{0}^{2\\, \\text{m}}=(12.5\\, {\\text{N/m}}^{2})(\\frac{8{\\text{m}}^{3}}{3})=33.3\\, \\text{J}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This integral was not hard to do. You can follow the same steps, as in this example, to calculate line integrals representing work for more complicated forces and paths. In this example, everything was given in terms of <i>x</i>- and <i>y</i>-components, which are easiest to use in evaluating the work in this case. In other situations, magnitudes and angles might be easier.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Work Done by a Spring Force",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A perfectly elastic spring requires 0.54 J of work to stretch 6 cm from its equilibrium position, as in the figure(b). (a) What is its spring constant <i>k</i>? (b) How much work is required to stretch it an additional 6 cm?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Work “required” means work done against the spring force, which is the negative of the work in the equation, that is</p><div class='eq'>\\[W=\\frac{1}{2}k({x}_{B}^{2}-{x}_{A}^{2}).\\]</div><p>For part (a), \\({x}_{A}=0\\) and \\({x}_{B}=6\\text{cm}\\); for part (b), \\({x}_{A}=6\\text{cm}\\) and \\({x}_{B}=12\\text{cm}\\). In part (a), the work is given and you can solve for the spring constant; in part (b), you can use the value of <i>k</i>, from part (a), to solve for the work.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(W=0.54\\, \\text{J}=\\frac{1}{2}k[{(6\\, \\text{cm})}^{2}-0]\\), so \\(k=3\\, \\text{N/cm}\\text{.}\\)</li><li>\\(W=\\frac{1}{2}(3\\, \\text{N/cm})[{(12\\, \\text{cm})}^{2}-{(6\\, \\text{cm})}^{2}]=1.62\\, \\text{J}.\\)</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Since the work done by a spring force is independent of the path, you only needed to calculate the difference in the quantity \\(\\text{½}k{x}^{2}\\) at the end points. Notice that the work required to stretch the spring from 0 to 12 cm is four times that required to stretch it from 0 to 6 cm, because that work depends on the square of the amount of stretch from equilibrium, \\(\\text{½}k{x}^{2}\\). In this circumstance, the work to stretch the spring from 0 to 12 cm is also equal to the work for a composite path from 0 to 6 cm followed by an additional stretch from 6 cm to 12 cm. Therefore, \\(4W(0\\, \\text{cm}\\, \\text{to}\\, 6\\, \\text{cm})=W(0\\, \\text{cm}\\, \\text{to}\\, 6\\, \\text{cm})+W(6\\, \\text{cm}\\, \\text{to}\\, 12\\, \\text{cm})\\), or \\(W(6\\, \\text{cm}\\, \\text{to}\\, 12\\, \\text{cm})=3W(0\\, \\text{cm}\\, \\text{to}\\, 6\\, \\text{cm})\\), as we found above.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Can kinetic friction ever be a constant force for all paths?</p>",
+     "a": "<p>No, only its magnitude can be constant; its direction must change, to be always opposite the relative displacement along the surface.</p>"
+    },
+    {
+     "q": "<p>Can Earth’s gravity ever be a constant force for all paths?</p>",
+     "a": "<p>No, it’s only approximately constant near Earth’s surface.</p>"
+    },
+    {
+     "q": "<p>Find the work done by the same force in the example <i>Work Done by a Variable Force over a Curved Path</i> over a cubic path, \\(y=(0.25\\, {\\text{m}}^{\\text{-2}}){x}^{3}\\), between the same points \\(A=(0,0)\\) and \\(B=(2\\, \\text{m,}\\, 2\\, \\text{m})\\text{.}\\)</p>",
+     "a": "<p>\\(W=35\\, \\text{J}\\)</p>"
+    },
+    {
+     "q": "<p>The spring in the example <i>Work Done by a Spring Force</i> is compressed 6 cm from its equilibrium length. (a) Does the spring force do positive or negative work and (b) what is the magnitude?</p>",
+     "a": "<p>a. The spring force is the opposite direction to a compression (as it is for an extension), so the work it does is negative. b. The work done depends on the square of the displacement, which is the same for \\(x=\\pm 6\\, \\text{cm}\\), so the magnitude is 0.54 J.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The infinitesimal increment of work done by a force, acting over an infinitesimal displacement, is the dot product of the force and the displacement.",
+    "The work done by a force, acting over a finite path, is the integral of the infinitesimal increments of work done along the path.",
+    "The work done <i>against</i> a force is the negative of the work done <i>by</i> the force.",
+    "The work done by a normal or frictional contact force must be determined in each particular case.",
+    "The work done by the force of gravity, on an object near the surface of Earth, depends only on the weight of the object and the difference in height through which it moved.",
+    "The work done by a spring force, acting from an initial position to a final position, depends only on the spring constant and the squares of those positions."
+   ]
+  },
+  {
+   "num": "7.2",
+   "module": "m58308",
+   "title": "Kinetic Energy",
+   "objectives": [
+    "Calculate the kinetic energy of a particle given its mass and its velocity or momentum",
+    "Evaluate the kinetic energy of a body, relative to different frames of reference"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Kinetic Energy of an Object",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>(a) What is the kinetic energy of an 80-kg athlete, running at 10 m/s? (b) The Chicxulub crater in Yucatan, one of the largest existing impact craters on Earth, is thought to have been created by an asteroid, traveling at<br>22 km/s and releasing \\(4.2\\, \\times \\, {10}^{23}\\, \\text{J}\\) of kinetic energy upon impact. What was its mass? (c) In nuclear reactors, thermal neutrons, traveling at about 2.2 km/s, play an important role. What is the kinetic energy of such a particle?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>To answer these questions, you can use the definition of kinetic energy in the equation. You also have to look up the mass of a neutron.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Don’t forget to convert km into m to do these calculations, although, to save space, we omitted showing these conversions.</p><ol type='a'><li>\\(K=\\frac{1}{2}(80\\, \\text{kg})(10\\, {\\text{m/s})}^{2}=4.0\\, \\text{kJ}\\text{.}\\)</li><li>\\(m=2K\\text{/}{v}^{2}=2(4.2\\, \\times \\, {10}^{23}\\, \\text{J})\\text{/}{(22\\, \\text{km/s})}^{2}=1.7\\, \\times \\, {10}^{15}\\, \\text{kg}\\text{.}\\)</li><li>\\(K=\\frac{1}{2}(1.68\\, \\times \\, {10}^{-27}\\, \\text{kg}){(2.2\\, \\text{km/s})}^{2}=4.1\\, \\times \\, {10}^{-21}\\, \\text{J}\\text{.}\\)</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In this example, we used the way mass and speed are related to kinetic energy, and we encountered a very wide range of values for the kinetic energies. Different units are commonly used for such very large and very small values. The energy of the impactor in part (b) can be compared to the explosive yield of TNT and nuclear explosions, \\(1\\, \\text{megaton}=4.18\\, \\times \\, {10}^{15}\\, \\text{J}\\text{.}\\) The Chicxulub asteroid’s kinetic energy was about a hundred million megatons. At the other extreme, the energy of subatomic particle is expressed in electron-volts, \\(1\\, \\text{eV}=1.6\\, \\times \\, {10}^{-19}\\, \\text{J}\\text{.}\\) The thermal neutron in part (c) has a kinetic energy of about one fortieth of an electron-volt.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Kinetic Energy Relative to Different Frames",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 75.0-kg person walks down the central aisle of a subway car at a speed of 1.50 m/s relative to the car, whereas the train is moving at 15.0 m/s relative to the tracks. (a) What is the person’s kinetic energy relative to the car? (b) What is the person’s kinetic energy relative to the tracks? (c) What is the person’s kinetic energy relative to a frame moving with the person?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since speeds are given, we can use \\(\\frac{1}{2}m{v}^{2}\\) to calculate the person’s kinetic energy. However, in part (a), the person’s speed is relative to the subway car (as given); in part (b), it is relative to the tracks; and in part (c), it is zero. If we denote the car frame by C, the track frame by T, and the person by P, the relative velocities in part (b) are related by \\({\\mathbf{\\vec{v}}}_{\\text{PT}}={\\mathbf{\\vec{v}}}_{\\text{PC}}+{\\mathbf{\\vec{v}}}_{\\text{CT}}.\\) We can assume that the central aisle and the tracks lie along the same line, but the direction the person is walking relative to the car isn’t specified, so we will give an answer for each possibility, \\({v}_{\\text{PT}}={v}_{\\text{CT}}\\pm {v}_{\\text{PC}}\\), as shown in the figure.</p><figure><img src='img/CNX_UPhysics_07_02_Train.jpg' alt=\"Two illustrations of a person walking in a train car. In figure a, the person is moving to the right with velocity vector v sub P C and the train is moving to the right with velocity vector v sub C T. In figure b, the person is moving to the left with velocity vector v sub P C and the train is moving to the right with velocity vector v sub C T.\" loading='lazy'><figcaption>The possible motions of a person walking in a train are (a) toward the front of the car and (b) toward the back of the car.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(K=\\frac{1}{2}(75.0\\, \\text{kg})(1.50\\, {\\text{m/s})}^{2}=84.4\\, \\text{J}\\text{.}\\)</li><li>\\({v}_{\\text{PT}}=(15.0\\pm 1.50)\\, \\text{m/s}\\text{.}\\) Therefore, the two possible values for kinetic energy relative to the track are <div class='eq'>\\[K=\\frac{1}{2}(75.0\\, \\text{kg})(13.5\\, {\\text{m/s})}^{2}=6.83\\, \\text{kJ}\\]</div> and <div class='eq'>\\[K=\\frac{1}{2}(75.0\\, \\text{kg})(16.5\\, {\\text{m/s})}^{2}=10.2\\, \\text{kJ}\\text{.}\\]</div></li><li>In a frame where \\({v}_{\\text{P}}=0,K=0\\) as well.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>You can see that the kinetic energy of an object can have very different values, depending on the frame of reference. However, the kinetic energy of an object can never be negative, since it is the product of the mass and the square of the speed, both of which are always positive or zero.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Special Names for Kinetic Energy",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>(a) A player lobs a mid-court pass with a 624-g basketball, which covers 15 m in 2 s. What is the basketball’s horizontal translational kinetic energy while in flight? (b) An average molecule of air, in the basketball in part (a), has a mass of 29 u, and an average speed of 500 m/s, relative to the basketball. There are about \\(3\\, \\times \\, {10}^{23}\\) molecules inside it, moving in random directions, when the ball is properly inflated. What is the average translational kinetic energy of the random motion of all the molecules inside, relative to the basketball? (c) How fast would the basketball have to travel relative to the court, as in part (a), so as to have a kinetic energy equal to the amount in part (b)?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>In part (a), first find the horizontal speed of the basketball and then use the definition of kinetic energy in terms of mass and speed, \\(K=\\frac{1}{2}m{v}^{2}\\). Then in part (b), convert unified units to kilograms and then use \\(K=\\frac{1}{2}m{v}^{2}\\) to get the average translational kinetic energy of one molecule, relative to the basketball. Then multiply by the number of molecules to get the total result. Finally, in part (c), we can substitute the amount of kinetic energy in part (b), and the mass of the basketball in part (a), into the definition \\(K=\\frac{1}{2}m{v}^{2}\\), and solve for <i>v</i>.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The horizontal speed is (15 m)/(2 s), so the horizontal kinetic energy of the basketball is <div class='eq'>\\[\\frac{1}{2}(0.624\\, \\text{kg}){(7.5\\, \\text{m/s})}^{2}=17.6\\, \\text{J}\\text{.}\\]</div></li><li>The average translational kinetic energy of a molecule is <div class='eq'>\\[\\frac{1}{2}(29\\, \\text{u})(1.66\\, \\times \\, {10}^{-27}\\, \\text{kg/u}){(500\\, \\text{m/s})}^{2}=6.02\\, \\times \\, {10}^{-21}\\, \\text{J,}\\]</div> and the total kinetic energy of all the molecules is <div class='eq'>\\[(3\\, \\times \\, {10}^{23})(6.02\\, \\times \\, {10}^{-21}\\, \\text{J})=1.80\\, \\text{kJ}\\text{.}\\]</div></li><li>\\(v=\\sqrt{2(1.8\\, \\text{kJ})\\text{/}(0.624\\, \\text{kg})}=76.0\\, \\text{m/s}\\text{.}\\)</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In part (a), this kind of kinetic energy can be called the horizontal kinetic energy of an object (the basketball), relative to its surroundings (the court). If the basketball were spinning, all parts of it would have not just the average speed, but it would also have rotational kinetic energy. Part (b) reminds us that this kind of kinetic energy can be called internal or thermal kinetic energy. Notice that this energy is about a hundred times the energy in part (a). How to make use of thermal energy will be the subject of the chapters on thermodynamics. In part (c), since the energy in part (b) is about 100 times that in part (a), the speed should be about 10 times as big, which it is (76 compared to 7.5 m/s).</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>(a) A car and a truck are each moving with the same kinetic energy. Assume that the truck has more mass than the car. Which has the greater speed? (b) A car and a truck are each moving with the same speed. Which has the greater kinetic energy?</p>",
+     "a": "<p>a. the car; b. the truck</p>"
+    },
+    {
+     "q": "<p>You are rowing a boat parallel to the banks of a river. Your kinetic energy relative to the banks is less than your kinetic energy relative to the water. Are you rowing with or against the current?</p>",
+     "a": "<p>against</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The kinetic energy of a particle is the product of one-half its mass and the square of its speed, for non-relativistic speeds.",
+    "The kinetic energy of a system is the sum of the kinetic energies of all the particles in the system.",
+    "Kinetic energy is relative to a frame of reference, is always positive, and is sometimes given special names for different types of motion."
+   ]
+  },
+  {
+   "num": "7.3",
+   "module": "m58309",
+   "title": "Work-Energy Theorem",
+   "objectives": [
+    "Apply the work-energy theorem to find information about the motion of a particle, given the forces acting on it",
+    "Use the work-energy theorem to find information about the forces acting on a particle, given information about its motion"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Loop-the-Loop",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The frictionless track for a toy car includes a <b>loop-the-loop</b> of radius <i>R</i>. How high, measured from the bottom of the loop, must the car be placed to start from rest on the approaching section of track and go all the way around the loop?</p><figure><img src='img/CNX_UPhysics_07_03_Loop.jpg' alt=\"A track descends to the ground, forms a circular loop of radius R, then continues horizontally at ground level. Point 1 is before the loop, near the start of the track at elevation y sub 1 above the ground. Point 2 is at the top of the loop, at elevation y sub 2 = 2 R. At point 2, there are 2 forces, N and m g. Both forces point vertically down.\" loading='lazy'><figcaption>A frictionless track for a toy car has a loop-the-loop in it. How high must the car start so that it can go around the loop without falling off?</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The free-body diagram at the final position of the object is drawn in the figure. The gravitational work is the only work done over the displacement that is not zero. Since the weight points in the same direction as the net vertical displacement, the total work done by the gravitational force is positive. From the work-energy theorem, the starting height determines the speed of the car at the top of the loop,</p><div class='eq'>\\[-mg({y}_{2}-{y}_{1})=\\frac{1}{2}m{v}_{2}{}^{2},\\]</div><p>where the notation is shown in the accompanying figure. At the top of the loop, the normal force and gravity are both down and the acceleration is centripetal, so</p><div class='eq'>\\[{a}_{\\text{top}}=\\frac{F}{m}=\\frac{N+mg}{m}=\\frac{{v}_{2}^{2}}{R}.\\]</div><p>The condition for maintaining contact with the track is that there must be some normal force, however slight; that is, \\(N\\gt 0\\). Substituting for \\({v}_{2}^{2}\\) and <i>N</i>, we can find the condition for \\({y}_{1}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Implement the steps in the strategy to arrive at the desired result:</p><div class='eq'>\\[N=-mg+\\frac{m{v}_{2}^{2}}{R}=\\frac{-mgR+2mg({y}_{1}-2R)}{R}\\gt 0\\ \\text{or}\\ {y}_{1}\\gt \\frac{5R}{2}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>On the surface of the loop, the normal component of gravity and the normal contact force must provide the centripetal acceleration of the car going around the loop. The tangential component of gravity slows down or speeds up the car. A child would find out how high to start the car by trial and error, but now that you know the work-energy theorem, you can predict the minimum height (as well as other more useful results) from physical principles. By using the work-energy theorem, you did not have to solve a differential equation to determine the height.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Determining a Stopping Force",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A bullet has a mass of 40 grains (2.60 g) and a muzzle velocity of 1100 ft./s (335 m/s). It can penetrate eight 1-inch pine boards, each with thickness 0.75 inches. What is the average stopping force exerted by the wood, as shown in the figure?</p><figure><img src='img/CNX_UPhysics_07_03_Ex2.jpg' alt=\"In figure a, a bullet is moving horizontally at a speed of 335 meters per second toward a set of 8 boards, arranged in a horizontal stack. In figure b, the bullet has passed through the stack of boards and has stopped at the far end of the last board. The stopping distance is indicated as the width of the stack of boards.\" loading='lazy'><figcaption>The boards exert a force to stop the bullet. As a result, the boards do work and the bullet loses kinetic energy.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can assume that under the general conditions stated, the bullet loses all its kinetic energy penetrating the boards, so the work-energy theorem says its initial kinetic energy is equal to the average stopping force times the distance penetrated. The change in the bullet’s kinetic energy and the net work done stopping it are both negative, so when you write out the work-energy theorem, with the net work equal to the average force times the stopping distance, that’s what you get. The total thickness of eight 1-inch pine boards that the bullet penetrates is \\(8\\, \\times \\, \\frac{3}{4}\\, \\text{in}\\text{.}=6\\, \\text{in}\\text{.}=15.2\\, \\text{cm}\\text{.}\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Applying the work-energy theorem, we get</p><div class='eq'>\\[{W}_{\\text{net}}=-{F}_{\\text{ave}}\\Delta {s}_{\\text{stop}}=-{K}_{\\text{initial}},\\]</div><p>so</p><div class='eq'>\\[{F}_{\\text{ave}}=\\frac{\\frac{1}{2}m{v}^{2}}{\\Delta {s}_{\\text{stop}}}=\\frac{\\frac{1}{2}(2.6\\, \\times \\, {10}^{-3}\\text{kg}){(335\\, \\text{m/s})}^{2}}{0.152\\, \\text{m}}=960\\, \\text{N}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We could have used Newton’s second law and kinematics in this example, but the work-energy theorem also supplies an answer to less simple situations. The penetration of a bullet, fired vertically upward into a block of wood, is discussed in one section of Asif Shakur’s recent article [“Bullet-Block Science Video Puzzle.” <i>The Physics Teacher</i> (January 2015) 53(1): 15-16]. If the bullet is fired dead center into the block, it loses all its kinetic energy and penetrates slightly farther than if fired off-center. The reason is that if the bullet hits off-center, it has a little kinetic energy after it stops penetrating, because the block rotates. The work-energy theorem implies that a smaller change in kinetic energy results in a smaller penetration. You will understand more of the physics in this interesting article after you finish reading Angular Momentum.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Suppose the radius of the loop-the-loop in the example <i>Loop-the-Loop</i> is 15 cm and the toy car starts from rest at a height of 45 cm above the bottom. What is its speed at the top of the loop?</p>",
+     "a": "<p>\\(\\sqrt{3}\\, \\text{m/s}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Because the net force on a particle is equal to its mass times the derivative of its velocity, the integral for the net work done on the particle is equal to the change in the particle’s kinetic energy. This is the work-energy theorem.",
+    "You can use the work-energy theorem to find certain properties of a system, without having to solve the differential equation for Newton’s second law."
+   ]
+  },
+  {
+   "num": "7.4",
+   "module": "m58310",
+   "title": "Power",
+   "objectives": [
+    "Relate the work done during a time interval to the power delivered",
+    "Find the power expended by a force acting on a moving body"
+   ],
+   "callouts": [
+    "P=\\frac{dW}{dt}=\\frac{\\mathbf{\\vec{F}}\\cdot d\\mathbf{\\vec{r}}}{dt}=\\vec{\\mathbf{F}}\\cdot (\\frac{d\\mathbf{\\vec{r}}}{dt})=\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{v}}"
+   ],
+   "examples": [
+    {
+     "title": "Pull-Up Power",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>An 80-kg army trainee does pull-ups on a horizontal bar (the figure). It takes the trainee 0.8 seconds to raise the body from a lower position to where the chin is above the bar. How much power do the trainee’s muscles supply moving his body from the lower position to where the chin is above the bar? (<i>Hint:</i> Make reasonable estimates for any quantities needed.)</p><figure><img src='img/CNX_UPhysics_07_04_Pullup.jpg' alt=\"The figure is an illustration of a person doing a pull up. The person moves a vertical distance of Delta y during the pull up. A downward force of m times vector g is shown acting on the person both at the top and bottom positions of the pull up.\" loading='lazy'><figcaption>What is the power expended in doing ten pull-ups in ten seconds?</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The work done against gravity, going up or down a distance \\(\\Delta y\\), is \\(mg\\Delta y.\\) Let’s assume that \\(\\Delta y=2\\text{ft}\\approx 60\\, \\text{cm}\\text{.}\\) Also, assume that the arms comprise 10% of the body mass and are not included in the moving mass. With these assumptions, we can calculate the work done.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The result we get, applying our assumptions, is</p><div class='eq'>\\[P=\\frac{\\text{mg}(\\Delta y)}{t}\\, =\\, \\frac{0.9\\, (80\\, \\text{kg})(9.8\\, {\\text{m/s}}^{2})(0.60\\, \\text{m})}{0.8\\, \\text{s}}=529\\, \\text{W}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is typical for power expenditure in strenuous exercise; in everyday units, it’s somewhat more than one horsepower \\((1\\, \\text{hp}=746\\, \\text{W}).\\)</p>"
+      }
+     ]
+    },
+    {
+     "title": "Automotive Power Driving Uphill",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>How much power must an automobile engine expend to move a 1200-kg car up a 15% grade at 90 km/h (the figure)? Assume that 25% of this power is dissipated overcoming air resistance and friction.</p><figure><img src='img/CNX_UPhysics_07_04_Ex2.jpg' alt=\"An automobile is shown moving up along a 15 percent grade at a speed of v = 90 kilometers per hour. The car has mass m = 1200 kilograms.\" loading='lazy'><figcaption>We want to calculate the power needed to move a car up a hill at constant speed.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>At constant velocity, there is no change in kinetic energy, so the net work done to move the car is zero. Therefore the power supplied by the engine to move the car equals the power expended against gravity and air resistance. By assumption, 75% of the power is supplied against gravity, which equals \\(m\\mathbf{\\vec{g}}\\cdot \\mathbf{\\vec{v}}=mgv\\, \\sin \\, \\theta ,\\) where \\(\\theta\\) is the angle of the incline. A 15% grade means \\(\\tan \\, \\theta =0.15.\\) This reasoning allows us to solve for the power required.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Carrying out the suggested steps, we find</p><div class='eq'>\\[0.75\\, P=mgv\\, \\sin ({\\tan}^{-1}\\, 0.15),\\]</div><p>or</p><div class='eq'>\\[P=\\frac{(1200\\, \\times \\, 9.8\\, \\text{N})(90\\, \\text{m}\\text{/}3.6\\, \\text{s})\\sin (8.53^{\\circ} )}{0.75}=58\\, \\text{kW,}\\]</div><p>or about 78 hp. (You should supply the steps used to convert units.)</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is a reasonable amount of power for the engine of a small to mid-size car to supply \\((1\\, \\text{hp}=0.746\\, \\text{kW}\\text{).}\\) Note that this is only the power expended to move the car. Much of the engine’s power goes elsewhere, for example, into waste heat. That’s why cars need radiators. Any remaining power could be used for acceleration, or to operate the car’s accessories.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Estimate the power expended by a weightlifter raising a 150-kg barbell 2 m in 3 s.</p>",
+     "a": "<p>980 W</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Power is the rate of doing work; that is, the derivative of work with respect to time.",
+    "Alternatively, the work done, during a time interval, is the integral of the power supplied over the time interval.",
+    "The power delivered by a force, acting on a moving particle, is the dot product of the force and the particle’s velocity."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_07_01_Couch.jpg",
+  "CNX_UPhysics_07_01_Shelf.jpg",
+  "CNX_UPhysics_07_01_VarForce.jpg",
+  "CNX_UPhysics_07_02_Train.jpg",
+  "CNX_UPhysics_07_03_Ex2.jpg",
+  "CNX_UPhysics_07_03_Loop.jpg",
+  "CNX_UPhysics_07_04_Ex2.jpg",
+  "CNX_UPhysics_07_04_Pullup.jpg"
+ ]
+}
