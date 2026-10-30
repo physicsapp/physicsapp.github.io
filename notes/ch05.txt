@@ -65,13 +65,13 @@ Newton's first law: \(\vec{v} = \text{constant when } \vec{F}_{\text{net}} = 0\)
 
 ## EQUATIONS 5.3
 * Newton's second law: \(\vec{F}_{\text{net}} = \sum \vec{F} = m\vec{a}\)
-* Second law in components: \(\begin{aligned} \textstyle\sum F_x &= ma_x \\ \textstyle\sum F_y &= ma_y \\ \textstyle\sum F_z &= ma_z \end{aligned}\)
+Second law in components: \(\begin{aligned} \textstyle\sum F_x &= ma_x \\ \textstyle\sum F_y &= ma_y \\ \textstyle\sum F_z &= ma_z \end{aligned}\)
 Second law, scalar form: \(F_{\text{net}} = ma\)
 Second law, momentum form: \(\vec{F}_{\text{net}} = \frac{d\vec{p}}{dt}\)
 
 ## EQUATIONS 5.4
 Weight, vector form: \(\vec{w} = m\vec{g}\)
-* Weight: \(w = mg\)
+* Weight: \(F_w = mg\)
 
 ## EQUATIONS 5.5
 * Newton's third law: \(\vec{F}_{AB} = -\vec{F}_{BA}\)
