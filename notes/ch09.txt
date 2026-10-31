@@ -70,27 +70,27 @@ Watch out: The ratio inside the logarithm is starting mass over final mass, whic
 Average force from momentum: \(\vec F_\text{ave} = \frac{\Delta\vec p}{\Delta t}\) | Divide the change in momentum (kg·m/s) by the contact time \(\Delta t\) (s) to get the average force (N).
 
 ## EQUATIONS 9.3
-* Conservation of momentum: \(\vec p_1 + \vec p_2 = \text{constant}\) | With no net external force, the total momentum of a system stays the same. Forces between the objects cancel in pairs.
+Conservation of momentum: \(\vec p_1 + \vec p_2 = \text{constant}\) | With no net external force, the total momentum of a system stays the same. Forces between the objects cancel in pairs.
 Conservation for many objects: \(\sum_j \vec p_j = \text{constant}\) | The same rule for any number of objects, as long as the net external force on the whole system is zero.
-Two objects in one dimension: \(m_1v_{1,i} + m_2v_{2,i} = m_1v_{1,f} + m_2v_{2,f}\) | Use signs for direction. This holds for every collision, push apart, or explosion between the two.
+* Two objects in one dimension: \(m_1v_{1,i} + m_2v_{2,i} = m_1v_{1,f} + m_2v_{2,f}\) | Use signs for direction. This holds for every collision, push apart, or explosion between the two.
 
 ## EQUATIONS 9.4
-* Perfectly inelastic collision: \(v_f = \dfrac{m_1v_1 + m_2v_2}{m_1 + m_2}\) | When the objects stick together they share one final velocity \(v_f\) (m/s). Kinetic energy is lost.
+Perfectly inelastic collision: \(v_f = \dfrac{m_1v_1 + m_2v_2}{m_1 + m_2}\) | When the objects stick together they share one final velocity \(v_f\) (m/s). Kinetic energy is lost.
 * Elastic collision: \(\begin{aligned}&\tfrac12m_1v_{1,i}^2 + \tfrac12m_2v_{2,i}^2\\ &= \tfrac12m_1v_{1,f}^2 + \tfrac12m_2v_{2,f}^2\end{aligned}\) | In an elastic collision kinetic energy (J) is conserved as well as momentum. Use both equations to find two unknown speeds.
 Elastic collision, target at rest: \(\begin{aligned}v_{1,f} &= \tfrac{m_1 - m_2}{m_1 + m_2}\,v_{1,i}\\ v_{2,f} &= \tfrac{2m_1}{m_1 + m_2}\,v_{1,i}\end{aligned}\) | Head on, with object 2 starting at rest. For equal masses, object 1 stops and object 2 leaves with its speed.
 
 ## EQUATIONS 9.5
-* Momentum in two dimensions: \(\begin{aligned}\textstyle\sum p_{x,i} &= \textstyle\sum p_{x,f}\\ \textstyle\sum p_{y,i} &= \textstyle\sum p_{y,f}\end{aligned}\) | Momentum is conserved separately in the x and y directions. Work each direction on its own, then combine.
-* Equal masses, elastic, one at rest: \(\theta_1 + \theta_2 = 90^\circ\) | The two objects leave at right angles to each other. This is why pool balls split at 90°.
+Momentum in two dimensions: \(\begin{aligned}\textstyle\sum p_{x,i} &= \textstyle\sum p_{x,f}\\ \textstyle\sum p_{y,i} &= \textstyle\sum p_{y,f}\end{aligned}\) | Momentum is conserved separately in the x and y directions. Work each direction on its own, then combine.
+Equal masses, elastic, one at rest: \(\theta_1 + \theta_2 = 90^\circ\) | The two objects leave at right angles to each other. This is why pool balls split at 90°.
 
 ## EQUATIONS 9.6
 * Center of mass: \(\vec r_\text{CM} = \frac{1}{M}\sum_j m_j\vec r_j\) | The center of mass position (m) is the mass weighted average of the positions. \(M\) (kg) is the total mass.
 Velocity of the center of mass: \(\vec v_\text{CM} = \frac{1}{M}\sum_j m_j\vec v_j = \frac{\vec p_\text{tot}}{M}\) | The center of mass moves at the total momentum divided by the total mass.
-* Newton's second law for a system: \(\vec F_\text{ext} = M\vec a_\text{CM}\) | Only external forces (N) change how the center of mass moves. Internal forces, even an explosion, cannot.
+Newton's second law for a system: \(\vec F_\text{ext} = M\vec a_\text{CM}\) | Only external forces (N) change how the center of mass moves. Internal forces, even an explosion, cannot.
 Center of mass of a continuous object: \(\vec r_\text{CM} = \frac{1}{M}\int\vec r\,dm\) | For a smooth object, add up position times each small piece of mass \(dm\), then divide by the total mass.
 
 ## EQUATIONS 9.7
-* Rocket equation: \(\Delta v = u\ln\dfrac{m_i}{m}\) | Speed gained \(\Delta v\) (m/s) from exhaust speed \(u\) (m/s, relative to the rocket) and the ratio of starting mass \(m_i\) to current mass \(m\).
+Rocket equation: \(\Delta v = u\ln\dfrac{m_i}{m}\) | Speed gained \(\Delta v\) (m/s) from exhaust speed \(u\) (m/s, relative to the rocket) and the ratio of starting mass \(m_i\) to current mass \(m\).
 
 
 # ============================ WORKED EXAMPLES ============================
