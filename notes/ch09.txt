@@ -1,0 +1,729 @@
+# FREEBODY NOTES: CHAPTER 9, LINEAR MOMENTUM AND COLLISIONS
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 9.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(p = mv\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 9.1
+In short: Momentum is mass times velocity, \(\vec p = m\vec v\), measured in \(\text{kg}\cdot\text{m/s}\). It is a vector that points the same way as the velocity, so changing direction changes momentum even at constant speed. A heavy, slow object can have as much momentum as a light, fast one. Newton's second law can be written with momentum: the net force is how fast momentum changes, \(\vec F_\text{net} = \frac{d\vec p}{dt}\). With no net force, momentum stays constant.
+Watch out: Momentum is not kinetic energy. Momentum grows with \(v\) and has a direction; kinetic energy grows with \(v^2\) and has none.
+
+## SUMMARY 9.2
+In short: Impulse is the effect of a force acting over a time: \(\vec J = \int\vec F\,dt\), the area under a force against time graph. For a steady or average force, \(\vec J = \vec F_\text{ave}\Delta t\). The impulse momentum theorem says the impulse equals the change in momentum, \(\vec J = \Delta\vec p\). So the same change in momentum can come from a big force for a short time or a small force for a long time. Airbags, padded floors, and bending your knees when you land all stretch out the stopping time to shrink the force.
+Watch out: A bounce needs a bigger impulse than a stop. A ball that hits a wall at \(v\) and comes back at \(v\) has \(|\Delta p| = 2mv\), not \(mv\).
+
+## SUMMARY 9.3
+In short: When the net external force on a system is zero, its total momentum stays constant: \(\vec p_1 + \vec p_2 = \text{constant}\). Forces between objects inside the system come in Newton's third law pairs, so they change each object's momentum by equal and opposite amounts and cancel in the total. In a recoil or push apart starting from rest, the total stays zero: \(m_1v_1 + m_2v_2 = 0\), so the lighter object moves faster. Momentum can also be conserved in just one direction, for example horizontally when the only outside forces (gravity and the normal force) are vertical.
+Watch out: Pick the system so the big forces are inside it. A ball alone is not a closed system when it hits a wall; you need a system with no outside push in the direction you care about.
+
+## SUMMARY 9.4
+In short: Momentum is conserved in every collision of a closed system, but kinetic energy is not always. In an elastic collision kinetic energy is conserved too (hard balls, like billiard balls, come close). In an inelastic collision some kinetic energy turns into thermal energy, sound, or bent metal. In a perfectly inelastic collision the objects stick together and share one final velocity, \(v_f = \frac{m_1v_1 + m_2v_2}{m_1 + m_2}\). When two equal masses collide head on and elastically with one at rest, they trade velocities: the moving one stops and the other leaves with its speed.
+Watch out: Never conserve kinetic energy in a collision where the objects stick. Use momentum to get the final speed, then compare kinetic energies to see how much was lost.
+
+## SUMMARY 9.5
+In short: In two dimensions, momentum is conserved separately in each direction: total \(p_x\) before equals total \(p_x\) after, and the same for \(p_y\). Break every momentum into components, conserve each, then combine with the Pythagorean theorem and \(\tan\theta = \frac{p_y}{p_x}\). When two equal masses collide elastically and one starts at rest, they leave at right angles to each other, \(\theta_1 + \theta_2 = 90^\circ\). That is why a pool ball and the cue ball split at 90°.
+Watch out: Add momentum components, not magnitudes. Two momenta of \(3\) and \(4\ \text{kg}\cdot\text{m/s}\) at right angles add up to \(5\), not \(7\).
+
+## SUMMARY 9.6
+In short: The center of mass is the mass weighted average position: \(\vec r_\text{CM} = \frac{1}{M}\sum m_j\vec r_j\). For two objects it sits on the line between them, closer to the heavier one. Its velocity is the total momentum divided by the total mass, \(\vec v_\text{CM} = \frac{\vec p_\text{tot}}{M}\). Only external forces move it: \(\vec F_\text{ext} = M\vec a_\text{CM}\). A firework that bursts in midair has pieces flying everywhere, but their center of mass keeps following the same parabola.
+Watch out: The center of mass does not have to be inside the object. For a ring or a boomerang it is in the empty middle.
+
+## SUMMARY 9.7
+In short: A rocket speeds up by throwing mass backward. The exhaust leaves at speed \(u\) relative to the rocket, and by conservation of momentum the rocket gains speed forward; it needs no air to push on. As fuel burns the rocket gets lighter, which leads to the rocket equation \(\Delta v = u\ln\frac{m_i}{m}\). The speed gained depends only on the exhaust speed and the ratio of starting mass to final mass, not on how fast the fuel burns.
+Watch out: The ratio inside the logarithm is starting mass over final mass, which is bigger than 1, so \(\Delta v\) comes out positive. A rocket reaches \(\Delta v = u\) when its mass drops by a factor of \(e \approx 2.72\).
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+## EQUATIONS 9.1
+* Momentum: \(\vec p = m\vec v\) | Momentum \(p\) (kg·m/s) is mass \(m\) (kg) times velocity \(v\) (m/s). It points the same way as the velocity.
+* Newton's second law with momentum: \(\vec F_\text{net} = \frac{d\vec p}{dt}\) | The net force \(F\) (N) is how fast the momentum changes. For a constant mass it is the same as \(F = ma\).
+
+## EQUATIONS 9.2
+* Impulse: \(\vec J = \int_{t_i}^{t_f}\vec F\,dt = \vec F_\text{ave}\Delta t\) | Impulse \(J\) (N·s) is the area under a force against time graph. For a steady or average force it is force times the contact time.
+* Impulse momentum theorem: \(\vec J = \Delta\vec p\) | The impulse on an object equals its change in momentum. A longer contact time gives the same change with a smaller force.
+Average force from momentum: \(\vec F_\text{ave} = \frac{\Delta\vec p}{\Delta t}\) | Divide the change in momentum (kg·m/s) by the contact time \(\Delta t\) (s) to get the average force (N).
+
+## EQUATIONS 9.3
+* Conservation of momentum: \(\vec p_1 + \vec p_2 = \text{constant}\) | With no net external force, the total momentum of a system stays the same. Forces between the objects cancel in pairs.
+Conservation for many objects: \(\sum_j \vec p_j = \text{constant}\) | The same rule for any number of objects, as long as the net external force on the whole system is zero.
+Two objects in one dimension: \(m_1v_{1,i} + m_2v_{2,i} = m_1v_{1,f} + m_2v_{2,f}\) | Use signs for direction. This holds for every collision, push apart, or explosion between the two.
+
+## EQUATIONS 9.4
+* Perfectly inelastic collision: \(v_f = \dfrac{m_1v_1 + m_2v_2}{m_1 + m_2}\) | When the objects stick together they share one final velocity \(v_f\) (m/s). Kinetic energy is lost.
+* Elastic collision: \(\begin{aligned}&\tfrac12m_1v_{1,i}^2 + \tfrac12m_2v_{2,i}^2\\ &= \tfrac12m_1v_{1,f}^2 + \tfrac12m_2v_{2,f}^2\end{aligned}\) | In an elastic collision kinetic energy (J) is conserved as well as momentum. Use both equations to find two unknown speeds.
+Elastic collision, target at rest: \(\begin{aligned}v_{1,f} &= \tfrac{m_1 - m_2}{m_1 + m_2}\,v_{1,i}\\ v_{2,f} &= \tfrac{2m_1}{m_1 + m_2}\,v_{1,i}\end{aligned}\) | Head on, with object 2 starting at rest. For equal masses, object 1 stops and object 2 leaves with its speed.
+
+## EQUATIONS 9.5
+* Momentum in two dimensions: \(\begin{aligned}\textstyle\sum p_{x,i} &= \textstyle\sum p_{x,f}\\ \textstyle\sum p_{y,i} &= \textstyle\sum p_{y,f}\end{aligned}\) | Momentum is conserved separately in the x and y directions. Work each direction on its own, then combine.
+* Equal masses, elastic, one at rest: \(\theta_1 + \theta_2 = 90^\circ\) | The two objects leave at right angles to each other. This is why pool balls split at 90°.
+
+## EQUATIONS 9.6
+* Center of mass: \(\vec r_\text{CM} = \frac{1}{M}\sum_j m_j\vec r_j\) | The center of mass position (m) is the mass weighted average of the positions. \(M\) (kg) is the total mass.
+Velocity of the center of mass: \(\vec v_\text{CM} = \frac{1}{M}\sum_j m_j\vec v_j = \frac{\vec p_\text{tot}}{M}\) | The center of mass moves at the total momentum divided by the total mass.
+* Newton's second law for a system: \(\vec F_\text{ext} = M\vec a_\text{CM}\) | Only external forces (N) change how the center of mass moves. Internal forces, even an explosion, cannot.
+Center of mass of a continuous object: \(\vec r_\text{CM} = \frac{1}{M}\int\vec r\,dm\) | For a smooth object, add up position times each small piece of mass \(dm\), then divide by the total mass.
+
+## EQUATIONS 9.7
+* Rocket equation: \(\Delta v = u\ln\dfrac{m_i}{m}\) | Speed gained \(\Delta v\) (m/s) from exhaust speed \(u\) (m/s, relative to the rocket) and the ratio of starting mass \(m_i\) to current mass \(m\).
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 9.1
+# Book: 1
+#
+# ## EXAMPLE 9.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+# ============================ 9.1 LINEAR MOMENTUM ============================
+
+## QUIZ 9.1
+Q: A bowling ball and a tennis ball roll at the same speed. Which has more momentum?
+A) The bowling ball
+B) The tennis ball
+C) They have the same momentum
+D) Neither; rolling balls have no momentum
+Answer: A
+Why: \(p = mv\). At the same speed, the larger mass has the larger momentum.
+
+## QUIZ 9.1
+Q: A car drives around a curve at a steady speed. Does its momentum change?
+A) No, because its speed is constant
+B) Yes, because its direction changes
+C) No, because no force acts on it
+D) Yes, because its mass changes
+Answer: B
+Why: Momentum is a vector, \(\vec p = m\vec v\). Turning changes the direction of \(\vec v\), so \(\vec p\) changes even though the speed doesn't.
+
+## QUIZ 9.1
+Q: Which unit is the same as the unit of momentum?
+A) \(\text{kg}\cdot\text{m/s}\)
+B) \(\text{kg}\cdot\text{m/s}^2\)
+C) \(\text{N/s}\)
+D) \(\text{J}\)
+Answer: A
+Why: Mass times velocity gives \(\text{kg}\cdot\text{m/s}\), which also equals \(\text{N}\cdot\text{s}\). Choice B is a newton, the unit of force.
+
+## QUIZ 9.1
+Q: Ball A has mass 1 kg and speed 4 m/s. Ball B has mass 4 kg and speed 1 m/s. Which is true?
+A) Same momentum; A has more kinetic energy
+B) Same momentum and same kinetic energy
+C) B has more momentum; same kinetic energy
+D) A has more momentum and more kinetic energy
+Answer: A
+Why: Both have \(p = 4\ \text{kg}\cdot\text{m/s}\). But \(K = \tfrac12mv^2\) gives \(8\ \text{J}\) for A and \(2\ \text{J}\) for B, because kinetic energy grows with \(v^2\).
+
+## QUIZ 9.1
+Q: The net force on a hockey puck is zero. What happens to its momentum?
+A) It stays constant
+B) It slowly decreases
+C) It drops to zero
+D) It depends on the puck's mass
+Answer: A
+Why: \(\vec F_\text{net} = \frac{d\vec p}{dt}\). Zero net force means the momentum doesn't change, in size or direction.
+
+## DRILL 9.1
+Q: A \({{m}}\ \text{kg}\) cart rolls at \({{v}}\ \text{m/s}\). What is the size of its momentum?
+Let: m = one of 2, 5, 10, 20; v = 2 to 8 by 1
+Answer: m*v
+Wrong: 0.5*m*v^2 | That's kinetic energy. Momentum is just \(mv\).
+Wrong: m*v^2 | Momentum uses \(v\), not \(v^2\).
+Wrong: m/v | Multiply mass by velocity.
+Unit: kg·m/s
+Work: p = mv = ({{m}})({{v}}) = {{answer}}\ \text{kg}\cdot\text{m/s}
+
+## DRILL 9.1
+Q: A \({{m}}\ \text{kg}\) ball hits a wall at \({{v}}\ \text{m/s}\) and bounces straight back at the same speed. What is the size of its change in momentum?
+Let: m = one of 0.1, 0.2, 0.5; v = one of 10, 20, 30
+Answer: 2*m*v
+Wrong: 0 | The speed is the same, but the direction reversed, so the momentum changed.
+Wrong: m*v | That would just stop the ball. Bouncing back takes twice as much.
+Wrong: m*v^2 | Momentum uses \(v\), not \(v^2\).
+Unit: kg·m/s
+Work: \Delta p = m(v_f - v_i) = ({{m}})\big({{v}} - (-{{v}})\big) = {{answer}}\ \text{kg}\cdot\text{m/s}
+
+## DRILL 9.1
+Q: A \({{m}}\ \text{kg}\) cart has a momentum of \({{p}}\ \text{kg}\cdot\text{m/s}\). How fast is it moving?
+Let: m = one of 2, 4, 5; v = 2 to 6 by 1; p = m*v
+Answer: p/m
+Wrong: p*m | Divide the momentum by the mass: \(v = p/m\).
+Wrong: m/p | Flip it: \(v = p/m\).
+Wrong: sqrt(p/m) | Momentum is linear in \(v\), so there is no square root.
+Unit: m/s
+Work: v = \frac{p}{m} = \frac{{{p}}}{{{m}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.1
+Q: A cart's momentum grows steadily from \({{p1}}\) to \({{p2}}\ \text{kg}\cdot\text{m/s}\) in \({{t}}\ \text{s}\). What is the net force on it?
+Let: p1 = 10 to 30 by 10; dp = one of 20, 40, 60; t = one of 2, 4, 5; p2 = p1 + dp
+Answer: dp/t
+Wrong: p2/t | Use the change in momentum, not the final value.
+Wrong: dp*t | Divide by the time: \(F = \Delta p/\Delta t\).
+Wrong: (p1 + p2)/t | Subtract the momenta to get the change.
+Unit: N
+Work: F_\text{net} = \frac{\Delta p}{\Delta t} = \frac{{{p2}} - {{p1}}}{{{t}}} = {{answer}}\ \text{N}
+
+## DRILL 9.1
+Q: A \({{mt}}\ \text{kg}\) truck moves at \({{vt}}\ \text{m/s}\). How fast must a \({{mc}}\ \text{kg}\) car move to have the same momentum?
+Let: mc = one of 1000, 1500; k = one of 2, 3, 4; mt = mc*k; vt = one of 5, 10, 15
+Answer: mt*vt/mc
+Wrong: vt | Equal speeds give equal momentum only for equal masses.
+Wrong: mc*vt/mt | The lighter car needs to go faster, not slower.
+Wrong: vt*sqrt(k) | That would match kinetic energy, not momentum.
+Unit: m/s
+Work: m_c v_c = m_t v_t \Rightarrow v_c = \frac{({{mt}})({{vt}})}{{{mc}}} = {{answer}}\ \text{m/s}
+
+## GRAPH 9.1
+Q: The graph shows a cart's momentum against time. What is the net force on the cart?
+Plot: p = 2*t + 4; t from 0 to 4; y from 0 to 14; unit kg·m/s
+A) 2 N
+B) 4 N
+C) 12 N
+D) 0 N
+Answer: A
+Why: \(F_\text{net} = \frac{dp}{dt}\), the slope: \(\frac{12 - 4}{4} = 2\ \text{N}\). Choice B is the starting momentum and C the final momentum.
+
+
+# ============================ 9.2 IMPULSE AND COLLISIONS ============================
+
+## QUIZ 9.2
+Q: Why do airbags reduce injuries in a crash?
+A) They make the stop take longer, so the force is smaller
+B) They reduce the person's change in momentum
+C) They reduce the person's mass
+D) They absorb the momentum, so it isn't conserved
+Answer: A
+Why: The person's change in momentum is the same either way. Since \(F_\text{ave} = \Delta p/\Delta t\), a longer stopping time means a smaller average force.
+
+## QUIZ 9.2
+Q: Two identical balls hit a wall at the same speed. A clay ball sticks; a rubber ball bounces back at the same speed. Which gets the larger impulse from the wall?
+A) The rubber ball
+B) The clay ball
+C) They get the same impulse
+D) Neither gets an impulse
+Answer: A
+Why: The clay ball's momentum goes from \(mv\) to \(0\). The rubber ball's goes from \(mv\) to \(-mv\), a change of \(2mv\). Impulse equals the change in momentum, so the bounce needs twice as much.
+
+## QUIZ 9.2
+Q: Which unit is the same as a newton second, the unit of impulse?
+A) \(\text{kg}\cdot\text{m/s}\)
+B) \(\text{J}\)
+C) \(\text{kg}\cdot\text{m/s}^2\)
+D) \(\text{W}\)
+Answer: A
+Why: \(1\ \text{N}\cdot\text{s} = 1\ (\text{kg}\cdot\text{m/s}^2)(\text{s}) = 1\ \text{kg}\cdot\text{m/s}\), the unit of momentum. That fits \(\vec J = \Delta\vec p\).
+
+## QUIZ 9.2
+Q: On a graph of force against time, what does the area under the curve give?
+A) The impulse
+B) The work done
+C) The power
+D) The acceleration
+Answer: A
+Why: \(\vec J = \int\vec F\,dt\), which is the area under \(F\) against \(t\). Work is the area under force against position.
+
+## DRILL 9.2
+Q: A steady force of \({{F}}\ \text{N}\) acts on a ball for \({{dt}}\ \text{s}\). What impulse does it give?
+Let: F = one of 100, 200, 500, 800; dt = one of 0.01, 0.02, 0.05, 0.1
+Answer: F*dt
+Wrong: F/dt | Multiply the force by the time: \(J = F\Delta t\).
+Wrong: dt/F | Multiply the force by the time: \(J = F\Delta t\).
+Wrong: 0.5*F*dt | For a steady force there is no \(\tfrac12\). That's only for a triangle shaped force graph.
+Unit: N·s
+Work: J = F\Delta t = ({{F}})({{dt}}) = {{answer}}\ \text{N}\cdot\text{s}
+
+## DRILL 9.2
+Q: A \({{m}}\ \text{kg}\) ball moving at \({{v}}\ \text{m/s}\) is caught and stopped in \({{dt}}\ \text{s}\). What is the size of the average force on it?
+Let: m = one of 0.2, 0.5, 1; v = one of 10, 20, 30; dt = one of 0.01, 0.02, 0.05
+Answer: m*v/dt
+Wrong: m*v*dt | Divide the change in momentum by the time.
+Wrong: m*v | That's the change in momentum. Divide by the time to get the force.
+Wrong: 2*m*v/dt | The ball stops; it doesn't bounce back, so \(\Delta p = mv\).
+Unit: N
+Work: F_\text{ave} = \frac{\Delta p}{\Delta t} = \frac{({{m}})({{v}})}{{{dt}}} = {{answer}}\ \text{N}
+
+## DRILL 9.2
+Q: A \({{m}}\ \text{kg}\) ball hits a wall at \({{v}}\ \text{m/s}\) and bounces straight back at the same speed. The contact lasts \({{dt}}\ \text{s}\). What is the size of the average force from the wall?
+Let: m = one of 0.1, 0.2, 0.5; v = one of 5, 10, 20; dt = one of 0.01, 0.02, 0.05
+Answer: 2*m*v/dt
+Wrong: m*v/dt | The ball reverses, so \(\Delta p = 2mv\), not \(mv\).
+Wrong: 2*m*v*dt | Divide by the time: \(F = \Delta p/\Delta t\).
+Wrong: 0 | The speed is the same, but the direction changed, so there is a force.
+Unit: N
+Work: F_\text{ave} = \frac{2mv}{\Delta t} = \frac{2({{m}})({{v}})}{{{dt}}} = {{answer}}\ \text{N}
+
+## DRILL 9.2
+Q: A \({{m}}\ \text{kg}\) puck at rest is hit with an average force of \({{F}}\ \text{N}\) for \({{dt}}\ \text{s}\). How fast does it move afterward?
+Let: m = one of 0.2, 0.5; F = one of 100, 200, 400; dt = one of 0.01, 0.02
+Answer: F*dt/m
+Wrong: F*dt | That's the impulse, which equals \(mv\). Divide by the mass.
+Wrong: F/m | That's the acceleration. Multiply by the time too.
+Wrong: F*dt*m | Divide by the mass: \(v = J/m\).
+Unit: m/s
+Work: F\Delta t = mv \Rightarrow v = \frac{({{F}})({{dt}})}{{{m}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.2
+Q: A \({{m}}\ \text{kg}\) person lands from a jump moving at \({{v}}\ \text{m/s}\). How long must the landing last to keep the average net force down to \({{F}}\ \text{N}\)?
+Let: m = one of 50, 60, 80; v = one of 4, 5, 6; F = one of 1200, 2400, 4800
+Answer: m*v/F
+Wrong: F/(m*v) | Flip it: \(\Delta t = \Delta p/F\).
+Wrong: m*v^2/F | Momentum uses \(v\), not \(v^2\).
+Wrong: 2*m*v/F | The person stops; they don't bounce back, so \(\Delta p = mv\).
+Unit: s
+Work: \Delta t = \frac{\Delta p}{F} = \frac{({{m}})({{v}})}{{{F}}} = {{answer}}\ \text{s}
+
+## GRAPH 9.2
+Q: A worker gives a cart a push that builds up and then fades, as shown. What impulse does the push give the cart?
+Plot: F = 400 - 200*abs(t - 2); t from 0 to 4; y from 0 to 500
+A) 800 N·s
+B) 1600 N·s
+C) 400 N·s
+D) 100 N·s
+Answer: A
+Why: Impulse is the area under the graph, a triangle: \(\tfrac12(4\ \text{s})(400\ \text{N}) = 800\ \text{N}\cdot\text{s}\). Choice B forgets the \(\tfrac12\), and C is just the peak force.
+
+## GRAPH 9.2
+Q: The graph shows the net force on a 2 kg cart that starts at rest. Tap the time when the cart's speed reaches 6 m/s.
+Plot: F = 4; t from 0 to 4; y from 0 to 6
+Tap: t = 3
+Why: The impulse is the area under the graph, \(4t\). It must equal the change in momentum, \((2)(6) = 12\ \text{kg}\cdot\text{m/s}\), so \(t = 3\ \text{s}\).
+
+
+# ============================ 9.3 CONSERVATION OF LINEAR MOMENTUM ============================
+
+## QUIZ 9.3
+Q: When is the total momentum of a system conserved?
+A) When the net external force on the system is zero
+B) Only in elastic collisions
+C) Only when no forces at all act on the objects
+D) Only when the objects start at rest
+Answer: A
+Why: Forces between the objects cancel in pairs, so only outside forces can change the total. Objects can push on each other as hard as they like.
+
+## QUIZ 9.3
+Q: A heavy skater and a light skater stand at rest on ice and push each other apart. Which is true?
+A) Their momenta are equal and opposite; the light one moves faster
+B) The heavy one gets more momentum
+C) They move apart at the same speed
+D) The light one gets more momentum
+Answer: A
+Why: The total starts at zero and stays zero, so \(m_1v_1 = -m_2v_2\). Equal momentum sizes mean the smaller mass has the larger speed.
+
+## QUIZ 9.3
+Q: A truck and a small car collide head on. Which has the larger change in momentum?
+A) They have the same size change
+B) The truck
+C) The car
+D) It depends on their speeds
+Answer: A
+Why: By Newton's third law they push on each other with equal and opposite forces for the same time, so they get equal and opposite impulses. The car's velocity changes more because its mass is smaller.
+
+## QUIZ 9.3
+Q: A ball falls toward the ground. Which system has conserved momentum while it falls?
+A) The ball and Earth together
+B) The ball alone
+C) Both the ball alone and the ball and Earth
+D) Neither
+Answer: A
+Why: For the ball alone, gravity is an outside force, so its momentum grows. With Earth in the system, gravity is an inside pair of forces: Earth gains an equal and opposite (tiny) momentum.
+
+## QUIZ 9.3
+Q: A skater standing on ice throws a ball forward. Why is horizontal momentum conserved even though gravity acts?
+A) Gravity and the normal force are vertical, so no outside force acts horizontally
+B) Gravity is too small to matter
+C) The ball's momentum is always zero
+D) Momentum is only conserved when nothing moves
+Answer: A
+Why: Momentum is conserved in any direction where the outside forces add to zero. Here they are all vertical, so horizontal momentum is conserved.
+
+## DRILL 9.3
+Q: Two skaters stand at rest on ice and push apart. The \({{m1}}\ \text{kg}\) skater moves off at \({{v1}}\ \text{m/s}\). How fast does the \({{m2}}\ \text{kg}\) skater move?
+Let: m1 = one of 40, 50, 60; m2 = one of 75, 80, 90; v1 = one of 2, 3, 4
+Answer: m1*v1/m2
+Wrong: v1 | Equal speeds only happen with equal masses. Equal momentum sizes do.
+Wrong: m2*v1/m1 | The heavier skater moves slower, not faster.
+Wrong: m1*v1 | That's the momentum. Divide by the mass.
+Unit: m/s
+Work: m_1v_1 = m_2v_2 \Rightarrow v_2 = \frac{({{m1}})({{v1}})}{{{m2}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.3
+Q: An astronaut floating at rest, \({{M}}\ \text{kg}\) with her suit, throws a \({{m}}\ \text{kg}\) wrench at \({{v}}\ \text{m/s}\). How fast does she drift the other way?
+Let: M = one of 100, 120, 150; m = one of 1, 2, 3; v = one of 5, 10, 15
+Answer: m*v/M
+Wrong: v | She is much heavier than the wrench, so she moves much slower.
+Wrong: M*v/m | Flip the masses: the heavy one moves slower.
+Wrong: m*v | That's the momentum. Divide by her mass.
+Unit: m/s
+Work: Mv_a = mv \Rightarrow v_a = \frac{({{m}})({{v}})}{{{M}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.3
+Q: A \({{m1}}\ \text{kg}\) cart moving at \({{v1}}\ \text{m/s}\) hits a \({{m2}}\ \text{kg}\) cart at rest. Afterward the first cart keeps going forward at \({{v1f}}\ \text{m/s}\). How fast does the second cart move?
+Let: m1 = one of 2, 3, 4; m2 = one of 1, 2, 5; v1 = one of 4, 6, 8; v1f = one of 1, 2
+Answer: m1*(v1 - v1f)/m2
+Wrong: m1*v1/m2 | The first cart is still moving, so it kept some of the momentum.
+Wrong: m1*(v1 + v1f)/m2 | The first cart still moves forward, so subtract its final momentum.
+Wrong: v1 - v1f | The masses differ, so use momentum, not just speeds.
+Unit: m/s
+Work: m_1v_1 = m_1v_{1f} + m_2v_{2f} \Rightarrow v_{2f} = \frac{({{m1}})({{v1}} - {{v1f}})}{{{m2}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.3
+Q: A \({{m1}}\ \text{kg}\) cart moves right at \({{v1}}\ \text{m/s}\) toward a \({{m2}}\ \text{kg}\) cart moving left at \({{v2}}\ \text{m/s}\). Taking right as positive, what is the total momentum?
+Let: m1 = one of 2, 3, 4; v1 = 2 to 5 by 1; m2 = one of 1, 2, 5; v2 = one of 1, 3, 6
+Answer: m1*v1 - m2*v2
+Wrong: m1*v1 + m2*v2 | They move in opposite directions, so the momenta have opposite signs.
+Wrong: 0 | The total is zero only if the two momenta are the same size.
+Wrong: (m1 + m2)*(v1 - v2) | Find each cart's momentum separately, then add.
+Unit: kg·m/s
+Work: p_\text{tot} = m_1v_1 + m_2v_2 = ({{m1}})({{v1}}) + ({{m2}})(-{{v2}}) = {{answer}}\ \text{kg}\cdot\text{m/s}
+
+
+# ============================ 9.4 TYPES OF COLLISIONS ============================
+
+## QUIZ 9.4
+Q: In which collisions between two objects (with no outside forces) is total momentum conserved?
+A) All of them
+B) Only elastic collisions
+C) Only collisions where the objects stick
+D) Only head on collisions
+Answer: A
+Why: Momentum is conserved in every collision of a closed system. What differs between collision types is kinetic energy.
+
+## QUIZ 9.4
+Q: In which kind of collision do the objects stick together?
+A) Perfectly inelastic
+B) Elastic
+C) Explosive
+D) Superelastic
+Answer: A
+Why: Perfectly inelastic collisions end with one shared velocity. They lose the most kinetic energy that momentum conservation allows.
+
+## QUIZ 9.4
+Q: A cue ball hits a pool ball at rest head on. Treat the balls as equal masses and the collision as elastic. What happens?
+A) The cue ball stops and the other ball moves off at the cue ball's speed
+B) Both balls move forward at half the speed
+C) The cue ball bounces back at its starting speed
+D) Both balls stop
+Answer: A
+Why: For equal masses in a head on elastic collision, the balls trade velocities. That keeps both momentum and kinetic energy the same. Choice B conserves momentum but loses half the kinetic energy.
+
+## QUIZ 9.4
+Q: A ball of clay hits a cart at rest and sticks to it. What happens to the momentum and the kinetic energy?
+A) Momentum is conserved; some kinetic energy is lost
+B) Both are conserved
+C) Kinetic energy is conserved; some momentum is lost
+D) Both are lost
+Answer: A
+Why: Momentum is always conserved in a closed collision. Sticking means the collision is perfectly inelastic, so some kinetic energy turns into thermal energy and bent clay.
+
+## DRILL 9.4
+Q: A \({{m1}}\ \text{kg}\) car moving at \({{v1}}\ \text{m/s}\) hits a \({{m2}}\ \text{kg}\) car at rest, and they stick together. How fast is the wreck moving?
+Let: m1 = one of 1000, 1500, 2000; m2 = one of 1000, 2000, 3000; v1 = one of 10, 15, 20
+Answer: m1*v1/(m1 + m2)
+Wrong: m1*v1/m2 | Both cars move together afterward, so divide by the total mass.
+Wrong: v1/2 | Half the speed is right only for equal masses.
+Wrong: v1*sqrt(m1/(m1 + m2)) | That conserves kinetic energy, but sticking loses kinetic energy. Use momentum.
+Unit: m/s
+Work: v_f = \frac{m_1v_1}{m_1 + m_2} = \frac{({{m1}})({{v1}})}{{{m1}} + {{m2}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.4
+Q: A \({{m1}}\ \text{kg}\) cart moving right at \({{v1}}\ \text{m/s}\) hits a \({{m2}}\ \text{kg}\) cart moving left at \({{v2}}\ \text{m/s}\), and they stick. Taking right as positive, what is their velocity afterward?
+Let: m1 = one of 2, 3, 4; v1 = one of 4, 6; m2 = one of 1, 2; v2 = one of 2, 3
+Answer: (m1*v1 - m2*v2)/(m1 + m2)
+Wrong: (m1*v1 + m2*v2)/(m1 + m2) | The second cart moves left, so its momentum is negative.
+Wrong: (v1 - v2)/2 | The masses differ. Use momentum.
+Wrong: (m1*v1 - m2*v2)/m1 | Both carts move together, so divide by the total mass.
+Unit: m/s
+Work: v_f = \frac{m_1v_1 + m_2v_2}{m_1 + m_2} = \frac{({{m1}})({{v1}}) - ({{m2}})({{v2}})}{{{m1}} + {{m2}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.4
+Q: Two identical \({{m}}\ \text{kg}\) carts collide. One moves at \({{v}}\ \text{m/s}\), the other is at rest, and they stick. How much kinetic energy is lost?
+Let: m = one of 2, 4, 6; v = one of 2, 4, 6
+Answer: 0.25*m*v^2
+Wrong: 0.5*m*v^2 | That's all of it. The carts still move afterward, so they keep some kinetic energy.
+Wrong: 0 | Sticking together always loses kinetic energy.
+Wrong: 0.375*m*v^2 | After the collision the moving mass is \(2m\), not \(m\).
+Unit: J
+Work: \begin{aligned}v_f &= \tfrac{v}{2}\\ K_i - K_f &= \tfrac12({{m}})({{v}})^2 - \tfrac12(2\cdot{{m}})\big(\tfrac{{{v}}}{2}\big)^2 = {{answer}}\ \text{J}\end{aligned}
+
+## DRILL 9.4
+Q: A \({{m1}}\ \text{kg}\) ball moving at \({{v1}}\ \text{m/s}\) hits a \({{m2}}\ \text{kg}\) ball at rest head on, in an elastic collision. How fast does the second ball move afterward?
+Let: m1 = one of 1, 2, 3; m2 = one of 4, 5, 6; v1 = one of 3, 6, 9
+Answer: 2*m1*v1/(m1 + m2)
+Wrong: m1*v1/(m1 + m2) | That's the speed if they stuck together. Elastic balls bounce apart.
+Wrong: v1 | The balls trade speeds only when their masses are equal.
+Wrong: m1*v1/m2 | That assumes the first ball stops, which only happens for equal masses.
+Unit: m/s
+Work: v_{2f} = \frac{2m_1}{m_1 + m_2}v_{1i} = \frac{2({{m1}})}{{{m1}} + {{m2}}}({{v1}}) = {{answer}}\ \text{m/s}
+
+## DRILL 9.4
+Q: After a crash, a \({{m1}}\ \text{kg}\) car and a \({{m2}}\ \text{kg}\) car that was stopped at a light are stuck together, moving at \({{vf}}\ \text{m/s}\). How fast was the first car going?
+Let: m1 = one of 1000, 1200, 1500; m2 = one of 1500, 2000, 2500; vf = one of 4, 6, 8
+Answer: (m1 + m2)*vf/m1
+Wrong: vf | The first car slowed down when it picked up the second car's mass.
+Wrong: (m1 + m2)*vf/m2 | Divide by the mass of the car that was moving.
+Wrong: 2*vf | Doubling works only for equal masses.
+Unit: m/s
+Work: m_1v_1 = (m_1 + m_2)v_f \Rightarrow v_1 = \frac{({{m1}} + {{m2}})({{vf}})}{{{m1}}} = {{answer}}\ \text{m/s}
+
+
+# ============================ 9.5 COLLISIONS IN MULTIPLE DIMENSIONS ============================
+
+## QUIZ 9.5
+Q: In a collision in two dimensions with no outside forces, what is conserved?
+A) The x and y components of total momentum, each on its own
+B) Only the total speed
+C) Only the x component of momentum
+D) Only the size of each object's momentum
+Answer: A
+Why: Momentum is a vector, so each component is conserved separately. Speeds and individual momenta can change.
+
+## QUIZ 9.5
+Q: A cue ball hits a pool ball at rest off center. Treat it as an elastic collision of equal masses. What is the angle between their paths afterward?
+A) 90°
+B) 45°
+C) 180°
+D) It can be anything
+Answer: A
+Why: For equal masses, elastic, one at rest, conserving both momentum and kinetic energy forces \(\theta_1 + \theta_2 = 90^\circ\).
+
+## QUIZ 9.5
+Q: A puck moving east hits a puck at rest. Afterward the first puck moves northeast. What must be true of the second puck's momentum?
+A) It has a south component
+B) It has a north component
+C) It points due east
+D) It is zero
+Answer: A
+Why: The total north and south momentum started at zero, so it must stay zero. The first puck now has a north component, so the second must have an equal south component.
+
+## QUIZ 9.5
+Q: One car moving east and another moving north collide and stick. Which way does the wreck move?
+A) Somewhere between east and north
+B) Due east
+C) Due north
+D) It stops
+Answer: A
+Why: The wreck keeps both the east momentum of the first car and the north momentum of the second, so it moves between the two. The angle depends on which car had more momentum.
+
+## DRILL 9.5
+Q: A \({{m1}}\ \text{kg}\) car going east at \({{v1}}\ \text{m/s}\) and a \({{m2}}\ \text{kg}\) car going north at \({{v2}}\ \text{m/s}\) collide and stick. How fast is the wreck moving?
+Let: m1 = one of 1000, 1500; v1 = one of 10, 20; m2 = one of 1000, 2000; v2 = one of 15, 20
+Answer: sqrt((m1*v1)^2 + (m2*v2)^2)/(m1 + m2)
+Wrong: (m1*v1 + m2*v2)/(m1 + m2) | The momenta are at right angles. Combine them with the Pythagorean theorem.
+Wrong: sqrt(v1^2 + v2^2) | Combine momenta, not velocities, and the wreck has both masses.
+Wrong: sqrt((m1*v1)^2 + (m2*v2)^2)/m1 | Both cars move together, so divide by the total mass.
+Unit: m/s
+Work: v_f = \frac{\sqrt{p_x^2 + p_y^2}}{m_1 + m_2} = \frac{\sqrt{({{m1}}\cdot{{v1}})^2 + ({{m2}}\cdot{{v2}})^2}}{{{m1}} + {{m2}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.5
+Q: A \({{m1}}\ \text{kg}\) car going east at \({{v1}}\ \text{m/s}\) and a \({{m2}}\ \text{kg}\) car going north at \({{v2}}\ \text{m/s}\) collide and stick. At what angle north of east does the wreck move?
+Let: m1 = one of 1000, 1500; v1 = one of 10, 20; m2 = one of 1500, 2000; v2 = one of 10, 15
+Answer: atan(m2*v2/(m1*v1))*57.2958
+Wrong: atan(m1*v1/(m2*v2))*57.2958 | That angle is measured from north. Use \(\tan\theta = p_y/p_x\).
+Wrong: atan(v2/v1)*57.2958 | Use the momenta, not the speeds.
+Wrong: 45 | 45° only happens when the two momenta are equal.
+Unit: °
+Work: \theta = \tan^{-1}\frac{p_y}{p_x} = \tan^{-1}\frac{({{m2}})({{v2}})}{({{m1}})({{v1}})} = {{answer}}^\circ
+
+## DRILL 9.5
+Q: A cue ball hits a pool ball at rest off center. Treat it as an elastic collision of equal masses. The cue ball goes off at \({{th}}^\circ\) from its original line. At what angle from that line, on the other side, does the other ball go?
+Let: th = one of 20, 25, 30, 35, 40, 50, 55, 60
+Answer: 90 - th
+Wrong: th | The angles are equal only when the hit is at 45°. They add to 90°.
+Wrong: 180 - th | The balls leave at 90° to each other, not 180°.
+Wrong: 45 | The angles add to 90°, but they are not always equal.
+Unit: °
+Work: \theta_2 = 90^\circ - \theta_1 = 90^\circ - {{th}}^\circ = {{answer}}^\circ
+
+## DRILL 9.5
+Q: A \({{m1}}\ \text{kg}\) puck moving east at \({{v1}}\ \text{m/s}\) hits a \({{m2}}\ \text{kg}\) puck at rest. Afterward the first puck moves due north at \({{v1f}}\ \text{m/s}\). How fast does the second puck move?
+Let: m1 = one of 0.2, 0.3; m2 = one of 0.4, 0.5; v1 = one of 3, 4; v1f = one of 3, 4
+Answer: sqrt((m1*v1)^2 + (m1*v1f)^2)/m2
+Wrong: m1*v1/m2 | The second puck also needs a south component to cancel the first puck's new north momentum.
+Wrong: m1*(v1 + v1f)/m2 | The components are at right angles. Combine them with the Pythagorean theorem.
+Wrong: sqrt(v1^2 + v1f^2) | The masses differ, so combine momenta, then divide by the second puck's mass.
+Unit: m/s
+Work: v_{2f} = \frac{\sqrt{(m_1v_1)^2 + (m_1v_{1f})^2}}{m_2} = \frac{\sqrt{({{m1}}\cdot{{v1}})^2 + ({{m1}}\cdot{{v1f}})^2}}{{{m2}}} = {{answer}}\ \text{m/s}
+
+
+# ============================ 9.6 CENTER OF MASS ============================
+
+## QUIZ 9.6
+Q: A dumbbell has a heavy weight on one end and a light weight on the other. Where is its center of mass?
+A) Closer to the heavy end
+B) Exactly in the middle
+C) Closer to the light end
+D) Outside the dumbbell
+Answer: A
+Why: The center of mass is a mass weighted average of positions, so it sits closer to where more of the mass is.
+
+## QUIZ 9.6
+Q: A firework shell bursts into many pieces at the top of its path. Until the pieces land, what does their center of mass do?
+A) Keeps following the shell's original parabola
+B) Stops and falls straight down
+C) Moves outward with the fastest piece
+D) Stays at the bursting point
+Answer: A
+Why: The explosion forces are internal, so they can't change the motion of the center of mass. Only gravity, an outside force, acts, just as before the burst.
+
+## QUIZ 9.6
+Q: Where is the center of mass of a thin, uniform ring?
+A) At the center of the ring, where there is no mass
+B) Somewhere on the ring itself
+C) It has no center of mass
+D) At the top of the ring
+Answer: A
+Why: By symmetry every bit of ring has a matching bit on the opposite side, so the average position is the center. The center of mass doesn't have to be inside the object.
+
+## DRILL 9.6
+Q: A \({{m1}}\ \text{kg}\) mass sits at \(x = 0\) and a \({{m2}}\ \text{kg}\) mass sits at \(x = {{d}}\ \text{m}\). Where is their center of mass?
+Let: m1 = one of 1, 2, 3, 4; m2 = one of 2, 5, 6; d = one of 2, 4, 6
+Answer: m2*d/(m1 + m2)
+Wrong: m1*d/(m1 + m2) | That's measured from the other end. Multiply each mass by its own position.
+Wrong: d/2 | The middle is right only for equal masses.
+Wrong: m2*d/m1 | Divide by the total mass.
+Unit: m
+Work: x_\text{CM} = \frac{m_1x_1 + m_2x_2}{m_1 + m_2} = \frac{({{m1}})(0) + ({{m2}})({{d}})}{{{m1}} + {{m2}}} = {{answer}}\ \text{m}
+
+## DRILL 9.6
+Q: Masses of \({{a}}\), \({{b}}\), and \({{c}}\ \text{kg}\) sit at \(x = 0\), \(1\), and \(2\ \text{m}\). Where is their center of mass?
+Let: a = one of 1, 2, 3; b = one of 1, 2, 4; c = one of 3, 5, 6
+Answer: (b + 2*c)/(a + b + c)
+Wrong: 1 | That's the middle position. The masses differ, so weight each position by its mass.
+Wrong: (b + 2*c)/3 | Divide by the total mass, not the number of objects.
+Wrong: (b + c)/(a + b + c) | The last mass is at \(2\ \text{m}\), so multiply it by 2.
+Unit: m
+Work: x_\text{CM} = \frac{({{a}})(0) + ({{b}})(1) + ({{c}})(2)}{{{a}} + {{b}} + {{c}}} = {{answer}}\ \text{m}
+
+## DRILL 9.6
+Q: A \({{m1}}\ \text{kg}\) puck slides at \({{v1}}\ \text{m/s}\) toward a \({{m2}}\ \text{kg}\) puck at rest. How fast does their center of mass move?
+Let: m1 = one of 1, 2, 3; m2 = one of 1, 4, 5; v1 = one of 2, 4, 6
+Answer: m1*v1/(m1 + m2)
+Wrong: v1/2 | Half the speed is right only for equal masses.
+Wrong: m1*v1/m2 | Divide the total momentum by the total mass.
+Wrong: v1 | The puck at rest is part of the system, so the center of mass moves slower than the moving puck.
+Unit: m/s
+Work: v_\text{CM} = \frac{p_\text{tot}}{M} = \frac{({{m1}})({{v1}})}{{{m1}} + {{m2}}} = {{answer}}\ \text{m/s}
+
+
+# ============================ 9.7 ROCKET PROPULSION ============================
+
+## QUIZ 9.7
+Q: How does a rocket speed up in empty space, with no air to push against?
+A) It pushes exhaust backward, and the exhaust pushes it forward
+B) The exhaust pushes on the space behind it
+C) It can't speed up without air
+D) Gravity from the exhaust pulls it forward
+Answer: A
+Why: Rocket and exhaust push on each other with equal and opposite forces. The total momentum stays constant, so throwing mass backward sends the rocket forward.
+
+## QUIZ 9.7
+Q: Which two things set how much speed a rocket gains from its fuel?
+A) The exhaust speed and the ratio of starting mass to final mass
+B) How fast the fuel burns and the color of the flame
+C) Only the total mass of the rocket
+D) Only how fast the fuel burns
+Answer: A
+Why: \(\Delta v = u\ln\frac{m_i}{m}\). The burn rate changes the thrust and how quickly the speed builds, but not the final \(\Delta v\).
+
+## QUIZ 9.7
+Q: A rocket's engine gives a steady thrust while it burns fuel. What happens to its acceleration?
+A) It increases, because the rocket gets lighter
+B) It decreases, because fuel runs out
+C) It stays the same
+D) It drops to zero right away
+Answer: A
+Why: The same force on a smaller and smaller mass gives a larger and larger acceleration, from \(a = F/m\).
+
+## DRILL 9.7
+Q: A rocket in deep space has exhaust speed \({{u}}\ \text{m/s}\). It starts with a mass of \({{mi}}\ \text{kg}\) and burns fuel until its mass is \({{mf}}\ \text{kg}\). How much speed does it gain?
+Let: u = one of 2000, 2500, 3000; mf = one of 1000, 2000; r = one of 2, 3, 4; mi = mf*r
+Answer: u*ln(r)
+Wrong: u*r | Use the natural log of the mass ratio, not the ratio itself.
+Wrong: u*(r - 1) | Use the natural log of the mass ratio: \(\Delta v = u\ln\frac{m_i}{m}\).
+Wrong: u*ln(1/r) | Put the starting mass on top so the logarithm is positive.
+Unit: m/s
+Work: \Delta v = u\ln\frac{m_i}{m} = ({{u}})\ln\frac{{{mi}}}{{{mf}}} = {{answer}}\ \text{m/s}
+
+## DRILL 9.7
+Q: A rocket in deep space gains \({{dv}}\ \text{m/s}\) while its mass drops from \({{mi}}\) to \({{mf}}\ \text{kg}\). What is its exhaust speed?
+Let: dv = one of 1500, 2000, 3000, 4000; mf = one of 500, 1000; r = one of 2, 3, 4; mi = mf*r
+Answer: dv/ln(r)
+Wrong: dv*ln(r) | Divide by the logarithm: \(u = \Delta v/\ln\frac{m_i}{m}\).
+Wrong: dv/r | Use the natural log of the mass ratio, not the ratio itself.
+Wrong: dv | The exhaust speed equals \(\Delta v\) only when the mass ratio is \(e \approx 2.72\).
+Unit: m/s
+Work: u = \frac{\Delta v}{\ln(m_i/m)} = \frac{{{dv}}}{\ln({{mi}}/{{mf}})} = {{answer}}\ \text{m/s}
