@@ -662,6 +662,7 @@ const P=x=>"("+sig(x)+")";
 const r=(lo,hi,st)=>Math.round((lo+Math.floor(Math.random()*(Math.round((hi-lo)/st)+1))*st)*1000)/1000;
 
 /* ---------- views ---------- */
+for(const n of [1,2,4,5,6,7,8,9])if(CHX[n]&&!CHX[n].hero)CHX[n].hero=()=>heroFor(n);
 function heroGraph(){
   // x = t^2 (a = 2 m/s^2 from rest), t from 0 to 4 s, x from 0 to 16 m, drawn to scale
   const X=t=>30+t*25, Y=x=>96-x*5;
@@ -673,6 +674,59 @@ function heroGraph(){
   <path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
   <circle cx="${X(4)}" cy="${Y(16)}" r="3" fill="var(--accent)"/>
   <text x="134" y="92" text-anchor="end">t (s)</text><text x="34" y="8">x (m)</text></svg>`;
+}
+
+/* small title card drawings, one per chapter (Ch 3 uses heroGraph above). viewBox 140 by 122 like heroGraph. */
+function heroArrow(x1,y1,x2,y2,c="var(--ink)",w=2){const a=Math.atan2(y2-y1,x2-x1),h=6,bx=x2-h*Math.cos(a),by=y2-h*Math.sin(a),
+  p=[[x2,y2],[bx-3.2*Math.sin(a),by+3.2*Math.cos(a)],[bx+3.2*Math.sin(a),by-3.2*Math.cos(a)]].map(q=>q.map(v=>v.toFixed(1)).join(",")).join(" ");
+  return `<line x1="${x1}" y1="${y1}" x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}" stroke="${c}" stroke-width="${w}"/><polygon points="${p}" fill="${c}"/>`;}
+function heroFor(n){
+  const A=heroArrow,svg=(label,body)=>`<svg viewBox="0 0 140 122" role="img" aria-label="${label}" font-family="IBM Plex Mono, monospace" font-size="8" fill="var(--muted)">${body}</svg>`;
+  const axes=(xl,yl)=>`<line x1="30" y1="96" x2="132" y2="96" stroke="var(--ink)"/><line x1="30" y1="96" x2="30" y2="10" stroke="var(--ink)"/><text x="134" y="108" text-anchor="end">${xl}</text><text x="34" y="8">${yl}</text>`;
+  if(n===1){let t="";for(let i=0;i<=100;i++){const x=16+i*1.08,h=i%10?(i%5?4:7):11;t+=`<line x1="${x.toFixed(1)}" y1="70" x2="${x.toFixed(1)}" y2="${70+h}" stroke="var(--muted)" stroke-width="${i%10?0.5:1}"/>`;if(i%20===0)t+=`<text x="${x.toFixed(1)}" y="92" text-anchor="middle">${i/10}</text>`;}
+    const e=16+64*1.08;
+    return svg("A ruler in centimeters measuring a bar 6.4 plus or minus 0.1 centimeters long",`<rect x="12" y="66" width="116" height="30" rx="2" fill="none" stroke="var(--ink)"/>${t}
+      <rect x="16" y="44" width="${(64*1.08).toFixed(1)}" height="14" rx="2" fill="var(--accent)" opacity=".85"/>
+      <line x1="${(e-1.1).toFixed(1)}" y1="38" x2="${(e+1.1).toFixed(1)}" y2="38" stroke="var(--ink)"/><line x1="${e.toFixed(1)}" y1="35" x2="${e.toFixed(1)}" y2="62" stroke="var(--ink)" stroke-dasharray="2 2"/>
+      <text x="16" y="28" fill="var(--ink)" font-size="10">6.4 ± 0.1 cm</text><text x="16" y="112">uncertainty 1.6%</text>`);}
+  if(n===2){let g="";for(let i=0;i<=10;i++)g+=`<line x1="${20+i*10}" y1="16" x2="${20+i*10}" y2="106" stroke="var(--grid-line)"/>`;for(let j=0;j<=9;j++)g+=`<line x1="20" y1="${16+j*10}" x2="120" y2="${16+j*10}" stroke="var(--grid-line)"/>`;
+    return svg("Vector A plus vector B, drawn tail to head, equals the resultant R",`${g}${A(20,106,80,86)}${A(80,86,108,30)}${A(20,106,108,30,"var(--accent)",2.4)}
+      <text x="52" y="106" fill="var(--ink)" font-style="italic" font-size="10">A</text><text x="100" y="66" fill="var(--ink)" font-style="italic" font-size="10">B</text><text x="52" y="58" fill="var(--accent)" font-style="italic" font-size="10">R</text>
+      <text x="74" y="118" text-anchor="middle">R = A + B</text>`);}
+  if(n===4){const P=s=>[20+110*s,96-280*s*(1-s)];let d="";for(let i=0;i<=40;i++){const q=P(i/40);d+=(i?"L":"M")+q[0].toFixed(1)+" "+q[1].toFixed(1);}
+    const q=P(0.1),dx=110,dy=-280*(1-0.2),L=Math.hypot(dx,dy),vx=dx/L*40,vy=dy/L*40,tp=P(0.78);
+    return svg("A projectile arc with its velocity split into x and y components and gravity pointing down",`<line x1="10" y1="96" x2="134" y2="96" stroke="var(--ink)"/><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-dasharray="1 4" stroke-linecap="round"/>
+      ${A(q[0],q[1],q[0]+vx,q[1],"var(--muted)",1.5)}${A(q[0],q[1],q[0],q[1]+vy,"var(--muted)",1.5)}${A(q[0],q[1],q[0]+vx,q[1]+vy,"var(--ink)",2)}
+      <circle cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="3.5" fill="var(--accent)"/>${A(tp[0],tp[1]+4,tp[0],tp[1]+24,"var(--ink)",1.5)}
+      <text x="${(q[0]+vx+3).toFixed(1)}" y="${(q[1]+3).toFixed(1)}">v<tspan font-size="6" dy="2">x</tspan></text><text x="${(q[0]-4).toFixed(1)}" y="${(q[1]+vy).toFixed(1)}" text-anchor="end">v<tspan font-size="6" dy="2">y</tspan></text><text x="${(q[0]+vx+6).toFixed(1)}" y="${(q[1]+vy+4).toFixed(1)}" fill="var(--ink)">v</text><text x="${tp[0]+4}" y="${tp[1]+22}">g</text>
+      <text x="70" y="112" text-anchor="middle">x and y move separately</text>`);}
+  if(n===5)return svg("Free body diagram of a crate on the floor: normal force up, weight down, a push to the right and friction to the left",`<line x1="14" y1="84" x2="126" y2="84" stroke="var(--ink)"/>
+      <rect x="54" y="52" width="32" height="32" rx="2" fill="var(--accent-soft)" stroke="var(--ink)"/><circle cx="70" cy="68" r="2" fill="var(--ink)"/>
+      ${A(70,68,70,18)}${A(70,68,70,116)}${A(70,68,122,68,"var(--accent)",2.4)}${A(70,68,36,68)}
+      <text x="75" y="22" fill="var(--ink)">N</text><text x="75" y="114" fill="var(--ink)">mg</text><text x="112" y="62" fill="var(--accent)">F</text><text x="34" y="62" fill="var(--ink)">f</text>
+      <text x="12" y="12">ΣF = ma</text>`);
+  if(n===6)return svg("A car going around a curve: velocity points along the track, the acceleration points toward the center",`<circle cx="66" cy="66" r="42" fill="none" stroke="var(--muted)" stroke-width="7" opacity=".35"/><circle cx="66" cy="66" r="1.8" fill="var(--ink)"/>
+      <line x1="66" y1="66" x2="95.7" y2="95.7" stroke="var(--muted)" stroke-dasharray="2 2"/><text x="84" y="80">r</text>
+      <rect x="59" y="19" width="14" height="10" rx="3" fill="var(--accent)"/>${A(74,24,112,24)}${A(66,31,66,52,"var(--accent)",2.2)}
+      <text x="114" y="27" fill="var(--ink)">v</text><text x="61" y="48" fill="var(--accent)" text-anchor="end">a</text><text x="70" y="118" text-anchor="middle">a = v²/r toward the center</text>`);
+  if(n===7){const X=x=>30+x*24,Y=F=>96-F*4.2;let d="",ar=`M${X(0.5)} 96`;for(let i=0;i<=40;i++){const x=i/10,F=4+3*x;d+=(i?"L":"M")+X(x)+" "+Y(F).toFixed(1);if(x>=0.5&&x<=3.5)ar+=`L${X(x)} ${Y(F).toFixed(1)}`;}
+    ar+=`L${X(3.5)} 96Z`;
+    return svg("Force versus position graph; the shaded area under the line is the work done",`<path d="${ar}" fill="var(--accent)" opacity=".25"/>${axes("x (m)","F (N)")}<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
+      <text x="${X(2)}" y="74" text-anchor="middle" fill="var(--ink)" font-size="10">W</text><text x="${X(2)}" y="84" text-anchor="middle">= area</text>`);}
+  if(n===8){const X=x=>81+x*24,Y=U=>96-U*7;let d="";for(let i=0;i<=40;i++){const x=-2.1+i*0.105;d+=(i?"L":"M")+X(x).toFixed(1)+" "+Y(2.6*x*x).toFixed(1);}
+    const E=8.4,xt=Math.sqrt(E/2.6);
+    return svg("Potential energy curve shaped like a bowl with the total energy line; the object turns around where they meet",`<line x1="22" y1="96" x2="136" y2="96" stroke="var(--ink)"/><line x1="22" y1="96" x2="22" y2="10" stroke="var(--ink)"/><text x="26" y="8">U (J)</text><text x="136" y="106" text-anchor="end">x (m)</text>
+      <path d="${d}" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="26" y1="${Y(E)}" x2="134" y2="${Y(E)}" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <circle cx="${X(-xt).toFixed(1)}" cy="${Y(E)}" r="3" fill="var(--accent)"/><circle cx="${X(xt).toFixed(1)}" cy="${Y(E)}" r="3" fill="var(--accent)"/>
+      <line x1="${X(0.55)}" y1="${Y(E)+2}" x2="${X(0.55)}" y2="${Y(2.6*0.3)-2}" stroke="var(--muted)"/><text x="${X(0.55)+3}" y="70">K</text>
+      <text x="${X(0)}" y="${Y(E)-5}" text-anchor="middle" fill="var(--accent)">E</text><text x="24" y="119">turns where U = E</text>`);}
+  if(n===9){const ball=(x,y,r,c)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="var(--ink)" stroke-width="1"/>`;
+    return svg("Two balls before and after a collision; the total momentum is the same",`<text x="8" y="16">before</text><line x1="8" y1="46" x2="132" y2="46" stroke="var(--grid-line)"/>
+      ${ball(30,36,9,"var(--accent)")}${A(41,36,76,36)}${ball(104,36,7,"var(--muted)")}
+      <text x="8" y="66">after</text><line x1="8" y1="96" x2="132" y2="96" stroke="var(--grid-line)"/>
+      ${ball(58,86,9,"var(--accent)")}${A(69,86,80,86)}${ball(104,86,7,"var(--muted)")}${A(113,86,136,86)}
+      <text x="70" y="116" text-anchor="middle">total p stays the same</text>`);}
+  return "";
 }
 
 function renderLearn(){
@@ -1849,11 +1903,13 @@ TOYS.sail.game={title:"Sail to the island",intro:"The boat goes exactly where yo
    Side view in meters, g = 10 m/s² as in the Ch 4 notes. The stone always leaves at about 53° (cos 0.6, sin 0.8),
    so components come out as whole numbers. Mission 0: put the target where it lands. Mission 1: put the window
    where it reaches the wall. Mission 2: pick the arm's turn time; the stone leaves at 2πr/T and must reach the flag.
+   Mission 3 (4.5): the catapult rides a cart rolling toward the castle at u; the stone leaves at v relative to the cart,
+   so relative to the ground v_x = 0.6v + u and v_y = 0.8v. Put the target where it lands.
    makeCat redraws until every wrong choice misses by at least 2.5 times the hit tolerance. */
-const CAT_NAMES=["Where will it land?","Hit the window","Spin the arm"], CAT_G=10;
+const CAT_NAMES=["Where will it land?","Hit the window","Spin the arm","Fire from the cart"], CAT_G=10;
 const catTol=m=>m.kind===1?0.8:0.04*m.R;
-function catFlight(v,stopX){
-  const vx=0.6*v,vy=0.8*v,tLand=2*vy/CAT_G,R=vx*tLand,tEnd=stopX!=null&&stopX<R?stopX/vx:tLand;
+function catFlight(v,stopX,u=0){
+  const vx=0.6*v+u,vy=0.8*v,tLand=2*vy/CAT_G,R=vx*tLand,tEnd=stopX!=null&&stopX<R?stopX/vx:tLand;
   return{vx,vy,R,tLand,tEnd,at:t=>{const u=Math.min(t,tEnd);return{x:vx*u,y:Math.max(0,vy*u-0.5*CAT_G*u*u)};}};
 }
 const catComp=v=>`v_x&=0.6(${v})=${fmtNum(0.6*v,true)}\\ \\text{m/s}\\\\v_y&=0.8(${v})=${fmtNum(0.8*v,true)}\\ \\text{m/s}\\\\`;
@@ -1879,6 +1935,15 @@ function catDraft(k){
     return{kind:1,v,d,yTrue:y,R:f0.R,choices:dedupe(ch),
       q:`A castle wall stands \\(${fmtNum(d)}\\ \\text{m}\\) away. The stone leaves at \\(${v}\\ \\text{m/s}\\), ${CAT_ANG}. How high up the wall should the open window be so the stone flies right through it? Use \\(g = 10\\ \\text{m/s}^2\\).`,
       work:`\\begin{aligned}${catComp(v)}t&=\\tfrac{d}{v_x}=\\tfrac{${fmtNum(d,true)}}{${fmtNum(f0.vx,true)}}=${fmtNum(t,true)}\\ \\text{s}\\\\y&=v_yt-\\tfrac12gt^2=${fmtNum(y,true)}\\ \\text{m}\\end{aligned}`};}
+  if(k===3){const v=pickOne([15,20,25]),u=pickOne([4,5,6,8]),f=catFlight(v,null,u),t=f.tLand,R=f.R,vF=v+u;
+    const ch=[{x:R,ok:true},
+      {x:0.6*v*t,fb:"The stone keeps the cart's forward speed when it leaves. Relative to the ground, add it: \\(v_x = v\\cos\\theta + u\\)."},
+      {x:(0.6*v-u)*t,fb:"The cart rolls toward the castle, the same way the stone is thrown, so its speed adds to \\(v_x\\) instead of taking away."},
+      {x:0.6*vF*(1.6*vF/CAT_G),fb:"The cart moves only sideways, so it adds only to the x component. \\(v_y = v\\sin\\theta\\) stays the same, and so does the flight time."}];
+    ch.forEach(c=>c.t=`${fmtNum(c.x)} m`);
+    return{kind:3,v,u,R,choices:dedupe(ch),
+      q:`The catapult sits on a cart rolling toward the castle at \\(${u}\\ \\text{m/s}\\). It throws a stone at \\(${v}\\ \\text{m/s}\\) relative to the cart, ${CAT_ANG}. Where on the ground should you put the target, measured from where the stone leaves? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}v_x&=0.6(${v})+${u}=${fmtNum(f.vx,true)}\\ \\text{m/s}\\\\v_y&=0.8(${v})=${fmtNum(f.vy,true)}\\ \\text{m/s}\\\\t&=\\tfrac{2v_y}{g}=${fmtNum(t,true)}\\ \\text{s}\\\\x&=v_xt=${fmtNum(R,true)}\\ \\text{m}\\end{aligned}`};}
   const r=pickOne([2,2.5,3,4]),v=pickOne([15,20,25]),R=catFlight(v).R,T=2*Math.PI*r/v;
   const ch=[{T,ok:true},
     {T:r/v,fb:"In one turn the tip goes all the way around the circle, a distance \\(2\\pi r\\), not \\(r\\)."},
@@ -1891,13 +1956,13 @@ function catDraft(k){
 }
 function catSim(m,c){
   if(m.kind===1){const f=catFlight(m.v,m.d),yw=f.at(f.tEnd).y;return Object.assign(f,{aim:c.y,yHit:yw,miss:Math.abs(c.y-yw),hit:Math.abs(c.y-yw)<=catTol(m)});}
-  const f=catFlight(m.kind===2?c.speed:m.v),aim=m.kind===0?c.x:m.R;
+  const f=catFlight(m.kind===2?c.speed:m.v,null,m.kind===3?m.u:0),aim=m.kind===0||m.kind===3?c.x:m.R;
   /* a very fast throw flies off the map; the animation stops once it has left */
   const xMax=catView(m).xMax;if(f.R>xMax*1.05)f.tEnd=Math.min(f.tLand,xMax*1.05/f.vx);
   return Object.assign(f,{aim,miss:Math.abs(f.R-aim),hit:Math.abs(f.R-aim)<=catTol(m),off:f.R>xMax*1.05});
 }
 function catView(m){
-  if(m.kind===0)return{xMax:Math.max(...m.choices.map(c=>c.x))*1.1};
+  if(m.kind===0||m.kind===3)return{xMax:Math.max(...m.choices.map(c=>c.x))*1.1};
   if(m.kind===1)return{xMax:m.d*1.25};
   return{xMax:m.R*1.6};
 }
@@ -1925,15 +1990,18 @@ function drawCat(t,F,m){
   for(let g=0;g<=xMax;g+=st){ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(X(g),top-6);ctx.lineTo(X(g),bot);ctx.stroke();ctx.fillStyle=col("--muted");ctx.fillText(`${g} m`,X(g),bot+14);}
   ctx.fillStyle=col("--leaf");ctx.globalAlpha=.25;ctx.fillRect(0,bot,W,H-bot);ctx.globalAlpha=1;
   ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,bot);ctx.lineTo(W,bot);ctx.stroke();
-  /* the catapult */
-  ctx.fillStyle=col("--petal-6");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.fillRect(X(0)-12,bot-6,24,5);ctx.strokeRect(X(0)-12,bot-6,24,5);
-  ctx.lineWidth=2.4;ctx.beginPath();ctx.moveTo(X(0)-10,bot-16);ctx.lineTo(X(0)+9,bot-29);ctx.stroke();
+  /* the catapult (mission 3: on a cart that keeps rolling at u) */
+  const cx0=m.kind===3&&!pre?X(Math.min(m.u*Math.min(t,F.tEnd),xMax)):X(0);
+  ctx.fillStyle=col("--petal-6");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.fillRect(cx0-12,bot-6,24,5);ctx.strokeRect(cx0-12,bot-6,24,5);
+  ctx.lineWidth=2.4;ctx.beginPath();ctx.moveTo(cx0-10,bot-16);ctx.lineTo(cx0+9,bot-29);ctx.stroke();
+  if(m.kind===3){ctx.fillStyle=col("--muted");ctx.fillRect(cx0-15,bot-9,30,4);ctx.fillStyle=col("--ink");for(const w of[-9,9]){ctx.beginPath();ctx.arc(cx0+w,bot-3,3,0,7);ctx.fill();}
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`cart rolls at ${m.u} m/s →`,W-12,46);}
   /* targets */
   const flag=(x,lab,color)=>{const fx=X(x);ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(fx,bot);ctx.lineTo(fx,bot-30);ctx.stroke();
     ctx.fillStyle=col(color);ctx.beginPath();ctx.moveTo(fx,bot-30);ctx.lineTo(fx+14,bot-25);ctx.lineTo(fx,bot-20);ctx.closePath();ctx.fill();
     const w=Math.max(6,catTol(m)*s);ctx.globalAlpha=.35;ctx.fillRect(fx-w,bot-3,2*w,6);ctx.globalAlpha=1;
     ctx.fillStyle=col("--ink");ctx.textAlign="center";ctx.fillText(lab,Math.min(Math.max(fx,30),W-30),bot-40);};
-  if(m.kind===0&&c)flag(c.x,"target","--accent");
+  if((m.kind===0||m.kind===3)&&c)flag(c.x,"target","--accent");
   if(m.kind===2)flag(m.R,"flag","--petal-1");
   if(m.kind===1){const wx=X(m.d),wh=Math.max(...m.choices.map(q=>q.y))+4;
     ctx.fillStyle=col("--muted");ctx.globalAlpha=.5;ctx.fillRect(wx,Y(wh),12,wh*s);ctx.globalAlpha=1;ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.strokeRect(wx,Y(wh),12,wh*s);
@@ -1955,6 +2023,7 @@ TOYS.catapult.game={title:"Fire the catapult",intro:"The stone follows the physi
   names:CAT_NAMES,make:makeCat,ms:3400,
   sim:m=>catSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawCat,
   outcome:(F,m)=>m.kind===1?(F.hit?`It reached the wall ${fmtNum(F.yHit)} m up, right through the window.`:`It reached the wall ${fmtNum(F.yHit)} m up, but the window was at ${fmtNum(F.aim)} m.`)
+    :m.kind===3?(F.hit?`It landed ${fmtNum(F.R)} m away, right on the target. The cart had rolled ${fmtNum(m.u*F.tLand)} m by then.`:`It landed ${fmtNum(F.R)} m away, but the target was at ${fmtNum(F.aim)} m.`)
     :m.kind===0?(F.hit?`It landed ${fmtNum(F.R)} m away, right on the target.`:`It landed ${fmtNum(F.R)} m away, but the target was at ${fmtNum(F.aim)} m.`)
     :(F.hit?`The stone left at ${fmtNum(m.v)} m/s and landed on the flag.`:`With that turn time the tip moved at ${fmtNum(F.vx/0.6)} m/s, so the stone landed ${fmtNum(F.R)} m away instead of ${fmtNum(m.R)} m.`),
   right:"Bull's eye!",go:"Fire",pickFirst:"Pick an answer to fire",again:"Fire again with new numbers",cvLabel:"Catapult shot",
@@ -2787,7 +2856,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="10/31c";
+const APP_VERSION="10/31d";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
