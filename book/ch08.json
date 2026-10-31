@@ -1,0 +1,436 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 8,
+  "title": "Potential Energy and Conservation of Energy"
+ },
+ "keyEquations": [
+  {
+   "name": "Difference of potential energy",
+   "tex": "\\Delta {U}_{AB}={U}_{B}-{U}_{A}=-{W}_{AB}"
+  },
+  {
+   "name": "Potential energy with respect to zero of potential energy at r→0",
+   "tex": "\\Delta U=U(\\mathbf{\\vec{r}})-U({\\mathbf{\\vec{r}}}_{0})"
+  },
+  {
+   "name": "Gravitational potential energy near Earth’s surface",
+   "tex": "U(y)=mgy+\\text{const}."
+  },
+  {
+   "name": "Potential energy for an ideal spring",
+   "tex": "U(x)=\\frac{1}{2}k{x}^{2}+\\text{const}."
+  },
+  {
+   "name": "Work done by conservative force over a closed path",
+   "tex": "{W}_{\\text{closed path}}=\\int {\\mathbf{\\vec{F}}}_{\\text{cons}}\\cdot d\\mathbf{\\vec{r}}=0"
+  },
+  {
+   "name": "Condition for conservative force in two dimensions",
+   "tex": "(\\frac{d{F}_{x}}{dy})=(\\frac{d{F}_{y}}{dx})"
+  },
+  {
+   "name": "Conservative force is the negative derivative of potential energy",
+   "tex": "{F}_{l}=-\\frac{dU}{dl}"
+  },
+  {
+   "name": "Conservation of energy with no non-conservative forces",
+   "tex": "0={W}_{nc,AB}=\\Delta {(K+U)}_{AB}=\\Delta {E}_{AB}."
+  }
+ ],
+ "sections": [
+  {
+   "num": "8.1",
+   "module": "m58312",
+   "title": "Potential Energy of a System",
+   "objectives": [
+    "Relate the difference of potential energy to work done on a particle for a system without friction or air drag",
+    "Explain the meaning of the zero of the potential energy function for a system",
+    "Calculate and apply the gravitational potential energy for an object near Earth’s surface and the elastic potential energy of a mass-spring system"
+   ],
+   "callouts": [
+    "\\Delta {U}_{AB}={U}_{B}-{U}_{A}=-{W}_{AB}",
+    "\\Delta U=U(\\mathbf{\\vec{r}})-U({\\mathbf{\\vec{r}}}_{0})",
+    "U(y)=mgy+\\text{const}",
+    "U(x)=\\frac{1}{2}k{x}^{2}+\\text{const}"
+   ],
+   "examples": [
+    {
+     "title": "Basic Properties of Potential Energy",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A particle moves along the <i>x</i>-axis under the action of a force given by \\(F=-a{x}^{2}\\), where \\(a=3\\, {\\text{N/m}}^{2}\\). (a) What is the difference in its potential energy as it moves from \\({x}_{A}=1\\, \\text{m}\\) to \\({x}_{B}=2\\, \\text{m}\\)? (b) What is the particle’s potential energy at \\(x=1\\, \\text{m}\\) with respect to a given 0.5 J of potential energy at \\(x=0\\)?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>(a) The difference in potential energy is the negative of the work done, as defined by the equation. The work is defined in the previous chapter as the dot product of the force with the distance. Since the particle is moving forward in the <i>x</i>-direction, the dot product simplifies to a multiplication (\\(\\hat{\\mathbf{i}}\\cdot \\hat{\\mathbf{i}}=1\\)). To find the total work done, we need to integrate the function between the given limits. After integration, we can state the work or the change in potential energy. (b) The potential energy function, with respect to zero at \\(x=0\\), is the indefinite integral encountered in part (a), with the constant of integration determined from the equation. Then, we substitute the <i>x</i>-value into the function of potential energy to calculate the potential energy at \\(x=1\\, \\text{m}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The work done by the given force as the particle moves from coordinate <i>x</i> to \\(x+dx\\) in one dimension is <div class='eq'>\\[dW=\\mathbf{\\vec{F}}\\cdot d\\mathbf{\\vec{r}}=Fdx=-a{x}^{2}dx.\\]</div> Substituting this expression into the equation, we obtain <div class='eq'>\\[\\Delta U=-W={\\int}_{{x}_{1}}^{{x}_{2}}a{x}^{2}dx=\\frac{1}{3}(3\\, {\\text{N/m}}^{2}){{x}^{3}|}_{1\\, \\text{m}}^{2\\, \\text{m}}=7\\, \\text{J}.\\]</div></li><li>The indefinite integral for the potential energy function in part (a) is <div class='eq'>\\[U(x)=\\frac{1}{3}a{x}^{3}+\\text{const}.,\\]</div> and we want the constant to be determined by <div class='eq'>\\[U(0)=0.5\\, \\text{J}.\\]</div> Thus, the potential energy with respect to zero at \\(x=0\\) is just <div class='eq'>\\[U(x)=\\frac{1}{3}a{x}^{3}+0.5\\, \\text{J}.\\]</div> Therefore, the potential energy at \\(x=1\\, \\text{m}\\) is <div class='eq'>\\[U(1\\, \\text{m})=\\frac{1}{3}(3\\, {\\text{N/m}}^{2}){(1\\, \\text{m})}^{3}+0.5\\, \\text{J}=1.5\\, \\text{J}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In this one-dimensional example, any function we can integrate, independent of path, is conservative. Notice how we applied the definition of potential energy difference to determine the potential energy function with respect to zero at a chosen point. Also notice that the potential energy, as determined in part (b), at \\(x=1\\, \\text{m}\\) is \\(U(1\\, \\text{m})=1\\, \\text{J}\\) and at \\(x=2\\, \\text{m}\\) is \\(U(2\\, \\text{m})=8\\, \\text{J}\\); their difference is the result in part (a).</p>"
+      }
+     ]
+    },
+    {
+     "title": "Gravitational Potential Energy of a Hiker",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The summit of Great Blue Hill in Milton, MA, is 147 m above its base and has an elevation above sea level of 195 m (the figure). (Its Native American name, <i>Massachusett</i>, was adopted by settlers for naming the Bay Colony and state near its location.) A 75-kg hiker ascends from the base to the summit. What is the gravitational potential energy of the hiker-Earth system with respect to zero gravitational potential energy at base height, when the hiker is (a) at the base of the hill, (b) at the summit, and (c) at sea level, afterward?</p><figure><img src='img/CNX_UPhysics_08_01_GrBlueHill.jpg' alt=\"Sketch of the profile of Great Blue Hill, Milton, MA. The summit is 195 meters above sea level. The base of the hill is 147 meters below the summit.\" loading='lazy'><figcaption>Sketch of the profile of Great Blue Hill, Milton, MA. The altitudes of the three levels are indicated.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we need to pick an origin for the <i>y</i>-axis and then determine the value of the constant that makes the potential energy zero at the height of the base. Then, we can determine the potential energies from the equation, based on the relationship between the zero potential energy height and the height at which the hiker is located.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Let’s choose the origin for the <i>y</i>-axis at base height, where we also want the zero of potential energy to be. This choice makes the constant equal to zero and <div class='eq'>\\[U(\\text{base})=U(0)=0.\\]</div></li><li>At the summit, \\(y=147\\, \\text{m}\\), so <div class='eq'>\\[U(\\text{summit})=U(147\\, \\text{m})=mgh=(75\\, \\times \\, 9.8\\, \\text{N})(147\\, \\text{m})=108\\, \\text{kJ}.\\]</div></li><li>At sea level, \\(y=(147-195)\\text{m}=-48\\, \\text{m}\\), so <div class='eq'>\\[U(\\text{sea-level})=(75\\, \\times \\, 9.8\\, \\text{N})(-48\\, \\text{m})=-35.3\\, \\text{kJ}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Besides illustrating the use of the equation and the equation, the values of gravitational potential energy we found are reasonable. The gravitational potential energy is higher at the summit than at the base, and lower at sea level than at the base. Gravity does work on you on your way up, too! It does negative work and not quite as much (in magnitude), as your muscles do. But it certainly does work. Similarly, your muscles do work on your way down, as negative work. The numerical values of the potential energies depend on the choice of zero of potential energy, but the physically meaningful differences of potential energy do not. [Note that since the equation is a difference, the numerical values do not depend on the origin of coordinates.]</p>"
+      }
+     ]
+    },
+    {
+     "title": "Spring Potential Energy",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A system contains a perfectly elastic spring, with an unstretched length of 20 cm and a spring constant of 4 N/cm. (a) How much elastic potential energy does the spring contribute when its length is 23 cm? (b) How much more potential energy does it contribute if its length increases to 26 cm?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>When the spring is at its unstretched length, it contributes nothing to the potential energy of the system, so we can use the equation with the constant equal to zero. The value of <i>x</i> is the length minus the unstretched length. When the spring is expanded, the spring’s displacement or difference between its relaxed length and stretched length should be used for the <i>x</i>-value in calculating the potential energy of the spring.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The displacement of the spring is \\(x=23\\, \\text{cm}-20\\, \\text{cm}=3\\, \\text{cm}\\), so the contributed potential energy is \\(U=\\frac{1}{2}k{x}^{2}=\\frac{1}{2}(4\\, \\text{N/cm}){(3\\, \\text{cm})}^{2}=0.18\\, \\text{J}\\).</li><li>When the spring’s displacement is \\(x=26\\, \\text{cm}-20\\, \\text{cm}=6\\, \\text{cm}\\), the potential energy is \\(U=\\frac{1}{2}k{x}^{2}=\\frac{1}{2}(4\\, \\text{N/cm}){(6\\, \\text{cm})}^{2}=0.72\\, \\text{J}\\), which is a 0.54-J increase over the amount in part (a).</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Calculating the elastic potential energy and potential energy differences from the equation involves solving for the potential energies based on the given lengths of the spring. Since <i>U</i> depends on \\({x}^{2}\\), the potential energy for a compression (negative <i>x</i>) is the same as for an extension of equal magnitude.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Potential Energy of a Vertical Mass-Spring System",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A block weighing \\(1.2\\, \\text{N}\\) is hung from a spring with a spring constant of \\(6.0\\, \\text{N}\\text{/}\\text{m}\\), as shown in the figure. (a) What is the maximum expansion of the spring, as seen at point C? (b) What is the total potential energy at point B, halfway between A and C? (c) What is the speed of the block at point B?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>In part (a) we calculate the distance \\({y}_{C}\\) as discussed in the previous text. Then in part (b), we use half of the y value to calculate the potential energy at point B using equations the equation and the equation. This energy must be equal to the kinetic energy, another section, at point B since the initial energy of the system is zero. By calculating the kinetic energy at point B, we can now calculate the speed of the block at point B.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Since the total energy of the system is zero at point A as discussed previously, the maximum expansion of the spring is calculated to be: <div class='eq'>\\[\\begin{array}{lll}{y}_{\\text{C}} & = & \\frac{-2mg}{k} \\\\ {y}_{\\text{C}} & = & \\frac{-2(1.2N)}{(6.0\\, \\text{N/m})}=-0.40m\\end{array}\\]</div></li><li>The position of \\({y}_{B}\\)is half of the position at \\({y}_{C}\\) or \\(yB=yC/2=-mg/k=\\). The total potential energy at point B would therefore be: <div class='eq'>\\[\\begin{array}{lll}{U}_{B} & = & mg({y}_{C}/2)+\\frac{1}{2}k({y}_{C}/2{)}^{2} \\\\ {U}_{B} & = & mg(-mg/k)+(\\frac{1}{2})k(-mg/k{)}^{2} \\\\ {U}_{B} & = & -(mg{)}^{2}/(2k) \\\\ {U}_{B} & = & (1.2N)(-0.20m)+{\\frac{1}{2}(6N/m)(-0.20m)}^{2} \\\\ {U}_{\\text{B}} & = & -0.12J\\text{where we have used }{y}_{C}=-2mg/k\\text{ from part (a)}\\end{array}\\]</div></li><li>The mass of the block is the weight divided by gravity.<br> <div class='eq'>\\[m=\\frac{{F}_{w}}{g}=\\frac{1.2N}{9.8\\, {\\text{m/s}}^{2}}=0.12\\, \\text{kg}\\]</div>The kinetic energy at point B therefore is 0.12 J because the total energy is zero. Therefore, the speed of the block at point B is equal to <div class='eq'>\\[\\begin{array}{ll}K= & \\frac{1}{2}m{v}^{2} \\\\ v= & \\sqrt{\\frac{2K}{m}}=\\sqrt{\\frac{2(0.12J)}{(0.12kg)}}=1.4m/s\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Even though the potential energy due to gravity is relative to a chosen zero location, the solutions to this problem would be the same if the zero energy points were chosen at different locations.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>In the example <i>Basic Properties of Potential Energy</i>, what are the potential energies of the particle at \\(x=1\\, \\text{m}\\) and \\(x=2\\, \\text{m}\\) with respect to zero at \\(x=1.5\\, \\text{m}\\)? Verify that the difference of potential energy is still 7 J.</p>",
+     "a": "<p>\\((4.63\\, \\text{J})-(-2.38\\, \\text{J})=7.00\\, \\text{J}\\)</p>"
+    },
+    {
+     "q": "<p>What are the values of the gravitational potential energy of the hiker at the base, summit, and sea level, with respect to a sea-level zero of potential energy?</p>",
+     "a": "<p>35.3 kJ, 143 kJ, 0</p>"
+    },
+    {
+     "q": "<p>When the length of the spring in the example <i>Spring Potential Energy</i> changes from an initial value of 22.0 cm to a final value, the elastic potential energy it contributes changes by \\(0.0800\\, \\text{J}.\\) Find the final length.</p>",
+     "a": "<p>22.8 cm. Using 0.02 m for the initial displacement of the spring (see above), we calculate the final displacement of the spring to be 0.028 m; therefore the length of the spring is the unstretched length plus the displacement, or 22.8 cm.</p>"
+    },
+    {
+     "q": "<p>Suppose the mass in the equation is doubled while keeping the all other conditions the same. Would the maximum expansion of the spring increase, decrease, or remain the same? Would the speed at point B be larger, smaller, or the same compared to the original mass?</p>",
+     "a": "<p>It increases because you had to exert a downward force, doing positive work, to pull the mass down, and that’s equal to the change in the total potential energy.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "For a single-particle system, the difference of potential energy is the opposite of the work done by the forces acting on the particle as it moves from one position to another.",
+    "Since only differences of potential energy are physically meaningful, the zero of the potential energy function can be chosen at a convenient location.",
+    "The potential energies for Earth’s constant gravity, near its surface, and for a Hooke’s law force are linear and quadratic functions of position, respectively."
+   ]
+  },
+  {
+   "num": "8.2",
+   "module": "m58313",
+   "title": "Conservative and Non-Conservative Forces",
+   "objectives": [
+    "Characterize a conservative force in several different ways",
+    "Specify mathematical conditions that must be satisfied by a conservative force and its components",
+    "Relate the conservative force between particles of a system to the potential energy of the system",
+    "Calculate the components of a conservative force in various cases"
+   ],
+   "callouts": [
+    "\\frac{d{F}_{x}}{dy}=\\frac{d{F}_{y}}{dx}",
+    "{F}_{l}=-\\frac{dU}{dl}"
+   ],
+   "examples": [
+    {
+     "title": "Conservative or Not?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Which of the following two-dimensional forces are conservative and which are not? Assume <i>a</i> and <i>b</i> are constants with appropriate units:</p><p>(a) \\(ax{y}^{3}\\hat{\\mathbf{i}}+ay{x}^{3}\\hat{\\mathbf{j}},\\) (b) \\(a[({y}^{2}\\text{/}x)\\hat{\\mathbf{i}}+2y\\, \\ln (x\\text{/}b)\\hat{\\mathbf{j}}],\\) (c) \\(\\frac{ax\\hat{\\mathbf{i}}+ay\\hat{\\mathbf{j}}}{{x}^{2}+{y}^{2}}\\)</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Apply the condition stated in the equation, namely, using the derivatives of the components of each force indicated. If the derivative of the <i>y</i>-component of the force with respect to <i>x</i> is equal to the derivative of the <i>x</i>-component of the force with respect to <i>y</i>, the force is a conservative force, which means the path taken for potential energy or work calculations always yields the same results.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(\\frac{d{F}_{x}}{dy}=\\frac{d(ax{y}^{3})}{dy}=3ax{y}^{2}\\) and \\(\\frac{d{F}_{y}}{dx}=\\frac{d(ay{x}^{3})}{dx}=3ay{x}^{2}\\), so this force is non-conservative.</li><li>\\(\\frac{d{F}_{x}}{dy}=\\frac{d(a{y}^{2}\\text{/}x)}{dy}=\\frac{2ay}{x}\\) and \\(\\frac{d{F}_{y}}{dx}=\\frac{d(2ay\\, \\ln (x\\text{/}b))}{dx}=\\frac{2ay}{x},\\) so this force is conservative.</li><li>\\(\\frac{d{F}_{x}}{dy}=\\frac{d(ax\\text{/}({x}^{2}+{y}^{2}))}{dy}=-\\frac{ax(2y)}{{({x}^{2}+{y}^{2})}^{2}}=\\frac{d{F}_{y}}{dx}=\\frac{d(ay\\text{/}({x}^{2}+{y}^{2}))}{dx},\\) again conservative.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The conditions in the equation are derivatives as functions of a single variable; in three dimensions, similar conditions exist that involve more derivatives.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Force due to a Quartic Potential Energy",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The potential energy for a particle undergoing one-dimensional motion along the <i>x</i>-axis is</p><div class='eq'>\\[U(x)=\\frac{1}{4}c{x}^{4},\\]</div><p>where \\(c=8\\, {\\text{N/m}}^{3}.\\) Its total energy at \\(x=0\\, \\text{is}\\, 2\\, \\text{J,}\\) and it is not subject to any non-conservative forces. Find (a) the positions where its kinetic energy is zero and (b) the forces at those positions.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>(a) We can find the positions where \\(K=0,\\) so the potential energy equals the total energy of the given system. (b) Using the equation, we can find the force evaluated at the positions found from the previous part, since the mechanical energy is conserved.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The total energy of the system of 2 J equals the quartic elastic energy as given in the problem, <div class='eq'>\\[2\\, \\text{J}=\\frac{1}{4}(8\\, {\\text{N/m}}^{3}){x}_{\\text{f}}{}^{4}.\\]</div> Solving for \\({x}_{\\text{f}}\\) results in \\({x}_{\\text{f}}=\\pm 1\\, \\text{m}.\\)</li><li>From the equation, <div class='eq'>\\[{F}_{x}=-dU\\text{/}dx=-c{x}^{3}.\\]</div> Thus, evaluating the force at \\(\\pm 1\\, \\text{m}\\), we get <div class='eq'>\\[\\mathbf{\\vec{F}}=-(8\\, {\\text{N/m}}^{3}){(\\pm 1\\, \\text{m})}^{3}\\mathbf{\\hat{i}}=\\pm 8\\, \\text{N}\\mathbf{\\hat{i}}.\\]</div> At both positions, the magnitude of the forces is 8 N and the directions are toward the origin, since this is the potential energy for a restoring force.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Finding the force from the potential energy is mathematically easier than finding the potential energy from the force, because differentiating a function is generally easier than integrating one.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A two-dimensional, conservative force is zero on the <i>x</i>- and <i>y</i>-axes, and satisfies the condition \\((d{F}_{x}\\text{/}dy)=(d{F}_{y}\\text{/}dx)=(4\\, {\\text{N/m}}^{3})xy\\). What is the magnitude of the force at the point \\(x=y=1\\, \\text{m?}\\)</p>",
+     "a": "<p>2.83 N</p>"
+    },
+    {
+     "q": "<p>Find the forces on the particle in the example <i>Force due to a Quartic Potential Energy</i> when its kinetic energy is 1.0 J at \\(x=0.\\)</p>",
+     "a": "<p>\\(F=4.8\\, \\text{N}\\), directed toward the origin</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A conservative force is one for which the work done is independent of path. Equivalently, a force is conservative if the work done over any closed path is zero.",
+    "A non-conservative force is one for which the work done depends on the path.",
+    "For a conservative force, the infinitesimal work is an exact differential. This implies conditions on the derivatives of the force’s components.",
+    "The component of a conservative force, in a particular direction, equals the negative of the derivative of the potential energy for that force, with respect to a displacement in that direction."
+   ]
+  },
+  {
+   "num": "8.3",
+   "module": "m58314",
+   "title": "Conservation of Energy",
+   "objectives": [
+    "Formulate the principle of conservation of mechanical energy, with or without the presence of non-conservative forces",
+    "Use the conservation of mechanical energy to calculate various properties of simple systems"
+   ],
+   "callouts": [
+    "0={W}_{\\text{nc},AB}=\\Delta {(K+U)}_{AB}=\\Delta {E}_{AB}"
+   ],
+   "examples": [
+    {
+     "title": "Simple Pendulum",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A particle of mass <i>m</i> is hung from the ceiling by a massless string of length 1.0 m, as shown in the figure. The particle is released from rest, when the angle between the string and the downward vertical direction is \\(30\\text{°.}\\) What is its speed when it reaches the lowest point of its arc?</p><figure><img src='img/CNX_UPhysics_08_03_SimpPend.jpg' alt=\"The figure is an illustration of a pendulum consisting of a ball hanging from a string. The string is one meter long, and the ball has mass m. It is shown at the position where the string makes an angle of thirty degrees to the vertical. At this location, the ball is a height h above its minimum height. The circular arc of the ball’s trajectory is indicated by a dashed curve.\" loading='lazy'><figcaption>A particle hung from a string constitutes a simple pendulum. It is shown when released from rest, along with some distances used in analyzing the motion.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Using our problem-solving strategy, the first step is to define that we are interested in the particle-Earth system. Second, only the gravitational force is acting on the particle, which is conservative (step 3). We neglect air resistance in the problem, and no work is done by the string tension, which is perpendicular to the arc of the motion. Therefore, the mechanical energy of the system is conserved, as represented by the equation, \\(0=\\Delta (K+U)\\). Because the particle starts from rest, the increase in the kinetic energy is just the kinetic energy at the lowest point. This increase in kinetic energy equals the decrease in the gravitational potential energy, which we can calculate from the geometry. In step 4, we choose a reference point for zero gravitational potential energy to be at the lowest vertical point the particle achieves, which is mid-swing. Lastly, in step 5, we set the sum of energies at the highest point (initial) of the swing to the lowest point (final) of the swing to ultimately solve for the final speed.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We are neglecting non-conservative forces, so we write the energy conservation formula relating the particle at the highest point (initial) and the lowest point in the swing (final) as</p><div class='eq'>\\[{K}_{\\text{i}}+{U}_{\\text{i}}={K}_{\\text{f}}+{U}_{\\text{f}}.\\]</div><p>Since the particle is released from rest, the initial kinetic energy is zero. At the lowest point, we define the gravitational potential energy to be zero. Therefore our conservation of energy formula reduces to</p><div class='eq'>\\[\\begin{array}{lll}0+mgh & = & \\frac{1}{2}m{v}^{2}+0 \\\\ v & = & \\sqrt{2gh}.\\end{array}\\]</div><p>The vertical height of the particle is not given directly in the problem. This can be solved for by using trigonometry and two givens: the length of the pendulum and the angle through which the particle is vertically pulled up. Looking at the diagram, the vertical dashed line is the length of the pendulum string. The vertical height is labeled <i>h</i>. The other partial length of the vertical string can be calculated with trigonometry. That piece is solved for by</p><div class='eq'>\\[\\cos \\, \\theta =x\\text{/}L,x=L\\, \\cos \\, \\theta .\\]</div><p>Therefore, by looking at the two parts of the string, we can solve for the height <i>h</i>,</p><div class='eq'>\\[\\begin{array}{lll}x+h & = & L \\\\ L\\, \\cos \\, \\theta +h & = & L \\\\ h & = & L-L\\, \\cos \\, \\theta =L(1-\\cos \\, \\theta ).\\end{array}\\]</div><p>We substitute this height into the previous expression solved for speed to calculate our result:</p><div class='eq'>\\[v=\\sqrt{2gL(1-\\cos \\, \\theta )}=\\sqrt{2(9.8\\, {\\text{m/s}}^{2})(1\\, \\text{m})(1-\\cos \\, 30^{\\circ} )}=1.62\\, \\text{m/s}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We found the speed directly from the conservation of mechanical energy, without having to solve the differential equation for the motion of a pendulum (see Oscillations). We can approach this problem in terms of <b>bar graphs of total energy</b>. Initially, the particle has all potential energy, being at the highest point, and no kinetic energy. When the particle crosses the lowest point at the bottom of the swing, the energy moves from the potential energy column to the kinetic energy column. Therefore, we can imagine a progression of this transfer as the particle moves between its highest point, lowest point of the swing, and back to the highest point (the figure). As the particle travels from the lowest point in the swing to the highest point on the far right hand side of the diagram, the energy bars go in reverse order from (c) to (b) to (a).</p><figure><img src='img/CNX_UPhysics_08_03_EnergyBars.jpg' alt=\"Bar graphs representing the total energy (E), potential energy (U), and kinetic energy (K) of the particle in different positions are shown. In figure (a), the total energy of the system equals the potential energy and the kinetic energy is zero. In figure (b), the kinetic and potential energies are equal, and the kinetic energy plus potential energy bar graphs equal the total energy. In figure (c) the kinetic energy bar graph is equal to the total energy of the system and the potential energy is zero. The total energy bar is the same height in all three graphs.\" loading='lazy'><figcaption>Bar graphs representing the total energy (<i>E</i>), potential energy (<i>U</i>), and kinetic energy (<i>K</i>) of the particle in different positions. (a) The total energy of the system equals the potential energy and the kinetic energy is zero, which is found at the highest point the particle reaches. (b) The particle is midway between the highest and lowest point, so the kinetic energy plus potential energy bar graphs equal the total energy. (c) The particle is at the lowest point of the swing, so the kinetic energy bar graph is the highest and equal to the total energy of the system.</figcaption></figure>"
+      }
+     ]
+    },
+    {
+     "title": "Air Resistance on a Falling Object",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A helicopter is hovering at an altitude of \\(1\\, \\text{km}\\) when a panel from its underside breaks loose and plummets to the ground (the figure). The mass of the panel is \\(15\\, \\text{kg},\\) and it hits the ground with a speed of \\(45\\, \\text{m}\\text{/}\\text{s}\\). How much mechanical energy was dissipated by air resistance during the panel’s descent?</p><figure><img src='img/CNX_UPhysics_08_03_Helicopter.jpg' alt=\"An illustration of a helicopter and a panel an unspecified distance below it, where terminal velocity is reached. The panel begins its fall from the helicopter. Bar graphs are shown for the panel at the start of its fall and once it has reached terminal velocity. At the start, the potential  energy U is equal to the total energy E, and the kinetic energy is zero. Once the panel reaches terminal velocity, the kinetic energy is no longer zero, the potential energy has decreased, and the total energy is still the sum of the kinetic plus potential energies, but this total has also decreased.\" loading='lazy'><figcaption>A helicopter loses a panel that falls until it reaches terminal velocity of 45 m/s. How much did air resistance contribute to the dissipation of energy in this problem?</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Step 1: Here only one body is being investigated.</p><p>Step 2: Gravitational force is acting on the panel, as well as air resistance, which is stated in the problem.</p><p>Step 3: Gravitational force is conservative; however, the non-conservative force of air resistance does negative work on the falling panel, so we can use the conservation of mechanical energy, in the form expressed by the equation, to find the energy dissipated. This energy is the magnitude of the work:</p><div class='eq'>\\[\\Delta {E}_{\\text{diss}}=|{W}_{\\text{nc,if}}|=|\\Delta {(K+U)}_{\\text{if}}|.\\]</div><p>Step 4: The initial kinetic energy, at \\({y}_{\\text{i}}=1\\, \\text{km},\\) is zero. We set the gravitational potential energy to zero at ground level out of convenience.</p><p>Step 5: The non-conservative work is set equal to the energies to solve for the work dissipated by air resistance.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The mechanical energy dissipated by air resistance is the algebraic sum of the gain in the kinetic energy and loss in potential energy. Therefore the calculation of this energy is</p><div class='eq'>\\[\\begin{array}{ll}\\Delta {E}_{\\text{diss}} & =|{K}_{\\text{f}}-{K}_{\\text{i}}+{U}_{\\text{f}}-{U}_{\\text{i}}| \\\\ & =|\\frac{1}{2}(15\\, \\text{kg}){(45\\, \\text{m/s})}^{2}-0+0-(15\\, \\text{kg})(9.8\\, {\\text{m/s}}^{2})(1000\\, \\text{m})|=130\\, \\text{kJ}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Most of the initial mechanical energy of the panel \\(({U}_{\\text{i}})\\), 147 kJ, was lost to air resistance. Notice that we were able to calculate the energy dissipated without knowing what the force of air resistance was, only that it was dissipative.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Constant Acceleration",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Use the potential energy \\(U(x)=E(x\\text{/}{x}_{0}),\\) for \\(E\\gt 0,\\) in the equation to find the position <i>x</i> of a particle as a function of time <i>t</i>.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since we know how the potential energy changes as a function of <i>x</i>, we can substitute for \\(U(x)\\) in the equation, integrate, and then solve for <i>x</i>. This results in an expression of <i>x</i> as a function of time with constants of energy <i>E</i>, mass <i>m</i>, and the initial position \\({x}_{0}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Following the first two suggested steps in the above strategy,</p><div class='eq'>\\[t={\\int}_{{x}_{0}}^{x}\\frac{dx}{\\sqrt{(2E\\text{/}m{x}_{0})({x}_{0}-x)}}=\\frac{1}{\\sqrt{(2E\\text{/}m{x}_{0})}}{|-2\\sqrt{({x}_{0}-x)}|}_{{x}_{0}}^{x}=-\\frac{2\\sqrt{({x}_{0}-x)}}{\\sqrt{(2E\\text{/}m{x}_{0})}}.\\]</div><p>Solving for the position, we obtain \\(x(t)={x}_{0}-\\frac{1}{2}(E\\text{/}m{x}_{0}){t}^{2}\\).</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The position as a function of time, for this potential, represents one-dimensional motion with constant acceleration, \\(a=(\\, -E\\text{/}m{x}_{0}),\\) starting at rest from position \\({x}_{0}.\\) This is not so surprising, since this is a potential energy for a constant force, \\(F=-dU\\text{/}dx=\\, -E\\text{/}{x}_{0},\\) and \\(a=F\\text{/}m.\\)</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>How high above the bottom of its arc is the particle in the simple pendulum above, when its speed is \\(0.81\\, \\text{m}\\text{/}\\text{s}?\\)</p>",
+     "a": "<p>\\(0.10\\, \\text{m}\\)</p>"
+    },
+    {
+     "q": "<p>You probably recall that, neglecting air resistance, if you throw a projectile straight up, the time it takes to reach its maximum height equals the time it takes to fall from the maximum height back to the starting height. Suppose you cannot neglect air resistance, as in the example <i>Air Resistance on a Falling Object</i>. Is the time the projectile takes to go up (a) greater than, (b) less than, or (c) equal to the time it takes to come back down? Explain.</p>",
+     "a": "<p>b. At any given height, the gravitational potential energy is the same going up or down, but the kinetic energy is less going down than going up, since air resistance is dissipative and does negative work. Therefore, at any height, the speed going down is less than the speed going up, so it must take a longer time to go down than to go up.</p>"
+    },
+    {
+     "q": "<p>What potential energy \\(U(x)\\) can you substitute in the equation that will result in motion with constant velocity of 2 m/s for a particle of mass 1 kg and mechanical energy 1 J?</p>",
+     "a": "<p>constant \\(U(x)=-1\\, \\text{J}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A conserved quantity is a physical property that stays constant regardless of the path taken.",
+    "A form of the work-energy theorem says that the change in the mechanical energy of a particle equals the work done on it by non-conservative forces.",
+    "If non-conservative forces do no work and there are no external forces, the mechanical energy of a particle stays constant. This is a statement of the conservation of mechanical energy and there is no change in the total mechanical energy.",
+    "For one-dimensional particle motion, in which the mechanical energy is constant and the potential energy is known, the particle’s position, as a function of time, can be found by evaluating an integral that is derived from the conservation of mechanical energy."
+   ]
+  },
+  {
+   "num": "8.4",
+   "module": "m58315",
+   "title": "Potential Energy Diagrams and Stability",
+   "objectives": [
+    "Create and interpret graphs of potential energy",
+    "Explain the connection between stability and potential energy"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Quartic and Quadratic Potential Energy Diagram",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The potential energy for a particle undergoing one-dimensional motion along the <i>x</i>-axis is \\(U(x)=2({x}^{4}-{x}^{2}),\\) where <i>U</i> is in joules and <i>x</i> is in meters. The particle is not subject to any non-conservative forces and its mechanical energy is constant at \\(E=-0.25\\, \\text{J}\\). (a) Is the motion of the particle confined to any regions on the <i>x</i>-axis, and if so, what are they? (b) Are there any equilibrium points, and if so, where are they and are they stable or unstable?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, we need to graph the potential energy as a function of <i>x</i>. The function is zero at the origin, becomes negative as <i>x</i> increases in the positive or negative directions (\\({x}^{2}\\) is larger than \\({x}^{4}\\) for \\(x\\lt 1\\)), and then becomes positive at sufficiently large \\(|x|\\). Your graph should look like a double potential well, with the zeros determined by solving the equation \\(U(x)=0\\), and the extremes determined by examining the first and second derivatives of <i>U</i>(<i>x</i>), as shown in the figure.</p><figure><img src='img/CNX_UPhysics_08_04_PE2blWell.jpg' alt=\"The potential energy graph U in units of Joules as a function of x in units of meters for a one-dimensional, quartic and quadratic potential energy, is shown with various quantities indicated. The horizontal scale runs from –1.2 to 1.2, labeled at 0.5 m intervals and with grid lines every 0.1 m. The vertical scale runs from –0.55 to +0.55, labeled at 0.1 J intervals with grid lines every 0.05 J. The function U of x equals 2 times the quantity x to the fourth minus x squared. This function goes to infinity at plus and minus infinite x, is zero at x equal to zero and has a minimum value of –0.5 J at x  approximately equal to –0.7 m and +0.7 m. The minimum at positive x is labeled as point Q and the minimum at negative x is labeled as point  minus Q. The U of x graph crosses U=0, the x axis, in two locations, at x=-1 and x=+1.   The total energy E is equal to –0.25 J and is shown as a horizontal line at that value. It intersects the U of x graph at four locations, described from left to right. The leftmost point is at an x value between –0.95 and –0.9 and is labeled as point minus R. The next location at which U=-0.25 is at an x value between –0.4 and –0.35  and is labeled as point minus P. The next location at which U=-0.25 is at an x value between 0.35 and 0.4  and is labeled as point P. The rightmost location at which U=-0.25  is at an x value between 0.9 and 0.95 and is labeled as point R.\" loading='lazy'><figcaption>The potential energy graph for a one-dimensional, quartic and quadratic potential energy, with various quantities indicated.</figcaption></figure><p>You can find the values of (a) the allowed regions along the <i>x</i>-axis, for the given value of the mechanical energy, from the condition that the kinetic energy can’t be negative, and (b) the equilibrium points and their stability from the properties of the force (stable for a relative minimum and unstable for a relative maximum of potential energy).</p><p>You can just eyeball the graph to reach qualitative answers to the questions in this example. That, after all, is the value of potential energy diagrams. You can see that there are two allowed regions for the motion \\((E\\gt U)\\) and three equilibrium points (slope \\(dU\\text{/}dx=0),\\) of which the central one is unstable \\(({d}^{2}U\\text{/}d{x}^{2}\\lt 0),\\) and the other two are stable \\(({d}^{2}U\\text{/}d{x}^{2}\\gt 0).\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>To find the allowed regions for <i>x</i>, we use the condition <div class='eq'>\\[K=E-U=-\\frac{1}{4}-2({x}^{4}-{x}^{2})\\ge 0.\\]</div> If we complete the square in \\({x}^{2}\\), this condition simplifies to \\(2{({x}^{2}-\\frac{1}{2})}^{2}\\le \\frac{1}{4},\\) which we can solve to obtain <div class='eq'>\\[\\frac{1}{2}-\\sqrt{\\frac{1}{8}}\\le {x}^{2}\\le \\frac{1}{2}+\\sqrt{\\frac{1}{8}}.\\]</div> This represents two allowed regions, \\({x}_{p}\\le x\\le {x}_{R}\\) and \\(-{x}_{R}\\le x\\le -{x}_{p},\\) where \\({x}_{p}=0.38\\) and \\({x}_{R}=0.92\\) (in meters).</li><li>To find the equilibrium points, we solve the equation <div class='eq'>\\[dU\\text{/}dx=8{x}^{3}-4x=0\\]</div> and find \\(x=0\\) and \\(x=\\pm {x}_{Q}\\), where \\({x}_{Q}=1\\text{/}\\sqrt{2}=0.707\\) (meters). The second derivative <div class='eq'>\\[{d}^{2}U\\text{/}d{x}^{2}=24{x}^{2}-4\\]</div> is negative at \\(x=0\\), so that position is a relative maximum and the equilibrium there is unstable. The second derivative is positive at \\(x=\\pm {x}_{Q}\\), so these positions are relative minima and represent stable equilibria.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The particle in this example can oscillate in the allowed region about either of the two stable equilibrium points we found, but it does not have enough energy to escape from whichever potential well it happens to initially be in. The conservation of mechanical energy and the relations between kinetic energy and speed, and potential energy and force, enable you to deduce much information about the qualitative behavior of the motion of a particle, as well as some quantitative information, from a graph of its potential energy.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Sinusoidal Oscillations",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find <i>x</i>(<i>t</i>) for a particle moving with a constant mechanical energy \\(E\\gt 0\\) and a potential energy \\(U(x)=\\frac{1}{2}k{x}^{2}\\), when the particle starts from rest at time \\(t=0\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We follow the same steps as we did in another section. Substitute the potential energy <i>U</i> into another section and factor out the constants, like <i>m</i> or <i>k</i>. Integrate the function and solve the resulting expression for position, which is now a function of time.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substitute the potential energy in another section and integrate using an integral solver found on a web search:</p><div class='eq'>\\[t={\\int}_{{x}_{0}}^{x}\\frac{dx}{\\sqrt{(k\\text{/}m)[(2E\\text{/}k)-{x}^{2}]}}=\\sqrt{\\frac{m}{k}}[{\\sin}^{-1}(\\frac{x}{\\sqrt{2E\\text{/}k}})-{\\sin}^{-1}(\\frac{{x}_{0}}{\\sqrt{2E\\text{/}k}})].\\]</div><p>From the initial conditions at \\(t=0,\\) the initial kinetic energy is zero and the initial potential energy is \\(\\frac{1}{2}k{x}_{0}{}^{2}=E,\\) from which you can see that \\({x}_{0}\\text{/}\\sqrt{(2E\\text{/}k)}=\\pm 1\\) and \\({\\sin}^{-1}(\\pm )=\\pm {90}^{0}.\\) Now you can solve for <i>x</i>:</p><div class='eq'>\\[x(t)=\\sqrt{(2E\\text{/}k)}\\, \\sin [(\\sqrt{k\\text{/}m})t\\pm {90}^{0}]=\\pm \\sqrt{(2E\\text{/}k)}\\, \\cos [(\\sqrt{k\\text{/}m})t].\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>A few paragraphs earlier, we referred to this mass-spring system as an example of a harmonic oscillator. Here, we anticipate that a harmonic oscillator executes sinusoidal oscillations with a maximum displacement of \\(\\sqrt{(2E\\text{/}k)}\\) (called the amplitude) and a rate of oscillation of \\((1\\text{/}2\\pi )\\sqrt{k\\text{/}m}\\) (called the frequency). Further discussions about oscillations can be found in Oscillations.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Repeat the example <i>Quartic and Quadratic Potential Energy Diagram</i> when the particle’s mechanical energy is \\(+0.25\\, \\text{J.}\\)</p>",
+     "a": "<p>a. yes, motion confined to \\(-1.055\\, \\text{m}\\le x\\le 1.055\\, \\text{m}\\); b. same equilibrium points and types as in example</p>"
+    },
+    {
+     "q": "<p>Find \\(x(t)\\) for the mass-spring system in the example <i>Sinusoidal Oscillations</i> if the particle starts from \\({x}_{0}=0\\) at \\(t=0.\\) What is the particle’s initial velocity?</p>",
+     "a": "<p>\\(x(t)=\\pm \\sqrt{(2E\\text{/}k)}\\, \\sin [(\\sqrt{k\\text{/}m})t]\\, \\text{and}\\, {v}_{0}=\\pm \\sqrt{(2E\\text{/}m)}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Interpreting a one-dimensional potential energy diagram allows you to obtain qualitative, and some quantitative, information about the motion of a particle.",
+    "At a turning point, the potential energy equals the mechanical energy and the kinetic energy is zero, indicating that the direction of the velocity reverses there.",
+    "The negative of the slope of the potential energy curve, for a particle, equals the one-dimensional component of the conservative force on the particle. At an equilibrium point, the slope is zero and is a stable (unstable) equilibrium for a potential energy minimum (maximum)."
+   ]
+  },
+  {
+   "num": "8.5",
+   "module": "m58661",
+   "title": "Sources of Energy",
+   "objectives": [
+    "Describe energy transformations and conversions in general terms",
+    "Explain what it means for an energy source to be renewable or nonrenewable"
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "Energy can be transferred from one system to another and transformed or converted from one type into another. Some of the basic types of energy are kinetic, potential, thermal, and electromagnetic.",
+    "Renewable energy sources are those that are replenished by ongoing natural processes, over human time scales. Examples are wind, water, geothermal, and solar power.",
+    "Non-renewable energy sources are those that are depleted by consumption, over human time scales. Examples are fossil fuel and nuclear power."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_08_01_GrBlueHill.jpg",
+  "CNX_UPhysics_08_03_EnergyBars.jpg",
+  "CNX_UPhysics_08_03_Helicopter.jpg",
+  "CNX_UPhysics_08_03_SimpPend.jpg",
+  "CNX_UPhysics_08_04_PE2blWell.jpg"
+ ]
+}
