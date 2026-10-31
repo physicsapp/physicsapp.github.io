@@ -1,0 +1,743 @@
+# FREEBODY NOTES: CHAPTER 10, FIXED AXIS ROTATION
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 10.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(v_\text{t} = r\omega\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 10.1
+In short: Rotation about a fixed axis uses angles instead of distances. The angle \(\theta\) in radians is arc length over radius, \(\theta = \frac{s}{r}\), so one full turn is \(2\pi\) rad. Angular velocity \(\omega = \frac{d\theta}{dt}\) (rad/s) says how fast the angle changes, and angular acceleration \(\alpha = \frac{d\omega}{dt}\) (rad/s²) says how fast \(\omega\) changes. Every point on a rigid body has the same \(\theta\), \(\omega\), and \(\alpha\), but points farther out move faster: \(v_\text{t} = r\omega\) and \(a_\text{t} = r\alpha\). Counterclockwise is positive by convention.
+Watch out: Use radians in \(v_\text{t} = r\omega\) and \(s = r\theta\). Turn rpm into rad/s first: multiply by \(2\pi\) and divide by 60.
+
+## SUMMARY 10.2
+In short: With constant angular acceleration, rotation follows the same equations as straight line motion with constant acceleration, with \(\theta\) for \(x\), \(\omega\) for \(v\), and \(\alpha\) for \(a\): \(\omega_\text{f} = \omega_0 + \alpha t\), \(\theta_\text{f} = \theta_0 + \omega_0t + \frac12\alpha t^2\), and \(\omega_\text{f}^2 = \omega_0^2 + 2\alpha\Delta\theta\). The average angular velocity is \(\bar\omega = \frac{\omega_0 + \omega_\text{f}}{2}\). Pick the equation that leaves out the quantity you don't know and don't need.
+Watch out: A wheel slowing down has \(\alpha\) opposite to \(\omega\). If \(\omega\) is positive, a slowing wheel has negative \(\alpha\).
+
+## SUMMARY 10.3
+In short: A point at distance \(r\) from the axis moves on a circle, so its speed is \(v_\text{t} = r\omega\) and its centripetal acceleration is \(a_\text{c} = \frac{v_\text{t}^2}{r} = r\omega^2\), pointing toward the axis. If the rotation speeds up or slows down there is also a tangential acceleration \(a_\text{t} = r\alpha\) along the path. The two are at right angles, so the total acceleration has size \(\sqrt{a_\text{c}^2 + a_\text{t}^2}\). A wheel rolling without slipping moves forward at \(v = r\omega\).
+Watch out: Even at constant \(\omega\) every point off the axis accelerates, because its direction keeps changing. Only \(a_\text{t}\) is zero then.
+
+## SUMMARY 10.4
+In short: A spinning object has rotational kinetic energy \(K = \frac12I\omega^2\), where the moment of inertia \(I = \sum m_jr_j^2\) (kg·m²) measures how hard it is to change its rotation. \(I\) depends on the mass and on how far that mass sits from the axis: mass far out counts much more, because \(r\) is squared. The same object has different \(I\) about different axes. Energy is conserved as usual; a rolling or spinning object just has this extra kind of kinetic energy.
+Watch out: \(I\) is not just mass. A hoop and a disk of the same mass and radius have different \(I\), because the hoop's mass is all at the rim.
+
+## SUMMARY 10.5
+In short: For a solid object, \(I = \int r^2\,dm\). The results for common shapes go in a table: a thin hoop about its center \(MR^2\), a solid disk or cylinder \(\frac12MR^2\), a solid sphere \(\frac25MR^2\), a thin rod about its center \(\frac1{12}ML^2\) and about one end \(\frac13ML^2\). The parallel axis theorem moves the axis: \(I = I_\text{CM} + Md^2\), where \(d\) is the distance from the center of mass. For an object made of parts, add the parts' moments of inertia about the same axis.
+Watch out: The parallel axis theorem only works starting from the axis through the center of mass, and the moment of inertia is smallest there.
+
+## SUMMARY 10.6
+In short: Torque is the turning effect of a force: \(\tau = r_\perp F = rF\sin\theta\) (N·m), where \(r\) is the distance from the axis to where the force acts and \(\theta\) is the angle between \(\vec r\) and \(\vec F\). A force through the axis, or along the line toward it, gives no torque. Pushing farther from the axis or at a right angle gives more torque, which is why doorknobs sit far from the hinges. As a vector, \(\vec\tau = \vec r\times\vec F\); counterclockwise torques are positive. The net torque is the sum of all the torques.
+Watch out: Torque depends on where the force acts, not just how big it is. The same force can give a large torque, a small torque, or none.
+
+## SUMMARY 10.7
+In short: Newton's second law for rotation is \(\sum\tau = I\alpha\): the net torque sets the angular acceleration, and the moment of inertia plays the role of mass. A bigger torque spins things up faster; a bigger \(I\) resists. For a mass hanging from a rope on a pulley, write \(F = ma\) for the mass and \(\tau = I\alpha\) for the pulley, linked by \(a = r\alpha\). The rope tension is less than the hanging weight when the mass speeds up downward.
+Watch out: Use the net torque, with signs. Two torques that turn opposite ways partly cancel.
+
+## SUMMARY 10.8
+In short: A torque does work as it turns an object through an angle: \(W = \tau\,\Delta\theta\) for a constant torque (in joules, with \(\theta\) in radians). The work energy theorem holds for rotation: the net work equals the change in rotational kinetic energy, \(W = \frac12I\omega_\text{f}^2 - \frac12I\omega_0^2\). The power delivered by a torque is \(P = \tau\omega\), the rotational version of \(P = Fv\). An engine with a given power gives more torque at low rotation speed.
+Watch out: Angles must be in radians in \(W = \tau\Delta\theta\) and \(P = \tau\omega\). One turn is \(2\pi\) rad, not 360.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+
+## EQUATIONS 10.1
+* Angular position: \(\theta = \dfrac{s}{r}\) | The angle \(\theta\) in radians is arc length \(s\) (m) over radius \(r\) (m). One full turn is \(2\pi\) rad.
+* Angular velocity: \(\omega = \dfrac{d\theta}{dt}\) | Angular velocity \(\omega\) (rad/s) is how fast the angle changes. Every point of a rigid body has the same \(\omega\).
+* Angular acceleration: \(\alpha = \dfrac{d\omega}{dt}\) | Angular acceleration \(\alpha\) (rad/s²) is how fast the angular velocity changes.
+* Tangential speed: \(v_\text{t} = r\omega\) | A point \(r\) (m) from the axis moves at \(v_\text{t}\) (m/s) along its circle. Use \(\omega\) in rad/s.
+Tangential acceleration: \(a_\text{t} = r\alpha\) | The acceleration along the path (m/s²) of a point \(r\) from the axis when the rotation speeds up or slows down.
+Period and frequency: \(\omega = \dfrac{2\pi}{T} = 2\pi f\) | One turn takes the period \(T\) (s); \(f\) (Hz) is turns per second. Multiply rpm by \(2\pi/60\) to get rad/s.
+
+## EQUATIONS 10.2
+* Angular velocity, constant α: \(\omega_\text{f} = \omega_0 + \alpha t\) | Final angular velocity (rad/s) after time \(t\) (s) at constant angular acceleration \(\alpha\) (rad/s²).
+* Angle, constant α: \(\theta_\text{f} = \theta_0 + \omega_0t + \tfrac12\alpha t^2\) | The angle turned (rad) at constant \(\alpha\). Same form as \(x = x_0 + v_0t + \tfrac12at^2\).
+* Without time: \(\omega_\text{f}^2 = \omega_0^2 + 2\alpha\,\Delta\theta\) | Links speeds and angle turned (rad) when the time isn't given or needed.
+Average angular velocity: \(\bar\omega = \dfrac{\omega_0 + \omega_\text{f}}{2}\) | Only for constant \(\alpha\). Then the angle turned is \(\Delta\theta = \bar\omega t\).
+
+## EQUATIONS 10.3
+* Centripetal acceleration: \(a_\text{c} = \dfrac{v_\text{t}^2}{r} = r\omega^2\) | A point \(r\) (m) from the axis accelerates toward the axis at \(a_\text{c}\) (m/s²), even at constant \(\omega\).
+Total acceleration: \(a = \sqrt{a_\text{c}^2 + a_\text{t}^2}\) | The centripetal part points to the axis and the tangential part along the path, at right angles, so they add like the sides of a right triangle.
+Rolling without slipping: \(v = r\omega\) | A wheel of radius \(r\) (m) rolling without slipping moves forward at \(v\) (m/s).
+
+## EQUATIONS 10.4
+* Moment of inertia: \(I = \sum_j m_jr_j^2\) | \(I\) (kg·m²) adds each mass (kg) times its distance from the axis squared (m²). Mass far from the axis counts most.
+* Rotational kinetic energy: \(K = \tfrac12I\omega^2\) | Kinetic energy (J) of a spinning object with moment of inertia \(I\) (kg·m²) and angular velocity \(\omega\) (rad/s).
+
+## EQUATIONS 10.5
+Moment of inertia, continuous object: \(I = \int r^2\,dm\) | For a solid object, add \(r^2\) times each small piece of mass \(dm\). Shape tables give the results.
+* Common shapes: \(\begin{aligned}&\text{hoop } MR^2,\ \text{disk } \tfrac12MR^2\\ &\text{solid sphere } \tfrac25MR^2\\ &\text{rod about center } \tfrac1{12}ML^2\\ &\text{rod about end } \tfrac13ML^2\end{aligned}\) | Each with mass \(M\) (kg), radius \(R\) or length \(L\) (m), about the axis named. Mass farther out gives a bigger number in front.
+* Parallel axis theorem: \(I = I_\text{CM} + Md^2\) | Moment of inertia about an axis \(d\) (m) from a parallel axis through the center of mass. It is always bigger than \(I_\text{CM}\).
+Compound object: \(I_\text{total} = \sum_i I_i\) | Add the moments of inertia of the parts, all about the same axis.
+
+## EQUATIONS 10.6
+* Torque: \(\tau = r_\perp F = rF\sin\theta\) | Torque \(\tau\) (N·m) from force \(F\) (N) acting \(r\) (m) from the axis at angle \(\theta\) to \(\vec r\). \(r_\perp\) is the lever arm.
+Torque vector: \(\vec\tau = \vec r\times\vec F\) | Torque points along the axis by the right hand rule. Counterclockwise torques are positive.
+Net torque: \(\tau_\text{net} = \sum_i \tau_i\) | Add all the torques with their signs.
+
+## EQUATIONS 10.7
+* Newton's second law for rotation: \(\sum\tau = I\alpha\) | Net torque (N·m) equals moment of inertia (kg·m²) times angular acceleration (rad/s²). \(I\) plays the role of mass.
+
+## EQUATIONS 10.8
+* Work by a constant torque: \(W = \tau\,\Delta\theta\) | Work (J) done by torque \(\tau\) (N·m) turning through \(\Delta\theta\) (rad).
+Work by a varying torque: \(W = \int_{\theta_A}^{\theta_B}\tau\,d\theta\) | Add torque times each small angle. It is the area under a torque against angle graph.
+* Work energy theorem for rotation: \(W = \tfrac12I\omega_\text{f}^2 - \tfrac12I\omega_0^2\) | The net work (J) done on a spinning object equals its change in rotational kinetic energy.
+* Rotational power: \(P = \tau\omega\) | Power (W) from torque \(\tau\) (N·m) at angular velocity \(\omega\) (rad/s). The rotational version of \(P = Fv\).
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 10.1
+# Book: 1
+#
+# ## EXAMPLE 10.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#         For rotation, the letter can be ω, θ, α, or τ (units rad/s, rad, rad/s², N·m), for example
+#         Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+#         For an angle axis, write the formula with x and use "θ from 0 to 4" (Tap: θ = 2 works too):
+#         Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+
+# ============================ 10.1 ROTATIONAL VARIABLES ============================
+
+## QUIZ 10.1
+Q: How many radians are in one full turn?
+A) \(2\pi\)
+B) \(\pi\)
+C) \(360\)
+D) \(1\)
+Answer: A
+Why: The circumference is \(2\pi r\), so a full turn has \(\theta = \frac{s}{r} = \frac{2\pi r}{r} = 2\pi\) rad.
+
+## QUIZ 10.1
+Q: A merry go round spins at a steady rate. A child sits near the edge and another near the center. Which is true?
+A) Same angular velocity; the outer child has a larger speed
+B) Same speed; the outer child has a larger angular velocity
+C) Same angular velocity and same speed
+D) The inner child has the larger speed
+Answer: A
+Why: Every point turns through the same angle in the same time, so \(\omega\) is the same. But \(v_\text{t} = r\omega\), so the child farther out moves faster.
+
+## QUIZ 10.1
+Q: A wheel turns counterclockwise and is slowing down. What are the signs of \(\omega\) and \(\alpha\)?
+A) \(\omega\) positive, \(\alpha\) negative
+B) Both positive
+C) Both negative
+D) \(\omega\) negative, \(\alpha\) positive
+Answer: A
+Why: Counterclockwise is positive, so \(\omega > 0\). Slowing down means \(\alpha\) points opposite to \(\omega\), so \(\alpha < 0\).
+
+## QUIZ 10.1
+Q: Why must \(\omega\) be in rad/s, not rpm or degrees per second, in \(v_\text{t} = r\omega\)?
+A) The relation comes from \(s = r\theta\), which only works with \(\theta\) in radians
+B) Radians are an SI base unit
+C) It doesn't matter; any angle unit works
+D) Degrees are too small
+Answer: A
+Why: \(\theta = s/r\) defines the radian. Taking the time rate of \(s = r\theta\) gives \(v_\text{t} = r\omega\), so the radian is built in.
+
+## DRILL 10.1
+Q: A wheel turns at \({{rpm}}\ \text{rpm}\). What is its angular velocity in rad/s?
+Let: rpm = one of 30, 60, 90, 120, 300, 600
+Answer: rpm*2*pi/60
+Wrong: rpm/60 | That is turns per second. Each turn is \(2\pi\) rad, so multiply by \(2\pi\).
+Wrong: rpm*2*pi | Divide by 60 to change minutes to seconds.
+Wrong: rpm*60/(2*pi) | Flip the factor: multiply by \(2\pi\) and divide by 60.
+Unit: rad/s
+Work: \omega = ({{rpm}})\tfrac{2\pi}{60} = {{answer}}\ \text{rad/s}
+
+## DRILL 10.1
+Q: A point \({{r}}\ \text{m}\) from the axis of a wheel spinning at \({{w}}\ \text{rad/s}\) moves how fast?
+Let: r = one of 0.2, 0.3, 0.5, 2; w = one of 4, 6, 10, 20
+Answer: r*w
+Wrong: w/r | Speed grows with distance from the axis: \(v_\text{t} = r\omega\).
+Wrong: r*w^2 | That is the centripetal acceleration, \(r\omega^2\).
+Wrong: 2*pi*r*w | \(\omega\) is already in rad/s, so no extra \(2\pi\) is needed.
+Unit: m/s
+Work: v_\text{t} = r\omega = ({{r}})({{w}}) = {{answer}}\ \text{m/s}
+
+## DRILL 10.1
+Q: A fan blade speeds up steadily from rest to \({{w}}\ \text{rad/s}\) in \({{t}}\ \text{s}\). What is its angular acceleration?
+Let: w = one of 10, 20, 30, 40; t = one of 2, 4, 5
+Answer: w/t
+Wrong: w*t | Divide the change in angular velocity by the time.
+Wrong: w/(2*t) | No factor of 2: \(\alpha = \Delta\omega/\Delta t\).
+Wrong: t/w | Flip it: \(\alpha = \Delta\omega/\Delta t\).
+Unit: rad/s²
+Work: \alpha = \frac{\Delta\omega}{\Delta t} = \frac{{{w}}}{{{t}}} = {{answer}}\ \text{rad/s}^2
+
+## DRILL 10.1
+Q: A bug rides \({{r}}\ \text{m}\) from the center of a turntable as it turns through \({{th}}\ \text{rad}\). How far along its circle does the bug travel?
+Let: r = one of 0.1, 0.15, 0.2; th = one of 2, 3, 5, 10
+Answer: r*th
+Wrong: th/r | Arc length is radius times angle: \(s = r\theta\).
+Wrong: 2*pi*r*th | \(\theta\) is already in radians; \(2\pi r\) is the length of a full turn.
+Wrong: r/th | Multiply: \(s = r\theta\).
+Unit: m
+Work: s = r\theta = ({{r}})({{th}}) = {{answer}}\ \text{m}
+
+## GRAPH 10.1
+Q: The graph shows a wheel's angular velocity against time. Tap the moment when its angular acceleration is zero.
+Plot: ω = 2*t*(4 - t); t from 0 to 4; y from 0 to 10
+Tap: t = 2
+Why: \(\alpha = \frac{d\omega}{dt}\), the slope of this graph. The slope is zero at the top of the curve, \(t = 2\ \text{s}\), where the wheel stops speeding up and starts slowing down.
+
+
+# ============================ 10.2 ROTATION WITH CONSTANT ANGULAR ACCELERATION ============================
+
+## QUIZ 10.2
+Q: Which straight line equation matches \(\omega_\text{f} = \omega_0 + \alpha t\)?
+A) \(v = v_0 + at\)
+B) \(x = x_0 + vt\)
+C) \(v^2 = v_0^2 + 2a\Delta x\)
+D) \(F = ma\)
+Answer: A
+Why: Swap \(\omega\) for \(v\) and \(\alpha\) for \(a\). Every constant acceleration equation has a rotational twin.
+
+## QUIZ 10.2
+Q: A wheel starts from rest with constant \(\alpha\). In the first 2 s it turns through 3 rad. How far does it turn in the first 4 s?
+A) 12 rad
+B) 6 rad
+C) 9 rad
+D) 24 rad
+Answer: A
+Why: From rest, \(\theta = \frac12\alpha t^2\) grows with \(t^2\). Doubling the time gives 4 times the angle: \(4 \times 3 = 12\) rad.
+
+## QUIZ 10.2
+Q: A spinning wheel slows to a stop. You know \(\omega_0\), \(\alpha\), and want the angle it turns. You don't know the time. Which equation fits best?
+A) \(\omega_\text{f}^2 = \omega_0^2 + 2\alpha\Delta\theta\)
+B) \(\omega_\text{f} = \omega_0 + \alpha t\)
+C) \(\theta_\text{f} = \theta_0 + \omega_0t + \frac12\alpha t^2\)
+D) \(\omega = \frac{2\pi}{T}\)
+Answer: A
+Why: With \(\omega_\text{f} = 0\), this one has \(\Delta\theta\) as its only unknown and no \(t\) at all.
+
+## QUIZ 10.2
+Q: When can you use \(\bar\omega = \frac{\omega_0 + \omega_\text{f}}{2}\) for the average angular velocity?
+A) Only when the angular acceleration is constant
+B) Always
+C) Only when the wheel starts from rest
+D) Only when \(\omega\) is constant
+Answer: A
+Why: The average of the start and end values equals the time average only when \(\omega\) changes at a steady rate.
+
+## DRILL 10.2
+Q: A wheel spinning at \({{w0}}\ \text{rad/s}\) speeds up at \({{a}}\ \text{rad/s}^2\) for \({{t}}\ \text{s}\). What is its final angular velocity?
+Let: w0 = one of 2, 5, 10; a = one of 2, 3, 4; t = one of 2, 3, 5
+Answer: w0 + a*t
+Wrong: a*t | Add the starting angular velocity: \(\omega_\text{f} = \omega_0 + \alpha t\).
+Wrong: w0 + 0.5*a*t^2 | That is the angle form. For angular velocity, \(\omega_\text{f} = \omega_0 + \alpha t\).
+Wrong: w0*t + a*t | Only \(\alpha\) multiplies the time here.
+Unit: rad/s
+Work: \omega_\text{f} = \omega_0 + \alpha t = {{w0}} + ({{a}})({{t}}) = {{answer}}\ \text{rad/s}
+
+## DRILL 10.2
+Q: A disk starts from rest and turns with an angular acceleration of \({{a}}\ \text{rad/s}^2\). Through what angle does it turn in \({{t}}\ \text{s}\)?
+Let: a = one of 2, 4, 6; t = one of 2, 3, 4, 5
+Answer: 0.5*a*t^2
+Wrong: a*t^2 | Don't forget the \(\tfrac12\): \(\theta = \tfrac12\alpha t^2\).
+Wrong: a*t | That is the final angular velocity, not the angle.
+Wrong: 0.5*a*t | Square the time: \(\theta = \tfrac12\alpha t^2\).
+Unit: rad
+Work: \theta = \tfrac12\alpha t^2 = \tfrac12({{a}})({{t}})^2 = {{answer}}\ \text{rad}
+
+## DRILL 10.2
+Q: A wheel spinning at \({{w0}}\ \text{rad/s}\) slows steadily at \({{a}}\ \text{rad/s}^2\) until it stops. Through what angle does it turn while stopping?
+Let: w0 = one of 6, 10, 12, 20; a = one of 2, 4, 5
+Answer: w0^2/(2*a)
+Wrong: w0^2/a | Use \(0 = \omega_0^2 - 2\alpha\Delta\theta\), so \(\Delta\theta = \omega_0^2/(2\alpha)\).
+Wrong: w0/a | That is the stopping time, not the angle.
+Wrong: w0^2*2*a | Divide by \(2\alpha\), don't multiply.
+Unit: rad
+Work: 0 = \omega_0^2 - 2\alpha\Delta\theta \Rightarrow \Delta\theta = \frac{({{w0}})^2}{2({{a}})} = {{answer}}\ \text{rad}
+
+## DRILL 10.2
+Q: A grinding wheel goes from \({{w0}}\) to \({{wf}}\ \text{rad/s}\) at a steady rate in \({{t}}\ \text{s}\). Through what angle does it turn?
+Let: w0 = one of 10, 20, 30; dw = one of 10, 20; wf = w0 + dw; t = one of 2, 4, 6
+Answer: (w0 + wf)/2*t
+Wrong: wf*t | Use the average angular velocity, \(\frac{\omega_0 + \omega_\text{f}}{2}\), not the final one.
+Wrong: (wf - w0)*t | Average the two speeds instead of subtracting them.
+Wrong: (w0 + wf)*t | Divide the sum by 2 to get the average.
+Unit: rad
+Work: \Delta\theta = \frac{\omega_0 + \omega_\text{f}}{2}\,t = \frac{{{w0}} + {{wf}}}{2}({{t}}) = {{answer}}\ \text{rad}
+
+## GRAPH 10.2
+Q: The graph shows a wheel's angular velocity against time. What is its angular acceleration?
+Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+A) \(-3\ \text{rad/s}^2\)
+B) \(3\ \text{rad/s}^2\)
+C) \(12\ \text{rad/s}^2\)
+D) \(-12\ \text{rad/s}^2\)
+Answer: A
+Why: \(\alpha\) is the slope: \(\frac{0 - 12}{4 - 0} = -3\ \text{rad/s}^2\). It is negative because the wheel is slowing down.
+
+## GRAPH 10.2
+Q: The graph shows a wheel's angular velocity against time. Through what angle does it turn in the 4 s shown?
+Plot: ω = 2*t; t from 0 to 4; y from 0 to 10
+A) 16 rad
+B) 8 rad
+C) 32 rad
+D) 2 rad
+Answer: A
+Why: The angle is the area under the \(\omega\) against \(t\) graph, a triangle: \(\frac12(4)(8) = 16\) rad. Choice B is the final angular velocity.
+
+
+# ============================ 10.3 RELATING ANGULAR AND TRANSLATIONAL QUANTITIES ============================
+
+## QUIZ 10.3
+Q: A wheel spins at a constant angular velocity. Does a point on its rim accelerate?
+A) Yes, toward the axis
+B) No, because \(\omega\) is constant
+C) Yes, along its path
+D) Yes, away from the axis
+Answer: A
+Why: The point moves in a circle, so its direction changes. It has centripetal acceleration \(r\omega^2\) toward the axis. With \(\alpha = 0\), there is no tangential part.
+
+## QUIZ 10.3
+Q: A carousel speeds up. Which way does a rider's total acceleration point?
+A) Partly toward the center and partly forward along the path
+B) Straight toward the center
+C) Straight forward along the path
+D) Straight outward
+Answer: A
+Why: Moving in a circle gives \(a_\text{c}\) toward the center; speeding up adds \(a_\text{t}\) along the path. The total is the sum of these two perpendicular parts.
+
+## QUIZ 10.3
+Q: Point B on a wheel is twice as far from the axis as point A. How does B's centripetal acceleration compare with A's?
+A) Twice as big
+B) The same
+C) Four times as big
+D) Half as big
+Answer: A
+Why: Both have the same \(\omega\), and \(a_\text{c} = r\omega^2\) grows in step with \(r\).
+
+## DRILL 10.3
+Q: A point \({{r}}\ \text{m}\) from the axis of a wheel turning at \({{w}}\ \text{rad/s}\). What is its centripetal acceleration?
+Let: r = one of 0.1, 0.2, 0.5; w = one of 4, 10, 20
+Answer: r*w^2
+Wrong: r*w | That is the speed, \(v_\text{t} = r\omega\).
+Wrong: w^2/r | With \(\omega\) it is \(a_\text{c} = r\omega^2\); the form \(v^2/r\) uses the speed.
+Wrong: r^2*w | Square \(\omega\), not \(r\): \(a_\text{c} = r\omega^2\).
+Unit: m/s²
+Work: a_\text{c} = r\omega^2 = ({{r}})({{w}})^2 = {{answer}}\ \text{m/s}^2
+
+## DRILL 10.3
+Q: A bike wheel of radius \({{r}}\ \text{m}\) rolls without slipping at \({{v}}\ \text{m/s}\). What is its angular velocity?
+Let: r = one of 0.25, 0.3, 0.4, 0.5; v = one of 3, 5, 6, 10
+Answer: v/r
+Wrong: v*r | Rolling means \(v = r\omega\), so \(\omega = v/r\).
+Wrong: v/(2*pi*r) | That is turns per second. In rad/s, \(\omega = v/r\).
+Wrong: r/v | Flip it: \(\omega = v/r\).
+Unit: rad/s
+Work: \omega = \frac{v}{r} = \frac{{{v}}}{{{r}}} = {{answer}}\ \text{rad/s}
+
+## DRILL 10.3
+Q: A point on a wheel has centripetal acceleration \({{ac}}\ \text{m/s}^2\) and tangential acceleration \({{at}}\ \text{m/s}^2\). What is the size of its total acceleration?
+Let: k = one of 1, 2, 4; ac = 4*k; at = 3*k
+Answer: sqrt(ac^2 + at^2)
+Wrong: ac + at | The two parts are at right angles, so use the Pythagorean theorem.
+Wrong: ac - at | They don't cancel; they are perpendicular.
+Wrong: ac | Include the tangential part too.
+Unit: m/s²
+Work: a = \sqrt{a_\text{c}^2 + a_\text{t}^2} = \sqrt{({{ac}})^2 + ({{at}})^2} = {{answer}}\ \text{m/s}^2
+
+
+# ============================ 10.4 MOMENT OF INERTIA AND ROTATIONAL KINETIC ENERGY ============================
+
+## QUIZ 10.4
+Q: A hoop and a solid disk have the same mass and radius. Which has the larger moment of inertia about its center?
+A) The hoop
+B) The disk
+C) They are the same
+D) It depends on how fast they spin
+Answer: A
+Why: All of the hoop's mass is at the rim, at the largest \(r\). The disk has mass closer in, and \(I = \sum mr^2\) favors mass far out.
+
+## QUIZ 10.4
+Q: A spinning wheel's angular velocity doubles. What happens to its rotational kinetic energy?
+A) It becomes 4 times as large
+B) It doubles
+C) It stays the same
+D) It becomes 8 times as large
+Answer: A
+Why: \(K = \frac12I\omega^2\) grows with \(\omega^2\). Twice the \(\omega\) gives \(2^2 = 4\) times the energy.
+
+## QUIZ 10.4
+Q: What is the unit of moment of inertia?
+A) \(\text{kg}\cdot\text{m}^2\)
+B) \(\text{kg}\cdot\text{m}\)
+C) \(\text{N}\cdot\text{m}\)
+D) \(\text{kg}\cdot\text{m}^2/\text{s}^2\)
+Answer: A
+Why: \(I = \sum mr^2\) is mass times distance squared. Choice D is a joule.
+
+## QUIZ 10.4
+Q: A thin rod spins once about its center and once about one end, at the same \(\omega\). When does it have more kinetic energy?
+A) About the end
+B) About the center
+C) The same both ways
+D) It can't spin about an end
+Answer: A
+Why: About an end, more of the mass is far from the axis, so \(I\) is bigger, and \(K = \frac12I\omega^2\) is bigger at the same \(\omega\).
+
+## DRILL 10.4
+Q: Two \({{m}}\ \text{kg}\) balls sit at the ends of a light rod, each \({{r}}\ \text{m}\) from the center. What is the moment of inertia about the center?
+Let: m = one of 1, 2, 3, 5; r = one of 0.2, 0.5, 1, 2
+Answer: 2*m*r^2
+Wrong: m*r^2 | There are two balls. Add \(mr^2\) for each.
+Wrong: 2*m*r | Square the distance: \(I = \sum mr^2\).
+Wrong: m*(2*r)^2 | Each ball is \(r\) from the axis, not \(2r\).
+Unit: kg·m²
+Work: I = \sum mr^2 = 2({{m}})({{r}})^2 = {{answer}}\ \text{kg}\cdot\text{m}^2
+
+## DRILL 10.4
+Q: A flywheel with moment of inertia \({{I}}\ \text{kg}\cdot\text{m}^2\) spins at \({{w}}\ \text{rad/s}\). What is its rotational kinetic energy?
+Let: I = one of 0.5, 2, 4, 10; w = one of 10, 20, 30
+Answer: 0.5*I*w^2
+Wrong: I*w^2 | Don't forget the \(\tfrac12\): \(K = \tfrac12I\omega^2\).
+Wrong: 0.5*I*w | Square the angular velocity.
+Wrong: I*w | That is the angular momentum (Chapter 11), not the energy.
+Unit: J
+Work: K = \tfrac12I\omega^2 = \tfrac12({{I}})({{w}})^2 = {{answer}}\ \text{J}
+
+## DRILL 10.4
+Q: A wheel with moment of inertia \({{I}}\ \text{kg}\cdot\text{m}^2\) has \({{K}}\ \text{J}\) of rotational kinetic energy. How fast is it spinning?
+Let: I = one of 2, 4, 8; w = one of 5, 10, 20; K = 0.5*I*w^2
+Answer: sqrt(2*K/I)
+Wrong: 2*K/I | Take the square root: \(\omega = \sqrt{2K/I}\).
+Wrong: sqrt(K/I) | Keep the 2 from the \(\tfrac12\).
+Wrong: sqrt(2*K*I) | Divide by \(I\), don't multiply.
+Unit: rad/s
+Work: K = \tfrac12I\omega^2 \Rightarrow \omega = \sqrt{\frac{2({{K}})}{{{I}}}} = {{answer}}\ \text{rad/s}
+
+
+# ============================ 10.5 CALCULATING MOMENTS OF INERTIA ============================
+
+## QUIZ 10.5
+Q: Rank these by moment of inertia about their centers, largest first. All have the same mass and radius: hoop, solid disk, solid sphere.
+A) Hoop, disk, sphere
+B) Sphere, disk, hoop
+C) Disk, hoop, sphere
+D) All the same
+Answer: A
+Why: Hoop \(MR^2\), disk \(\frac12MR^2\), sphere \(\frac25MR^2\). The more mass near the axis, the smaller \(I\).
+
+## QUIZ 10.5
+Q: The parallel axis theorem \(I = I_\text{CM} + Md^2\) starts from which moment of inertia?
+A) The one about a parallel axis through the center of mass
+B) The one about any parallel axis
+C) The largest possible one
+D) The one about a perpendicular axis
+Answer: A
+Why: The theorem only works starting from the axis through the center of mass. That is also the axis with the smallest \(I\).
+
+## QUIZ 10.5
+Q: Why is a thin rod's moment of inertia about one end (\(\frac13ML^2\)) bigger than about its center (\(\frac1{12}ML^2\))?
+A) About an end, much of the mass is farther from the axis
+B) The rod is longer when spun about an end
+C) Spinning about an end adds mass
+D) It isn't; they are equal
+Answer: A
+Why: About the center no bit of the rod is more than \(L/2\) away; about an end some is a full \(L\) away, and \(r\) is squared.
+
+## DRILL 10.5
+Q: A solid disk has mass \({{M}}\ \text{kg}\) and radius \({{R}}\ \text{m}\). What is its moment of inertia about its center?
+Let: M = one of 2, 4, 10, 20; R = one of 0.1, 0.2, 0.5
+Answer: 0.5*M*R^2
+Wrong: M*R^2 | That is a hoop. A solid disk has \(\tfrac12MR^2\).
+Wrong: 0.4*M*R^2 | That is a solid sphere, \(\tfrac25MR^2\).
+Wrong: 0.5*M*R | Square the radius.
+Unit: kg·m²
+Work: I = \tfrac12MR^2 = \tfrac12({{M}})({{R}})^2 = {{answer}}\ \text{kg}\cdot\text{m}^2
+
+## DRILL 10.5
+Q: A thin rod of mass \({{M}}\ \text{kg}\) and length \({{L}}\ \text{m}\) has \(I_\text{CM} = \tfrac1{12}ML^2\). Use the parallel axis theorem to find its moment of inertia about one end.
+Let: M = one of 1, 2, 3, 6; L = one of 1, 2, 3
+Answer: M*L^2/12 + M*(L/2)^2
+Wrong: M*L^2/12 + M*L^2 | The end is \(L/2\) from the center of mass, not \(L\).
+Wrong: M*L^2/12 | Add \(Md^2\) to move the axis to the end.
+Wrong: M*(L/2)^2 | Start from \(I_\text{CM}\) and add \(Md^2\) to it.
+Unit: kg·m²
+Work: I = \tfrac1{12}ML^2 + M\left(\tfrac{L}{2}\right)^2 = \tfrac13ML^2 = {{answer}}\ \text{kg}\cdot\text{m}^2
+
+## DRILL 10.5
+Q: A \({{m}}\ \text{kg}\) solid sphere of radius \({{R}}\ \text{m}\) hangs at the end of a light string, its center \({{d}}\ \text{m}\) from the pivot. What is its moment of inertia about the pivot?
+Let: m = one of 1, 2, 5; R = one of 0.1, 0.2; d = one of 0.5, 1, 2
+Answer: 0.4*m*R^2 + m*d^2
+Wrong: m*d^2 | That treats the sphere as a point. Add its own \(\tfrac25mR^2\) about its center.
+Wrong: 0.4*m*R^2 | Add \(md^2\) to move the axis out to the pivot.
+Wrong: 0.4*m*R^2 + m*d | Square the distance in \(md^2\).
+Unit: kg·m²
+Work: I = \tfrac25mR^2 + md^2 = \tfrac25({{m}})({{R}})^2 + ({{m}})({{d}})^2 = {{answer}}\ \text{kg}\cdot\text{m}^2
+
+
+# ============================ 10.6 TORQUE ============================
+
+## QUIZ 10.6
+Q: Where should you push on a door to open it most easily?
+A) At the edge farthest from the hinges, at a right angle to the door
+B) Near the hinges, at a right angle to the door
+C) At the far edge, pushing toward the hinges
+D) Anywhere; only the size of the push matters
+Answer: A
+Why: \(\tau = rF\sin\theta\) is biggest with the largest \(r\) and \(\theta = 90^\circ\). Pushing toward the hinges has \(\theta = 0\), so no torque at all.
+
+## QUIZ 10.6
+Q: A force acts along a line that passes straight through the axis. What torque does it make?
+A) Zero
+B) The largest possible
+C) \(rF\)
+D) It depends on the force's size
+Answer: A
+Why: Its lever arm \(r_\perp\) is zero, so \(\tau = r_\perp F = 0\).
+
+## QUIZ 10.6
+Q: What is the unit of torque?
+A) \(\text{N}\cdot\text{m}\)
+B) \(\text{N/m}\)
+C) \(\text{kg}\cdot\text{m}^2\)
+D) \(\text{N}\cdot\text{s}\)
+Answer: A
+Why: Torque is force times lever arm. It has the same units as a joule, but it is not energy, so it is written N·m.
+
+## QUIZ 10.6
+Q: On a seesaw, a 30 kg child sits 2 m from the pivot. Where must a 20 kg child sit on the other side to balance it?
+A) 3 m from the pivot
+B) 2 m from the pivot
+C) 1.33 m from the pivot
+D) 4 m from the pivot
+Answer: A
+Why: The torques must cancel: \((30)(g)(2) = (20)(g)(r)\), so \(r = 3\ \text{m}\). The lighter child sits farther out.
+
+## DRILL 10.6
+Q: You push at a right angle on a wrench \({{r}}\ \text{m}\) from the bolt with a force of \({{F}}\ \text{N}\). What torque do you make?
+Let: r = one of 0.2, 0.25, 0.3, 0.5; F = one of 20, 40, 50, 100
+Answer: r*F
+Wrong: F/r | Torque is force times lever arm: \(\tau = rF\).
+Wrong: F | Multiply by the distance from the bolt.
+Wrong: r*F/2 | At a right angle \(\sin 90^\circ = 1\), so \(\tau = rF\).
+Unit: N·m
+Work: \tau = rF\sin 90^\circ = ({{r}})({{F}}) = {{answer}}\ \text{N}\cdot\text{m}
+
+## DRILL 10.6
+Q: A force of \({{F}}\ \text{N}\) pulls \({{r}}\ \text{m}\) from an axis at \(30^\circ\) to the line from the axis \((\sin 30^\circ = 0.5)\). What torque does it make?
+Let: F = one of 10, 20, 40, 60; r = one of 0.5, 1, 2
+Answer: r*F*0.5
+Wrong: r*F | Only the part of the force at a right angle to \(\vec r\) counts: multiply by \(\sin 30^\circ\).
+Wrong: r*F*0.87 | That uses \(\cos 30^\circ\). Torque uses \(\sin\theta\) of the angle between \(\vec r\) and \(\vec F\).
+Wrong: F*0.5/r | Multiply by the distance, don't divide.
+Unit: N·m
+Work: \tau = rF\sin\theta = ({{r}})({{F}})(0.5) = {{answer}}\ \text{N}\cdot\text{m}
+
+## DRILL 10.6
+Q: Two forces turn a wheel: one makes \({{t1}}\ \text{N}\cdot\text{m}\) counterclockwise, the other \({{t2}}\ \text{N}\cdot\text{m}\) clockwise. What is the net torque, taking counterclockwise as positive?
+Let: t1 = one of 20, 30, 50; t2 = one of 5, 10, 15
+Answer: t1 - t2
+Wrong: t1 + t2 | Clockwise torque is negative, so subtract it.
+Wrong: t2 - t1 | Counterclockwise is positive here, so the counterclockwise torque gets the plus sign.
+Wrong: t1 | Include the clockwise torque too.
+Unit: N·m
+Work: \tau_\text{net} = {{t1}} - {{t2}} = {{answer}}\ \text{N}\cdot\text{m}
+
+
+# ============================ 10.7 NEWTON'S SECOND LAW FOR ROTATION ============================
+
+## QUIZ 10.7
+Q: The same torque acts on a hoop and on a solid disk with the same mass and radius. Which gets the larger angular acceleration?
+A) The disk
+B) The hoop
+C) They are the same
+D) Neither one turns
+Answer: A
+Why: \(\alpha = \tau/I\). The disk has the smaller \(I\) (\(\frac12MR^2\) against \(MR^2\)), so it spins up faster.
+
+## QUIZ 10.7
+Q: In \(\sum\tau = I\alpha\), what plays the role that mass plays in \(F = ma\)?
+A) The moment of inertia \(I\)
+B) The torque
+C) The radius
+D) The angular velocity
+Answer: A
+Why: \(I\) measures how hard it is to change the rotation, just as mass measures how hard it is to change straight line motion.
+
+## QUIZ 10.7
+Q: A bucket hangs from a rope wound on a heavy pulley and is falling faster and faster. How does the rope tension compare with the bucket's weight?
+A) Less than the weight
+B) Equal to the weight
+C) More than the weight
+D) Zero
+Answer: A
+Why: The bucket speeds up downward, so the net force on it points down: \(mg - T = ma > 0\). The tension must also turn the heavy pulley, but it is still less than \(mg\).
+
+## DRILL 10.7
+Q: A net torque of \({{tau}}\ \text{N}\cdot\text{m}\) acts on a wheel with moment of inertia \({{I}}\ \text{kg}\cdot\text{m}^2\). What is its angular acceleration?
+Let: I = one of 0.5, 2, 4, 5; tau = one of 10, 20, 40
+Answer: tau/I
+Wrong: tau*I | Divide the torque by the moment of inertia: \(\alpha = \tau/I\).
+Wrong: I/tau | Flip it: \(\alpha = \tau/I\).
+Wrong: tau/(0.5*I) | No factor of \(\tfrac12\) here. That belongs in the energy, not the second law.
+Unit: rad/s²
+Work: \alpha = \frac{\tau}{I} = \frac{{{tau}}}{{{I}}} = {{answer}}\ \text{rad/s}^2
+
+## DRILL 10.7
+Q: A rope pulls tangentially with \({{F}}\ \text{N}\) on the rim of a solid disk of mass \({{M}}\ \text{kg}\) and radius \({{R}}\ \text{m}\). What is the disk's angular acceleration?
+Let: F = one of 10, 20, 30; M = one of 2, 4, 5, 10; R = one of 0.2, 0.5
+Answer: F*R/(0.5*M*R^2)
+Wrong: F*R/(0.5*M*R) | Square the radius in \(I = \tfrac12MR^2\).
+Wrong: F*R/(M*R^2) | That treats the disk like a hoop. A solid disk has \(I = \tfrac12MR^2\).
+Wrong: F/M | That is a straight line acceleration in m/s², not \(\alpha\).
+Unit: rad/s²
+Work: \alpha = \frac{FR}{\tfrac12MR^2} = \frac{2F}{MR} = \frac{2({{F}})}{({{M}})({{R}})} = {{answer}}\ \text{rad/s}^2
+
+## DRILL 10.7
+Q: A spinning wheel with moment of inertia \({{I}}\ \text{kg}\cdot\text{m}^2\) slows from \({{w}}\ \text{rad/s}\) to rest in \({{t}}\ \text{s}\). What size friction torque acts on it?
+Let: I = one of 0.5, 1, 2, 4; w = one of 20, 30, 60; t = one of 5, 10, 15
+Answer: I*w/t
+Wrong: w/t | That is \(\alpha\). Multiply by \(I\) to get the torque.
+Wrong: I*w*t | \(\alpha = \omega/t\); divide by the time.
+Wrong: 0.5*I*w^2/t | That is the average power lost, in watts.
+Unit: N·m
+Work: \alpha = \frac{\omega}{t},\quad \tau = I\alpha = \frac{({{I}})({{w}})}{{{t}}} = {{answer}}\ \text{N}\cdot\text{m}
+
+
+# ============================ 10.8 WORK AND POWER FOR ROTATIONAL MOTION ============================
+
+## QUIZ 10.8
+Q: A constant torque turns a wheel through two full turns. Which angle goes in \(W = \tau\Delta\theta\)?
+A) \(4\pi\) rad
+B) 2 rad
+C) 720
+D) \(2\pi\) rad
+Answer: A
+Why: Each turn is \(2\pi\) rad, so two turns are \(4\pi\) rad. The angle must be in radians.
+
+## QUIZ 10.8
+Q: An engine delivers a fixed power. When it turns more slowly, what happens to the torque it can give?
+A) It goes up
+B) It goes down
+C) It stays the same
+D) It drops to zero
+Answer: A
+Why: \(P = \tau\omega\). At the same power, a smaller \(\omega\) means a bigger \(\tau\). That is why low gears give strong turning.
+
+## QUIZ 10.8
+Q: A motor does 200 J of net work on a flywheel that starts from rest. What is the flywheel's rotational kinetic energy afterward?
+A) 200 J
+B) 100 J
+C) 400 J
+D) It depends on the flywheel's radius
+Answer: A
+Why: The work energy theorem: net work equals the change in kinetic energy. From rest, \(K = 200\ \text{J}\).
+
+## DRILL 10.8
+Q: A steady torque of \({{tau}}\ \text{N}\cdot\text{m}\) turns a winch through \({{n}}\) full turns. How much work does it do?
+Let: tau = one of 5, 10, 20; n = one of 2, 3, 5, 10
+Answer: tau*2*pi*n
+Wrong: tau*n | Use radians: \(n\) turns is \(2\pi n\) rad.
+Wrong: tau*360*n | Angles in \(W = \tau\Delta\theta\) must be in radians, not degrees.
+Wrong: tau*pi*n | One turn is \(2\pi\) rad, not \(\pi\).
+Unit: J
+Work: W = \tau\Delta\theta = ({{tau}})(2\pi)({{n}}) = {{answer}}\ \text{J}
+
+## DRILL 10.8
+Q: A motor gives a torque of \({{tau}}\ \text{N}\cdot\text{m}\) while turning at \({{w}}\ \text{rad/s}\). What power does it deliver?
+Let: tau = one of 5, 10, 20, 50; w = one of 10, 20, 50, 100
+Answer: tau*w
+Wrong: tau/w | Power is torque times angular velocity: \(P = \tau\omega\).
+Wrong: 0.5*tau*w^2 | That mixes in the kinetic energy form. Power is \(P = \tau\omega\).
+Wrong: tau*w*2*pi | \(\omega\) is already in rad/s; no extra \(2\pi\).
+Unit: W
+Work: P = \tau\omega = ({{tau}})({{w}}) = {{answer}}\ \text{W}
+
+## DRILL 10.8
+Q: A flywheel with moment of inertia \({{I}}\ \text{kg}\cdot\text{m}^2\) speeds up from rest to \({{w}}\ \text{rad/s}\). How much net work was done on it?
+Let: I = one of 0.2, 0.5, 2, 4; w = one of 10, 20, 50
+Answer: 0.5*I*w^2
+Wrong: I*w^2 | Kinetic energy has a \(\tfrac12\): \(W = \tfrac12I\omega^2\).
+Wrong: I*w | That is angular momentum, not work.
+Wrong: 0.5*I*w | Square the angular velocity.
+Unit: J
+Work: W = \Delta K = \tfrac12I\omega^2 - 0 = \tfrac12({{I}})({{w}})^2 = {{answer}}\ \text{J}
+
+## GRAPH 10.8
+Q: The graph shows the torque on a wheel against the angle it has turned. How much work does the torque do from 0 to 4 rad?
+Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+A) 16 J
+B) 8 J
+C) 32 J
+D) 4 J
+Answer: A
+Why: Work is the area under torque against angle: a triangle, \(\frac12(4)(8) = 16\ \text{J}\). Choice B is the final torque.
