@@ -65,9 +65,9 @@ Watch out: The ratio inside the logarithm is starting mass over final mass, whic
 * Newton's second law with momentum: \(\vec F_\text{net} = \frac{d\vec p}{dt}\) | The net force \(F\) (N) is how fast the momentum changes. For a constant mass it is the same as \(F = ma\).
 
 ## EQUATIONS 9.2
-* Impulse: \(\vec J = \int_{t_i}^{t_f}\vec F\,dt = \vec F_\text{ave}\Delta t\) | Impulse \(J\) (N·s) is the area under a force against time graph. For a steady or average force it is force times the contact time.
+* Impulse: \(\vec J = \int_{t_i}^{t_f}\vec F\,dt = \vec F_\text{avg}\Delta t\) | Impulse \(J\) (N·s) is the area under a force against time graph. For a steady or average force it is force times the contact time.
 * Impulse momentum theorem: \(\vec J = \Delta\vec p\) | The impulse on an object equals its change in momentum. A longer contact time gives the same change with a smaller force.
-Average force from momentum: \(\vec F_\text{ave} = \frac{\Delta\vec p}{\Delta t}\) | Divide the change in momentum (kg·m/s) by the contact time \(\Delta t\) (s) to get the average force (N).
+Average force from momentum: \(\vec F_\text{avg} = \frac{\Delta\vec p}{\Delta t}\) | Divide the change in momentum (kg·m/s) by the contact time \(\Delta t\) (s) to get the average force (N).
 
 ## EQUATIONS 9.3
 Conservation of momentum: \(\vec p_1 + \vec p_2 = \text{constant}\) | With no net external force, the total momentum of a system stays the same. Forces between the objects cancel in pairs.
