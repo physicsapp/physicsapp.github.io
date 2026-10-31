@@ -1,0 +1,750 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 10,
+  "title": "Fixed Axis Rotation"
+ },
+ "keyEquations": [
+  {
+   "name": "Angular position",
+   "tex": "\\theta =\\frac{s}{r}"
+  },
+  {
+   "name": "Angular velocity",
+   "tex": "\\omega =\\lim _{\\Delta t\\to 0}\\frac{\\Delta \\theta}{\\Delta t}=\\frac{d\\theta}{dt}"
+  },
+  {
+   "name": "Tangential speed",
+   "tex": "{v}_{\\text{t}}=r\\omega"
+  },
+  {
+   "name": "Angular acceleration",
+   "tex": "\\alpha =\\lim _{\\Delta t\\to 0}\\frac{\\Delta \\omega}{\\Delta t}=\\frac{d\\omega}{dt}=\\frac{{d}^{2}\\theta}{d{t}^{2}}"
+  },
+  {
+   "name": "Tangential acceleration",
+   "tex": "{a}_{\\text{t}}=r\\alpha"
+  },
+  {
+   "name": "Average angular velocity",
+   "tex": "\\bar{\\omega }=\\frac{{\\omega}_{0}+{\\omega}_{\\text{f}}}{2}"
+  },
+  {
+   "name": "Angular displacement",
+   "tex": "{\\theta}_{\\text{f}}={\\theta}_{0}+\\bar{\\omega }t"
+  },
+  {
+   "name": "Angular velocity from constant angular acceleration",
+   "tex": "{\\omega}_{\\text{f}}={\\omega}_{0}+\\alpha t"
+  },
+  {
+   "name": "Angular velocity from displacement and constant angular acceleration",
+   "tex": "{\\theta}_{\\text{f}}={\\theta}_{0}+{\\omega}_{0}t+\\frac{1}{2}\\alpha {t}^{2}"
+  },
+  {
+   "name": "Change in angular velocity",
+   "tex": "{\\omega}_{\\text{f}}^{2}={\\omega}_{0}^{2}+2\\alpha (\\Delta \\theta )"
+  },
+  {
+   "name": "Total acceleration",
+   "tex": "\\mathbf{\\vec{a}}={\\mathbf{\\vec{a}}}_{\\text{c}}+{\\mathbf{\\vec{a}}}_{\\text{t}}"
+  },
+  {
+   "name": "Rotational kinetic energy",
+   "tex": "K=\\frac{1}{2}(\\sum _{j}{m}_{j}{r}_{j}^{2}){\\omega}^{2}"
+  },
+  {
+   "name": "Moment of inertia",
+   "tex": "I=\\sum _{j}{m}_{j}{r}_{j}^{2}"
+  },
+  {
+   "name": "Rotational kinetic energy in terms of the moment of inertia of a rigid body",
+   "tex": "K=\\frac{1}{2}I{\\omega}^{2}"
+  },
+  {
+   "name": "Moment of inertia of a continuous object",
+   "tex": "I=\\int {r}^{2}dm"
+  },
+  {
+   "name": "Parallel-axis theorem",
+   "tex": "{I}_{\\text{parallel-axis}}={I}_{\\text{center of mass}}+m{d}^{2}"
+  },
+  {
+   "name": "Moment of inertia of a compound object",
+   "tex": "{I}_{\\text{total}}=\\sum _{i}{I}_{i}"
+  },
+  {
+   "name": "Torque vector",
+   "tex": "\\mathbf{\\vec{\\tau }}=\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{F}}"
+  },
+  {
+   "name": "Magnitude of torque",
+   "tex": "|\\mathbf{\\vec{\\tau }}|={r}_{\\perp}F"
+  },
+  {
+   "name": "Total torque",
+   "tex": "{\\vec{\\tau }}_{\\text{net}}=\\sum _{i}{\\vec{\\tau }}_{i}"
+  },
+  {
+   "name": "Newton’s second law for rotation",
+   "tex": "\\sum _{i}{\\tau}_{i}=I\\alpha"
+  },
+  {
+   "name": "Incremental work done by a torque",
+   "tex": "dW=(\\sum _{i}{\\tau}_{i})d\\theta"
+  },
+  {
+   "name": "Work-energy theorem",
+   "tex": "{W}_{AB}={K}_{B}-{K}_{A}"
+  },
+  {
+   "name": "Rotational work done by net force",
+   "tex": "{W}_{AB}={\\int}_{{\\theta}_{A}}^{{\\theta}_{B}}(\\sum _{i}{\\tau}_{i})d\\theta"
+  },
+  {
+   "name": "Rotational power",
+   "tex": "P=\\tau \\omega"
+  }
+ ],
+ "sections": [
+  {
+   "num": "10.1",
+   "module": "m58326",
+   "title": "Rotational Variables",
+   "objectives": [
+    "Describe the physical meaning of rotational variables as applied to fixed-axis rotation",
+    "Explain how angular velocity is related to tangential speed",
+    "Calculate the instantaneous angular velocity given the angular position function",
+    "Find the angular velocity and angular acceleration in a rotating system",
+    "Calculate the average angular acceleration when the angular velocity is changing",
+    "Calculate the instantaneous angular acceleration given the angular velocity function"
+   ],
+   "callouts": [
+    "\\theta =\\frac{s}{r}",
+    "\\omega =\\lim _{\\Delta t\\to 0}\\frac{\\Delta \\theta}{\\Delta t}=\\frac{d\\theta}{dt}",
+    "{v}_{\\text{t}}=r\\omega",
+    "\\alpha =\\lim _{\\Delta t\\to 0}\\frac{\\Delta \\omega}{\\Delta t}=\\frac{d\\omega}{dt}=\\frac{{d}^{2}\\theta}{d{t}^{2}}",
+    "{a}_{\\text{t}}=r\\alpha"
+   ],
+   "examples": [
+    {
+     "title": "Rotation of a Flywheel",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A flywheel rotates such that it sweeps out an angle at the rate of \\(\\theta =\\omega t=(45.0\\, \\text{rad}\\text{/}\\text{s)}t\\) radians. The wheel rotates counterclockwise when viewed in the plane of the page. (a) What is the angular velocity of the flywheel? (b) What direction is the angular velocity? (c) How many radians does the flywheel rotate through in 30 s? (d) What is the tangential speed of a point on the flywheel 10 cm from the axis of rotation?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The functional form of the angular position of the flywheel is given in the problem as \\(\\theta (t)=\\omega t\\), so by taking the derivative with respect to time, we can find the angular velocity. We use the right-hand rule to find the angular velocity. To find the angular displacement of the flywheel during 30 s, we seek the angular displacement \\(\\Delta \\theta\\), where the change in angular position is between 0 and 30 s. To find the tangential speed of a point at a distance from the axis of rotation, we multiply its distance times the angular velocity of the flywheel.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(\\omega =\\frac{d\\theta}{dt}=45\\, \\text{rad}\\text{/}\\text{s}\\). We see that the angular velocity is a constant.</li><li>By the right-hand rule, we curl the fingers in the direction of rotation, which is counterclockwise in the plane of the page, and the thumb points in the direction of the angular velocity, which is out of the page.</li><li>\\(\\Delta \\theta =\\theta (30\\, \\text{s})-\\theta (0\\, \\text{s})=45.0(30.0\\, \\text{s})-45.0(0\\, \\text{s})=1350.0\\, \\text{rad}\\).</li><li>\\({v}_{\\text{t}}=r\\omega =(0.1\\, \\text{m})(45.0\\, \\text{rad}\\text{/}\\text{s})=4.5\\, \\text{m/s}\\).</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In 30 s, the flywheel has rotated through quite a number of revolutions, about 215 if we divide the angular displacement by \\(2\\pi\\). A massive flywheel can be used to store energy in this way, if the losses due to friction are minimal. Recent research has considered superconducting bearings on which the flywheel rests, with zero energy loss due to friction.</p>"
+      }
+     ]
+    },
+    {
+     "title": "A Spinning Bicycle Wheel",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A bicycle mechanic mounts a bicycle on the repair stand and starts the rear wheel spinning from rest to a final angular velocity of 250 rpm in 5.00 s. (a) Calculate the average angular acceleration in \\({\\text{rad/s}}^{2}\\). (b) If she now hits the brakes, causing an angular acceleration of −87.3 \\({\\text{rad/s}}^{2}\\), how long does it take the wheel to stop?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The average angular acceleration can be found directly from its definition \\(\\bar{\\alpha }=\\frac{\\Delta \\omega}{\\Delta t}\\) because the final angular velocity and time are given. We see that \\(\\Delta \\omega ={\\omega}_{\\text{final}}-{\\omega}_{\\text{initial}}=250\\, \\text{rev/min}\\) and \\(\\Delta t\\) is 5.00 s. For part (b), we know the angular acceleration and the initial angular velocity. We can find the stopping time by using the definition of average angular acceleration and solving for \\(\\Delta t\\), yielding</p><div class='eq'>\\[\\Delta t=\\frac{\\Delta \\omega}{\\alpha}.\\]</div>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Entering known information into the definition of angular acceleration, we get <div class='eq'>\\[\\bar{\\alpha }=\\frac{\\Delta \\omega}{\\Delta t}=\\frac{250\\, \\text{rpm}}{5.00\\, \\text{s}}.\\]</div> Because \\(\\Delta \\omega\\) is in revolutions per minute (rpm) and we want the standard units of \\({\\text{rad/s}}^{2}\\) for angular acceleration, we need to convert from rpm to rad/s: <div class='eq'>\\[\\Delta \\omega =250\\frac{\\text{rev}}{\\min}\\cdot \\frac{2\\pi \\, \\text{rad}}{\\text{rev}}\\cdot \\frac{1\\, \\min}{60\\, \\text{s}}=26.2\\frac{\\text{rad}}{\\text{s}}.\\]</div> Entering this quantity into the expression for \\(\\alpha\\), we get <div class='eq'>\\[\\alpha =\\frac{\\Delta \\omega}{\\Delta t}=\\frac{26.2\\, \\text{rad/s}}{5.00\\, \\text{s}}=5.24{\\, \\text{rad/s}}^{2}.\\]</div></li><li>Here the angular velocity decreases from 26.2 rad/s (250 rpm) to zero, so that \\(\\Delta \\omega\\) is −26.2 rad/s, and \\(\\alpha\\) is given to be –87.3 \\({\\text{rad/s}}^{2}\\). Thus, <div class='eq'>\\[\\Delta t=\\frac{-26.2\\, \\text{rad/s}}{-87.3{\\, \\text{rad/s}}^{2}}=0.300\\, \\text{s}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that the angular acceleration as the mechanic spins the wheel is small and positive; it takes 5 s to produce an appreciable angular velocity. When she hits the brake, the angular acceleration is large and negative. The angular velocity quickly goes to zero.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Wind Turbine",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A wind turbine (the figure) in a wind farm is being shut down for maintenance. It takes 30 s for the turbine to go from its operating angular velocity to a complete stop in which the angular velocity function is \\(\\omega (t)=[{({t}^{-1}-30\\text{s})}^{2}\\text{/}100.0{\\text{s}}^{2}]\\text{rad}\\text{/}\\text{s}\\), where \\(t\\) is the time in seconds. If the turbine is rotating counterclockwise looking into the page, (a) what are the directions of the angular velocity and acceleration vectors? (b) What is the average angular acceleration? (c) What is the instantaneous angular acceleration at \\(t=0.0,15.0,30.0\\, \\text{s}?\\)</p><figure><img src='img/CNX_UPhysics_10_01_WindTurb.jpg' alt=\"Figure is a drawing of a wind turbine that is rotating counterclockwise, as seen head on.\" loading='lazy'><figcaption>A wind turbine that is rotating counterclockwise, as seen head on.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<ol type='a'><li>We are given the rotational sense of the turbine, which is counterclockwise in the plane of the page. Using the right hand rule (the figure), we can establish the directions of the angular velocity and acceleration vectors.</li><li>We calculate the initial and final angular velocities to get the average angular acceleration. We establish the sign of the angular acceleration from the results in (a).</li><li>We are given the functional form of the angular velocity, so we can find the functional form of the angular acceleration function by taking its derivative with respect to time.</li></ol>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Since the turbine is rotating counterclockwise, angular velocity \\(\\mathbf{\\vec{\\omega }}\\) points out of the page. But since the angular velocity is decreasing, the angular acceleration \\(\\mathbf{\\vec{\\alpha }}\\) points into the page, in the opposite sense to the angular velocity.</li><li>The initial angular velocity of the turbine, setting \\(t=0,\\, \\text{is}\\, \\omega =9.0\\, \\text{rad}\\text{/}\\text{s}\\). The final angular velocity is zero, so the average angular acceleration is <div class='eq'>\\[\\bar{\\alpha }=\\frac{\\Delta \\omega}{\\Delta t}=\\frac{\\omega -{\\omega}_{0}}{t-{t}_{0}}=\\frac{0-9.0\\, \\text{rad/s}}{30.0-0\\, \\text{s}}=-0.3\\, \\text{rad}\\text{/}{\\text{s}}^{2}.\\]</div></li><li>Taking the derivative of the angular velocity with respect to time gives \\(\\alpha =\\frac{d\\omega}{dt}=(t-30.0)\\text{/}50.0\\, \\text{rad}\\text{/}{\\text{s}}^{2}\\) <div class='eq'>\\[\\alpha (0.0\\, \\text{s})=-0.6\\, \\text{rad}\\text{/}{\\text{s}}^{2},\\alpha (15.0\\, \\text{s})=-0.3\\, \\text{rad}\\text{/}{\\text{s}}^{2},\\, \\text{and}\\, \\alpha (30.0\\, \\text{s})=0\\, \\text{rad/s}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We found from the calculations in (a) and (b) that the angular acceleration \\(\\alpha\\) and the average angular acceleration \\(\\bar{\\alpha }\\) are negative. The turbine has an angular acceleration in the opposite sense to its angular velocity.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>The fan blades on a turbofan jet engine (shown below) accelerate from rest up to a rotation rate of 40.0 rev/s in 20 s. The increase in angular velocity of the fan is constant in time. (The GE90-110B1 turbofan engine mounted on a Boeing 777, as shown, is currently the largest turbofan engine in the world, capable of thrusts of 330–510 kN.)</p><p>(a) What is the average angular acceleration?</p><p>(b) What is the instantaneous angular acceleration at any time during the first 20 s?</p>",
+     "a": "<p>a. \\(40.0\\, \\text{rev}\\text{/}\\text{s}=2\\pi (40.0)\\, \\text{rad}\\text{/}\\text{s}\\), \\(\\bar{\\alpha }=\\frac{\\Delta \\omega}{\\Delta t}=\\frac{2\\pi (40.0)-0\\, \\text{rad/s}}{20.0\\, \\text{s}}=2\\pi (2.0)=4.0\\pi \\, \\text{rad/}{\\text{s}}^{2}\\); b. Since the angular velocity increases linearly, there has to be a constant acceleration throughout the indicated time. Therefore, the instantaneous angular acceleration at any time is the solution to \\(4.0\\pi \\, \\text{rad/}{\\text{s}}^{2}\\).</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The angular position \\(\\theta\\) of a rotating body is the angle the body has rotated through in a fixed coordinate system, which serves as a frame of reference.",
+    "The angular velocity of a rotating body about a fixed axis is defined as \\(\\omega (\\text{rad}\\text{/}\\text{s})\\), the rotational rate of the body in radians per second. The instantaneous angular velocity of a rotating body \\(\\omega =\\lim _{\\Delta t\\to 0}\\frac{\\Delta \\theta}{\\Delta t}=\\frac{d\\theta}{dt}\\) is the derivative with respect to time of the angular position \\(\\theta\\), found by taking the limit \\(\\Delta t\\to 0\\) in the average angular velocity \\(\\bar{\\omega }=\\frac{\\Delta \\theta}{\\Delta t}\\). The angular velocity relates \\({v}_{\\text{t}}\\) to the tangential speed of a point on the rotating body through the relation \\({v}_{\\text{t}}=r\\omega\\), where <i>r</i> is the radius to the point and \\({v}_{\\text{t}}\\) is the tangential speed at the given point.",
+    "The angular velocity \\(\\mathbf{\\vec{\\omega }}\\) is found using the right-hand rule. If the fingers curl in the direction of rotation about a fixed axis, the thumb points in the direction of \\(\\mathbf{\\vec{\\omega }}\\) (see the figure).",
+    "If the system’s angular velocity is not constant, then the system has an angular acceleration. The average angular acceleration over a given time interval is the change in angular velocity over this time interval, \\(\\bar{\\alpha }=\\frac{\\Delta \\omega}{\\Delta t}\\). The instantaneous angular acceleration is the time derivative of angular velocity, \\(\\alpha =\\lim _{\\Delta t\\to 0}\\frac{\\Delta \\omega}{\\Delta t}=\\frac{d\\omega}{dt}\\). The angular acceleration \\(\\mathbf{\\vec{\\alpha }}\\) is found by locating the angular velocity. If a rotation rate of a rotating body is decreasing, the angular acceleration is in the opposite direction to \\(\\mathbf{\\vec{\\omega }}\\). If the rotation rate is increasing, the angular acceleration is in the same direction as \\(\\mathbf{\\vec{\\omega }}\\).",
+    "The tangential acceleration of a point at a radius from the axis of rotation is the angular acceleration times the radius to the point."
+   ]
+  },
+  {
+   "num": "10.2",
+   "module": "m58327",
+   "title": "Rotation with Constant Angular Acceleration",
+   "objectives": [
+    "Derive the kinematic equations for rotational motion with constant angular acceleration",
+    "Select from the kinematic equations for rotational motion with constant angular acceleration the appropriate equations to solve for unknowns in the analysis of systems undergoing fixed-axis rotation",
+    "Use solutions found with the kinematic equations to verify the graphical analysis of fixed-axis rotation with constant angular acceleration"
+   ],
+   "callouts": [
+    "\\bar{\\omega }=\\frac{{\\omega}_{0}+{\\omega}_{\\text{f}}}{2}",
+    "{\\theta}_{\\text{f}}={\\theta}_{0}+\\bar{\\omega }t",
+    "{\\omega}_{\\text{f}}={\\omega}_{0}+\\alpha t",
+    "{\\theta}_{\\text{f}}={\\theta}_{0}+{\\omega}_{0}t+\\frac{1}{2}\\alpha {t}^{2}",
+    "{\\omega}_{\\text{f}}^{2}={\\omega}_{0}^{2}+2\\alpha (\\Delta \\theta )"
+   ],
+   "examples": [
+    {
+     "title": "Calculating the Acceleration of a Fishing Reel",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A deep-sea fisherman hooks a big fish that swims away from the boat, pulling the fishing line from his fishing reel. The whole system is initially at rest, and the fishing line unwinds from the reel at a radius of 4.50 cm from its axis of rotation. The reel is given an angular acceleration of \\(110{\\, \\text{rad/s}}^{2}\\) for 2.00 s (the figure).</p><p>(a) What is the final angular velocity of the reel after 2 s?</p><p>(b) How many revolutions does the reel make?</p><figure><img src='img/CNX_UPhysics_10_02_Reel.jpg' alt=\"Figure is a drawing of a fishing line coming off a rotating reel. Rotation radius is 4.5 cm, rotation takes place in the counterclockwise direction.\" loading='lazy'><figcaption>Fishing line coming off a rotating reel moves linearly.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Identify the knowns and compare with the kinematic equations for constant acceleration. Look for the appropriate equation that can be solved for the unknown, using the knowns given in the problem description.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>We are given \\(\\alpha\\) and <i>t</i> and want to determine \\(\\omega\\). The most straightforward equation to use is \\({\\omega}_{\\text{f}}={\\omega}_{0}+\\alpha t\\), since all terms are known besides the unknown variable we are looking for. We are given that \\({\\omega}_{0}=0\\) (it starts from rest), so <div class='eq'>\\[{\\omega}_{\\text{f}}=0+(110{\\, \\text{rad/s}}^{2})(2.00\\, \\text{s})=220\\, \\text{rad/s}.\\]</div></li><li>We are asked to find the number of revolutions. Because \\(1\\, \\text{rev}=2\\pi \\, \\text{rad}\\), we can find the number of revolutions by finding \\(\\theta\\) in radians. We are given \\(\\alpha\\) and <i>t</i>, and we know \\({\\omega}_{0}\\) is zero, so we can obtain \\(\\theta\\) by using <div class='eq'>\\[\\begin{array}{ll}{\\theta}_{\\text{f}} & ={\\theta}_{\\text{i}}+{\\omega}_{\\text{i}}t+\\frac{1}{2}\\alpha {t}^{2} \\\\ & =0+0+(0.500)(110{\\, \\text{rad/s}}^{2}){(2.00\\, \\text{s})}^{2}=220\\, \\text{rad}\\text{.}\\end{array}\\]</div> Converting radians to revolutions gives <div class='eq'>\\[\\text{Number of rev}\\, =(220\\, \\text{rad})\\frac{1\\, \\text{rev}}{2\\pi \\, \\text{rad}}=35.0\\, \\text{rev}\\text{.}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This example illustrates that relationships among rotational quantities are highly analogous to those among linear quantities. The answers to the questions are realistic. After unwinding for two seconds, the reel is found to spin at 220 rad/s, which is 2100 rpm. (No wonder reels sometimes make high-pitched sounds.)</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating the Duration When the Fishing Reel Slows Down and Stops",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Now the fisherman applies a brake to the spinning reel, achieving an angular acceleration of \\(-300{\\, \\text{rad/s}}^{2}\\). How long does it take the reel to come to a stop?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are asked to find the time <i>t</i> for the reel to come to a stop. The initial and final conditions are different from those in the previous problem, which involved the same fishing reel. Now we see that the initial angular velocity is \\({\\omega}_{0}=220\\, \\text{rad}\\text{/}\\text{s}\\) and the final angular velocity \\(\\omega\\) is zero. The angular acceleration is given as \\(\\alpha =-300\\, {\\text{rad/s}}^{2}.\\) Examining the available equations, we see all quantities but <i>t</i> are known in \\({\\omega}_{\\text{f}}={\\omega}_{0}+\\alpha t\\), making it easiest to use this equation.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The equation states</p><div class='eq'>\\[{\\omega}_{\\text{f}}={\\omega}_{0}+\\alpha t.\\]</div><p>We solve the equation algebraically for <i>t</i> and then substitute the known values as usual, yielding</p><div class='eq'>\\[t=\\frac{{\\omega}_{\\text{f}}-{\\omega}_{0}}{\\alpha}=\\frac{0-220.0\\, \\text{rad/s}}{-300.0\\, {\\text{rad/s}}^{2}}=0.733\\, \\text{s}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that care must be taken with the signs that indicate the directions of various quantities. Also, note that the time to stop the reel is fairly small because the acceleration is rather large. Fishing lines sometimes snap because of the accelerations involved, and fishermen often let the fish swim for a while before applying brakes on the reel. A tired fish is slower, requiring a smaller acceleration.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Angular Acceleration of a Propeller",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure shows a graph of the angular velocity of a propeller on an aircraft as a function of time. Its angular velocity starts at 30 rad/s and drops linearly to 0 rad/s over the course of 5 seconds. (a) Find the angular acceleration of the object and verify the result using the kinematic equations. (b) Find the angle through which the propeller rotates during these 5 seconds and verify your result using the kinematic equations.</p><figure><img src='img/CNX_UPhysics_10_02_Prop.jpg' alt=\"Figure is a graph of the angular velocity in rads per second plotted versus time in seconds. Angular velocity decreases linearly with time, from 30 rads per second at zero seconds to zero at 5 seconds.\" loading='lazy'><figcaption>A graph of the angular velocity of a propeller versus time.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<ol type='a'><li>Since the angular velocity varies linearly with time, we know that the angular acceleration is constant and does not depend on the time variable. The angular acceleration is the slope of the angular velocity vs. time graph, \\(\\alpha =\\frac{d\\omega}{dt}\\). To calculate the slope, we read directly from the figure, and see that \\({\\omega}_{0}=30\\, \\text{rad/s}\\) at \\(t=0\\, \\text{s}\\) and \\({\\omega}_{\\text{f}}=0\\, \\text{rad/s}\\) at \\(t=5\\, \\text{s}\\). Then, we can verify the result using \\(\\omega ={\\omega}_{0}+\\alpha t\\).</li><li>We use the equation \\(\\omega =\\frac{d\\theta}{dt};\\) since the time derivative of the angle is the angular velocity, we can find the angular displacement by integrating the angular velocity, which from the figure means taking the area under the angular velocity graph. In other words: <div class='eq'>\\[{\\int}_{{\\theta}_{0}}^{{\\theta}_{\\text{f}}}d\\theta ={\\theta}_{\\text{f}}-{\\theta}_{0}={\\int}_{{t}_{0}}^{{t}_{\\text{f}}}\\omega (t)dt.\\]</div> Then we use the kinematic equations for constant acceleration to verify the result.</li></ol>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Calculating the slope, we get <div class='eq'>\\[\\alpha =\\frac{\\omega -{\\omega}_{0}}{t-{t}_{0}}=\\frac{(0-30.0)\\, \\text{rad/s}}{(5.0-0)\\, \\text{s}}=-6.0\\, {\\text{rad/s}}^{2}.\\]</div> We see that this is exactly the equation with a little rearranging of terms.</li><li>We can find the area under the curve by calculating the area of the right triangle, as shown in the figure.<br> <figure><img src='img/CNX_UPhysics_10_02_PropSol.jpg' alt=\"Figure is a graph of the angular velocity in rads per second plotted versus time in seconds. Angular velocity decreases linearly with time, from 30 rads per second at zero seconds to zero at 5 seconds. The area under the curve is filled.\" loading='lazy'><figcaption>The area under the curve is the area of the right triangle.</figcaption></figure> <div class='eq'>\\[\\begin{array}{lll}\\Delta \\theta & = & \\text{area}(\\text{triangle}); \\\\ \\Delta \\theta & = & \\frac{1}{2}(30\\, \\text{rad/s})(5\\, \\text{s})=75\\, \\text{rad}\\text{.}\\end{array}\\]</div> We verify the solution using the equation: <div class='eq'>\\[{\\theta}_{\\text{f}}={\\theta}_{0}+{\\omega}_{0}t+\\frac{1}{2}\\alpha {t}^{2}.\\]</div> Setting \\({\\theta}_{0}=0\\), we have <div class='eq'>\\[{\\theta}_{f}=(30.0\\, \\text{rad}\\text{/}\\text{s})(5.0\\, \\text{s})+\\frac{1}{2}{(-6.0\\, \\text{rad}\\text{/}{\\text{s}}^{2})(5.0\\, \\text{rad}\\text{/}\\text{s})}^{2}=150.0-75.0=75.0\\, \\text{rad}.\\]</div> This verifies the solution found from finding the area under the curve.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We see from part (b) that there are alternative approaches to analyzing fixed-axis rotation with constant acceleration. We started with a graphical approach and verified the solution using the rotational kinematic equations. Since \\(\\alpha =\\frac{d\\omega}{dt}\\), we could do the same graphical analysis on an angular acceleration-vs.-time curve. The area under an \\(\\alpha \\text{-vs.-}t\\) curve gives us the change in angular velocity. Since the angular acceleration is constant in this section, this is a straightforward exercise.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A centrifuge used in DNA extraction spins at a maximum rate of 7000 rpm, producing a “g-force” on the sample that is 6000 times the force of gravity. If the centrifuge takes 10 seconds to come to rest from the maximum spin rate: (a) What is the angular acceleration of the centrifuge? (b) What is the angular displacement of the centrifuge during this time?</p>",
+     "a": "<p>a. Using the equation, we have \\(7000\\, \\text{rpm}=\\frac{7000.0(2\\pi \\, \\text{rad})}{60.0\\, \\text{s}}=733.0\\, \\text{rad}\\text{/}\\text{s},\\) <br> \\(\\alpha =\\frac{(\\omega -{\\omega}_{0})}{t}=\\frac{(0-733.0\\, \\text{rad}\\text{/}\\text{s})}{10.0\\, \\text{s}}=-73.3\\, \\text{rad}\\text{/}{\\text{s}}^{2}\\);<br> b. Using the equation, we have<br> \\({\\omega}^{2}={\\omega}_{0}^{2}+2\\alpha \\Delta \\theta \\Rightarrow \\Delta \\theta =\\frac{{\\omega}^{2}-{\\omega}_{0}^{2}}{2\\alpha}=\\frac{0-{(733.0\\, \\text{rad}\\text{/}\\text{s})}^{2}}{2(-73.3\\, \\text{rad}\\text{/}{\\text{s}}^{2})}=3665.2\\, \\text{rad}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The kinematics of rotational motion describes the relationships among rotation angle (angular position), angular velocity, angular acceleration, and time.",
+    "For a constant angular acceleration, the angular velocity varies linearly. Therefore, the average angular velocity is 1/2 the initial plus final angular velocity over a given time period: <div class='eq'>\\[\\bar{\\omega }=\\frac{{\\omega}_{0}+{\\omega}_{\\text{f}}}{2}.\\]</div>",
+    "We used a graphical analysis to find solutions to fixed-axis rotation with constant angular acceleration. From the relation \\(\\omega =\\frac{d\\theta}{dt}\\), we found that the area under an angular velocity-vs.-time curve gives the angular displacement, \\({\\theta}_{\\text{f}}-{\\theta}_{0}=\\Delta \\theta ={\\int}_{{t}_{0}}^{t}\\omega (t)dt\\). The results of the graphical analysis were verified using the kinematic equations for constant angular acceleration. Similarly, since \\(\\alpha =\\frac{d\\omega}{dt}\\), the area under an angular acceleration-vs.-time graph gives the change in angular velocity: \\({\\omega}_{f}-{\\omega}_{0}=\\Delta \\omega ={\\int}_{{t}_{0}}^{t}\\alpha (t)dt\\)."
+   ]
+  },
+  {
+   "num": "10.3",
+   "module": "m58328",
+   "title": "Relating Angular and Translational Quantities",
+   "objectives": [
+    "Given the linear kinematic equation, write the corresponding rotational kinematic equation",
+    "Calculate the linear distances, velocities, and accelerations of points on a rotating system given the angular velocities and accelerations"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{a}}={\\mathbf{\\vec{a}}}_{\\text{c}}+{\\mathbf{\\vec{a}}}_{\\text{t}}"
+   ],
+   "examples": [
+    {
+     "title": "Linear Acceleration of a Centrifuge",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A centrifuge has a radius of 20 cm and accelerates from a maximum rotation rate of 10,000 rpm to rest in 30 seconds under a constant angular acceleration. It is rotating counterclockwise. What is the magnitude of the total acceleration of a point at the tip of the centrifuge at \\(t=29.0\\text{s?}\\) What is the direction of the total acceleration vector?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>With the information given, we can calculate the angular acceleration, which then will allow us to find the tangential acceleration. We can find the centripetal acceleration at \\(t=0\\) by calculating the tangential speed at this time. With the magnitudes of the accelerations, we can calculate the total linear acceleration. From the description of the rotation in the problem, we can sketch the direction of the total acceleration vector.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The angular acceleration is</p><div class='eq'>\\[\\alpha =\\frac{\\omega -{\\omega}_{0}}{t}=\\frac{0-(1.0\\, \\times \\, {10}^{4})2\\pi \\text{/}60.0\\, \\text{s}(\\text{rad}\\text{/}\\text{s})}{30.0\\, \\text{s}}=-34.9\\, \\text{rad}\\text{/}{\\text{s}}^{2}.\\]</div><p>Therefore, the tangential acceleration is</p><div class='eq'>\\[{a}_{\\text{t}}=r\\alpha =0.2\\, \\text{m}(-34.9\\, \\text{rad}\\text{/}{\\text{s}}^{2})=-7.0\\, {\\text{m}\\text{/}\\text{s}}^{2}.\\]</div><p>The angular velocity at \\(t=29.0\\, \\text{s}\\) is</p><div class='eq'>\\[\\begin{array}{ll}\\omega & ={\\omega}_{0}+\\alpha t=1.0\\, \\times \\, {10}^{4}(\\frac{2\\pi}{60.0\\, \\text{s}})+(-34.9\\, \\text{rad}\\text{/}{\\text{s}}^{2})(29.0\\, \\text{s}) \\\\ & =1047.2\\, \\text{rad}\\text{/}\\text{s}-1012.71=35.1\\, \\text{rad}\\text{/}\\text{s}.\\end{array}\\]</div><p>Thus, the tangential speed at \\(t=29.0\\, \\text{s}\\) is</p><div class='eq'>\\[{v}_{\\text{t}}=r\\omega =0.2\\, \\text{m}(35.1\\, \\text{rad}\\text{/}\\text{s})=7.0\\, \\text{m}\\text{/}\\text{s}.\\]</div><p>We can now calculate the centripetal acceleration at \\(t=29.0\\, \\text{s}\\):</p><div class='eq'>\\[{a}_{\\text{c}}=\\frac{{v}^{2}}{r}=\\frac{{(7.0\\, \\text{m}\\text{/}\\text{s})}^{2}}{0.2\\, \\text{m}}=245.0\\, \\text{m}\\text{/}{\\text{s}}^{2}.\\]</div><p>Since the two acceleration vectors are perpendicular to each other, the magnitude of the total linear acceleration is</p><div class='eq'>\\[|\\mathbf{\\vec{a}}|=\\sqrt{{a}_{\\text{c}}^{2}+{a}_{\\text{t}}^{2}}=\\sqrt{{(245.0)}^{2}+{(-7.0)}^{2}}=245.1\\, \\text{m}\\text{/}{\\text{s}}^{2}.\\]</div><p>Since the centrifuge has a negative angular acceleration, it is slowing down. The total acceleration vector is as shown in the figure. The angle with respect to the centripetal acceleration vector is</p><div class='eq'>\\[\\theta ={\\tan}^{-1}\\frac{-7.0}{245.0}=-1.6^{\\circ} .\\]</div><p>The negative sign means that the total acceleration vector is angled toward the clockwise direction.</p><figure><img src='img/CNX_UPhysics_10_03_Centrif.jpg' alt=\"Figure shows a particle executing circular motion in the counterclockwise direction. The vector a t is pointed clockwise. Vectors a and a c point toward the center of the circle, and the label “direction of motion” points in the opposite direction of vector a t.\" loading='lazy'><figcaption>The centripetal, tangential, and total acceleration vectors. The centrifuge is slowing down, so the tangential acceleration is clockwise, opposite the direction of rotation (counterclockwise).</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>From the figure, we see that the tangential acceleration vector is opposite the direction of rotation. The magnitude of the tangential acceleration is much smaller than the centripetal acceleration, so the total linear acceleration vector will make a very small angle with respect to the centripetal acceleration vector.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A boy jumps on a merry-go-round with a radius of 5 m that is at rest. It starts accelerating at a constant rate up to an angular velocity of 5 rad/s in 20 seconds. What is the distance travelled by the boy?</p>",
+     "a": "<p>The angular acceleration is \\(\\alpha =\\frac{(5.0-0)\\text{rad}\\text{/}\\text{s}}{20.0\\, \\text{s}}=0.25\\, \\text{rad}\\text{/}{\\text{s}}^{2}\\). Therefore, the total angle that the boy passes through is<br> \\(\\Delta \\theta =\\frac{{\\omega}^{2}-{\\omega}_{0}^{2}}{2\\alpha}=\\frac{{(5.0)}^{2}-0}{2(0.25)}=50\\, \\text{rad}\\).<br> Thus, we calculate<br> \\(s=r\\theta =5.0\\, \\text{m}(50.0\\, \\text{rad})=250.0\\, \\text{m}\\).</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The linear kinematic equations have their rotational counterparts such that there is a mapping \\(x\\to \\theta ,\\; v\\to \\omega ,\\; a\\to \\alpha\\).",
+    "A system undergoing uniform circular motion has a constant angular velocity, but points at a distance <i>r</i> from the rotation axis have a linear centripetal acceleration.",
+    "A system undergoing nonuniform circular motion has an angular acceleration and therefore has both a linear centripetal and linear tangential acceleration at a point a distance <i>r</i> from the axis of rotation.",
+    "The total linear acceleration is the vector sum of the centripetal acceleration vector and the tangential acceleration vector. Since the centripetal and tangential acceleration vectors are perpendicular to each other for circular motion, the magnitude of the total linear acceleration is \\(|\\mathbf{\\vec{a}}|=\\sqrt{{a}_{\\text{c}}^{2}+{a}_{\\text{t}}^{2}}\\)."
+   ]
+  },
+  {
+   "num": "10.4",
+   "module": "m58329",
+   "title": "Moment of Inertia and Rotational Kinetic Energy",
+   "objectives": [
+    "Describe the differences between rotational and translational kinetic energy",
+    "Define the physical concept of moment of inertia in terms of the mass distribution from the rotational axis",
+    "Explain how the moment of inertia of rigid bodies affects their rotational kinetic energy",
+    "Use conservation of mechanical energy to analyze systems undergoing both rotation and translation",
+    "Calculate the angular velocity of a rotating system when there are energy losses due to nonconservative forces"
+   ],
+   "callouts": [
+    "K=\\frac{1}{2}(\\sum _{j}{m}_{j}{r}_{j}^{2}){\\omega}^{2}",
+    "I=\\sum _{j}{m}_{j}{r}_{j}^{2}",
+    "K=\\frac{1}{2}I{\\omega}^{2}"
+   ],
+   "examples": [
+    {
+     "title": "Moment of Inertia of a System of Particles",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Six small washers are spaced 10 cm apart on a rod of negligible mass and 0.5 m in length. The mass of each washer is 20 g. The rod rotates about an axis located at 25 cm, as shown in the figure. (a) What is the moment of inertia of the system? (b) If the two washers closest to the axis are removed, what is the moment of inertia of the remaining four washers? (c) If the system with six washers rotates at 5 rev/s, what is its rotational kinetic energy?</p><figure><img src='img/CNX_UPhysics_10_04_SysPart.jpg' alt=\"Figure shows six washers spaced 10 cm apart on a rod rotating about a vertical axis.\" loading='lazy'><figcaption>Six washers are spaced 10 cm apart on a rod of negligible mass and rotating about a vertical axis.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<ol type='a'><li>We use the definition for moment of inertia for a system of particles and perform the summation to evaluate this quantity. The masses are all the same so we can pull that quantity in front of the summation symbol.</li><li>We do a similar calculation.</li><li>We insert the result from (a) into the expression for rotational kinetic energy.</li></ol>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>\\(I=\\sum _{j}{m}_{j}{r}_{j}^{2}=(0.02\\, \\text{kg})(2\\, \\times \\, {(0.25\\, \\text{m})}^{2}+2\\, \\times \\, {(0.15\\, \\text{m})}^{2}+2\\, \\times \\, {(0.05\\, \\text{m})}^{2})=0.0035\\, \\text{kg}\\cdot {\\text{m}}^{2}\\).</li><li>\\(I=\\sum _{j}{m}_{j}{r}_{j}^{2}=(0.02\\, \\text{kg})(2\\, \\times \\, {(0.25\\, \\text{m})}^{2}+2\\, \\times \\, {(0.15\\, \\text{m})}^{2})=0.0034\\, \\text{kg}\\cdot {\\text{m}}^{2}\\).</li><li>\\(K=\\frac{1}{2}I{\\omega}^{2}=\\frac{1}{2}(0.0035\\, \\text{kg}\\cdot {\\text{m}}^{2})(5.0\\, \\times \\, 2\\pi \\, \\text{rad}\\text{/}{\\text{s})}^{2}=1.73\\, \\text{J}\\).</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We can see the individual contributions to the moment of inertia. The masses close to the axis of rotation have a very small contribution. When we removed them, it had a very small effect on the moment of inertia.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Helicopter Energies",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A typical small rescue <b>helicopter</b> has four blades: Each is 4.00 m long and has a mass of 50.0 kg (the figure). The blades can be approximated as thin rods that rotate about one end of an axis perpendicular to their length. The helicopter has a total loaded mass of 1000 kg. (a) Calculate the rotational kinetic energy in the blades when they rotate at 300 rpm. (b) Calculate the translational kinetic energy of the helicopter when it flies at 20.0 m/s, and compare it with the rotational energy in the blades.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Rotational and translational kinetic energies can be calculated from their definitions. The wording of the problem gives all the necessary constants to evaluate the expressions for the rotational and translational kinetic energies.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The rotational kinetic energy is <div class='eq'>\\[K=\\frac{1}{2}I{\\omega}^{2}.\\]</div> We must convert the angular velocity to radians per second and calculate the moment of inertia before we can find <i>K</i>. The angular velocity \\(\\omega\\) is <div class='eq'>\\[\\omega =\\frac{300\\, \\text{rev}}{1.00\\, \\min}\\, \\frac{2\\pi \\, \\text{rad}}{\\text{1 rev}}\\, \\frac{1.00\\, \\min}{60.0\\, \\text{s}}=\\, 31.4\\, \\frac{\\text{rad}}{\\text{s}}.\\]</div> The moment of inertia of one blade is that of a thin rod rotated about its end, listed in the figure. The total <i>I</i> is four times this moment of inertia because there are four blades. Thus, <div class='eq'>\\[I=4\\frac{M{L}^{2}}{3}=4\\, \\times \\, \\frac{(50.0\\, \\text{kg}){(4.00\\, \\text{m})}^{2}}{3}=1067.0\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\]</div> Entering \\(\\omega\\) and <i>I</i> into the expression for rotational kinetic energy gives <div class='eq'>\\[K=0.5(1067\\, \\text{kg}\\cdot {\\text{m}}^{2}){\\text{(31.4 rad/s)}}^{2}=5.26\\, \\times \\, {10}^{5}\\, \\text{J}\\text{.}\\]</div></li><li>Entering the given values into the equation for translational kinetic energy, we obtain <div class='eq'>\\[K=\\frac{1}{2}m{v}^{2}=(0.5)(1000.0\\, \\text{kg}){(20.0\\, \\text{m/s})}^{2}=2.00\\, \\times \\, {10}^{5}\\, \\text{J}.\\]</div> To compare kinetic energies, we take the ratio of translational kinetic energy to rotational kinetic energy. This ratio is <div class='eq'>\\[\\frac{2.00\\, \\times \\, {10}^{5}\\, \\text{J}}{5.26\\, \\times \\, {10}^{5}\\, \\text{J}}=0.380.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The ratio of translational energy to rotational kinetic energy is only 0.380. This ratio tells us that most of the kinetic energy of the helicopter is in its spinning blades.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Energy in a Baton",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A person hurls a <b>baton</b> into the air with a velocity of 30.0 m/s at an angle of \\(40.0^{\\circ}\\) with respect to the horizontal (the figure). It has a mass of 1.0 kg and is rotating at 10.0 rev/s. The moment of inertia of the baton is given as \\(I=\\frac{1}{12}m{L}^{2}\\) where \\(L=0.7\\, \\text{m}\\). (a) What is the total energy of the baton when it leaves the hand? (b) How high does the baton go from the elevation of the hand, neglecting air resistance?</p><figure><img src='img/CNX_UPhysics_10_04_Boom.jpg' alt=\"Figure is a sketch of a man throwing a baton in the air at a 40 degree angle.\" loading='lazy'><figcaption>A baton is hurled into the air at an initial angle of \\(40^{\\circ}\\).</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the definitions of rotational and linear kinetic energy to find the total energy of the system. The problem states to neglect air resistance, so we don’t have to worry about energy loss. In part (b), we use conservation of mechanical energy to find the maximum height of the baton.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Moment of inertia: \\(I=\\frac{1}{12}m{L}^{2}=\\frac{1}{12}(1.0\\, \\text{kg})(0.7{\\text{m})}^{2}=0.041\\, \\text{kg}\\cdot {\\text{m}}^{2}\\).<br> Angular velocity: \\(\\omega =(10.0\\, \\text{rev}\\text{/}\\text{s})(2\\pi )=62.83\\, \\text{rad}\\text{/}\\text{s}\\).<br> The rotational kinetic energy is therefore <div class='eq'>\\[{K}_{\\text{R}}=\\frac{1}{2}(0.041\\, \\text{kg}\\cdot {\\text{m}}^{2}){(62.83\\, \\text{rad}\\text{/}\\text{s})}^{2}=80.93\\, \\text{J}.\\]</div> The translational kinetic energy is <div class='eq'>\\[{K}_{\\text{T}}=\\frac{1}{2}m{v}^{2}=\\frac{1}{2}(1.0\\, \\text{kg})(30.0\\, \\text{m}\\text{/}\\text{s}{)}^{2}=450.0\\, \\text{J}.\\]</div> Thus, the total energy in the baton is <div class='eq'>\\[{K}_{\\text{Total}}={K}_{\\text{R}}+{K}_{\\text{T}}=80.93+450.0=530.93\\, \\text{J}.\\]</div></li><li>We use conservation of mechanical energy. Since the baton is launched at an angle, we need to write the total energies of the system in terms of its linear kinetic energies using the velocity in the <i>x</i>- and <i>y</i>-directions. The total energy when the baton leaves the hand is <div class='eq'>\\[{E}_{\\text{Before}}=\\frac{1}{2}m{v}_{x}^{2}+\\frac{1}{2}m{v}_{y}^{2}+\\frac{1}{2}I{\\omega}^{2}.\\]</div> The total energy at maximum height is <div class='eq'>\\[{E}_{\\text{Final}}=\\frac{1}{2}m{v}_{x}^{2}+\\frac{1}{2}I{\\omega}^{2}+mgh.\\]</div> By conservation of mechanical energy, \\({E}_{\\text{Before}}={E}_{\\text{Final}}\\) so we have, after canceling like terms, <div class='eq'>\\[\\frac{1}{2}m{v}_{y}^{2}=mgh.\\]</div> Since \\({v}_{y}=30.0\\, \\text{m}\\text{/}\\text{s}(\\sin \\, 40^{\\circ} )=19.28\\, \\text{m}\\text{/}\\text{s}\\), we find <div class='eq'>\\[h=\\frac{{(19.28\\, \\text{m}\\text{/}\\text{s})}^{2}}{2(9.8\\, \\text{m}\\text{/}{\\text{s}}^{2})}=18.97\\, \\text{m}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In part (b), the solution demonstrates how energy conservation is an alternative method to solve a problem that normally would be solved using kinematics. In the absence of air resistance, the rotational kinetic energy was not a factor in the solution for the maximum height.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A nuclear submarine propeller has a moment of inertia of \\(800.0\\, \\text{kg}\\cdot {\\text{m}}^{2}\\). If the submerged propeller has a rotation rate of 4.0 rev/s when the engine is cut, what is the rotation rate of the propeller after 5.0 s when water resistance has taken 50,000 J out of the system?</p>",
+     "a": "<p>The initial rotational kinetic energy of the propeller is<br> \\({K}_{0}=\\frac{1}{2}I{\\omega}^{2}=\\frac{1}{2}(800.0{\\, \\text{kg-m}}^{2})(4.0\\, \\times \\, 2\\pi \\, \\text{rad}\\text{/}{\\text{s})}^{2}=2.53\\, \\times \\, {10}^{5}\\, \\text{J}\\).<br> At 5.0 s the new rotational kinetic energy of the propeller is<br> \\({K}_{\\text{f}}=2.03\\, \\times \\, {10}^{5}\\, \\text{J}\\).<br> and the new angular velocity is<br> \\(\\omega =\\sqrt{\\frac{2(2.03\\, \\times \\, {10}^{5}\\, \\text{J})}{800.0{\\, \\text{kg-m}}^{2}}}=22.53\\, \\text{rad}\\text{/}\\text{s}\\)<br> which is 3.58 rev/s.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The rotational kinetic energy is the kinetic energy of rotation of a rotating rigid body or system of particles, and is given by \\(K=\\frac{1}{2}I{\\omega}^{2}\\), where <i>I</i> is the moment of inertia, or “rotational mass” of the rigid body or system of particles.",
+    "The moment of inertia for a system of point particles rotating about a fixed axis is \\(I=\\sum _{j}{m}_{j}{r}_{j}^{2}\\), where \\({m}_{j}\\) is the mass of the point particle and \\({r}_{j}\\) is the distance of the point particle to the rotation axis. Because of the \\({r}^{2}\\) term, the moment of inertia increases as the square of the distance to the fixed rotational axis. The moment of inertia is the rotational counterpart to the mass in linear motion.",
+    "In systems that are both rotating and translating, conservation of mechanical energy can be used if there are no nonconservative forces at work. The total mechanical energy is then conserved and is the sum of the rotational and translational kinetic energies, and the gravitational potential energy."
+   ]
+  },
+  {
+   "num": "10.5",
+   "module": "m58330",
+   "title": "Calculating Moments of Inertia",
+   "objectives": [
+    "Calculate the moment of inertia for uniformly shaped, rigid bodies",
+    "Apply the parallel axis theorem to find the moment of inertia about any axis parallel to one already known",
+    "Calculate the moment of inertia for compound objects"
+   ],
+   "callouts": [
+    "I=\\sum _{j}{m}_{j}{r}_{j}{}^{2}\\; \\text{becomes}\\; I=\\int {r}^{2}dm",
+    "{I}_{\\text{total}}=\\sum _{i}{I}_{i}"
+   ],
+   "examples": [
+    {
+     "title": "Person on a Merry-Go-Round",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 25-kg child stands at a distance \\(r=1.0\\, \\text{m}\\) from the axis of a rotating merry-go-round (the figure). The merry-go-round can be approximated as a uniform solid disk with a mass of 500 kg and a radius of 2.0 m. Find the moment of inertia of this system.</p><figure><img src='img/CNX_UPhysics_10_05_merrygor.jpg' alt=\"Figure is a drawing of a child on a merry-go-round. Merry–go-round has a 2 meter radius. Child is standing one meter from the center.\" loading='lazy'><figcaption>Calculating the moment of inertia for a child on a merry-go-round.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>This problem involves the calculation of a moment of inertia. We are given the mass and distance to the axis of rotation of the child as well as the mass and radius of the merry-go-round. Since the mass and size of the child are much smaller than the merry-go-round, we can approximate the child as a point mass. The notation we use is \\({m}_{\\text{c}}=25\\, \\text{kg},{r}_{\\text{c}}=1.0\\, \\text{m},{m}_{\\text{m}}=500\\, \\text{kg},{r}_{\\text{m}}=2.0\\, \\text{m}\\).</p><p>Our goal is to find \\({I}_{\\text{total}}=\\sum _{i}{I}_{i}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>For the child, \\({I}_{\\text{c}}={m}_{\\text{c}}{r}^{2}\\), and for the merry-go-round, \\({I}_{\\text{m}}=\\frac{1}{2}{m}_{\\text{m}}{r}^{2}\\). Therefore</p><div class='eq'>\\[{I}_{\\text{total}}=25{(1)}^{2}+\\frac{1}{2}(500){(2)}^{2}=25+1000=1025\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The value should be close to the moment of inertia of the merry-go-round by itself because it has much more mass distributed away from the axis than the child does.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Rod and Solid Sphere",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the moment of inertia of the rod and solid sphere combination about the two axes as shown below. The rod has length 0.5 m and mass 2.0 kg. The radius of the sphere is 20.0 cm and has mass 1.0 kg.</p><figure><img src='img/CNX_UPhysics_10_05_RodSphere_img.jpg' alt=\"Figure A shows a disk with radius R connected to a rod with length L. The point A is at the end of the rod opposite to the disk. Figure B shows a disk with radius R connected to a rod with length L. The point B is at the end of the rod connected to the disk.\" loading='lazy'></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since we have a compound object in both cases, we can use the parallel-axis theorem to find the moment of inertia about each axis. In (a), the center of mass of the sphere is located at a distance \\(L+R\\) from the axis of rotation. In (b), the center of mass of the sphere is located a distance <i>R</i> from the axis of rotation. In both cases, the moment of inertia of the rod is about an axis at one end. Refer to another section for the moments of inertia for the individual objects.</p><ol type='a'><li>\\({I}_{\\text{total}}=\\sum _{i}{I}_{i}={I}_{\\text{Rod}}+{I}_{\\text{Sphere}}\\);<br> \\({I}_{\\text{Sphere}}={I}_{\\text{center of mass}}+{m}_{\\text{Sphere}}{(L+R)}^{2}=\\frac{2}{5}{m}_{\\text{Sphere}}{R}^{2}+{m}_{\\text{Sphere}}{(L+R)}^{2}\\);<br> \\({I}_{\\text{total}}={I}_{\\text{Rod}}+{I}_{\\text{Sphere}}=\\frac{1}{3}{m}_{\\text{Rod}}{L}^{2}+\\frac{2}{5}{m}_{\\text{Sphere}}{R}^{2}+{m}_{\\text{Sphere}}{(L+R)}^{2};\\)<br> \\({I}_{\\text{total}}=\\frac{1}{3}(2.0\\, \\text{kg}){(0.5\\, \\text{m})}^{2}+\\frac{2}{5}(1.0\\, \\text{kg})(0.2\\, {\\text{m})}^{2}+(1.0\\, \\text{kg}){(0.5\\, \\text{m}+0.2\\, \\text{m})}^{2};\\)<br> \\({I}_{\\text{total}}=(0.167+0.016+0.490)\\, \\text{kg}\\cdot {\\text{m}}^{2}=0.673\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\)<br></li><li>\\({I}_{\\text{Sphere}}=\\frac{2}{5}{m}_{\\text{Sphere}}{R}^{2}+{m}_{\\text{Sphere}}{R}^{2}\\);<br> \\({I}_{\\text{total}}={I}_{\\text{Rod}}+{I}_{\\text{Sphere}}=\\frac{1}{3}{m}_{\\text{Rod}}{L}^{2}+\\frac{2}{5}{m}_{\\text{Sphere}}{R}^{2}+{m}_{\\text{Sphere}}{R}^{2}\\);<br> \\({I}_{\\text{total}}=\\frac{1}{3}(2.0\\, \\text{kg}){(0.5\\, \\text{m})}^{2}+\\frac{2}{5}(1.0\\, \\text{kg})(0.2\\, {\\text{m})}^{2}+(1.0\\, \\text{kg}){(0.2\\, \\text{m})}^{2}\\);<br> \\({I}_{\\text{total}}=(0.167+0.016+0.04)\\, \\text{kg}\\cdot {\\text{m}}^{2}=0.223\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\)</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Using the parallel-axis theorem eases the computation of the moment of inertia of compound objects. We see that the moment of inertia is greater in (a) than (b). This is because the axis of rotation is closer to the center of mass of the system in (b). The simple analogy is that of a rod. The moment of inertia about one end is \\(\\frac{1}{3}m{L}^{2}\\), but the moment of inertia through the center of mass along its length is \\(\\frac{1}{12}m{L}^{2}\\).</p>"
+      }
+     ]
+    },
+    {
+     "title": "Angular Velocity of a Pendulum",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A pendulum in the shape of a rod (the figure) is released from rest at an angle of \\(30^{\\circ}\\). It has a length 30 cm and mass 300 g. What is its angular velocity at its lowest point?</p><figure><img src='img/CNX_UPhysics_10_05_Pend.jpg' alt=\"Figure shows a pendulum in the form of a rod with a mass of 300 grams and length of 30 centimeters. Pendulum is released from rest at an angle of 30 degrees.\" loading='lazy'><figcaption>A pendulum in the form of a rod is released from rest at an angle of \\(30^{\\circ} .\\)</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Use conservation of energy to solve the problem. At the point of release, the pendulum has gravitational potential energy, which is determined from the height of the center of mass above its lowest point in the swing. At the bottom of the swing, all of the gravitational potential energy is converted into rotational kinetic energy.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The change in potential energy is equal to the change in rotational kinetic energy, \\(\\Delta U+\\Delta K=0\\).</p><p>At the top of the swing: \\(U=mg{h}_{\\text{cm}}=mg\\frac{L}{2}(\\cos \\, \\theta )\\). At the bottom of the swing, \\(U=mg\\frac{L}{2}\\) with respect to the lowest point the rod swings.</p><p>At the top of the swing, the rotational kinetic energy is \\(K=0\\). At the bottom of the swing, \\(K=\\frac{1}{2}I{\\omega}^{2}\\). Therefore:</p><div class='eq'>\\[\\Delta U+\\Delta K=0\\Rightarrow (mg\\frac{L}{2}(1-\\cos \\, \\theta )-0)+(0-\\frac{1}{2}I{\\omega}^{2})=0\\]</div><p>or</p><div class='eq'>\\[\\frac{1}{2}I{\\omega}^{2}=mg\\frac{L}{2}(1-\\cos \\, \\theta ).\\]</div><p>Solving for \\(\\omega\\), we have</p><div class='eq'>\\[\\omega =\\sqrt{mg\\frac{L}{I}(1-\\cos \\, \\theta )}=\\sqrt{mg\\frac{L}{1\\text{/}3m{L}^{2}}(1-\\cos \\, \\theta )}=\\sqrt{g\\frac{3}{L}(1-\\cos \\, \\theta )}.\\]</div><p>Inserting numerical values, we have</p><div class='eq'>\\[\\omega =\\sqrt{9.8\\, \\text{m}\\text{/}{\\text{s}}^{2}\\frac{3}{0.3\\, \\text{m}}(1-\\cos \\, 30)}=3.6\\, \\text{rad}\\text{/}\\text{s}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that the angular velocity of the pendulum does not depend on its mass.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>What is the moment of inertia of a cylinder of radius <i>R</i> and mass <i>m</i> about an axis through a point on the surface, as shown below?</p><figure><img src='img/CNX_UPhysics_10_05_Cyl_img.jpg' alt=\"Figure shows a cylinder of radius R that rotates about an axis through a point on the surface.\" loading='lazy'></figure>",
+     "a": "<p>\\({I}_{\\text{parallel-axis}}={I}_{\\text{center of mass}}+m{d}^{2}=m{R}^{2}+m{R}^{2}=(\\frac{1}{3})m{R}^{2}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Moments of inertia can be found by summing or integrating over every ‘piece of mass’ that makes up an object, multiplied by the square of the distance of each ‘piece of mass’ to the axis. In integral form the moment of inertia is \\(I=\\int {r}^{2}dm\\).",
+    "Moment of inertia is larger when an object’s mass is farther from the axis of rotation.",
+    "It is possible to find the moment of inertia of an object about a new axis of rotation once it is known for a parallel axis. This is called the parallel axis theorem given by \\({I}_{\\text{parallel-axis}}={I}_{\\text{center of mass}}+m{d}^{2}\\), where <i>d</i> is the distance from the initial axis to the parallel axis.",
+    "Moment of inertia for a compound object is simply the sum of the moments of inertia for each individual object that makes up the compound object."
+   ]
+  },
+  {
+   "num": "10.6",
+   "module": "m58331",
+   "title": "Torque",
+   "objectives": [
+    "Describe how the magnitude of a torque depends on the magnitude of the lever arm and the angle the force vector makes with the lever arm",
+    "Determine the sign (positive or negative) of a torque using the right-hand rule",
+    "Calculate individual torques about a common axis and sum them to find the net torque"
+   ],
+   "callouts": [
+    "|\\mathbf{\\vec{\\tau }}|={r}_{\\perp}F",
+    "{\\mathbf{\\vec{\\tau }}}_{\\text{net}}=\\sum _{i}{\\mathbf{\\vec{\\tau }}}_{i}"
+   ],
+   "examples": [
+    {
+     "title": "Calculating Torque",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Four forces are shown in the figure at particular locations and orientations with respect to a given <i>xy</i>-coordinate system. Find the torque due to each force about the origin, then use your results to find the net torque about the origin.</p><figure><img src='img/CNX_UPhysics_10_06_forces.jpg' alt=\"Figure shows four forces producing torques that plotted at the XY coordinate system. Both X and Y axes plot distance in meters. Vector for the force that has a magnitude of 40 N starts at (4,0) point, is parallel to the Y axis, and is directed to the positive direction. Vector for the force that has a magnitude of 20 N starts at (0,-3) point, is parallel to the X axis, and is directed to the negative direction. Another vector for the force that has a magnitude of 20 N starts at (0,1) point, and is directed to the left top part of the graph forming a 60 degree angle with the X axis. Vector for the force that has a magnitude of 30 N starts at (-5,0) point, and is directed to the left bottom part of the graph forming a 53 degree angle with the X axis.\" loading='lazy'><figcaption>Four forces producing torques.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>This problem requires calculating torque. All known quantities––forces with directions and lever arms––are given in the figure. The goal is to find each individual torque and the net torque by summing the individual torques. Be careful to assign the correct sign to each torque by using the cross product of \\(\\mathbf{\\vec{r}}\\) and the force vector \\(\\mathbf{\\vec{F}}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Use \\(|\\mathbf{\\vec{\\tau }}|={r}_{\\perp}F=|rF\\sin \\, \\theta |\\) to find the magnitude and \\(\\mathbf{\\vec{\\tau }}=\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{F}}\\) to determine the sign of the torque.</p><p>The magnitude of the torque from force 40 N in the first quadrant is given by \\((4)(40)\\sin \\, 90^{\\circ} =160\\, \\text{N}\\cdot \\text{m}\\).</p><p>The cross product of \\(\\mathbf{\\vec{r}}\\) and \\(\\mathbf{\\vec{F}}\\) is out of the page, positive.</p><p>The magnitude of the torque from force 20 N in the third quadrant is given by\\((3)(20)\\sin \\, 90^{\\circ} =-60\\, \\text{N}\\cdot \\text{m}\\).</p><p>The cross product of \\(\\mathbf{\\vec{r}}\\) and \\(\\mathbf{\\vec{F}}\\) is into the page, so it is negative: \\(-60\\, \\text{N}\\cdot \\text{m}\\).</p><p>The magnitude of the torque from force 30 N in the third quadrant is given by \\((5)(30)\\sin \\, 53^{\\circ} =120\\, \\text{N}\\cdot \\text{m}\\).</p><p>The cross product of \\(\\mathbf{\\vec{r}}\\) and \\(\\mathbf{\\vec{F}}\\) is out of the page, positive.</p><p>The magnitude of the torque from force 20 N in the second quadrant is given by \\((1)(20)\\sin \\, 30^{\\circ} =10\\, \\text{N}\\cdot \\text{m}\\).</p><p>The cross product of \\(\\mathbf{\\vec{r}}\\) and \\(\\mathbf{\\vec{F}}\\) is out of the page.</p><p>The net magnitude of the torque is therefore \\({\\tau}_{\\text{net}}=\\sum _{i}|{\\mathbf{\\tau }}_{i}|=160-60+120+10=230\\, \\text{N}\\cdot \\text{m}\\text{.}\\)</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that each force that acts in the counterclockwise direction has a positive torque, whereas each force that acts in the clockwise direction has a negative torque. The torque is greater when the distance, force, or perpendicular components are greater.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Torque on a rigid body",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure shows several forces acting at different locations and angles on a flywheel. We have \\(|{\\mathbf{\\vec{F}}}_{1}|=20\\, \\text{N},\\) \\(|{\\mathbf{\\vec{F}}}_{2}|=30\\, \\text{N}\\), \\(|{\\mathbf{\\vec{F}}}_{3}|=30\\, \\text{N}\\), and \\(r=0.5\\, \\text{m}\\). Find the net torque on the flywheel about an axis through the center.</p><figure><img src='img/CNX_UPhysics_10_06_ThreeTor.jpg' alt=\"Figure shows a flywheel with three forces acting on it at different locations and angles. Force F3 is applied at the center and is perpendicular to the axis of rotation. Force F2 is applied at the left edge and is perpendicular to the axis of rotation. Force F1 is applied at the center and forms 30 degree angle with the axis of rotation.\" loading='lazy'><figcaption>Three forces acting on a flywheel.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We calculate each torque individually, using the cross product, and determine the sign of the torque. Then we sum the torques to find the net torque.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We start with \\({\\mathbf{\\vec{F}}}_{1}\\). If we look at the figure, we see that \\({\\mathbf{\\vec{F}}}_{1}\\) makes an angle of \\(90^{\\circ} +60^{\\circ}\\) with the radius vector \\(\\mathbf{\\vec{r}}\\). Taking the cross product, we see that it is out of the page and so is positive. We also see this from calculating its magnitude:</p><div class='eq'>\\[|{\\mathbf{\\vec{\\tau }}}_{1}|=r{F}_{1}\\sin \\, 150^{\\circ} =0.5\\, \\text{m}(20\\, \\text{N})(0.5)=5.0\\, \\text{N}\\cdot \\text{m}.\\]</div><p>Next we look at \\({\\mathbf{\\vec{F}}}_{2}\\). The angle between \\({\\mathbf{\\vec{F}}}_{2}\\) and \\(\\mathbf{\\vec{r}}\\) is \\(90^{\\circ}\\) and the cross product is into the page so the torque is negative. Its value is</p><div class='eq'>\\[|{\\mathbf{\\vec{\\tau }}}_{2}|=-r{F}_{2}\\sin \\, 90^{\\circ} =-0.5\\, \\text{m}(30\\, \\text{N})=-15.0\\, \\text{N}\\cdot \\text{m}.\\]</div><p>When we evaluate the torque due to \\({\\mathbf{\\vec{F}}}_{3}\\), we see that the angle it makes with \\(\\mathbf{\\vec{r}}\\) is zero so \\(\\mathbf{\\vec{r}}\\, \\times \\, {\\mathbf{\\vec{F}}}_{3}=0.\\) Therefore, \\({\\mathbf{\\vec{F}}}_{3}\\) does not produce any torque on the flywheel.</p><p>We evaluate the sum of the torques:</p><div class='eq'>\\[{\\tau}_{\\text{net}}=\\sum _{i}|{\\mathbf{\\tau }}_{i}|=5-15=-10\\, \\text{N}\\cdot \\text{m}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The axis of rotation is at the center of mass of the flywheel. Since the flywheel is on a fixed axis, it is not free to translate. If it were on a frictionless surface and not fixed in place, \\({\\mathbf{\\vec{F}}}_{3}\\) would cause the flywheel to translate, as well as \\({\\mathbf{\\vec{F}}}_{1}\\). Its motion would be a combination of translation and rotation.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A large ocean-going ship runs aground near the coastline, similar to the fate of the <i>Costa Concordia</i>, and lies at an angle as shown below. Salvage crews must apply a torque to right the ship in order to float the vessel for transport. A force of \\(5.0\\, \\times \\, {10}^{5}\\, \\text{N}\\) acting at point <i>A</i> must be applied to right the ship. What is the torque about the point of contact of the ship with the ground (the figure)?</p><figure><img src='img/CNX_UPhysics_10_06_Ship.jpg' alt=\"Figure shows a ship that lies at an angle on the seashore. A force of 50000 N is applied at 10 degree angle to the normal at a point that 100 meters above the point of contact between the ship and the seashore.\" loading='lazy'><figcaption>A ship runs aground and tilts, requiring torque to be applied to return the vessel to an upright position.</figcaption></figure>",
+     "a": "<p>The angle between the lever arm and the force vector is \\(80^{\\circ} ;\\) therefore, \\({r}_{\\perp}=100\\text{m(sin80}^{\\circ} )=98.5\\, \\text{m}\\).</p><p>The cross product \\(\\mathbf{\\vec{\\tau }}=\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{F}}\\) gives a negative or clockwise torque.</p><p>The torque is then \\(\\tau =-{r}_{\\perp}F=-98.5\\, \\text{m}(5.0\\, \\times \\, {10}^{5}\\text{N})=-4.9\\, \\times \\, {10}^{7}\\text{N}\\cdot \\text{m}\\).</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The magnitude of a torque about a fixed axis is calculated by finding the lever arm to the point where the force is applied and using the relation \\(|\\mathbf{\\vec{\\tau }}|={r}_{\\perp}F\\), where \\({r}_{\\perp}\\) is the perpendicular distance from the axis to the line upon which the force vector lies.",
+    "The sign of the torque is found using the right hand rule. If the page is the plane containing \\(\\mathbf{\\vec{r}}\\) and \\(\\mathbf{\\vec{F}}\\), then \\(\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{F}}\\) is out of the page for positive torques and into the page for negative torques.",
+    "The net torque can be found from summing the individual torques about a given axis."
+   ]
+  },
+  {
+   "num": "10.7",
+   "module": "m58332",
+   "title": "Newton’s Second Law for Rotation",
+   "objectives": [
+    "Calculate the torques on rotating systems about a fixed axis to find the angular acceleration",
+    "Explain how changes in the moment of inertia of a rotating system affect angular acceleration with a fixed applied torque"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Calculating the Effect of Mass Distribution on a Merry-Go-Round",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider the father pushing a playground merry-go-round in the figure. He exerts a force of 250 N at the edge of the 50.0-kg merry-go-round, which has a 1.50-m radius. Calculate the angular acceleration produced (a) when no one is on the merry-go-round and (b) when an 18.0-kg child sits 1.25 m away from the center. Consider the merry-go-round itself to be a uniform disk with negligible friction.</p><figure><img src='img/CNX_UPhysics_10_07_Merry.jpg' alt=\"Figure shows a man that pushes a merry-go-round at its edge and perpendicular to its radius.\" loading='lazy'><figcaption>A father pushes a playground merry-go-round at its edge and perpendicular to its radius to achieve maximum torque.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The net torque is given directly by the expression \\(\\sum _{i}{\\tau}_{i}=I\\alpha\\), To solve for \\(\\alpha\\), we must first calculate the net torque \\(\\tau\\) (which is the same in both cases) and moment of inertia <i>I</i> (which is greater in the second case).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The moment of inertia of a solid disk about this axis is given in another section to be <div class='eq'>\\[\\frac{1}{2}M{R}^{2}.\\]</div> We have \\(M=50.0\\, \\text{kg}\\) and \\(R=1.50\\, \\text{m}\\), so <div class='eq'>\\[I=(0.500)(50.0\\, \\text{kg}){(1.50\\, \\text{m})}^{2}=56.25{\\, \\text{kg-m}}^{2}.\\]</div> To find the net torque, we note that the applied force is perpendicular to the radius and friction is negligible, so that <div class='eq'>\\[\\tau =rF\\sin \\, \\theta =(1.50\\, \\text{m})(250.0\\, \\text{N})=375.0\\, \\text{N-m}.\\]</div> Now, after we substitute the known values, we find the angular acceleration to be <div class='eq'>\\[\\alpha =\\frac{\\tau}{I}=\\frac{375.0\\, \\text{N-m}}{56.25{\\, \\text{kg-m}}^{2}}=6.67\\frac{\\text{rad}}{{\\text{s}}^{2}}.\\]</div></li><li>We expect the angular acceleration for the system to be less in this part because the moment of inertia is greater when the child is on the merry-go-round. To find the total moment of inertia <i>I</i>, we first find the child’s moment of inertia \\({I}_{\\text{c}}\\) by approximating the child as a point mass at a distance of 1.25 m from the axis. Then <div class='eq'>\\[{I}_{\\text{c}}=m{R}^{2}=(18.0\\, \\text{kg}){(1.25\\, \\text{m})}^{2}=28.13{\\, \\text{kg-m}}^{2}.\\]</div> The total moment of inertia is the sum of the moments of inertia of the merry-go-round and the child (about the same axis): <div class='eq'>\\[I=28.13{\\, \\text{kg-m}}^{2}+56.25{\\, \\text{kg-m}}^{2}=84.38{\\, \\text{kg-m}}^{2}.\\]</div> Substituting known values into the equation for <i>α</i> gives <div class='eq'>\\[\\alpha =\\frac{\\tau}{I}=\\frac{375.0\\, \\text{N-m}}{84.38{\\, \\text{kg-m}}^{2}}=4.44\\frac{\\text{rad}}{{\\text{s}}^{2}}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The angular acceleration is less when the child is on the merry-go-round than when the merry-go-round is empty, as expected. The angular accelerations found are quite large, partly due to the fact that friction was considered to be negligible. If, for example, the father kept pushing perpendicularly for 2.00 s, he would give the merry-go-round an angular velocity of 13.3 rad/s when it is empty but only 8.89 rad/s when the child is on it. In terms of revolutions per second, these angular velocities are 2.12 rev/s and 1.41 rev/s, respectively. The father would end up running at about 50 km/h in the first case.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>The fan blades on a jet engine have a moment of inertia \\(30.0{\\, \\text{kg-m}}^{2}\\). In 10 s, they rotate counterclockwise from rest up to a rotation rate of 20 rev/s. (a) What torque must be applied to the blades to achieve this angular acceleration? (b) What is the torque required to bring the fan blades rotating at 20 rev/s to a rest in 20 s?</p>",
+     "a": "<p>a. The angular acceleration is \\(\\alpha =\\frac{20.0(2\\pi )\\text{rad}\\text{/}\\text{s}-0}{10.0\\, \\text{s}}=12.56\\, \\text{rad}\\text{/}{\\text{s}}^{2}\\). Solving for the torque, we have \\(\\sum _{i}{\\tau}_{i}=I\\alpha =(30.0\\, \\text{kg}\\cdot {\\text{m}}^{2})(12.56\\, \\text{rad}\\text{/}{\\text{s}}^{2})=376.80\\, \\text{N}\\cdot \\text{m}\\); b. The angular acceleration is \\(\\alpha =\\frac{0-20.0(2\\pi )\\text{rad}\\text{/}\\text{s}}{20.0\\, \\text{s}}=-6.28\\, \\text{rad}\\text{/}{\\text{s}}^{2}\\). Solving for the torque, we have \\(\\sum _{i}{\\tau}_{i}=I\\alpha =(30.0{\\, \\text{kg-m}}^{2})(-6.28\\, \\text{rad}\\text{/}{\\text{s}}^{2})=-188.50\\, \\text{N}\\cdot \\text{m}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Newton’s second law for rotation, \\(\\sum _{i}{\\tau}_{i}=I\\alpha\\), says that the sum of the torques on a rotating system about a fixed axis equals the product of the moment of inertia and the angular acceleration. This is the rotational analog to Newton’s second law of linear motion.",
+    "In the vector form of Newton’s second law for rotation, the torque vector \\(\\mathbf{\\vec{\\tau }}\\) is in the same direction as the angular acceleration \\(\\mathbf{\\vec{\\alpha }}\\). If the angular acceleration of a rotating system is positive, the torque on the system is also positive, and if the angular acceleration is negative, the torque is negative."
+   ]
+  },
+  {
+   "num": "10.8",
+   "module": "m58333",
+   "title": "Work and Power for Rotational Motion",
+   "objectives": [
+    "Use the work-energy theorem to analyze rotation to find the work done on a system when it is rotated about a fixed axis for a finite angular displacement",
+    "Solve for the angular velocity of a rotating rigid body using the work-energy theorem",
+    "Find the power delivered to a rotating rigid body given the applied torque and angular velocity",
+    "Summarize the rotational variables and equations and relate them to their translational counterparts"
+   ],
+   "callouts": [
+    "dW=(\\sum _{i}{\\tau}_{i})d\\theta",
+    "P=\\tau \\omega"
+   ],
+   "examples": [
+    {
+     "title": "Rotational Work and Energy",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A \\(12.0\\, \\text{N}\\cdot \\text{m}\\) torque is applied to a flywheel that rotates about a fixed axis and has a moment of inertia of \\(30.0\\, \\text{kg}\\cdot {\\text{m}}^{2}\\). If the flywheel is initially at rest, what is its angular velocity after it has turned through eight revolutions?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We apply the work-energy theorem. We know from the problem description what the torque is and the angular displacement of the flywheel. Then we can solve for the final angular velocity.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The flywheel turns through eight revolutions, which is \\(16\\pi\\) radians. The work done by the torque, which is constant and therefore can come outside the integral in the equation, is</p><div class='eq'>\\[{W}_{AB}=\\tau ({\\theta}_{B}-{\\theta}_{A}).\\]</div><p>We apply the work-energy theorem:</p><div class='eq'>\\[{W}_{AB}=\\tau ({\\theta}_{B}-{\\theta}_{A})=\\frac{1}{2}I{\\omega}_{B}^{2}-\\frac{1}{2}I{\\omega}_{A}^{2}.\\]</div><p>With \\(\\tau =12.0\\, \\text{N}\\cdot \\text{m},{\\theta}_{B}-{\\theta}_{A}=16.0\\pi \\, \\text{rad},\\, I=30.0\\, \\text{kg}\\cdot {\\text{m}}^{2},\\, \\text{and}\\, {\\omega}_{A}=0\\), we have</p><div class='eq'>\\[12.0\\, \\text{N-m}(16.0\\pi \\, \\text{rad})=\\frac{1}{2}(30.0\\, \\text{kg}\\cdot {\\text{m}}^{2})({\\omega}_{B}^{2})-0.\\]</div><p>Therefore,</p><div class='eq'>\\[{\\omega}_{B}=6.3\\, \\text{rad}\\text{/}\\text{s}.\\]</div><p>This is the angular velocity of the flywheel after eight revolutions.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The work-energy theorem provides an efficient way to analyze rotational motion, connecting torque with rotational kinetic energy.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Rotational Work: A Pulley",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A string wrapped around the pulley in the figure is pulled with a constant downward force \\(\\mathbf{\\vec{F}}\\) of magnitude 50 N. The radius <i>R</i> and moment of inertia <i>I</i> of the pulley are 0.10 m and \\(2.5\\, \\times \\, {10}^{-3}{\\text{kg-m}}^{2}\\), respectively. If the string does not slip, what is the angular velocity of the pulley after 1.0 m of string has unwound? Assume the pulley starts from rest.</p><figure><img src='img/CNX_UPhysics_10_08_Pulley.jpg' alt=\"Figure A shows a string wrapped around a pulley of radius R. The pulley is pulled down with a force F. Figure B shows free body that is pulled down with forces F and Mg and is pushed up with force B .\" loading='lazy'><figcaption>(a) A string is wrapped around a pulley of radius <i>R</i>. (b) The free-body diagram.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Looking at the free-body diagram, we see that neither \\(\\mathbf{\\vec{B}}\\), the force on the bearings of the pulley, nor\\(M\\mathbf{\\vec{g}}\\), the weight of the pulley, exerts a torque around the rotational axis, and therefore does no work on the pulley. As the pulley rotates through an angle \\(\\theta ,\\) \\(\\mathbf{\\vec{F}}\\) acts through a distance <i>d</i> such that \\(d=R\\theta .\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Since the torque due to \\(\\mathbf{\\vec{F}}\\) has magnitude \\(\\tau =RF\\), we have</p><div class='eq'>\\[W=\\tau \\theta =(FR)\\theta =Fd.\\]</div><p>If the force on the string acts through a distance of 1.0 m, we have, from the work-energy theorem,</p><div class='eq'>\\[\\begin{array}{lll}{W}_{AB} & = & {K}_{B}-{K}_{A} \\\\ Fd & = & \\frac{1}{2}I{\\omega}^{2}-0 \\\\ (50.0\\, \\text{N})(1.0\\, \\text{m}) & = & \\frac{1}{2}(2.5\\, \\times \\, {10}^{-3}{\\text{kg-m}}^{2}){\\omega}^{2}.\\end{array}\\]</div><p>Solving for \\(\\omega\\), we obtain</p><div class='eq'>\\[\\omega =200.0\\, \\text{rad}\\text{/}\\text{s}.\\]</div>"
+      }
+     ]
+    },
+    {
+     "title": "Torque on a Boat Propeller",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A boat engine operating at \\(9.0\\, \\times \\, {10}^{4}\\, \\text{W}\\) is running at 300 rev/min. What is the torque on the propeller shaft?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are given the rotation rate in rev/min and the power consumption, so we can easily calculate the torque.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<div class='eq'>\\[300.0\\, \\text{rev/min}=31.4\\, \\text{rad/s;}\\]</div><div class='eq'>\\[\\tau =\\frac{P}{\\omega}=\\frac{9.0\\, \\times \\, {10}^{4}\\text{N}\\cdot \\text{m}\\text{/}\\text{s}}{31.4\\, \\text{rad}\\text{/}\\text{s}}=2864.8\\, \\text{N}\\cdot \\text{m}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>It is important to note the radian is a dimensionless unit because its definition is the ratio of two lengths. It therefore does not appear in the solution.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A constant torque of \\(500\\, \\text{kN}\\cdot \\text{m}\\) is applied to a wind turbine to keep it rotating at 6 rad/s. What is the power required to keep the turbine rotating?</p>",
+     "a": "<p>3 MW</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The incremental work <i>dW</i> in rotating a rigid body about a fixed axis is the sum of the torques about the axis times the incremental angle \\(d\\theta\\).",
+    "The total work done to rotate a rigid body through an angle \\(\\theta\\) about a fixed axis is the sum of the torques integrated over the angular displacement. If the torque is a constant as a function of \\(\\theta\\), then \\({W}_{AB}=\\tau ({\\theta}_{B}-{\\theta}_{A})\\).",
+    "The work-energy theorem relates the rotational work done to the change in rotational kinetic energy: \\({W}_{AB}={K}_{B}-{K}_{A}\\) where \\(K=\\frac{1}{2}I{\\omega}^{2}.\\)",
+    "The power delivered to a system that is rotating about a fixed axis is the torque times the angular velocity, \\(P=\\tau \\omega\\)."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_10_01_WindTurb.jpg",
+  "CNX_UPhysics_10_02_Prop.jpg",
+  "CNX_UPhysics_10_02_PropSol.jpg",
+  "CNX_UPhysics_10_02_Reel.jpg",
+  "CNX_UPhysics_10_03_Centrif.jpg",
+  "CNX_UPhysics_10_04_Boom.jpg",
+  "CNX_UPhysics_10_04_SysPart.jpg",
+  "CNX_UPhysics_10_05_Cyl_img.jpg",
+  "CNX_UPhysics_10_05_Pend.jpg",
+  "CNX_UPhysics_10_05_RodSphere_img.jpg",
+  "CNX_UPhysics_10_05_merrygor.jpg",
+  "CNX_UPhysics_10_06_Ship.jpg",
+  "CNX_UPhysics_10_06_ThreeTor.jpg",
+  "CNX_UPhysics_10_06_forces.jpg",
+  "CNX_UPhysics_10_07_Merry.jpg",
+  "CNX_UPhysics_10_08_Pulley.jpg"
+ ]
+}
