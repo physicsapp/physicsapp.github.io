@@ -51,3 +51,11 @@ Right answers to grow a flower: 12
 Chapter 5
 Questions per review: 3
 Right answers to grow a flower: 9
+
+Chapter 8
+Questions per review: 4
+Right answers to grow a flower: 12
+
+Chapter 9
+Questions per review: 3
+Right answers to grow a flower: 9
