@@ -1,0 +1,593 @@
+# FREEBODY NOTES: CHAPTER 8, POTENTIAL ENERGY AND CONSERVATION OF ENERGY
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 7.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(U = mgy\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 8.1
+In short: Potential energy is energy stored in the arrangement of a system, like a book held above the floor or a stretched spring. When a conservative force does work \(W_{AB}\), the potential energy changes by the opposite amount: \(\Delta U_{AB} = U_B - U_A = -W_{AB}\). Only changes in \(U\) matter, so you may put the zero wherever is convenient (the floor, the table top, the spring's relaxed length). Near Earth's surface, \(U = mgy\), which grows in a straight line with height. For an ideal spring, \(U = \tfrac12kx^2\), measured from the relaxed length, so stretching or compressing by \(x\) stores the same energy.
+Watch out: The value of \(U\) depends on where you put the zero, but the change \(\Delta U\) does not. Pick one zero and keep it for the whole problem.
+
+## SUMMARY 8.2
+In short: A force is conservative when the work it does depends only on where the object starts and ends, not on the path. Equivalently, its work around any closed path is zero. Gravity and spring forces are conservative. Friction is not: it always opposes the motion, so a longer path means more negative work, and a round trip still does negative work. Only conservative forces have a potential energy. A conservative force points "downhill" on the potential energy: in one dimension, \(F_x = -\frac{dU}{dx}\).
+Watch out: The minus sign matters. If \(U\) increases as \(x\) increases, the force points in the negative \(x\) direction.
+
+## SUMMARY 8.3
+In short: Mechanical energy is \(E = K + U\). Work done by nonconservative forces (like friction or air drag) changes it: \(W_\text{nc} = \Delta E\). When nonconservative forces do no work, mechanical energy is conserved: \(K_A + U_A = K_B + U_B\). Then you can find a speed at one point from the heights or spring stretches at two points, with no need for the time, the path, or the acceleration. A ball dropped from height \(h\) lands at \(v = \sqrt{2gh}\), whatever its mass. Friction's work is negative, so it lowers \(E\); the missing energy turns into thermal energy.
+Watch out: Conservation of mechanical energy needs every nonconservative force to do zero work. A normal force at right angles to the motion is fine; friction is not.
+
+## SUMMARY 8.4
+In short: A graph of \(U(x)\) tells you a lot about the motion. Draw the total energy \(E\) as a horizontal line. At every point, \(K = E - U\), so the object moves only where \(U \le E\), and its speed is largest where \(U\) is lowest. A turning point is where \(U = E\): the kinetic energy is zero there and the object reverses. The force is the negative slope, \(F_x = -\frac{dU}{dx}\), so it always points downhill on the graph. Where the slope is zero the force is zero: a minimum of \(U\) is a stable equilibrium (a nudge brings it back) and a maximum is unstable (a nudge sends it away).
+Watch out: The graph shows energy against position, not the path the object takes. A ball in a "valley" on a \(U\) graph is moving back and forth along a line.
+
+## SUMMARY 8.5
+In short: Energy comes in many forms: kinetic, gravitational and spring potential, thermal (the random motion of atoms), chemical (stored in molecules, as in food and fuel), electrical, radiant (light and other electromagnetic waves), and nuclear. Energy is never created or destroyed; it is transformed from one form into another. A coal power plant turns chemical energy into thermal energy, then mechanical energy in a turbine, then electrical energy. At every step some energy goes to the environment, usually as thermal energy. Renewable sources (solar, wind, hydroelectric, geothermal) are replenished by natural processes on a human time scale; nonrenewable sources (fossil fuels and nuclear) are used up.
+Watch out: "Using up" energy really means turning it into a less useful form, mostly thermal energy in the surroundings. The total amount stays the same.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+
+## EQUATIONS 8.1
+* Difference of potential energy: \(\Delta U_{AB} = U_B - U_A = -W_{AB}\)
+Potential energy measured from a reference point: \(\Delta U = U(\vec{r}) - U(\vec{r}_0)\)
+* Gravitational potential energy near Earth: \(U(y) = mgy + \text{const}\)
+* Potential energy of an ideal spring: \(U(x) = \tfrac{1}{2}kx^2 + \text{const}\)
+
+## EQUATIONS 8.2
+* Work by a conservative force around a closed path: \(W_\text{closed path} = \oint \vec{F}_\text{cons}\cdot d\vec{r} = 0\)
+Condition for a conservative force in two dimensions: \(\frac{dF_x}{dy} = \frac{dF_y}{dx}\)
+Conservative force from potential energy, any direction: \(F_\ell = -\frac{dU}{d\ell}\)
+* Conservative force from potential energy in one dimension: \(F_x = -\frac{dU}{dx}\)
+
+## EQUATIONS 8.3
+* Mechanical energy: \(E = K + U\)
+* Work by nonconservative forces: \(W_{\text{nc},AB} = \Delta(K + U)_{AB} = \Delta E_{AB}\)
+* Conservation of mechanical energy: \(K_A + U_A = K_B + U_B\)
+Speed from the energy in one dimension: \(v = \sqrt{\tfrac{2}{m}\big(E - U(x)\big)}\)
+
+## EQUATIONS 8.4
+Kinetic energy from a potential energy diagram: \(K = E - U(x)\)
+Turning point: \(U(x) = E\)
+* Equilibrium point: \(\frac{dU}{dx} = 0\)
+Stable equilibrium: \(\frac{d^2U}{dx^2} > 0\)
+Unstable equilibrium: \(\frac{d^2U}{dx^2} < 0\)
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+# ============================ 8.1 POTENTIAL ENERGY ============================
+
+## QUIZ 8.1
+Q: You lift a box from the floor onto a shelf. What happens to the gravitational potential energy of the box and Earth?
+A) It increases
+B) It decreases
+C) It stays the same
+D) It depends on where you put the zero
+Answer: A
+Why: Gravity does negative work as the box rises, and \(\Delta U = -W\), so \(U\) goes up. The change doesn't depend on where you put the zero.
+
+## QUIZ 8.1
+Q: Two students find the potential energy of the same book on a shelf. One puts the zero at the floor, the other at the ceiling. What do they agree on?
+A) The value of \(U\)
+B) The change in \(U\) when the book falls to the floor
+C) Nothing; their answers are unrelated
+D) Only the sign of \(U\)
+Answer: B
+Why: The zero shifts every value of \(U\) by the same constant, so differences like \(\Delta U\) come out the same. Only differences have physical meaning.
+
+## QUIZ 8.1
+Q: A spring is stretched \(5\ \text{cm}\), then later compressed \(5\ \text{cm}\). How do the stored energies compare?
+A) The same
+B) The compressed spring stores more
+C) The stretched spring stores more
+D) The compressed spring stores negative energy
+Answer: A
+Why: \(U = \tfrac12kx^2\) depends on \(x^2\), so stretching and compressing by the same amount store the same energy.
+
+## QUIZ 8.1
+Q: You stretch a spring twice as far. By what factor does its potential energy change?
+A) 2
+B) 4
+C) \(\sqrt{2}\)
+D) 8
+Answer: B
+Why: \(U = \tfrac12kx^2\), so doubling \(x\) multiplies \(U\) by \(2^2 = 4\).
+
+## QUIZ 8.1
+Q: As a ball falls, gravity does positive work on it. What happens to the gravitational potential energy?
+A) It decreases by the same amount
+B) It increases by the same amount
+C) It stays the same
+D) It decreases by twice that amount
+Answer: A
+Why: \(\Delta U = -W_\text{grav}\). Positive work by gravity means the potential energy drops by that much.
+
+## QUIZ 8.1
+Q: Which choice puts the zero of gravitational potential energy in a place you are NOT allowed to?
+A) The floor
+B) The top of a table
+C) Below the ground
+D) None; any place works
+Answer: D
+Why: The zero is your choice. Only changes in \(U\) matter, so pick whatever makes the numbers easiest and keep it for the whole problem.
+
+## DRILL 8.1
+Q: A \({{m}}\ \text{kg}\) box is lifted \({{h}}\ \text{m}\) onto a shelf. What is the change in gravitational potential energy? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 2, 4, 5, 10, 20; h = 1 to 6 by 1
+Answer: m*10*h
+Wrong: -m*10*h | That's the work done by gravity. The potential energy change is the opposite: it goes up.
+Wrong: m*h | Use the weight, \(mg\), not the mass.
+Wrong: m*10/h | Multiply by the height, don't divide.
+Unit: J
+Work: \Delta U = mg\,\Delta y = ({{m}})(10)({{h}}) = {{answer}}\ \text{J}
+
+## DRILL 8.1
+Q: A spring with \(k = {{k}}\ \text{N/m}\) is stretched \({{x}}\ \text{m}\) from its relaxed length. How much potential energy does it store?
+Let: k = one of 100, 200, 400, 500; x = one of 0.1, 0.2, 0.3
+Answer: 0.5*k*x^2
+Wrong: k*x^2 | Don't forget the \(\tfrac12\) in \(U = \tfrac12kx^2\).
+Wrong: 0.5*k*x | Square the stretch.
+Wrong: k*x | That's the size of the spring force, in newtons, not the energy.
+Unit: J
+Work: U = \tfrac12kx^2 = \tfrac12({{k}})({{x}})^2 = {{answer}}\ \text{J}
+
+## DRILL 8.1
+Q: A \({{m}}\ \text{kg}\) hiker walks down a trail from an altitude of \({{hA}}\ \text{m}\) to \({{hB}}\ \text{m}\). What is the change in gravitational potential energy? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 50, 60, 70, 80; hA = 300 to 600 by 100; drop = 100 to 200 by 50; hB = hA - drop
+Answer: -m*10*drop
+Wrong: m*10*drop | The hiker ends lower, so \(\Delta U = mg(y_B - y_A)\) is negative.
+Wrong: -m*10*hA | Use the change in altitude, not the starting altitude.
+Wrong: -m*drop | Use the weight, \(mg\), not the mass.
+Unit: J
+Work: \Delta U = mg(y_B - y_A) = ({{m}})(10)({{hB}} - {{hA}}) = {{answer}}\ \text{J}
+
+## DRILL 8.1
+Q: A spring with \(k = {{k}}\ \text{N/m}\) is already stretched \(0.1\ \text{m}\). You stretch it further, to \({{x2}}\ \text{m}\). How much does its potential energy increase?
+Let: k = one of 100, 200, 400; x2 = one of 0.2, 0.3
+Answer: 0.5*k*(x2^2 - 0.01)
+Wrong: 0.5*k*(x2 - 0.1)^2 | Square each stretch first, then subtract: \(\tfrac12k(x_B^2 - x_A^2)\).
+Wrong: 0.5*k*x2^2 | That's the total energy at the end. Subtract what it already had.
+Wrong: k*(x2^2 - 0.01) | Don't forget the \(\tfrac12\).
+Unit: J
+Work: \Delta U = \tfrac12k(x_B^2 - x_A^2) = \tfrac12({{k}})\big(({{x2}})^2 - (0.1)^2\big) = {{answer}}\ \text{J}
+
+## DRILL 8.1
+Q: As a rock falls, gravity does \({{W}}\ \text{J}\) of work on it. What is the change in the gravitational potential energy of the rock and Earth?
+Let: W = one of 20, 50, 80, 150, 300
+Answer: -W
+Wrong: W | \(\Delta U = -W\). Positive work by gravity means \(U\) drops.
+Wrong: 0 | Gravity did work, so the potential energy changed.
+Wrong: -W/10 | The work is already in joules. No need to divide by \(g\).
+Unit: J
+Work: \Delta U = -W_\text{grav} = {{answer}}\ \text{J}
+
+## DRILL 8.1
+Q: A \({{m}}\ \text{kg}\) ball sits on a shelf \({{h}}\ \text{m}\) above the floor. A table top is \({{d}}\ \text{m}\) above the floor. What is the ball's gravitational potential energy if the zero is at the table top? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 1, 2, 4, 5; h = one of 2, 2.5, 3; d = one of 0.5, 1
+Answer: m*10*(h - d)
+Wrong: m*10*h | That puts the zero at the floor. Measure the height from the table top.
+Wrong: m*10*d | That's the table top measured from the floor.
+Wrong: m*10*(h + d) | The ball is above the table, so subtract the table's height.
+Unit: J
+Work: U = mgy = ({{m}})(10)({{h}} - {{d}}) = {{answer}}\ \text{J}
+
+## GRAPH 8.1
+Q: The graph shows the potential energy of a spring against its stretch. What is the spring constant?
+Plot: U = 2*x^2; x from 0 to 4; y from 0 to 35
+A) 4 N/m
+B) 2 N/m
+C) 8 N/m
+D) 16 N/m
+Answer: A
+Why: At \(x = 2\ \text{m}\) the graph reads \(8\ \text{J}\). From \(U = \tfrac12kx^2\): \(8 = \tfrac12k(2)^2\), so \(k = 4\ \text{N/m}\). Choice B forgets the \(\tfrac12\).
+
+
+# ============================ 8.2 CONSERVATIVE AND NONCONSERVATIVE FORCES ============================
+
+## QUIZ 8.2
+Q: Which of these forces is NOT conservative?
+A) Gravity
+B) The force of an ideal spring
+C) Kinetic friction
+D) All of them are conservative
+Answer: C
+Why: Friction's work depends on the path length, so it is nonconservative. Gravity and spring forces do work that depends only on the start and end points.
+
+## QUIZ 8.2
+Q: A ball is thrown up and caught at the same height. With no air resistance, how much total work does gravity do on it during the trip?
+A) Zero
+B) Positive
+C) Negative
+D) It depends on how high it went
+Answer: A
+Why: Gravity is conservative, so its work around a closed path (back to the starting point) is zero. The negative work on the way up cancels the positive work on the way down.
+
+## QUIZ 8.2
+Q: You push a box around a rough floor and back to where it started. How much total work does friction do?
+A) Negative
+B) Zero, since the box ends where it started
+C) Positive
+D) It depends on the box's mass only
+Answer: A
+Why: Friction opposes the motion on every part of the trip, so its work is negative everywhere and never cancels. That's what makes it nonconservative.
+
+## QUIZ 8.2
+Q: Why can't you define a potential energy for kinetic friction?
+A) Its work depends on the path, so the energy at a point isn't well defined
+B) It is too small to matter
+C) It always points down
+D) It is only present when an object is at rest
+Answer: A
+Why: A potential energy must have one value at each point. With friction, the work from A to B depends on the route, so no such function exists.
+
+## QUIZ 8.2
+Q: In some region, \(U\) increases as \(x\) increases. Which way does the conservative force point?
+A) In the negative \(x\) direction
+B) In the positive \(x\) direction
+C) It is zero
+D) It can't be told from \(U\)
+Answer: A
+Why: \(F_x = -\frac{dU}{dx}\). A positive slope gives a negative force, toward lower potential energy.
+
+## DRILL 8.2
+Q: The potential energy of a particle is \(U = {{a}}x^2\) (in joules, with \(x\) in meters). What is the force on it at \(x = {{x}}\ \text{m}\)?
+Let: a = one of 2, 3, 4, 5; x = 1 to 4 by 1
+Answer: -2*a*x
+Wrong: 2*a*x | \(F_x = -\frac{dU}{dx}\). Don't forget the minus sign.
+Wrong: -a*x^2 | That's \(U\) with a minus sign. Take the derivative first.
+Wrong: -a*x | The derivative of \(x^2\) is \(2x\).
+Unit: N
+Work: F_x = -\frac{dU}{dx} = -2({{a}})x = -2({{a}})({{x}}) = {{answer}}\ \text{N}
+
+## DRILL 8.2
+Q: The potential energy of a particle is \(U = {{b}}x^3\) (in joules, with \(x\) in meters). What is the force on it at \(x = {{x}}\ \text{m}\)?
+Let: b = one of 1, 2, 3; x = 1 to 3 by 1
+Answer: -3*b*x^2
+Wrong: 3*b*x^2 | \(F_x = -\frac{dU}{dx}\). Don't forget the minus sign.
+Wrong: -b*x^3 | That's \(U\) with a minus sign. Take the derivative first.
+Wrong: -3*b*x | The derivative of \(x^3\) is \(3x^2\).
+Unit: N
+Work: F_x = -\frac{dU}{dx} = -3({{b}})x^2 = -3({{b}})({{x}})^2 = {{answer}}\ \text{N}
+
+## DRILL 8.2
+Q: You push a box once around a rectangle \({{a}}\ \text{m}\) by \({{b}}\ \text{m}\) on a floor, back to the start. Kinetic friction on the box is \({{f}}\ \text{N}\). How much work does friction do?
+Let: a = 2 to 5 by 1; b = 1 to 3 by 1; f = one of 10, 20, 30
+Answer: -f*2*(a + b)
+Wrong: 0 | Friction is nonconservative, so its work around a closed path is not zero.
+Wrong: -f*(a + b) | Go all the way around: the path is \(2(a + b)\) long.
+Wrong: f*2*(a + b) | Friction opposes the motion, so its work is negative.
+Unit: J
+Work: W_\text{fr} = -f_k\,\ell = -({{f}})\cdot 2({{a}} + {{b}}) = {{answer}}\ \text{J}
+
+## GRAPH 8.2
+Q: The graph shows the potential energy of a particle moving along \(x\). What is the force on it?
+Plot: U = 12 - 3*x; x from 0 to 4; y from 0 to 14
+A) \(+3\ \text{N}\)
+B) \(-3\ \text{N}\)
+C) \(+12\ \text{N}\)
+D) Zero
+Answer: A
+Why: The slope is \(-3\ \text{J/m}\), and \(F_x = -\frac{dU}{dx} = +3\ \text{N}\). The force points toward lower potential energy, in the positive \(x\) direction.
+
+
+# ============================ 8.3 CONSERVATION OF ENERGY ============================
+
+## QUIZ 8.3
+Q: Two balls, one twice as heavy as the other, are dropped from the same height. Ignoring air resistance, how do their speeds compare just before they land?
+A) The same
+B) The heavier one is faster
+C) The lighter one is faster
+D) The heavier one is twice as fast
+Answer: A
+Why: \(mgh = \tfrac12mv^2\), and the mass cancels: \(v = \sqrt{2gh}\) for both.
+
+## QUIZ 8.3
+Q: From the edge of a cliff, you throw one ball straight up, one straight down, and one sideways, all at the same speed. Ignoring air resistance, which hits the ground fastest?
+A) They all land at the same speed
+B) The one thrown down
+C) The one thrown up
+D) The one thrown sideways
+Answer: A
+Why: Each starts with the same \(K\) and the same \(U\), and ends at the same height. Energy conservation gives the same final speed. Direction doesn't enter.
+
+## QUIZ 8.3
+Q: When is the mechanical energy \(K + U\) of an object conserved?
+A) When nonconservative forces do no work on it
+B) Only when no forces act on it
+C) Only when it moves at constant speed
+D) Always
+Answer: A
+Why: \(W_\text{nc} = \Delta E\). If friction, drag and other nonconservative forces do no work, \(\Delta E = 0\). Gravity and springs may act freely.
+
+## QUIZ 8.3
+Q: A sled slides down a hill with friction. What happens to its mechanical energy?
+A) It decreases
+B) It stays the same
+C) It increases
+D) It becomes zero at the bottom
+Answer: A
+Why: Friction does negative work, and \(\Delta E = W_\text{nc} < 0\). The lost mechanical energy becomes thermal energy in the sled and snow.
+
+## QUIZ 8.3
+Q: A pendulum swings with no friction. Where is its speed greatest?
+A) At the lowest point
+B) At the highest points
+C) Halfway between
+D) The speed is the same everywhere
+Answer: A
+Why: \(K + U\) stays constant, so \(K\) is largest where \(U = mgy\) is smallest, at the bottom of the swing.
+
+## DRILL 8.3
+Q: A ball is dropped from rest from a height of \({{h}}\ \text{m}\). How fast is it going just before it lands? Ignore air resistance and use \(g = 10\ \text{m/s}^2\).
+Let: h = one of 5, 20, 45, 80
+Answer: sqrt(2*10*h)
+Wrong: 2*10*h | That's \(v^2\). Take the square root.
+Wrong: sqrt(10*h) | \(mgh = \tfrac12mv^2\) gives \(v^2 = 2gh\). Don't forget the 2.
+Wrong: sqrt(2*h) | Include \(g\).
+Unit: m/s
+Work: mgh = \tfrac12mv^2\ \Rightarrow\ v = \sqrt{2gh} = \sqrt{2(10)({{h}})} = {{answer}}\ \text{m/s}
+
+## DRILL 8.3
+Q: A ball is thrown straight up at \({{v}}\ \text{m/s}\). How high does it rise? Ignore air resistance and use \(g = 10\ \text{m/s}^2\).
+Let: v = 10 to 40 by 10
+Answer: v^2/20
+Wrong: v^2/10 | \(\tfrac12mv^2 = mgh\) gives \(h = v^2/(2g)\). Don't forget the 2.
+Wrong: v/20 | Square the speed.
+Wrong: v^2/2 | Divide by \(g\) too.
+Unit: m
+Work: \tfrac12mv^2 = mgh\ \Rightarrow\ h = \frac{v^2}{2g} = \frac{({{v}})^2}{2(10)} = {{answer}}\ \text{m}
+
+## DRILL 8.3
+Q: A spring with \(k = {{k}}\ \text{N/m}\) is compressed \({{x}}\ \text{m}\) and launches a \({{m}}\ \text{kg}\) block across a frictionless floor. How fast does the block leave the spring?
+Let: k = one of 100, 400, 900; m = one of 1, 4; x = one of 0.1, 0.2, 0.5
+Answer: x*sqrt(k/m)
+Wrong: x*k/m | \(\tfrac12kx^2 = \tfrac12mv^2\) gives \(v^2 = kx^2/m\). Take the square root.
+Wrong: x*sqrt(m/k) | It's \(k/m\) under the root, not \(m/k\). A stiffer spring should give a faster block.
+Wrong: sqrt(k*x/m) | Square the compression: the spring stores \(\tfrac12kx^2\).
+Unit: m/s
+Work: \tfrac12kx^2 = \tfrac12mv^2\ \Rightarrow\ v = x\sqrt{\frac{k}{m}} = ({{x}})\sqrt{\frac{{{k}}}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 8.3
+Q: A pendulum with a string \({{L}}\ \text{m}\) long is pulled out until the string is horizontal and released from rest. How fast is the bob going at the bottom? Use \(g = 10\ \text{m/s}^2\).
+Let: L = one of 0.8, 1.8, 3.2, 5
+Answer: sqrt(2*10*L)
+Wrong: sqrt(10*L) | \(mgL = \tfrac12mv^2\) gives \(v^2 = 2gL\). Don't forget the 2.
+Wrong: 2*10*L | That's \(v^2\). Take the square root.
+Wrong: sqrt(2*L) | Include \(g\).
+Unit: m/s
+Work: mgL = \tfrac12mv^2\ \Rightarrow\ v = \sqrt{2gL} = \sqrt{2(10)({{L}})} = {{answer}}\ \text{m/s}
+
+## DRILL 8.3
+Q: A cart rolls at \({{v0}}\ \text{m/s}\) and then coasts down a frictionless hill \({{d}}\ \text{m}\) high. How fast is it going at the bottom? Use \(g = 10\ \text{m/s}^2\).
+Let: v0 = one of 5, 10; d = one of 5, 10, 15
+Answer: sqrt(v0^2 + 2*10*d)
+Wrong: v0 + sqrt(2*10*d) | Energies add, speeds don't. Add \(v_0^2\) and \(2gd\), then take the root.
+Wrong: sqrt(2*10*d) | That ignores the kinetic energy the cart already had.
+Wrong: sqrt(v0^2 + 10*d) | \(mgd = \tfrac12m(v^2 - v_0^2)\) gives \(2gd\). Don't forget the 2.
+Unit: m/s
+Work: \tfrac12mv_0^2 + mgd = \tfrac12mv^2\ \Rightarrow\ v = \sqrt{v_0^2 + 2gd} = \sqrt{({{v0}})^2 + 2(10)({{d}})} = {{answer}}\ \text{m/s}
+
+## DRILL 8.3
+Q: A \({{m}}\ \text{kg}\) sled starts from rest at the top of a hill \({{h}}\ \text{m}\) high and reaches the bottom at \({{v}}\ \text{m/s}\). How much work did friction do on it? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 10, 20; h = one of 5, 10, 20; v = one of 4, 6, 8
+Answer: 0.5*m*v^2 - m*10*h
+Wrong: m*10*h - 0.5*m*v^2 | Friction removes energy, so its work is negative: \(W_\text{nc} = E_B - E_A\).
+Wrong: 0.5*m*v^2 | That's only the final kinetic energy. Subtract the starting energy, \(mgh\).
+Wrong: -m*10*h | That would mean the sled ends at rest. Add the kinetic energy it still has.
+Unit: J
+Work: W_\text{nc} = \Delta E = \tfrac12mv^2 - mgh = \tfrac12({{m}})({{v}})^2 - ({{m}})(10)({{h}}) = {{answer}}\ \text{J}
+
+## DRILL 8.3
+Q: A \({{m}}\ \text{kg}\) block slides at \({{v}}\ \text{m/s}\) across a frictionless floor into a spring with \(k = {{k}}\ \text{N/m}\). How far does the spring compress before the block stops?
+Let: m = one of 1, 4; k = one of 100, 400; v = 2 to 6 by 2
+Answer: v*sqrt(m/k)
+Wrong: v*sqrt(k/m) | It's \(m/k\) under the root. A stiffer spring should stop the block in a shorter distance.
+Wrong: m*v^2/k | That's \(x^2\). Take the square root.
+Wrong: v*m/k | \(\tfrac12mv^2 = \tfrac12kx^2\) gives \(x = v\sqrt{m/k}\).
+Unit: m
+Work: \tfrac12mv^2 = \tfrac12kx^2\ \Rightarrow\ x = v\sqrt{\frac{m}{k}} = ({{v}})\sqrt{\frac{{{m}}}{{{k}}}} = {{answer}}\ \text{m}
+
+## GRAPH 8.3
+Q: The graph shows the potential energy of a cart coasting up a frictionless ramp, against its position along the ramp. The cart's mechanical energy is \(20\ \text{J}\). Tap the position where the cart turns around.
+Plot: U = 5*x; x from 0 to 5; y from 0 to 30
+Tap: x = 4
+Why: The cart turns around where all its energy is potential, \(U = E = 20\ \text{J}\), at \(x = 4\ \text{m}\). There its kinetic energy is zero.
+
+
+# ============================ 8.4 POTENTIAL ENERGY DIAGRAMS ============================
+
+## QUIZ 8.4
+Q: On a potential energy diagram, what is true at a turning point?
+A) \(U = E\) and \(K = 0\)
+B) \(U = 0\) and \(K = E\)
+C) The force is zero
+D) The speed is largest
+Answer: A
+Why: \(K = E - U\). Where \(U\) reaches \(E\), the kinetic energy is zero and the object stops and reverses.
+
+## QUIZ 8.4
+Q: A particle has total energy \(E\). Can it be at a place where \(U > E\)?
+A) No, its kinetic energy would be negative
+B) Yes, if it moves fast enough
+C) Yes, but only briefly
+D) Only if \(U\) is negative
+Answer: A
+Why: \(K = E - U\) would be negative there, which is impossible. The particle stays where \(U \le E\).
+
+## QUIZ 8.4
+Q: What kind of equilibrium is at a minimum of the potential energy?
+A) Stable
+B) Unstable
+C) Neutral
+D) It is not an equilibrium
+Answer: A
+Why: The slope is zero, so the force is zero. A small nudge either way puts the particle uphill, and the force pushes it back down toward the minimum.
+
+## QUIZ 8.4
+Q: On a potential energy graph, where is a particle moving fastest?
+A) Where \(U\) is lowest
+B) Where \(U\) is highest
+C) Where the slope is steepest
+D) At a turning point
+Answer: A
+Why: \(K = E - U\) with \(E\) fixed, so \(K\) and the speed are largest where \(U\) is smallest.
+
+## DRILL 8.4
+Q: A \({{m}}\ \text{kg}\) particle has total mechanical energy \({{E}}\ \text{J}\). At a point where \(U = {{U}}\ \text{J}\), how fast is it moving?
+Let: m = one of 1, 2, 4; E = one of 10, 20, 50; U = one of 2, 4, 8
+Answer: sqrt(2*(E - U)/m)
+Wrong: sqrt(2*E/m) | That uses all of \(E\) as kinetic energy. Subtract \(U\) first.
+Wrong: 2*(E - U)/m | That's \(v^2\). Take the square root.
+Wrong: sqrt((E - U)/m) | \(K = \tfrac12mv^2\), so \(v^2 = 2K/m\). Don't forget the 2.
+Unit: m/s
+Work: K = E - U\ \Rightarrow\ v = \sqrt{\frac{2(E - U)}{m}} = \sqrt{\frac{2({{E}} - {{U}})}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 8.4
+Q: On a potential energy graph, \(U\) goes in a straight line from \({{U1}}\ \text{J}\) at \(x = 1\ \text{m}\) to \({{U2}}\ \text{J}\) at \(x = 3\ \text{m}\). What is the force on the particle between those points?
+Let: U1 = one of 6, 8, 10; dU = one of -6, -4, 4, 6; U2 = U1 + dU
+Answer: -dU/2
+Wrong: dU/2 | \(F_x = -\frac{dU}{dx}\). The force points toward lower \(U\).
+Wrong: -dU | Divide by the distance, \(2\ \text{m}\), to get the slope.
+Wrong: -U2/3 | Use the slope, the change in \(U\) over the change in \(x\), not the value at one point.
+Unit: N
+Work: F_x = -\frac{\Delta U}{\Delta x} = -\frac{{{U2}} - {{U1}}}{3 - 1} = {{answer}}\ \text{N}
+
+## GRAPH 8.4
+Q: The graph shows a particle's potential energy. Tap the point of stable equilibrium.
+Plot: U = 2*(x - 2)^2; x from 0 to 4; y from 0 to 9
+Tap: x = 2
+Why: Stable equilibrium is at a minimum of \(U\), here \(x = 2\ \text{m}\). The slope, and so the force, is zero there, and a nudge either way brings the particle back.
+
+## GRAPH 8.4
+Q: The graph shows a particle's potential energy. Tap the point of unstable equilibrium.
+Plot: U = x^3 - 6*x^2 + 9*x + 1; x from 0 to 4; y from 0 to 6
+Tap: x = 1
+Why: Unstable equilibrium is at a maximum of \(U\), here \(x = 1\ \text{m}\). The force is zero there, but a nudge either way sends the particle downhill, away from it. The minimum at \(x = 3\ \text{m}\) is stable.
+
+## GRAPH 8.4
+Q: The graph shows a particle's potential energy. Its total energy is \(4\ \text{J}\). Tap the turning point on the right.
+Plot: U = (x - 2)^2; x from 0 to 5; y from 0 to 9
+Tap: x = 4
+Why: A turning point is where \(U = E\): \((x - 2)^2 = 4\), so \(x = 4\ \text{m}\) on the right (and \(x = 0\) on the left). Past it, \(U\) would be larger than \(E\).
+
+## GRAPH 8.4
+Q: The graph shows a particle's potential energy. At \(x = 2\ \text{m}\), which way does the force on it point?
+Plot: U = x^3 - 6*x^2 + 9*x + 1; x from 0 to 4; y from 0 to 6
+A) In the positive \(x\) direction
+B) In the negative \(x\) direction
+C) The force is zero there
+D) It can't be told from the graph
+Answer: A
+Why: At \(x = 2\ \text{m}\) the graph slopes down to the right, so \(\frac{dU}{dx} < 0\) and \(F_x = -\frac{dU}{dx} > 0\). The force points downhill, toward the minimum at \(x = 3\ \text{m}\).
+
+
+# ============================ 8.5 SOURCES OF ENERGY ============================
+
+## QUIZ 8.5
+Q: Which of these is a renewable energy source?
+A) Wind
+B) Coal
+C) Natural gas
+D) Nuclear fuel
+Answer: A
+Why: Renewable sources are replenished by natural processes on a human time scale. Fossil fuels and nuclear fuel are used up.
+
+## QUIZ 8.5
+Q: In a coal power plant, what is the order of the main energy conversions?
+A) Chemical, thermal, mechanical, electrical
+B) Thermal, chemical, electrical, mechanical
+C) Mechanical, chemical, thermal, electrical
+D) Chemical, electrical, thermal, mechanical
+Answer: A
+Why: Burning coal turns chemical energy into thermal energy, which makes steam that spins a turbine (mechanical), which drives a generator (electrical).
+
+## QUIZ 8.5
+Q: What kind of energy does food store?
+A) Chemical energy
+B) Nuclear energy
+C) Radiant energy
+D) Kinetic energy
+Answer: A
+Why: Fuels, including food and gasoline, store chemical energy, a potential energy in the structure of their molecules.
+
+## QUIZ 8.5
+Q: A power plant turns only part of its fuel's energy into electrical energy. Where does the rest go?
+A) Mostly to thermal energy in the environment
+B) It is destroyed
+C) It stays in the fuel
+D) It becomes nuclear energy
+Answer: A
+Why: Energy is conserved, so none is destroyed. At each step some energy goes to the surroundings, mostly as thermal energy.
+
+## DRILL 8.5
+Q: At a dam, \({{m}}\ \text{kg}\) of water falls \({{h}}\ \text{m}\) to the turbines every second. How much gravitational potential energy does the water lose each second? Use \(g = 10\ \text{m/s}^2\).
+Let: m = one of 100, 200, 500, 1000; h = 10 to 50 by 10
+Answer: m*10*h
+Wrong: m*h | Use the weight, \(mg\), not the mass.
+Wrong: m*10 | Multiply by the height the water falls.
+Wrong: 0.5*m*10*h | Potential energy is \(mgh\), with no \(\tfrac12\).
+Unit: J
+Work: \Delta U = mgh = ({{m}})(10)({{h}}) = {{answer}}\ \text{J}
+
+## DRILL 8.5
+Q: A power plant takes in \({{Ein}}\ \text{MJ}\) from its fuel and puts out \({{Eout}}\ \text{MJ}\) of electrical energy. How much energy goes to the environment?
+Let: Ein = one of 100, 200, 500; f = one of 0.3, 0.35, 0.4; Eout = Ein*f
+Answer: Ein - Eout
+Wrong: 0 | Energy is conserved, so whatever doesn't become electrical energy goes somewhere.
+Wrong: Ein + Eout | Energy out can't be more than energy in. Subtract.
+Wrong: Eout | That's the electrical energy. The rest goes to the environment.
+Unit: MJ
+Work: E_\text{environment} = E_\text{in} - E_\text{electrical} = {{Ein}} - {{Eout}} = {{answer}}\ \text{MJ}
