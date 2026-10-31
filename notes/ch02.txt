@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 2.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -42,47 +42,70 @@ Watch out: Parallel vectors have a cross product of zero, and perpendicular vect
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 2.1
-Multiplying a vector by a scalar: \(\vec{B} = \alpha \vec{A}\)
-Magnitude after multiplying by a scalar: \(B = |\alpha| A\)
-Resultant of two displacements: \(\vec{D}_{AD} = \vec{D}_{AC} + \vec{D}_{CD}\)
-Commutative law: \(\vec{A} + \vec{B} = \vec{B} + \vec{A}\)
-Associative law: \((\vec{A} + \vec{B}) + \vec{C} = \vec{A} + (\vec{B} + \vec{C})\)
-Distributive law: \(\alpha_1 \vec{A} + \alpha_2 \vec{A} = (\alpha_1 + \alpha_2)\vec{A}\)
+Multiplying a vector by a scalar: \(\vec{B} = \alpha \vec{A}\) | \(\alpha\) is a plain number (a scalar) and \(\vec{A}\) is a vector. The result \(\vec{B}\) points along \(\vec{A}\) if \(\alpha > 0\) and opposite to it if \(\alpha < 0\).
+Magnitude after multiplying by a scalar: \(B = |\alpha| A\) | \(B\) and \(A\) are the lengths of the two vectors and \(|\alpha|\) is the size of the scalar. Multiplying by \(\alpha\) stretches or shrinks the length by \(|\alpha|\).
+Resultant of two displacements: \(\vec{D}_{AD} = \vec{D}_{AC} + \vec{D}_{CD}\) | \(\vec{D}_{AC}\) goes from point A to C and \(\vec{D}_{CD}\) from C to D, both in meters. Placing them tail to head gives the single displacement \(\vec{D}_{AD}\) from A to D.
+Commutative law: \(\vec{A} + \vec{B} = \vec{B} + \vec{A}\) | \(\vec{A}\) and \(\vec{B}\) are any two vectors. The order you add them in does not change the resultant.
+Associative law: \((\vec{A} + \vec{B}) + \vec{C} = \vec{A} + (\vec{B} + \vec{C})\) | \(\vec{A}\), \(\vec{B}\) and \(\vec{C}\) are any three vectors. How you group them when adding does not change the resultant.
+Distributive law: \(\alpha_1 \vec{A} + \alpha_2 \vec{A} = (\alpha_1 + \alpha_2)\vec{A}\) | \(\alpha_1\) and \(\alpha_2\) are scalars and \(\vec{A}\) is a vector. Adding two multiples of the same vector is the same as multiplying it by the sum of the scalars.
 
 ## EQUATIONS 2.2
-* Component form in two dimensions: \(\vec{A} = A_x \hat{i} + A_y \hat{j}\)
-Components from the tail and head: \(A_x = x_e - x_b, \quad A_y = y_e - y_b\)
-* Magnitude in a plane: \(A = \sqrt{A_x^2 + A_y^2}\)
-* Direction angle in a plane: \(\theta_A = \tan^{-1}\!\left(\frac{A_y}{A_x}\right)\)
-* Components from magnitude and angle: \(A_x = A \cos\theta_A, \quad A_y = A \sin\theta_A\)
-Polar coordinates: \(x = r\cos\varphi, \quad y = r\sin\varphi\)
-Component form in three dimensions: \(\vec{A} = A_x \hat{i} + A_y \hat{j} + A_z \hat{k}\)
-The z component: \(A_z = z_e - z_b\)
-Magnitude in three dimensions: \(A = \sqrt{A_x^2 + A_y^2 + A_z^2}\)
+* Component form in two dimensions: \(\vec{A} = A_x \hat{i} + A_y \hat{j}\) | \(A_x\) and \(A_y\) are the scalar components along x and y, and \(\hat{i}\), \(\hat{j}\) are unit vectors along those axes. Any vector in a plane is its x part plus its y part.
+Components from the tail and head: \(A_x = x_e - x_b, \quad A_y = y_e - y_b\) | \((x_b, y_b)\) is the tail (beginning) and \((x_e, y_e)\) the head (end) of the vector. Each component is the end coordinate minus the beginning coordinate, so it can be negative.
+* Magnitude in a plane: \(A = \sqrt{A_x^2 + A_y^2}\) | \(A_x\) and \(A_y\) are the components and \(A\) is the vector's length, in the same units. It is the Pythagorean theorem applied to the right triangle the components make.
+* Direction angle in a plane: \(\theta_A = \tan^{-1}\!\left(\frac{A_y}{A_x}\right)\) | \(\theta_A\) is the angle measured counterclockwise from the positive x axis, found from the components \(A_x\) and \(A_y\). Check the quadrant: if \(A_x < 0\), add 180° to the calculator answer.
+* Components from magnitude and angle: \(A_x = A \cos\theta_A, \quad A_y = A \sin\theta_A\) | \(A\) is the magnitude and \(\theta_A\) the angle from the positive x axis. Cosine gives the x component and sine gives the y component.
+Polar coordinates: \(x = r\cos\varphi, \quad y = r\sin\varphi\) | \(r\) is the distance from the origin and \(\varphi\) the angle from the positive x axis. These turn polar coordinates \((r, \varphi)\) into Cartesian coordinates \((x, y)\).
+Component form in three dimensions: \(\vec{A} = A_x \hat{i} + A_y \hat{j} + A_z \hat{k}\) | \(A_x\), \(A_y\), \(A_z\) are the components and \(\hat{i}\), \(\hat{j}\), \(\hat{k}\) the unit vectors along x, y and z. A vector in space is the sum of its three parts.
+The z component: \(A_z = z_e - z_b\) | \(z_b\) is the z coordinate of the tail and \(z_e\) of the head. Like x and y, the component is end minus beginning.
+Magnitude in three dimensions: \(A = \sqrt{A_x^2 + A_y^2 + A_z^2}\) | \(A_x\), \(A_y\), \(A_z\) are the components and \(A\) is the length. It is the Pythagorean theorem extended to three perpendicular directions.
 
 ## EQUATIONS 2.3
-Distributive property: \(\alpha(\vec{A} + \vec{B}) = \alpha \vec{A} + \alpha \vec{B}\)
-Antiparallel vector: \(-\vec{A} = -A_x \hat{i} - A_y \hat{j} - A_z \hat{k}\)
-Equal vectors: \(A_x = B_x, \quad A_y = B_y, \quad A_z = B_z\)
-Resultant of N vectors: \(\begin{aligned} F_{Rx} &= \textstyle\sum_{k=1}^{N} F_{kx} \\ F_{Ry} &= \textstyle\sum_{k=1}^{N} F_{ky} \\ F_{Rz} &= \textstyle\sum_{k=1}^{N} F_{kz} \end{aligned}\)
-Unit vector: \(\hat{V} = \frac{\vec{V}}{V}\)
+Distributive property: \(\alpha(\vec{A} + \vec{B}) = \alpha \vec{A} + \alpha \vec{B}\) | \(\alpha\) is a scalar and \(\vec{A}\), \(\vec{B}\) are vectors. Scaling a sum is the same as scaling each vector and then adding.
+Antiparallel vector: \(-\vec{A} = -A_x \hat{i} - A_y \hat{j} - A_z \hat{k}\) | \(-\vec{A}\) has the same length as \(\vec{A}\) but points the opposite way. Every component just changes sign.
+Equal vectors: \(A_x = B_x, \quad A_y = B_y, \quad A_z = B_z\) | \(\vec{A}\) and \(\vec{B}\) are equal only if every pair of components matches. Same length and same direction, no matter where they are drawn.
+Resultant of N vectors: \(\begin{aligned} F_{Rx} &= \textstyle\sum_{k=1}^{N} F_{kx} \\ F_{Ry} &= \textstyle\sum_{k=1}^{N} F_{ky} \\ F_{Rz} &= \textstyle\sum_{k=1}^{N} F_{kz} \end{aligned}\) | \(F_{kx}\), \(F_{ky}\), \(F_{kz}\) are the components of the kth vector, and \(F_{Rx}\), \(F_{Ry}\), \(F_{Rz}\) those of the resultant. To add many vectors, add all the x components, then all the y, then all the z.
+Unit vector: \(\hat{V} = \frac{\vec{V}}{V}\) | \(\vec{V}\) is any vector and \(V\) its magnitude. Dividing by the magnitude gives \(\hat{V}\), a vector of length 1 (no units) pointing the same way.
 
 ## EQUATIONS 2.4
-* Scalar (dot) product: \(\vec{A} \cdot \vec{B} = AB\cos\varphi\)
-Commutative property of the dot product: \(\vec{A} \cdot \vec{B} = \vec{B} \cdot \vec{A}\)
-Distributive property of the dot product: \(\vec{A} \cdot (\vec{B} + \vec{C}) = \vec{A} \cdot \vec{B} + \vec{A} \cdot \vec{C}\)
-* Dot product from components: \(\vec{A} \cdot \vec{B} = A_x B_x + A_y B_y + A_z B_z\)
-Angle between two vectors: \(\cos\varphi = \frac{\vec{A} \cdot \vec{B}}{AB}\)
-Dot products of unit vectors: \(\begin{aligned} \hat{i} \cdot \hat{i} = \hat{j} \cdot \hat{j} = \hat{k} \cdot \hat{k} &= 1 \\ \hat{i} \cdot \hat{j} = \hat{j} \cdot \hat{k} = \hat{k} \cdot \hat{i} &= 0 \end{aligned}\)
-* Magnitude of the vector (cross) product: \(|\vec{A} \times \vec{B}| = AB\sin\varphi\)
-Anticommutative property of the cross product: \(\vec{A} \times \vec{B} = -\vec{B} \times \vec{A}\)
-Distributive property of the cross product: \(\vec{A} \times (\vec{B} + \vec{C}) = \vec{A} \times \vec{B} + \vec{A} \times \vec{C}\)
-Cross products of unit vectors: \(\hat{i} \times \hat{j} = \hat{k}, \quad \hat{j} \times \hat{k} = \hat{i}, \quad \hat{k} \times \hat{i} = \hat{j}\)
-* Cross product from components: \(\begin{aligned} \vec{A} \times \vec{B} = {} & (A_y B_z - A_z B_y)\hat{i} \\ & + (A_z B_x - A_x B_z)\hat{j} \\ & + (A_x B_y - A_y B_x)\hat{k} \end{aligned}\)
+* Scalar (dot) product: \(\vec{A} \cdot \vec{B} = AB\cos\varphi\) | \(A\) and \(B\) are the magnitudes and \(\varphi\) is the angle between the vectors. The result is a number that measures how much the vectors point the same way: largest when parallel, zero when perpendicular.
+Commutative property of the dot product: \(\vec{A} \cdot \vec{B} = \vec{B} \cdot \vec{A}\) | \(\vec{A}\) and \(\vec{B}\) are any two vectors. The order does not matter in a dot product.
+Distributive property of the dot product: \(\vec{A} \cdot (\vec{B} + \vec{C}) = \vec{A} \cdot \vec{B} + \vec{A} \cdot \vec{C}\) | \(\vec{A}\), \(\vec{B}\), \(\vec{C}\) are vectors. A dot product with a sum splits into a sum of dot products.
+* Dot product from components: \(\vec{A} \cdot \vec{B} = A_x B_x + A_y B_y + A_z B_z\) | \(A_x, A_y, A_z\) and \(B_x, B_y, B_z\) are the components. Multiply matching components and add; no angle is needed.
+Angle between two vectors: \(\cos\varphi = \frac{\vec{A} \cdot \vec{B}}{AB}\) | \(\vec{A}\cdot\vec{B}\) comes from the components and \(A\), \(B\) are the magnitudes. Taking \(\cos^{-1}\) of this ratio gives the angle \(\varphi\) between the vectors, from 0° to 180°.
+Dot products of unit vectors: \(\begin{aligned} \hat{i} \cdot \hat{i} = \hat{j} \cdot \hat{j} = \hat{k} \cdot \hat{k} &= 1 \\ \hat{i} \cdot \hat{j} = \hat{j} \cdot \hat{k} = \hat{k} \cdot \hat{i} &= 0 \end{aligned}\) | \(\hat{i}\), \(\hat{j}\), \(\hat{k}\) have length 1 and are perpendicular to each other. A unit vector dotted with itself gives 1; with a different one it gives 0.
+* Magnitude of the vector (cross) product: \(|\vec{A} \times \vec{B}| = AB\sin\varphi\) | \(A\) and \(B\) are the magnitudes and \(\varphi\) the angle between the vectors. The size is largest when they are perpendicular and zero when parallel; it equals the area of the parallelogram they make.
+Anticommutative property of the cross product: \(\vec{A} \times \vec{B} = -\vec{B} \times \vec{A}\) | \(\vec{A}\) and \(\vec{B}\) are any two vectors. Swapping the order flips the direction of the cross product.
+Distributive property of the cross product: \(\vec{A} \times (\vec{B} + \vec{C}) = \vec{A} \times \vec{B} + \vec{A} \times \vec{C}\) | \(\vec{A}\), \(\vec{B}\), \(\vec{C}\) are vectors. A cross product with a sum splits into a sum of cross products, keeping the order.
+Cross products of unit vectors: \(\hat{i} \times \hat{j} = \hat{k}, \quad \hat{j} \times \hat{k} = \hat{i}, \quad \hat{k} \times \hat{i} = \hat{j}\) | \(\hat{i}\), \(\hat{j}\), \(\hat{k}\) are the unit vectors along x, y and z. Going around in the order i, j, k gives the next one; going backward gives a minus sign.
+* Cross product from components: \(\begin{aligned} \vec{A} \times \vec{B} = {} & (A_y B_z - A_z B_y)\hat{i} \\ & + (A_z B_x - A_x B_z)\hat{j} \\ & + (A_x B_y - A_y B_x)\hat{k} \end{aligned}\) | \(A_x, A_y, A_z\) and \(B_x, B_y, B_z\) are the components. The result is perpendicular to both vectors, with its direction given by the right hand rule.
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 2.1
+# Book: 1
+#
+# ## EXAMPLE 2.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
 
 
 # ============================ ITEM FORMATS ============================

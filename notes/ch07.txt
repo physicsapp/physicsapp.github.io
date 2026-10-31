@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 7.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -42,29 +42,52 @@ Watch out: Power and energy are different things. A kilowatt hour is an amount o
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 7.1
-* Work done by a constant force: \(W = \vec{F}\cdot\vec{d} = Fd\cos\theta\)
-Dot product in components: \(\vec{A}\cdot\vec{B} = A_xB_x + A_yB_y + A_zB_z\)
-* Work done by a force along a path: \(W_{AB} = \int_A^B \vec{F}\cdot d\vec{r}\)
-Work done by a varying force in one dimension: \(W = \int_{x_A}^{x_B} F_x\,dx\)
-* Work done by kinetic friction: \(W_\text{fr} = -f_k\,|\ell_{AB}|\)
-* Work done by gravity near Earth: \(W_\text{grav} = -mg(y_B - y_A)\)
-* Work done by a spring: \(W_\text{spring} = -\tfrac{1}{2}k(x_B^2 - x_A^2)\)
+* Work done by a constant force: \(W = \vec{F}\cdot\vec{d} = Fd\cos\theta\) | \(F\) is the force (N), \(d\) the displacement (m) and \(\theta\) the angle between them, giving work in joules (1 J = 1 N·m). Only the part of the force along the motion does work; a perpendicular force does none.
+Dot product in components: \(\vec{A}\cdot\vec{B} = A_xB_x + A_yB_y + A_zB_z\) | \(A_x, A_y, A_z\) and \(B_x, B_y, B_z\) are the components. Multiply matching components and add, which is handy for work when the force and displacement are given in components.
+* Work done by a force along a path: \(W_{AB} = \int_A^B \vec{F}\cdot d\vec{r}\) | \(\vec{F}\) is the force (N) and \(d\vec{r}\) a tiny piece of the path (m), from point A to point B. Add up \(\vec{F}\cdot d\vec{r}\) along the whole path to get the work in joules.
+Work done by a varying force in one dimension: \(W = \int_{x_A}^{x_B} F_x\,dx\) | \(F_x\) is the force along x (N) and \(x_A\), \(x_B\) the start and end positions (m). The work is the area under the force versus position graph.
+* Work done by kinetic friction: \(W_\text{fr} = -f_k\,|\ell_{AB}|\) | \(f_k\) is the kinetic friction force (N) and \(|\ell_{AB}|\) the path length slid (m). Friction always opposes the sliding, so its work is negative and grows with the distance traveled.
+* Work done by gravity near Earth: \(W_\text{grav} = -mg(y_B - y_A)\) | \(m\) is the mass (kg), \(g = 9.8\) m/s² and \(y_B - y_A\) the change in height (m). Only the change in height matters, not the path; going up gives negative work.
+* Work done by a spring: \(W_\text{spring} = -\tfrac{1}{2}k(x_B^2 - x_A^2)\) | \(k\) is the spring constant (N/m) and \(x_A\), \(x_B\) the start and end stretches from the relaxed length (m). The spring does positive work when it moves back toward its relaxed length.
 
 ## EQUATIONS 7.2
-* Kinetic energy: \(K = \tfrac{1}{2}mv^2 = \frac{p^2}{2m}\)
+* Kinetic energy: \(K = \tfrac{1}{2}mv^2 = \frac{p^2}{2m}\) | \(m\) is the mass (kg), \(v\) the speed (m/s) and \(p\) the momentum (kg·m/s), giving energy in joules. It is the energy of motion and is never negative.
 
 ## EQUATIONS 7.3
-* Work energy theorem: \(W_\text{net} = K_B - K_A\)
+* Work energy theorem: \(W_\text{net} = K_B - K_A\) | \(W_\text{net}\) is the work done by all forces (J) and \(K_A\), \(K_B\) the kinetic energies at the start and end (J). Net work changes the kinetic energy: positive speeds the object up, negative slows it down.
 
 ## EQUATIONS 7.4
-* Power: \(P = \frac{dW}{dt}\)
-* Average power: \(P_\text{avg} = \frac{W}{\Delta t}\)
-* Power delivered by a force: \(P = \vec{F}\cdot\vec{v} = Fv\cos\theta\)
-Work from power: \(W = \int P\,dt\)
+* Power: \(P = \frac{dW}{dt}\) | \(W\) is the work (J) and \(t\) the time (s), giving power in watts (1 W = 1 J/s). Power is how fast work is done.
+* Average power: \(P_\text{avg} = \frac{W}{\Delta t}\) | \(W\) is the work done (J) over the time interval \(\Delta t\) (s), giving watts. The same work done faster takes more power.
+* Power delivered by a force: \(P = \vec{F}\cdot\vec{v} = Fv\cos\theta\) | \(F\) is the force (N), \(v\) the velocity (m/s) and \(\theta\) the angle between them, giving watts. Only the part of the force along the velocity delivers power.
+Work from power: \(W = \int P\,dt\) | \(P\) is the power (W) and \(t\) the time (s). The work done is the area under the power versus time graph, in joules.
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 7.1
+# Book: 1
+#
+# ## EXAMPLE 7.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
 
 
 # ============================ ITEM FORMATS ============================

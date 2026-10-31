@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 7.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -46,33 +46,56 @@ Watch out: "Using up" energy really means turning it into a less useful form, mo
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 8.1
-* Difference of potential energy: \(\Delta U_{AB} = U_B - U_A = -W_{AB}\)
-Potential energy measured from a reference point: \(\Delta U = U(\vec{r}) - U(\vec{r}_0)\)
-* Gravitational potential energy near Earth: \(U(y) = mgy + \text{const}\)
-* Potential energy of an ideal spring: \(U(x) = \tfrac{1}{2}kx^2 + \text{const}\)
+* Difference of potential energy: \(\Delta U_{AB} = U_B - U_A = -W_{AB}\) | \(U_A\) and \(U_B\) are the potential energies (J) at points A and B, and \(W_{AB}\) is the work done by the conservative force from A to B. Positive work by the force lowers the potential energy.
+Potential energy measured from a reference point: \(\Delta U = U(\vec{r}) - U(\vec{r}_0)\) | \(\vec{r}_0\) is a reference point you choose, where \(U\) is often set to zero. Only differences in potential energy matter physically, in joules.
+* Gravitational potential energy near Earth: \(U(y) = mgy + \text{const}\) | \(m\) is the mass (kg), \(g = 9.8\) m/s² and \(y\) the height (m), giving joules. The constant depends on where you put \(y = 0\), so choose whatever level is convenient.
+* Potential energy of an ideal spring: \(U(x) = \tfrac{1}{2}kx^2 + \text{const}\) | \(k\) is the spring constant (N/m) and \(x\) the stretch or compression from the relaxed length (m), giving joules. Stretching or compressing by the same amount stores the same energy.
 
 ## EQUATIONS 8.2
-* Work by a conservative force around a closed path: \(W_\text{closed path} = \oint \vec{F}_\text{cons}\cdot d\vec{r} = 0\)
-Condition for a conservative force in two dimensions: \(\frac{dF_x}{dy} = \frac{dF_y}{dx}\)
-Conservative force from potential energy, any direction: \(F_\ell = -\frac{dU}{d\ell}\)
-* Conservative force from potential energy in one dimension: \(F_x = -\frac{dU}{dx}\)
+* Work by a conservative force around a closed path: \(W_\text{closed path} = \oint \vec{F}_\text{cons}\cdot d\vec{r} = 0\) | \(\vec{F}_\text{cons}\) is a conservative force (N) and the circle on the integral means a path that returns to where it started. A conservative force does zero total work around any closed loop.
+Condition for a conservative force in two dimensions: \(\frac{dF_x}{dy} = \frac{dF_y}{dx}\) | \(F_x\) and \(F_y\) are the force components (N) as functions of position. If these two derivatives are equal, the force is conservative and has a potential energy.
+Conservative force from potential energy, any direction: \(F_\ell = -\frac{dU}{d\ell}\) | \(U\) is the potential energy (J) and \(\ell\) the distance along a chosen direction (m), giving the force component in N. The force points toward lower potential energy.
+* Conservative force from potential energy in one dimension: \(F_x = -\frac{dU}{dx}\) | \(U(x)\) is the potential energy (J) and \(x\) the position (m), giving \(F_x\) in newtons. The force is the negative slope of the \(U\) versus \(x\) graph, pushing toward lower \(U\).
 
 ## EQUATIONS 8.3
-* Mechanical energy: \(E = K + U\)
-* Work by nonconservative forces: \(W_{\text{nc},AB} = \Delta(K + U)_{AB} = \Delta E_{AB}\)
-* Conservation of mechanical energy: \(K_A + U_A = K_B + U_B\)
-Speed from the energy in one dimension: \(v = \sqrt{\tfrac{2}{m}\big(E - U(x)\big)}\)
+* Mechanical energy: \(E = K + U\) | \(K\) is the kinetic energy and \(U\) the potential energy, both in joules. Their sum is the mechanical energy.
+* Work by nonconservative forces: \(W_{\text{nc},AB} = \Delta(K + U)_{AB} = \Delta E_{AB}\) | \(W_{\text{nc},AB}\) is the work by forces like friction or a push (J) from A to B, and \(\Delta E_{AB}\) the change in mechanical energy (J). Friction makes this negative, so mechanical energy is lost as heat.
+* Conservation of mechanical energy: \(K_A + U_A = K_B + U_B\) | \(K\) and \(U\) are the kinetic and potential energies (J) at points A and B. With only conservative forces doing work, the total stays the same, so energy just changes form.
+Speed from the energy in one dimension: \(v = \sqrt{\tfrac{2}{m}\big(E - U(x)\big)}\) | \(m\) is the mass (kg), \(E\) the mechanical energy (J) and \(U(x)\) the potential energy at position \(x\) (J), giving speed in m/s. Wherever \(U\) is lower, the object moves faster.
 
 ## EQUATIONS 8.4
-Kinetic energy from a potential energy diagram: \(K = E - U(x)\)
-Turning point: \(U(x) = E\)
-* Equilibrium point: \(\frac{dU}{dx} = 0\)
-Stable equilibrium: \(\frac{d^2U}{dx^2} > 0\)
-Unstable equilibrium: \(\frac{d^2U}{dx^2} < 0\)
+Kinetic energy from a potential energy diagram: \(K = E - U(x)\) | \(E\) is the total mechanical energy and \(U(x)\) the potential energy at \(x\), both in joules. On the diagram, \(K\) is the gap between the \(E\) line and the \(U\) curve.
+Turning point: \(U(x) = E\) | \(U(x)\) is the potential energy at position \(x\) and \(E\) the mechanical energy (J). Here \(K = 0\), so the object stops for an instant and turns around.
+* Equilibrium point: \(\frac{dU}{dx} = 0\) | \(U(x)\) is the potential energy (J) and \(x\) the position (m). Where the slope of \(U\) is zero, the force is zero, so the object can stay at rest.
+Stable equilibrium: \(\frac{d^2U}{dx^2} > 0\) | \(U(x)\) is the potential energy (J) and \(x\) the position (m). A minimum of \(U\), like the bottom of a bowl: nudge the object and it comes back.
+Unstable equilibrium: \(\frac{d^2U}{dx^2} < 0\) | \(U(x)\) is the potential energy (J) and \(x\) the position (m). A maximum of \(U\), like the top of a hill: nudge the object and it moves away.
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 8.1
+# Book: 1
+#
+# ## EXAMPLE 8.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
 
 # ============================ ITEM FORMATS ============================
 #

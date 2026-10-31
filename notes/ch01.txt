@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 1.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -54,14 +54,37 @@ Watch out: Carry units through every step. If the units of your answer come out 
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 1.6
-* Percent uncertainty: \(\text{Percent uncertainty} = \frac{\delta A}{A} \times 100\%\)
+* Percent uncertainty: \(\text{Percent uncertainty} = \frac{\delta A}{A} \times 100\%\) | \(\delta A\) is the uncertainty in a measured value \(A\), in the same units as \(A\). Dividing by \(A\) and multiplying by 100 tells you how big the uncertainty is compared to the measurement itself.
 # To add your own, write a line like the two below (remove the # to turn one on).
-# * Uncertainty of a product: \(\frac{\delta Q}{Q} = \frac{\delta A}{A} + \frac{\delta B}{B}\)
-# * Uncertainty of a power: \(\frac{\delta Q}{Q} = n\,\frac{\delta A}{A}\)
+# * Uncertainty of a product: \(\frac{\delta Q}{Q} = \frac{\delta A}{A} + \frac{\delta B}{B}\) | \(\delta A/A\) and \(\delta B/B\) are the relative uncertainties of the two measurements, and \(Q = AB\) or \(Q = A/B\). For a product or quotient, the relative uncertainties add.
+# * Uncertainty of a power: \(\frac{\delta Q}{Q} = n\,\frac{\delta A}{A}\) | \(\delta A/A\) is the relative uncertainty of \(A\), and \(Q = A^n\). Raising to the power \(n\) multiplies the relative uncertainty by \(n\).
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 1.1
+# Book: 1
+#
+# ## EXAMPLE 1.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
 
 
 # ============================ ITEM FORMATS ============================

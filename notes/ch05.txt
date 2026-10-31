@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 5.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -54,34 +54,57 @@ Watch out: Don't draw "the force of motion" or \(m\vec a\) as a force. Every for
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 5.1
-* Net external force: \(\vec{F}_{\text{net}} = \sum \vec{F} = \vec{F}_1 + \vec{F}_2 + \cdots\)
+* Net external force: \(\vec{F}_{\text{net}} = \sum \vec{F} = \vec{F}_1 + \vec{F}_2 + \cdots\) | \(\vec{F}_1, \vec{F}_2, \ldots\) are all the outside forces on one object, in newtons. Add them as vectors; the sum is what changes the object's motion.
 
 ## EQUATIONS 5.2
-Newton's first law: \(\vec{v} = \text{constant when } \vec{F}_{\text{net}} = 0\)
+Newton's first law: \(\vec{v} = \text{constant when } \vec{F}_{\text{net}} = 0\) | \(\vec{v}\) is the velocity (m/s) and \(\vec{F}_{\text{net}}\) the net external force (N). With no net force, an object at rest stays at rest and a moving object keeps the same speed and direction.
 
 ## EQUATIONS 5.3
-* Newton's second law: \(\vec{F}_{\text{net}} = \sum \vec{F} = m\vec{a}\)
-Second law in components: \(\begin{aligned} \textstyle\sum F_x &= ma_x \\ \textstyle\sum F_y &= ma_y \\ \textstyle\sum F_z &= ma_z \end{aligned}\)
-Second law, scalar form: \(F_{\text{net}} = ma\)
-Second law, momentum form: \(\vec{F}_{\text{net}} = \frac{d\vec{p}}{dt}\)
+* Newton's second law: \(\vec{F}_{\text{net}} = \sum \vec{F} = m\vec{a}\) | \(m\) is the mass (kg), \(\vec{a}\) the acceleration (m/s²) and \(\vec{F}_{\text{net}}\) the net external force (N). The acceleration points the same way as the net force, and 1 N = 1 kg·m/s².
+Second law in components: \(\begin{aligned} \textstyle\sum F_x &= ma_x \\ \textstyle\sum F_y &= ma_y \\ \textstyle\sum F_z &= ma_z \end{aligned}\) | \(\sum F_x\), \(\sum F_y\), \(\sum F_z\) are the net force components (N) and \(a_x\), \(a_y\), \(a_z\) the acceleration components (m/s²). Each direction is its own separate equation.
+Second law, scalar form: \(F_{\text{net}} = ma\) | \(F_{\text{net}}\) is the size of the net force (N), \(m\) the mass (kg) and \(a\) the size of the acceleration (m/s²). Use it for motion along one line once you pick a positive direction.
+Second law, momentum form: \(\vec{F}_{\text{net}} = \frac{d\vec{p}}{dt}\) | \(\vec{p} = m\vec{v}\) is the momentum (kg·m/s) and \(t\) the time (s). The net force equals how fast the momentum changes; it is the general form of the second law.
 
 ## EQUATIONS 5.4
-Weight, vector form: \(\vec{w} = m\vec{g}\)
-* Weight: \(F_w = mg\)
+Weight, vector form: \(\vec{w} = m\vec{g}\) | \(m\) is the mass (kg) and \(\vec{g}\) the free fall acceleration, 9.8 m/s² pointing down. Weight is the gravitational force on the object and always points down.
+* Weight: \(F_w = mg\) | \(m\) is the mass (kg) and \(g = 9.8\) m/s², giving the weight in newtons. Mass is how much matter there is; weight is the force of gravity on it.
 
 ## EQUATIONS 5.5
-* Newton's third law: \(\vec{F}_{AB} = -\vec{F}_{BA}\)
+* Newton's third law: \(\vec{F}_{AB} = -\vec{F}_{BA}\) | \(\vec{F}_{AB}\) is the force A exerts on B and \(\vec{F}_{BA}\) the force B exerts on A, in newtons. They are equal in size and opposite in direction, and they act on different objects, so they never cancel.
 
 ## EQUATIONS 5.6
-Normal force on a level surface, vector form: \(\vec{N} = -m\vec{g}\)
-Normal force on a level surface: \(N = mg\)
-Normal force on an incline: \(N = mg\cos\theta\)
-* Spring force (Hooke's law): \(\vec{F} = -k\vec{x}\)
-Tension holding a mass at rest: \(T = w = mg\)
+Normal force on a level surface, vector form: \(\vec{N} = -m\vec{g}\) | \(\vec{N}\) is the force the surface pushes with (N), \(m\) the mass (kg) and \(\vec{g}\) points down. On a level surface with nothing else pushing up or down, the normal force balances the weight.
+Normal force on a level surface: \(N = mg\) | \(N\) is the normal force (N), \(m\) the mass (kg) and \(g = 9.8\) m/s². It holds only on a level surface with no other vertical forces and no vertical acceleration.
+Normal force on an incline: \(N = mg\cos\theta\) | \(m\) is the mass (kg), \(g = 9.8\) m/s² and \(\theta\) the incline angle. The surface pushes back only against the part of the weight perpendicular to it, so \(N < mg\).
+* Spring force (Hooke's law): \(\vec{F} = -k\vec{x}\) | \(k\) is the spring constant (N/m) and \(\vec{x}\) the stretch or compression from the relaxed length (m). The spring always pulls or pushes back toward its relaxed length.
+Tension holding a mass at rest: \(T = w = mg\) | \(T\) is the tension in the rope (N), \(m\) the hanging mass (kg) and \(g = 9.8\) m/s². With one rope and no acceleration, the tension equals the weight.
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 5.1
+# Book: 1
+#
+# ## EXAMPLE 5.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
 
 
 # ============================ ITEM FORMATS ============================

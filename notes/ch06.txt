@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 6.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -42,20 +42,43 @@ Watch out: At terminal velocity the object is still moving fast. It's the accele
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 6.2
-* Static friction: \(f_s \le \mu_s N\)
-* Kinetic friction: \(f_k = \mu_k N\)
+* Static friction: \(f_s \le \mu_s N\) | \(\mu_s\) is the coefficient of static friction (no units) and \(N\) the normal force (N). Static friction is only as big as needed to stop sliding, up to a maximum of \(\mu_s N\).
+* Kinetic friction: \(f_k = \mu_k N\) | \(\mu_k\) is the coefficient of kinetic friction (no units) and \(N\) the normal force (N). Once sliding, friction has this fixed size and points opposite to the sliding motion.
 
 ## EQUATIONS 6.3
-* Centripetal force: \(F_c = \frac{mv^2}{r} = mr\omega^2\)
-* Ideal angle of a banked curve: \(\tan\theta = \frac{v^2}{rg}\)
+* Centripetal force: \(F_c = \frac{mv^2}{r} = mr\omega^2\) | \(m\) is the mass (kg), \(v\) the speed (m/s), \(r\) the radius (m) and \(\omega\) the angular speed (rad/s). It is the net force toward the center needed for circular motion, supplied by real forces like tension, friction or gravity.
+* Ideal angle of a banked curve: \(\tan\theta = \frac{v^2}{rg}\) | \(\theta\) is the bank angle, \(v\) the speed (m/s), \(r\) the radius of the curve (m) and \(g = 9.8\) m/s². At this angle the normal force alone supplies the centripetal force, so no friction is needed.
 
 ## EQUATIONS 6.4
-* Drag force: \(F_D = \tfrac{1}{2}C\rho Av^2\)
-Stokes' law: \(F_s = 6\pi r\eta v\)
+* Drag force: \(F_D = \tfrac{1}{2}C\rho Av^2\) | \(C\) is the drag coefficient (no units), \(\rho\) the air density (kg/m³), \(A\) the front area (m²) and \(v\) the speed (m/s). Drag grows with the square of the speed, which is why falling objects reach a terminal velocity.
+Stokes' law: \(F_s = 6\pi r\eta v\) | \(r\) is the radius of a small sphere (m), \(\eta\) the fluid's viscosity (Pa·s) and \(v\) the speed (m/s). For small, slow objects in a fluid, drag grows in proportion to the speed.
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 6.1
+# Book: 1
+#
+# ## EXAMPLE 6.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
 
 
 # ============================ ITEM FORMATS ============================

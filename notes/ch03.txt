@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 3.4. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -51,39 +51,62 @@ Watch out: Don't use the constant acceleration equations when \(a\) depends on t
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 3.1
-* Displacement: \(\Delta x = x_f - x_i\)
-Total displacement: \(\Delta x_{\text{total}} = \sum \Delta x_i\)
-* Average velocity: \(\bar{v} = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}\)
-* Average speed: \(\bar{s} = \frac{\text{total distance}}{\text{elapsed time}}\)
+* Displacement: \(\Delta x = x_f - x_i\) | \(x_i\) is the initial and \(x_f\) the final position, in meters. Displacement is the change in position and carries a sign, so it can be negative.
+Total displacement: \(\Delta x_{\text{total}} = \sum \Delta x_i\) | \(\Delta x_i\) is the displacement of each part of a trip, in meters. Adding them with their signs gives the overall change in position.
+* Average velocity: \(\bar{v} = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}\) | \(\Delta x\) is the displacement (m) and \(\Delta t\) the elapsed time (s), so \(\bar{v}\) is in m/s. A round trip has zero average velocity because the displacement is zero.
+* Average speed: \(\bar{s} = \frac{\text{total distance}}{\text{elapsed time}}\) | Total distance (m) is the full path length traveled and elapsed time is in seconds, so average speed is in m/s. It is never negative and can be larger than the average velocity.
 
 ## EQUATIONS 3.2
-* Instantaneous velocity: \(v(t) = \frac{dx(t)}{dt}\)
-Instantaneous speed: \(\text{speed} = |v(t)|\)
-Power rule for derivatives: \(\frac{d}{dt}\left(Ct^n\right) = nCt^{n-1}\)
+* Instantaneous velocity: \(v(t) = \frac{dx(t)}{dt}\) | \(x(t)\) is position in meters and \(t\) is time in seconds, so \(v\) is in m/s. It is the slope of the position versus time graph at that instant.
+Instantaneous speed: \(\text{speed} = |v(t)|\) | \(v(t)\) is the instantaneous velocity in m/s. Speed is its size, so it is never negative.
+Power rule for derivatives: \(\frac{d}{dt}\left(Ct^n\right) = nCt^{n-1}\) | \(C\) is a constant and \(n\) is the power of \(t\). Bring the power down in front and lower it by one; this is how you get \(v\) from \(x(t)\) and \(a\) from \(v(t)\).
 
 ## EQUATIONS 3.3
-* Average acceleration: \(\bar{a} = \frac{\Delta v}{\Delta t} = \frac{v_f - v_0}{t_f - t_0}\)
-* Instantaneous acceleration: \(a(t) = \frac{dv(t)}{dt}\)
+* Average acceleration: \(\bar{a} = \frac{\Delta v}{\Delta t} = \frac{v_f - v_0}{t_f - t_0}\) | \(v_0\) and \(v_f\) are the initial and final velocities (m/s) over the time \(t_f - t_0\) (s), so \(\bar{a}\) is in m/s². It is how fast the velocity changes on average.
+* Instantaneous acceleration: \(a(t) = \frac{dv(t)}{dt}\) | \(v(t)\) is velocity in m/s and \(t\) is time in seconds, so \(a\) is in m/s². It is the slope of the velocity versus time graph at that instant.
 
 ## EQUATIONS 3.4
-* Position from average velocity: \(x = x_0 + \bar{v}t\)
-* Average velocity, constant acceleration: \(\bar{v} = \frac{v_0 + v}{2}\)
-* Velocity, constant acceleration: \(v = v_0 + at\)
-* Position, constant acceleration: \(x = x_0 + v_0 t + \tfrac{1}{2}at^2\)
-* Velocity and position, constant acceleration: \(v^2 = v_0^2 + 2a(x - x_0)\)
+* Position from average velocity: \(x = x_0 + \bar{v}t\) | \(x_0\) is the starting position (m), \(\bar{v}\) the average velocity (m/s) and \(t\) the time (s). The object moves a displacement of \(\bar{v}t\) from where it started.
+* Average velocity, constant acceleration: \(\bar{v} = \frac{v_0 + v}{2}\) | \(v_0\) and \(v\) are the initial and final velocities in m/s. Only when the acceleration is constant is the average velocity simply the average of the two.
+* Velocity, constant acceleration: \(v = v_0 + at\) | \(v_0\) is the initial velocity (m/s), \(a\) the constant acceleration (m/s²) and \(t\) the time (s). The velocity changes by \(at\); use it when position is not involved.
+* Position, constant acceleration: \(x = x_0 + v_0 t + \tfrac{1}{2}at^2\) | \(x_0\) is the starting position (m), \(v_0\) the initial velocity (m/s), \(a\) the constant acceleration (m/s²) and \(t\) the time (s). Use it when the final velocity is not given and not asked for.
+* Velocity and position, constant acceleration: \(v^2 = v_0^2 + 2a(x - x_0)\) | \(v\) and \(v_0\) are the final and initial velocities (m/s), \(a\) the constant acceleration (m/s²) and \(x - x_0\) the displacement (m). Use it when time is not given and not asked for.
 
 ## EQUATIONS 3.5
-Velocity in free fall (up is positive): \(v = v_0 - gt\)
-Height in free fall: \(y = y_0 + v_0 t - \tfrac{1}{2}gt^2\)
-Velocity and height in free fall: \(v^2 = v_0^2 - 2g(y - y_0)\)
+Velocity in free fall (up is positive): \(v = v_0 - gt\) | \(v_0\) is the initial velocity (m/s), \(g = 9.8\) m/s² and \(t\) the time (s). The velocity drops by 9.8 m/s every second, whether the object is going up or down.
+Height in free fall: \(y = y_0 + v_0 t - \tfrac{1}{2}gt^2\) | \(y_0\) is the starting height (m), \(v_0\) the initial velocity (m/s, up positive), \(g = 9.8\) m/s² and \(t\) the time (s). It is the constant acceleration position equation with \(a = -g\).
+Velocity and height in free fall: \(v^2 = v_0^2 - 2g(y - y_0)\) | \(v\) and \(v_0\) are the final and initial velocities (m/s), \(g = 9.8\) m/s² and \(y - y_0\) the change in height (m). Use it when time is not given and not asked for, like finding a maximum height.
 
 ## EQUATIONS 3.6
-* Velocity from acceleration: \(v(t) = \int a(t)\,dt + C_1\)
-* Position from velocity: \(x(t) = \int v(t)\,dt + C_2\)
+* Velocity from acceleration: \(v(t) = \int a(t)\,dt + C_1\) | \(a(t)\) is the acceleration in m/s² as a function of time and \(C_1\) is a constant set by the initial velocity. Integrating the acceleration gives the velocity.
+* Position from velocity: \(x(t) = \int v(t)\,dt + C_2\) | \(v(t)\) is the velocity in m/s as a function of time and \(C_2\) is a constant set by the initial position. Integrating the velocity gives the position.
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 3.1
+# Book: 1
+#
+# ## EXAMPLE 3.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
 
 
 # ============================ ITEM FORMATS ============================

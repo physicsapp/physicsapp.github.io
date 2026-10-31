@@ -5,7 +5,7 @@
 # Edit it, save it, and the app shows your changes the next time it loads.
 #
 # HOW IT WORKS
-#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH,
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
 #   followed by the section number, like ## QUIZ 4.1. The section decides which plant grows.
 #   A line starting with a single # is a comment. The app ignores it.
 #   Inside a block, each line starts with a label like "Q:" or "Why:".
@@ -46,44 +46,67 @@ Watch out: \(\vec v_{AB} = -\vec v_{BA}\). Reversing the subscripts reverses the
 # ============================ EQUATIONS ============================
 # One block per section. Every line is shown on that section's Learn page.
 # A line starting with * also goes on the chapter's equation sheet (the Equations tab).
-# Each line is  Name: \(math\)  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
 # remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
 
 ## EQUATIONS 4.1
-Position vector: \(\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}\)
-Displacement vector: \(\Delta\vec{r} = \vec{r}(t_2) - \vec{r}(t_1)\)
-Velocity vector: \(\vec{v}(t) = \lim_{\Delta t \to 0} \frac{\vec{r}(t + \Delta t) - \vec{r}(t)}{\Delta t} = \frac{d\vec{r}}{dt}\)
-Velocity in components: \(\vec{v}(t) = v_x(t)\hat{i} + v_y(t)\hat{j} + v_z(t)\hat{k}\)
-Velocity components: \(v_x = \frac{dx}{dt}, \quad v_y = \frac{dy}{dt}, \quad v_z = \frac{dz}{dt}\)
-Average velocity: \(\vec{v}_{\text{avg}} = \frac{\vec{r}(t_2) - \vec{r}(t_1)}{t_2 - t_1}\)
+Position vector: \(\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}\) | \(x(t)\), \(y(t)\), \(z(t)\) are the coordinates in meters at time \(t\). The position vector points from the origin to the particle.
+Displacement vector: \(\Delta\vec{r} = \vec{r}(t_2) - \vec{r}(t_1)\) | \(\vec{r}(t_1)\) and \(\vec{r}(t_2)\) are the positions (m) at two times. The displacement points from the first position to the second.
+Velocity vector: \(\vec{v}(t) = \lim_{\Delta t \to 0} \frac{\vec{r}(t + \Delta t) - \vec{r}(t)}{\Delta t} = \frac{d\vec{r}}{dt}\) | \(\vec{r}(t)\) is the position in meters and \(t\) the time in seconds, so \(\vec{v}\) is in m/s. The velocity is the derivative of position and is always tangent to the path.
+Velocity in components: \(\vec{v}(t) = v_x(t)\hat{i} + v_y(t)\hat{j} + v_z(t)\hat{k}\) | \(v_x\), \(v_y\), \(v_z\) are the velocity components in m/s. The velocity vector is the sum of its x, y and z parts.
+Velocity components: \(v_x = \frac{dx}{dt}, \quad v_y = \frac{dy}{dt}, \quad v_z = \frac{dz}{dt}\) | \(x\), \(y\), \(z\) are the coordinates in meters as functions of time. Each velocity component is the derivative of its own coordinate, so each direction can be handled separately.
+Average velocity: \(\vec{v}_{\text{avg}} = \frac{\vec{r}(t_2) - \vec{r}(t_1)}{t_2 - t_1}\) | \(\vec{r}(t_1)\) and \(\vec{r}(t_2)\) are the positions (m) and \(t_2 - t_1\) the elapsed time (s). It is the displacement vector divided by time, in m/s.
 
 ## EQUATIONS 4.2
-Acceleration vector: \(\vec{a}(t) = \lim_{\Delta t \to 0} \frac{\vec{v}(t + \Delta t) - \vec{v}(t)}{\Delta t} = \frac{d\vec{v}}{dt}\)
-Acceleration in components: \(\begin{aligned} \vec{a}(t) &= \frac{dv_x}{dt}\hat{i} + \frac{dv_y}{dt}\hat{j} + \frac{dv_z}{dt}\hat{k} \\ &= a_x\hat{i} + a_y\hat{j} + a_z\hat{k} \end{aligned}\)
-Acceleration as a second derivative: \(\vec{a}(t) = \frac{d^2x}{dt^2}\hat{i} + \frac{d^2y}{dt^2}\hat{j} + \frac{d^2z}{dt^2}\hat{k}\)
+Acceleration vector: \(\vec{a}(t) = \lim_{\Delta t \to 0} \frac{\vec{v}(t + \Delta t) - \vec{v}(t)}{\Delta t} = \frac{d\vec{v}}{dt}\) | \(\vec{v}(t)\) is the velocity in m/s and \(t\) the time in seconds, so \(\vec{a}\) is in m/s². Acceleration is any change in velocity, in size or in direction.
+Acceleration in components: \(\begin{aligned} \vec{a}(t) &= \frac{dv_x}{dt}\hat{i} + \frac{dv_y}{dt}\hat{j} + \frac{dv_z}{dt}\hat{k} \\ &= a_x\hat{i} + a_y\hat{j} + a_z\hat{k} \end{aligned}\) | \(a_x\), \(a_y\), \(a_z\) are the acceleration components in m/s². Each one is the derivative of the matching velocity component.
+Acceleration as a second derivative: \(\vec{a}(t) = \frac{d^2x}{dt^2}\hat{i} + \frac{d^2y}{dt^2}\hat{j} + \frac{d^2z}{dt^2}\hat{k}\) | \(x\), \(y\), \(z\) are the coordinates in meters as functions of time. Differentiating each coordinate twice gives the acceleration components in m/s².
 
 ## EQUATIONS 4.3
-* Launch velocity components: \(v_{0x} = v_0\cos\theta_0, \quad v_{0y} = v_0\sin\theta_0\)
-* Horizontal motion: \(x = x_0 + v_{0x}t\)
-* Vertical motion: \(\begin{aligned} y &= y_0 + v_{0y}t - \tfrac{1}{2}gt^2 \\ v_y &= v_{0y} - gt \end{aligned}\)
-* Time of flight (level ground): \(T_{\text{tof}} = \frac{2v_0\sin\theta_0}{g}\)
-* Trajectory: \(y = (\tan\theta_0)x - \frac{g}{2(v_0\cos\theta_0)^2}x^2\)
-* Range (level ground): \(R = \frac{v_0^2\sin 2\theta_0}{g}\)
+* Launch velocity components: \(v_{0x} = v_0\cos\theta_0, \quad v_{0y} = v_0\sin\theta_0\) | \(v_0\) is the launch speed (m/s) and \(\theta_0\) the angle above the horizontal. Cosine gives the horizontal part and sine the vertical part.
+* Horizontal motion: \(x = x_0 + v_{0x}t\) | \(x_0\) is the starting position (m), \(v_{0x}\) the horizontal velocity (m/s) and \(t\) the time (s). With no air resistance there is no horizontal acceleration, so \(v_x\) stays constant.
+* Vertical motion: \(\begin{aligned} y &= y_0 + v_{0y}t - \tfrac{1}{2}gt^2 \\ v_y &= v_{0y} - gt \end{aligned}\) | \(y_0\) is the starting height (m), \(v_{0y}\) the initial vertical velocity (m/s), \(g = 9.8\) m/s² and \(t\) the time (s). Vertically, a projectile is in free fall, independent of its horizontal motion.
+* Time of flight (level ground): \(T_{\text{tof}} = \frac{2v_0\sin\theta_0}{g}\) | \(v_0\) is the launch speed (m/s), \(\theta_0\) the launch angle and \(g = 9.8\) m/s², giving the time in seconds. It only works when the projectile lands at the same height it was launched from.
+* Trajectory: \(y = (\tan\theta_0)x - \frac{g}{2(v_0\cos\theta_0)^2}x^2\) | \(x\) and \(y\) are the horizontal and vertical positions (m) measured from the launch point, \(v_0\) the launch speed (m/s) and \(\theta_0\) the angle. It shows the path is a parabola.
+* Range (level ground): \(R = \frac{v_0^2\sin 2\theta_0}{g}\) | \(v_0\) is the launch speed (m/s), \(\theta_0\) the launch angle and \(g = 9.8\) m/s², giving the range in meters. Only for landing at launch height; the range is largest at 45°.
 
 ## EQUATIONS 4.4
-* Centripetal acceleration: \(a_c = \frac{v^2}{r}\)
-* Speed and period: \(v = \frac{2\pi r}{T}\)
-Position, uniform circular motion: \(\vec{r}(t) = A\cos\omega t\,\hat{i} + A\sin\omega t\,\hat{j}\)
-Velocity, uniform circular motion: \(\vec{v}(t) = -A\omega\sin\omega t\,\hat{i} + A\omega\cos\omega t\,\hat{j}\)
-Acceleration, uniform circular motion: \(\vec{a}(t) = -A\omega^2\cos\omega t\,\hat{i} - A\omega^2\sin\omega t\,\hat{j}\)
-Tangential acceleration: \(a_T = \frac{d|\vec{v}|}{dt}\)
-Total acceleration: \(\vec{a} = \vec{a}_c + \vec{a}_T\)
+* Centripetal acceleration: \(a_c = \frac{v^2}{r}\) | \(v\) is the speed (m/s) and \(r\) the radius of the circle (m), so \(a_c\) is in m/s². It points toward the center of the circle, even when the speed stays constant.
+* Speed and period: \(v = \frac{2\pi r}{T}\) | \(r\) is the radius (m) and \(T\) the period, the time for one full turn (s). In one period the object travels one circumference, \(2\pi r\).
+Position, uniform circular motion: \(\vec{r}(t) = A\cos\omega t\,\hat{i} + A\sin\omega t\,\hat{j}\) | \(A\) is the radius (m), \(\omega\) the angular frequency (rad/s) and \(t\) the time (s). The particle goes around a circle centered on the origin.
+Velocity, uniform circular motion: \(\vec{v}(t) = -A\omega\sin\omega t\,\hat{i} + A\omega\cos\omega t\,\hat{j}\) | \(A\) is the radius (m) and \(\omega\) the angular frequency (rad/s). The velocity has constant size \(A\omega\) and is always tangent to the circle.
+Acceleration, uniform circular motion: \(\vec{a}(t) = -A\omega^2\cos\omega t\,\hat{i} - A\omega^2\sin\omega t\,\hat{j}\) | \(A\) is the radius (m) and \(\omega\) the angular frequency (rad/s). The acceleration has size \(A\omega^2\) and points toward the center, opposite to the position vector.
+Tangential acceleration: \(a_T = \frac{d|\vec{v}|}{dt}\) | \(|\vec{v}|\) is the speed (m/s) and \(t\) the time (s), so \(a_T\) is in m/s². It changes the speed and points along the path.
+Total acceleration: \(\vec{a} = \vec{a}_c + \vec{a}_T\) | \(\vec{a}_c\) points toward the center and changes the direction; \(\vec{a}_T\) points along the path and changes the speed. Together they make the total acceleration in m/s².
 
 ## EQUATIONS 4.5
-Relative position: \(\vec{r}_{PS} = \vec{r}_{PS'} + \vec{r}_{S'S}\)
-Relative velocity: \(\vec{v}_{PS} = \vec{v}_{PS'} + \vec{v}_{S'S}\)
-Relative velocity, more than two frames: \(\vec{v}_{PC} = \vec{v}_{PA} + \vec{v}_{AB} + \vec{v}_{BC}\)
-Relative acceleration: \(\vec{a}_{PS} = \vec{a}_{PS'} + \vec{a}_{S'S}\)
+Relative position: \(\vec{r}_{PS} = \vec{r}_{PS'} + \vec{r}_{S'S}\) | \(\vec{r}_{PS}\) is the position of particle P seen from frame S, \(\vec{r}_{PS'}\) seen from frame S', and \(\vec{r}_{S'S}\) the position of S' seen from S, all in meters. Positions add when you chain frames together.
+Relative velocity: \(\vec{v}_{PS} = \vec{v}_{PS'} + \vec{v}_{S'S}\) | \(\vec{v}_{PS'}\) is P's velocity seen from S' and \(\vec{v}_{S'S}\) is the velocity of S' seen from S, in m/s. Add them as vectors to get P's velocity seen from S.
+Relative velocity, more than two frames: \(\vec{v}_{PC} = \vec{v}_{PA} + \vec{v}_{AB} + \vec{v}_{BC}\) | Each velocity is in m/s, with subscripts read as \"this relative to that\". The inner letters cancel like a chain: P to A, A to B, B to C gives P to C.
+Relative acceleration: \(\vec{a}_{PS} = \vec{a}_{PS'} + \vec{a}_{S'S}\) | \(\vec{a}_{S'S}\) is the acceleration of frame S' seen from S, in m/s². If S' moves at constant velocity, both frames measure the same acceleration.
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 4.1
+# Book: 1
+#
+# ## EXAMPLE 4.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
 
 
 # ============================ ITEM FORMATS ============================
