@@ -1,0 +1,728 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 9,
+  "title": "Linear Momentum and Collisions"
+ },
+ "keyEquations": [
+  {
+   "name": "Definition of momentum",
+   "tex": "\\mathbf{\\vec{p}}=m\\mathbf{\\vec{v}}"
+  },
+  {
+   "name": "Impulse",
+   "tex": "\\vec{J}\\equiv {\\int}_{{t}_{\\text{i}}}^{{t}_{\\text{f}}}\\vec{F}(t)dt\\, \\text{or}\\, \\mathbf{\\vec{J}}={\\mathbf{\\vec{F}}}_{\\text{ave}}\\Delta t"
+  },
+  {
+   "name": "Impulse-momentum theorem",
+   "tex": "\\mathbf{\\vec{J}}=\\Delta \\mathbf{\\vec{p}}"
+  },
+  {
+   "name": "Average force from momentum",
+   "tex": "\\mathbf{\\vec{F}}=\\frac{\\Delta \\mathbf{\\vec{p}}}{\\Delta t}"
+  },
+  {
+   "name": "Instantaneous force from momentum (Newton’s second law)",
+   "tex": "\\mathbf{\\vec{F}}(t)=\\frac{d\\mathbf{\\vec{p}}}{dt}"
+  },
+  {
+   "name": "Conservation of momentum",
+   "tex": "\\frac{d{\\mathbf{\\vec{p}}}_{\\mathbf{1}}}{dt}+\\frac{d{\\mathbf{\\vec{p}}}_{\\mathbf{2}}}{dt}=0\\; \\text{or}\\; {\\mathbf{\\vec{p}}}_{\\mathbf{1}}+{\\mathbf{\\vec{p}}}_{\\mathbf{2}}=\\text{constant}"
+  },
+  {
+   "name": "Generalized conservation of momentum",
+   "tex": "{\\sum}_{j=1}^{N}{\\mathbf{\\vec{p}}}_{\\mathbf{j}}=\\text{constant}"
+  },
+  {
+   "name": "Conservation of momentum in two dimensions",
+   "tex": "\\begin{array}{l}{p}_{\\text{f},x}={p}_{\\text{1,i},x}+{p}_{\\text{2,i},x} \\\\ {p}_{\\text{f},y}={p}_{\\text{1,i},y}+{p}_{\\text{2,i},y}\\end{array}"
+  },
+  {
+   "name": "External forces",
+   "tex": "{\\mathbf{\\vec{F}}}_{\\text{ext}}={\\sum}_{j=1}^{N}\\frac{d{\\mathbf{\\vec{p}}}_{j}}{dt}"
+  },
+  {
+   "name": "Newton’s second law for an extended object",
+   "tex": "\\mathbf{\\vec{F}}=\\frac{d{\\mathbf{\\vec{p}}}_{\\text{CM}}}{dt}"
+  },
+  {
+   "name": "Acceleration of the center of mass",
+   "tex": "{\\mathbf{\\vec{a}}}_{\\text{CM}}=\\frac{{d}^{2}}{d{t}^{2}}(\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{r}}}_{j})=\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{a}}}_{j}"
+  },
+  {
+   "name": "Position of the center of mass for a system of particles",
+   "tex": "{\\mathbf{\\vec{r}}}_{\\text{CM}}\\equiv \\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{r}}}_{j}"
+  },
+  {
+   "name": "Velocity of the center of mass",
+   "tex": "{\\mathbf{\\vec{v}}}_{\\text{CM}}=\\frac{d}{dt}(\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{r}}}_{j})=\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{v}}}_{j}"
+  },
+  {
+   "name": "Position of the center of mass of a continuous object",
+   "tex": "{\\mathbf{\\vec{r}}}_{\\text{CM}}\\equiv \\frac{1}{M}\\int \\mathbf{\\vec{r}}\\, dm"
+  },
+  {
+   "name": "Rocket equation",
+   "tex": "\\Delta v=u\\, \\ln (\\frac{{m}_{\\text{i}}}{m})"
+  }
+ ],
+ "sections": [
+  {
+   "num": "9.1",
+   "module": "m58318",
+   "title": "Linear Momentum",
+   "objectives": [
+    "Explain what momentum is, physically",
+    "Calculate the momentum of a moving object"
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "The motion of an object depends on its mass as well as its velocity. Momentum is a concept that describes this. It is a useful and powerful concept, both computationally and theoretically. The SI unit for momentum is kg\\(\\cdot\\) m/s."
+   ]
+  },
+  {
+   "num": "9.2",
+   "module": "m58319",
+   "title": "Impulse and Collisions",
+   "objectives": [
+    "Explain what an impulse is, physically",
+    "Describe what an impulse does",
+    "Relate impulses to collisions",
+    "Apply the impulse-momentum theorem to solve problems"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{J}}={\\int}_{{t}_{\\text{i}}}^{{t}_{\\text{f}}}d\\mathbf{\\vec{J}}\\; \\text{or}\\; \\mathbf{\\vec{J}\\equiv }{\\int}_{{t}_{\\text{i}}}^{{t}_{\\text{f}}}\\mathbf{\\vec{F}}(t)dt",
+    "\\mathbf{\\vec{J}}={\\mathbf{\\vec{F}}}_{\\text{ave}}\\Delta t",
+    "{\\mathbf{\\vec{F}}}_{\\text{ave}}=\\frac{\\Delta \\mathbf{\\vec{p}}}{\\Delta t}",
+    "\\mathbf{\\vec{F}}=\\frac{d\\mathbf{\\vec{p}}}{dt}"
+   ],
+   "examples": [
+    {
+     "title": "The Arizona Meteor Crater",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Approximately 50,000 years ago, a large (radius of 25 m) iron-nickel meteorite collided with Earth at an estimated speed of \\(1.28\\, \\times \\, {10}^{4}\\, \\text{m/s}\\) in what is now the northern Arizona desert, in the United States. The impact produced a crater that is still visible today (the figure); it is approximately 1200 m (three-quarters of a mile) in diameter, 170 m deep, and has a rim that rises 45 m above the surrounding desert plain. Iron-nickel meteorites typically have a density of \\(\\rho =7970{\\, \\text{kg/m}}^{3}\\). Use impulse considerations to estimate the average force and the maximum force that the meteor applied to Earth during the impact.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>It is conceptually easier to reverse the question and calculate the force that Earth applied on the meteor in order to stop it. Therefore, we’ll calculate the force on the meteor and then use Newton’s third law to argue that the force from the meteor on Earth was equal in magnitude and opposite in direction.</p><p>Using the given data about the meteor, and making reasonable guesses about the shape of the meteor and impact time, we first calculate the impulse using the equation. We then use the relationship between force and impulse the equation to estimate the average force during impact. Next, we choose a reasonable force function for the impact event, calculate the average value of that function the equation, and set the resulting expression equal to the calculated average force. This enables us to solve for the maximum force.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Define upward to be the +<i>y</i>-direction. For simplicity, assume the meteor is traveling vertically downward prior to impact. In that case, its initial velocity is \\({\\mathbf{\\vec{v}}}_{\\text{i}}=-{v}_{\\text{i}}\\mathbf{\\hat{j}}\\), and the force Earth exerts on the meteor points upward, \\(\\mathbf{\\vec{F}}(t)=+F(t)\\mathbf{\\hat{j}}\\). The situation at \\(t=0\\) is depicted below.</p><figure><img src='img/CNX_UPhysics_09_02_Meteor_img.jpg' alt=\"An x y coordinate system is shown. The region below the x axis is shaded and labeled Earth. A meteor is shown at the origin. An upward arrow at the origin is labeled F vector (t). A downward arrow at the origin is labeled p sub 0 vector equals m times v sub 0 vector.\" loading='lazy'></figure><p>The average force during the impact is related to the impulse by</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{ave}}=\\frac{\\mathbf{\\vec{J}}}{\\Delta t}.\\]</div><p>From the equation, \\(\\mathbf{\\vec{J}}=m\\Delta \\mathbf{\\vec{v}}\\), so we have</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{ave}}=\\frac{m\\Delta \\mathbf{\\vec{v}}}{\\Delta t}.\\]</div><p>The mass is equal to the product of the meteor’s density and its volume:</p><div class='eq'>\\[m=\\rho V.\\]</div><p>If we assume (guess) that the meteor was roughly spherical, we have</p><div class='eq'>\\[V=\\frac{4}{3}\\pi {R}^{3}.\\]</div><p>Thus we obtain</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{ave}}=\\frac{\\rho V\\Delta \\mathbf{\\vec{v}}}{\\Delta t}=\\frac{\\rho (\\frac{4}{3}\\pi {R}^{3})({\\mathbf{\\vec{v}}}_{\\text{f}}-{\\mathbf{\\vec{v}}}_{\\text{i}})}{\\Delta t}.\\]</div><p>The problem says the velocity at impact was \\(-1.28\\, \\times \\, {10}^{4}\\, \\text{m/s}\\mathbf{\\hat{j}}\\) (the final velocity is zero); also, we guess that the primary impact lasted about \\({t}_{\\max}=2\\, \\text{s}\\). Substituting these values gives</p><div class='eq'>\\[\\begin{array}{ll} \\\\ \\\\ {\\mathbf{\\vec{F}}}_{\\text{ave}} & =\\frac{(7970\\, \\frac{\\text{kg}}{{\\text{m}}^{3}})[\\frac{4}{3}\\pi {(25\\, \\text{m})}^{3}][0\\, \\frac{\\text{m}}{\\text{s}}-(-1.28\\, \\times \\, {10}^{4}\\, \\frac{\\text{m}}{\\text{s}}\\mathbf{\\hat{j}})]}{2\\, \\text{s}} \\\\ & =+(3.33\\, \\times \\, {10}^{12}\\, \\text{N})\\mathbf{\\hat{j}}\\end{array}.\\]</div><p>This is the average force applied during the collision. Notice that this force vector points in the same direction as the change of velocity vector \\(\\Delta \\mathbf{\\vec{v}}\\).</p><p>Next, we calculate the maximum force. The impulse is related to the force function by</p><div class='eq'>\\[\\mathbf{\\vec{J}}={\\int}_{{t}_{\\text{i}}}^{{t}_{\\max}}\\mathbf{\\vec{F}}(t)dt.\\]</div><p>We need to make a reasonable choice for the force as a function of time. We define \\(t=0\\) to be the moment the meteor first touches the ground. Then we assume the force is a maximum at impact, and rapidly drops to zero. A function that does this is</p><div class='eq'>\\[F(t)={F}_{\\max}{e}^{-{t}^{2}\\text{/}(2{\\tau}^{2})}.\\]</div><p>(The parameter \\(\\tau\\) represents how rapidly the force decreases to zero.) The average force is</p><div class='eq'>\\[{F}_{\\text{ave}}=\\frac{1}{\\Delta t}{\\int}_{0}^{{t}_{\\max}}{F}_{\\max}{e}^{-{t}^{2}\\text{/}(2{\\tau}^{2})}dt\\]</div><p>where \\(\\Delta t={t}_{\\max}-0\\, \\text{s}\\). Since we already have a numeric value for \\({F}_{\\text{ave}}\\), we can use the result of the integral to obtain \\({F}_{\\max}\\).</p><p>Choosing \\(\\tau =\\frac{1}{e}{t}_{\\max}\\) (this is a common choice, as you will see in later chapters), and guessing that \\({t}_{\\max}=2\\, \\text{s}\\), this integral evaluates to</p><div class='eq'>\\[{F}_{\\text{avg}}=0.458\\, {F}_{\\max}.\\]</div><p>Thus, the maximum force has a magnitude of</p><div class='eq'>\\[\\begin{array}{lll}0.458{F}_{\\max} & = & 3.33\\, \\times \\, {10}^{12}\\, \\text{N} \\\\ {F}_{\\max} & = & 7.27\\, \\times \\, {10}^{12}\\, \\text{N}\\end{array}.\\]</div><p>The complete force function, including the direction, is</p><div class='eq'>\\[\\mathbf{\\vec{F}}(t)=(7.27\\, \\times \\, {10}^{12}\\, \\text{N}){e}^{-{t}^{2}\\text{/}(8{\\text{s}}^{2})}\\mathbf{\\hat{j}}.\\]</div><p>This is the force Earth applied to the meteor; by Newton’s third law, the force the meteor applied to Earth is</p><div class='eq'>\\[\\mathbf{\\vec{F}}(t)=-(7.27\\, \\times \\, {10}^{12}\\, \\text{N}){e}^{-{t}^{2}\\text{/}(8{\\text{s}}^{2})}\\mathbf{\\hat{j}}\\]</div><p>which is the answer to the original question.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The graph of this function contains important information. Let’s graph (the magnitude of) both this function and the average force together (the figure).</p><figure><img src='img/CNX_UPhysics_09_02_ImpGraph.jpg' alt=\"A graph of the force and the average force as a function of time of the meteor impact. The horizontal axis is time in seconds and ranges from 0 to 2 seconds. The vertical axis is Force in Newtons and ranges from 0 to 8 times 10 to the 12. At t=0 the force starts at a little under 8 times 10 to the 12 and decreases to almost 0 at t=2. The average force is constant at about 3.5 times 10 to the 12. The areas under each of the curves are shaded and we are told the areas are equal.\" loading='lazy'><figcaption>A graph of the average force (in red) and the force as a function of time (blue) of the meteor impact. The areas under the curves are equal to each other, and are numerically equal to the applied impulse.</figcaption></figure><p>Notice that the area under each plot has been filled in. For the plot of the (constant) force \\({F}_{\\text{ave}}\\), the area is a rectangle, corresponding to \\({F}_{\\text{ave}}\\Delta t=J\\). As for the plot of <i>F</i>(<i>t</i>), recall from calculus that the area under the plot of a function is numerically equal to the integral of that function, over the specified interval; so here, that is \\({\\int}_{0}^{{t}_{\\max}}F(t)dt=J\\). Thus, the areas are equal, and both represent the impulse that the meteor applied to Earth during the two-second impact. The average force on Earth sounds like a huge force, and it is. Nevertheless, Earth barely noticed it. The acceleration Earth obtained was just</p><div class='eq'>\\[\\mathbf{\\vec{a}}=\\frac{-{\\mathbf{\\vec{F}}}_{\\text{ave}}}{{M}_{\\text{Earth}}}=\\frac{-(3.33\\, \\times \\, {10}^{12}\\, \\text{N})\\mathbf{\\hat{j}}}{5.97\\, \\times \\, {10}^{24}\\, \\text{kg}}=-(5.6\\, \\times \\, {10}^{-13}\\, \\frac{\\text{m}}{{\\text{s}}^{2}})\\mathbf{\\hat{j}}\\]</div><p>which is completely immeasurable. That said, the impact created seismic waves that nowadays could be detected by modern monitoring equipment.</p>"
+      }
+     ]
+    },
+    {
+     "title": "The Benefits of Impulse",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A car traveling at 27 m/s collides with a building. The collision with the building causes the car to come to a stop in approximately 1 second. The driver, who weighs 860 N, is protected by a combination of a variable-tension <b>seatbelt</b> and an <b>airbag</b> (the figure). (In effect, the driver collides with the seatbelt and airbag and <i>not</i> with the building.) The airbag and seatbelt slow his velocity, such that he comes to a stop in approximately 2.5 s.</p><ol type='a'><li>What average force does the driver experience during the collision?</li><li>Without the seatbelt and airbag, his collision time (with the steering wheel) would have been approximately 0.20 s. What force would he experience in this case?</li></ol><figure><img src='img/CNX_UPhysics_09_02_Airbag.jpg' alt=\"Before the collision, a car is traveling at velocity v sub I equals 27 meters per second to the right. After the collision, the car has velocity v sub f = 0 and the passenger feels a force minus F to the left.\" loading='lazy'><figcaption>The motion of a car and its driver at the instant before and the instant after colliding with the wall. The restrained driver experiences a large backward force from the seatbelt and airbag, which causes his velocity to decrease to zero. (The forward force from the seatbelt is much smaller than the backward force, so we neglect it in the solution.)</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are given the driver’s weight, his initial and final velocities, and the time of collision; we are asked to calculate a force. Impulse seems the right way to tackle this; we can combine the equation and the equation.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Define the +<i>x</i>-direction to be the direction the car is initially moving. We know <div class='eq'>\\[\\mathbf{\\vec{J}}=\\mathbf{\\vec{F}}\\Delta t\\]</div> and <div class='eq'>\\[\\mathbf{\\vec{J}}=m\\Delta \\mathbf{\\vec{v}}.\\]</div> Since <i>J</i> is equal to both those things, they must be equal to each other: <div class='eq'>\\[\\mathbf{\\vec{F}}\\Delta t=m\\Delta \\mathbf{\\vec{v}}.\\]</div> We need to convert this weight to the equivalent mass, expressed in SI units: <div class='eq'>\\[\\frac{860\\, \\text{N}}{9.8\\, {\\text{m/s}}^{2}}=87.8\\, \\text{kg}.\\]</div> Remembering that \\(\\Delta \\mathbf{\\vec{v}}={\\mathbf{\\vec{v}}}_{\\text{f}}-{\\mathbf{\\vec{v}}}_{\\text{i}}\\), and noting that the final velocity is zero, we solve for the force: <div class='eq'>\\[\\mathbf{\\vec{F}}=m\\frac{0-{v}_{\\text{i}}\\mathbf{\\hat{i}}}{\\Delta t}=(87.8\\, \\text{kg})(\\frac{-(27\\, \\text{m}\\text{/}\\text{s})\\mathbf{\\hat{i}}}{2.5\\, \\text{s}})=-(948\\, \\text{N})\\mathbf{\\hat{i}}.\\]</div> The negative sign implies that the force slows him down. For perspective, this is about 1.1 times his own weight.</li><li>Same calculation, just the different time interval: <div class='eq'>\\[\\mathbf{\\vec{F}}=(87.8\\, \\text{kg})(\\frac{-(27\\, \\text{m}\\text{/}\\text{s})\\mathbf{\\hat{i}}}{0.20\\, \\text{s}})=-(11,853\\, \\text{N})\\mathbf{\\hat{i}}\\]</div> which is about 14 times his own weight. Big difference!</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>You see that the value of an airbag is how greatly it reduces the force on the vehicle occupants. For this reason, they have been required on all passenger vehicles in the United States since 1991, and have been commonplace throughout Europe and Asia since the mid-1990s. The change of momentum in a crash is the same, with or without an airbag; the force, however, is vastly different.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Moving the",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<figure><img src='img/CNX_UPhysics_09_02_Enterprise.jpg' alt=\"An illustration of the Enterprise from Star Trek with stars in the background.\" loading='lazy'><figcaption>The fictional starship <i>Enterprise</i> from the Star Trek adventures operated on so-called “impulse engines” that combined matter with antimatter to produce energy.</figcaption></figure><p>When Captain Picard commands, “Take us out,” the starship <i>Enterprise</i> (the figure) starts from rest to a final speed of \\({v}_{\\text{f}}=7.5\\, \\times \\, {10}^{7}\\, \\text{m/s}\\). Assuming this maneuver is completed in 60 s, what average force did the impulse engines apply to the ship?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are asked for a force; we know the initial and final speeds (and hence the change in speed), and we know the time interval over which this all happened. In particular, we know the amount of time that the force acted. This suggests using the impulse-momentum relation. To use that, though, we need the mass of the <i>Enterprise</i>. An internet search gives a best estimate of the mass of the <i>Enterprise</i> (in the 2009 movie) as \\(2\\, \\times \\, {10}^{9}\\, \\text{kg}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Because this problem involves only one direction (i.e., the direction of the force applied by the engines), we only need the scalar form of the impulse-momentum theorem the equation, which is</p><div class='eq'>\\[\\Delta p=J\\]</div><p>with</p><div class='eq'>\\[\\Delta p=m\\Delta v\\]</div><p>and</p><div class='eq'>\\[J=F\\Delta t.\\]</div><p>Equating these expressions gives</p><div class='eq'>\\[F\\Delta t=m\\Delta v.\\]</div><p>Solving for the magnitude of the force and inserting the given values leads to</p><div class='eq'>\\[F=\\frac{m\\Delta v}{\\Delta t}=\\frac{(2\\, \\times \\, {10}^{9}\\, \\text{kg})(7.5\\, \\times \\, {10}^{7}\\, \\text{m/s})}{60\\, \\text{s}}=2.5\\, \\times \\, {10}^{15}\\, \\text{N}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Using Newton's Second Law, this force causes an acceleration of \\(1.25\\, \\times \\, {10}^{6}\\, {\\text{m/s}}^{2}\\). This is 130,000 times gravity, which is unimaginably huge. It goes almost without saying that such a force would kill everyone on board instantly, as well as destroying every piece of equipment. Fortunately, the <i>Enterprise</i> has “inertial dampeners.” It is left as an exercise for the reader’s imagination to determine how these work.</p>"
+      }
+     ]
+    },
+    {
+     "title": "The iPhone Drop",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Apple released its <b>iPhone</b> 6 Plus in November 2014. According to many reports, it was originally supposed to have a screen made from sapphire, but that was changed at the last minute for a hardened glass screen. Reportedly, this was because the sapphire screen cracked when the phone was dropped. What force did the iPhone 6 Plus experience as a result of being dropped?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The force the phone experiences is due to the impulse applied to it by the floor when the phone collides with the floor. Our strategy then is to use the impulse-momentum relationship. We calculate the impulse, estimate the impact time, and use this to calculate the force.</p><p>We need to make a couple of reasonable estimates, as well as find technical data on the phone itself. First, let’s suppose that the phone is most often dropped from about chest height on an average-height person. Second, assume that it is dropped from rest, that is, with an initial vertical velocity of zero. Finally, we assume that the phone bounces very little—the height of its bounce is assumed to be negligible.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Define upward to be the +<i>y</i>-direction. A typical height is approximately \\(h=1.5\\, \\text{m}\\) and, as stated, \\({\\mathbf{\\vec{v}}}_{\\text{i}}=(0\\, \\text{m/s})\\mathbf{\\hat{i}}\\). The average force on the phone is related to the impulse the floor applies on it during the collision:</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{ave}}=\\frac{\\mathbf{\\vec{J}}}{\\Delta t}.\\]</div><p>The impulse \\(\\mathbf{\\vec{J}}\\) equals the change in momentum,</p><div class='eq'>\\[\\mathbf{\\vec{J}}=\\Delta \\mathbf{\\vec{p}}\\]</div><p>so</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{ave}}=\\frac{\\Delta \\mathbf{\\vec{p}}}{\\Delta t}.\\]</div><p>Next, the change of momentum is</p><div class='eq'>\\[\\Delta \\mathbf{\\vec{p}}=m\\Delta \\mathbf{\\vec{v}}.\\]</div><p>We need to be careful with the velocities here; this is the change of velocity due to the collision with the floor. But the phone also has an initial drop velocity [\\({\\mathbf{\\vec{v}}}_{\\text{i}}=(0\\, \\text{m/s})\\mathbf{\\hat{j}}\\)], so we label our velocities. Let:</p><ul><li>\\({\\mathbf{\\vec{v}}}_{\\text{i}}=\\) the initial velocity with which the phone was dropped (zero, in this example)</li><li>\\({\\mathbf{\\vec{v}}}_{1}=\\) the velocity the phone had the instant just before it hit the floor</li><li>\\({\\mathbf{\\vec{v}}}_{2}=\\) the final velocity of the phone as a result of hitting the floor</li></ul><p>The figure shows the velocities at each of these points in the phone’s trajectory.</p><figure><img src='img/CNX_UPhysics_09_02_iphone.jpg' alt=\"A phone is illustrated at three times. The top figure shows the phone well above the floor and with initial velocity v sub i = 0 meters per second. The middle figure shows the phone close to the floor and with large downward velocity v sub 1. We are told that v sub 1 vector equals minus v sub 1 j hat and that this is the velocity just before hitting the floor. The bottom figure shows the phone close to the floor and with small upward velocity v sub 2. We are told that v sub 2 vector equals plus v sub 2 j hat and that this is the velocity just after hitting the floor.\" loading='lazy'><figcaption>(a) The initial velocity of the phone is zero, just after the person drops it. (b) Just before the phone hits the floor, its velocity is \\({\\mathbf{\\vec{v}}}_{1},\\) which is unknown at the moment, except for its direction, which is downward \\((-\\mathbf{\\hat{j}}).\\) (c) After bouncing off the floor, the phone has a velocity \\({\\mathbf{\\vec{v}}}_{2}\\), which is also unknown, except for its direction, which is upward \\((+\\mathbf{\\hat{j}}).\\)</figcaption></figure><p>With these definitions, the change of momentum of the phone during the collision with the floor is</p><div class='eq'>\\[m\\Delta \\mathbf{\\vec{v}}=m({\\mathbf{\\vec{v}}}_{\\mathbf{2}}-{\\mathbf{\\vec{v}}}_{\\mathbf{1}}).\\]</div><p>Since we assume the phone doesn’t bounce at all when it hits the floor (or at least, the bounce height is negligible), then \\({\\mathbf{\\vec{v}}}_{2}\\) is zero, so</p><div class='eq'>\\[\\begin{array}{lll}m\\Delta \\mathbf{\\vec{v}} & = & m[0-(-{v}_{1}\\mathbf{\\hat{j}})] \\\\ m\\Delta \\mathbf{\\vec{v}} & = & +m{v}_{1}\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>We can get the speed of the phone just before it hits the floor using either kinematics or conservation of energy. We’ll use conservation of energy here; you should re-do this part of the problem using kinematics and prove that you get the same answer.</p><p>First, define the zero of potential energy to be located at the floor. Conservation of energy then gives us:</p><div class='eq'>\\[\\begin{array}{lll}{E}_{\\text{i}} & = & {E}_{1} \\\\ {K}_{\\text{i}}+{U}_{\\text{i}} & = & {K}_{1}+{U}_{1} \\\\ \\frac{1}{2}m{v}_{\\text{i}}^{2}+mg{h}_{\\text{drop}} & = & \\frac{1}{2}m{v}_{1}^{2}+mg{h}_{\\text{floor}}.\\end{array}\\]</div><p>Defining \\({h}_{\\text{floor}}=0\\) and using \\({\\mathbf{\\vec{v}}}_{\\text{i}}=(0\\, \\text{m/s})\\mathbf{\\hat{j}}\\) gives</p><div class='eq'>\\[\\begin{array}{lll}\\frac{1}{2}m{v}_{1}^{2} & = & mg{h}_{\\text{drop}} \\\\ {v}_{1} & = & \\pm \\sqrt{2g{h}_{\\text{drop}}}.\\end{array}\\]</div><p>Because \\({v}_{1}\\) is a vector magnitude, it must be positive. Thus, \\(m\\Delta v=m{v}_{1}=m\\sqrt{2g{h}_{\\text{drop}}}\\). Inserting this result into the expression for force gives</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{F}} & =\\frac{\\Delta \\mathbf{\\vec{p}}}{\\Delta t} \\\\ & =\\frac{m\\Delta \\mathbf{\\vec{v}}}{\\Delta t} \\\\ & =\\frac{+m{v}_{1}\\mathbf{\\hat{j}}}{\\Delta t} \\\\ & =\\frac{m\\sqrt{2gh}}{\\Delta t}\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>Finally, we need to estimate the collision time. One common way to estimate a collision time is to calculate how long the object would take to travel its own length. The phone is moving at 5.4 m/s just before it hits the floor, and it is 0.14 m long, giving an estimated collision time of 0.026 s. Inserting the given numbers, we obtain</p><div class='eq'>\\[\\mathbf{\\vec{F}}=\\frac{(0.172\\, \\text{kg})\\sqrt{2(9.8\\, {\\text{m/s}}^{2})(1.5\\, \\text{m})}}{0.026\\, \\text{s}}\\mathbf{\\hat{j}}=(36\\, \\text{N})\\mathbf{\\hat{j}}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The iPhone itself weighs just \\((0.172\\, \\text{kg})(9.81\\, {\\text{m/s}}^{2})=1.68\\, \\text{N}\\); the force the floor applies to it is therefore over 20 times its weight.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Force: Venus Williams’ Tennis Serve",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>During the 2007 French Open, Venus Williams hit the fastest recorded serve in a premier women’s match, reaching a speed of 58 m/s (209 km/h). What is the average force exerted on the 0.057-kg tennis ball by Venus Williams’ racquet? Assume that the ball’s speed just after impact is 58 m/s, as shown in the figure, that the initial horizontal component of the velocity before impact is negligible, and that the ball remained in contact with the racquet for 5.0 ms.</p><figure><img src='img/CNX_UPhysics_09_02_Venus.jpg' alt=\"A tennis ball leaves the racket with velocity v sub f equals 58 meters per second i hat which points horizontally to the right.\" loading='lazy'><figcaption>The final velocity of the tennis ball is \\({\\mathbf{\\vec{v}}}_{\\text{f}}=(58\\, \\text{m/s})\\mathbf{\\hat{i}}\\).</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>This problem involves only one dimension because the ball starts from having no horizontal velocity component before impact. Newton’s second law stated in terms of momentum is then written as</p><div class='eq'>\\[\\mathbf{\\vec{F}}=\\frac{d\\mathbf{\\vec{p}}}{dt}.\\]</div><p>As noted above, when mass is constant, the change in momentum is given by</p><div class='eq'>\\[\\Delta p=m\\Delta v=m({v}_{\\text{f}}-{v}_{\\text{i}})\\]</div><p>where we have used scalars because this problem involves only one dimension. In this example, the velocity just after impact and the time interval are given; thus, once \\(\\Delta p\\) is calculated, we can use\\(F=\\frac{\\Delta p}{\\Delta t}\\) to find the force.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>To determine the change in momentum, insert the values for the initial and final velocities into the equation above:</p><div class='eq'>\\[\\begin{array}{ll}\\Delta p & =m({v}_{\\text{f}}-{v}_{\\text{i}}) \\\\ & =(0.057\\, \\text{kg})(58\\, \\text{m/s}-\\, 0\\, \\text{m/s}) \\\\ & =3.3\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}.\\end{array}\\]</div><p>Now the magnitude of the net external force can be determined by using</p><div class='eq'>\\[F=\\frac{\\Delta p}{\\Delta t}=\\frac{3.3\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}}{5.0\\, \\times \\, {10}^{-3}\\, \\text{s}}=6.6\\, \\times \\, {10}^{2}\\, \\text{N.}\\]</div><p>where we have retained only two significant figures in the final step.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This quantity was the average force exerted by Venus Williams’ racquet on the tennis ball during its brief impact (note that the ball also experienced the 0.57-N force of gravity, but that force was not due to the racquet). This problem could also be solved by first finding the acceleration and then using \\(F=ma\\), but one additional step would be required compared with the strategy used in this example.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>The U.S. Air Force uses “10<i>g</i>s” (an acceleration equal to \\(10\\, \\times \\, 9.8\\, {\\text{m/s}}^{2}\\)) as the maximum acceleration a human can withstand (but only for several seconds) and survive. How much time must the <i>Enterprise</i> spend accelerating if the humans on board are to experience an average of at most 10<i>g</i>s of acceleration? (Assume the inertial dampeners are offline.)</p>",
+     "a": "<p>To reach a final speed of \\({v}_{\\text{f}}=\\frac{1}{4}(3.0\\, \\times \\, {10}^{8}\\, \\text{m/s})\\) at an acceleration of 10<i>g</i>, the time<br> required is<br> \\(\\begin{array}{lll}10g & = & \\frac{{v}_{\\text{f}}}{\\Delta t} \\\\ \\Delta t & = & \\frac{{v}_{\\text{f}}}{10g}\\, \\frac{\\frac{1}{4}(3.0\\, \\times \\, {10}^{8}\\, \\text{m/s})}{10g}=7.7\\, \\times \\, {10}^{5}\\, \\text{s}=8.9\\, \\text{d}\\end{array}\\)</p>"
+    },
+    {
+     "q": "<p>What if we had assumed the phone <i>did</i> bounce on impact? Would this have increased the force on the iPhone, decreased it, or made no difference?</p>",
+     "a": "<p>If the phone bounces up with approximately the same initial speed as its impact speed, the change in momentum of the phone will be \\(\\Delta \\mathbf{\\vec{p}}=m\\Delta \\mathbf{\\vec{v}}-(-m\\Delta \\mathbf{\\vec{v}})=2m\\Delta \\mathbf{\\vec{v}}\\). This is twice the momentum change than when the phone does not bounce, so the impulse-momentum theorem tells us that more force must be applied to the phone.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "When a force is applied on an object for some amount of time, the object experiences an impulse.",
+    "This impulse is equal to the object’s change of momentum.",
+    "Newton’s second law in terms of momentum states that the net force applied to a system equals the rate of change of the momentum that the force causes."
+   ]
+  },
+  {
+   "num": "9.3",
+   "module": "m58320",
+   "title": "Conservation of Linear Momentum",
+   "objectives": [
+    "Explain the meaning of “conservation of momentum”",
+    "Correctly identify if a system is, or is not, closed",
+    "Define a system whose momentum is conserved",
+    "Mathematically express conservation of momentum for a given system",
+    "Calculate an unknown quantity using conservation of momentum"
+   ],
+   "callouts": [
+    "{m}_{1}\\frac{d{\\mathbf{\\vec{v}}}_{\\mathbf{1}}}{dt}=-{m}_{2}\\frac{d{\\mathbf{\\vec{v}}}_{\\mathbf{2}}}{dt}",
+    "\\frac{d{\\mathbf{\\vec{p}}}_{\\mathbf{1}}}{dt}=-\\frac{d{\\mathbf{\\vec{p}}}_{\\mathbf{2}}}{dt}",
+    "\\frac{d{\\mathbf{\\vec{p}}}_{\\mathbf{1}}}{dt}+\\frac{d{\\mathbf{\\vec{p}}}_{\\mathbf{2}}}{dt}=0",
+    "\\begin{array}{lll}{\\mathbf{\\vec{p}}}_{\\mathbf{1}}+{\\mathbf{\\vec{p}}}_{\\mathbf{2}}+{\\mathbf{\\vec{p}}}_{\\mathbf{3}}+\\cdots +{\\mathbf{\\vec{p}}}_{\\mathbf{N}} & = & \\text{constant} \\\\ {\\sum}_{j=1}^{N}{\\mathbf{\\vec{p}}}_{\\mathbf{j}} & = & \\text{constant.}\\end{array}"
+   ],
+   "examples": [
+    {
+     "title": "Colliding Carts",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Two carts in a physics lab roll on a level track, with negligible friction. These carts have small magnets at their ends, so that when they collide, they stick together (the figure). The first cart has a mass of 675 grams and is rolling at 0.75 m/s to the right; the second has a mass of 500 grams and is rolling at 1.33 m/s, also to the right. After the collision, what is the velocity of the two joined carts?</p><figure><img src='img/CNX_UPhysics_09_03_ToyCarts.jpg' alt=\"An illustration of two lab carts on a track, stuck together.\" loading='lazy'><figcaption>Two lab carts collide and stick together after the collision.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We have a collision. We’re given masses and initial velocities; we’re asked for the final velocity. This all suggests using conservation of momentum as a method of solution. However, we can only use it if we have a closed system. So we need to be sure that the system we choose has no net external force on it, and that its mass is not changed by the collision.</p><p>Defining the system to be the two carts meets the requirements for a closed system: The combined mass of the two carts certainly doesn’t change, and while the carts definitely exert forces on each other, those forces are internal to the system, so they do not change the momentum of the system as a whole. In the vertical direction, the weights of the carts are canceled by the normal forces on the carts from the track.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Conservation of momentum is</p><div class='eq'>\\[{\\mathbf{\\vec{p}}}_{\\mathbf{f}}={\\mathbf{\\vec{p}}}_{\\mathbf{i}}.\\]</div><p>Define the direction of their initial velocity vectors to be the +<i>x</i>-direction. The initial momentum is then</p><div class='eq'>\\[{\\mathbf{\\vec{p}}}_{\\mathbf{i}}={m}_{1}{v}_{1}\\mathbf{\\hat{i}}+{m}_{2}{v}_{2}\\mathbf{\\hat{i}}.\\]</div><p>The final momentum of the now-linked carts is</p><div class='eq'>\\[{\\mathbf{\\vec{p}}}_{\\mathbf{f}}=({m}_{1}+{m}_{2}){\\mathbf{\\vec{v}}}_{\\mathbf{f}}.\\]</div><p>Equating:</p><div class='eq'>\\[\\begin{array}{lll}({m}_{1}+{m}_{2}){\\mathbf{\\vec{v}}}_{\\mathbf{f}} & = & {m}_{1}{v}_{1}\\mathbf{\\hat{i}}+{m}_{2}{v}_{2}\\mathbf{\\hat{i}} \\\\ {\\mathbf{\\vec{v}}}_{\\mathbf{f}} & = & (\\frac{{m}_{1}{v}_{1}+{m}_{2}{v}_{2}}{{m}_{1}+{m}_{2}})\\mathbf{\\hat{i}}.\\end{array}\\]</div><p>Substituting the given numbers:</p><div class='eq'>\\[\\begin{array}{ll}{\\mathbf{\\vec{v}}}_{\\mathbf{f}} & =[\\frac{(0.675\\, \\text{kg})(0.75\\, \\text{m/s})+(0.5\\, \\text{kg})(1.33\\, \\text{m/s})}{1.175\\, \\text{kg}}]\\mathbf{\\hat{i}} \\\\ & =(0.997\\, \\text{m/s})\\mathbf{\\hat{i}}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The principles that apply here to two laboratory carts apply identically to all objects of whatever type or size. Even for photons, the concepts of momentum and conservation of momentum are still crucially important even at that scale. (Since they are massless, the momentum of a photon is defined very differently from the momentum of ordinary objects. You will learn about this when you study quantum physics.)</p>"
+      }
+     ]
+    },
+    {
+     "title": "A Bouncing Superball",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A superball of mass 0.25 kg is dropped from rest from a height of \\(h=1.50\\, \\text{m}\\) above the floor. It bounces with no loss of energy and returns to its initial height (the figure).</p><ol type='a'><li>What is the superball’s change of momentum during its bounce on the floor?</li><li>What was Earth’s change of momentum due to the ball colliding with the floor?</li><li>What was Earth’s change of velocity as a result of this collision?</li></ol><p>(This example shows that you have to be careful about defining your system.)</p><figure><img src='img/CNX_UPhysics_09_03_Superball.jpg' alt=\"A ball is shown at four different times. At t sub 0 the ball is at a distance h above the floor and has p sub 0 equals 0. At t sub 1 the ball is near the floor. A downward arrow at the ball is labeled minus p sub 1. At t sub 2 the ball is near the floor. An upward arrow at the ball is labeled plus p sub 2. The p sub 1 and p sub 2 arrows are the same length. At t sub 3 the ball at height h again and p sub 3 equals zero.\" loading='lazy'><figcaption>A superball is dropped to the floor (\\({t}_{0}\\)), hits the floor (\\({t}_{1}\\)), bounces (\\({t}_{2}\\)), and returns to its initial height (\\({t}_{3}\\)).</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since we are asked only about the ball’s change of momentum, we define our system to be the ball. But this is clearly not a closed system; gravity applies a downward force on the ball while it is falling, and the normal force from the floor applies a force during the bounce. Thus, we cannot use conservation of momentum as a strategy. Instead, we simply determine the ball’s momentum just before it collides with the floor and just after, and calculate the difference. We have the ball’s mass, so we need its velocities.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Since this is a one-dimensional problem, we use the scalar form of the equations. Let:<br> <ul><li>\\({p}_{0}=\\) the magnitude of the ball’s momentum at time \\({t}_{0}\\), the moment it was released; since it was dropped from rest, this is zero.</li><li>\\({p}_{1}=\\) the magnitude of the ball’s momentum at time \\({t}_{1}\\), the instant just before it hits the floor.</li><li>\\({p}_{2}=\\) the magnitude of the ball’s momentum at time \\({t}_{2}\\), just after it loses contact with the floor after the bounce.</li></ul><br> The ball’s change of momentum is <div class='eq'>\\[\\begin{array}{ll}\\Delta \\mathbf{\\vec{p}} & ={\\mathbf{\\vec{p}}}_{\\mathbf{2}}-{\\mathbf{\\vec{p}}}_{\\mathbf{1}} \\\\ & ={p}_{2}\\mathbf{\\hat{j}}-(-{p}_{1}\\mathbf{\\hat{j}}) \\\\ & =({p}_{2}+{p}_{1})\\mathbf{\\hat{j}}.\\end{array}\\]</div> Its velocity just before it hits the floor can be determined from either conservation of energy or kinematics. We use kinematics here; you should re-solve it using conservation of energy and confirm you get the same result.<br> We want the velocity just before it hits the ground (at time \\({t}_{1}\\)). We know its initial velocity \\({v}_{0}=0\\) (at time \\({t}_{0}\\)), the height it falls, and its acceleration; we don’t know the fall time. We could calculate that, but instead we use <div class='eq'>\\[{\\mathbf{\\vec{v}}}_{\\mathbf{1}}=-\\mathbf{\\hat{j}}\\sqrt{2gy}=-5.4\\, \\text{m/s}\\mathbf{\\hat{j}}.\\]</div> Thus the ball has a momentum of <div class='eq'>\\[\\begin{array}{ll}{\\mathbf{\\vec{p}}}_{\\mathbf{1}} & =-(0.25\\, \\text{kg})(-5.4\\, \\text{m/s}\\mathbf{\\hat{j}}) \\\\ & =-(1.4\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}.\\end{array}\\]</div> We don’t have an easy way to calculate the momentum after the bounce. Instead, we reason from the symmetry of the situation.<br> Before the bounce, the ball starts with zero velocity and falls 1.50 m under the influence of gravity, achieving some amount of momentum just before it hits the ground. On the return trip (after the bounce), it starts with some amount of momentum, rises the same 1.50 m it fell, and ends with zero velocity. Thus, the motion after the bounce was the mirror image of the motion before the bounce. From this symmetry, it must be true that the ball’s momentum after the bounce must be equal and opposite to its momentum before the bounce. (This is a subtle but crucial argument; make sure you understand it before you go on.)<br> Therefore, <div class='eq'>\\[{\\mathbf{\\vec{p}}}_{\\mathbf{2}}=-{\\mathbf{\\vec{p}}}_{\\mathbf{1}}=+(1.4\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}.\\]</div> Thus, the ball’s change of momentum during the bounce is<br> <div class='eq'>\\[\\begin{array}{ll}\\Delta \\mathbf{\\vec{p}} & ={\\mathbf{\\vec{p}}}_{\\mathbf{2}}-{\\mathbf{\\vec{p}}}_{\\mathbf{1}} \\\\ & =(1.4\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}-(-1.4\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}} \\\\ & =+(2.8\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}.\\end{array}\\]</div></li><li>What was Earth’s change of momentum due to the ball colliding with the floor?<br> Your instinctive response may well have been either “zero; the Earth is just too massive for that tiny ball to have affected it” or possibly, “more than zero, but utterly negligible.” But no—if we re-define our system to be the Superball + Earth, then this system is closed (neglecting the gravitational pulls of the Sun, the Moon, and the other planets in the solar system), and therefore the total change of momentum of this new system must be zero. Therefore, Earth’s change of momentum is exactly the same magnitude: <div class='eq'>\\[\\Delta {\\mathbf{\\vec{p}}}_{\\text{Earth}}=-2.8\\, \\text{kg}\\cdot \\text{m/s}\\mathbf{\\hat{j}}.\\]</div></li><li>What was Earth’s change of velocity as a result of this collision?<br> This is where your instinctive feeling is probably correct: <div class='eq'>\\[\\begin{array}{ll}\\Delta {\\mathbf{\\vec{v}}}_{\\text{Earth}} & =\\frac{\\Delta {\\mathbf{\\vec{p}}}_{\\text{Earth}}}{{M}_{\\text{Earth}}} \\\\ & =-\\frac{2.8\\, \\text{kg}\\cdot \\text{m/s}}{5.97\\, \\times \\, {10}^{24}\\, \\text{kg}}\\mathbf{\\hat{j}} \\\\ & =-(4.7\\, \\times \\, {10}^{-25}\\, \\text{m/s})\\mathbf{\\hat{j}}.\\end{array}\\]</div> This change of Earth’s velocity <i>is</i> utterly negligible.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>It is important to realize that the answer to part (c) is not a velocity; it is a change of velocity, which is a very different thing. Nevertheless, to give you a feel for just how small that change of velocity is, suppose you were moving with a velocity of \\(4.7\\, \\times \\, {10}^{-25}\\, \\text{m/s}\\). At this speed, it would take you about 7 million years to travel a distance equal to the diameter of a hydrogen atom.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Ice Hockey 1",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Two hockey pucks of identical mass are on a flat, horizontal ice hockey rink. The red puck is motionless; the blue puck is moving at 2.5 m/s to the left (the figure). It collides with the motionless red puck. The pucks have a mass of 15 g. After the collision, the red puck is moving at 2.5 m/s, to the left. What is the final velocity of the blue puck?</p><figure><img src='img/CNX_UPhysics_09_03_HockeyPuck.jpg' alt=\"Two hockey pucks are shown. The top diagram shows the puck on the left with 0 meters per second and the puck on the right moving to the left with 2.5 meters per second. The bottom diagram shows the puck on the left moving to the left at 2.5 meters per second and the puck on the right moving with unknown v.\" loading='lazy'><figcaption>Two identical hockey pucks colliding. The top diagram shows the pucks the instant before the collision, and the bottom diagram show the pucks the instant after the collision. The net external force is zero.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We’re told that we have two colliding objects, we’re told the masses and initial velocities, and one final velocity; we’re asked for both final velocities. Conservation of momentum seems like a good strategy. Define the system to be the two pucks; there’s no friction, so we have a closed system.</p><p>Before you look at the solution, what do you think the answer will be?</p><p>The blue puck final velocity will be:</p><ul><li>zero</li><li>2.5 m/s to the left</li><li>2.5 m/s to the right</li><li>1.25 m/s to the left</li><li>1.25 m/s to the right</li><li>something else</li></ul>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Define the +<i>x</i>-direction to point to the right. Conservation of momentum then reads</p><div class='eq'>\\[\\begin{array}{lll}{\\mathbf{\\vec{p}}}_{\\mathbf{f}} & = & {\\mathbf{\\vec{p}}}_{\\mathbf{i}} \\\\ m{v}_{{\\text{r}}_{\\text{f}}}\\mathbf{\\hat{i}}+m{v}_{{\\text{b}}_{\\text{f}}}\\mathbf{\\hat{i}} & = & m{v}_{{\\text{r}}_{\\text{i}}}\\mathbf{\\hat{i}}-m{v}_{{\\text{b}}_{\\text{i}}}\\mathbf{\\hat{i}}.\\end{array}\\]</div><p>Before the collision, the momentum of the system is entirely and only in the blue puck. Thus,</p><div class='eq'>\\[\\begin{array}{lll}m{v}_{{\\text{r}}_{\\text{f}}}\\mathbf{\\hat{i}}+m{v}_{{\\text{b}}_{\\text{f}}}\\mathbf{\\hat{i}} & = & -m{v}_{{\\text{b}}_{\\text{i}}}\\mathbf{\\hat{i}} \\\\ {v}_{{\\text{r}}_{\\text{f}}}\\mathbf{\\hat{i}}+{v}_{{\\text{b}}_{\\text{f}}}\\mathbf{\\hat{i}} & = & -{v}_{{\\text{b}}_{\\text{i}}}\\mathbf{\\hat{i}}.\\end{array}\\]</div><p>(Remember that the masses of the pucks are equal.) Substituting numbers:</p><div class='eq'>\\[\\begin{array}{lll}-(2.5\\, \\text{m/s})\\mathbf{\\hat{i}}+{\\mathbf{\\vec{v}}}_{{\\text{b}}_{\\text{f}}} & = & -(2.5\\, \\text{m/s})\\mathbf{\\hat{i}} \\\\ {\\mathbf{\\vec{v}}}_{{\\text{b}}_{\\text{f}}} & = & 0.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Evidently, the two pucks simply exchanged momentum. The blue puck transferred all of its momentum to the red puck. In fact, this is what happens in similar collision where \\({m}_{1}={m}_{2}.\\)</p>"
+      }
+     ]
+    },
+    {
+     "title": "Landing of",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>On November 12, 2014, the European Space Agency successfully landed a probe named <b><i>Philae</i></b> on Comet 67P/Churyumov/Gerasimenko (the figure). During the landing, however, the probe actually landed three times, because it bounced twice. Let’s calculate how much the comet’s speed changed as a result of the first bounce.</p><p>Let’s define upward to be the +<i>y</i>-direction, perpendicular to the surface of the comet, and \\(y=0\\) to be at the surface of the comet. Here’s what we know:</p><ul><li>The mass of Comet 67P: \\({M}_{c}=1.0\\, \\times \\, {10}^{13}\\, \\text{kg}\\)</li><li>The acceleration due to the comet’s gravity: \\(\\mathbf{\\vec{a}}=-(5.0\\, \\times \\, {10}^{-3}\\, {\\text{m/s}}^{2})\\mathbf{\\hat{j}}\\)</li><li><i>Philae’s</i> mass: \\({M}_{p}=96\\, \\text{kg}\\)</li><li>Initial touchdown speed: \\({\\mathbf{\\vec{v}}}_{\\mathbf{1}}=-(1.0\\, \\text{m/s})\\mathbf{\\hat{j}}\\)</li><li>Initial upward speed due to first bounce: \\({\\mathbf{\\vec{v}}}_{\\mathbf{2}}=(0.38\\, \\text{m/s})\\mathbf{\\hat{j}}\\)</li><li>Landing impact time: \\(\\Delta t=1.3\\, \\text{s}\\)</li></ul>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We’re asked for how much the comet’s speed changed, but we don’t know much about the comet, beyond its mass and the acceleration its gravity causes. However, we <i>are</i> told that the <i>Philae</i> lander collides with (lands on) the comet, and bounces off of it. A collision suggests momentum as a strategy for solving this problem.</p><p>If we define a system that consists of both <i>Philae</i> and Comet 67/P, then there is no net external force on this system, and thus the momentum of this system is conserved. (We’ll neglect the gravitational force of the sun.) Thus, if we calculate the change of momentum of the lander, we automatically have the change of momentum of the comet. Also, the comet’s change of velocity is directly related to its change of momentum as a result of the lander “colliding” with it.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Let \\({\\mathbf{\\vec{p}}}_{1}\\) be <i>Philae’s</i> momentum at the moment just before touchdown, and \\({\\mathbf{\\vec{p}}}_{2}\\) be its momentum just after the first bounce. Then its momentum just before landing was</p><div class='eq'>\\[{\\mathbf{\\vec{p}}}_{\\mathbf{1}}={M}_{p}{\\mathbf{\\vec{v}}}_{\\mathbf{1}}=(96\\, \\text{kg})(-1.0\\, \\text{m/s}\\mathbf{\\hat{j}})=-(96\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}\\]</div><p>and just after was</p><div class='eq'>\\[{\\mathbf{\\vec{p}}}_{\\mathbf{2}}={M}_{p}{\\mathbf{\\vec{v}}}_{\\mathbf{2}}=(96\\, \\text{kg})(+0.38\\, \\text{m/s}\\mathbf{\\hat{j}})=(36.5\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}.\\]</div><p>Therefore, the lander’s change of momentum during the first bounce is</p><div class='eq'>\\[\\begin{array}{ll}\\Delta \\mathbf{\\vec{p}}={\\mathbf{\\vec{p}}}_{\\mathbf{2}}-{\\mathbf{\\vec{p}}}_{\\mathbf{1}} \\\\ & =(36.5\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}-(-96.0\\, \\text{kg}\\cdot \\text{m/s}\\mathbf{\\hat{j}})=(133\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}\\end{array}\\]</div><p>Notice how important it is to include the negative sign of the initial momentum.</p><p>Now for the comet. Since momentum of the system must be conserved, the <i>comet’s</i> momentum changed by exactly the negative of this:</p><div class='eq'>\\[\\Delta {\\mathbf{\\vec{p}}}_{\\mathbf{c}}=-\\Delta \\mathbf{\\vec{p}}=-(133\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}.\\]</div><p>Therefore, its change of velocity is</p><div class='eq'>\\[\\Delta {\\mathbf{\\vec{v}}}_{\\mathbf{c}}=\\frac{\\Delta {\\mathbf{\\vec{p}}}_{\\mathbf{c}}}{{M}_{c}}=\\frac{-(133\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}}{1.0\\, \\times \\, {10}^{13}\\, \\text{kg}}=-(1.33\\, \\times \\, {10}^{-11}\\, \\text{m/s})\\mathbf{\\hat{j}}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is a very small change in velocity, about a thousandth of a billionth of a meter per second. Crucially, however, it is <i>not</i> zero.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Suppose the second, smaller cart had been initially moving to the left. What would the sign of the final velocity have been in this case?</p>",
+     "a": "<p>If the smaller cart were rolling at 1.33 m/s to the left, then conservation of momentum gives<br> \\(\\begin{array}{lll}({m}_{1}+{m}_{2}){\\mathbf{\\vec{v}}}_{\\mathbf{f}} & = & {m}_{1}{v}_{1}\\mathbf{\\hat{i}}-{m}_{2}{v}_{2}\\mathbf{\\hat{i}} \\\\ {\\mathbf{\\vec{v}}}_{\\mathbf{f}} & = & (\\frac{{m}_{1}{v}_{1}-{m}_{2}{v}_{2}}{{m}_{1}+{m}_{2}})\\mathbf{\\hat{i}} \\\\ & = & [\\frac{(0.675\\, \\text{kg})(0.75\\, \\text{m/s})-(0.500\\, \\text{kg})(1.33\\, \\text{m/s})}{1.175\\, \\text{kg}}]\\mathbf{\\hat{i}} \\\\ & = & -(0.135\\, \\text{m/s})\\mathbf{\\hat{i}}\\end{array}\\)<br> Thus, the final velocity is 0.135 m/s to the left.</p>"
+    },
+    {
+     "q": "<p>Would the ball’s change of momentum have been larger, smaller, or the same, if it had collided with the floor and stopped (without bouncing)?</p>",
+     "a": "<p>If the ball does not bounce, its final momentum \\({\\mathbf{\\vec{p}}}_{\\mathbf{2}}\\) is zero, so<br> \\(\\begin{array}{ll}\\Delta \\mathbf{\\vec{p}} & ={\\mathbf{\\vec{p}}}_{\\mathbf{2}}-{\\mathbf{\\vec{p}}}_{\\mathbf{1}} \\\\ & =(0)\\mathbf{\\hat{j}}-(-1.4\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}} \\\\ & =+(1.4\\, \\text{kg}\\cdot \\text{m/s})\\mathbf{\\hat{j}}\\end{array}\\)</p>"
+    },
+    {
+     "q": "<p>Even if there were some friction on the ice, it is still possible to use conservation of momentum to solve this problem, but you would need to impose an additional condition on the problem. What is that additional condition?</p>",
+     "a": "<p>Consider the impulse momentum theory, which is \\(\\vec{J}=\\Delta \\vec{p}\\). If \\(\\vec{J}=0\\), we have the situation described in the example. If a force acts on the system, then \\(\\vec{J}={\\vec{F}}_{\\text{ave}}\\Delta t\\). Thus, instead of \\({\\mathbf{\\vec{p}}}_{f}={\\mathbf{\\vec{p}}}_{i}\\), we have<br> \\({\\vec{F}}_{\\text{ave}}\\Delta t=\\Delta \\vec{p}={\\vec{p}}_{\\text{f}}-{\\vec{p}}_{\\text{i}}\\)<br> where \\({\\mathbf{\\vec{F}}}_{\\text{ave}}\\) is the force due to friction.</p>"
+    },
+    {
+     "q": "<p>The changes of momentum for <i>Philae</i> and for Comet 67/P were equal (in magnitude). Were the impulses experienced by <i>Philae</i> and the comet equal? How about the forces? How about the changes of kinetic energies?</p>",
+     "a": "<p>The impulse is the change in momentum multiplied by the time required for the change to occur. By conservation of momentum, the changes in momentum of the probe and the comment are of the same magnitude, but in opposite directions, and the interaction time for each is also the same. Therefore, the impulse each receives is of the same magnitude, but in opposite directions. Because they act in opposite directions, the impulses are not the same. As for the impulse, the force on each body acts in opposite directions, so the forces on each are not equal. However, the change in kinetic energy differs for each, because the collision is not elastic.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The law of conservation of momentum says that the momentum of a closed system is constant in time (conserved).",
+    "A closed (or isolated) system is defined to be one for which the mass remains constant, and the net external force is zero.",
+    "The total momentum of a system is conserved <i>only</i> when the system is closed."
+   ]
+  },
+  {
+   "num": "9.4",
+   "module": "m58321",
+   "title": "Types of Collisions",
+   "objectives": [
+    "Identify the type of collision",
+    "Correctly label a collision as elastic or inelastic",
+    "Use kinetic energy along with momentum and impulse to analyze a collision"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Formation of a Deuteron",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A proton (mass \\(1.67\\, \\times \\, {10}^{-27}\\, \\text{kg}\\)) collides with a neutron (with essentially the same mass as the proton) to form a particle called a <b><i>deuteron</i></b>. What is the velocity of the deuteron if it is formed from a proton moving with velocity \\(7.0\\, \\times \\, {10}^{6}\\, \\text{m/s}\\) to the right and a neutron moving with velocity \\(4.0\\, \\times \\, {10}^{6}\\, \\text{m/s}\\) to the left?</p><figure><img src='img/CNX_UPhysics_09_04_Deuteron_img.jpg' alt=\"Before collision, proton on the left is moving with v sub proton to the right of 7.0 times 10 to the 6 meters per second, and neutron on the right is moving with v sub neutron to the left of -4.0 times 10 to the 6 meters per second. After collision, the proton and deuteron are stuck together, and have unknown v sub deuteron.\" loading='lazy'></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Define the system to be the two particles. This is a collision, so we should first identify what kind. Since we are told the two particles form a single particle after the collision, this means that the collision is perfectly inelastic. Thus, kinetic energy is not conserved, but momentum is. Thus, we use conservation of momentum to determine the final velocity of the system.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Treat the two particles as having identical masses <i>M</i>. Use the subscripts p, n, and d for proton, neutron, and deuteron, respectively. This is a one-dimensional problem, so we have</p><div class='eq'>\\[M{v}_{\\text{p}}-M{v}_{\\text{n}}=2M{v}_{\\text{d}}.\\]</div><p>The masses divide out:</p><div class='eq'>\\[\\begin{array}{lll}{v}_{\\text{p}}-{v}_{\\text{n}} & = & 2{v}_{\\text{d}} \\\\ 7.0\\, \\times \\, {10}^{6}\\, \\text{m/s}-4.0\\, \\times \\, {10}^{6}\\, \\text{m/s} & = & 2{v}_{\\text{d}} \\\\ {v}_{\\text{d}} & = & 1.5\\, \\times \\, {10}^{6}\\, \\text{m/s.}\\end{array}\\]</div><p>The velocity is thus \\({\\mathbf{\\vec{v}}}_{\\text{d}}=(1.5\\, \\times \\, {10}^{6}\\, \\text{m/s})\\mathbf{\\hat{i}}\\).</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is essentially how particle colliders like the Large Hadron Collider work: They accelerate particles up to very high speeds (large momenta), but in opposite directions. This maximizes the creation of so-called “daughter particles.”</p>"
+      }
+     ]
+    },
+    {
+     "title": "Ice Hockey 2",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>(This is a variation of an earlier example.)</p><p>Two ice hockey pucks of different masses are on a flat, horizontal hockey rink. The red puck has a mass of 15 grams, and is motionless; the blue puck has a mass of 12 grams, and is moving at 2.5 m/s to the left. It collides with the motionless red puck (the figure). If the collision is perfectly elastic, what are the final velocities of the two pucks?</p><figure><img src='img/CNX_UPhysics_09_04_CollPuck.jpg' alt=\"Two hockey pucks are shown. The top diagram shows the puck on the left with 0 meters per second and the puck on the right moving to the left with 2.5 meters per second. The bottom diagram shows the puck on the left moving to the left at unknown v sub 1 f and the puck on the right moving with unknown v sub 2 f.\" loading='lazy'><figcaption>Two different hockey pucks colliding. The top diagram shows the pucks the instant before the collision, and the bottom diagram show the pucks the instant after the collision. The net external force is zero.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We’re told that we have two colliding objects, and we’re told their masses and initial velocities; we’re asked for both final velocities. Conservation of momentum seems like a good strategy; define the system to be the two pucks. There is no friction, so we have a closed system. We have two unknowns (the two final velocities), but only one equation. The comment about the collision being perfectly elastic is the clue; it suggests that kinetic energy is also conserved in this collision. That gives us our second equation.</p><p>The initial momentum and initial kinetic energy of the system resides entirely and only in the second puck (the blue one); the collision transfers some of this momentum and energy to the first puck.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Conservation of momentum, in this case, reads</p><div class='eq'>\\[\\begin{array}{lll}{p}_{\\text{i}} & = & {p}_{\\text{f}} \\\\ {m}_{2}{v}_{\\text{2,i}} & = & {m}_{1}{v}_{\\text{1,f}}+{m}_{2}{v}_{\\text{2,f}}.\\end{array}\\]</div><p>Conservation of kinetic energy reads</p><div class='eq'>\\[\\begin{array}{lll}{K}_{\\text{i}} & = & {K}_{\\text{f}} \\\\ \\frac{1}{2}{m}_{2}{v}_{\\text{2,i}}^{2} & = & \\frac{1}{2}{m}_{1}{v}_{\\text{1,f}}^{2}+\\frac{1}{2}{m}_{2}{v}_{\\text{2,f}}^{2}.\\end{array}\\]</div><p>There are our two equations in two unknowns. The algebra is tedious but not terribly difficult; you definitely should work it through. The solution is</p><div class='eq'>\\[\\begin{array}{lll}{v}_{\\text{1,f}} & = & \\frac{({m}_{1}-{m}_{2}){v}_{\\text{1,i}}+2{m}_{2}{v}_{\\text{2,i}}}{{m}_{1}+{m}_{2}} \\\\ {v}_{2\\text{f}} & = & \\frac{({m}_{2}-{m}_{1}){v}_{\\text{2,i}}+2{m}_{1}{v}_{\\text{1,i}}}{{m}_{1}+{m}_{2}}.\\end{array}\\]</div><p>Substituting with the given numbers where a positive direction is to the left, we obtain</p><div class='eq'>\\[\\begin{array}{lll}{v}_{\\text{1,f}} & = & 2.22\\, \\frac{\\text{m}}{\\text{s}} \\\\ {v}_{\\text{2,f}} & = & -0.28\\, \\frac{\\text{m}}{\\text{s}}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that after the collision, the blue puck is moving to the right; its direction of motion was reversed. The red puck is now moving to the left.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Thor vs. Iron Man",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The 2012 movie “The Avengers” has a scene where Iron Man and Thor fight. At the beginning of the fight, Thor throws his hammer at Iron Man, hitting him and throwing him slightly up into the air and against a small tree, which breaks. From the video, Iron Man is standing still when the hammer hits him. The distance between Thor and Iron Man is approximately 10 m, and the hammer takes about 1 s to reach Iron Man after Thor releases it. The tree is about 2 m behind Iron Man, which he hits in about 0.75 s. Also from the video, Iron Man’s trajectory to the tree is very close to horizontal. Assuming Iron Man’s total mass is 200 kg:</p><ol type='a'><li>Estimate the mass of Thor’s hammer</li><li>Estimate how much kinetic energy was lost in this collision</li></ol>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>After the collision, Thor’s hammer is in contact with Iron Man for the entire time, so this is a perfectly inelastic collision. Thus, with the correct choice of a closed system, we expect momentum is conserved, but not kinetic energy. We use the given numbers to estimate the initial momentum, the initial kinetic energy, and the final kinetic energy. Because this is a one-dimensional problem, we can go directly to the scalar form of the equations.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>First, we posit conservation of momentum. For that, we need a closed system. The choice here is the system (hammer + Iron Man), from the time of collision to the moment just before Iron Man and the hammer hit the tree. Let:<br> <ul><li>\\({M}_{\\text{H}}=\\) mass of the hammer</li><li>\\({M}_{\\text{I}}=\\) mass of Iron Man</li><li>\\({v}_{\\text{H}}=\\) velocity of the hammer before hitting Iron Man</li><li><i>v</i> \\(=\\) combined velocity of Iron Man + hammer after the collision</li></ul><br> Again, Iron Man’s initial velocity was zero. Conservation of momentum here reads: <div class='eq'>\\[{M}_{\\text{H}}{v}_{\\text{H}}=({M}_{\\text{H}}+{M}_{\\text{I}})v.\\]</div> We are asked to find the mass of the hammer, so we have <div class='eq'>\\[\\begin{array}{lll}{M}_{\\text{H}}{v}_{\\text{H}} & = & {M}_{\\text{H}}v+{M}_{\\text{I}}v \\\\ {M}_{\\text{H}}({v}_{\\text{H}}-v) & = & {M}_{\\text{I}}v \\\\ {M}_{\\text{H}} & = & \\frac{{M}_{\\text{I}}v}{{v}_{\\text{H}}-v} \\\\ & = & \\frac{(200\\, \\text{kg})(\\frac{2\\, \\text{m}}{0.75\\, \\text{s}})}{10\\, \\frac{\\text{m}}{\\text{s}}-(\\frac{2\\, \\text{m}}{0.75\\, \\text{s}})} \\\\ & = & 73\\, \\text{kg.}\\end{array}\\]</div> Considering the uncertainties in our estimates, this should be expressed with just one significant figure; thus, \\({M}_{\\text{H}}=7\\, \\times \\, {10}^{1}\\, \\text{kg}\\).</li><li>The initial kinetic energy of the system, like the initial momentum, is all in the hammer: <div class='eq'>\\[\\begin{array}{ll}{K}_{\\text{i}} & =\\frac{1}{2}{M}_{\\text{H}}{v}_{\\text{H}}^{2} \\\\ & =\\frac{1}{2}(70\\, \\text{kg}){(10\\, \\text{m/s})}^{2} \\\\ & =3500\\, \\text{J.}\\end{array}\\]</div> After the collision, <div class='eq'>\\[\\begin{array}{ll}{K}_{\\text{f}} & =\\frac{1}{2}({M}_{\\text{H}}+{M}_{\\text{I}}){v}^{2} \\\\ & =\\frac{1}{2}(70\\, \\text{kg}+200\\, \\text{kg}){(2.67\\, \\text{m/s})}^{2} \\\\ & =960\\, \\text{J.}\\end{array}\\]</div> Thus, there was a loss of \\(3500\\, \\text{J}-960\\, \\text{J}=2540\\, \\text{J}\\).</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>From other scenes in the movie, Thor apparently can control the hammer’s velocity with his mind. It is possible, therefore, that he mentally causes the hammer to maintain its initial velocity of 10 m/s while Iron Man is being driven backward toward the tree. If so, this would represent an external force on our system, so it would not be closed. Thor’s mental control of his hammer is beyond the scope of this book, however.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Analyzing a Car Crash",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>At a stoplight, a small car (1200 kg) collides with a motionless large truck (3000 kg). The car comes to an instantaneous stop; the truck slides straight ahead, coming to a stop after sliding 10 meters. The measured coefficient of friction between the truck’s tires and the road was 0.62. How fast was the car moving at the moment of impact?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>At first it may seem we don’t have enough information to solve this problem. Although we know the initial speed of the truck, we don’t know the speed of the car (indeed, that’s what we’re asked to find), so we don’t know the initial momentum of the system. Similarly, we know the final speed of the car, but not the speed of the truck immediately after impact. The fact that the truck eventually slid to a speed of zero doesn’t help with the final momentum, since an external friction force caused that. Nor can we calculate an impulse, since we don’t know the collision time, or the amount of time the truck slid before stopping. A useful strategy is to impose a restriction on the analysis.</p><p>Suppose we define a system consisting of just the car and the truck. The momentum of this system isn’t conserved, because of the friction between the truck and the road. But if we <i>could</i> find the speed of the truck the instant after impact—before friction had any measurable effect on the truck—then we could consider the momentum of the system to be conserved, with that restriction.</p><p>Can we find the final speed of the truck? Yes; we invoke the work-energy theorem.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First, define some variables. Let:</p><ul><li>\\({M}_{\\text{c}}\\, \\text{and}\\, {M}_{\\text{T}}\\) be the masses of the car and truck, respectively</li><li>\\({v}_{\\text{T,i}}\\, \\text{and}{v}_{\\text{T,f}}\\) be the velocities of the truck before and after the collision, respectively</li><li>\\({v}_{\\text{c,i}}\\, \\text{and}{v}_{\\text{c,f}}\\) Z be the velocities of the car before and after the collision, respectively</li><li>\\({K}_{\\text{i}}\\, \\text{and}\\, {K}_{\\text{f}}\\) be the kinetic energies of the truck immediately after the collision, and after the truck has stopped sliding (so \\({K}_{\\text{f}}=0\\)).</li><li><i>d</i> be the distance the truck slides after the collision before eventually coming to a stop.</li></ul><p>Since we actually want the initial speed of the car, and since the car is not part of the work-energy calculation, let’s start with conservation of momentum. For the car + truck system, conservation of momentum reads</p><div class='eq'>\\[\\begin{array}{l}{p}_{\\text{i}}={p}_{\\text{f}} \\\\ {M}_{\\text{T}}{v}_{\\text{T,i}}+{M}_{\\text{c}}{v}_{\\text{c,i}}={M}_{\\text{T}}{v}_{\\text{T,f}}+{M}_{\\text{c}}{v}_{\\text{c,f}}.\\end{array}\\]</div><p>Since the car’s initial velocity was zero, as was the truck’s final velocity, this simplifies to</p><div class='eq'>\\[{v}_{\\text{c,i}}=\\frac{{M}_{\\text{T}}}{{M}_{\\text{c}}}{v}_{\\text{T,f}}.\\]</div><p>So now we need the truck’s speed immediately after impact. Recall that</p><div class='eq'>\\[W=\\Delta K\\]</div><p>where</p><div class='eq'>\\[\\begin{array}{ll}\\Delta K & ={K}_{\\text{f}}-{K}_{\\text{i}} \\\\ & =0-\\frac{1}{2}{M}_{\\text{T}}{v}_{\\text{T,f}}^{2}.\\end{array}\\]</div><p>Also,</p><div class='eq'>\\[W=\\mathbf{\\vec{F}}\\cdot \\mathbf{\\vec{d}}=Fd\\cos \\theta .\\]</div><p>The work is done over the distance the truck slides, which we’ve called <i>d</i>. Equating:</p><div class='eq'>\\[Fd\\cos \\theta =-\\frac{1}{2}{M}_{\\text{T}}{v}_{\\text{T,f}}^{2}.\\]</div><p>Friction is the force on the truck that does the work to stop the sliding. With a level road, the friction force is</p><div class='eq'>\\[F={\\mu}_{\\text{k}}{M}_{\\text{T}}g.\\]</div><p>Since the angle between the directions of the friction force vector and the displacement <i>d</i> is \\(180^{\\circ}\\), and \\(\\cos (180^{\\circ} )=-1,\\) we have</p><div class='eq'>\\[-({\\mu}_{\\text{k}}{M}_{\\text{T}}g)d=-\\frac{1}{2}{M}_{\\text{T}}{v}_{\\text{T,f}}^{2}\\]</div><p>(Notice that the truck’s mass divides out; evidently the mass of the truck doesn’t matter.)</p><p>Solving for the truck’s speed immediately after the collision gives</p><div class='eq'>\\[{v}_{\\text{T,f}}=\\sqrt{2{\\mu}_{\\text{k}}gd}.\\]</div><p>Substituting the given numbers:</p><div class='eq'>\\[\\begin{array}{ll} \\\\ \\\\ {v}_{\\text{T,f}} & =\\sqrt{2(0.62)(9.81\\, \\frac{\\text{m}}{{\\text{s}}^{2}})(10\\, \\text{m})} \\\\ & =11.0\\, \\text{m/s}\\text{.}\\end{array}.\\]</div><p>Now we can calculate the initial speed of the car:</p><div class='eq'>\\[{v}_{\\text{T,i}}=(\\frac{3000\\, \\text{kg}}{1200\\, \\text{kg}})(11.0\\, \\frac{\\text{m}}{\\text{s}})=27.5\\, \\text{m/s}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is an example of the type of analysis done by investigators of major car accidents. A great deal of legal and financial consequences depend on an accurate analysis and calculation of momentum and energy.</p><p>This collision converted some of the initial kinetic energy to other forms (presumably the deformation of the car and truck and some heat and sound):</p><div class='eq'>\\[K{E}_{\\text{i}}=\\frac{1}{2}(1200)({27.5}^{2})=4.5\\times {10}^{5}\\quad \\text{J}\\]</div><div class='eq'>\\[K{E}_{\\text{f}}=\\frac{1}{2}(3000)({11}^{2})=1.8\\times {10}^{5}\\quad \\text{J}\\]</div><p>Change in kinetic energy = \\(2.7\\times {10}^{5}\\quad \\text{J}\\)</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>There is a possible mathematical second to the system of equations solved in this example (because the energy equation is quadratic): \\({v}_{\\text{1,f}}=0,{v}_{\\text{2,f}}=-2.5\\, \\text{m/s}\\). This solution is unacceptable on physical grounds; what’s wrong with it?</p>",
+     "a": "<p>This solution represents the case in which no interaction takes place: the first puck misses the second puck and continues on with a velocity of 2.5 m/s to the left. This case offers no meaningful physical insights.</p>"
+    },
+    {
+     "q": "<p>Suppose there had been no friction (the collision happened on ice); that would make \\({\\mu}_{\\text{k}}\\) zero, and thus \\({v}_{\\text{c,f}}=\\sqrt{2{\\mu}_{\\text{k}}gd}=0\\), which is obviously wrong. What is the mistake in this conclusion?</p>",
+     "a": "<p>If zero friction acts on the car, then it will continue to slide indefinitely (\\(d\\to \\infty\\)), so we cannot use the work-energy theorem as is done in the example. Thus, we could not solve the problem from the information given.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "An elastic collision is one that conserves kinetic energy.",
+    "An inelastic collision does not conserve kinetic energy.",
+    "Momentum is conserved regardless of whether or not kinetic energy is conserved.",
+    "Analysis of kinetic energy changes and conservation of momentum together allow the final velocities to be calculated in terms of initial velocities and masses in one-dimensional, two-body collisions."
+   ]
+  },
+  {
+   "num": "9.5",
+   "module": "m58322",
+   "title": "Collisions in Multiple Dimensions",
+   "objectives": [
+    "Express momentum as a two-dimensional vector",
+    "Write equations for momentum conservation in component form",
+    "Calculate momentum in two dimensions, as a vector quantity"
+   ],
+   "callouts": [
+    "\\begin{array}{lll}{p}_{\\text{f},x} & = & {p}_{\\text{1,i},x}+{p}_{\\text{2,i},x} \\\\ {p}_{\\text{f},y} & = & {p}_{\\text{1,i},y}+{p}_{\\text{2,i},y}\\end{array}"
+   ],
+   "examples": [
+    {
+     "title": "Traffic Collision",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A small car of mass 1200 kg traveling east at 60 km/hr collides at an intersection with a truck of mass 3000 kg that is traveling due north at 40 km/hr (the figure). The two vehicles are locked together. What is the velocity of the combined wreckage?</p><figure><img src='img/CNX_UPhysics_09_05_CarTruck.jpg' alt=\"An x y coordinate system is shown. A large truck mass m T = 3000 kilograms is moving north toward the origin with velocity v T. A small car mass m c = 1200 kilograms is moving east toward the origin with velocity v c, which is less than v T.\" loading='lazy'><figcaption>A large truck moving north is about to collide with a small car moving east. The final momentum vector has both <i>x</i>- and <i>y</i>-components.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First off, we need a closed system. The natural system to choose is the (car + truck), but this system is not closed; friction from the road acts on both vehicles. We avoid this problem by restricting the question to finding the velocity at the instant just after the collision, so that friction has not yet had any effect on the system. With that restriction, momentum is conserved for this system.</p><p>Since there are two directions involved, we do conservation of momentum twice: once in the <i>x</i>-direction and once in the <i>y</i>-direction.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p><i>Before</i> the collision the total momentum is</p><div class='eq'>\\[\\mathbf{\\vec{p}}={m}_{\\text{c}}{\\mathbf{\\vec{v}}}_{\\text{c}}+{m}_{\\text{T}}{\\mathbf{\\vec{v}}}_{\\text{T}}.\\]</div><p><i>After</i> the collision, the wreckage has momentum</p><div class='eq'>\\[\\mathbf{\\vec{p}}=({m}_{\\text{c}}+{m}_{\\text{T}}){\\mathbf{\\vec{v}}}_{w}.\\]</div><p>Since the system is closed, momentum must be conserved, so we have</p><div class='eq'>\\[{m}_{\\text{c}}{\\mathbf{\\vec{v}}}_{\\mathbf{c}}+{m}_{\\text{T}}{\\mathbf{\\vec{v}}}_{\\text{T}}=({m}_{\\text{c}}+{m}_{\\text{T}}){\\mathbf{\\vec{v}}}_{w}.\\]</div><p>We have to be careful; the two initial momenta are not parallel. We must add vectorially (the figure).</p><figure><img src='img/CNX_UPhysics_09_05_Ex1.jpg' alt=\"Arrow p c points horizontally to the right. Arrow p t points vertically upward. The head of p t meets the tail of p c. P t is longer than p t. A dashed line is shown from the tail of p t to the head of p c. The angle between the dashed line and p t, at the tail of p t, is labeled as theta.\" loading='lazy'><figcaption>Graphical addition of momentum vectors. Notice that, although the car’s velocity is larger than the truck’s, its momentum is smaller.</figcaption></figure><p>If we define the +<i>x</i>-direction to point east and the +<i>y</i>-direction to point north, as in the figure, then (conveniently),</p><div class='eq'>\\[\\begin{array}{lll}{\\mathbf{\\vec{p}}}_{\\text{c}} & = & {p}_{\\text{c}}\\mathbf{\\hat{i}}={m}_{\\text{c}}{v}_{\\text{c}}\\mathbf{\\hat{i}} \\\\ {\\mathbf{\\vec{p}}}_{\\text{T}} & = & {p}_{\\text{T}}\\mathbf{\\hat{j}}={m}_{\\text{T}}{v}_{\\text{T}}\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>Therefore, in the <i>x</i>-direction:</p><div class='eq'>\\[\\begin{array}{lll}{m}_{\\text{c}}{v}_{\\text{c}} & = & ({m}_{\\text{c}}+{m}_{\\text{T}}){v}_{\\text{w},x} \\\\ {v}_{\\text{w},x} & = & (\\frac{{m}_{\\text{c}}}{{m}_{\\text{c}}+{m}_{\\text{T}}}){v}_{\\text{c}}\\end{array}\\]</div><p>and in the <i>y</i>-direction:</p><div class='eq'>\\[\\begin{array}{lll}{m}_{\\text{T}}{v}_{\\text{T}} & = & ({m}_{\\text{c}}+{m}_{\\text{T}}){v}_{\\text{w},y} \\\\ {v}_{\\text{w},y} & = & (\\frac{{m}_{\\text{T}}}{{m}_{\\text{c}}+{m}_{\\text{T}}}){v}_{\\text{T}}.\\end{array}\\]</div><p>Applying the Pythagorean theorem gives</p><div class='eq'>\\[\\begin{array}{ll}|{\\mathbf{\\vec{v}}}_{w}| & =\\sqrt{{[(\\frac{{m}_{\\text{c}}}{{m}_{\\text{c}}+{m}_{t}}){v}_{\\text{c}}]}^{2}+{[(\\frac{{m}_{t}}{{m}_{\\text{c}}+{m}_{t}}){v}_{t}]}^{2}} \\\\ & =\\sqrt{{[(\\frac{1200\\, \\text{kg}}{4200\\, \\text{kg}})(16.67\\, \\frac{\\text{m}}{\\text{s}})]}^{2}+{[(\\frac{3000\\, \\text{kg}}{4200\\, \\text{kg}})(11.1\\, \\frac{\\text{m}}{\\text{s}})]}^{2}} \\\\ & =\\sqrt{{(4.76\\, \\frac{\\text{m}}{\\text{s}})}^{2}+{(7.93\\, \\frac{\\text{m}}{\\text{s}})}^{2}} \\\\ & =9.25\\, \\frac{\\text{m}}{\\text{s}}\\approx 33.3\\, \\frac{\\text{km}}{\\text{hr}}.\\end{array}\\]</div><p>As for its direction, using the angle shown in the figure,</p><div class='eq'>\\[\\theta ={\\tan}^{-1}(\\frac{{v}_{\\text{w},y}}{{v}_{\\text{w},x}})={\\tan}^{-1}(\\frac{7.93\\, \\text{m/s}}{4.76\\, \\text{m/s}})=59^{\\circ} .\\]</div><p>This angle is east of north, or \\(31^{\\circ}\\) counterclockwise from the +<i>x</i>-direction.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>As a practical matter, accident investigators usually work in the “opposite direction”; they measure the distance of skid marks on the road (which gives the stopping distance) and use the work-energy theorem along with conservation of momentum to determine the speeds and directions of the cars prior to the collision. We saw that analysis in an earlier section.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Exploding Scuba Tank",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A common scuba tank is an aluminum cylinder that weighs 31.7 pounds empty (the figure). When full of compressed air, the internal pressure is between 2500 and 3000 psi (pounds per square inch). Suppose such a tank, which had been sitting motionless, suddenly explodes into three pieces. The first piece, weighing 10 pounds, shoots off horizontally at 235 miles per hour; the second piece (7 pounds) shoots off at 172 miles per hour, also in the horizontal plane, but at a \\(19^{\\circ}\\) angle to the first piece. What is the mass and initial velocity of the third piece? (Do all work, and express your final answer, in SI units.)</p><figure><img src='img/CNX_UPhysics_09_05_scubatank.jpg' alt=\"A drawing of a scuba tank exploding, and the resulting three pieces of different sizes.\" loading='lazy'><figcaption>A scuba tank explodes into three pieces.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>To use conservation of momentum, we need a closed system. If we define the system to be the scuba tank, this is not a closed system, since gravity is an external force. However, the problem asks for just the initial velocity of the third piece, so we can neglect the effect of gravity and consider the tank by itself as a closed system. Notice that, for this system, the initial momentum vector is zero.</p><p>We choose a coordinate system where all the motion happens in the <i>xy</i>-plane. We then write down the equations for conservation of momentum in each direction, thus obtaining the <i>x</i>- and <i>y</i>-components of the momentum of the third piece, from which we obtain its magnitude (via the Pythagorean theorem) and its direction. Finally, dividing this momentum by the mass of the third piece gives us the velocity.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First, let’s get all the conversions to SI units out of the way:</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ 31.7\\, \\text{lb}\\, \\times \\, \\frac{1\\ \\text{kg}}{2.2\\, \\text{lb}}\\to 14.4\\, \\text{kg} \\\\ 10\\, \\text{lb}\\to 4.5\\, \\text{kg} \\\\ 235\\, \\frac{\\text{miles}}{\\text{hour}}\\, \\times \\, \\frac{1\\, \\text{hour}}{3600\\, \\text{s}}\\, \\times \\, \\frac{1609\\, \\text{m}}{\\text{mile}}=105\\, \\frac{\\text{m}}{\\text{s}} \\\\ 7\\, \\text{lb}\\to 3.2\\, \\text{kg} \\\\ 172\\, \\frac{\\text{mile}}{\\text{hour}}=77\\, \\frac{\\text{m}}{\\text{s}} \\\\ {m}_{3}=14.4\\, \\text{kg}-(4.5\\, \\text{kg}+3.2\\, \\text{kg})=6.7\\, \\text{kg.}\\end{array}\\]</div><p>Now apply conservation of momentum in each direction.</p><figure><img src='img/CNX_UPhysics_09_05_Ex2_img.jpg' alt=\"The three pieces of the scuba tank are shown on an x y coordinate system. The medium size piece is on the positive x axis and has momentum p 1 in the plus x direction. The smallest piece is at an angle theta above the positive x axis and has momentum p 2. The largest piece is at an angle phi below the negative x axis and has momentum p 3.\" loading='lazy'></figure><p><i>x</i>-direction:</p><div class='eq'>\\[\\begin{array}{lll}{p}_{\\text{f,}x} & = & {p}_{\\text{0,}x} \\\\ {p}_{\\text{1,}x}+{p}_{\\text{2,}x}+{p}_{\\text{3,}x} & = & 0 \\\\ {m}_{1}{v}_{\\text{1,}x}+{m}_{2}{v}_{\\text{2,}x}+{p}_{\\text{3,}x} & = & 0 \\\\ {p}_{\\text{3,}x} & = & -{m}_{1}{v}_{\\text{1,}x}-{m}_{2}{v}_{\\text{2,}x}\\end{array}\\]</div><p><i>y</i>-direction:</p><div class='eq'>\\[\\begin{array}{lll}{p}_{\\text{f,}y} & = & {p}_{\\text{0,}y} \\\\ {p}_{\\text{1,}y}+{p}_{\\text{2,}y}+{p}_{\\text{3,}y} & = & 0 \\\\ {m}_{1}{v}_{\\text{1,}y}+{m}_{2}{v}_{\\text{2,}y}+{p}_{\\text{3,}y} & = & 0 \\\\ {p}_{\\text{3,}y} & = & -{m}_{1}{v}_{\\text{1,}y}-{m}_{2}{v}_{\\text{2,}y}\\end{array}\\]</div><p>From our chosen coordinate system, we write the <i>x</i>-components as</p><div class='eq'>\\[\\begin{array}{ll}{p}_{3,x} & =-{m}_{1}{v}_{1}-{m}_{2}{v}_{2}\\cos \\theta \\\\ & =-(4.5\\, \\text{kg})(105\\, \\frac{\\text{m}}{\\text{s}})-(3.2\\, \\text{kg})(77\\, \\frac{\\text{m}}{\\text{s}})\\cos (19^{\\circ} ) \\\\ & =-705\\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}.\\end{array}\\]</div><p>For the <i>y</i>-direction, we have</p><div class='eq'>\\[\\begin{array}{ll}{p}_{3y} & =0-{m}_{2}{v}_{2}\\sin \\theta \\\\ & =-(3.2\\, \\text{kg})(77\\, \\frac{\\text{m}}{\\text{s}})\\sin (19^{\\circ} ) \\\\ & =-80.2\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}.\\end{array}\\]</div><p>This gives the magnitude of \\({p}_{3}\\):</p><div class='eq'>\\[\\begin{array}{ll}{p}_{3} & =\\sqrt{{p}_{\\text{3,}x}^{2}+{p}_{\\text{3,}y}^{2}} \\\\ & =\\sqrt{{(-705\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}})}^{2}+(-80.2\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}})} \\\\ & =710\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}.\\end{array}\\]</div><p>The velocity of the third piece is therefore</p><div class='eq'>\\[{v}_{3}=\\frac{{p}_{3}}{{m}_{3}}=\\frac{710\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}}{6.7\\, \\text{kg}}=106\\, \\frac{\\text{m}}{\\text{s}}.\\]</div><p>The direction of its velocity vector is the same as the direction of its momentum vector:</p><div class='eq'>\\[\\phi ={\\tan}^{-1}(\\frac{{p}_{\\text{3,}y}}{{p}_{\\text{3,}x}})={\\tan}^{-1}(\\frac{80.2\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}}{705\\, \\frac{\\text{kg}\\cdot \\text{m}}{\\text{s}}})=6.49^{\\circ} .\\]</div><p>Because \\(\\phi\\) is below the \\(-x\\)-axis, the actual angle is \\(183.5^{\\circ}\\) from the +<i>x</i>-direction.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The enormous velocities here are typical; an exploding tank of any compressed gas can easily punch through the wall of a house and cause significant injury, or death. Fortunately, such explosions are extremely rare, on a percentage basis.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Suppose the initial velocities were <i>not</i> at right angles to each other. How would this change both the physical result and the mathematical analysis of the collision?</p>",
+     "a": "<p>Were the initial velocities not at right angles, then one or both of the velocities would have to be expressed in component form. The mathematical analysis of the problem would be slightly more involved, but the physical result would not change.</p>"
+    },
+    {
+     "q": "<p>Notice that the mass of the air in the tank was neglected in the analysis and solution. How would the solution method changed if the air was included? How large a difference do you think it would make in the final answer?</p>",
+     "a": "<p>The volume of a scuba tank is about 11 L. Assuming air is an ideal gas, the number of gas molecules in the tank is<br> \\(\\begin{array}{lll}PV & = & NRT \\\\ N & = & \\frac{PV}{RT}=\\frac{(2500\\, \\text{psi})(0.011\\, {\\text{m}}^{3})}{(8.31\\, \\text{J/mol}\\cdot \\text{K})(300\\, \\text{K})}(\\frac{6894.8\\, \\text{Pa}}{1\\, \\text{psi}}) \\\\ & = & 7.59\\, \\times \\, {10}^{1}\\, \\text{mol}\\end{array}\\)<br> The average molecular mass of air is 29 g/mol, so the mass of air contained in the tank is about 2.2 kg. This is about 10 times less than the mass of the tank, so it is safe to neglect it. Also, the initial force of the air pressure is roughly proportional to the surface area of each piece, which is in turn proportional to the mass of each piece (assuming uniform thickness). Thus, the initial acceleration of each piece would change very little if we explicitly consider the air.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The approach to two-dimensional collisions is to choose a convenient coordinate system and break the motion into components along perpendicular axes.",
+    "Momentum is conserved in both directions simultaneously and independently.",
+    "The Pythagorean theorem gives the magnitude of the momentum vector using the <i>x</i>- and <i>y</i>-components, calculated using conservation of momentum in each direction."
+   ]
+  },
+  {
+   "num": "9.6",
+   "module": "m58323",
+   "title": "Center of Mass",
+   "objectives": [
+    "Explain the meaning and usefulness of the concept of center of mass",
+    "Calculate the center of mass of a given system",
+    "Apply the center of mass concept in two and three dimensions",
+    "Calculate the velocity and acceleration of the center of mass"
+   ],
+   "callouts": [
+    "{\\mathbf{\\vec{F}}}_{\\text{ext}}={\\sum}_{j=1}^{N}\\frac{d{\\mathbf{\\vec{p}}}_{j}}{dt}",
+    "\\mathbf{\\vec{F}}=\\frac{d{\\mathbf{\\vec{p}}}_{\\text{CM}}}{dt}",
+    "\\mathbf{\\vec{a}}=\\frac{{d}^{2}}{d{t}^{2}}(\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{r}}}_{j})",
+    "{\\mathbf{\\vec{r}}}_{\\text{CM}}\\equiv \\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{r}}}_{j}",
+    "{\\mathbf{\\vec{v}}}_{\\text{CM}}=\\frac{d}{dt}(\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{r}}}_{j})=\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\mathbf{\\vec{v}}}_{j}",
+    "{\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{1}{M}\\int \\mathbf{\\vec{r}}dm",
+    "M{\\mathbf{\\vec{v}}}_{\\text{CM,f}}=M{\\mathbf{\\vec{v}}}_{\\text{CM,i}}",
+    "{\\mathbf{\\vec{v}}}_{\\text{CM,f}}={\\mathbf{\\vec{v}}}_{\\text{CM,i}}"
+   ],
+   "examples": [
+    {
+     "title": "Center of Mass of the Earth-Moon System",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Using data from text appendix, determine how far the center of mass of the Earth-moon system is from the center of Earth. Compare this distance to the radius of Earth, and comment on the result. Ignore the other objects in the solar system.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We get the masses and separation distance of the Earth and moon, impose a coordinate system, and use the equation with just \\(N=2\\) objects. We use a subscript “e” to refer to Earth, and subscript “m” to refer to the moon.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Define the origin of the coordinate system as the center of Earth. Then, with just two objects, the equation becomes</p><div class='eq'>\\[R=\\frac{{m}_{\\text{e}}{r}_{\\text{e}}+{m}_{\\text{m}}{r}_{\\text{m}}}{{m}_{\\text{e}}+{m}_{\\text{m}}}.\\]</div><p>From Appendix D,</p><div class='eq'>\\[{m}_{\\text{e}}=5.97\\, \\times \\, {10}^{24}\\, \\text{kg}\\]</div><div class='eq'>\\[{m}_{\\text{m}}=7.36\\, \\times \\, {10}^{22}\\, \\text{kg}\\]</div><div class='eq'>\\[{r}_{\\text{m}}=3.82\\, \\times \\, {10}^{8}\\, \\text{m}.\\]</div><p>We defined the center of Earth as the origin, so \\({r}_{\\text{e}}=\\text{0 m}\\). Inserting these into the equation for <i>R</i> gives</p><div class='eq'>\\[\\begin{array}{ll}R & =\\frac{(5.97\\, \\times \\, {10}^{24}\\, \\text{kg})(0\\, \\text{m})+(7.36\\, \\times \\, {10}^{22}\\, \\text{kg})(3.82\\, \\times \\, {10}^{8}\\, \\text{m})}{5.97\\, \\times \\, {10}^{24}\\, \\text{kg}+7.36\\, \\times \\, {10}^{22}\\, \\text{kg}} \\\\ & =4.64\\, \\times \\, {10}^{6}\\, \\text{m.}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The radius of Earth is \\(6.37\\, \\times \\, {10}^{6}\\, \\text{m}\\), so the center of mass of the Earth-moon system is (6.37 − 4.64) \\(\\times \\, {10}^{6}\\, \\text{m}=1.73\\, \\times \\, {10}^{6}\\, \\text{m}=1730\\, \\text{km}\\) (roughly 1080 miles) <i>below</i> the surface of Earth. The location of the center of mass is shown (not to scale).</p><figure><img src='img/CNX_UPhysics_09_06_cm_img.jpg' alt=\"The earth is drawn entered on the origin of an x y coordinate system. The moon is located to the right of the earth on the x axis. R c m is a horizontal vector from the origin pointing to the right, smaller than the radius of the earth.\" loading='lazy'></figure>"
+      }
+     ]
+    },
+    {
+     "title": "Center of Mass of a Salt Crystal",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The figure shows a single crystal of sodium chloride—ordinary table salt. The sodium and chloride ions form a single unit, NaCl. When multiple NaCl units group together, they form a cubic lattice. The smallest possible cube (called the <i>unit cell</i>) consists of four sodium ions and four chloride ions, alternating. The length of one edge of this cube (i.e., the bond length) is \\(2.36\\, \\times \\, {10}^{-10}\\, \\text{m}\\). Find the location of the center of mass of the unit cell. Specify it either by its coordinates \\(({r}_{\\text{CM,}x},{r}_{\\text{CM,}y},{r}_{\\text{CM,}z})\\), or by \\({r}_{\\text{CM}}\\) and two angles.</p><figure><img src='img/CNX_UPhysics_09_06_NaCI.jpg' alt=\"The sodium chloride crystal structure is a square lattice, with alternating Sodium (represented as larger green spheres) and Chlorine (represented as smaller red spheres) ions at the intersections. A unit cell is identified as one of the cubes making up the lattice.\" loading='lazy'><figcaption>A drawing of a sodium chloride (NaCl) crystal.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can look up all the ion masses. If we impose a coordinate system on the unit cell, this will give us the positions of the ions. We can then apply the equation, the equation, and the equation (along with the Pythagorean theorem).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Define the origin to be at the location of the chloride ion at the bottom left of the unit cell. The figure shows the coordinate system.</p><figure><img src='img/CNX_UPhysics_09_06_unitcell.jpg' alt=\"An illustration of a unit cell of an N a C l crystal as a cube with ions at each corner. Four green ions are shown and labeled as m 1 at the origin, m 3 at the corner on the diagonal on the x y plane, m 6 at the corner on the diagonal on the x z plane, and m 8 at the corner on the diagonal on the y z plane. Four red ions are shown and labeled as m 2 on the x axis, m 4 on the y axis, m 5 on the z axis, and m 7 on the remaining corner.\" loading='lazy'><figcaption>A single unit cell of a NaCl crystal.</figcaption></figure><p>There are eight ions in this crystal, so <i>N</i> = 8:</p><div class='eq'>\\[{\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{1}{M}{\\sum}_{j=1}^{8}{m}_{j}{\\mathbf{\\vec{r}}}_{j}.\\]</div><p>The mass of each of the chloride ions is</p><div class='eq'>\\[35.453\\text{u}\\, \\times \\, \\frac{1.660\\, \\times \\, {10}^{-27}\\, \\text{kg}}{\\text{u}}=5.885\\, \\times \\, {10}^{-26}\\, \\text{kg}\\]</div><p>so we have</p><div class='eq'>\\[{m}_{1}={m}_{3}={m}_{6}={m}_{8}=5.885\\, \\times \\, {10}^{-26}\\, \\text{kg}.\\]</div><p>For the sodium ions,</p><div class='eq'>\\[{m}_{2}={m}_{4}={m}_{5}={m}_{7}=3.816\\, \\times \\, {10}^{-26}\\, \\text{kg}.\\]</div><p>The total mass of the unit cell is therefore</p><div class='eq'>\\[M=(4)(5.885\\, \\times \\, {10}^{-26}\\, \\text{kg})+(4)(3.816\\, \\times \\, {10}^{-26}\\, \\text{kg})=3.880\\, \\times \\, {10}^{-25}\\, \\text{kg}.\\]</div><p>From the geometry, the locations are</p><div class='eq'>\\[\\begin{array}{l}{\\mathbf{\\vec{r}}}_{1}=0 \\\\ {\\mathbf{\\vec{r}}}_{2}=(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{i}} \\\\ {\\mathbf{\\vec{r}}}_{3}={r}_{3x}\\mathbf{\\hat{i}}+{r}_{3y}\\mathbf{\\hat{j}}=(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{i}}+(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{j}} \\\\ {\\mathbf{\\vec{r}}}_{4}=(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{j}} \\\\ {\\mathbf{\\vec{r}}}_{5}=(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\vec{k}} \\\\ {\\mathbf{\\vec{r}}}_{6}={r}_{6x}\\mathbf{\\hat{i}}+{r}_{6z}\\mathbf{\\hat{k}}=(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{i}}+(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{k}} \\\\ {\\mathbf{\\vec{r}}}_{7}={r}_{7x}\\mathbf{\\hat{i}}+{r}_{7y}\\mathbf{\\hat{j}}+{r}_{7z}\\mathbf{\\hat{k}}=(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{i}}+(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{j}}+(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{k}} \\\\ {\\mathbf{\\vec{r}}}_{8}={r}_{8y}\\mathbf{\\hat{j}}+{r}_{8z}\\mathbf{\\hat{k}}=(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{j}}+(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})\\mathbf{\\hat{k}}.\\end{array}\\]</div><p>Substituting:</p><div class='eq'>\\[\\begin{array}{ll}|{\\mathbf{\\vec{r}}}_{\\text{CM,}x}| & =\\frac{1}{M}{\\sum}_{j=1}^{8}{m}_{j}{({r}_{x})}_{j} \\\\ & =\\frac{1}{M}({m}_{1}{r}_{1x}+{m}_{2}{r}_{2x}+{m}_{3}{r}_{3x}+{m}_{4}{r}_{4x}+{m}_{5}{r}_{5x}+{m}_{6}{r}_{6x}+{m}_{7}{r}_{7x}+{m}_{8}{r}_{8x}) \\\\ & =\\frac{1}{3.8804\\, \\times \\, {10}^{-25}\\, \\text{kg}}[(5.885\\, \\times \\, {10}^{-26}\\, \\text{kg})(0\\, \\text{m})+(3.816\\, \\times \\, {10}^{-26}\\, \\text{kg})(2.36\\, \\times \\, {10}^{-10}\\, \\text{m}) \\\\ & \\; +(5.885\\, \\times \\, {10}^{-26}\\, \\text{kg})(2.36\\, \\times \\, {10}^{-10}\\, \\text{m}) \\\\ & \\; +(3.816\\, \\times \\, {10}^{-26}\\, \\text{kg})(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})+0+0 \\\\ & \\; +(3.816\\, \\times \\, {10}^{-26}\\, \\text{kg})(2.36\\, \\times \\, {10}^{-10}\\, \\text{m})+0] \\\\ & =1.18\\, \\times \\, {10}^{-10}\\, \\text{m.}\\end{array}\\]</div><p>Similar calculations give \\({r}_{\\text{CM,}y}={r}_{\\text{CM,}z}=1.18\\, \\times \\, {10}^{-10}\\, \\text{m}\\) (you could argue that this must be true, by symmetry, but it’s a good idea to check).</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Although this is a great exercise to determine the center of mass given a Chloride ion at the origin, in fact the origin could be chosen at any location. Therefore, there is no meaningful application of the center of mass of a unit cell beyond as an exercise.</p>"
+      }
+     ]
+    },
+    {
+     "title": "CM of a Uniform Thin Hoop",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the center of mass of a uniform thin hoop (or ring) of mass <i>M</i> and radius <i>r</i>.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First, the hoop’s symmetry suggests the center of mass should be at its geometric center. If we define our coordinate system such that the origin is located at the center of the hoop, the integral should evaluate to zero.</p><p>We replace <i>dm</i> with an expression involving the density of the hoop and the radius of the hoop. We then have an expression we can actually integrate. Since the hoop is described as “thin,” we treat it as a one-dimensional object, neglecting the thickness of the hoop. Therefore, its density is expressed as the number of kilograms of material per meter. Such a density is called a <b>linear mass density</b>, and is given the symbol \\(\\lambda\\); this is the Greek letter “lambda,” which is the equivalent of the English letter “l” (for “linear”).</p><p>Since the hoop is described as uniform, this means that the linear mass density \\(\\lambda\\) is constant. Thus, to get our expression for the differential mass element <i>dm</i>, we multiply \\(\\lambda\\) by a differential length of the hoop, substitute, and integrate (with appropriate limits for the definite integral).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>First, define our coordinate system and the relevant variables (the figure).</p><figure><img src='img/CNX_UPhysics_09_06_ThinHoop.jpg' alt=\"A hoop of radius r is centered on the origin of an x y coordinate system. A short arc of length ds at an angle theta is highlighted and labeled as mass dm. The radius r from the origin to ds is the hypotenuse of the right triangle with bottom side length x.\" loading='lazy'><figcaption>Finding the center of mass of a uniform hoop. We express the coordinates of a differential piece of the hoop, and then integrate around the hoop.</figcaption></figure><p>The center of mass is calculated with the equation:</p><div class='eq'>\\[{\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{1}{M}{\\int}_{a}^{b}\\mathbf{\\vec{r}}dm.\\]</div><p>We have to determine the limits of integration <i>a</i> and <i>b</i>. Expressing \\(\\mathbf{\\vec{r}}\\) in component form gives us</p><div class='eq'>\\[{\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{1}{M}{\\int}_{a}^{b}[(r\\cos \\theta )\\mathbf{\\hat{i}}+(r\\sin \\theta )\\mathbf{\\hat{j}}]dm.\\]</div><p>In the diagram, we highlighted a piece of the hoop that is of differential length <i>ds</i>; it therefore has a differential mass \\(dm=\\lambda ds\\). Substituting:</p><div class='eq'>\\[{\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{1}{M}{\\int}_{a}^{b}[(r\\cos \\theta )\\mathbf{\\hat{i}}+(r\\sin \\theta )\\mathbf{\\hat{j}}]\\lambda ds.\\]</div><p>However, the arc length <i>ds</i> subtends a differential angle \\(d\\theta\\), so we have</p><div class='eq'>\\[ds=rd\\theta\\]</div><p>and thus</p><div class='eq'>\\[{\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{1}{M}{\\int}_{a}^{b}[(r\\cos \\theta )\\mathbf{\\hat{i}}+(r\\sin \\theta )\\mathbf{\\hat{j}}]\\lambda rd\\theta .\\]</div><p>One more step: Since \\(\\lambda\\) is the linear mass density, it is computed by dividing the total mass by the length of the hoop:</p><div class='eq'>\\[\\lambda =\\frac{M}{2\\pi r}\\]</div><p>giving us</p><div class='eq'>\\[\\begin{array}{ll}{\\mathbf{\\vec{r}}}_{\\text{CM}} & =\\frac{1}{M}{\\int}_{a}^{b}[(r\\cos \\theta )\\mathbf{\\hat{i}}+(r\\sin \\theta )\\mathbf{\\hat{j}}](\\frac{M}{2\\pi r})rd\\theta \\\\ & =\\frac{1}{2\\pi}{\\int}_{a}^{b}[(r\\cos \\theta )\\mathbf{\\hat{i}}+(r\\sin \\theta )\\mathbf{\\hat{j}}]d\\theta .\\end{array}\\]</div><p>Notice that the variable of integration is now the angle \\(\\theta\\). This tells us that the limits of integration (around the circular hoop) are \\(\\theta =\\text{0 to}\\, \\theta =2\\pi\\), so \\(a=0\\) and \\(b=2\\pi\\). Also, for convenience, we separate the integral into the <i>x</i>- and <i>y</i>-components of \\({\\mathbf{\\vec{r}}}_{\\text{CM}}\\). The final integral expression is</p><div class='eq'>\\[\\begin{array}{ll}{\\mathbf{\\vec{r}}}_{\\text{CM}} & ={r}_{\\text{CM,}x}\\mathbf{\\hat{i}}+{r}_{\\text{CM,}y}\\mathbf{\\hat{j}} \\\\ & =[\\frac{1}{2\\pi}{\\int}_{0}^{2\\pi}(r\\cos \\theta )d\\theta ]\\mathbf{\\hat{i}}+[\\frac{1}{2\\pi}{\\int}_{0}^{2\\pi}(r\\sin \\theta )d\\theta ]\\mathbf{\\hat{j}} \\\\ & =0\\mathbf{\\hat{i}}+0\\mathbf{\\hat{j}}=\\mathbf{\\vec{0}}\\end{array}\\]</div><p>as expected.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Fireworks Display",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>When a fireworks rocket explodes, thousands of glowing fragments fly outward in all directions, and fall to Earth in an elegant and beautiful display (the figure). Describe what happens, in terms of conservation of momentum and center of mass.</p><figure><img src='img/CNX_UPhysics_09_06_Fireworks.jpg' alt=\"Photograph of multi-colored fireworks of varying size exploding in the sky.\" loading='lazy'><figcaption>These exploding fireworks are a vivid example of conservation of momentum and the motion of the center of mass.</figcaption></figure><p>The picture shows radial symmetry about the central points of the explosions; this suggests the idea of center of mass. We can also see the parabolic motion of the glowing particles; this brings to mind projectile motion ideas.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Initially, the fireworks rocket is launched and flies more or less straight upward; this is the cause of the more-or-less-straight, white trail going high into the sky below the explosion in the upper-right of the picture (the yellow explosion). This trail is not parabolic because the explosive shell, during its launch phase, is actually a rocket; the impulse applied to it by the ejection of the burning fuel applies a force on the shell during the rise-time interval. (This is a phenomenon we will study in the next section.) The shell has multiple forces on it; thus, it is not in free-fall prior to the explosion.</p><p>At the instant of the explosion, the thousands of glowing fragments fly outward in a radially symmetrical pattern. The symmetry of the explosion is the result of all the internal forces summing to zero \\((\\sum _{j}{\\mathbf{\\vec{f}}}_{j}^{\\text{int}}=0);\\) for every internal force, there is another that is equal in magnitude and opposite in direction.</p><p>However, as we learned above, these internal forces cannot change the momentum of the center of mass of the (now exploded) shell. Since the rocket force has now vanished, the center of mass of the shell is now a projectile (the only force on it is gravity), so its trajectory does become parabolic. The two red explosions on the left show the path of their centers of mass at a slightly longer time after explosion compared to the yellow explosion on the upper right.</p><p>In fact, if you look carefully at all three explosions, you can see that the glowing trails are not truly radially symmetric; rather, they are somewhat denser on one side than the other. Specifically, the yellow explosion and the lower middle explosion are slightly denser on their right sides, and the upper-left explosion is denser on its left side. This is because of the momentum of their centers of mass; the differing trail densities are due to the momentum each piece of the shell had at the moment of its explosion. The fragment for the explosion on the upper left of the picture had a momentum that pointed upward and to the left; the middle fragment’s momentum pointed upward and slightly to the right; and the right-side explosion clearly upward and to the right (as evidenced by the white rocket exhaust trail visible below the yellow explosion).</p><p>Finally, each fragment is a projectile on its own, thus tracing out thousands of glowing parabolas.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In the discussion above, we said, “…the center of mass of the shell is now a projectile (the only force on it is gravity)….” This is not quite accurate, for there may not be any mass at all at the center of mass; in which case, there could not be a force acting on it. This is actually just verbal shorthand for describing the fact that the gravitational forces on all the particles act so that the center of mass changes position exactly as if all the mass of the shell were always located at the position of the center of mass.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Suppose we included the sun in the system. Approximately where would the center of mass of the Earth-moon-sun system be located? (Feel free to actually calculate it.)</p>",
+     "a": "<p>The average radius of Earth’s orbit around the Sun is \\(1.496\\, \\times \\, {10}^{11}\\, \\text{m}\\). Taking the Sun to be the origin, and noting that the mass of the Sun is approximately the same as the masses of the Sun, Earth, and Moon combined, the center of mass of the Earth + Moon system and the Sun is<br> \\(\\begin{array}{ll}{R}_{\\text{CM}} & =\\frac{{m}_{\\mathrm{Sun}}{R}_{\\mathrm{Sun}}+{m}_{\\text{em}}{R}_{\\text{em}}}{{m}_{\\mathrm{Sun}}} \\\\ & =\\frac{(1.989\\, \\times \\, {10}^{30}\\, \\text{kg})(0)+(5.97\\, \\times \\, {10}^{24}\\, \\text{kg}+7.36\\, \\times \\, {10}^{22}\\, \\text{kg})(1.496\\, \\times \\, {10}^{11}\\, \\text{m})}{1.989\\, \\times \\, {10}^{30}\\, \\text{kg}} \\\\ & =455\\, \\text{km}\\end{array}\\)<br> Thus, the center of mass of the Sun, Earth, Moon system is 4.6 km from the center of the Sun.</p>"
+    },
+    {
+     "q": "<p>Suppose you have a macroscopic salt crystal (that is, a crystal that is large enough to be visible with your unaided eye). It is made up of a <i>huge</i> number of unit cells. Is the center of mass of this crystal necessarily at the geometric center of the crystal?</p>",
+     "a": "<p>On a macroscopic scale, the size of a unit cell is negligible and the crystal mass may be considered to be distributed homogeneously throughout the crystal. Thus,<br> \\({\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{1}{M}{\\sum}_{j=1}^{N}{m}_{j}{\\vec{r}}_{j}=\\frac{1}{M}{\\sum}_{j=1}^{N}m{\\vec{r}}_{j}=\\frac{m}{M}{\\sum}_{j=1}^{N}{\\vec{r}}_{j}=\\frac{Nm}{M}\\, \\frac{{\\sum}_{j=1}^{N}{\\vec{r}}_{j}}{N}\\)<br> where we sum over the number <i>N</i> of unit cells in the crystal and <i>m</i> is the mass of a unit cell. Because <i>Nm</i> = <i>M</i>, we can write<br> \\({\\mathbf{\\vec{r}}}_{\\text{CM}}=\\frac{m}{M}{\\sum}_{j=1}^{N}{\\vec{r}}_{j}=\\frac{Nm}{M}\\, \\frac{{\\sum}_{j=1}^{N}{\\vec{r}}_{j}}{N}=\\frac{1}{N}{\\sum}_{j=1}^{N}{\\vec{r}}_{j}.\\)<br> This is the definition of the geometric center of the crystal, so the center of mass is at the same point as the geometric center.</p>"
+    },
+    {
+     "q": "<p>How would the firework display change in deep space, far away from any source of gravity?</p>",
+     "a": "<p>The explosions would essentially be spherically symmetric, because gravity would not act to distort the trajectories of the expanding projectiles.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "An extended object (made up of many objects) has a defined position vector called the center of mass.",
+    "The center of mass can be thought of, loosely, as the average location of the total mass of the object.",
+    "The center of mass of an object traces out the trajectory dictated by Newton’s second law, due to the net external force.",
+    "The internal forces within an extended object cannot alter the momentum of the extended object as a whole."
+   ]
+  },
+  {
+   "num": "9.7",
+   "module": "m58324",
+   "title": "Rocket Propulsion",
+   "objectives": [
+    "Describe the application of conservation of momentum when the mass changes with time, as well as the velocity",
+    "Calculate the speed of a rocket in empty space, at some time, given initial conditions",
+    "Calculate the speed of a rocket in Earth’s gravity field, at some time, given initial conditions"
+   ],
+   "callouts": [
+    "\\Delta v=u\\, \\ln (\\frac{{m}_{0}}{m})",
+    "\\Delta v=u\\, \\ln (\\frac{{m}_{0}}{m})-g\\Delta t"
+   ],
+   "examples": [
+    {
+     "title": "Thrust on a Spacecraft",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A spacecraft is moving in gravity-free space along a straight path when its pilot decides to accelerate forward. He turns on the thrusters, and burned fuel is ejected at a constant rate of \\(2.0\\, \\times \\, {10}^{2}\\, \\text{kg/s}\\), at a speed (relative to the rocket) of \\(2.5\\, \\times \\, {10}^{2}\\, \\text{m/s}\\). The initial mass of the spacecraft and its unburned fuel is \\(2.0\\, \\times \\, {10}^{4}\\, \\text{kg}\\), and the thrusters are on for 30 s.</p><ol type='a'><li>What is the thrust (the force applied to the rocket by the ejected fuel) on the spacecraft?</li><li>What is the spacecraft’s acceleration as a function of time?</li><li>What are the spacecraft’s accelerations at <i>t</i> = 0, 15, 30, and 35 s?</li></ol>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<ol type='a'><li>The force on the spacecraft is equal to the rate of change of the momentum of the fuel.</li><li>Knowing the force from part (a), we can use Newton’s second law to calculate the consequent acceleration. The key here is that, although the force applied to the spacecraft is constant (the fuel is being ejected at a constant rate), the mass of the spacecraft isn’t; thus, the acceleration caused by the force won’t be constant. We expect to get a function <i>a</i>(<i>t</i>), therefore.</li><li>We’ll use the function we obtain in part (b), and just substitute the numbers given. Important: We expect that the acceleration will get larger as time goes on, since the mass being accelerated is continuously decreasing (fuel is being ejected from the rocket).</li></ol>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The momentum of the ejected fuel gas is <div class='eq'>\\[p={m}_{g}v.\\]</div> The ejection velocity \\(v=2.5\\, \\times \\, {10}^{2}\\text{m/s}\\) is constant, and therefore the force is <div class='eq'>\\[F=\\frac{dp}{dt}=v\\frac{d{m}_{g}}{dt}=-v\\frac{dm}{dt}.\\]</div> Now, \\(\\frac{d{m}_{g}}{dt}\\) is the rate of change of the mass of the fuel; the problem states that this is \\(2.0\\, \\times \\, {10}^{2}\\text{kg/s}\\). Substituting, we get <div class='eq'>\\[\\begin{array}{ll}F & =v\\frac{d{m}_{g}}{dt} \\\\ & =(2.5\\, \\times \\, {10}^{2}\\, \\frac{\\text{m}}{\\text{s}})(2.0\\, \\times \\, {10}^{2}\\, \\frac{\\text{kg}}{\\text{s}}) \\\\ & =5\\, \\times \\, {10}^{4}\\, \\text{N.}\\end{array}\\]</div></li><li>Above, we defined <i>m</i> to be the combined mass of the empty rocket plus however much unburned fuel it contained: \\(m={m}_{R}+{m}_{g}\\). From Newton’s second law, <div class='eq'>\\[a=\\frac{F}{m}=\\frac{F}{{m}_{R}+{m}_{g}}.\\]</div> The force is constant and the empty rocket mass \\({m}_{R}\\) is constant, but the fuel mass \\({m}_{g}\\) is decreasing at a uniform rate; specifically: <div class='eq'>\\[{m}_{g}={m}_{g}(t)={m}_{{g}_{0}}-(\\frac{d{m}_{g}}{dt})t.\\]</div> This gives us <div class='eq'>\\[a(t)=\\frac{F}{{m}_{{g}_{\\text{i}}}-(\\frac{d{m}_{g}}{dt})t}=\\frac{F}{M-(\\frac{d{m}_{g}}{dt})t}.\\]</div> Notice that, as expected, the acceleration is a function of time. Substituting the given numbers: <div class='eq'>\\[a(t)=\\frac{5\\, \\times \\, {10}^{4}\\, \\text{N}}{2.0\\, \\times \\, {10}^{4}\\, \\text{kg}-(2.0\\, \\times \\, {10}^{2}\\, \\frac{\\text{kg}}{\\text{s}})t}.\\]</div></li><li>At \\(t=0\\, \\text{s}\\): <div class='eq'>\\[a(0\\, \\text{s})=\\frac{5\\, \\times \\, {10}^{4}\\, \\text{N}}{2.0\\, \\times \\, {10}^{4}\\, \\text{kg}-(2.0\\, \\times \\, {10}^{2}\\, \\frac{\\text{kg}}{\\text{s}})(0\\, \\text{s})}=2.5\\frac{\\text{m}}{{\\text{s}}^{2}}.\\]</div> At \\(t=15\\, \\text{s},\\, a(15\\, \\text{s})={2.9\\, \\text{m/s}}^{2}\\).<br> At \\(t=30\\, \\text{s},\\, a(30\\, \\text{s})=3.6\\, {\\text{m/s}}^{2}\\).<br> Acceleration is increasing, as we expected.<br> At \\(t=35\\, \\text{s}\\) (and at any time after \\(t=30\\, \\text{s}\\)), the acceleration is \\(0\\, {\\text{m/s}}^{2}\\) since the thrusters stopped working and thus no external forces are acting on the spacecraft.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that the acceleration is not constant; as a result, any dynamical quantities must be calculated either using integrals, or (more easily) conservation of total energy.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>What is the physical difference (or relationship) between \\(\\frac{dm}{dt}\\) and \\(\\frac{d{m}_{g}}{dt}\\) in this example?</p>",
+     "a": "<p>The notation \\({m}_{g}\\) stands for the mass of the fuel and <i>m</i> stands for the mass of the rocket plus the initial mass of the fuel. Note that \\({m}_{g}\\) changes with time, so we write it as \\({m}_{g}(t)\\). Using \\({m}_{R}\\) as the mass of the rocket with no fuel, the total mass of the rocket plus fuel is \\(m={m}_{R}+{m}_{g}(t)\\). Differentiation with respect to time gives<br> \\(\\frac{dm}{dt}=\\frac{d{m}_{R}}{dt}+\\frac{d{m}_{g}(t)}{dt}=\\frac{d{m}_{g}(t)}{dt}\\)<br> where we used \\(\\frac{d{m}_{R}}{dt}=0\\) because the mass of the rocket does not change. Thus, time rate of change of the mass of the rocket is the same as that of the fuel.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A rocket is an example of conservation of momentum where the mass of the system is not constant, since the rocket ejects fuel to provide thrust.",
+    "The rocket equation gives us the change of velocity that the rocket obtains from burning a mass of fuel that decreases the total rocket mass."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_09_02_Airbag.jpg",
+  "CNX_UPhysics_09_02_Enterprise.jpg",
+  "CNX_UPhysics_09_02_ImpGraph.jpg",
+  "CNX_UPhysics_09_02_Meteor_img.jpg",
+  "CNX_UPhysics_09_02_Venus.jpg",
+  "CNX_UPhysics_09_02_iphone.jpg",
+  "CNX_UPhysics_09_03_HockeyPuck.jpg",
+  "CNX_UPhysics_09_03_Superball.jpg",
+  "CNX_UPhysics_09_03_ToyCarts.jpg",
+  "CNX_UPhysics_09_04_CollPuck.jpg",
+  "CNX_UPhysics_09_04_Deuteron_img.jpg",
+  "CNX_UPhysics_09_05_CarTruck.jpg",
+  "CNX_UPhysics_09_05_Ex1.jpg",
+  "CNX_UPhysics_09_05_Ex2_img.jpg",
+  "CNX_UPhysics_09_05_scubatank.jpg",
+  "CNX_UPhysics_09_06_Fireworks.jpg",
+  "CNX_UPhysics_09_06_NaCI.jpg",
+  "CNX_UPhysics_09_06_ThinHoop.jpg",
+  "CNX_UPhysics_09_06_cm_img.jpg",
+  "CNX_UPhysics_09_06_unitcell.jpg"
+ ]
+}
