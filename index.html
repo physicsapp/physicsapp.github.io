@@ -614,7 +614,8 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],toy:"elevator",eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],toy:"race",eqHint:"Search, for example “friction” or “drag”"},
   7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],eqHint:"Search, for example “spring” or “power”"},
-  8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],toy:"coaster",eqHint:"Search, for example “spring” or “force”"}};
+  8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],toy:"coaster",eqHint:"Search, for example “spring” or “force”"},
+  9:{eqSec:["9.1","9.2","9.2","9.2","9.2","9.3","9.3","9.5","9.6","9.6","9.6","9.6","9.6","9.6","9.7"],toy:"billiards",eqHint:"Search, for example “impulse” or “rocket”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
@@ -1157,6 +1158,34 @@ function cstSVG(have,label){
   </svg>`;
 }
 
+/* ---------- Chapter 9: billiards ----------
+   Top view of a 9 foot table in meters (2.54 by 1.27 playing surface), x to the right, y up.
+   bilRun steps every ball with rolling friction (constant deceleration a), cushion bounces (normal speed times BIL.e),
+   pockets, and elastic ball to ball collisions found at the exact moment of contact (so cut angles are exact).
+   Every shot starts with a 0.5 s cue stroke (BIL.ts) before the cue ball moves.
+   Mission 0: lag shot, pick the tip contact time so the cue ball stops against the far cushion, dt = mv/F (command).
+   Mission 1: a heavier bar cue ball hits the 8 ball head on, predict v2 = 2m1 v/(m1 + m2) (prediction, a ghost ball shows the guess).
+   Mission 2: cut shot with equal masses, predict the cue ball's angle, 90° − θ (prediction, a dashed line shows the guess).
+   makeBil redraws until every wrong choice misses by 2.5 tolerances. */
+const BIL={Lx:2.54,Ly:1.27,r:0.0286,pr:0.062,e:0.75,a:0.15,ts:0.5,m:0.17}, BIL_NAMES=["Lag shot","Heavy cue ball","Cut shot"];
+const BIL_POCKETS=[[0,0],[BIL.Lx/2,0],[BIL.Lx,0],[0,BIL.Ly],[BIL.Lx/2,BIL.Ly],[BIL.Lx,BIL.Ly]];
+const bilD=x=>x*180/Math.PI, bilR=x=>x*Math.PI/180;
+function billSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const R=(k,x,y,w,h,rx,fill)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2"`:off}/>`;
+  const C=(k,x,y,r,fill)=>`<circle cx="${x}" cy="${y}" r="${r}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.1"`:off}/>`;
+  const pk=[[27,23],[93,23],[27,88],[93,88],[27,153],[93,153]];
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${R(1,17,13,86,150,7,"#8a5a3c")}
+    ${R(0,27,23,66,130,2,"var(--turf)")}
+    ${pk.map(([x,y])=>C(2,x,y,4.6,"#1c1c1c")).join("")}
+    ${C(4,60,58,5,"#1c1c1c")}${on(4)?`<circle cx="60" cy="58" r="2" fill="#f4f1e8"/>`:""}
+    ${C(3,60,124,5,"#f4f1e8")}
+    ${on(6)?`<path d="M62 131 L84 172" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/><path d="M62 131 L84 172" stroke="#c9a46a" stroke-width="3" stroke-linecap="round"/><path d="M62.4 131.8 L64 134.8" stroke="var(--accent)" stroke-width="3"/>`:`<path d="M62 131 L84 172" ${off.replace('fill="none" ','')}/>`}
+    ${R(5,100,164,9,8,1.5,"var(--accent)")}
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1179,7 +1208,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} race car parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can race it."},
   coaster:{eyebrow:"The theme park",thing:"roller coaster",parts:["track","lift hill","car","loop","brakes"],svg:cstSVG,route:"coaster",
     ready:"Your roller coaster is ready",readyText:"Use energy to plan the ride, then ride it.",go:"Go to the theme park",
-    count:(n,t)=>`${n} of ${t} roller coaster parts`,wait:"Each plant that blooms adds a part. When all five bloom, you can ride it."}};
+    count:(n,t)=>`${n} of ${t} roller coaster parts`,wait:"Each plant that blooms adds a part. When all five bloom, you can ride it."},
+  billiards:{eyebrow:"The pool hall",thing:"pool table",parts:["slate bed","rails","pockets","cue ball","8 ball","chalk","cue stick"],svg:billSVG,route:"pool",
+    ready:"Your pool table is ready",readyText:"Use momentum to plan each shot, then take it.",go:"Go to the pool hall",
+    count:(n,t)=>`${n} of ${t} pool table parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can shoot pool."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -2506,6 +2538,192 @@ TOYS.coaster.game={title:"Ride the coaster",intro:"The car follows energy conser
   notReadyTitle:"The roller coaster isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the roller coaster. Bloom all five to ride it."};
 
 
+/* steps the balls; o: {balls:[{x,y,vx,vy,m,id}], start: time each ball's motion begins, ghost:(after first hit) speed, tMax} */
+function bilRun(o){
+  const dt=0.001,a=BIL.a,r=BIL.r,{Lx,Ly}=BIL,frames=[],B=o.balls.map(b=>Object.assign({on:true,sunk:null,cush:0,trail:[]},b));
+  let t=0,imp=null,ghost=null,sunkAt={};
+  const snap=()=>frames.push({t,b:B.map(b=>({x:b.x,y:b.y,on:b.on,v:Math.hypot(b.vx,b.vy)})),g:ghost?{x:ghost.x,y:ghost.y,on:ghost.on}:null});
+  const move=p=>{const s=Math.hypot(p.vx,p.vy);if(s<=a*dt){p.vx=p.vy=0;return;}
+    p.x+=p.vx*dt;p.y+=p.vy*dt;const k=(s-a*dt)/s;p.vx*=k;p.vy*=k;
+    for(const [px,py] of BIL_POCKETS)if(Math.hypot(p.x-px,p.y-py)<BIL.pr){p.on=false;p.vx=p.vy=0;p.sunk=[px,py];return;}
+    if(p.x<r){p.x=2*r-p.x;p.vx=-BIL.e*p.vx;p.cush++;}if(p.x>Lx-r){p.x=2*(Lx-r)-p.x;p.vx=-BIL.e*p.vx;p.cush++;}
+    if(p.y<r){p.y=2*r-p.y;p.vy=-BIL.e*p.vy;p.cush++;}if(p.y>Ly-r){p.y=2*(Ly-r)-p.y;p.vy=-BIL.e*p.vy;p.cush++;}};
+  snap();
+  for(let i=1;t<o.tMax;i++){
+    t=i*dt;
+    const live=B.filter(b=>b.on&&t>(b.start||0));
+    const old=live.map(b=>({x:b.x,y:b.y}));
+    live.forEach(move);if(ghost&&ghost.on)move(ghost);
+    /* exact contact: back up to where the centers are 2r apart, swap momentum along the line of centers, finish the step */
+    for(let p=0;p<live.length;p++)for(let q=p+1;q<live.length;q++){
+      const A=live[p],C=live[q];if(!A.on||!C.on)continue;
+      const dx=C.x-A.x,dy=C.y-A.y;if(dx*dx+dy*dy>=4*r*r)continue;
+      const ox=old[q].x-old[p].x,oy=old[q].y-old[p].y,ux=dx-ox,uy=dy-oy;
+      const qa=ux*ux+uy*uy,qb=2*(ox*ux+oy*uy),qc=ox*ox+oy*oy-4*r*r;let f=qa>0?(-qb-Math.sqrt(Math.max(0,qb*qb-4*qa*qc)))/(2*qa):0;f=Math.max(0,Math.min(1,f));
+      A.x=old[p].x+(A.x-old[p].x)*f;A.y=old[p].y+(A.y-old[p].y)*f;C.x=old[q].x+(C.x-old[q].x)*f;C.y=old[q].y+(C.y-old[q].y)*f;
+      const d=Math.hypot(C.x-A.x,C.y-A.y),nx=(C.x-A.x)/d,ny=(C.y-A.y)/d,vn=(A.vx-C.vx)*nx+(A.vy-C.vy)*ny;
+      if(vn>0){const J=2*vn/(1/A.m+1/C.m);A.vx-=J/A.m*nx;A.vy-=J/A.m*ny;C.vx+=J/C.m*nx;C.vy+=J/C.m*ny;
+        if(!imp){imp={t,x:C.x,y:C.y,cx:A.x,cy:A.y,v1:{x:A.vx,y:A.vy},v2:{x:C.vx,y:C.vy}};
+          if(o.ghost!=null){const s=Math.hypot(C.vx,C.vy);ghost={x:C.x,y:C.y,vx:C.vx/s*o.ghost,vy:C.vy/s*o.ghost,on:true,cush:0};}}}
+      const rest=(1-f)*dt;A.x+=A.vx*rest;A.y+=A.vy*rest;C.x+=C.vx*rest;C.y+=C.vy*rest;}
+    for(const b of B)if(!b.on&&b.sunk&&!(b.id in sunkAt))sunkAt[b.id]=t;
+    if(i%20===0)snap();
+    const moving=B.some(b=>b.on&&(t<=(b.start||0)||b.vx||b.vy))||(ghost&&ghost.on&&(ghost.vx||ghost.vy));
+    if(!moving)break;
+  }
+  snap();
+  return{frames,tEnd:t,balls:B,imp,ghost,sunkAt};
+}
+function bilFrame(F,t){const fr=F.frames;if(t>=F.tEnd)return fr[fr.length-1];let lo=0,hi=fr.length-1;while(hi-lo>1){const m=(lo+hi)>>1;if(fr[m].t<=t)lo=m;else hi=m;}
+  const a=fr[lo],b=fr[hi],u=b.t>a.t?(t-a.t)/(b.t-a.t):0,mix=(p,q)=>({x:p.x+(q.x-p.x)*u,y:p.y+(q.y-p.y)*u,on:q.on,v:p.v!=null?p.v+(q.v-p.v)*u:null});
+  return{t,b:a.b.map((p,i)=>mix(p,b.b[i])),g:a.g&&b.g?mix(a.g,b.g):b.g||a.g};}
+const bilTol=m=>m.kind===0?0.04:m.kind===1?0.03*m.v2:2;
+const bilFmt=x=>fmtNum(x);
+function bilDraft(k){
+  const {Lx,Ly,r}=BIL;
+  if(k===0){
+    const F=pickOne([100,150,200,250,300]),v=pickOne([1.2,1.4,1.5,1.6,1.8]),m=BIL.m,dt=m*v/F,x0=0.64,d=Lx-r-x0;
+    const ms=x=>`${bilFmt(x*1000)} ms`;
+    const ch=[{dt,ok:true},
+      {dt:2*m*v/F,fb:"The ball starts at rest and doesn't bounce off the cue, so \\(\\Delta p = mv\\), not \\(2mv\\)."},
+      {dt:m*v/(2*F),fb:"With an average force the impulse is just \\(F\\Delta t\\), a rectangle on a force graph. There's no \\(\\tfrac12\\)."},
+      {dt:v/F,fb:"The impulse equals the change in momentum, \\(mv\\). Don't leave out the cue ball's mass."}];
+    ch.forEach(c=>{c.t=ms(c.dt);c.plain=c.t;});
+    return{kind:0,F,v,m,dt,x0,d,a:v*v/(2*d),choices:dedupe(ch),
+      q:`Lag shot: the \\(${m}\\ \\text{kg}\\) cue ball sits behind the head string. To roll up and stop right against the far cushion, it must leave the cue at \\(${v}\\ \\text{m/s}\\). The cue tip pushes on it with an average force of \\(${F}\\ \\text{N}\\). How long must the tip stay in contact with the ball?`,
+      work:`\\begin{aligned}F\\Delta t&=\\Delta p=mv\\\\\\Delta t&=\\frac{mv}{F}=\\frac{(${m})(${v})}{${F}}\\\\&=${bilFmt(dt*1000)}\\times10^{-3}\\ \\text{s}\\end{aligned}`,
+      after:"A real cue tip touches the ball for only about a millisecond. That short time is why the average force is so large."};
+  }
+  if(k===1){
+    const m1=pickOne([0.20,0.21,0.22]),m2=pickOne([0.16,0.17]),v=pickOne([1.5,2,2.5,3]);
+    const v2=2*m1*v/(m1+m2),v1f=(m1-m2)*v/(m1+m2);
+    if(v1f*v1f/(2*BIL.a)>0.42)return null;/* keep the follow from rolling into the pocket after the 8 ball */
+    const ch=[{v:v2,ok:true},
+      {v:v,fb:"The balls trade speeds only when their masses are equal. Here the cue ball is heavier."},
+      {v:m1*v/(m1+m2),fb:"That's the speed if the balls stuck together. Pool balls bounce apart elastically."},
+      {v:m1*v/m2,fb:"That assumes the cue ball stops dead, which only happens for equal masses. It keeps a little speed here."}];
+    ch.forEach(c=>{c.t=`${bilFmt(c.v)} m/s`;c.plain=c.t;});
+    const ang=bilR(pickOne([22,26,30,34])),D=0.72,ux=Math.cos(ang),uy=Math.sin(ang);
+    const O={x:Lx-D*ux,y:Ly-D*uy},C0={x:O.x-0.62*ux,y:O.y-0.62*uy};
+    return{kind:1,m1,m2,v,v2,v1f,ux,uy,O,C0,choices:dedupe(ch),
+      q:`Some bar tables use a heavier cue ball. A \\(${m1}\\ \\text{kg}\\) cue ball hits a \\(${m2}\\ \\text{kg}\\) 8 ball at rest head on, moving at \\(${v}\\ \\text{m/s}\\). Treat the collision as elastic. How fast does the 8 ball leave?`,
+      work:`\\begin{aligned}v_{2f}&=\\frac{2m_1}{m_1+m_2}\\,v_{1i}\\\\&=\\frac{2(${m1})}{${m1}+${m2}}(${v})\\\\&=${bilFmt(v2)}\\ \\text{m/s}\\end{aligned}`,
+      after:`The heavier cue ball keeps a little speed, \\(${bilFmt(v1f)}\\ \\text{m/s}\\), and follows the 8 ball forward. With equal masses it would stop dead.`};
+  }
+  const th=pickOne([20,25,30,35,55,60,65,70]),v=pickOne([2,2.5,3]),D=0.75;
+  const ux=Math.cos(bilR(th)),uy=Math.sin(bilR(th));
+  const O={x:Lx-D*ux,y:Ly-D*uy},Ci={x:O.x-2*r*ux,y:O.y-2*r*uy},C0={x:Ci.x-0.7,y:Ci.y};
+  const ch=[{a:90-th,ok:true},
+    {a:th,fb:"The two angles are equal only for a half ball hit at 45°. In general they add up to 90°."},
+    {a:45,fb:"The angles add up to 90°, but they split evenly only when the 8 ball leaves at 45°."},
+    {a:90,fb:"The cue ball goes off at 90° to the 8 ball's path, not to its own original path."}];
+  ch.forEach(c=>{c.t=`\\(${c.a}^\\circ\\)`;c.plain=`${c.a}°`;});
+  return{kind:2,th,v,O,Ci,C0,ux,uy,choices:dedupe(ch),
+    q:`You cut the 8 ball into the corner pocket. To go in, the 8 ball must leave at \\(${th}^\\circ\\) from the cue ball's path. Treat the hit as an elastic collision of equal masses, with the 8 ball at rest. At what angle from its original path, on the other side, does the cue ball go off?`,
+    work:`\\begin{aligned}\\theta_1+\\theta_2&=90^\\circ\\\\\\theta_\\text{cue}&=90^\\circ-${th}^\\circ=${90-th}^\\circ\\end{aligned}`,
+    after:`The 8 ball leaves at \\(v\\cos${th}^\\circ = ${bilFmt(v*ux)}\\ \\text{m/s}\\) and the cue ball at \\(v\\sin${th}^\\circ = ${bilFmt(v*uy)}\\ \\text{m/s}\\). Their momenta add up to the cue ball's original momentum, like the sides of a right triangle.`};
+}
+function bilSim(m,c){
+  const {r,ts}=BIL;
+  if(m.kind===0){
+    const vs=c?m.F*c.dt/m.m:0;/* speed the ball leaves with, from F dt = m v */
+    const save=BIL.a;BIL.a=m.a;
+    const R=bilRun({balls:[{id:"cue",x:m.x0,y:BIL.Ly/2,vx:vs,vy:0,m:m.m,start:ts}],tMax:40});BIL.a=save;
+    const cb=R.balls[0],gap=BIL.Lx-r-cb.x;
+    return Object.assign(R,{vs,stopX:cb.x,gap,bounced:cb.cush>0,miss:Math.abs(gap),hit:Math.abs(gap)<=bilTol(m)});}
+  if(m.kind===1){
+    const dA=0.62-2*r,v0=Math.sqrt(m.v*m.v+2*BIL.a*dA);
+    const R=bilRun({balls:[{id:"cue",x:m.C0.x,y:m.C0.y,vx:v0*m.ux,vy:v0*m.uy,m:m.m1,start:ts},{id:"eight",x:m.O.x,y:m.O.y,vx:0,vy:0,m:m.m2}],ghost:c?c.v:m.v2,tMax:40});
+    const g=c?c.v:m.v2;
+    return Object.assign(R,{guess:g,miss:Math.abs(g-m.v2),hit:Math.abs(g-m.v2)<=bilTol(m),scratch:!R.balls[0].on});}
+  const dA=0.7,v0=Math.sqrt(m.v*m.v+2*BIL.a*dA);
+  const R=bilRun({balls:[{id:"cue",x:m.C0.x,y:m.C0.y,vx:v0,vy:0,m:BIL.m,start:ts},{id:"eight",x:m.O.x,y:m.O.y,vx:0,vy:0,m:BIL.m}],tMax:40});
+  const h=R.imp,cueAng=h?-bilD(Math.atan2(h.v1.y,h.v1.x)):NaN,eightAng=h?bilD(Math.atan2(h.v2.y,h.v2.x)):NaN,g=c?c.a:90-m.th;
+  return Object.assign(R,{cueAng,eightAng,guess:g,miss:Math.abs(g-cueAng),hit:Math.abs(g-cueAng)<=bilTol(m),scratch:!R.balls[0].on,sunk8:!R.balls[1].on});
+}
+function makeBil(k){
+  for(let tries=0;tries<500;tries++){
+    const m=bilDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=bilTol(m);
+    if(m.kind===2&&bilSim(m,null).scratch)continue;/* keep the true cue ball path out of the pockets */
+    if(!m.choices.every(c=>c.ok||(m.kind===0?bilSim(m,c).miss:m.kind===1?Math.abs(c.v-m.v2):Math.abs(c.a-(90-m.th)))>=2.5*tol))continue;
+    return m;}
+}
+function drawBil(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre;
+  const {Lx,Ly,r}=BIL,rail=0.09,top=70,bot=H-16;
+  const sc=Math.min((W-24)/(Lx+2*rail),(bot-top)/(Ly+2*rail)),tw=(Lx+2*rail)*sc,th=(Ly+2*rail)*sc;
+  const ox=(W-tw)/2+rail*sc,oy=top+(bot-top-th)/2+rail*sc+Ly*sc;
+  const X=x=>ox+x*sc,Y=y=>oy-y*sc,rb=Math.max(4.5,r*sc);
+  /* table: rails, felt, head string, pockets */
+  ctx.fillStyle="#8a5a3c";ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.roundRect?ctx.roundRect(X(-rail),Y(Ly+rail),tw,th,8):ctx.rect(X(-rail),Y(Ly+rail),tw,th);ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--turf")||"#4a7d4a";ctx.fillRect(X(0),Y(Ly),Lx*sc,Ly*sc);
+  ctx.fillStyle="rgba(255,255,255,.5)";for(const [x,y] of [[Lx/4,0],[Lx/4,Ly],[Lx/2,0],[Lx/2,Ly],[3*Lx/4,0],[3*Lx/4,Ly]]){ctx.beginPath();ctx.arc(X(x),Y(y)+(y?-rail*sc/2:rail*sc/2),1.6,0,7);ctx.fill();}
+  ctx.strokeStyle="rgba(255,255,255,.28)";ctx.lineWidth=1;ctx.setLineDash([3,4]);ctx.beginPath();ctx.moveTo(X(Lx/4),Y(0));ctx.lineTo(X(Lx/4),Y(Ly));ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle="#141414";for(const [x,y] of BIL_POCKETS){ctx.beginPath();ctx.arc(X(x),Y(y),Math.max(7,BIL.pr*sc),0,7);ctx.fill();}
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  const fr=pre?bilFrame(F,0):bilFrame(F,t);
+  /* mission marks */
+  if(m.kind===0){const x1=X(Lx-r-bilTol(m)-r),x2=X(Lx);ctx.fillStyle=col("--accent");ctx.globalAlpha=.35;ctx.fillRect(x1,Y(Ly/2)-14,x2-x1,28);ctx.globalAlpha=1;
+    ctx.fillStyle="#f4f1e8";ctx.textAlign="right";ctx.fillText("stop here",x1-4,Y(Ly/2)-20);}
+  if(m.kind===2&&c){const a=bilR(-c.a),L=0.9;ctx.strokeStyle="#f4f1e8";ctx.lineWidth=1.6;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(X(m.Ci.x),Y(m.Ci.y));ctx.lineTo(X(m.Ci.x+L*Math.cos(a)),Y(m.Ci.y+L*Math.sin(a)));ctx.stroke();ctx.setLineDash([]);
+    const lx=X(m.Ci.x+0.45*Math.cos(a)),ly=Y(m.Ci.y+0.45*Math.sin(a));ctx.fillStyle="#f4f1e8";ctx.textAlign="right";ctx.fillText(`your ${c.plain}`,lx-6,ly);}
+  if(m.kind===2){/* the 8 ball's line to the pocket */
+    ctx.strokeStyle="rgba(255,255,255,.35)";ctx.lineWidth=1;ctx.setLineDash([2,4]);ctx.beginPath();ctx.moveTo(X(m.O.x),Y(m.O.y));ctx.lineTo(X(Lx),Y(Ly));ctx.stroke();ctx.setLineDash([]);}
+  /* trails so far */
+  if(!pre){ctx.lineWidth=1.4;
+    for(let i=0;i<fr.b.length;i++){ctx.strokeStyle=i?"rgba(20,20,20,.45)":"rgba(255,255,255,.55)";ctx.beginPath();let first=true;
+      for(const f of F.frames){if(f.t>t)break;const p=f.b[i];if(!p.on)break;first?ctx.moveTo(X(p.x),Y(p.y)):ctx.lineTo(X(p.x),Y(p.y));first=false;}
+      if(fr.b[i].on)ctx.lineTo(X(fr.b[i].x),Y(fr.b[i].y));ctx.stroke();}}
+  /* the ghost of the student's guess (mission 1) */
+  if(fr.g&&fr.g.on){ctx.strokeStyle="#f4f1e8";ctx.lineWidth=1.4;ctx.setLineDash([3,2]);ctx.beginPath();ctx.arc(X(fr.g.x),Y(fr.g.y),rb,0,7);ctx.stroke();ctx.setLineDash([]);}
+  /* balls */
+  fr.b.forEach((p,i)=>{if(!p.on)return;ctx.beginPath();ctx.arc(X(p.x),Y(p.y),rb,0,7);ctx.fillStyle=i?"#1c1c1c":"#f4f1e8";ctx.fill();ctx.strokeStyle="#333";ctx.lineWidth=1;ctx.stroke();
+    if(i){ctx.fillStyle="#f4f1e8";ctx.beginPath();ctx.arc(X(p.x),Y(p.y),rb*0.45,0,7);ctx.fill();}});
+  /* the cue stroke during the first BIL.ts seconds */
+  const tt=pre?0:t;
+  if(tt<BIL.ts+0.15){const s=F.frames[0].b[0],dir=m.kind===0?0:m.kind===1?Math.atan2(m.uy,m.ux):0;
+    const u=tt/BIL.ts,gap=pre?0.08:u<0.5?0.04+0.24*u:u<1?0.16*(2-2*u):0.004;
+    const ux=Math.cos(dir),uy=Math.sin(dir),tx=s.x-ux*(r+gap),ty=s.y-uy*(r+gap),L=0.9;
+    ctx.lineCap="round";ctx.strokeStyle=col("--ink");ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(X(tx),Y(ty));ctx.lineTo(X(tx-ux*L),Y(ty-uy*L));ctx.stroke();
+    ctx.strokeStyle="#c9a46a";ctx.lineWidth=4;ctx.stroke();ctx.strokeStyle=col("--accent");ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(X(tx),Y(ty));ctx.lineTo(X(tx-ux*0.025),Y(ty-uy*0.025));ctx.stroke();ctx.lineCap="butt";}
+  /* readouts */
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  const cb=fr.b[0];
+  if(m.kind===0){ctx.fillText(`v = ${bilFmt(cb.v||0)} m/s   gap to cushion = ${Math.max(0,Lx-r-cb.x).toFixed(2)} m`,12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.plain}, so v = ${bilFmt(F.vs)} m/s`,12,30);}}
+  if(m.kind===1){const after=F.imp&&tt>=F.imp.t;
+    ctx.fillText(after?`cue ${bilFmt(cb.v||0)} m/s   8 ball ${fr.b[1].on?bilFmt(fr.b[1].v||0)+" m/s":"in the pocket"}`:`cue ${bilFmt(tt<BIL.ts?0:cb.v||0)} m/s   8 ball at rest`,12,14);
+    if(c){ctx.fillStyle=col("--accent");ctx.fillText(`your 8 ball speed: ${c.plain} (dashed ghost)`,12,30);}
+    if(after){ctx.fillStyle=col("--muted");ctx.fillText(`8 ball left at ${bilFmt(m.v2)} m/s`,12,46);}}
+  if(m.kind===2){const after=F.imp&&tt>=F.imp.t;
+    ctx.fillText(after?`8 ball off at ${bilFmt(F.eightAng)}°   cue off at ${bilFmt(F.cueAng)}°`:`cue ${bilFmt(tt<BIL.ts?0:cb.v||0)} m/s toward the 8 ball`,12,14);
+    if(c){ctx.fillStyle=col("--accent");ctx.fillText(`your cue ball angle: ${c.plain}`,12,30);}}
+  if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.fillStyle=col(F.hit?"--good":"--bad");let s;
+    if(m.kind===0)s=F.hit?"A perfect lag":F.bounced?`Bounced back, stopped ${bilFmt(F.gap)} m away`:`Stopped ${bilFmt(F.gap)} m short`;
+    else if(m.kind===1)s=F.hit?"Spot on":`Off by ${bilFmt(F.miss)} m/s`;
+    else s=F.hit?"Spot on":`Off by ${bilFmt(F.miss)}°`;
+    if(m.kind>0&&F.scratch)s+=", scratch!";
+    ctx.fillText(s,12,m.kind===1?62:46);ctx.font="11px 'IBM Plex Mono', monospace";}
+}
+TOYS.billiards.game={title:"Shoot pool",intro:"The balls follow momentum and energy exactly. Get the physics right and the shot goes just as planned.",
+  names:BIL_NAMES,make:makeBil,ms:m=>m.kind===0?4800:4200,
+  sim:m=>bilSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawBil,
+  outcome:(F,m)=>{
+    const sc=F.scratch?" The cue ball also dropped into a pocket: a scratch!":"";
+    if(m.kind===0){if(F.hit)return "The cue ball rolled up and stopped right against the far cushion.";
+      if(F.bounced)return `The cue ball left at ${bilFmt(F.vs)} m/s, hit the far cushion, and bounced back, stopping ${bilFmt(F.gap)} m from it.`;
+      return `The cue ball left at only ${bilFmt(F.vs)} m/s and stopped ${bilFmt(F.gap)} m short of the far cushion.`;}
+    if(m.kind===1)return (F.hit?`The 8 ball left at ${bilFmt(m.v2)} m/s, just as you said, and dropped in.`:`The 8 ball left at ${bilFmt(m.v2)} m/s, not ${bilFmt(F.guess)} m/s. The dashed ghost ball shows your answer.`)+sc;
+    return (F.hit?`The cue ball went off at ${bilFmt(F.cueAng)}°, just as you said, while the 8 ball dropped in.`:`The cue ball went off at ${bilFmt(F.cueAng)}°, not ${bilFmt(F.guess)}°. The dashed line shows your answer.`)+sc;},
+  right:"Spot on!",go:"Shoot",pickFirst:"Pick an answer to shoot",again:"Shoot again with new numbers",cvLabel:"Pool table",
+  notReadyTitle:"The pool table isn't set up yet",notReady:"Each plant in your garden that blooms adds a part to the pool table. Bloom all seven to shoot pool."};
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -2569,7 +2787,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="10/31b";
+const APP_VERSION="10/31c";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -2959,7 +3177,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
