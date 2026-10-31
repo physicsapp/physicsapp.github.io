@@ -270,6 +270,11 @@ a.chip[aria-current="page"]{background:var(--ink);color:var(--paper);border-colo
 .flightwrap canvas{display:block;width:100%;height:340px}
 .chip[disabled]{opacity:.45;cursor:default}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.chnav{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:stretch}
+.chnav .btn{padding-left:8px;padding-right:8px;white-space:nowrap}
+.chnav .prev,.chnav .next{flex-direction:column;gap:0;line-height:1.2;font-size:.9rem}
+.chnav small{font-size:.75rem;color:var(--muted);font-weight:400}
+.chnav .prev{justify-self:start}.chnav .next{justify-self:end}
 </style>
 
 <header class="top"><div class="wrap">
@@ -330,25 +335,25 @@ function hashStr(s){let h=2166136261;for(const c of s){h^=c.codePointAt(0);h=Mat
 function parsePlot(spec){
   if(!spec)throw new Error('GRAPH needs a "Plot:" line');
   const parts=spec.split(";").map(s=>s.trim()).filter(Boolean);
-  const m=parts[0].match(/^([A-Za-z])\s*(?:\(\s*t\s*\))?\s*=\s*(.+)$/);
+  const m=parts[0].match(/^([A-Za-zωθατ])\s*(?:\(\s*t\s*\))?\s*=\s*(.+)$/);
   if(!m)throw new Error(`Plot: should start like "x = 4*t - t^2"`);
-  const p={name:m[1],expr:m[2],t0:0,t1:4,y0:null,y1:null,unit:{x:"m",y:"m",v:"m/s",a:"m/s²",F:"N",P:"W",K:"J",W:"J",U:"J",E:"J"}[m[1]]||"",h:"t"};
+  const p={name:m[1],expr:m[2],t0:0,t1:4,y0:null,y1:null,unit:{x:"m",y:"m",v:"m/s",a:"m/s²",F:"N",P:"W",K:"J",W:"J",U:"J",E:"J","ω":"rad/s","θ":"rad","α":"rad/s²","τ":"N·m"}[m[1]]||"",h:"t"};
   for(const part of parts.slice(1)){
     let r;
-    if((r=part.match(/^([tx])\s+from\s+(.+?)\s+to\s+(.+)$/))){p.h=r[1];p.t0=evalExpr(r[2],{});p.t1=evalExpr(r[3],{});}
+    if((r=part.match(/^([txθ])\s+from\s+(.+?)\s+to\s+(.+)$/))){p.h=r[1];p.t0=evalExpr(r[2],{});p.t1=evalExpr(r[3],{});}
     else if((r=part.match(/^y\s+from\s+(.+?)\s+to\s+(.+)$/i))){p.y0=evalExpr(r[1],{});p.y1=evalExpr(r[2],{});}
     else if((r=part.match(/^unit\s+(.+)$/i))){p.unit=r[1].trim();}
     else throw new Error(`Plot: "${part}" isn't understood. Use "t from 0 to 4" (or "x from 0 to 4" for a position axis), "y from 0 to 5", or "unit m/s"`);
   }
   if(!(p.t1>p.t0))throw new Error("Plot: the t range should go from low to high");
   let lo=Infinity,hi=-Infinity;
-  for(let i=0;i<=60;i++){const t=p.t0+(p.t1-p.t0)*i/60;const y=evalExpr(p.expr,{t,x:t});if(!isFinite(y))throw new Error(`Plot: the formula isn't a number at ${p.h} = ${clean(t)}`);lo=Math.min(lo,y);hi=Math.max(hi,y);}
+  for(let i=0;i<=60;i++){const t=p.t0+(p.t1-p.t0)*i/60;const y=evalExpr(p.expr,{t,x:t,th:t});if(!isFinite(y))throw new Error(`Plot: the formula isn't a number at ${p.h} = ${clean(t)}`);lo=Math.min(lo,y);hi=Math.max(hi,y);}
   if(p.y0==null){const pad=(hi-lo)*0.1||1;p.y0=Math.min(0,lo-pad);p.y1=hi+pad;}
   if(!(p.y1>p.y0))throw new Error("Plot: the y range should go from low to high");
   return p;
 }
 function parseTap(s,plot){
-  const m=s.match(/^\s*[tx]\s*=\s*(.+?)(?:\s+within\s+(.+))?\s*$/i);
+  const m=s.match(/^\s*[txθ]\s*=\s*(.+?)(?:\s+within\s+(.+))?\s*$/i);
   if(!m)throw new Error('Tap: should look like "t = 2" or "t = 1, 3 within 0.3"');
   const ts=m[1].split(",").map(x=>evalExpr(x,{}));
   const tol=m[2]?evalExpr(m[2],{}):0.08*(plot.t1-plot.t0);
@@ -613,9 +618,10 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",toy:"catapult"},
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],toy:"elevator",eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],toy:"race",eqHint:"Search, for example “friction” or “drag”"},
-  7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],eqHint:"Search, for example “spring” or “power”"},
+  7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],toy:"curling",eqHint:"Search, for example “spring” or “power”"},
   8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],toy:"coaster",eqHint:"Search, for example “spring” or “force”"},
-  9:{eqSec:["9.1","9.2","9.2","9.2","9.2","9.3","9.3","9.5","9.6","9.6","9.6","9.6","9.6","9.6","9.7"],toy:"billiards",eqHint:"Search, for example “impulse” or “rocket”"}};
+  9:{eqSec:["9.1","9.2","9.2","9.2","9.2","9.3","9.3","9.5","9.6","9.6","9.6","9.6","9.6","9.6","9.7"],toy:"billiards",eqHint:"Search, for example “impulse” or “rocket”"},
+  10:{eqSec:["10.1","10.1","10.1","10.1","10.1","10.2","10.2","10.2","10.2","10.2","10.3","10.4","10.4","10.4","10.5","10.5","10.5","10.6","10.6","10.6","10.7","10.8","10.8","10.8","10.8"],eqHint:"Search, for example “torque” or “inertia”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
@@ -662,7 +668,7 @@ const P=x=>"("+sig(x)+")";
 const r=(lo,hi,st)=>Math.round((lo+Math.floor(Math.random()*(Math.round((hi-lo)/st)+1))*st)*1000)/1000;
 
 /* ---------- views ---------- */
-for(const n of [1,2,4,5,6,7,8,9])if(CHX[n]&&!CHX[n].hero)CHX[n].hero=()=>heroFor(n);
+for(const n of [1,2,4,5,6,7,8,9,10])if(CHX[n]&&!CHX[n].hero)CHX[n].hero=()=>heroFor(n);
 function heroGraph(){
   // x = t^2 (a = 2 m/s^2 from rest), t from 0 to 4 s, x from 0 to 16 m, drawn to scale
   const X=t=>30+t*25, Y=x=>96-x*5;
@@ -726,6 +732,15 @@ function heroFor(n){
       <text x="8" y="66">after</text><line x1="8" y1="96" x2="132" y2="96" stroke="var(--grid-line)"/>
       ${ball(58,86,9,"var(--accent)")}${A(69,86,80,86)}${ball(104,86,7,"var(--muted)")}${A(113,86,136,86)}
       <text x="70" y="116" text-anchor="middle">total p stays the same</text>`);}
+  if(n===10){const cx=56,cy=60,R=34,a=-40*Math.PI/180,px=cx+R*Math.cos(a),py=cy+R*Math.sin(a),sp=[];
+    for(let k=0;k<6;k++){const b=k*Math.PI/3+0.3;sp.push(`<line x1="${cx}" y1="${cy}" x2="${(cx+R*Math.cos(b)).toFixed(1)}" y2="${(cy+R*Math.sin(b)).toFixed(1)}" stroke="var(--muted)" stroke-width="1"/>`);}
+    const arc=(r,a0,a1)=>`M${(cx+r*Math.cos(a0)).toFixed(1)} ${(cy+r*Math.sin(a0)).toFixed(1)} A${r} ${r} 0 0 0 ${(cx+r*Math.cos(a1)).toFixed(1)} ${(cy+r*Math.sin(a1)).toFixed(1)}`;
+    const e1=205*Math.PI/180,e0=125*Math.PI/180,ex=cx+46*Math.cos(e0),ey=cy+46*Math.sin(e0);
+    return svg("A wheel on a fixed axle: a force at the rim, at a right angle to the radius, makes a torque that spins it counterclockwise",`${sp.join("")}<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--ink)" stroke-width="2.4"/><circle cx="${cx}" cy="${cy}" r="3" fill="var(--ink)"/>
+      <line x1="${cx}" y1="${cy}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="var(--ink)" stroke-width="1.6"/><text x="${(cx+14).toFixed(1)}" y="${(cy-2).toFixed(1)}" fill="var(--ink)">r</text>
+      ${A(px,py,px+30*Math.sin(a),py-30*Math.cos(a),"var(--accent)",2.4)}<text x="${(px-14).toFixed(1)}" y="${(py-24).toFixed(1)}" fill="var(--accent)">F</text>
+      <path d="${arc(46,e1,e0+0.2)}" fill="none" stroke="var(--muted)" stroke-width="1.5"/>${A(cx+46*Math.cos(e0+0.25),cy+46*Math.sin(e0+0.25),ex,ey,"var(--muted)",1.5)}<text x="2" y="62">ω</text>
+      <text x="70" y="114" text-anchor="middle">τ = rF sin θ</text>`);}
   return "";
 }
 
@@ -748,9 +763,11 @@ function renderLearn(){
       <span class="t">${esc(s.title)}<span class="meta" style="display:block">${classDates(s.num,true)?`In class ${classDates(s.num,true)} · `:""}${s.examples.length} worked example${s.examples.length===1?"":"s"} · ${secItems(s.num).length} review items</span></span>
       <span class="chev" aria-hidden="true">›</span></a>`).join("")}
   </nav>
-  <div class="row">
-    <a class="btn" href="${H("review")}">Open your garden</a>
-  </div>
+  <nav class="chnav" aria-label="Other chapters">
+    ${CHAPTERS.some(c=>c[0]===CH-1)?`<a class="btn quiet prev" href="#ch${CH-1}" aria-label="Previous: Chapter ${CH-1}, ${esc(chTitle(CH-1))}"><small>‹ Previous</small>Chapter ${CH-1}</a>`:"<span></span>"}
+    <a class="btn mid" href="${H("review")}">Open your garden</a>
+    ${CHAPTERS.some(c=>c[0]===CH+1)?`<a class="btn quiet next" href="#ch${CH+1}" aria-label="Next: Chapter ${CH+1}, ${esc(chTitle(CH+1))}"><small>Next ›</small>Chapter ${CH+1}</a>`:"<span></span>"}
+  </nav>
   ${attrib()}`;
 }
 function attrib(){return `<p class="attrib">Adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="${D.licenseUrl}" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">What changed</a></p>`;}
@@ -1240,6 +1257,18 @@ function billSVG(have,label){
   </svg>`;
 }
 
+function curlSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const ring=(r,fill)=>`<circle cx="60" cy="44" r="${r}" ${on(1)?`fill="${fill}"`:'fill="none"'} stroke="${on(1)?"var(--ink)":"var(--rule)"}" stroke-width="${on(1)?0.8:1.5}" ${on(1)?"":'stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    <rect x="30" y="8" width="60" height="160" rx="2" ${on(0)?'fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="1.2"':off}/>
+    ${on(0)?'<line x1="30" y1="112" x2="90" y2="112" stroke="var(--muted)" stroke-dasharray="3 3"/>':""}
+    ${ring(24,"var(--petal-5)")}${ring(16,"var(--paper)")}${ring(8,"var(--petal-1)")}${ring(2.5,"var(--paper)")}
+    ${on(2)?'<circle cx="60" cy="140" r="9" fill="#8d949b" stroke="var(--ink)" stroke-width="1.2"/><rect x="56" y="134" width="8" height="12" rx="2" fill="var(--accent)" stroke="var(--ink)" stroke-width=".8"/>':`<circle cx="60" cy="140" r="9" ${off}/>`}
+    ${on(3)?'<path d="M100 172 L84 96" stroke="var(--ink)" stroke-width="3.6" stroke-linecap="round"/><path d="M100 172 L84 96" stroke="#c9a46a" stroke-width="2" stroke-linecap="round"/><rect x="74" y="86" width="20" height="9" rx="2" transform="rotate(-12 84 90)" fill="var(--petal-1)" stroke="var(--ink)" stroke-width="1"/>':`<path d="M100 172 L84 96" ${off}/>`}
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1265,7 +1294,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} roller coaster parts`,wait:"Each plant that blooms adds a part. When all five bloom, you can ride it."},
   billiards:{eyebrow:"The pool hall",thing:"pool table",parts:["slate bed","rails","pockets","cue ball","8 ball","chalk","cue stick"],svg:billSVG,route:"pool",
     ready:"Your pool table is ready",readyText:"Use momentum to plan each shot, then take it.",go:"Go to the pool hall",
-    count:(n,t)=>`${n} of ${t} pool table parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can shoot pool."}};
+    count:(n,t)=>`${n} of ${t} pool table parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can shoot pool."},
+  curling:{eyebrow:"The curling rink",thing:"curling set",parts:["ice sheet","house","stone","broom"],svg:curlSVG,route:"curl",
+    ready:"Your curling set is ready",readyText:"Use work and energy to plan each throw, then throw it.",go:"Go to the rink",
+    count:(n,t)=>`${n} of ${t} curling set parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can throw a stone."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -1362,7 +1394,7 @@ function renderGarden(){
       <div class="row"><button class="btn quiet" id="bk-restore">Restore</button></div>
       <div id="bk-confirm"></div>
     </div></details>`;
-  main.querySelectorAll(".pot").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;GSEL=GSEL===i?-1:i;renderGarden();typeset(main);});
+  main.querySelectorAll(".pot").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;GSEL=GSEL===i?-1:i;renderGarden();typeset(main);if(GSEL>=0)requestAnimationFrame(()=>showAbove(main.querySelector(".potdetail")));});
   const go=document.getElementById("go");if(go)go.onclick=()=>startSession(nx.sec,false);
   const rs=document.getElementById("resume");if(rs)rs.onclick=resumeSess;
   const pr=document.getElementById("practice");if(pr)pr.onclick=()=>startSession(null,true);
@@ -1503,14 +1535,14 @@ function graphSVG(it,q){
   for(let t=Math.ceil(p.t0/ts)*ts;t<=p.t1+1e-9;t+=ts){g+=`<line y1="${T}" y2="${B}" x1="${X(t)}" x2="${X(t)}" stroke="var(--grid-line)"/><text x="${X(t)}" y="${B+16}" text-anchor="middle">${fmtNum(t)}</text>`;}
   const zero=p.y0<0&&p.y1>0?Y(0):B;
   g+=`<line x1="${L}" x2="${R}" y1="${zero}" y2="${zero}" stroke="var(--ink)" stroke-width="1.2"/><line x1="${L}" x2="${L}" y1="${T}" y2="${B}" stroke="var(--ink)" stroke-width="1.2"/>`;
-  let d="";for(let k=0;k<=120;k++){const t=p.t0+(p.t1-p.t0)*k/120;let y=evalExpr(p.expr,{t,x:t});y=Math.max(p.y0-1e3,Math.min(p.y1+1e3,y));d+=(k?"L":"M")+X(t).toFixed(1)+" "+Y(y).toFixed(1);}
+  let d="";for(let k=0;k<=120;k++){const t=p.t0+(p.t1-p.t0)*k/120;let y=evalExpr(p.expr,{t,x:t,th:t});y=Math.max(p.y0-1e3,Math.min(p.y1+1e3,y));d+=(k?"L":"M")+X(t).toFixed(1)+" "+Y(y).toFixed(1);}
   g+=`<clipPath id="clip"><rect x="${L}" y="${T}" width="${R-L}" height="${B-T}"/></clipPath><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.6" clip-path="url(#clip)"/>`;
-  g+=`<text x="${L}" y="${T-9}" text-anchor="start" font-weight="600">${p.name} (${esc(p.unit)})</text><text x="${R}" y="${H-2}" text-anchor="end" font-weight="600">${p.h==="x"?"x (m)":"t (s)"}</text>`;
+  g+=`<text x="${L}" y="${T-9}" text-anchor="start" font-weight="600">${p.name} (${esc(p.unit)})</text><text x="${R}" y="${H-2}" text-anchor="end" font-weight="600">${p.h==="x"?"x (m)":p.h==="θ"?"θ (rad)":"t (s)"}</text>`;
   if(it.tap&&q.answered){
     for(const t of it.tap.ts)g+=`<line x1="${X(t)}" x2="${X(t)}" y1="${T}" y2="${B}" stroke="var(--good)" stroke-width="2" stroke-dasharray="5 4"/>`;
     g+=`<line x1="${X(q.tapT)}" x2="${X(q.tapT)}" y1="${T}" y2="${B}" stroke="${q.ok?"var(--good)":"var(--bad)"}" stroke-width="2.5"/><circle cx="${X(q.tapT)}" cy="${B}" r="5" fill="${q.ok?"var(--good)":"var(--bad)"}"/>`;
   }
-  const tapAttrs=it.tap&&!q.answered?` class="graph tappable" tabindex="0" aria-label="Graph of ${p.name} versus ${p.h==="x"?"position. Tap a position":"time. Tap a moment"}, or use the left and right arrow keys and Enter."`:` class="graph" aria-label="Graph of ${p.name} versus ${p.h==="x"?"position":"time"}"`;
+  const tapAttrs=it.tap&&!q.answered?` class="graph tappable" tabindex="0" aria-label="Graph of ${p.name} versus ${p.h==="x"?"position. Tap a position":p.h==="θ"?"angle. Tap an angle":"time. Tap a moment"}, or use the left and right arrow keys and Enter."`:` class="graph" aria-label="Graph of ${p.name} versus ${p.h==="x"?"position":"time"}"`;
   return `<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" role="img"${tapAttrs} data-l="${L}" data-r="${R}" data-b="${B}" data-t="${T}" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">${g}<line id="cursor" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="2" opacity=".6"/><line id="selmark" x1="-10" x2="-10" y1="${T}" y2="${B}" stroke="var(--accent)" stroke-width="3" visibility="hidden"/></svg></div>`;
 }
 function wireTap(it,q,onSel){
@@ -2792,6 +2824,123 @@ TOYS.billiards.game={title:"Shoot pool",intro:"The balls follow momentum and ene
     return (F.hit?`The cue ball went off at ${bilFmt(F.cueAng)}°, just as you said, while the 8 ball dropped in.`:`The cue ball went off at ${bilFmt(F.cueAng)}°, not ${bilFmt(F.guess)}°. The dashed line shows your answer.`)+sc;},
   right:"Spot on!",go:"Shoot",pickFirst:"Pick an answer to shoot",again:"Shoot again with new numbers",cvLabel:"Pool table",
   notReadyTitle:"The pool table isn't set up yet",notReady:"Each plant in your garden that blooms adds a part to the pool table. Bloom all seven to shoot pool."};
+/* ---------- Chapter 7: curling ----------
+   Top view of the sheet, x along the ice in meters from the release point, g = 10 m/s². A 20 kg stone glides with a
+   constant friction force f, so it slows at a = f/m and stops after d = mv²/(2f) (the work energy theorem: −fd = 0 − ½mv²).
+   The sheet is drawn wider than true scale so the house shows; x is to scale. Under the sheet, a K versus x graph shares the x axis.
+   Mission 0 (7.1, 7.2): sweepers hold friction at f; predict how far it slides (the house goes where the student says).
+   Mission 1 (7.3): pick the release speed so it stops on the button D away, friction μk.
+   Mission 2 (7.4): the thrower pushes for t seconds; pick the average power so it leaves at v and reaches the button.
+   The stone hits the back boards if it slides past the end of the sheet (3.66 m past the button).
+   makeCurl redraws until every wrong choice misses by at least 2.5 tolerances. */
+const CURL_NAMES=["Slide it home","Draw to the button","Power the throw"], CURL_G=10, CURL_M=20, CURL_END=3.66;
+const curlR=x=>Number(x.toPrecision(3));
+const curlTol=m=>Math.max(0.5,0.03*m.D);
+function curlDraft(k){
+  if(k===0){const v=pickOne([2,2.2,2.4,2.5,2.6,2.8,3]),f=pickOne([2,2.4,2.5,3,3.2,4]),d=CURL_M*v*v/(2*f);if(d<14||d>34)return null;
+    const ch=[{x:d,ok:true},
+      {x:2*d,fb:"Kinetic energy is \\(\\tfrac12 mv^2\\). Leaving out the \\(\\tfrac12\\) doubles the distance."},
+      {x:CURL_M*v/(2*f),fb:"That uses \\(mv\\), the momentum. Friction's work \\(fd\\) has to use up the kinetic energy \\(\\tfrac12 mv^2\\)."},
+      {x:v*v/(2*f),fb:"That leaves out the mass. The kinetic energy to use up is \\(\\tfrac12 mv^2\\), with \\(m = 20\\ \\text{kg}\\)."}];
+    ch.forEach(c=>{c.x=curlR(c.x);c.t=`${fmtNum(c.x)} m`;});
+    return{kind:0,v,f,D:d,choices:dedupe(ch),
+      q:`A \\(20\\ \\text{kg}\\) curling stone leaves the thrower's hand at \\(${v}\\ \\text{m/s}\\). The sweepers keep the friction force on it at \\(${f}\\ \\text{N}\\) the whole way. How far will it slide? Put the house there.`,
+      work:`\\begin{aligned}-fd&=0-\\tfrac12mv^2\\\\d&=\\tfrac{mv^2}{2f}=\\tfrac{20(${v})^2}{2(${f})}=${fmtNum(d,true)}\\ \\text{m}\\end{aligned}`};}
+  if(k===1){const mu=pickOne([0.01,0.012,0.015,0.018,0.02]),D=pickOne([21,24,27,30]),v=Math.sqrt(2*mu*CURL_G*D);
+    const ch=[{v,ok:true},
+      {v:Math.sqrt(mu*CURL_G*D),fb:"Kinetic energy is \\(\\tfrac12 mv^2\\). Without the \\(\\tfrac12\\) the stone has only half the energy it needs and stops halfway."},
+      {v:Math.sqrt(2*mu*CURL_G),fb:"Friction works over the whole distance: its work is \\(\\mu_k mgD\\), so \\(D\\) belongs in the answer."},
+      {v:Math.sqrt(2*CURL_G*D),fb:"That leaves out \\(\\mu_k\\). The friction force is \\(\\mu_k mg\\), much smaller than the weight \\(mg\\) on ice."}];
+    ch.forEach(c=>{c.v=curlR(c.v);c.t=`${fmtNum(c.v)} m/s`;});
+    return{kind:1,mu,D,f:mu*CURL_M*CURL_G,choices:dedupe(ch),
+      q:`The button (the center of the house) is \\(${D}\\ \\text{m}\\) from where the stone is let go. The coefficient of kinetic friction on this ice is \\(\\mu_k = ${mu}\\). How fast should the stone leave the hand so it stops right on the button? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}-\\mu_kmgD&=0-\\tfrac12mv^2\\\\v&=\\sqrt{2\\mu_kgD}\\\\&=\\sqrt{2(${mu})(10)(${D})}\\\\&=${fmtNum(v,true)}\\ \\text{m/s}\\end{aligned}`};}
+  const mu=pickOne([0.01,0.012,0.015,0.02]),v=pickOne([2,2.2,2.4,2.5,2.6,2.8]),t=pickOne([1.5,2,2.5,3]),D=v*v/(2*mu*CURL_G),P=CURL_M*v*v/(2*t);
+  if(D<15||D>33)return null;
+  const ch=[{P,ok:true},
+    {P:2*P,fb:"Kinetic energy is \\(\\tfrac12 mv^2\\). Leaving out the \\(\\tfrac12\\) doubles the power, and the stone leaves too fast."},
+    {P:CURL_M*v/t,fb:"\\(mv/t\\) is the average force, in newtons, not the power. Power is energy per time: \\(P = \\Delta K/t\\)."},
+    {P:CURL_M*v*v*t/2,fb:"Power is energy divided by time, \\(P = W/t\\), not multiplied by it."}];
+  ch.forEach(c=>{c.P=curlR(c.P);c.t=`${fmtNum(c.P)} W`;c.v=Math.sqrt(2*c.P*t/CURL_M);});
+  return{kind:2,mu,v,t,D,f:mu*CURL_M*CURL_G,choices:dedupe(ch),
+    q:`To stop on the button \\(${fmtNum(D)}\\ \\text{m}\\) away, the \\(20\\ \\text{kg}\\) stone must leave the hand at \\(${v}\\ \\text{m/s}\\). The thrower pushes it from rest for \\(${t}\\ \\text{s}\\). What average power should the push deliver?`,
+    work:`\\begin{aligned}W&=\\Delta K=\\tfrac12mv^2\\\\&=\\tfrac12(20)(${v})^2=${fmtNum(P*t,true)}\\ \\text{J}\\\\P&=\\tfrac{W}{t}=\\tfrac{${fmtNum(P*t,true)}}{${t}}=${fmtNum(P,true)}\\ \\text{W}\\end{aligned}`};
+}
+function curlSim(m,c){
+  const v=m.kind===0?m.v:c.v,a=m.f/CURL_M,dStop=v*v/(2*a),target=m.kind===0?c.x:m.D,wall=target+CURL_END;
+  const boards=dStop>wall,xEnd=boards?wall:dStop,tEnd=boards?(v-Math.sqrt(v*v-2*a*wall))/a:v/a;
+  const at=u=>{const s=Math.min(u,tEnd);return{x:v*s-0.5*a*s*s,v:Math.max(0,v-a*s)};};
+  const miss=Math.abs(dStop-target),hit=!boards&&miss<=curlTol(m);
+  return{v,a,dStop,target,wall,boards,xEnd,tEnd,at,miss,hit,house:!boards&&miss<=1.83};
+}
+function makeCurl(k){
+  for(let tries=0;tries<500;tries++){
+    const m=curlDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=curlTol(m);
+    if(!m.choices.every(c=>c.ok?curlSim(m,c).hit:curlSim(m,c).miss>=2.5*tol))continue;
+    return m;}
+}
+function drawCurl(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre;
+  /* x range: from just behind the release point to the end of the sheet past the farthest house */
+  const far=m.kind===0?Math.max(...m.choices.map(q=>q.x)):m.D;
+  const x0=-2,x1=far+CURL_END+0.5,lft=14,rgt=W-14,s=(rgt-lft)/(x1-x0),X=x=>lft+(x-x0)*s;
+  const sy=Math.min(14,(H*0.24)/4.75),yc=72+2.375*sy,Y=y=>yc-y*sy,showHouse=m.kind!==0||!!c;
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  /* ice */
+  ctx.fillStyle=col("--accent-soft");ctx.fillRect(X(x0),Y(2.375),X(x1)-X(x0),4.75*sy);
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.strokeRect(X(x0),Y(2.375),X(x1)-X(x0),4.75*sy);
+  ctx.strokeStyle=col("--muted");ctx.lineWidth=1;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(X(0),Y(2.375));ctx.lineTo(X(0),Y(-2.375));ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText("let go",X(0)+3,Y(-2.375)+10);
+  /* the house, drawn where the target is (mission 0: where the student put it) */
+  const hx=m.kind===0?(c?c.x:null):m.D;
+  if(hx!=null&&showHouse){
+    const ring=(r,color)=>{ctx.fillStyle=col(color);ctx.beginPath();ctx.ellipse(X(hx),yc,r*s,Math.min(r*sy,2.3*sy),0,0,7);ctx.fill();};
+    ring(1.83,"--petal-5");ring(1.22,"--paper");ring(0.61,"--petal-1");ring(0.15,"--paper");
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=.8;ctx.beginPath();ctx.ellipse(X(hx),yc,1.83*s,Math.min(1.83*sy,2.3*sy),0,0,7);ctx.stroke();
+    ctx.fillStyle=col("--ink");ctx.textAlign="center";ctx.fillText(m.kind===0?`house ${fmtNum(hx)} m`:`button ${fmtNum(hx)} m`,Math.min(Math.max(X(hx),48),W-48),Y(2.375)-8);
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(X(hx+CURL_END),Y(2.375));ctx.lineTo(X(hx+CURL_END),Y(-2.375));ctx.stroke();}
+  else if(m.kind===0){ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText("house: your pick",(X(x0)+X(x1))/2,yc);}
+  /* the stone */
+  const p=pre?{x:0,v:F.v}:F.at(t),sx=X(p.x);
+  ctx.fillStyle=col("--muted");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(sx,yc,6,0,7);ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--accent");ctx.fillRect(sx-1.5,yc-4,3,8);
+  /* K versus x, same x axis as the sheet */
+  const gTop=Y(-2.375)+40,gBot=H-30,K0=0.5*CURL_M*F.v*F.v,KY=k=>gBot-(k/K0)*(gBot-gTop);
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(X(x0),gTop-6);ctx.lineTo(X(x0),gBot);ctx.lineTo(X(x1),gBot);ctx.stroke();
+  ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText("K (J)",X(x0)+4,gTop-12);ctx.textAlign="right";ctx.fillText("x (m)",X(x1),gBot+20);
+  const st=[2,5,10,20].find(v=>v*s>=40)||20;ctx.textAlign="center";
+  for(let g=0;g<=x1;g+=st){ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(X(g),gTop);ctx.lineTo(X(g),gBot);ctx.stroke();if(X(g)<X(x1)-40){ctx.fillStyle=col("--muted");ctx.fillText(`${g}`,X(g),gBot+11);}}
+  if(hx!=null&&showHouse){ctx.strokeStyle=col("--accent");ctx.setLineDash([4,3]);ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(X(hx),gTop);ctx.lineTo(X(hx),gBot);ctx.stroke();ctx.setLineDash([]);}
+  ctx.textAlign="right";ctx.fillStyle=col("--muted");ctx.fillText(`K at let go: ${fmtNum(K0)} J`,X(x1),gTop-12);
+  if(!pre){ctx.strokeStyle=col("--accent");ctx.lineWidth=2.2;ctx.beginPath();ctx.moveTo(X(0),KY(K0));const q=F.at(t);
+    ctx.lineTo(X(q.x),KY(0.5*CURL_M*q.v*q.v));ctx.stroke();
+    if(F.boards&&ended){ctx.setLineDash([3,3]);ctx.strokeStyle=col("--muted");ctx.lineTo(X(q.x),KY(0));ctx.stroke();ctx.setLineDash([]);}}
+  /* readout */
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  ctx.fillText(`x = ${fmtNum(p.x)} m   v = ${p.v.toFixed(2)} m/s`,12,14);
+  ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`friction ${fmtNum(m.f)} N`,W-12,30);
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`sent: ${c.t}`,12,30);}
+  if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.textAlign="left";ctx.fillStyle=col(F.hit?"--good":"--bad");
+    ctx.fillText(F.hit?"On the button":F.boards?"Through the house":F.house?`In the house, ${fmtNum(F.miss)} m off`:`${F.dStop<F.target?"Short":"Long"} by ${fmtNum(F.miss)} m`,12,46);
+    ctx.font="11px 'IBM Plex Mono', monospace";}
+}
+TOYS.curling.game={title:"Curl to the button",intro:"The stone obeys the work energy theorem exactly. Get the energy right and it stops on the button.",
+  names:CURL_NAMES,make:makeCurl,ms:m=>4600,
+  sim:m=>curlSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawCurl,
+  outcome:(F,m)=>{
+    const how=F.boards?`It was still moving at ${F.at(F.tEnd).v.toFixed(2)} m/s when it hit the back boards.`:`It stopped ${fmtNum(F.dStop)} m from where it was let go, ${F.hit?"right on the button":`${fmtNum(F.miss)} m ${F.dStop<F.target?"short of":"past"} the button`}.`;
+    if(m.kind===2)return `With that power the stone left at ${F.v.toFixed(2)} m/s. ${how}`;
+    if(m.kind===1)return `The stone left at ${fmtNum(F.v)} m/s. ${how}`;
+    return how;},
+  right:"On the button!",go:"Throw",pickFirst:"Pick an answer to throw",again:"Throw again with new numbers",cvLabel:"Curling sheet",
+  notReadyTitle:"The curling set isn't ready yet",notReady:"Each plant in your garden that blooms adds a part to the curling set. Bloom all four to throw a stone."};
+
 
 function renderAbout(){
   crumb.textContent="About";
@@ -2856,7 +3005,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="10/31d";
+const APP_VERSION="11/01b";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -2931,11 +3080,9 @@ async function renderMenu(my){
   main.innerHTML=`<p class="muted">Loading chapters…</p>`;
   const ready=await probeReady();
   if(my!==ROUTE_N)return;
-  const cont=last&&ready[last]!==false&&CHAPTERS.some(c=>c[0]===last);
   main.innerHTML=`
   <header class="stack"><div class="eyebrow">University Physics, Volume 1</div><h1>Chapters</h1>
     <p class="muted">Pick a chapter to read the key ideas, practice, and grow its garden. Each chapter has its own garden.</p></header>
-  ${cont?`<a class="btn big" href="#ch${last}">Back to Chapter ${last}: ${esc(chTitle(last))}</a>`:""}
   <nav class="seclist chlist" aria-label="Chapters">
     ${CHAPTERS.map(([n,t])=>{const ok=ready[n]!==false,st=chStart(n),g=ok?chGrowth(n):"";
       const meta=[ok?"":"Coming soon",st?`In class from ${st}`:"",g].filter(Boolean).join(" · ");
@@ -3246,7 +3393,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
