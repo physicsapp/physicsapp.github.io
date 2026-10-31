@@ -579,7 +579,7 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],toy:"elevator",eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],toy:"race",eqHint:"Search, for example “friction” or “drag”"},
   7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],eqHint:"Search, for example “spring” or “power”"},
-  8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],eqHint:"Search, for example “spring” or “force”"}};
+  8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],toy:"coaster",eqHint:"Search, for example “spring” or “force”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
@@ -1090,6 +1090,20 @@ function raceSVG(have,label){
   </g></svg>`;
 }
 
+function cstSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"`:off}/>`;
+  const L=(k,d,w)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="${w||2.6}" stroke-linecap="round" stroke-linejoin="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${L(0,"M34 62 C46 62 50 150 64 150 H116 M52 164 V122 M64 164 V150")}
+    ${L(1,"M8 164 L34 62 M14 164 V141 M22 164 V110 M30 164 V78")}${on(1)?`<path d="M12 150 l3 1 M16 134 l3 1 M20 118 l3 1 M24 102 l3 1 M28 86 l3 1" stroke="var(--muted)" stroke-width="1.4"/>`:""}
+    ${L(3,"M86 150 A20 20 0 0 1 86 110 A20 20 0 0 1 86 150",2.4)}
+    ${P(2,"M27 50 h14 v8 h-14 Z","var(--petal-1)")}${on(2)?`<circle cx="34" cy="47" r="2.6" fill="var(--ink)"/><circle cx="30" cy="59" r="1.8" fill="var(--ink)"/><circle cx="38" cy="59" r="1.8" fill="var(--ink)"/>`:""}
+    ${P(4,"M98 145 h16 v5 h-16 Z","var(--petal-6)")}
+    <path d="M4 164 h112" stroke="var(--rule)" stroke-width="1.5"/>
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1109,7 +1123,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} elevator parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can ride it."},
   race:{eyebrow:"The race track",thing:"race car",parts:["body","tires","steering and driver","rear wing"],svg:raceSVG,route:"race",
     ready:"Your race car is ready",readyText:"Find the fastest safe speed, then race.",go:"Go to the track",
-    count:(n,t)=>`${n} of ${t} race car parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can race it."}};
+    count:(n,t)=>`${n} of ${t} race car parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can race it."},
+  coaster:{eyebrow:"The theme park",thing:"roller coaster",parts:["track","lift hill","car","loop","brakes"],svg:cstSVG,route:"coaster",
+    ready:"Your roller coaster is ready",readyText:"Use energy to plan the ride, then ride it.",go:"Go to the theme park",
+    count:(n,t)=>`${n} of ${t} roller coaster parts`,wait:"Each plant that blooms adds a part. When all five bloom, you can ride it."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -2192,6 +2209,250 @@ TOYS.race.game={title:"Race the curves",intro:"The tires and the track follow th
   right:"Fastest line!",go:"Race",pickFirst:"Pick a speed to race",again:"Race again with new numbers",cvLabel:"Race car on the curve",
   notReadyTitle:"The race car isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the race car. Bloom all four to race it."};
 
+/* ---------- Chapter 8: roller coaster ----------
+   Side view in meters, same scale on both axes, g = 10 m/s² as in the Ch 8 notes. No friction except the brakes.
+   The track is a dense polyline (cstTrack). The car moves along it with its speed taken from energy,
+   v² = v0² + 2g(h0 − y) − 2(F/m)(distance braked), so the energy is exact; it reverses at a turning point.
+   On the loop the track must push with N/m = v²/R + g cos α (α measured from the bottom). If that turns negative
+   the car leaves the track and flies as a projectile until it meets the loop again.
+   Mission 0: predict the speed at the bottom of a drop (prediction). Mission 1: pick the start height so the track
+   pushes with zero force at the top of the loop, h = 2.5R (command). Mission 2: pick the brake run length so the car
+   stops at the platform, d = mgh/F (command). makeCst redraws until every wrong choice misses by 2.5 tolerances. */
+const CST_NAMES=["Bottom speed","Make the loop","Brake run"], CST_G=10, CST_V0=0.4;
+const cstN=x=>{const r=Math.round(x*10)/10;return (Number.isInteger(r)?String(r):r.toFixed(1)).replace("-","−");};
+function cstTrack(){
+  const pts=[];let L=0;
+  const add=(x,y,lp)=>{const q=pts[pts.length-1];if(q){const d=Math.hypot(x-q.x,y-q.y);if(d<1e-9)return;L+=d;}pts.push(Object.assign({x,y,s:L},lp||{}));};
+  const T={pts,get L(){return L;},
+    line(x0,y0,x1,y1){const n=Math.max(2,Math.ceil(Math.hypot(x1-x0,y1-y0)/0.2));for(let i=0;i<=n;i++)add(x0+(x1-x0)*i/n,y0+(y1-y0)*i/n);return T;},
+    /* a smooth S curve from (x0,y0) to (x1,y1), flat at both ends */
+    hill(x0,y0,x1,y1){const n=Math.max(8,Math.ceil(Math.hypot(x1-x0,y1-y0)/0.15));for(let i=0;i<=n;i++){const u=i/n;add(x0+(x1-x0)*u,y0+(y1-y0)*(1-Math.cos(Math.PI*u))/2);}return T;},
+    /* a full vertical loop with its bottom at (cx,yb), driven counterclockwise */
+    loop(cx,yb,R){const n=Math.ceil(2*Math.PI*R/0.15);for(let i=0;i<=n;i++){const a=2*Math.PI*i/n;add(cx+R*Math.sin(a),yb+R*(1-Math.cos(a)),{lp:{cx,cy:yb+R,R,a}});}return T;},
+    at(s){s=Math.max(0,Math.min(L,s));let lo=0,hi=pts.length-1;while(hi-lo>1){const mid=(lo+hi)>>1;if(pts[mid].s<=s)lo=mid;else hi=mid;}
+      const a=pts[lo],b=pts[hi],u=b.s>a.s?(s-a.s)/(b.s-a.s):0;
+      return{x:a.x+(b.x-a.x)*u,y:a.y+(b.y-a.y)*u,ang:Math.atan2(b.y-a.y,b.x-a.x),lp:a.lp&&b.lp?{cx:a.lp.cx,cy:a.lp.cy,R:a.lp.R,a:a.lp.a+(b.lp.a-a.lp.a)*u}:null};}};
+  return T;
+}
+/* runs the car from s0 and returns frames every 0.02 s of ride time */
+function cstRun(tr,o){
+  const g=CST_G,F=o.F||0,frames=[];let s=o.s0||0,dir=1,brk=0,t=0,end="end",fly=null,N=null,turnY=null,leftAt=null,stopS=null,exitV=null;
+  const v2=(s,b)=>CST_V0*CST_V0+2*g*(o.h0-tr.at(s).y)-2*F/o.m*b;
+  const over=(a,b)=>{if(!F)return 0;const lo=Math.min(a,b),hi=Math.max(a,b);return Math.max(0,Math.min(hi,o.b1)-Math.max(lo,o.b0));};
+  const push=(p,v,extra)=>frames.push(Object.assign({t,x:p.x,y:p.y,ang:p.ang,v,brk,N:null},extra||{}));
+  const dt=0.005;
+  for(let k=0;k<12000;k++){
+    const p=tr.at(s),v=Math.sqrt(Math.max(0,v2(s,brk)));
+    let Nm=null;if(p.lp){Nm=v*v/p.lp.R+g*Math.cos(p.lp.a);if(Nm<-0.02*g&&v>0.3){fly={x:p.x,y:p.y,vx:dir*v*Math.cos(p.ang),vy:dir*v*Math.sin(p.ang),lp:p.lp};leftAt=p.y;break;}}
+    if(k%4===0)push(p,v,{N:Nm});
+    if(p.lp&&Math.abs(p.lp.a-Math.PI)<0.03&&N==null)N=Nm;
+    const ds=dir*Math.max(v,1.2)*dt;let s2=s+ds;
+    if(s2>=tr.L){s=tr.L;end="end";break;}
+    if(s2<=0){s=0;end="back";break;}
+    const add=over(s,s2);
+    if(v2(s2,brk+add)<(add>0?CST_V0*CST_V0+1e-9:0)){
+      if(add>0){/* stops in the brakes (the brake run is level); the exact spot is found below */stopS=s;end="stop";break;}
+      dir=-dir;if(turnY==null)turnY=tr.at(s).y;continue;}
+    s=s2;brk+=add;t+=dt;
+    if(o.sEnd!=null&&s>=o.sEnd){end="end";break;}
+    if(o.sBack!=null&&dir<0&&s<=o.sBack){end="back";break;}
+    if(F&&exitV==null&&dir>0&&s>o.b1)exitV=v;
+  }
+  if(stopS!=null){/* exact stop point and final frames */
+    /* the brakes ignore the small starting nudge, so the stop matches mgh = Fd */const vb2=2*g*(o.h0-tr.at(o.b0).y);stopS=o.b0+vb2/(2*F/o.m);brk=stopS-o.b0;
+    const p=tr.at(stopS);t+=0.02;push(p,0,{});}
+  if(fly){/* projectile until it meets the loop again or the ground */
+    let {x,y,vx,vy}=fly,ft=0;
+    for(let k=0;k<2000;k++){
+      const ang=Math.atan2(vy,vx);if(k%4===0)push({x,y,ang},Math.hypot(vx,vy),{fly:true});
+      x+=vx*dt;y+=vy*dt;vy-=g*dt;ft+=dt;t+=dt;
+      if(ft>0.08&&Math.hypot(x-fly.lp.cx,y-fly.lp.cy)>=fly.lp.R)break;
+      if(y<=0){y=0;break;}}
+    push({x,y,ang:Math.atan2(vy,vx)},Math.hypot(vx,vy),{fly:true});end="fell";}
+  const last=frames[frames.length-1];
+  return{frames,tEnd:last.t,end,Ntop:N,turnY,leftAt,stopS,exitV,brk};
+}
+function cstFrame(F,t){const fr=F.frames;if(t>=F.tEnd)return fr[fr.length-1];let lo=0,hi=fr.length-1;while(hi-lo>1){const m=(lo+hi)>>1;if(fr[m].t<=t)lo=m;else hi=m;}
+  const a=fr[lo],b=fr[hi],u=b.t>a.t?(t-a.t)/(b.t-a.t):0;let da=b.ang-a.ang;if(da>Math.PI)da-=2*Math.PI;if(da<-Math.PI)da+=2*Math.PI;
+  return Object.assign({},a,{t,x:a.x+(b.x-a.x)*u,y:a.y+(b.y-a.y)*u,ang:a.ang+da*u,v:a.v+(b.v-a.v)*u,brk:a.brk+(b.brk-a.brk)*u,N:a.N!=null&&b.N!=null?a.N+(b.N-a.N)*u:null});}
+/* the track for each mission; hc is the start height for mission 1, len the brake run for mission 2 */
+function cstLayout(m,c){
+  const tr=cstTrack();
+  if(m.kind===0){
+    const L=Math.max(18,1.2*m.d),trap=L+8;
+    tr.line(-6,m.h1,0,m.h1).hill(0,m.h1,L,m.h2).line(L,m.h2,L+16,m.h2).hill(L+16,m.h2,L+16+0.9*m.d,m.h2+0.45*m.d);
+    return{tr,s0:6,h0:m.h1,trapX:trap,sEnd:null,endX:L+14};}
+  if(m.kind===1){
+    const hc=c?c.h:null,L=m.L,lx=L+10+m.R;
+    if(hc!=null)tr.line(-5,hc,0,hc).hill(0,hc,L,0);else tr.line(L-0.01,0,L,0);
+    tr.line(L,0,lx,0).loop(lx,0,m.R).line(lx,0,lx+m.R+14,0);
+    return{tr,s0:hc!=null?5:0,h0:hc==null?0:hc,lx,L};}
+  const L=Math.max(16,1.1*m.h),b0=L+6,len=c?c.d:0;
+  tr.line(-5,m.h,0,m.h).hill(0,m.h,L,0).line(L,0,b0+m.dMax+8,0);
+  return{tr,s0:5,h0:m.h,b0,len,bump:b0+len+2.5,L};
+}
+const cstTol=m=>m.kind===0?0.03*m.v:m.kind===1?0.03*m.h:Math.max(0.5,0.03*m.d);
+function cstDraft(k){
+  if(k===0){
+    const d=pickOne([15,20,25,30,35,40,45,50,60]),h2=pickOne([5,10,15,20]),h1=d+h2,mass=pickOne([400,500,600,700,800]),v=Math.sqrt(2*CST_G*d);
+    const ch=[{v,ok:true},
+      {v:Math.sqrt(2*CST_G*h1),fb:`Use the drop, the change in height. The valley isn't at the ground: \\(\\Delta y = ${h1} - ${h2} = ${d}\\ \\text{m}\\).`},
+      {v:Math.sqrt(CST_G*d),fb:"From \\(mg\\Delta y = \\tfrac12mv^2\\), \\(v^2 = 2g\\Delta y\\). Don't drop the 2."},
+      {v:Math.sqrt(CST_G*d/2),fb:"Solving \\(mg\\Delta y = \\tfrac12mv^2\\) for \\(v^2\\) means multiplying by 2, not dividing: \\(v^2 = 2g\\Delta y\\)."}];
+    ch.forEach(c=>{c.t=`${cstN(c.v)} m/s`;});
+    return{kind:0,d,h1,h2,mass,v,choices:dedupe(ch),
+      q:`A \\(${mass}\\ \\text{kg}\\) roller coaster car starts from rest at the top of a hill \\(${h1}\\ \\text{m}\\) above the ground and rolls down into a valley \\(${h2}\\ \\text{m}\\) above the ground. Ignoring friction, how fast is it going at the speed trap in the valley? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}\\tfrac12mv^2&=mg\\,\\Delta y\\\\v&=\\sqrt{2g\\,\\Delta y}\\\\&=\\sqrt{2(10)(${h1}-${h2})}\\\\&=${cstN(v)}\\ \\text{m/s}\\end{aligned}`,
+      after:"The mass cancels, so a full car and an empty one reach the valley at the same speed."};
+  }
+  if(k===1){
+    const R=pickOne([6,8,10,12,14]),h=2.5*R;
+    const ch=[{h,ok:true},
+      {h:0.5*R,fb:"\\(v^2 = gR\\) at the top is right, but the top of the loop is \\(2R\\) above the ground. Add the loop's height: \\(mgh = mg(2R) + \\tfrac12m(gR)\\)."},
+      {h:2*R,fb:"Just reaching the height of the top isn't enough. The car needs speed there, \\(v^2 = gR\\), or it falls away from the track before it gets to the top."},
+      {h:3*R,fb:"Kinetic energy is \\(\\tfrac12mv^2\\). Using \\(mv^2\\) gives \\(h = 3R\\): too fast, so the seat still pushes the riders with their full weight at the top."}];
+    ch.forEach(c=>{c.t=`${cstN(c.h)} m`;});
+    return{kind:1,R,h,L:Math.max(14,3.3*R),choices:dedupe(ch),
+      q:`A roller coaster car starts from rest at the top of a hill and rolls down into a vertical loop with a radius of \\(${R}\\ \\text{m}\\). The designers want the track to push on the car with zero force at the very top of the loop, so the riders feel weightless there. How high should the hill be? Ignore friction.`,
+      work:`\\begin{aligned}\\text{top: } mg&=\\frac{mv^2}{R}\\\\v^2&=gR\\\\mgh&=mg(2R)+\\tfrac12mv^2\\\\h&=2R+\\tfrac12R=2.5R\\\\&=2.5(${R})=${cstN(h)}\\ \\text{m}\\end{aligned}`,
+      after:"At the top, gravity alone supplies the centripetal force. Any slower and gravity pulls the car away from the track before it gets there."};
+  }
+  const h=pickOne([10,15,20,25,30,40]),mass=pickOne([400,500,600,800]),F=pickOne([4000,5000,6000,8000,10000]),d=mass*CST_G*h/F;
+  if(d<8||d>45||Math.abs(d*10-Math.round(d*10))>1e-6)return null;
+  const ch=[{d,ok:true},
+    {d:d/2,fb:"The brakes must take away all of the car's mechanical energy, \\(mgh\\), not half of it. At the bottom, \\(v^2 = 2gh\\)."},
+    {d:2*d,fb:"Kinetic energy is \\(\\tfrac12mv^2 = mgh\\). Using \\(mv^2\\) doubles the distance, so the car stops well before the platform."},
+    {d:d/10,fb:"Don't forget \\(g\\). The brakes do work \\(Fd\\), and it must equal the energy \\(mgh\\)."}];
+  ch.forEach(c=>{c.t=`${cstN(c.d)} m`;});
+  return{kind:2,h,mass,F,d,dMax:2*d,choices:dedupe(ch),
+    q:`A \\(${mass}\\ \\text{kg}\\) roller coaster car starts from rest at the top of a \\(${h}\\ \\text{m}\\) hill and rolls down to a level brake run. The brakes push back on it with a constant \\(${F}\\ \\text{N}\\). How long should the brake run be so the car stops right at the platform at its end? Ignore other friction and use \\(g = 10\\ \\text{m/s}^2\\).`,
+    work:`\\begin{aligned}W_\\text{nc}&=\\Delta E\\\\-Fd&=0-mgh\\\\d&=\\frac{mgh}{F}\\\\&=\\frac{(${mass})(10)(${h})}{${F}}\\\\&=${cstN(d)}\\ \\text{m}\\end{aligned}`,
+    after:`The brakes turn all \\(${cstN(mass*CST_G*h/1000)}\\ \\text{kJ}\\) of the car's mechanical energy into thermal energy.`};
+}
+function cstSim(m,c){
+  const lay=cstLayout(m,c),tr=lay.tr;
+  if(m.kind===0){
+    const R=cstRun(tr,{m:m.mass,h0:m.h1,s0:lay.s0,sEnd:null});
+    /* stop the ride once the car is past the end of the valley */
+    const iEnd=R.frames.findIndex(f=>f.x>=lay.endX);if(iEnd>0){R.frames.length=iEnd+1;R.tEnd=R.frames[iEnd].t;}
+    return Object.assign(R,{lay,aim:c.v,miss:Math.abs(c.v-m.v),hit:Math.abs(c.v-m.v)<=cstTol(m)});}
+  if(m.kind===1){
+    if(!c)return Object.assign(cstRun(tr,{m:1,h0:0,s0:0}),{lay,miss:0,hit:false});
+    const sLoop=tr.pts.find(p=>p.lp).s;
+    const R=cstRun(tr,{m:1,h0:c.h,s0:lay.s0,sBack:sLoop-0.5});
+    const Ntop=2*(c.h-2*m.R)/m.R-1;
+    return Object.assign(R,{lay,aim:c.h,Ntop,miss:Math.abs(c.h-m.h),hit:Math.abs(c.h-m.h)<=cstTol(m)});}
+  const b0=lay.b0,b1=b0+(c?c.d:0);
+  const sOf=x=>{const p=tr.pts.find(q=>q.x>=x&&q.y<1e-9&&q.x>lay.L-1e-6);return p?p.s:tr.L;};
+  const sb0=sOf(b0),sb1=sb0+(c?c.d:0),sBump=sb1+2.5;
+  const R=cstRun(tr,{m:m.mass,h0:m.h,s0:lay.s0,F:c?m.F:0,b0:sb0,b1:sb1,sEnd:sBump});
+  const stopX=R.end==="stop"?b0+(R.stopS-sb0):null,platX=b1;
+  const miss=stopX!=null?Math.abs(stopX-platX):Infinity;
+  const vb=Math.sqrt(2*CST_G*m.h),vExit=Math.sqrt(Math.max(0,vb*vb-2*(m.F/m.mass)*(c?c.d:0)));
+  return Object.assign(R,{lay,stopX,platX,bumpX:b1+2.5,vExit,miss:stopX!=null?miss:1e9,hit:stopX!=null&&miss<=cstTol(m),bumped:stopX==null,
+    short:stopX!=null?platX-stopX:0});
+}
+function makeCst(k){
+  for(let tries=0;tries<500;tries++){
+    const m=cstDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=cstTol(m);
+    if(!m.choices.every(c=>c.ok||cstSim(m,c).miss>=2.5*tol))continue;
+    return m;}
+}
+function cstView(m){
+  if(m.kind===0){const L=Math.max(18,1.2*m.d);return{x0:-7,x1:L+16+0.9*m.d,y0:0,y1:Math.max(m.h1,m.h2+0.45*m.d)};}
+  if(m.kind===1){const lx=m.L+10+m.R;return{x0:-6,x1:lx+m.R+14,y0:0,y1:Math.max(3.05*m.R,2*m.R)};}
+  const L=Math.max(16,1.1*m.h);return{x0:-6,x1:L+6+m.dMax+8,y0:0,y1:m.h};
+}
+function drawCst(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre;
+  const lay=F.lay,tr=lay.tr,V=cstView(m);
+  const top=72,bot=H-24,lft=12,rgt=W-12;
+  const sc=Math.min((rgt-lft)/(V.x1-V.x0),(bot-top)/(V.y1-V.y0));
+  const X=x=>lft+(x-V.x0)*sc,Y=y=>bot-(y-V.y0)*sc;
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  /* ground, with a height scale */
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(lft-4,Y(0));ctx.lineTo(rgt+4,Y(0));ctx.stroke();
+  /* supports every few meters, then the track */
+  const showTrack=!(m.kind===1&&!c);
+  ctx.strokeStyle=col("--rule");ctx.lineWidth=1;ctx.beginPath();
+  let lastX=-1e9;for(const p of tr.pts){if(!showTrack||p.lp||p.y<0.3)continue;if(X(p.x)-lastX>=14){lastX=X(p.x);ctx.moveTo(X(p.x),Y(p.y));ctx.lineTo(X(p.x),Y(0));}}ctx.stroke();
+  if(showTrack){ctx.strokeStyle=col("--ink");ctx.lineWidth=2.6;ctx.lineJoin="round";ctx.beginPath();tr.pts.forEach((p,i)=>i?ctx.lineTo(X(p.x),Y(p.y)):ctx.moveTo(X(p.x),Y(p.y)));ctx.stroke();}
+  if(m.kind===1&&!c){/* the loop alone, and a note that the hill is yours to choose */
+    const lx=lay.lx;ctx.strokeStyle=col("--ink");ctx.lineWidth=2.6;ctx.beginPath();ctx.arc(X(lx),Y(m.R),m.R*sc,0,7);ctx.moveTo(X(m.L),Y(0));ctx.lineTo(X(lx+m.R+14),Y(0));ctx.stroke();
+    ctx.setLineDash([5,4]);ctx.strokeStyle=col("--muted");ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(X(-5),Y(0));ctx.lineTo(X(-5),Y(V.y1*0.6));ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText("hill height: your pick",X(-5)+6,Y(V.y1*0.6));}
+  /* labels on the scene */
+  ctx.fillStyle=col("--muted");ctx.textAlign="left";
+  if(m.kind===0){
+    const tx=X(lay.trapX);ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(tx,Y(m.h2));ctx.lineTo(tx,Y(m.h2)-26);ctx.stroke();
+    ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText("speed trap",tx,Y(m.h2)-34);
+    ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText(`${m.h1} m`,X(-6)+2,Y(m.h1/2));
+    ctx.textAlign="right";ctx.fillText(`${m.h2} m`,X(lay.trapX)-8,Y(m.h2)+10);}
+  if(m.kind===1&&c){ctx.fillText(`${cstN(c.h)} m`,X(-5)+2,Y(c.h/2));
+    ctx.textAlign="center";ctx.fillText(`R = ${m.R} m`,X(lay.lx),Y(m.R));}
+  if(m.kind===1&&!c){ctx.textAlign="center";ctx.fillText(`R = ${m.R} m`,X(lay.lx),Y(m.R));}
+  if(m.kind===2){ctx.fillText(`${m.h} m`,X(-5)+2,Y(m.h/2));
+    if(c){const x0=X(lay.b0),x1=X(lay.b0+c.d);
+      ctx.fillStyle=col("--petal-6");ctx.globalAlpha=.55;ctx.fillRect(x0,Y(0)-5,x1-x0,5);ctx.globalAlpha=1;
+      ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText("brakes",(x0+x1)/2,Y(0)+11);
+      /* platform at the end of the brakes, bumper just after */
+      ctx.fillStyle=col("--accent-soft");ctx.strokeStyle=col("--ink");ctx.lineWidth=1;ctx.fillRect(x1-18,Y(0)-12,18,6);ctx.strokeRect(x1-18,Y(0)-12,18,6);
+      ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText("platform",x1,Y(0)-20);
+      const bx=X(lay.bump);ctx.fillStyle=col("--bad");ctx.fillRect(bx,Y(0)-14,4,14);}}
+  /* the car */
+  const fr=pre?cstFrame(F,0):cstFrame(F,t);
+  if(showTrack){
+    const nx=-Math.sin(fr.ang),ny=Math.cos(fr.ang);
+    ctx.save();ctx.translate(X(fr.x)-nx*6,Y(fr.y)-ny*6);ctx.rotate(-fr.ang);
+    ctx.fillStyle=col("--petal-1");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.rect(-9,-5,18,9);ctx.fill();ctx.stroke();
+    ctx.fillStyle=col("--ink");ctx.beginPath();ctx.arc(0,-8,2.6,0,7);ctx.fill();
+    ctx.beginPath();ctx.arc(-5,5,2,0,7);ctx.arc(5,5,2,0,7);ctx.fill();ctx.restore();}
+  /* energy bars, top right */
+  if(showTrack){
+    const mass=m.kind===1?1:m.mass,E0=mass*CST_G*F.lay.h0+0.5*mass*CST_V0*CST_V0;
+    const U=mass*CST_G*fr.y,K=0.5*mass*fr.v*fr.v,Q=m.kind===2&&c?m.F*fr.brk:0;
+    const bars=[["U",U,"--accent"],["K",K,"--petal-1"]];if(m.kind===2)bars.push(["heat",Q,"--petal-6"]);
+    const bw=16,gap=m.kind===2?14:18,bh=40,by=12;let bx=rgt-bars.length*bw-(bars.length-1)*gap;
+    ctx.strokeStyle=col("--rule");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(bx-4,by+bh);ctx.lineTo(rgt+2,by+bh);ctx.stroke();
+    for(const [lab,val,cc] of bars){const hh=Math.max(0,Math.min(1.05,val/E0))*bh;ctx.fillStyle=col(cc);ctx.fillRect(bx,by+bh-hh,bw,hh);
+      ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText(lab,bx+bw/2,by+bh+10);bx+=bw+gap;}}
+  /* readouts */
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  if(showTrack){let line=`v = ${cstN(fr.v)} m/s   y = ${cstN(fr.y)} m`;
+    if(m.kind===1&&fr.N!=null&&!fr.fly)line+=`   N = ${cstN(fr.N/CST_G)} mg`;
+    ctx.fillText(line,12,14);}
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.t}`,12,30);}
+  if(m.kind===0&&!pre&&c){const past=fr.x>=lay.trapX;
+    ctx.fillStyle=col("--muted");ctx.fillText(past?`trap: ${cstN(m.v)} m/s`:"trap: waiting",12,46);}
+  if(ended){ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.fillStyle=col(F.hit?"--good":"--bad");
+    let s;
+    if(m.kind===0)s=F.hit?"Spot on":`Off by ${cstN(F.miss)} m/s`;
+    else if(m.kind===1)s=F.hit?"Weightless at the top":F.end==="fell"?"Left the track":F.end==="back"?"Rolled back":`N = ${cstN(F.Ntop)} mg at the top`;
+    else s=F.hit?"Stopped at the platform":F.bumped?`Hit the bumper at ${cstN(F.vExit)} m/s`:`Stopped ${cstN(F.short)} m short`;
+    ctx.fillText(s,12,m.kind===0?62:46);ctx.font="11px 'IBM Plex Mono', monospace";}
+}
+TOYS.coaster.game={title:"Ride the coaster",intro:"The car follows energy conservation exactly. Pick right and the ride goes just as planned.",
+  names:CST_NAMES,make:makeCst,ms:(m)=>m.kind===1?5200:4600,
+  sim:m=>cstSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawCst,
+  outcome:(F,m)=>{
+    if(m.kind===0)return F.hit?`The speed trap read ${cstN(m.v)} m/s, just as you said.`:`The speed trap read ${cstN(m.v)} m/s, not ${cstN(F.aim)} m/s.`;
+    if(m.kind===1){if(F.hit)return "At the top of the loop the track pushed with zero force, so the riders felt weightless.";
+      if(F.end==="fell")return `The car fell away from the track ${cstN(F.leftAt)} m up the loop, before it reached the top.`;
+      if(F.end==="back")return `The car climbed only ${cstN(F.turnY)} m up the loop. That was its turning point, where all its kinetic energy had become potential energy, and it rolled back.`;
+      return `It made the loop, but at the top the seat still pushed on the riders with ${cstN(F.Ntop)} times their weight.`;}
+    if(F.hit)return "The car stopped right at the platform.";
+    if(F.bumped)return `The brake run was too short. The car left it at ${cstN(F.vExit)} m/s and hit the bumper.`;
+    return `The car stopped ${cstN(F.short)} m before the platform. The brake run was too long.`;},
+  right:"Spot on!",go:"Ride",pickFirst:"Pick an answer to ride",again:"Ride again with new numbers",cvLabel:"Roller coaster ride",
+  notReadyTitle:"The roller coaster isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the roller coaster. Bloom all five to ride it."};
+
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -2606,7 +2867,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
