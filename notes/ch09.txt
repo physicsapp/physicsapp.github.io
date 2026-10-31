@@ -27,7 +27,7 @@ In short: Momentum is mass times velocity, \(\vec p = m\vec v\), measured in \(\
 Watch out: Momentum is not kinetic energy. Momentum grows with \(v\) and has a direction; kinetic energy grows with \(v^2\) and has none.
 
 ## SUMMARY 9.2
-In short: Impulse is the effect of a force acting over a time: \(\vec J = \int\vec F\,dt\), the area under a force against time graph. For a steady or average force, \(\vec J = \vec F_\text{ave}\Delta t\). The impulse momentum theorem says the impulse equals the change in momentum, \(\vec J = \Delta\vec p\). So the same change in momentum can come from a big force for a short time or a small force for a long time. Airbags, padded floors, and bending your knees when you land all stretch out the stopping time to shrink the force.
+In short: Impulse is the effect of a force acting over a time: \(\vec J = \int\vec F\,dt\), the area under a force against time graph. For a steady or average force, \(\vec J = \vec F_\text{avg}\Delta t\). The impulse momentum theorem says the impulse equals the change in momentum, \(\vec J = \Delta\vec p\). So the same change in momentum can come from a big force for a short time or a small force for a long time. Airbags, padded floors, and bending your knees when you land all stretch out the stopping time to shrink the force.
 Watch out: A bounce needs a bigger impulse than a stop. A ball that hits a wall at \(v\) and comes back at \(v\) has \(|\Delta p| = 2mv\), not \(mv\).
 
 ## SUMMARY 9.3
@@ -267,7 +267,7 @@ B) They reduce the person's change in momentum
 C) They reduce the person's mass
 D) They absorb the momentum, so it isn't conserved
 Answer: A
-Why: The person's change in momentum is the same either way. Since \(F_\text{ave} = \Delta p/\Delta t\), a longer stopping time means a smaller average force.
+Why: The person's change in momentum is the same either way. Since \(F_\text{avg} = \Delta p/\Delta t\), a longer stopping time means a smaller average force.
 
 ## QUIZ 9.2
 Q: Two identical balls hit a wall at the same speed. A clay ball sticks; a rubber ball bounces back at the same speed. Which gets the larger impulse from the wall?
@@ -314,7 +314,7 @@ Wrong: m*v*dt | Divide the change in momentum by the time.
 Wrong: m*v | That's the change in momentum. Divide by the time to get the force.
 Wrong: 2*m*v/dt | The ball stops; it doesn't bounce back, so \(\Delta p = mv\).
 Unit: N
-Work: F_\text{ave} = \frac{\Delta p}{\Delta t} = \frac{({{m}})({{v}})}{{{dt}}} = {{answer}}\ \text{N}
+Work: F_\text{avg} = \frac{\Delta p}{\Delta t} = \frac{({{m}})({{v}})}{{{dt}}} = {{answer}}\ \text{N}
 
 ## DRILL 9.2
 Q: A \({{m}}\ \text{kg}\) ball hits a wall at \({{v}}\ \text{m/s}\) and bounces straight back at the same speed. The contact lasts \({{dt}}\ \text{s}\). What is the size of the average force from the wall?
@@ -324,7 +324,7 @@ Wrong: m*v/dt | The ball reverses, so \(\Delta p = 2mv\), not \(mv\).
 Wrong: 2*m*v*dt | Divide by the time: \(F = \Delta p/\Delta t\).
 Wrong: 0 | The speed is the same, but the direction changed, so there is a force.
 Unit: N
-Work: F_\text{ave} = \frac{2mv}{\Delta t} = \frac{2({{m}})({{v}})}{{{dt}}} = {{answer}}\ \text{N}
+Work: F_\text{avg} = \frac{2mv}{\Delta t} = \frac{2({{m}})({{v}})}{{{dt}}} = {{answer}}\ \text{N}
 
 ## DRILL 9.2
 Q: A \({{m}}\ \text{kg}\) puck at rest is hit with an average force of \({{F}}\ \text{N}\) for \({{dt}}\ \text{s}\). How fast does it move afterward?
