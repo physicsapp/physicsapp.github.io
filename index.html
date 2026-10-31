@@ -91,6 +91,16 @@ main{display:flex;flex-direction:column;gap:22px;padding-block:20px}
 
 .eqbox{background:var(--eq-bg);border-radius:10px;padding:10px 12px;overflow-x:auto;overflow-y:hidden}
 .eqgrid{display:flex;flex-direction:column;gap:8px}
+.flip{display:grid;perspective:1200px;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:12px}
+.flip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.flip>.face{grid-area:1/1;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .55s cubic-bezier(.3,.7,.3,1);min-width:0}
+.flip>.face>.eqbox,.flip>.face>.card{flex:1;display:flex;flex-direction:column;justify-content:center}
+.flip>.face>.card{justify-content:flex-start}.flip>.face>.card .eq{flex:1;display:flex;flex-direction:column;justify-content:center}
+.flip>.back{transform:rotateY(180deg)}
+.flip.on>.front{transform:rotateY(-180deg)}.flip.on>.back{transform:rotateY(0)}
+.fback .rich{display:block;font-size:.95rem;line-height:1.5}.fback .rich mjx-container{font-size:105%!important}
+.fhint{font-size:.72rem;color:var(--muted);text-align:right;padding:3px 4px 0;font-weight:600}
+@media (prefers-reduced-motion: reduce){.flip>.face{transition:none}}
 .eqname{font-size:.8rem;color:var(--muted);margin-bottom:-2px}
 .eq{overflow-x:auto;overflow-y:hidden;max-width:100%}
 mjx-container[display="true"]{margin:.4em 0!important}
@@ -205,6 +215,10 @@ a.chip[aria-current="page"]{background:var(--ink);color:var(--paper);border-colo
 .toggle{display:flex;gap:8px;align-items:center;font-size:.92rem;cursor:pointer}
 .toggle input{width:18px;height:18px;accent-color:var(--accent)}
 
+/* update bar, above the tab bar */
+.updbar{position:fixed;left:12px;right:12px;bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom,0px) + 10px);z-index:7;max-width:560px;margin:0 auto;
+  display:flex;align-items:center;gap:10px;padding:10px 10px 10px 14px;background:var(--card);border:1px solid var(--accent);border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.18);font-size:.92rem}
+.updbar span{flex:1}.updbar .btn{min-height:40px;padding:0 14px}.updbar .x{background:none;border:0;color:var(--muted);font-size:1.4rem;width:40px;height:40px;cursor:pointer}
 /* tab bar */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--card);border-top:1px solid var(--rule);
   padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
@@ -301,7 +315,7 @@ const H=r=>"#ch"+(CH||lastCh())+(r?"/"+r:"");
 function lastCh(){const n=+store("last-chapter");return CHAPTERS.some(c=>c[0]===n)?n:3;}
 
 /* Short summaries written for this app (adapted, same license as the book). */
-let SUMMARY={},ITEMS=[],NOTE_ERRS=[],EQS={};
+let SUMMARY={},ITEMS=[],NOTE_ERRS=[],EQS={},EXS={};
 /* The chapter's equation sheet (Equations tab): lines starred with * in the notes' ## EQUATIONS blocks,
    in section order. A chapter with no EQUATIONS blocks falls back to the book's key equations. */
 function sheetOf(n){const c=CACHE[n];if(!c||!c.D)return[];
@@ -342,7 +356,7 @@ function parseTap(s,plot){
   return{ts,tol};
 }
 function parseNotes(txt){
-  const errs=[],sum={},items=[],eqs={};
+  const errs=[],sum={},items=[],eqs={},exs={};
   const lines=txt.replace(/\r/g,"").split("\n");
   let blk=null,key=null;
   const choices=(blk,L)=>{
@@ -359,6 +373,13 @@ function parseNotes(txt){
         if(!blk.sec)throw new Error("EQUATIONS needs a section number, like ## EQUATIONS 3.4");
         if(!SECS.includes(blk.sec))throw new Error(`section ${blk.sec} isn't part of this chapter`);
         (eqs[blk.sec]=eqs[blk.sec]||[]).push(...blk.eqs);
+      }else if(T==="EXAMPLE"){
+        if(!blk.sec)throw new Error("EXAMPLE needs a section number, like ## EXAMPLE 3.4");
+        if(!SECS.includes(blk.sec))throw new Error(`section ${blk.sec} isn't part of this chapter`);
+        const ex=blk.ex;
+        if(ex.book!=null){if(ex.parts.length||ex.title)throw new Error('"Book:" should be the only line in its block');}
+        else{if(!ex.title)throw new Error('EXAMPLE has no "Title:" line');if(!ex.parts.length)throw new Error("EXAMPLE has no parts, like Problem: or Solution:");}
+        (exs[blk.sec]=exs[blk.sec]||[]).push({...ex,line:L});
       }else if(T==="SUMMARY"){
         if(!blk.sec)throw new Error("SUMMARY needs a section number, like ## SUMMARY 3.4");
         if(!f["in short"])throw new Error(`SUMMARY ${blk.sec} has no "In short:" line`);
@@ -386,15 +407,28 @@ function parseNotes(txt){
   lines.forEach((raw,i)=>{
     const n=i+1,line=raw.trimEnd();
     if(/^##/.test(line)){finish();
-      const m=line.replace(/^##\s*/,"").match(/^(SUMMARY|EQUATIONS|QUIZ|DRILL|GRAPH)\b\s*([0-9]+\.[0-9]+)?/i);
-      if(!m){errs.push(`Line ${n}: "${line}" isn't a known block. Use ## SUMMARY, ## EQUATIONS, ## QUIZ, ## DRILL, or ## GRAPH`);return;}
-      blk={type:m[1].toUpperCase(),sec:m[2]||"",f:{},opts:{},wrong:[],eqs:[],line:n};return;}
+      const m=line.replace(/^##\s*/,"").match(/^(SUMMARY|EQUATIONS|EXAMPLE|QUIZ|DRILL|GRAPH)\b\s*([0-9]+\.[0-9]+)?/i);
+      if(!m){errs.push(`Line ${n}: "${line}" isn't a known block. Use ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH`);return;}
+      blk={type:m[1].toUpperCase(),sec:m[2]||"",f:{},opts:{},wrong:[],eqs:[],ex:{title:"",parts:[],book:null},line:n};return;}
     if(/^#/.test(line)||!blk)return;
+    if(blk.type==="EXAMPLE"){
+      const ex=blk.ex,last=ex.parts[ex.parts.length-1];
+      if(!line.trim()){if(last&&last.cur.length){last.paras.push(last.cur.join(" "));last.cur=[];}return;}
+      const kx=line.match(/^\s*(Title|Book|Problem|Strategy|Solution|Significance|Answer|Note)\s*:\s*(.*)$/i);
+      if(kx){const k=kx[1].toLowerCase();
+        if(k==="title"){ex.title=kx[2].trim();return;}
+        if(k==="book"){const b=parseInt(kx[2],10);if(!(b>=1))errs.push(`Line ${n}: "Book:" should be a number, like Book: 2 for the book's second example in this section`);else ex.book=b;return;}
+        const lab=kx[1][0].toUpperCase()+kx[1].slice(1).toLowerCase();
+        if(last&&last.label===lab){if(last.cur.length){last.paras.push(last.cur.join(" "));last.cur=[];}if(kx[2].trim())last.cur.push(kx[2].trim());}
+        else ex.parts.push({label:lab,paras:[],cur:kx[2].trim()?[kx[2].trim()]:[]});
+        return;}
+      if(last){last.cur.push(line.trim());return;}
+      errs.push(`Line ${n}: inside an EXAMPLE, start with Title: and then parts like Problem:, Strategy:, Solution:, Significance:`);return;}
     if(!line.trim()){key=null;return;}
     if(blk.type==="EQUATIONS"){
-      const e=line.match(/^\s*(\*)?\s*(.*?)\s*\\\((.*)\\\)\s*$/);
-      if(!e)errs.push(`Line ${n}: an equation line looks like  Name: \\(math\\)  with a * in front to put it on the equation sheet`);
-      else blk.eqs.push({name:e[2].replace(/:\s*$/,"").trim(),tex:e[3].trim(),sheet:!!e[1],sec:blk.sec,line:n});
+      const e=line.match(/^\s*(\*)?\s*(.*?)\s*\\\((.*?)\\\)\s*(?:\|\s*(.*))?$/);
+      if(!e)errs.push(`Line ${n}: an equation line looks like  Name: \\(math\\) | what it means  with a * in front to put it on the equation sheet`);
+      else blk.eqs.push({name:e[2].replace(/:\s*$/,"").trim(),tex:e[3].trim(),back:(e[4]||"").trim(),sheet:!!e[1],sec:blk.sec,line:n});
       return;}
     const opt=line.match(/^\s*([A-Fa-f])\)\s*(.*)$/);
     if((blk.type==="QUIZ"||blk.type==="GRAPH")&&opt){key="opt:"+opt[1].toUpperCase();blk.opts[opt[1].toUpperCase()]=opt[2];return;}
@@ -406,7 +440,8 @@ function parseNotes(txt){
     errs.push(`Line ${n}: this line doesn't start with a label like Q:, Why:, or A)`);
   });
   finish();
-  return{sum,items,errs,eqs};
+  Object.values(exs).forEach(l=>l.forEach(ex=>ex.parts.forEach(p=>{if(p.cur.length)p.paras.push(p.cur.join(" "));p.html=p.paras.map(t=>`<p>${esc(t)}</p>`).join("");delete p.cur;delete p.paras;})));
+  return{sum,items,errs,eqs,exs};
 }
 
 /* small, safe formula evaluator: + - * / ^ ( ) and a few functions */
@@ -668,7 +703,8 @@ function attrib(){return `<p class="attrib">Adapted from <a href="${D.bookUrl}" 
 function renderSection(i){
   const s=S[i], sm=SUMMARY[s.num];
   crumb.textContent=s.num+" "+s.title;
-  let callouts=(EQS[s.num]||[]).map(e=>({name:e.name,tex:e.tex}));
+  const exs=EXS[s.num]?EXS[s.num].map(x=>x.book!=null?s.examples[x.book-1]:x).filter(Boolean):s.examples;
+  let callouts=(EQS[s.num]||[]).map(e=>({name:e.name,tex:e.tex,back:e.back}));
   if(!EQS[s.num]){callouts=s.callouts.map(t=>({tex:t}));
     if(!callouts.length)callouts=D.keyEquations.filter((e,j)=>eqSec(j)===s.num).map(e=>({name:e.name,tex:e.tex}));}
   main.innerHTML=`
@@ -683,11 +719,11 @@ function renderSection(i){
     ${sm.w?`<p class="watch"><b>Watch out</b><span>${esc(sm.w)}</span></p>`:""}
   </section>`:""}
   <section class="stack"><h2>Key ideas from the book</h2><ul class="bullets">${s.keyConcepts.map(k=>`<li>${k}</li>`).join("")}</ul></section>
-  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(e=>`<div class="eqbox">${e.name?`<div class="eqname">${esc(e.name)}</div>`:""}\\[${e.tex}\\]</div>`).join("")}</div></section>`:""}
-  ${s.examples.length?`<section class="stack"><h2>Worked examples</h2>${s.examples.map((ex,j)=>`
+  ${callouts.length?`<section class="stack"><h2>Equations to know</h2><div class="eqgrid">${callouts.map(e=>flipCard(e.back,`<div class="eqbox">${e.name?`<div class="eqname">${esc(e.name)}</div>`:""}\\[${e.tex}\\]</div>`,e.name)).join("")}</div></section>`:""}
+  ${exs.length?`<section class="stack"><h2>Worked examples</h2>${exs.map((ex,j)=>`
     <details class="ex"><summary><span class="k">${s.num}.${j+1}</span><span class="tt">${esc(ex.title||"Example")}</span><span class="plus" aria-hidden="true">+</span></summary>
     <div class="exbody">${ex.parts.map(p=>`<div class="part"><div class="lbl">${esc(p.label)}</div><div class="rich">${p.html}</div></div>`).join("")}</div></details>`).join("")}</section>`:""}
-  ${s.checks.length?`<section class="stack"><h2>Check your understanding</h2>${s.checks.map(c=>`<div class="card"><div class="rich">${c.q}</div>${c.a?`<details class="reveal"><summary>Show answer</summary><div class="ans rich">${c.a}</div></details>`:""}</div>`).join("")}</section>`:""}
+  ${s.checks.length&&store("showcyu")===true?`<section class="stack"><h2>Check your understanding</h2>${s.checks.map(c=>`<div class="card"><div class="rich">${c.q}</div>${c.a?`<details class="reveal"><summary>Show answer</summary><div class="ans rich">${c.a}</div></details>`:""}</div>`).join("")}</section>`:""}
   <section class="row">
     <button class="btn" id="goReview">Quick review of ${s.num}</button>
     <a class="btn quiet" href="${bookUrl(i)}" target="_blank" rel="noopener">Read the full section</a>
@@ -700,6 +736,23 @@ function renderSection(i){
   document.getElementById("goReview").onclick=()=>startSession(s.num,false);
 }
 
+/* ---------- equation notecards ----------
+   An equation with text after "|" in the notes' EQUATIONS block becomes a card that flips over (180°) to show
+   what each symbol means. Both faces share one grid cell, so the card is as tall as its taller side and the page
+   doesn't jump. Cards always start on the equation side. Without a back it stays a plain card. */
+function flipCard(back,front,name,kind){
+  if(!back)return front;
+  const k=kind==="card"?" fcard":"";
+  return `<div class="flip${k}" role="button" tabindex="0" aria-pressed="false" aria-label="${esc(name||"Equation")}. Tap to see what it means.">
+    <div class="face front">${front}<span class="fhint" aria-hidden="true">Tap to flip ↻</span></div>
+    <div class="face back" aria-hidden="true"><div class="${kind==="card"?"card eqcard":"eqbox"} fback">${name?`<div class="eqname">${esc(name)}</div>`:""}<div class="rich"><p style="margin:0">${esc(back)}</p></div></div><span class="fhint" aria-hidden="true">Tap to flip back ↻</span></div>
+  </div>`;
+}
+function flipToggle(f){const on=!f.classList.contains("on");f.classList.toggle("on",on);f.setAttribute("aria-pressed",on);
+  f.querySelector(".front").setAttribute("aria-hidden",on);f.querySelector(".back").setAttribute("aria-hidden",!on);}
+document.addEventListener("click",e=>{const f=e.target.closest&&e.target.closest(".flip");if(!f||e.target.closest("a"))return;
+  if(String(window.getSelection&&getSelection())!=="")return;flipToggle(f);});
+document.addEventListener("keydown",e=>{const f=e.target.closest&&e.target.closest(".flip");if(f&&e.target===f&&(e.key==="Enter"||e.key===" ")){e.preventDefault();flipToggle(f);}});
 function renderEquations(){
   crumb.textContent="Key equations";
   main.innerHTML=`
@@ -708,16 +761,16 @@ function renderEquations(){
     <p class="muted small">The equation sheet for this chapter. Each section page in Learn lists every equation from that section.</p></header>
   <input class="search" id="eqq" type="search" placeholder="${esc(chx().eqHint||"Search the equations")}" aria-label="Search equations">
   <div class="stack" id="eqlist">
-  ${sheetOf(CH).map(e=>`<article class="card eqcard" data-name="${esc(e.name.toLowerCase())} ${e.sec}">
+  ${sheetOf(CH).map(e=>`<div class="eqitem" data-name="${esc(e.name.toLowerCase())} ${e.sec}">${flipCard(e.back,`<article class="card eqcard">
     <div class="head"><h3>${esc(e.name)}</h3>${e.sec?`<span class="tag">${e.sec}</span>`:""}</div>
     <div class="eq">\\[${e.tex}\\]</div>
-  </article>`).join("")}
+  </article>`,e.name,"card")}</div>`).join("")}
   </div>
   <p class="muted small" id="eqnone" hidden>No equation matches that search.</p>
   ${attrib()}`;
   const q=document.getElementById("eqq");
   q.addEventListener("input",()=>{const v=q.value.trim().toLowerCase();let n=0;
-    main.querySelectorAll(".eqcard").forEach(c=>{const ok=!v||c.dataset.name.includes(v);c.hidden=!ok;if(ok)n++;});
+    main.querySelectorAll(".eqitem").forEach(c=>{const ok=!v||c.dataset.name.includes(v);c.hidden=!ok;if(ok)n++;});
     document.getElementById("eqnone").hidden=n>0;});
 }
 
@@ -2481,11 +2534,42 @@ function renderAbout(){
   <section class="card stack"><h2>For teachers: preview the garden</h2>
   <p class="small">Turn this on to see every plant in Chapter ${CH} fully grown${toy()?" and try the "+toy().eyebrow.toLowerCase():""}. Real progress is kept and comes back when you turn it off.</p>
   <label class="toggle"><input type="checkbox" id="pv" ${PROG.preview?"checked":""}> Show a fully grown garden</label></section>
+  <section class="card stack"><h2>For teachers: Check your understanding</h2>
+  <p class="small">The book's Check Your Understanding questions are hidden on section pages, since quick review covers the practice. Turn this on to show them again. It changes this device only.</p>
+  <label class="toggle"><input type="checkbox" id="cyu" ${store("showcyu")===true?"checked":""}> Show Check your understanding</label></section>
+  <section class="card stack"><h2>App version</h2>
+  <p class="small" id="vermsg">This copy is version ${APP_VERSION}. An app saved to the Home Screen can keep an older copy; tap below to get the newest one.</p>
+  <button type="button" class="btn" id="vercheck" style="width:max-content">Check for updates</button></section>
   <section class="card stack"><h2>Chapters</h2>
   <p class="small">Chapters are added as they're written. The book content is generated from the OpenStax source files by a script, and a chapter shows up in the <a href="#chapters">chapter list</a> as soon as its files are on the site.</p></section>`;
   document.getElementById("pv").onchange=e=>{PROG.preview=e.target.checked;saveProg();};
+  document.getElementById("cyu").onchange=e=>store("showcyu",e.target.checked);
+  const vb=document.getElementById("vercheck"),vm=document.getElementById("vermsg");
+  vb.onclick=async()=>{vb.disabled=true;vm.textContent="Checking…";const v=await latestVersion();
+    if(v&&v!==APP_VERSION){vm.textContent=`Version ${v} is ready. Updating…`;applyUpdate();}
+    else{vm.textContent=v?`You have the newest version (${APP_VERSION}).`:"Couldn't reach the site. Check your connection and try again.";vb.disabled=false;}};
 }
+/* ---------- updates ----------
+   APP_VERSION must be changed (any new text) whenever index.html is uploaded, so phones can tell a new copy is out.
+   On launch the app quietly reads the site's index.html, and if its version differs it shows an Update bar.
+   Notes, book and settings files are already read fresh each time, so only index.html needs this. */
+async function latestVersion(){
+  try{const r=await fetch("./index.html?check="+Date.now(),{cache:"no-store"});if(!r.ok)return null;
+    const m=(await r.text()).match(/const APP_VERSION\s*=\s*"([^"]+)"/);return m?m[1]:null;}catch(e){return null;}
+}
+async function applyUpdate(){
+  try{await fetch("./",{cache:"reload"});await fetch("./index.html",{cache:"reload"});}catch(e){}
+  location.replace(location.pathname.replace(/[^/]*$/,"")+"?v="+Date.now()+location.hash);
+}
+function updateBar(v){
+  if(document.getElementById("updbar"))return;const b=document.createElement("div");b.id="updbar";b.className="updbar";b.setAttribute("role","status");
+  b.innerHTML=`<span>A new version of the app is ready.</span><button type="button" class="btn">Update</button><button type="button" class="x" aria-label="Not now">×</button>`;
+  document.body.appendChild(b);b.querySelector(".btn").onclick=()=>{b.querySelector("span").textContent="Updating…";applyUpdate();};b.querySelector(".x").onclick=()=>b.remove();
+}
+setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
+const APP_VERSION="10/31b";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -2515,11 +2599,11 @@ async function fetchChapter(n){
   if(!b.ok)return "error";
   let d;try{d=await b.json();}catch(e){CACHE[n]={bad:`book/ch${pad2(n)}.json has a mistake in it (${e.message}). A single backslash in that file breaks it; every backslash there must be doubled.`};return "ok";}
   const secs=d.sections.map(x=>x.num);
-  let r={sum:{},items:[],eqs:{},errs:[`notes/ch${pad2(n)}.txt could not be loaded, so summaries and review items are missing.`]};
+  let r={sum:{},items:[],eqs:{},exs:{},errs:[`notes/ch${pad2(n)}.txt could not be loaded, so summaries and review items are missing.`]};
   const txt=nt&&nt.ok?await nt.text().catch(()=>null):null;
   if(CACHE[n])return "ok";
   if(txt!==null){const keepSecs=SECS;SECS=secs;try{r=parseNotes(txt);}finally{SECS=keepSecs;}}
-  CACHE[n]={D:d,secs,sum:r.sum,items:r.items,errs:r.errs,eqs:r.eqs||{}};
+  CACHE[n]={D:d,secs,sum:r.sum,items:r.items,errs:r.errs,eqs:r.eqs||{},exs:r.exs||{}};
   const meta=store("chapters")||{};meta[n]={secs:secs.length};store("chapters",meta);
   return "ok";
 }
@@ -2527,7 +2611,7 @@ const CHMEM={};
 function useChapter(n){
   if(CH===n)return;
   const c=CACHE[n],CH0=CH;
-  CH=n;D=c.D;S=D.sections;SECS=c.secs;SUMMARY=c.sum;ITEMS=c.items;NOTE_ERRS=c.errs;EQS=c.eqs||{};
+  CH=n;D=c.D;S=D.sections;SECS=c.secs;SUMMARY=c.sum;ITEMS=c.items;NOTE_ERRS=c.errs;EQS=c.eqs||{};EXS=c.exs||{};
   if(CH0)CHMEM[CH0]={SESS,GSEL,LP};
   PKEY="progress-ch"+n;SKEY="session-ch"+n;PROG=loadProg();
   const kept=CHMEM[n];
@@ -2573,7 +2657,7 @@ async function renderMenu(my){
       <span class="t">${esc(t)}${meta?`<span class="meta" style="display:block">${meta}</span>`:""}</span>
       <span class="chev" aria-hidden="true">›</span></a>`;}).join("")}
   </nav>
-  <p class="attrib">Adapted from <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a></p>`;
+  <p class="attrib">Adapted from <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a> · Version ${APP_VERSION}</p>`;
 }
 function renderSoon(n){
   crumb.textContent="Chapter "+n;
@@ -2708,13 +2792,20 @@ function fieldSection(r){
     <section class="card stack" id="fieldpick" aria-live="polite">${pickCard(r)}</section>
   </section>`;
 }
+/* scroll so all of el (with its button) sits above the fixed tab bar; scrollIntoView "nearest" left it under the bar on phones */
+function showAbove(el){
+  if(!el)return;const tb=document.querySelector(".tabs"),bar=tb?tb.getBoundingClientRect().height:0;
+  const vh=window.visualViewport?visualViewport.height:innerHeight,r=el.getBoundingClientRect();
+  let d=r.bottom-(vh-bar-12);if(r.top-d<12)d=r.top-12;if(d<=0)return;
+  window.scrollBy({top:d,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
 function wireField(r,my){
   const redraw=()=>{const g=document.getElementById("fieldgrid");if(!g)return;const f=fieldHTML(r);g.style.gridTemplateColumns=`repeat(${BIGCOLS},minmax(0,1fr))`;g.innerHTML=f.cells;
     const s=document.getElementById("fieldsum");if(s)s.textContent=f.tot?`${f.bl} of ${plural(f.tot,"flower")} in bloom`:"";wirePlots();};
   const wireGo=()=>{const go=document.getElementById("fieldgo");if(go)go.addEventListener("click",()=>{FSEL=0;});};
   const wirePlots=()=>main.querySelectorAll(".plot").forEach(b=>b.onclick=()=>{const n=+b.dataset.n;FSEL=FSEL===n?0:n;
     main.querySelectorAll(".plot").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.n===FSEL));
-    const c=document.getElementById("fieldpick");if(c){c.innerHTML=pickCard(r);wireGo();if(FSEL)c.scrollIntoView({block:"nearest",behavior:"smooth"});}});
+    const c=document.getElementById("fieldpick");if(c){c.innerHTML=pickCard(r);wireGo();if(FSEL)requestAnimationFrame(()=>showAbove(c));}});
   wirePlots();wireGo();
   main.querySelectorAll("[data-cols]").forEach(b=>b.onclick=()=>{BIGCOLS=+b.dataset.cols;store("bigcols",BIGCOLS);
     main.querySelectorAll("[data-cols]").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.cols===BIGCOLS));redraw();});
@@ -2752,7 +2843,8 @@ async function renderEqPicker(my){
   <input class="search" id="eqall" type="search" placeholder="Search all chapters" aria-label="Search the key equations of all chapters">
   <div class="stack" id="eqhits" hidden></div>
   <nav class="seclist chlist" id="eqchs" aria-label="Chapters">
-    ${l.map(n=>pickRow(n,`#ch${n}/equations`,B[n]?plural(B[n].length,"key equation"):"",n===last)).join("")}
+    ${l.includes(last)?pickRow(last,`#ch${last}/equations`,B[last]?plural(B[last].length,"key equation"):"",true):""}
+    ${readyList(r).map(n=>pickRow(n,`#ch${n}/equations`,B[n]?plural(B[n].length,"key equation"):"",false)).join("")}
   </nav>
   ${PICK_ATTRIB}`;
   const q=document.getElementById("eqall"),hits=document.getElementById("eqhits"),chs=document.getElementById("eqchs");
@@ -2763,10 +2855,10 @@ async function renderEqPicker(my){
     const f=all.filter(x=>words.every(w=>x.key.includes(w)));
     chs.hidden=true;hits.hidden=false;
     hits.innerHTML=`<p class="muted small" aria-live="polite">${f.length?(f.length>MAX?`Showing ${MAX} of ${f.length} matches. Add a word to narrow it down.`:f.length+(f.length===1?" match":" matches")+" in "+plural(new Set(f.map(x=>x.n)).size,"chapter")):"No equation matches that search."}</p>`+
-      f.slice(0,MAX).map(x=>`<article class="card eqcard eqhit">
+      f.slice(0,MAX).map(x=>`<div class="stack eqhit" style="gap:6px">${flipCard(x.e.back,`<article class="card eqcard">
         <div class="head"><h3>${esc(x.e.name)}</h3><span class="tag">${x.sec||"Ch "+x.n}</span></div>
-        <div class="eq">\\[${x.e.tex}\\]</div>
-        <a class="open" href="#ch${x.n}/equations">Chapter ${x.n} equations ›</a></article>`).join("");
+        <div class="eq">\\[${x.e.tex}\\]</div></article>`,x.e.name,"card")}
+        <a class="open small" href="#ch${x.n}/equations" style="align-self:flex-end">Chapter ${x.n} equations ›</a></div>`).join("");
     typeset(hits);},200);});
 }
 
