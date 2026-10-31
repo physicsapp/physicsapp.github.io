@@ -318,7 +318,7 @@ function parsePlot(spec){
   const parts=spec.split(";").map(s=>s.trim()).filter(Boolean);
   const m=parts[0].match(/^([A-Za-z])\s*(?:\(\s*t\s*\))?\s*=\s*(.+)$/);
   if(!m)throw new Error(`Plot: should start like "x = 4*t - t^2"`);
-  const p={name:m[1],expr:m[2],t0:0,t1:4,y0:null,y1:null,unit:{x:"m",y:"m",v:"m/s",a:"m/s²",F:"N",P:"W",K:"J",W:"J"}[m[1]]||"",h:"t"};
+  const p={name:m[1],expr:m[2],t0:0,t1:4,y0:null,y1:null,unit:{x:"m",y:"m",v:"m/s",a:"m/s²",F:"N",P:"W",K:"J",W:"J",U:"J",E:"J"}[m[1]]||"",h:"t"};
   for(const part of parts.slice(1)){
     let r;
     if((r=part.match(/^([tx])\s+from\s+(.+?)\s+to\s+(.+)$/))){p.h=r[1];p.t0=evalExpr(r[2],{});p.t1=evalExpr(r[3],{});}
@@ -578,7 +578,8 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   4:{eqSec:["4.1", "4.1", "4.1", "4.1", "4.1", "4.1", "4.2", "4.2", "4.2", "4.3", "4.3", "4.3", "4.4", "4.4", "4.4", "4.4", "4.4", "4.4", "4.5", "4.5", "4.5", "4.5"],eqHint:"Search, for example “range” or “centripetal”",toy:"catapult"},
   5:{eqSec:["5.1", "5.2", "5.3", "5.3", "5.3", "5.3", "5.4", "5.4", "5.5", "5.6", "5.6", "5.6", "5.6", "5.6"],toy:"elevator",eqHint:"Search, for example “weight” or “second law”"},
   6:{eqSec:["6.2", "6.2", "6.3", "6.3", "6.4", "6.4"],toy:"race",eqHint:"Search, for example “friction” or “drag”"},
-  7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],eqHint:"Search, for example “spring” or “power”"}};
+  7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],eqHint:"Search, for example “spring” or “power”"},
+  8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],eqHint:"Search, for example “spring” or “force”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
