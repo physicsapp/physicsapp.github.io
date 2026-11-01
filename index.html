@@ -622,7 +622,9 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],toy:"coaster",eqHint:"Search, for example “spring” or “force”"},
   9:{eqSec:["9.1","9.2","9.2","9.2","9.2","9.3","9.3","9.5","9.6","9.6","9.6","9.6","9.6","9.6","9.7"],toy:"billiards",eqHint:"Search, for example “impulse” or “rocket”"},
   10:{eqSec:["10.1","10.1","10.1","10.1","10.1","10.2","10.2","10.2","10.2","10.2","10.3","10.4","10.4","10.4","10.5","10.5","10.5","10.6","10.6","10.6","10.7","10.8","10.8","10.8","10.8"],toy:"ferris",eqHint:"Search, for example “torque” or “inertia”"},
-  11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],eqHint:"Search, for example “rolling” or “precession”"}};
+  11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],eqHint:"Search, for example “rolling” or “precession”"},
+  12:{eqHint:"Search, for example “torque” or “stress”"},
+  13:{eqHint:"Search, for example “orbit” or “escape”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
@@ -669,7 +671,7 @@ const P=x=>"("+sig(x)+")";
 const r=(lo,hi,st)=>Math.round((lo+Math.floor(Math.random()*(Math.round((hi-lo)/st)+1))*st)*1000)/1000;
 
 /* ---------- views ---------- */
-for(const n of [1,2,4,5,6,7,8,9,10,11])if(CHX[n]&&!CHX[n].hero)CHX[n].hero=()=>heroFor(n);
+for(const n of [1,2,4,5,6,7,8,9,10,11,12,13])if(CHX[n]&&!CHX[n].hero)CHX[n].hero=()=>heroFor(n);
 function heroGraph(){
   // x = t^2 (a = 2 m/s^2 from rest), t from 0 to 4 s, x from 0 to 16 m, drawn to scale
   const X=t=>30+t*25, Y=x=>96-x*5;
@@ -752,6 +754,19 @@ function heroFor(n){
       <text x="${cx}" y="96" text-anchor="middle">${lab}</text>`;};
     return svg("A skater seen from above, arms out spinning slowly, then arms in spinning faster; angular momentum stays the same",
       `${fig(36,26,1.6,"arms out")}${fig(106,12,3.6,"arms in")}<text x="70" y="116" text-anchor="middle">L = Iω stays the same</text>`);}
+  if(n===12){const y=52,lx=28,rx=118,px=lx+(rx-lx)/3,box=(x,w,lab,c)=>`<rect x="${x-w/2}" y="${y-1.5-w}" width="${w}" height="${w}" rx="1.5" fill="${c}" opacity=".85"/><text x="${x}" y="${y-6-w}" text-anchor="middle" fill="var(--ink)">${lab}</text>`;
+    return svg("A seesaw balanced on a pivot: a block of mass 2m at distance d balances a block of mass m at distance 2d, so the torques cancel",`<line x1="14" y1="${y}" x2="128" y2="${y}" stroke="var(--ink)" stroke-width="3"/>
+      <path d="M${px} ${y+1.5} L${px-10} ${y+20} L${px+10} ${y+20} Z" fill="var(--card)" stroke="var(--ink)" stroke-width="1.6"/><line x1="${px-24}" y1="${y+20}" x2="${px+24}" y2="${y+20}" stroke="var(--ink)"/>
+      ${box(lx,16,"2m","var(--accent)")}${box(rx,11,"m","var(--muted)")}
+      <line x1="${lx}" y1="${y+30}" x2="${px}" y2="${y+30}" stroke="var(--muted)"/><text x="${(lx+px)/2}" y="${y+41}" text-anchor="middle">d</text>
+      <line x1="${px}" y1="${y+30}" x2="${rx}" y2="${y+30}" stroke="var(--muted)" stroke-dasharray="2 2"/><text x="${(px+rx)/2}" y="${y+41}" text-anchor="middle">2d</text>
+      <text x="70" y="116" text-anchor="middle">Στ = 0 and ΣF = 0</text>`);}
+  if(n===13){const ex=40,mx=112,cy=52;
+    return svg("Earth and the Moon pull on each other with equal and opposite gravitational forces along the line between their centers",`<circle cx="${ex}" cy="${cy}" r="22" fill="var(--accent)" opacity=".85"/><circle cx="${mx}" cy="${cy}" r="7" fill="var(--muted)"/>
+      ${A(mx-9,cy,mx-25,cy,"var(--ink)",2)}${A(ex+24,cy,ex+40,cy,"var(--ink)",2)}<text x="${mx-17}" y="${cy-8}" text-anchor="middle" fill="var(--ink)">F</text><text x="${ex+32}" y="${cy-8}" text-anchor="middle" fill="var(--ink)">F</text>
+      <text x="${ex}" y="${cy+36}" text-anchor="middle">M</text><text x="${mx}" y="${cy+20}" text-anchor="middle">m</text>
+      <line x1="${ex}" y1="${cy+46}" x2="${mx}" y2="${cy+46}" stroke="var(--muted)"/><line x1="${ex}" y1="${cy+42}" x2="${ex}" y2="${cy+50}" stroke="var(--muted)"/><line x1="${mx}" y1="${cy+42}" x2="${mx}" y2="${cy+50}" stroke="var(--muted)"/><text x="${(ex+mx)/2}" y="${cy+43}" text-anchor="middle">r</text>
+      <text x="70" y="116" text-anchor="middle">F = GMm / r²</text>`);}
   return "";
 }
 
@@ -3253,7 +3268,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/01d";
+const APP_VERSION="11/01e";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
