@@ -1,0 +1,528 @@
+# FREEBODY NOTES: CHAPTER 11, ANGULAR MOMENTUM
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 11.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(L = I\omega\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+
+## SUMMARY 11.1
+In short: A wheel rolling without slipping turns and moves forward together: \(v_\text{CM} = R\omega\), \(a_\text{CM} = R\alpha\), and the center moves \(d_\text{CM} = R\theta\). The point touching the ground is momentarily at rest, and the top moves at \(2v_\text{CM}\). Static friction at the contact point makes the object spin up but does no work, so mechanical energy is conserved: \(K = \frac12mv_\text{CM}^2 + \frac12I_\text{CM}\omega^2\). Down a ramp, objects with less of their mass far from the axis (smaller \(I/mr^2\)) speed up faster: a solid sphere beats a solid cylinder, which beats a hoop.
+Watch out: A rolling object reaches the bottom slower than a block sliding on a frictionless ramp, because part of its energy goes into spinning.
+
+## SUMMARY 11.2
+In short: A particle with momentum \(\vec p\) at position \(\vec r\) has angular momentum \(\vec l = \vec r\times\vec p\), size \(l = rmv\sin\theta\) (kg·m²/s), pointing along the axis by the right hand rule. Even a particle moving in a straight line has angular momentum about a point off its path. A net torque changes angular momentum: \(\frac{d\vec L}{dt} = \sum\vec\tau\), the rotational version of \(\frac{d\vec p}{dt} = \sum\vec F\). A rigid body spinning about a fixed axis has \(L = I\omega\).
+Watch out: Angular momentum depends on the point you measure from. A particle moving straight toward that point has \(l = 0\).
+
+## SUMMARY 11.3
+In short: If the net external torque on a system is zero, its total angular momentum stays the same: \(I_\text{i}\omega_\text{i} = I_\text{f}\omega_\text{f}\). A skater who pulls in her arms makes \(I\) smaller, so \(\omega\) grows. A diver tucks to spin faster and opens up to slow down. When two objects grab each other while turning, like a disk dropped onto a spinning turntable, angular momentum is conserved but kinetic energy is lost.
+Watch out: Conserving \(L\) does not mean conserving kinetic energy. Since \(K = \frac{L^2}{2I}\), pulling in the arms raises \(K\); the skater's muscles do that work.
+
+## SUMMARY 11.4
+In short: A spinning top or gyroscope doesn't simply fall over. Gravity acting at the center of mass gives a torque \(\tau = rMg\) that is horizontal and at right angles to the spin angular momentum \(\vec L\). Since \(d\vec L = \vec\tau\,dt\), the torque changes the direction of \(\vec L\), not its size, so the axis swings around in a circle. This is precession, with angular velocity \(\omega_P = \frac{rMg}{I\omega}\). A faster spin means slower precession. Earth's axis precesses too, once about every 26,000 years.
+Watch out: The precession rate is \(\omega_P\), not the spin rate \(\omega\). They appear in opposite places in \(\omega_P = \frac{rMg}{I\omega}\).
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+
+
+## EQUATIONS 11.1
+* Rolling without slipping: \(v_\text{CM} = R\omega,\quad a_\text{CM} = R\alpha\) | A wheel of radius \(R\) (m) turning at \(\omega\) (rad/s) moves its center at \(v_\text{CM}\) (m/s); the same link holds for accelerations.
+Distance rolled: \(d_\text{CM} = R\theta\) | The center moves \(d_\text{CM}\) (m) while the wheel turns through \(\theta\) (rad). One turn moves it \(2\pi R\).
+* Kinetic energy of rolling: \(K = \tfrac12mv_\text{CM}^2 + \tfrac12I_\text{CM}\omega^2\) | Total kinetic energy (J) of a rolling object: moving plus spinning, each about the center of mass.
+* Rolling down a ramp: \(a_\text{CM} = \dfrac{mg\sin\theta}{m + I_\text{CM}/r^2}\) | Acceleration (m/s²) of an object of mass \(m\) (kg) rolling without slipping down a ramp at angle \(\theta\). For a solid cylinder it is \(\tfrac23g\sin\theta\).
+Speed after rolling down a height: \(v_\text{CM} = \sqrt{\dfrac{2gh}{1 + I_\text{CM}/mr^2}}\) | From energy conservation, starting at rest and dropping height \(h\) (m). With no rotation it would be \(\sqrt{2gh}\).
+
+## EQUATIONS 11.2
+* Angular momentum of a particle: \(\vec l = \vec r\times\vec p\) | Angular momentum (kg·m²/s) of a particle with momentum \(\vec p\) at position \(\vec r\) from the chosen point. It points along the axis by the right hand rule.
+* Size of angular momentum: \(l = rmv\sin\theta\) | \(\theta\) is the angle between \(\vec r\) and \(\vec v\). For motion in a circle of radius \(r\), \(l = mvr\).
+* Torque changes angular momentum: \(\dfrac{d\vec L}{dt} = \sum\vec\tau\) | The net external torque (N·m) is the rate of change of angular momentum, like \(\frac{d\vec p}{dt} = \sum\vec F\).
+System of particles: \(\vec L = \vec l_1 + \vec l_2 + \cdots + \vec l_N\) | Add each particle's angular momentum, all about the same point.
+* Rigid body: \(L = I\omega\) | Angular momentum (kg·m²/s) of a body with moment of inertia \(I\) (kg·m²) spinning at \(\omega\) (rad/s) about a fixed axis.
+
+## EQUATIONS 11.3
+Conservation of angular momentum: \(\dfrac{d\vec L}{dt} = 0\) | With no net external torque, the total angular momentum of a system stays the same.
+* Before and after: \(I_\text{i}\omega_\text{i} = I_\text{f}\omega_\text{f}\) | When the moment of inertia changes from \(I_\text{i}\) to \(I_\text{f}\) (kg·m²) with no outside torque, \(\omega\) changes the opposite way.
+Kinetic energy in terms of L: \(K = \dfrac{L^2}{2I}\) | With \(L\) fixed, a smaller \(I\) means more kinetic energy (J). The extra energy comes from work done inside the system.
+
+## EQUATIONS 11.4
+Torque from gravity on a gyroscope: \(\tau = rMg\) | A gyroscope of mass \(M\) (kg) with its center of mass \(r\) (m) from the pivot, axle horizontal. The torque is at right angles to \(\vec L\).
+* Precession: \(\omega_P = \dfrac{rMg}{I\omega}\) | Precession angular velocity (rad/s) of a gyroscope spinning at \(\omega\) (rad/s) with moment of inertia \(I\) (kg·m²). Faster spin, slower precession.
+
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 11.1
+# Book: 1
+#
+# ## EXAMPLE 11.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#         For rotation, the letter can be ω, θ, α, or τ (units rad/s, rad, rad/s², N·m), for example
+#         Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+#         For an angle axis, write the formula with x and use "θ from 0 to 4" (Tap: θ = 2 works too):
+#         Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+
+
+# ============================ 11.1 ROLLING MOTION ============================
+
+## QUIZ 11.1
+Q: A wheel rolls without slipping. How fast is the point touching the ground moving at that instant?
+A) It is momentarily at rest
+B) \(v_\text{CM}\)
+C) \(2v_\text{CM}\)
+D) \(R\omega^2\)
+Answer: A
+Why: The contact point moves backward at \(R\omega\) relative to the center while the center moves forward at \(v_\text{CM} = R\omega\). They cancel, so the contact point is at rest for an instant.
+
+## QUIZ 11.1
+Q: A wheel rolls without slipping at speed \(v_\text{CM}\). How fast does the top of the wheel move?
+A) \(2v_\text{CM}\)
+B) \(v_\text{CM}\)
+C) Zero
+D) \(\frac12v_\text{CM}\)
+Answer: A
+Why: The top moves forward at \(R\omega = v_\text{CM}\) relative to the center, plus the center's own \(v_\text{CM}\), for \(2v_\text{CM}\) in all.
+
+## QUIZ 11.1
+Q: A solid sphere, a solid cylinder, and a hoop, all with the same mass and radius, roll from rest down the same ramp. Which reaches the bottom first?
+A) The solid sphere
+B) The solid cylinder
+C) The hoop
+D) They tie
+Answer: A
+Why: The sphere has the smallest \(I/mr^2\) (\(\frac25\), against \(\frac12\) and 1), so less of its energy goes into spinning and it gets the biggest acceleration.
+
+## QUIZ 11.1
+Q: A ball rolls without slipping down a ramp. Why is its mechanical energy conserved even though there is friction?
+A) Static friction acts at a point that isn't moving, so it does no work
+B) Friction is too small to matter
+C) Kinetic friction cancels static friction
+D) Mechanical energy isn't conserved
+Answer: A
+Why: In rolling without slipping the contact point is momentarily at rest. Static friction makes the ball spin up but takes no energy away.
+
+## QUIZ 11.1
+Q: A block slides down a frictionless ramp and a solid cylinder rolls without slipping down an identical ramp, both starting from rest at the same height. Which is faster at the bottom?
+A) The block
+B) The cylinder
+C) Same speed
+D) It depends on the mass
+Answer: A
+Why: Both turn the same \(mgh\) into kinetic energy, but the cylinder puts part of it into spinning, so it moves forward more slowly.
+
+## DRILL 11.1
+Q: A wheel of radius \({{R}}\ \text{m}\) rolls without slipping at \({{v}}\ \text{m/s}\). What is its angular velocity?
+Let: R = one of 0.3, 0.4, 0.5; v = one of 6, 8, 12
+Answer: v/R
+Wrong: v*R | Rolling gives \(v = R\omega\), so divide: \(\omega = v/R\).
+Wrong: R/v | Flip it: \(\omega = v/R\).
+Wrong: 2*v/R | The factor 2 belongs to the speed of the top of the wheel, not to \(\omega\).
+Unit: rad/s
+Work: \omega = \frac{v_\text{CM}}{R} = \frac{{{v}}}{{{R}}} = {{answer}}\ \text{rad/s}
+
+## DRILL 11.1
+Q: A solid cylinder rolls without slipping down a ramp with \(\sin\theta = {{s}}\). Use \(g = 10\ \text{m/s}^2\). What is its acceleration?
+Let: s = one of 0.3, 0.4, 0.5, 0.6
+Answer: 2/3*10*s
+Wrong: 10*s | That is a block sliding with no friction. Rolling adds \(I_\text{CM}/r^2 = \frac12m\) to the bottom.
+Wrong: 0.5*10*s | That is a hoop, with \(I = mr^2\). A solid cylinder has \(I = \frac12mr^2\).
+Wrong: 10*s/3 | With \(I = \frac12mr^2\), \(a = \frac{mg\sin\theta}{m + \frac12m} = \frac23g\sin\theta\).
+Unit: m/s²
+Work: a_\text{CM} = \frac{mg\sin\theta}{m + \tfrac12m} = \tfrac23(10)({{s}}) = {{answer}}\ \text{m/s}^2
+
+## DRILL 11.1
+Q: A hoop of mass \({{m}}\ \text{kg}\) rolls without slipping at \({{v}}\ \text{m/s}\). What is its total kinetic energy?
+Let: m = one of 2, 4, 5; v = one of 2, 3, 4
+Answer: m*v^2
+Wrong: 0.5*m*v^2 | That is only the moving part. A hoop has \(\frac12I\omega^2 = \frac12mv^2\) more from spinning.
+Wrong: 0.75*m*v^2 | That is a solid disk. A hoop has \(I = mr^2\), so both parts are \(\frac12mv^2\).
+Wrong: 2*m*v^2 | Add \(\frac12mv^2 + \frac12mv^2 = mv^2\).
+Unit: J
+Work: K = \tfrac12mv^2 + \tfrac12(mr^2)\left(\tfrac{v}{r}\right)^2 = mv^2 = ({{m}})({{v}})^2 = {{answer}}\ \text{J}
+
+## DRILL 11.1
+Q: A solid sphere starts from rest and rolls without slipping down a height of \({{h}}\ \text{m}\). Use \(g = 10\ \text{m/s}^2\). How fast is its center moving at the bottom?
+Let: h = one of 0.7, 1.4, 2.8, 3.5
+Answer: sqrt(10/7*10*h)
+Wrong: sqrt(2*10*h) | That ignores the spinning. For a sphere, \(1 + \frac25 = \frac75\) goes under \(2gh\).
+Wrong: sqrt(10*h) | That is a hoop, with \(I = mr^2\).
+Wrong: sqrt(4/3*10*h) | That is a solid cylinder, with \(I = \frac12mr^2\).
+Unit: m/s
+Work: mgh = \tfrac12mv^2 + \tfrac12\left(\tfrac25mr^2\right)\tfrac{v^2}{r^2} \Rightarrow v = \sqrt{\tfrac{10}{7}gh} = {{answer}}\ \text{m/s}
+
+## DRILL 11.1
+Q: A bicycle wheel of radius \({{R}}\ \text{m}\) rolls without slipping through \({{n}}\) full turns. How far does the bike move?
+Let: R = one of 0.3, 0.35, 0.5; n = one of 10, 20, 50
+Answer: 2*pi*R*n
+Wrong: R*n | Each turn is \(2\pi\) rad, so each turn moves the bike \(2\pi R\).
+Wrong: pi*R*n | One turn moves the bike a full circumference, \(2\pi R\), not \(\pi R\).
+Wrong: 2*pi*n/R | Multiply by the radius: \(d = R\theta\).
+Unit: m
+Work: d = R\theta = ({{R}})(2\pi)({{n}}) = {{answer}}\ \text{m}
+
+## GRAPH 11.1
+Q: The graph shows the speed of a ball of radius 0.1 m rolling without slipping down a ramp. What is its angular acceleration?
+Plot: v = 0.5*t; t from 0 to 4; y from 0 to 2.5
+A) \(5\ \text{rad/s}^2\)
+B) \(0.5\ \text{rad/s}^2\)
+C) \(0.05\ \text{rad/s}^2\)
+D) \(2\ \text{rad/s}^2\)
+Answer: A
+Why: The slope gives \(a_\text{CM} = 0.5\ \text{m/s}^2\). Rolling links them by \(a_\text{CM} = R\alpha\), so \(\alpha = \frac{0.5}{0.1} = 5\ \text{rad/s}^2\).
+
+
+# ============================ 11.2 ANGULAR MOMENTUM ============================
+
+## QUIZ 11.2
+Q: A puck slides in a straight line that passes 2 m from point O, with no forces on it. What is true of its angular momentum about O?
+A) It is not zero and stays constant
+B) It is zero, since the puck isn't turning
+C) It grows as the puck gets closer to O
+D) It is zero except at the closest point
+Answer: A
+Why: \(l = rmv\sin\theta = mvr_\perp\), and the perpendicular distance \(r_\perp\) = 2 m stays the same along the whole line. No force means no torque, so \(l\) doesn't change.
+
+## QUIZ 11.2
+Q: What are the SI units of angular momentum?
+A) \(\text{kg·m}^2\text{/s}\)
+B) \(\text{kg·m/s}\)
+C) \(\text{N·m}\)
+D) \(\text{kg·m}^2\)
+Answer: A
+Why: \(l = rmv\) has units m × kg × m/s. Choice B is linear momentum, C is torque, and D is moment of inertia.
+
+## QUIZ 11.2
+Q: Seen from above, a merry go round turns counterclockwise. Which way does its angular momentum point?
+A) Straight up
+B) Straight down
+C) Along the edge, in the direction of motion
+D) Toward the center
+Answer: A
+Why: Curl the fingers of your right hand counterclockwise; your thumb points up. That is the direction of \(\vec L\).
+
+## QUIZ 11.2
+Q: What changes the angular momentum of a system?
+A) A net external torque
+B) Any net force
+C) A change in the moment of inertia
+D) Nothing; it never changes
+Answer: A
+Why: \(\frac{d\vec L}{dt} = \sum\vec\tau\). A force through the axis gives no torque and leaves \(L\) alone; changing \(I\) with no torque changes \(\omega\) instead.
+
+## QUIZ 11.2
+Q: A ball moves straight toward point O. What is its angular momentum about O?
+A) Zero
+B) \(mvr\)
+C) It depends on how fast it is going
+D) It increases as it gets closer
+Answer: A
+Why: \(\vec r\) and \(\vec v\) point along the same line, so \(\theta = 180^\circ\) and \(\sin\theta = 0\). Then \(l = rmv\sin\theta = 0\).
+
+## DRILL 11.2
+Q: A \({{m}}\ \text{kg}\) ball on a string moves in a circle of radius \({{r}}\ \text{m}\) at \({{v}}\ \text{m/s}\). What is its angular momentum about the center?
+Let: m = one of 0.2, 0.5, 2; v = one of 3, 4, 6; r = one of 0.5, 1.5, 2
+Answer: m*v*r
+Wrong: m*v/r | Multiply by the radius: \(l = mvr\).
+Wrong: m*v*r^2 | Only one factor of \(r\): \(l = rmv\sin 90^\circ\).
+Wrong: m*v | That is linear momentum. Angular momentum also needs the distance \(r\).
+Unit: kg·m²/s
+Work: l = mvr = ({{m}})({{v}})({{r}}) = {{answer}}\ \text{kg·m}^2\text{/s}
+
+## DRILL 11.2
+Q: A solid disk of mass \({{M}}\ \text{kg}\) and radius \({{R}}\ \text{m}\) spins at \({{w}}\ \text{rad/s}\). What is its angular momentum?
+Let: M = one of 2, 4, 6; R = one of 0.2, 0.5; w = one of 10, 20
+Answer: 0.5*M*R^2*w
+Wrong: M*R^2*w | That is a hoop. A solid disk has \(I = \frac12MR^2\).
+Wrong: 0.5*M*R*w | Square the radius: \(I = \frac12MR^2\).
+Wrong: 0.5*M*R^2*w^2 | \(L = I\omega\), with \(\omega\) to the first power.
+Unit: kg·m²/s
+Work: L = I\omega = \tfrac12MR^2\omega = \tfrac12({{M}})({{R}})^2({{w}}) = {{answer}}\ \text{kg·m}^2\text{/s}
+
+## DRILL 11.2
+Q: A steady net torque of \({{tau}}\ \text{N·m}\) acts on a wheel for \({{t}}\ \text{s}\). By how much does its angular momentum change?
+Let: tau = one of 2, 3, 5; t = one of 2, 4, 6
+Answer: tau*t
+Wrong: tau/t | \(\Delta L = \tau\,\Delta t\): multiply by the time.
+Wrong: t/tau | Multiply: \(\Delta L = \tau\,\Delta t\).
+Wrong: 0.5*tau*t^2 | That form is for an angle. Torque changes \(L\) at a steady rate, \(\Delta L = \tau\,\Delta t\).
+Unit: kg·m²/s
+Work: \Delta L = \tau\,\Delta t = ({{tau}})({{t}}) = {{answer}}\ \text{kg·m}^2\text{/s}
+
+## DRILL 11.2
+Q: A \({{m}}\ \text{kg}\) particle moves at \({{v}}\ \text{m/s}\). At one moment it is \({{r}}\ \text{m}\) from point O, and its velocity makes a \(30^\circ\) angle with \(\vec r\) (\(\sin 30^\circ = 0.5\), \(\cos 30^\circ \approx 0.87\)). What is its angular momentum about O?
+Let: m = one of 2, 3; v = one of 5, 10; r = one of 2, 4
+Answer: r*m*v*0.5
+Wrong: r*m*v | Only the part of the velocity at right angles to \(\vec r\) counts: multiply by \(\sin\theta\).
+Wrong: r*m*v*0.87 | Use \(\sin\theta\), not \(\cos\theta\): \(l = rmv\sin\theta\).
+Wrong: m*v*0.5 | Multiply by the distance \(r\) too.
+Unit: kg·m²/s
+Work: l = rmv\sin\theta = ({{r}})({{m}})({{v}})(0.5) = {{answer}}\ \text{kg·m}^2\text{/s}
+
+## DRILL 11.2
+Q: A thin rod of mass \({{M}}\ \text{kg}\) and length \({{len}}\ \text{m}\) swings about one end at \({{w}}\ \text{rad/s}\). What is its angular momentum?
+Let: M = one of 1.5, 3; len = one of 2, 4; w = one of 2, 3, 5
+Answer: M*len^2*w/3
+Wrong: M*len^2*w/12 | That is the rod turning about its center. About one end, \(I = \frac13ML^2\).
+Wrong: M*len^2*w | The rod's mass is spread along it, so \(I = \frac13ML^2\), not \(ML^2\).
+Wrong: M*len*w/3 | Square the length: \(I = \frac13ML^2\).
+Unit: kg·m²/s
+Work: L = I\omega = \tfrac13ML^2\omega = \tfrac13({{M}})({{len}})^2({{w}}) = {{answer}}\ \text{kg·m}^2\text{/s}
+
+## GRAPH 11.2
+Q: The graph shows a flywheel's angular momentum against time. What net torque acts on it?
+Plot: L = 1 + 2*t; t from 0 to 4; y from 0 to 10
+A) \(2\ \text{N·m}\)
+B) \(1\ \text{N·m}\)
+C) \(9\ \text{N·m}\)
+D) \(0.5\ \text{N·m}\)
+Answer: A
+Why: \(\sum\tau = \frac{dL}{dt}\), the slope: \(\frac{9 - 1}{4 - 0} = 2\ \text{N·m}\). Choice C is the final angular momentum, not its rate of change.
+
+
+# ============================ 11.3 CONSERVATION OF ANGULAR MOMENTUM ============================
+
+## QUIZ 11.3
+Q: A spinning skater pulls in her arms. What happens?
+A) She spins faster; her angular momentum stays the same
+B) She spins faster; her angular momentum increases
+C) She spins slower; her angular momentum stays the same
+D) Nothing changes
+Answer: A
+Why: No outside torque acts, so \(L = I\omega\) is constant. Pulling in her arms lowers \(I\), so \(\omega\) goes up.
+
+## QUIZ 11.3
+Q: When the skater pulls in her arms, what happens to her rotational kinetic energy?
+A) It increases; her muscles do work pulling her arms in
+B) It stays the same, like her angular momentum
+C) It decreases
+D) It becomes zero
+Answer: A
+Why: \(K = \frac{L^2}{2I}\). With \(L\) fixed and \(I\) smaller, \(K\) is larger. The energy comes from the work her arms do.
+
+## QUIZ 11.3
+Q: Why does a diver pull into a tuck after leaving the board?
+A) To make her moment of inertia smaller, so she spins faster
+B) To make her angular momentum larger
+C) To fall faster
+D) To make a torque on herself
+Answer: A
+Why: Once she leaves the board, her angular momentum about her center of mass stays the same. Tucking lowers \(I\) and raises \(\omega\); opening up slows the spin for entry.
+
+## QUIZ 11.3
+Q: A disk is dropped onto a spinning turntable and the two then turn together. Which is true?
+A) Angular momentum is conserved; kinetic energy is lost
+B) Both are conserved
+C) Kinetic energy is conserved; angular momentum is not
+D) Neither is conserved
+Answer: A
+Why: Friction between them is internal, so there is no outside torque and \(L\) is conserved. Like a perfectly inelastic collision, the two end up moving together and kinetic energy turns into heat.
+
+## QUIZ 11.3
+Q: When is the angular momentum of a system conserved?
+A) When the net external torque on it is zero
+B) Only when no forces act on it
+C) Only when its moment of inertia stays the same
+D) Only when it isn't moving
+Answer: A
+Why: \(\frac{d\vec L}{dt} = \sum\vec\tau_\text{ext}\). Forces may act, as long as their torques add to zero, for example forces through the axis.
+
+## DRILL 11.3
+Q: A skater spins at \({{wi}}\ \text{rad/s}\) with moment of inertia \({{Ii}}\ \text{kg·m}^2\). She pulls in her arms to \({{If}}\ \text{kg·m}^2\). How fast does she spin now?
+Let: Ii = one of 3, 4, 6; If = one of 1, 1.5, 2; wi = one of 2, 3, 5
+Answer: Ii*wi/If
+Wrong: If*wi/Ii | Smaller \(I\) means faster spin: \(\omega_\text{f} = \frac{I_\text{i}}{I_\text{f}}\omega_\text{i}\).
+Wrong: wi | \(I\omega\) stays the same, not \(\omega\).
+Wrong: wi*(Ii/If)^2 | No square: \(I_\text{i}\omega_\text{i} = I_\text{f}\omega_\text{f}\).
+Unit: rad/s
+Work: \omega_\text{f} = \frac{I_\text{i}\omega_\text{i}}{I_\text{f}} = \frac{({{Ii}})({{wi}})}{{{If}}} = {{answer}}\ \text{rad/s}
+
+## DRILL 11.3
+Q: A turntable with \(I = {{I1}}\ \text{kg·m}^2\) spins freely at \({{w1}}\ \text{rad/s}\). A disk at rest with \(I = {{I2}}\ \text{kg·m}^2\) is dropped onto it, centered. How fast do they spin together?
+Let: I1 = one of 2, 4, 5; I2 = one of 1, 3; w1 = one of 6, 12
+Answer: I1*w1/(I1 + I2)
+Wrong: I1*w1/I2 | Both spin together afterward, so use the total moment of inertia, \(I_1 + I_2\).
+Wrong: w1/2 | Only true when the two moments of inertia are equal.
+Wrong: w1*(I1 + I2)/I1 | Adding the disk makes the spin slower, not faster.
+Unit: rad/s
+Work: I_1\omega_1 = (I_1 + I_2)\,\omega_\text{f} \Rightarrow \omega_\text{f} = \frac{({{I1}})({{w1}})}{{{I1}} + {{I2}}} = {{answer}}\ \text{rad/s}
+
+## DRILL 11.3
+Q: A spinning skater has \({{Ki}}\ \text{J}\) of rotational kinetic energy. She pulls in her arms, lowering her moment of inertia from \({{Ii}}\) to \({{If}}\ \text{kg·m}^2\). What is her kinetic energy now?
+Let: Ki = one of 100, 150, 200; Ii = one of 4, 6; If = one of 1.5, 2
+Answer: Ki*Ii/If
+Wrong: Ki | Angular momentum is conserved, not kinetic energy. With \(K = \frac{L^2}{2I}\), a smaller \(I\) means more energy.
+Wrong: Ki*(Ii/If)^2 | \(K = \frac{L^2}{2I}\) with \(L\) fixed, so \(K\) grows by \(\frac{I_\text{i}}{I_\text{f}}\), not its square.
+Wrong: Ki*If/Ii | A smaller \(I\) means more kinetic energy, not less.
+Unit: J
+Work: K_\text{f} = \frac{L^2}{2I_\text{f}} = K_\text{i}\frac{I_\text{i}}{I_\text{f}} = ({{Ki}})\frac{{{Ii}}}{{{If}}} = {{answer}}\ \text{J}
+
+## DRILL 11.3
+Q: A \({{m}}\ \text{kg}\) child runs at \({{v}}\ \text{m/s}\) along the edge and jumps onto a merry go round of radius 2 m, at rest, with \(I = {{I}}\ \text{kg·m}^2\). How fast do they turn together?
+Let: m = one of 20, 30, 40; v = one of 3, 4; I = one of 200, 300
+Answer: m*v*2/(I + m*4)
+Wrong: m*v*2/I | The child turns with the merry go round, so add the child's \(mR^2\) to \(I\).
+Wrong: v/2 | That ignores the merry go round's moment of inertia.
+Wrong: m*v/(I + m*4) | The child's angular momentum is \(mvR\): multiply by the radius.
+Unit: rad/s
+Work: mvR = (I + mR^2)\,\omega \Rightarrow \omega = \frac{({{m}})({{v}})(2)}{{{I}} + ({{m}})(2)^2} = {{answer}}\ \text{rad/s}
+
+## DRILL 11.3
+Q: A star turns once every \({{T}}\) days. It collapses to \(\frac1{{{k}}}\) of its radius with no outside torque, keeping its mass and shape. How many days does one turn take now?
+Let: T = one of 20, 30; k = one of 2, 5, 10
+Answer: T/k^2
+Wrong: T/k | \(I\) goes as \(R^2\), so it drops by \(k^2\) and the spin speeds up by \(k^2\).
+Wrong: T*k^2 | A smaller star spins faster, so the period gets shorter.
+Wrong: T | \(L\) stays the same, not \(\omega\). A smaller \(I\) means a faster spin.
+Unit: days
+Work: I \propto R^2 \Rightarrow \omega_\text{f} = {{k}}^2\omega_\text{i} \Rightarrow T_\text{f} = \frac{{{T}}}{({{k}})^2} = {{answer}}\ \text{days}
+
+## GRAPH 11.3
+Q: The graph shows a skater's angular velocity during a spin, with no outside torque. Tap the moment her moment of inertia is smallest.
+Plot: ω = 2 + 1.5*t*(4 - t); t from 0 to 4; y from 0 to 10
+Tap: t = 2
+Why: \(L = I\omega\) stays the same, so \(I = L/\omega\) is smallest where \(\omega\) is largest, at the top of the curve: arms pulled in tightest.
+
+
+# ============================ 11.4 PRECESSION OF A GYROSCOPE ============================
+
+## QUIZ 11.4
+Q: A spinning gyroscope rests with one end of its axle on a stand. Why doesn't it fall over?
+A) Gravity's torque changes the direction of \(\vec L\), so the axle swings around instead of falling
+B) Spinning cancels gravity
+C) There is no torque on it
+D) The stand pushes up exactly at the center of mass
+Answer: A
+Why: The torque from gravity is horizontal and at right angles to \(\vec L\). Since \(d\vec L = \vec\tau\,dt\), \(\vec L\) turns sideways rather than tipping down.
+
+## QUIZ 11.4
+Q: A gyroscope is spun up to twice the spin rate. What happens to its precession?
+A) It precesses half as fast
+B) It precesses twice as fast
+C) It precesses at the same rate
+D) It stops precessing
+Answer: A
+Why: \(\omega_P = \frac{rMg}{I\omega}\), so doubling \(\omega\) halves \(\omega_P\).
+
+## QUIZ 11.4
+Q: For a gyroscope with a horizontal axle, how does the torque from gravity compare to its spin angular momentum \(\vec L\)?
+A) Horizontal and at right angles to \(\vec L\)
+B) Parallel to \(\vec L\)
+C) Pointing straight down
+D) Opposite to \(\vec L\)
+Answer: A
+Why: \(\vec\tau = \vec r\times M\vec g\), with \(\vec r\) along the axle and \(\vec g\) down, is horizontal and at right angles to the axle, so it only changes the direction of \(\vec L\).
+
+## QUIZ 11.4
+Q: Earth's spin axis precesses. About how long does one full precession take?
+A) About 26,000 years
+B) One day
+C) One year
+D) About 26 years
+Answer: A
+Why: Torques from the Sun and Moon on Earth's bulge at the equator make the axis sweep around very slowly, about once every 26,000 years, because Earth's spin angular momentum is so large.
+
+## DRILL 11.4
+Q: A gyroscope has its center of mass \({{r}}\ \text{m}\) from the pivot, mass \({{M}}\ \text{kg}\), \(I = {{I}}\ \text{kg·m}^2\), and spins at \({{w}}\ \text{rad/s}\). Use \(g = 10\ \text{m/s}^2\). What is its precession angular velocity?
+Let: r = one of 0.05, 0.1; M = one of 0.2, 0.5; I = one of 0.002, 0.004; w = one of 150, 300
+Answer: r*M*10/(I*w)
+Wrong: I*w/(r*M*10) | Flip it: \(\omega_P = \frac{rMg}{I\omega}\).
+Wrong: r*M*10/I | Divide by the spin rate too: \(L = I\omega\).
+Wrong: r*M/(I*w) | The torque is \(rMg\); don't forget \(g\).
+Unit: rad/s
+Work: \omega_P = \frac{rMg}{I\omega} = \frac{({{r}})({{M}})(10)}{({{I}})({{w}})} = {{answer}}\ \text{rad/s}
+
+## DRILL 11.4
+Q: A \({{M}}\ \text{kg}\) gyroscope has its horizontal axle resting on a pivot, with its center of mass \({{r}}\ \text{m}\) from the pivot. Use \(g = 10\ \text{m/s}^2\). What torque does gravity exert about the pivot?
+Let: M = one of 0.2, 0.3, 0.5; r = one of 0.04, 0.06, 0.1
+Answer: r*M*10
+Wrong: M*10/r | Torque is distance times force: \(\tau = rMg\).
+Wrong: r*M | Use the weight \(Mg\), not the mass.
+Wrong: r^2*M*10 | Only one factor of \(r\): \(\tau = rMg\).
+Unit: N·m
+Work: \tau = rMg = ({{r}})({{M}})(10) = {{answer}}\ \text{N·m}
+
+## DRILL 11.4
+Q: A gyroscope precesses at \({{wp}}\ \text{rad/s}\). How long does one full trip around take?
+Let: wp = one of 0.5, 1, 2, 4
+Answer: 2*pi/wp
+Wrong: 1/wp | One trip around is \(2\pi\) rad, so \(T = \frac{2\pi}{\omega_P}\).
+Wrong: wp/(2*pi) | That is the number of trips per second. Flip it for the time.
+Wrong: 2*pi*wp | Divide by \(\omega_P\): \(T = \frac{2\pi}{\omega_P}\).
+Unit: s
+Work: T = \frac{2\pi}{\omega_P} = \frac{2\pi}{{{wp}}} = {{answer}}\ \text{s}
