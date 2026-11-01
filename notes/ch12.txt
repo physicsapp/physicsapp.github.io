@@ -1,0 +1,554 @@
+# FREEBODY NOTES: CHAPTER 12, STATIC EQUILIBRIUM AND ELASTICITY
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 12.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(\sum\tau = 0\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 12.1
+In short: An object is in static equilibrium when it stays at rest: the net force on it is zero AND the net torque on it is zero, \(\sum\vec F = 0\) and \(\sum\vec\tau = 0\). In equilibrium the net torque is zero about every point, so you may put the pivot anywhere. Put it where an unknown force acts, and that force drops out of the torque equation. Gravity acts as if all the weight sits at the center of gravity, which is the center of mass when \(g\) is the same everywhere on the object. The recipe: draw a free body diagram, pick a pivot, write \(\sum F_x = 0\), \(\sum F_y = 0\), \(\sum\tau = 0\), and solve.
+Watch out: Zero net force is not enough. Two equal and opposite forces that don't act along the same line (a couple) give zero net force but a torque that starts the object spinning.
+
+## SUMMARY 12.2
+In short: The same recipe solves seesaws, arms, ladders, hinges, and signs. A seesaw balances when \(r_1w_1 = r_2w_2\): a heavier person sits closer to the pivot. A muscle attached close to a joint has a short lever arm, so it must pull many times harder than the load in the hand. A ladder leaning on a smooth wall gets a sideways push from the wall, and floor friction must match that push; the higher a person climbs, the more friction is needed. Guess a direction for each unknown force; a negative answer just means it points the other way.
+Watch out: A torque uses the lever arm, the perpendicular distance from the pivot to the line of the force, \(\tau = r_\perp F = rF\sin\theta\), not just the distance to where the force acts.
+
+## SUMMARY 12.3
+In short: Stress is force per area, \(\frac{F}{A}\), in pascals (1 Pa = 1 N/m²). Strain is the fractional change in size, like \(\frac{\Delta L}{L_0}\), and has no units. For small deformations stress = (elastic modulus) × strain. Stretching or squeezing along a length uses Young's modulus \(Y\), so \(\Delta L = \frac{FL_0}{AY}\). Squeezing from all sides uses the bulk modulus \(B\): \(\frac{\Delta V}{V_0} = -\frac{\Delta p}{B}\). Pushing sideways on one face uses the shear modulus \(S\). A larger modulus means a stiffer material. Steel has \(Y = 2.0\times10^{11}\) Pa; water has \(B = 2.2\times10^{9}\) Pa.
+Watch out: A wire twice as long stretches twice as much under the same force, but a wire twice as thick (diameter) has four times the area, so it stretches only one fourth as much.
+
+## SUMMARY 12.4
+In short: A material is elastic if it returns to its original shape when the stress is removed. Up to the proportionality limit, stress is proportional to strain (the straight part of a stress strain diagram). Between the proportionality limit and the elastic limit it still springs back, but stress and strain are no longer proportional. Past the elastic limit the behavior is plastic: the object stays permanently stretched or bent. It breaks at the breaking point, at the end of the plastic region.
+Watch out: Going past the proportionality limit does not by itself cause a permanent change. That starts only past the elastic limit.
+
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+
+
+## EQUATIONS 12.1
+* First condition for equilibrium: \(\sum\vec F = 0\) | The vector sum of all external forces (N) on the object is zero, so its center of mass doesn't accelerate. In components, \(\sum F_x = 0\) and \(\sum F_y = 0\).
+* Second condition for equilibrium: \(\sum\vec\tau = 0\) | The sum of all external torques (N·m) is zero, so the object doesn't start to turn. It holds about every pivot point, so pick the most convenient one.
+Torque of a force: \(\tau = rF\sin\theta = r_\perp F\) | A force \(F\) (N) acting \(r\) (m) from the pivot at angle \(\theta\) to \(\vec r\). The lever arm \(r_\perp\) is the perpendicular distance to the force's line.
+Center of gravity: \(x_\text{CG} = \dfrac{m_1x_1 + m_2x_2 + \cdots}{m_1 + m_2 + \cdots}\) | Where the whole weight seems to act, with masses \(m\) (kg) at positions \(x\) (m). With uniform \(g\) it is the center of mass.
+
+## EQUATIONS 12.2
+* Seesaw balance: \(r_1w_1 = r_2w_2\) | Weights \(w_1\) and \(w_2\) (N) at distances \(r_1\) and \(r_2\) (m) on opposite sides of the pivot balance when their torques match.
+Friction holding a ladder: \(f_s \le \mu_sN\) | Static friction \(f_s\) (N) at the floor can be at most \(\mu_s\) times the floor's normal force \(N\) (N). The ladder slips if it needs more.
+
+## EQUATIONS 12.3
+Stress: \(\text{stress} = \dfrac{F}{A}\) | Force \(F\) (N) spread over area \(A\) (m²), in pascals (Pa). Use the area perpendicular to the force for tension or compression.
+* Stress and strain: \(\text{stress} = (\text{elastic modulus})\times\text{strain}\) | Holds for small deformations. Strain is a fraction with no units, so the modulus has the same units as stress (Pa).
+* Young's modulus: \(Y = \dfrac{F_\perp}{A}\,\dfrac{L_0}{\Delta L}\) | A rod of length \(L_0\) (m) and cross section \(A\) (m²) pulled or pushed along its length by \(F_\perp\) (N) changes length by \(\Delta L\) (m).
+Tensile strain: \(\text{strain} = \dfrac{\Delta L}{L_0}\) | The change in length divided by the original length. No units.
+* Bulk modulus: \(B = -\Delta p\,\dfrac{V_0}{\Delta V}\) | A pressure increase \(\Delta p\) (Pa) on all sides shrinks volume \(V_0\) by \(\Delta V\) (m³). The minus sign makes \(B\) positive, since \(\Delta V\) is negative.
+Compressibility: \(k = \dfrac{1}{B}\) | The inverse of the bulk modulus (1/Pa). A large compressibility means the material is easy to squeeze.
+* Shear modulus: \(S = \dfrac{F_\parallel}{A}\,\dfrac{L_0}{\Delta x}\) | A sideways force \(F_\parallel\) (N) on a face of area \(A\) (m²) shifts that face by \(\Delta x\) (m) relative to the opposite face, a distance \(L_0\) (m) away.
+
+## EQUATIONS 12.4
+Below the proportionality limit: \(\text{stress} = Y\times\text{strain}\) | On the straight part of a stress strain diagram, the slope is Young's modulus \(Y\) (Pa). Past the proportionality limit the curve bends.
+
+
+
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 12.1
+# Book: 1
+#
+# ## EXAMPLE 12.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#         For rotation, the letter can be ω, θ, α, or τ (units rad/s, rad, rad/s², N·m), for example
+#         Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+#         For an angle axis, write the formula with x and use "θ from 0 to 4" (Tap: θ = 2 works too):
+#         Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+
+
+# ============================ 12.1 CONDITIONS FOR STATIC EQUILIBRIUM ============================
+
+## QUIZ 12.1
+Q: An object is in static equilibrium. Which must be true?
+A) The net force and the net torque on it are both zero
+B) Only the net force on it is zero
+C) Only the net torque on it is zero
+D) No forces act on it
+Answer: A
+Why: Zero net force keeps the center of mass from accelerating, and zero net torque keeps the object from starting to turn. Static equilibrium needs both. Forces can act; they just have to balance.
+
+## QUIZ 12.1
+Q: A meter stick lies on a frictionless table. Two forces of the same size push on its two ends, at right angles to the stick and in opposite directions. Is the stick in equilibrium?
+A) No, the torques add and it starts to spin
+B) Yes, the forces cancel
+C) Yes, as long as the stick is light
+D) No, the net force isn't zero
+Answer: A
+Why: The net force is zero, but the forces don't act along the same line. They form a couple, and both turn the stick the same way.
+
+## QUIZ 12.1
+Q: When you solve a static equilibrium problem, where is the smartest place to put the pivot for the torque equation?
+A) Where an unknown force acts, so that force has no torque
+B) Always at the center of the object
+C) As far from every force as possible
+D) It must be at a real hinge or axle
+Answer: A
+Why: In equilibrium the net torque is zero about every point, so any pivot works. A force acting at the pivot has zero lever arm, so one unknown disappears from the equation.
+
+## QUIZ 12.1
+Q: The front wheels of a car carry 60% of its weight and the rear wheels 40%. Where is the car's center of gravity?
+A) Closer to the front axle
+B) Closer to the rear axle
+C) Exactly halfway between the axles
+D) Directly above the front axle
+Answer: A
+Why: Take torques about the center of gravity: the bigger force (front) must have the shorter lever arm, so the center of gravity sits nearer the front.
+
+## QUIZ 12.1
+Q: A picture hangs from a single nail and stays still. Where is its center of gravity?
+A) Directly below the nail
+B) Directly above the nail
+C) Level with the nail, off to one side
+D) It could be anywhere
+Answer: A
+Why: The nail's force acts at the nail. If the center of gravity were off to the side, gravity would have a torque about the nail and the picture would swing. Directly below is the stable position.
+
+## DRILL 12.1
+Q: A light rod has a \({{a}}\ \text{kg}\) mass at its left end and a \({{b}}\ \text{kg}\) mass at its right end, \({{L}}\ \text{m}\) away. How far from the left end is the center of gravity?
+Let: a = one of 1, 3; b = one of 2, 4; L = one of 1, 2, 3
+Answer: b*L/(a + b)
+Wrong: a*L/(a + b) | That is the distance from the right end. Measure from the left, where \(x = 0\).
+Wrong: L/2 | Halfway works only for equal masses. Weight each position by its mass.
+Wrong: b*L/a | Divide by the total mass, \(a + b\), not just one mass.
+Unit: m
+Work: x_\text{CG} = \frac{({{a}})(0) + ({{b}})({{L}})}{{{a}} + {{b}}} = {{answer}}\ \text{m}
+
+## DRILL 12.1
+Q: A \({{W}}\ \text{N}\) lamp hangs from a knot held by two strings. Each string makes an angle with the vertical whose cosine is \({{c}}\). What is the tension in each string?
+Let: W = one of 20, 40, 60; c = one of 0.5, 0.8
+Answer: W/(2*c)
+Wrong: W/2 | Splitting the weight works only for vertical strings. Each string holds up \(T\cos\theta\), so \(2T\cos\theta = W\).
+Wrong: W*c/2 | Divide by the cosine, don't multiply: \(T = \frac{W}{2\cos\theta}\).
+Wrong: W/c | Two strings share the load: \(2T\cos\theta = W\).
+Unit: N
+Work: 2T\cos\theta = W \Rightarrow T = \frac{{{W}}}{2({{c}})} = {{answer}}\ \text{N}
+
+## DRILL 12.1
+Q: A \({{m}}\ \text{kg}\) sign hangs from two vertical ropes. One rope pulls up with \({{T}}\ \text{N}\). Use \(g = 10\ \text{m/s}^2\). What is the tension in the other rope?
+Let: m = one of 40, 50, 60; T = one of 120, 150, 180
+Answer: 10*m - T
+Wrong: 10*m | The first rope already holds part of the weight: \(T_1 + T_2 = mg\).
+Wrong: 10*m + T | Both ropes pull up, so they add up to the weight: \(T_2 = mg - T_1\).
+Wrong: m - T/10 | That is in kilograms. Multiply the mass by \(g\) to get the weight in newtons first.
+Unit: N
+Work: T_1 + T_2 = mg \Rightarrow T_2 = ({{m}})(10) - {{T}} = {{answer}}\ \text{N}
+
+## DRILL 12.1
+Q: A car's front wheels carry \({{F}}\ \text{N}\) and its rear wheels \({{R}}\ \text{N}\). The axles are \({{d}}\ \text{m}\) apart. How far behind the front axle is the center of gravity?
+Let: F = one of 6000, 7000, 8000; R = one of 4000, 5000; d = one of 2.5, 3
+Answer: R*d/(F + R)
+Wrong: F*d/(F + R) | That is the distance from the rear axle. About the front axle, only the rear force has a lever arm.
+Wrong: d/2 | Halfway would need equal loads on both axles.
+Wrong: R*d/F | Torques about the front axle: \((F + R)x = Rd\), so divide by the whole weight.
+Unit: m
+Work: (F + R)\,x = Rd \Rightarrow x = \frac{({{R}})({{d}})}{{{F}} + {{R}}} = {{answer}}\ \text{m}
+
+## DRILL 12.1
+Q: Two forces of \({{F}}\ \text{N}\) each push on opposite ends of a \({{d}}\ \text{m}\) bar, at right angles to it and in opposite directions. What is the net torque about the bar's center?
+Let: F = one of 10, 20, 30; d = one of 0.5, 1, 2
+Answer: F*d
+Wrong: 0 | The forces cancel, but their torques don't: both turn the bar the same way.
+Wrong: F*d/2 | That is one force. Each has lever arm \(\frac d2\), and both torques add.
+Wrong: 2*F*d | Each force acts \(\frac d2\) from the center, not \(d\).
+Unit: N·m
+Work: \tau = 2\left(F\cdot\tfrac d2\right) = ({{F}})({{d}}) = {{answer}}\ \text{N·m}
+
+
+# ============================ 12.2 EXAMPLES OF STATIC EQUILIBRIUM ============================
+
+## QUIZ 12.2
+Q: A 300 N child sits 2 m from the pivot of a seesaw. Where must a 600 N adult sit to balance it?
+A) 1 m from the pivot, on the other side
+B) 4 m from the pivot, on the other side
+C) 2 m from the pivot, on the other side
+D) 1 m from the pivot, on the child's side
+Answer: A
+Why: The torques must match: \((300)(2) = (600)r\), so \(r = 1\ \text{m}\). The adult sits on the other side so the torques turn opposite ways.
+
+## QUIZ 12.2
+Q: Why does your biceps pull many times harder than the weight of a ball held in your hand?
+A) It attaches close to the elbow, so its lever arm is short
+B) Muscles can only pull at a fraction of their strength
+C) The forearm's weight pushes the ball down
+D) The biceps pulls at a steep angle away from the arm
+Answer: A
+Why: About the elbow, the muscle's torque must match the ball's. The ball is far from the elbow and the muscle attaches only a few centimeters away, so the muscle force must be bigger by that ratio.
+
+## QUIZ 12.2
+Q: A ladder leans against a smooth (frictionless) wall. What keeps its foot from sliding out?
+A) Static friction from the floor
+B) The wall's normal force
+C) The ladder's weight
+D) The floor's normal force
+Answer: A
+Why: The wall pushes the ladder horizontally away from it. The only horizontal force that can balance that push is static friction at the floor.
+
+## QUIZ 12.2
+Q: A painter climbs higher on a ladder leaning against a smooth wall. What happens to the friction the floor must supply?
+A) It increases
+B) It decreases
+C) It stays the same
+D) It drops to zero
+Answer: A
+Why: About the ladder's foot, the painter's weight has a longer lever arm the higher she goes. The wall must push harder to balance it, and friction must match the wall's push. That is why ladders slip when you are near the top.
+
+## QUIZ 12.2
+Q: You solve for a hinge force and get a negative number. What does that mean?
+A) The force points opposite to the direction you guessed
+B) You made a mistake
+C) The force is really zero
+D) The object can't be in equilibrium
+Answer: A
+Why: You guess a direction when you draw the free body diagram. A negative answer just says the guess was backward; the size is still right.
+
+## DRILL 12.2
+Q: A \({{a}}\ \text{N}\) child sits \({{r}}\ \text{m}\) from the pivot of a seesaw. How far from the pivot, on the other side, must a \({{b}}\ \text{N}\) adult sit to balance it?
+Let: a = one of 200, 300, 400; r = one of 1.5, 2, 2.5; b = one of 500, 600, 800
+Answer: a*r/b
+Wrong: b*r/a | The heavier person sits closer, not farther: \(r_2 = \frac{w_1r_1}{w_2}\).
+Wrong: r | Equal distances balance only equal weights.
+Wrong: a*r/(a + b) | Torques balance: \(w_1r_1 = w_2r_2\). Divide by the adult's weight only.
+Unit: m
+Work: w_1r_1 = w_2r_2 \Rightarrow r_2 = \frac{({{a}})({{r}})}{{{b}}} = {{answer}}\ \text{m}
+
+## DRILL 12.2
+Q: A uniform 4 m plank weighing \({{P}}\ \text{N}\) rests on supports at its two ends. A \({{W}}\ \text{N}\) crate sits \({{x}}\ \text{m}\) from the left end. What force does the right support push up with?
+Let: P = one of 200, 400; W = one of 600, 800, 1000; x = one of 1, 3
+Answer: P/2 + W*x/4
+Wrong: P/2 + W*(4 - x)/4 | That is the left support. Take torques about the left end: the right support's lever arm is the full 4 m.
+Wrong: (P + W)/2 | The supports share equally only if the crate is in the middle.
+Wrong: W*x/4 | Include the plank's weight, acting at its middle, 2 m from the left end.
+Unit: N
+Work: F_R(4) = ({{P}})(2) + ({{W}})({{x}}) \Rightarrow F_R = {{answer}}\ \text{N}
+
+## DRILL 12.2
+Q: You hold a \({{w}}\ \text{N}\) ball in your hand \({{L}}\ \text{m}\) from your elbow, forearm level. Your biceps pulls straight up \({{d}}\ \text{m}\) from the elbow. Ignore the forearm's weight. How hard does the biceps pull?
+Let: w = one of 20, 50, 100; L = one of 0.3, 0.35, 0.4; d = one of 0.04, 0.05
+Answer: w*L/d
+Wrong: w | The biceps is much closer to the elbow than the ball, so it must pull harder.
+Wrong: w*d/L | Flip the ratio: the shorter lever arm needs the bigger force.
+Wrong: w*(L - d)/d | Measure both lever arms from the elbow, the pivot, not from the muscle.
+Unit: N
+Work: F_M d = wL \Rightarrow F_M = \frac{({{w}})({{L}})}{{{d}}} = {{answer}}\ \text{N}
+
+## DRILL 12.2
+Q: A uniform \({{W}}\ \text{N}\) ladder leans against a smooth wall. Its top touches the wall \({{h}}\ \text{m}\) up, and its foot is \({{b}}\ \text{m}\) from the wall. How big is the friction force at the floor?
+Let: W = one of 200, 300, 400; h = one of 4, 6; b = one of 1.5, 2
+Answer: W*b/(2*h)
+Wrong: W*b/h | The ladder's weight acts at its middle, so its lever arm about the foot is \(\frac b2\).
+Wrong: W*h/(2*b) | About the foot, the wall's push has lever arm \(h\) and the weight has \(\frac b2\). Swap them back.
+Wrong: W | That is the floor's normal force. Friction balances the wall's push.
+Unit: N
+Work: N_\text{wall}\,h = W\tfrac b2 \Rightarrow f = N_\text{wall} = \frac{({{W}})({{b}})}{2({{h}})} = {{answer}}\ \text{N}
+
+## DRILL 12.2
+Q: A uniform ladder leans against a smooth wall with its top \({{h}}\ \text{m}\) up the wall and its foot \({{b}}\ \text{m}\) out. What is the smallest coefficient of static friction at the floor that keeps it from slipping?
+Let: h = one of 3, 4, 5; b = one of 1, 1.5, 2
+Answer: b/(2*h)
+Wrong: b/h | The weight acts at the ladder's middle, so its lever arm is \(\frac b2\).
+Wrong: h/(2*b) | About the foot, the wall's push has lever arm \(h\). Swap \(b\) and \(h\) back.
+Wrong: 2*b/h | Halve the foot distance for the weight's lever arm; don't double it.
+Unit:
+Work: \mu_s = \frac{f}{N} = \frac{W b/(2h)}{W} = \frac{{{b}}}{2({{h}})} = {{answer}}
+
+## DRILL 12.2
+Q: A \({{W}}\ \text{N}\) sign hangs from the end of a light horizontal strut hinged to a wall. A cable from the same end goes up to the wall at an angle to the strut with \(\sin\theta = {{s}}\). What is the cable tension?
+Let: W = one of 100, 200, 300; s = one of 0.5, 0.6, 0.8
+Answer: W/s
+Wrong: W | Only the cable's vertical part, \(T\sin\theta\), holds the sign up, so \(T\) is bigger than \(W\).
+Wrong: W*s | Divide by \(\sin\theta\): torques about the hinge give \(TL\sin\theta = WL\).
+Wrong: W/sqrt(1 - s^2) | That uses the cosine. The lever arm of the cable comes from \(\sin\theta\).
+Unit: N
+Work: TL\sin\theta = WL \Rightarrow T = \frac{{{W}}}{{{s}}} = {{answer}}\ \text{N}
+
+## GRAPH 12.2
+Q: A 600 N painter walks along a light 4 m plank resting on supports at both ends. The graph shows the force from the left support against the painter's distance x from the left end. Tap where the left support pushes up with 450 N.
+Plot: F = 600*(1 - x/4); x from 0 to 4; y from 0 to 700
+Tap: x = 1 within 0.3
+Why: Torques about the right end: \(F_L(4) = 600(4 - x)\). At \(x = 1\ \text{m}\), \(F_L = 450\ \text{N}\) and the right support holds the other 150 N.
+
+
+# ============================ 12.3 STRESS, STRAIN, AND ELASTIC MODULUS ============================
+
+## QUIZ 12.3
+Q: Which of these has no units?
+A) Strain
+B) Stress
+C) Young's modulus
+D) Bulk modulus
+Answer: A
+Why: Strain is a change in size divided by the original size, like \(\frac{\Delta L}{L_0}\), so the units cancel. Stress and every modulus are in pascals.
+
+## QUIZ 12.3
+Q: Two steel wires have the same length and hold the same weight. Wire B has twice the diameter of wire A. How does B's stretch compare with A's?
+A) One fourth as much
+B) Half as much
+C) The same
+D) Twice as much
+Answer: A
+Why: \(\Delta L = \frac{FL_0}{AY}\), and the area grows with the diameter squared. Twice the diameter means four times the area, so one fourth the stretch.
+
+## QUIZ 12.3
+Q: Two wires of the same material and thickness hold the same weight. Wire B is twice as long as wire A. How does B's stretch compare with A's?
+A) Twice as much
+B) The same
+C) Half as much
+D) Four times as much
+Answer: A
+Why: The strain \(\frac{\Delta L}{L_0}\) is the same for both, since the stress is the same. A wire twice as long stretches twice as far.
+
+## QUIZ 12.3
+Q: You push sideways on the top of a block of gelatin while the bottom stays put, and the top slides over a little. Which modulus describes this?
+A) Shear modulus
+B) Young's modulus
+C) Bulk modulus
+D) None, gelatin isn't elastic
+Answer: A
+Why: A force parallel to a face, with the opposite face held, is shear. Young's modulus is for stretching or squeezing along a length, bulk modulus for squeezing from all sides.
+
+## QUIZ 12.3
+Q: Water has a bulk modulus of \(2.2\times10^9\) Pa and steel \(1.6\times10^{11}\) Pa. Which is easier to compress?
+A) Water
+B) Steel
+C) Equally easy
+D) Neither can be compressed at all
+Answer: A
+Why: A smaller bulk modulus means a bigger fractional volume change for the same pressure. Water is about 70 times easier to squeeze than steel, though both are very stiff.
+
+## DRILL 12.3
+Q: A rope holds \({{F}}\ \text{N}\). Its cross section is \({{A}}\ \text{mm}^2\). What is the stress in the rope? (\(1\ \text{mm}^2 = 10^{-6}\ \text{m}^2\))
+Let: F = one of 1200, 2400, 3600; A = one of 4, 6, 8
+Answer: F/A
+Wrong: A/F | Stress is force divided by area, \(\frac FA\).
+Wrong: F*A | Divide by the area: the same force on a thicker rope is less stress.
+Wrong: F/A/1000 | 1 mm² is \(10^{-6}\ \text{m}^2\), so newtons per mm² are exactly MPa.
+Unit: MPa
+Work: \frac{F}{A} = \frac{{{F}}\ \text{N}}{{{A}}\times10^{-6}\ \text{m}^2} = {{answer}}\times10^{6}\ \text{Pa}
+
+## DRILL 12.3
+Q: A \({{L}}\ \text{m}\) wire stretches \({{d}}\ \text{mm}\) under a load. What is the strain?
+Let: L = one of 2, 4, 5; d = one of 1, 2, 3
+Answer: d/L
+Wrong: L/d | Strain is the change in length divided by the original length.
+Wrong: d*L | Divide the stretch by the length; don't multiply.
+Wrong: 1000*d/L | Convert millimeters to meters first: \(1\ \text{mm} = 10^{-3}\ \text{m}\).
+Unit: × 10⁻³
+Work: \text{strain} = \frac{\Delta L}{L_0} = \frac{{{d}}\times10^{-3}\ \text{m}}{{{L}}\ \text{m}} = {{answer}}\times10^{-3}
+
+## DRILL 12.3
+Q: A steel wire (\(Y = 2.0\times10^{11}\ \text{Pa}\)) is \({{L}}\ \text{m}\) long with a cross section of \({{A}}\ \text{cm}^2\). It holds \({{F}}\ \text{kN}\). How much does it stretch?
+Let: F = one of 10, 20, 40; L = one of 2, 3; A = one of 2, 4
+Answer: F*L/(20*A)
+Wrong: F/(20*A*L) | The length goes on top: a longer wire stretches more, \(\Delta L = \frac{FL_0}{AY}\).
+Wrong: F*L*A/20 | The area goes on the bottom: a thicker wire stretches less.
+Wrong: F*L/(2000*A) | 1 cm² is \(10^{-4}\ \text{m}^2\), not \(10^{-2}\ \text{m}^2\).
+Unit: mm
+Work: \Delta L = \frac{FL_0}{AY} = \frac{({{F}}\times10^{3})({{L}})}{({{A}}\times10^{-4})(2.0\times10^{11})} = {{answer}}\ \text{mm}
+
+## DRILL 12.3
+Q: A \({{L}}\ \text{m}\) wire with a cross section of \({{A}}\ \text{mm}^2\) stretches \({{d}}\ \text{mm}\) when it holds \({{F}}\ \text{N}\). What is its Young's modulus?
+Let: F = one of 500, 1000; L = one of 1, 2; A = one of 1, 2, 4; d = one of 1, 2, 5
+Answer: F*L/(A*d)
+Wrong: F*d/(A*L) | Strain is \(\frac{\Delta L}{L_0}\), so \(L_0\) goes on top in \(Y = \frac{F}{A}\frac{L_0}{\Delta L}\).
+Wrong: F/A | That is only the stress. Divide by the strain too.
+Wrong: F*L/(A*d)/1000 | With mm² and mm, \(10^{-6}\times10^{-3} = 10^{-9}\), so the answer comes out in GPa.
+Unit: GPa
+Work: Y = \frac{F}{A}\frac{L_0}{\Delta L} = \frac{{{F}}}{{{A}}\times10^{-6}}\cdot\frac{{{L}}}{{{d}}\times10^{-3}} = {{answer}}\times10^{9}\ \text{Pa}
+
+## DRILL 12.3
+Q: Deep in the ocean the water pressure is \({{p}}\ \text{MPa}\) higher than at the surface. Water's bulk modulus is \(2.2\times10^9\ \text{Pa}\). By what percent does a sample of water shrink?
+Let: p = one of 11, 22, 44
+Answer: p/22
+Wrong: p/2.2 | \(2.2\times10^9\ \text{Pa}\) is 2200 MPa. The fraction is \(\frac{p}{2200}\); times 100 gives percent.
+Wrong: 22/p | Pressure goes on top: \(\frac{\Delta V}{V_0} = \frac{\Delta p}{B}\).
+Wrong: p/2200 | That is the fraction. Multiply by 100 for percent.
+Unit: %
+Work: \frac{|\Delta V|}{V_0} = \frac{\Delta p}{B} = \frac{{{p}}\times10^6}{2.2\times10^9}\times100\% = {{answer}}\%
+
+## DRILL 12.3
+Q: A rubber pad \({{L}}\ \text{cm}\) thick with a top area of \({{A}}\ \text{cm}^2\) has shear modulus \(1.0\times10^6\ \text{Pa}\). Its bottom is glued down and a sideways force of \({{F}}\ \text{N}\) pushes its top. How far does the top move?
+Let: F = one of 200, 400, 600; L = one of 1, 2; A = one of 4, 8
+Answer: F*L/(100*A)
+Wrong: F/(100*A*L) | The thickness goes on top: \(\Delta x = \frac{FL_0}{AS}\). A thicker pad leans over farther.
+Wrong: F*A/(100*L) | The area goes on the bottom: a bigger face spreads the force out.
+Wrong: F*L/(1000000*A) | Convert the area: \(1\ \text{cm}^2 = 10^{-4}\ \text{m}^2\).
+Unit: cm
+Work: \Delta x = \frac{FL_0}{AS} = \frac{({{F}})({{L}}\ \text{cm})}{({{A}}\times10^{-4})(1.0\times10^6)} = {{answer}}\ \text{cm}
+
+## GRAPH 12.3
+Q: The graph shows the force needed to stretch a 10 m bungee cord with a cross section of 2 cm². What is the cord's Young's modulus?
+Plot: F = 400*x; x from 0 to 5; y from 0 to 2200
+A) \(2.0\times10^7\ \text{Pa}\)
+B) \(4.0\times10^3\ \text{Pa}\)
+C) \(2.0\times10^6\ \text{Pa}\)
+D) \(2.0\times10^5\ \text{Pa}\)
+Answer: A
+Why: The slope is \(\frac{F}{\Delta L} = 400\ \text{N/m}\). Then \(Y = \frac{F}{\Delta L}\cdot\frac{L_0}{A} = 400\cdot\frac{10}{2\times10^{-4}} = 2.0\times10^7\ \text{Pa}\). B forgets the area, C forgets the length, D uses \(1\ \text{cm}^2 = 10^{-2}\ \text{m}^2\).
+
+
+# ============================ 12.4 ELASTICITY AND PLASTICITY ============================
+
+## QUIZ 12.4
+Q: In which part of a stress strain diagram does a material return to its original shape when the load is removed?
+A) The elastic region
+B) The plastic region
+C) Past the breaking point
+D) Nowhere; materials never fully return
+Answer: A
+Why: Elastic means it springs back. In the plastic region it keeps a permanent deformation.
+
+## QUIZ 12.4
+Q: What is the proportionality limit?
+A) The largest stress for which stress is proportional to strain
+B) The stress at which the material breaks
+C) The stress at which permanent deformation starts
+D) The largest strain the material can have
+Answer: A
+Why: Below it, the stress strain graph is a straight line with slope equal to the modulus. Permanent deformation starts later, at the elastic limit.
+
+## QUIZ 12.4
+Q: You bend a paper clip and it stays bent. What happened?
+A) The stress went past the elastic limit
+B) The stress stayed below the proportionality limit
+C) The paper clip's modulus dropped to zero
+D) The stress reached zero
+Answer: A
+Why: A permanent bend is plastic behavior, which happens only once the stress goes past the elastic limit.
+
+## QUIZ 12.4
+Q: A wire is loaded past its proportionality limit but not past its elastic limit, then unloaded. What happens?
+A) It returns to its original length, but stress and strain weren't proportional near the top of the load
+B) It stays permanently stretched
+C) It breaks
+D) It follows Hooke's law the whole way
+Answer: A
+Why: Between the two limits the material is still elastic, so it springs back. The graph just isn't a straight line there.
+
+## QUIZ 12.4
+Q: Where on a stress strain diagram does a wire snap?
+A) At the breaking point, at the end of the plastic region
+B) At the proportionality limit
+C) At the elastic limit
+D) At the start of the elastic region
+Answer: A
+Why: The wire first stretches elastically, then plastically, and finally breaks at the breaking point.
+
+## DRILL 12.4
+Q: A steel rod (\(Y = 2.0\times10^{11}\ \text{Pa}\)) stays proportional up to a stress of \({{P}}\ \text{MPa}\). What is the largest strain in that straight part of its stress strain graph?
+Let: P = one of 200, 250, 300
+Answer: P/200
+Wrong: 200/P | Strain is stress divided by the modulus: \(\text{strain} = \frac{\text{stress}}{Y}\).
+Wrong: P/2 | Check the powers of 10: \(Y = 2.0\times10^{11}\ \text{Pa}\), not \(2.0\times10^{9}\).
+Wrong: P/20 | Count the powers of 10 again: \(\frac{10^6}{10^{11}} = 10^{-5}\).
+Unit: × 10⁻³
+Work: \text{strain} = \frac{\text{stress}}{Y} = \frac{{{P}}\times10^6}{2.0\times10^{11}} = {{answer}}\times10^{-3}
+
+## DRILL 12.4
+Q: A wire has an elastic limit of \({{s}}\ \text{MPa}\) and a cross section of \({{A}}\ \text{mm}^2\). What is the largest load it can hold and still spring back?
+Let: s = one of 100, 150, 200; A = one of 2, 4, 5
+Answer: s*A
+Wrong: s/A | Force is stress times area, \(F = \sigma A\).
+Wrong: A/s | Force is stress times area, \(F = \sigma A\).
+Wrong: s*A/1000 | MPa times mm² is already newtons: \(10^6\times10^{-6} = 1\).
+Unit: N
+Work: F = \sigma A = ({{s}}\times10^6)({{A}}\times10^{-6}) = {{answer}}\ \text{N}
+
+## DRILL 12.4
+Q: A cable is replaced by one of the same material with \({{k}}\) times the diameter. How many times more load can it hold before reaching its elastic limit?
+Let: k = one of 2, 3
+Answer: k^2
+Wrong: k | The limit is a stress, so the load scales with the area, which grows as the diameter squared.
+Wrong: k^3 | Area goes with the diameter squared, not cubed.
+Wrong: 2*k | Square the factor: area goes with \(d^2\).
+Unit: times
+Work: \frac{F_2}{F_1} = \frac{A_2}{A_1} = \left(\frac{d_2}{d_1}\right)^2 = ({{k}})^2 = {{answer}}
+
+## GRAPH 12.4
+Q: The graph shows the force on a long strip of soft plastic as it is stretched a distance x. Tap where it stops following Hooke's law.
+Plot: F = 100*x - 50*(x - 2) - 50*abs(x - 2); x from 0 to 4; y from 0 to 260
+Tap: x = 2 within 0.3
+Why: Up to \(x = 2\ \text{m}\) the force grows in a straight line (proportional). After that the force stops rising while the strip keeps stretching; it is flowing plastically.

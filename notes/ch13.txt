@@ -1,0 +1,633 @@
+# FREEBODY NOTES: CHAPTER 13, GRAVITATION
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 13.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(F = G\frac{m_1m_2}{r^2}\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+## SUMMARY 13.1
+In short: Every two masses attract each other with a force \(F = G\frac{m_1m_2}{r^2}\), where \(r\) is the distance between their centers and \(G = 6.67\times10^{-11}\ \text{N·m}^2/\text{kg}^2\). The two objects pull on each other equally hard, in opposite directions (Newton's third law). Double the distance and the force drops to one fourth. Because \(G\) is so small, the pull between everyday objects is tiny; it is big only when at least one mass is planet sized. A uniform sphere pulls on things outside it as if all its mass sat at its center. With several masses, add the forces as vectors.
+Watch out: \(r\) is measured center to center, not across the gap between the surfaces.
+
+## SUMMARY 13.2
+In short: Near a planet, the gravitational force on a mass \(m\) is \(mg\) with \(g = G\frac{M}{r^2}\), so \(g\) depends only on the planet's mass and the distance from its center, not on the falling object. At Earth's surface \(g \approx 9.80\ \text{m/s}^2\). One Earth radius above the surface (twice as far from the center), \(g\) is one fourth as big. Measuring \(g\) and the radius lets you find a planet's mass, \(M = \frac{gR^2}{G}\). Astronauts in the space station still feel about 90% of surface gravity; they float because they and the station fall around Earth together.
+Watch out: There is plenty of gravity in orbit. "Weightless" astronauts are in free fall, not out of gravity's reach.
+
+## SUMMARY 13.3
+In short: Far from the surface, gravitational potential energy is \(U = -\frac{GMm}{r}\), chosen to be zero infinitely far away. It is negative and rises toward zero as \(r\) grows. Energy conservation reads \(\frac12mv_1^2 - \frac{GMm}{r_1} = \frac12mv_2^2 - \frac{GMm}{r_2}\). The escape speed, the launch speed that just barely never comes back, is \(v_\text{esc} = \sqrt{\frac{2GM}{R}}\), about 11.2 km/s for Earth, the same for a pebble or a rocket. Total energy below zero means the object stays bound; zero or above means it escapes.
+Watch out: \(mgh\) only works when the height change is small compared with the planet's radius. For big changes use \(-\frac{GMm}{r}\).
+
+## SUMMARY 13.4
+In short: In a circular orbit, gravity provides the centripetal force, so \(v_\text{orbit} = \sqrt{\frac{GM}{r}}\) and the period is \(T = 2\pi\sqrt{\frac{r^3}{GM}}\). Neither depends on the satellite's mass. Lower orbits are faster; the space station circles Earth in about 90 minutes. The total energy is \(E = -\frac{GMm}{2r}\): half the potential energy, and the negative of the kinetic energy. At the same distance, escape speed is \(\sqrt2\) times the orbital speed.
+Watch out: To move up to a higher orbit you must add energy, yet the satellite ends up moving more slowly.
+
+## SUMMARY 13.5
+In short: Kepler's three laws describe planets (and anything orbiting one big mass). First, each orbit is an ellipse with the Sun at one focus. Second, the line from the Sun to the planet sweeps equal areas in equal times, so the planet moves fastest when closest; this is conservation of angular momentum. Third, \(T^2 = \frac{4\pi^2}{GM}a^3\), where \(a\) is the semi major axis (half the longest width of the ellipse). The total energy decides the shape of the path: negative gives a circle or ellipse, zero a parabola, positive a hyperbola that never returns.
+Watch out: The Sun sits at a focus, not at the center of the ellipse. \(a\) is the average of the closest and farthest distances.
+
+## SUMMARY 13.6
+In short: The Moon pulls harder on the side of Earth facing it than on Earth's center, and harder on the center than on the far side. That difference stretches Earth, making two bulges of ocean, one facing the Moon and one on the opposite side. As Earth turns under them, most shores get two high tides a day. Tidal effects fall off as \(\frac{M}{r^3}\), so the Sun, though its pull on Earth is about 200 times the Moon's, has a smaller tidal effect. When the Sun, Earth, and Moon line up (new and full moon) the effects add for spring tides; at half moon they partly cancel for neap tides.
+Watch out: The far side bulge isn't the Moon pushing water away. The Moon pulls Earth's center away from the far side water more than it pulls that water.
+
+## SUMMARY 13.7
+In short: Einstein's general theory of relativity treats gravity as curved space time: mass bends space time, and objects and light follow the curves. The principle of equivalence says no experiment in a closed lab can tell a uniform gravitational field from a uniform acceleration. Light bends as it passes the Sun, and clocks run slower deeper in a gravitational field. If a mass \(M\) is squeezed inside its Schwarzschild radius \(R_\text{S} = \frac{2GM}{c^2}\), it becomes a black hole; inside that event horizon not even light escapes. The Sun's Schwarzschild radius is about 3 km.
+Watch out: A black hole doesn't suck in everything around it. Far away, it pulls like any other object of the same mass.
+
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+
+
+## EQUATIONS 13.1
+* Newton's law of gravitation: \(F = G\dfrac{m_1m_2}{r^2}\) | Size of the attraction (N) between masses \(m_1\) and \(m_2\) (kg) whose centers are \(r\) (m) apart. Each pulls on the other equally hard.
+* Gravitational constant: \(G = 6.67\times10^{-11}\ \text{N·m}^2/\text{kg}^2\) | The same everywhere in the universe. Its small size is why everyday objects barely attract.
+Vector form: \(\vec F_{12} = G\dfrac{m_1m_2}{r^2}\,\hat r_{12}\) | The force on object 2 from object 1, pointing along \(\hat r_{12}\), the unit vector between them; add the forces from several masses as vectors.
+
+## EQUATIONS 13.2
+* Gravity at a distance r: \(g = G\dfrac{M}{r^2}\) | Free fall acceleration (m/s²) a distance \(r\) (m) from the center of a planet of mass \(M\) (kg). At the surface, \(r\) is the planet's radius.
+Mass of a planet: \(M = \dfrac{gR^2}{G}\) | Measure \(g\) (m/s²) at the surface and the radius \(R\) (m) to find the planet's mass (kg).
+
+## EQUATIONS 13.3
+* Gravitational potential energy: \(U = -\dfrac{GMm}{r}\) | Potential energy (J) of mass \(m\) a distance \(r\) (m) from the center of mass \(M\), with \(U = 0\) infinitely far away.
+* Conservation of energy: \(\tfrac12mv_1^2 - \dfrac{GMm}{r_1} = \tfrac12mv_2^2 - \dfrac{GMm}{r_2}\) | Kinetic plus potential energy (J) stays the same when only gravity does work, even for large changes in distance.
+* Escape speed: \(v_\text{esc} = \sqrt{\dfrac{2GM}{R}}\) | The launch speed (m/s) from the surface of a body of mass \(M\) and radius \(R\) that just reaches infinity. It doesn't depend on the launched mass.
+Near the surface: \(\Delta U \approx mg\,\Delta h\) | Works only when the height change \(\Delta h\) (m) is small compared with the planet's radius.
+
+## EQUATIONS 13.4
+* Orbital speed: \(v_\text{orbit} = \sqrt{\dfrac{GM}{r}}\) | Speed (m/s) in a circular orbit of radius \(r\) (m), measured from the center of the planet. Lower orbits are faster.
+* Orbital period: \(T = 2\pi\sqrt{\dfrac{r^3}{GM}}\) | Time (s) for one trip around a circular orbit of radius \(r\) (m). Neither \(v\) nor \(T\) depends on the satellite's mass.
+* Energy in a circular orbit: \(E = -\dfrac{GMm}{2r}\) | Total energy (J), half the potential energy and the negative of the kinetic energy. A higher orbit has more (less negative) energy.
+Escape and orbit: \(v_\text{esc} = \sqrt2\,v_\text{orbit}\) | At the same distance from the center, escaping takes \(\sqrt2\) times the circular orbit speed.
+
+## EQUATIONS 13.5
+* Kepler's third law: \(T^2 = \dfrac{4\pi^2}{GM}a^3\) | Period \(T\) (s) of anything orbiting mass \(M\) (kg) on an ellipse with semi major axis \(a\) (m). For a circle, \(a = r\).
+Semi major axis: \(a = \dfrac{r_\text{p} + r_\text{a}}{2}\) | Half the longest width of the ellipse: the average of the closest distance \(r_\text{p}\) and the farthest \(r_\text{a}\) (m).
+Conic sections: \(\dfrac{\alpha}{r} = 1 + e\cos\theta\) | The shape of any orbit around one mass, with eccentricity \(e\): \(e = 0\) is a circle, below 1 an ellipse, 1 a parabola, above 1 a hyperbola.
+
+## EQUATIONS 13.6
+Tidal effect: \(\text{tidal effect} \propto \dfrac{M}{r^3}\) | The stretching from a body of mass \(M\) (kg) a distance \(r\) (m) away. It falls off faster than the force itself, which goes as \(\frac{M}{r^2}\).
+
+## EQUATIONS 13.7
+* Schwarzschild radius: \(R_\text{S} = \dfrac{2GM}{c^2}\) | A mass \(M\) (kg) squeezed inside this radius (m) is a black hole; \(c = 3.00\times10^8\) m/s. About 3 km for the Sun.
+
+
+
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 13.1
+# Book: 1
+#
+# ## EXAMPLE 13.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#         For rotation, the letter can be ω, θ, α, or τ (units rad/s, rad, rad/s², N·m), for example
+#         Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+#         For an angle axis, write the formula with x and use "θ from 0 to 4" (Tap: θ = 2 works too):
+#         Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+
+
+# ============================ 13.1 NEWTON'S LAW OF UNIVERSAL GRAVITATION ============================
+
+## QUIZ 13.1
+Q: Two asteroids attract each other. If the distance between their centers doubles, what happens to the gravitational force?
+A) It drops to one fourth
+B) It drops to one half
+C) It stays the same
+D) It doubles
+Answer: A
+Why: \(F\) goes as \(\frac{1}{r^2}\). Twice the distance means \(2^2 = 4\) times less force.
+
+## QUIZ 13.1
+Q: Earth pulls down on you with 700 N. How hard do you pull on Earth?
+A) 700 N
+B) Almost nothing, since you are so small
+C) 700 N times Earth's mass
+D) Zero
+Answer: A
+Why: Gravity is an interaction: each object pulls on the other with the same size force (Newton's third law). Earth barely moves because its mass is enormous, not because the force is small.
+
+## QUIZ 13.1
+Q: In \(F = G\frac{m_1m_2}{r^2}\) for two spheres, what is \(r\)?
+A) The distance between their centers
+B) The gap between their surfaces
+C) The sum of their radii
+D) The radius of the bigger sphere
+Answer: A
+Why: A uniform sphere pulls as if all its mass sat at its center, so \(r\) is center to center.
+
+## QUIZ 13.1
+Q: Why don't you notice the gravitational pull of the person sitting next to you?
+A) \(G\) is so small that the force between people is tiny
+B) Gravity only acts between planets
+C) The air blocks it
+D) Their pull cancels Earth's pull
+Answer: A
+Why: For two people about a meter apart the force is around \(10^{-7}\) N, far too small to feel. It is only big when one mass is planet sized.
+
+## DRILL 13.1
+Q: Two objects attract with \({{F}}\ \text{N}\). One mass is made \({{a}}\) times bigger and the distance between their centers \({{c}}\) times bigger. What is the new force?
+Let: F = one of 36, 72; a = one of 2, 3; c = one of 2, 3
+Answer: F*a/c^2
+Wrong: F*a/c | Square the distance factor: \(F\) goes as \(\frac{1}{r^2}\).
+Wrong: F*a*c^2 | A bigger distance makes the force smaller, so divide by \(c^2\).
+Wrong: F*c^2/a | More mass means more force, so multiply by \(a\).
+Unit: N
+Work: F' = F\cdot\frac{a}{c^2} = ({{F}})\frac{{{a}}}{({{c}})^2} = {{answer}}\ \text{N}
+
+## DRILL 13.1
+Q: Two people of \({{m}}\ \text{kg}\) and \({{n}}\ \text{kg}\) stand with their centers \({{r}}\ \text{m}\) apart. Treat them as points. What is the gravitational force between them?
+Let: m = one of 50, 60, 80; n = one of 70, 90, 100; r = one of 2, 3
+Answer: 6.67*m*n/(r^2*10000)
+Wrong: 6.67*m*n/(r*10000) | Square the distance: \(F = G\frac{m_1m_2}{r^2}\).
+Wrong: 6.67*(m + n)/(r^2*10000) | Multiply the masses; don't add them.
+Wrong: 6.67*m*n/(r^2*1000) | Count the powers of 10: \(10^{-11}\times10^{4} = 10^{-7}\).
+Unit: × 10⁻⁷ N
+Work: F = \frac{(6.67\times10^{-11})({{m}})({{n}})}{({{r}})^2} = {{answer}}\times10^{-7}\ \text{N}
+
+## DRILL 13.1
+Q: A small ball feels a gravitational pull of \({{p}}\ \text{N}\) east from one big mass and \({{q}}\ \text{N}\) north from another. How big is the net gravitational force on it?
+Let: k = one of 1, 2, 3; p = 3*k; q = 4*k
+Answer: sqrt(p^2 + q^2)
+Wrong: p + q | The forces are at right angles, so add them as vectors.
+Wrong: q - p | Subtract only for opposite directions. At right angles use the Pythagorean theorem.
+Wrong: (p + q)/2 | Add the forces as vectors; don't average them.
+Unit: N
+Work: F = \sqrt{F_x^2 + F_y^2} = \sqrt{({{p}})^2 + ({{q}})^2} = {{answer}}\ \text{N}
+
+## GRAPH 13.1
+Q: The graph shows the gravitational force between two balls against the distance x between their centers. Tap where the force is one ninth of its value at x = 1 m.
+Plot: F = 36/x^2; x from 1 to 4; y from 0 to 40; unit nN
+Tap: x = 3 within 0.25
+Why: The force goes as \(\frac{1}{r^2}\). One ninth the force means \(3^2 = 9\), so three times the distance: \(x = 3\ \text{m}\), where \(F = 4\ \text{nN}\).
+
+
+# ============================ 13.2 GRAVITATION NEAR EARTH'S SURFACE ============================
+
+## QUIZ 13.2
+Q: Why do astronauts float inside the orbiting space station?
+A) They and the station are falling around Earth together
+B) There is no gravity that high up
+C) The station's engines cancel gravity
+D) The air inside holds them up
+Answer: A
+Why: At the station's height \(g\) is still about 90% of its surface value. Everything inside falls at the same rate, so nothing presses on the floor.
+
+## QUIZ 13.2
+Q: A satellite is one Earth radius above the surface. How does \(g\) there compare with \(g\) at the surface?
+A) One fourth as big
+B) One half as big
+C) The same
+D) Zero
+Answer: A
+Why: The satellite is two Earth radii from the center. \(g = G\frac{M}{r^2}\), so twice the distance gives one fourth.
+
+## QUIZ 13.2
+Q: A planet has the same mass as Earth but half its radius. What is \(g\) at its surface?
+A) Four times Earth's
+B) Twice Earth's
+C) The same as Earth's
+D) Half of Earth's
+Answer: A
+Why: \(g = G\frac{M}{R^2}\). Half the radius puts the surface twice as close to the center, so \(g\) is \(2^2 = 4\) times bigger.
+
+## QUIZ 13.2
+Q: On the Moon an astronaut drops a hammer and a feather at the same time. What happens?
+A) They hit the ground together
+B) The hammer lands first
+C) The feather lands first
+D) The feather floats away
+Answer: A
+Why: With no air, both fall with \(g = G\frac{M}{R^2}\), which doesn't depend on the falling object's mass.
+
+## DRILL 13.2
+Q: A satellite is \({{h}}\) Earth radii above Earth's surface. Using \(g = 9.8\ \text{m/s}^2\) at the surface, what is \(g\) at the satellite?
+Let: h = one of 1, 2, 3
+Answer: 9.8/(1 + h)^2
+Wrong: 9.8/h^2 | Measure from Earth's center: the satellite is \(1 + h\) radii away.
+Wrong: 9.8/(1 + h) | Square the distance factor: \(g\) goes as \(\frac{1}{r^2}\).
+Wrong: 9.8*(1 + h)^2 | Gravity gets weaker farther out, so divide.
+Unit: m/s²
+Work: g = 9.8\left(\frac{R_\text{E}}{r}\right)^2 = \frac{9.8}{(1 + {{h}})^2} = {{answer}}\ \text{m/s}^2
+
+## DRILL 13.2
+Q: A planet has \({{a}}\) times Earth's mass and \({{b}}\) times Earth's radius. Using \(g = 9.8\ \text{m/s}^2\) on Earth, what is \(g\) at its surface?
+Let: a = one of 2, 4, 8; b = one of 0.5, 2
+Answer: 9.8*a/b^2
+Wrong: 9.8*a/b | Square the radius factor: \(g = G\frac{M}{R^2}\).
+Wrong: 9.8*a*b^2 | A bigger radius puts the surface farther from the center, so divide by \(b^2\).
+Wrong: 9.8*b^2/a | More mass means more gravity, so \(a\) goes on top.
+Unit: m/s²
+Work: g = 9.8\cdot\frac{a}{b^2} = 9.8\cdot\frac{{{a}}}{({{b}})^2} = {{answer}}\ \text{m/s}^2
+
+## DRILL 13.2
+Q: On a moon, a dropped rock falls with \(g = {{g}}\ \text{m/s}^2\). The moon's radius is \({{R}}\times10^6\ \text{m}\). What is its mass? (\(G = 6.67\times10^{-11}\ \text{N·m}^2/\text{kg}^2\))
+Let: g = one of 4, 6, 8; R = one of 2, 3
+Answer: g*R^2/6.67
+Wrong: g*R/6.67 | Square the radius: \(M = \frac{gR^2}{G}\).
+Wrong: g*R^2*6.67 | Divide by \(G\), don't multiply.
+Wrong: g/(6.67*R^2) | The radius squared goes on top: \(g = G\frac{M}{R^2}\) gives \(M = \frac{gR^2}{G}\).
+Unit: × 10²³ kg
+Work: M = \frac{gR^2}{G} = \frac{({{g}})({{R}}\times10^6)^2}{6.67\times10^{-11}} = {{answer}}\times10^{23}\ \text{kg}
+
+
+# ============================ 13.3 GRAVITATIONAL POTENTIAL ENERGY AND TOTAL ENERGY ============================
+
+## QUIZ 13.3
+Q: A space probe coasts away from Earth. What happens to its gravitational potential energy \(U = -\frac{GMm}{r}\)?
+A) It increases toward zero
+B) It decreases
+C) It stays the same
+D) It becomes positive
+Answer: A
+Why: As \(r\) grows, \(-\frac{GMm}{r}\) gets less negative, rising toward zero far away. Potential energy goes up while the probe slows down.
+
+## QUIZ 13.3
+Q: How does the escape speed from Earth depend on the mass of the rocket?
+A) It doesn't; it is the same for any mass
+B) Heavier rockets need a bigger escape speed
+C) Heavier rockets need a smaller escape speed
+D) It depends on the rocket's shape
+Answer: A
+Why: In \(\frac12mv^2 = \frac{GMm}{R}\) the rocket's mass cancels, giving \(v_\text{esc} = \sqrt{\frac{2GM}{R}}\). A heavier rocket needs more energy, but the same speed.
+
+## QUIZ 13.3
+Q: When is \(\Delta U = mg\Delta h\) a good approximation?
+A) When the height change is small compared with Earth's radius
+B) Only in orbit
+C) Whenever the object starts at rest
+D) Always, at any height
+Answer: A
+Why: \(mgh\) assumes \(g\) stays constant. That is fine for a building or a mountain, but not for a rocket going thousands of kilometers up.
+
+## QUIZ 13.3
+Q: A probe far from any planet's surface has a total energy \(E = K + U\) that is positive. What happens to it?
+A) It escapes and never comes back
+B) It falls back down
+C) It goes into a circular orbit
+D) It stops at a fixed height
+Answer: A
+Why: With \(E \ge 0\) the probe still has kinetic energy left even at \(r \to \infty\), where \(U = 0\). With \(E < 0\) it is bound and must turn back.
+
+## DRILL 13.3
+Q: A planet has \({{a}}\) times Earth's mass and \({{b}}\) times Earth's radius. Earth's escape speed is 11.2 km/s. What is the planet's escape speed?
+Let: a = one of 2, 4, 8; b = one of 0.5, 2
+Answer: 11.2*sqrt(a/b)
+Wrong: 11.2*a/b | Take the square root: \(v_\text{esc} = \sqrt{\frac{2GM}{R}}\).
+Wrong: 11.2*sqrt(a*b) | A bigger radius lowers the escape speed, so divide by \(b\) inside the root.
+Wrong: 11.2*sqrt(b/a) | More mass makes escape harder, so \(a\) goes on top.
+Unit: km/s
+Work: v_\text{esc} = 11.2\sqrt{\frac{a}{b}} = 11.2\sqrt{\frac{{{a}}}{{{b}}}} = {{answer}}\ \text{km/s}
+
+## DRILL 13.3
+Q: A small moon has \(GM = {{a}}\times10^{12}\ \text{m}^3/\text{s}^2\) and radius \({{b}}\times10^6\ \text{m}\). What is its escape speed?
+Let: a = one of 2, 4.5, 8; b = one of 1, 2
+Answer: sqrt(2*a/b)
+Wrong: sqrt(a/b) | That is the orbital speed at the surface. Escape needs the 2: \(v_\text{esc} = \sqrt{\frac{2GM}{R}}\).
+Wrong: 2*a/b | Take the square root.
+Wrong: sqrt(2*a*b) | The radius goes on the bottom.
+Unit: km/s
+Work: v_\text{esc} = \sqrt{\frac{2GM}{R}} = \sqrt{\frac{2({{a}}\times10^{12})}{{{b}}\times10^6}} = {{answer}}\times10^3\ \text{m/s}
+
+## DRILL 13.3
+Q: How much energy does it take to send a \({{m}}\ \text{kg}\) probe from Earth's surface to very far away? Use \(g = 10\ \text{m/s}^2\), \(R_\text{E} = 6.4\times10^6\ \text{m}\), and ignore Earth's spin and air.
+Let: m = one of 10, 50, 100
+Answer: 64*m
+Wrong: 32*m | Escaping takes the whole \(\frac{GMm}{R} = mgR\), not half of it.
+Wrong: 128*m | \(\frac12mv_\text{esc}^2 = \frac12m(2gR) = mgR\). Don't forget the \(\frac12\).
+Wrong: 0.064*m | \(1\ \text{MJ} = 10^6\ \text{J}\), so \(6.4\times10^7\ \text{J}\) per kilogram is 64 MJ.
+Unit: MJ
+Work: \Delta U = \frac{GMm}{R} = mgR = ({{m}})(10)(6.4\times10^6) = {{answer}}\times10^6\ \text{J}
+
+## DRILL 13.3
+Q: A rock starts at rest \({{k}}\) Earth radii from Earth's center and falls straight in. Using \(2gR_\text{E} = 128\ \text{km}^2/\text{s}^2\) and ignoring air, how fast is it going when it reaches the surface?
+Let: k = one of 2, 4, 5
+Answer: sqrt(128*(1 - 1/k))
+Wrong: sqrt(128*(k - 1)) | That uses \(mgh\) with constant \(g\). Over thousands of kilometers use \(-\frac{GMm}{r}\).
+Wrong: sqrt(128) | That is a fall from infinitely far away (the escape speed). Starting at \(kR_\text{E}\) gives less.
+Wrong: sqrt(128/k) | Energy: \(\frac12v^2 = gR_\text{E}\left(1 - \frac1k\right)\).
+Unit: km/s
+Work: \tfrac12v^2 = \frac{GM}{R_\text{E}} - \frac{GM}{kR_\text{E}} \Rightarrow v = \sqrt{2gR_\text{E}\left(1 - \tfrac{1}{{{k}}}\right)} = {{answer}}\ \text{km/s}
+
+
+# ============================ 13.4 SATELLITE ORBITS AND ENERGY ============================
+
+## QUIZ 13.4
+Q: Two satellites circle Earth at the same height. One has twice the mass of the other. How do their speeds compare?
+A) They are the same
+B) The heavier one is twice as fast
+C) The heavier one is half as fast
+D) The heavier one is \(\sqrt2\) times as fast
+Answer: A
+Why: \(v_\text{orbit} = \sqrt{\frac{GM}{r}}\) uses Earth's mass, not the satellite's. The satellite's mass cancels.
+
+## QUIZ 13.4
+Q: How does a satellite in a low orbit compare with one in a high orbit?
+A) The low one is faster and has a shorter period
+B) The low one is slower and has a shorter period
+C) The low one is faster and has a longer period
+D) They have the same speed
+Answer: A
+Why: \(v = \sqrt{\frac{GM}{r}}\) grows as \(r\) shrinks, and the trip around is shorter too, so the period drops even more.
+
+## QUIZ 13.4
+Q: A satellite moves from a low circular orbit to a higher one. What changes?
+A) Its total energy goes up, but its speed goes down
+B) Its total energy and its speed both go up
+C) Its total energy goes down and its speed goes up
+D) Nothing changes
+Answer: A
+Why: \(E = -\frac{GMm}{2r}\) is less negative for larger \(r\), so energy must be added. But \(v = \sqrt{\frac{GM}{r}}\) is smaller up there.
+
+## QUIZ 13.4
+Q: For a satellite in a circular orbit, how is its total energy \(E\) related to its kinetic energy \(K\)?
+A) \(E = -K\)
+B) \(E = K\)
+C) \(E = 2K\)
+D) \(E = \frac12K\)
+Answer: A
+Why: \(K = \frac{GMm}{2r}\) and \(U = -\frac{GMm}{r} = -2K\), so \(E = K + U = -K\).
+
+## DRILL 13.4
+Q: A satellite circles Earth (\(GM = 4.0\times10^{14}\ \text{m}^3/\text{s}^2\)) at \({{r}}\times10^6\ \text{m}\) from Earth's center. What is its orbital speed?
+Let: r = one of 8, 16, 25
+Answer: 20/sqrt(r)
+Wrong: 20*sqrt(2)/sqrt(r) | That is the escape speed at that distance. A circular orbit is \(\sqrt{\frac{GM}{r}}\), without the 2.
+Wrong: 400/r | Take the square root of \(\frac{GM}{r}\).
+Wrong: 20*sqrt(r) | The distance goes on the bottom: farther orbits are slower.
+Unit: km/s
+Work: v = \sqrt{\frac{GM}{r}} = \sqrt{\frac{4.0\times10^{14}}{{{r}}\times10^6}} = {{answer}}\times10^3\ \text{m/s}
+
+## DRILL 13.4
+Q: A satellite moves to a circular orbit \({{k}}\) times as far from Earth's center. How many times longer is its period?
+Let: k = one of 4, 9
+Answer: k^1.5
+Wrong: k | \(T^2 \propto r^3\), so \(T \propto r^{3/2}\).
+Wrong: k^2 | Use \(T \propto r^{3/2}\), from \(T = 2\pi\sqrt{\frac{r^3}{GM}}\).
+Wrong: sqrt(k) | The speed changes by \(\sqrt k\), and the path length by \(k\) too.
+Unit: times
+Work: \frac{T_2}{T_1} = \left(\frac{r_2}{r_1}\right)^{3/2} = ({{k}})^{3/2} = {{answer}}
+
+## DRILL 13.4
+Q: A satellite circles Earth at \({{v}}\ \text{km/s}\). It moves to a circular orbit \({{k}}\) times as far from Earth's center. What is its new speed?
+Let: v = one of 6, 8; k = one of 4, 9
+Answer: v/sqrt(k)
+Wrong: v/k | Speed goes as \(\frac{1}{\sqrt r}\), not \(\frac1r\).
+Wrong: v*sqrt(k) | Higher orbits are slower.
+Wrong: v/k^2 | Use \(v = \sqrt{\frac{GM}{r}}\): the square root of the distance factor.
+Unit: km/s
+Work: v_2 = v_1\sqrt{\frac{r_1}{r_2}} = \frac{{{v}}}{\sqrt{{{k}}}} = {{answer}}\ \text{km/s}
+
+## DRILL 13.4
+Q: A satellite in a circular orbit has a kinetic energy of \({{K}}\times10^9\ \text{J}\). What is its total energy?
+Let: K = one of 2, 5, 8
+Answer: -K
+Wrong: K | The potential energy is \(-2K\), so the total is \(K - 2K = -K\).
+Wrong: -2*K | That is the potential energy alone. Add the kinetic energy.
+Wrong: -K/2 | \(U = -2K\), so \(E = K + U = -K\).
+Unit: × 10⁹ J
+Work: E = K + U = K - 2K = -K = {{answer}}\times10^9\ \text{J}
+
+
+# ============================ 13.5 KEPLER'S LAWS OF PLANETARY MOTION ============================
+
+## QUIZ 13.5
+Q: Where is the Sun in a planet's elliptical orbit?
+A) At one focus of the ellipse
+B) At the center of the ellipse
+C) On the ellipse itself
+D) Outside the ellipse
+Answer: A
+Why: That is Kepler's first law. The center of the ellipse is empty unless the orbit is a circle, where the focus and center coincide.
+
+## QUIZ 13.5
+Q: When does a planet move fastest along its orbit?
+A) When it is closest to the Sun
+B) When it is farthest from the Sun
+C) Its speed never changes
+D) Halfway between closest and farthest
+Answer: A
+Why: The line to the Sun sweeps equal areas in equal times (Kepler's second law). Near the Sun the line is short, so the planet must move faster to sweep the same area.
+
+## QUIZ 13.5
+Q: Kepler's second law (equal areas in equal times) follows from which conservation law?
+A) Conservation of angular momentum
+B) Conservation of linear momentum
+C) Conservation of mass
+D) Conservation of charge
+Answer: A
+Why: The Sun's pull points straight at the Sun, so it has no torque about the Sun and the planet's angular momentum stays the same. The rate of sweeping area is \(\frac{L}{2m}\).
+
+## QUIZ 13.5
+Q: A comet passes the Sun with a total energy greater than zero. What shape is its path?
+A) A hyperbola, and it never returns
+B) An ellipse, returning regularly
+C) A circle
+D) A straight line through the Sun
+Answer: A
+Why: Positive total energy means the comet is not bound. Negative gives a closed ellipse (or circle), zero gives a parabola.
+
+## DRILL 13.5
+Q: An asteroid orbits the Sun on an ellipse with a semi major axis of \({{a}}\) AU (Earth's orbit is 1 AU and takes 1 year). What is its period?
+Let: a = one of 4, 9, 16
+Answer: a^1.5
+Wrong: a | Kepler's third law: \(T^2 \propto a^3\), so \(T \propto a^{3/2}\).
+Wrong: a^2 | Use \(T \propto a^{3/2}\), not \(a^2\).
+Wrong: sqrt(a) | Square the period and cube the distance: \(T^2 = a^3\) in years and AU.
+Unit: years
+Work: T^2 = a^3 \Rightarrow T = ({{a}})^{3/2} = {{answer}}\ \text{years}
+
+## DRILL 13.5
+Q: A comet comes as close as \({{p}}\) AU to the Sun and goes as far as \({{q}}\) AU. What is the semi major axis of its orbit?
+Let: p = one of 0.6, 1, 2; q = one of 6, 10, 18
+Answer: (p + q)/2
+Wrong: p + q | That is the whole long width of the ellipse (the major axis). Halve it.
+Wrong: q - p | Add the two distances: the Sun sits between the closest and farthest points.
+Wrong: (q - p)/2 | That is the distance from the center to the focus. The semi major axis is \(\frac{r_\text{p} + r_\text{a}}{2}\).
+Unit: AU
+Work: a = \frac{r_\text{p} + r_\text{a}}{2} = \frac{{{p}} + {{q}}}{2} = {{answer}}\ \text{AU}
+
+## DRILL 13.5
+Q: A comet moves at \({{v}}\ \text{km/s}\) at its closest point, \({{p}}\) AU from the Sun. How fast does it move at its farthest point, \({{q}}\) AU from the Sun?
+Let: v = one of 40, 50, 60; p = one of 1, 2; q = one of 4, 5, 10
+Answer: v*p/q
+Wrong: v*q/p | It moves slowest when farthest. Angular momentum: \(r_\text{p}v_\text{p} = r_\text{a}v_\text{a}\).
+Wrong: v | The speed changes along an ellipse (Kepler's second law).
+Wrong: v*sqrt(p/q) | At the closest and farthest points the velocity is at right angles to \(\vec r\), so \(rv\) is the same at both. No square root.
+Unit: km/s
+Work: r_\text{p}v_\text{p} = r_\text{a}v_\text{a} \Rightarrow v_\text{a} = \frac{({{v}})({{p}})}{{{q}}} = {{answer}}\ \text{km/s}
+
+
+# ============================ 13.6 TIDAL FORCES ============================
+
+## QUIZ 13.6
+Q: About how many high tides does a typical ocean shore get each day?
+A) Two
+B) One
+C) Four
+D) None; tides change only once a month
+Answer: A
+Why: There are two bulges, one facing the Moon and one on the far side. Earth turns under both each day.
+
+## QUIZ 13.6
+Q: When do the biggest (spring) tides happen?
+A) At new moon and full moon, when the Sun, Earth, and Moon line up
+B) At half moon
+C) Only in spring
+D) When the Moon is directly overhead at noon
+Answer: A
+Why: When they line up, the Sun's and Moon's tidal effects add. At half moon they pull at right angles and partly cancel, giving neap tides.
+
+## QUIZ 13.6
+Q: The Sun pulls on Earth about 200 times harder than the Moon does. Why does the Moon cause bigger tides?
+A) Tides depend on the difference in pull across Earth, which falls off as \(\frac{1}{r^3}\)
+B) The Sun's gravity doesn't reach Earth's oceans
+C) The Moon is made of denser material
+D) The Sun's pull is blocked by the atmosphere
+Answer: A
+Why: The Sun is so far away that its pull is nearly the same on both sides of Earth. The Moon is close, so its pull changes much more across Earth's diameter.
+
+## DRILL 13.6
+Q: If the Moon were \({{k}}\) times farther from Earth, how would its tidal effect compare with today's?
+Let: k = one of 2, 3
+Answer: 1/k^3
+Wrong: 1/k^2 | That is how the Moon's pull itself changes. The tidal effect, a difference in pull, goes as \(\frac{1}{r^3}\).
+Wrong: 1/k | Tidal effects fall off as \(\frac{1}{r^3}\), much faster than \(\frac1r\).
+Wrong: k^3 | Farther away means weaker tides, so divide.
+Unit: times as strong
+Work: \frac{\text{new}}{\text{old}} = \left(\frac{1}{k}\right)^3 = \frac{1}{({{k}})^3} = {{answer}}
+
+## DRILL 13.6
+Q: A moon of some planet has \({{a}}\) times the mass of our Moon and orbits at \({{b}}\) times the Earth to Moon distance. How does its tidal effect on that planet compare with our Moon's on Earth?
+Let: a = one of 2, 4, 8; b = one of 0.5, 2
+Answer: a/b^3
+Wrong: a/b^2 | That compares the pulls. Tidal effects go as \(\frac{M}{r^3}\).
+Wrong: a/b | Cube the distance factor.
+Wrong: a*b^3 | A bigger distance weakens tides, so divide by \(b^3\).
+Unit: times as strong
+Work: \frac{\text{tidal}}{\text{tidal}_\text{Moon}} = \frac{a}{b^3} = \frac{{{a}}}{({{b}})^3} = {{answer}}
+
+
+# ============================ 13.7 EINSTEIN'S THEORY OF GRAVITY ============================
+
+## QUIZ 13.7
+Q: You wake up in a closed, windowless room and feel your normal weight. According to the principle of equivalence, what can you conclude?
+A) Nothing: you could be resting on Earth or speeding up at \(g\) in deep space
+B) You must be on Earth
+C) You must be in deep space
+D) You must be in orbit
+Answer: A
+Why: No experiment inside a closed lab can tell a uniform gravitational field from a uniform acceleration.
+
+## QUIZ 13.7
+Q: What is the event horizon of a black hole?
+A) The surface at the Schwarzschild radius, inside which nothing, not even light, can escape
+B) The black hole's solid surface
+C) The edge of the galaxy it sits in
+D) The distance at which its gravity becomes zero
+Answer: A
+Why: Inside \(R_\text{S} = \frac{2GM}{c^2}\) the escape speed would exceed the speed of light, so nothing gets out.
+
+## QUIZ 13.7
+Q: During a solar eclipse, stars near the edge of the Sun appear slightly shifted from their usual positions. Why?
+A) The Sun's mass curves space time, bending the starlight
+B) The Sun's atmosphere acts like a lens made of glass
+C) The Moon's shadow moves the stars
+D) Light has mass and is pulled by Newton's law
+Answer: A
+Why: In general relativity light follows curved space time. This bending was one of the first tests the theory passed.
+
+## DRILL 13.7
+Q: The Sun's Schwarzschild radius is about 3.0 km. What is the Schwarzschild radius of a star with \({{k}}\) times the Sun's mass?
+Let: k = one of 5, 10, 20
+Answer: 3*k
+Wrong: 3*sqrt(k) | \(R_\text{S} = \frac{2GM}{c^2}\) grows in direct proportion to the mass.
+Wrong: 3*k^2 | \(R_\text{S}\) is proportional to \(M\), not \(M^2\).
+Wrong: 3/k | More mass gives a bigger Schwarzschild radius.
+Unit: km
+Work: R_\text{S} \propto M \Rightarrow R_\text{S} = (3.0)({{k}}) = {{answer}}\ \text{km}
+
+## DRILL 13.7
+Q: A planet has a mass of \({{a}}\times10^{24}\ \text{kg}\). What is its Schwarzschild radius? (\(G = 6.67\times10^{-11}\ \text{N·m}^2/\text{kg}^2\), \(c = 3.0\times10^8\ \text{m/s}\))
+Let: a = one of 2, 6, 10
+Answer: 2*6.67*a/9
+Wrong: 6.67*a/9 | Keep the 2: \(R_\text{S} = \frac{2GM}{c^2}\).
+Wrong: 2*6.67*a/90 | \(c^2 = 9.0\times10^{16}\). Count the powers of 10 again.
+Wrong: 2*6.67*a*9 | Divide by \(c^2\); don't multiply.
+Unit: mm
+Work: R_\text{S} = \frac{2GM}{c^2} = \frac{2(6.67\times10^{-11})({{a}}\times10^{24})}{(3.0\times10^8)^2} = {{answer}}\times10^{-3}\ \text{m}
