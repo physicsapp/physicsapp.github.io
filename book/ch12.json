@@ -1,0 +1,405 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 12,
+  "title": "Static Equilibrium and Elasticity"
+ },
+ "keyEquations": [
+  {
+   "name": "First Equilibrium Condition",
+   "tex": "\\sum _{k}{\\mathbf{\\vec{F}}}_{k}=\\mathbf{\\vec{0}}"
+  },
+  {
+   "name": "Second Equilibrium Condition",
+   "tex": "\\sum _{k}{\\vec{\\tau }}_{k}\\, =\\mathbf{\\vec{0}}"
+  },
+  {
+   "name": "Linear relation between stress and strain",
+   "tex": "\\text{stress}=\\text{(elastic modulus)}\\, \\times \\, \\text{strain}"
+  },
+  {
+   "name": "Young’s modulus",
+   "tex": "Y=\\frac{\\text{tensile stress}}{\\text{tensile strain}}=\\frac{{F}_{\\perp}}{A}\\, \\frac{{L}_{0}}{\\Delta L}"
+  },
+  {
+   "name": "Bulk modulus",
+   "tex": "B=\\frac{\\text{bulk stress}}{\\text{bulk strain}}=-\\Delta p\\frac{{V}_{0}}{\\Delta V}"
+  },
+  {
+   "name": "Shear modulus",
+   "tex": "S=\\frac{\\text{shear stress}}{\\text{shear strain}}=\\frac{{F}_{\\parallel}}{A}\\, \\frac{{L}_{0}}{\\Delta x}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "12.1",
+   "module": "m58340",
+   "title": "Conditions for Static Equilibrium",
+   "objectives": [
+    "Identify the physical conditions of static equilibrium.",
+    "Draw a free-body diagram for a rigid body acted on by forces.",
+    "Explain how the conditions for equilibrium allow us to solve statics problems."
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Center of Gravity of a Car",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A passenger car with a 2.5-m wheelbase has 52% of its weight on the front wheels on level ground, as illustrated in the figure. Where is the CM of this car located with respect to the rear axle?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We do not know the weight <i>w</i> of the car. All we know is that when the car rests on a level surface, 0.52<i>w</i> pushes down on the surface at contact points of the front wheels and 0.48<i>w</i> pushes down on the surface at contact points of the rear wheels. Also, the contact points are separated from each other by the distance \\(d=2.5\\, \\text{m}.\\) At these contact points, the car experiences normal reaction forces with magnitudes \\({F}_{\\text{F}}=0.52w\\) and \\({F}_{\\text{R}}=0.48w\\) on the front and rear axles, respectively. We also know that the car is an example of a rigid body in equilibrium whose entire weight <i>w</i> acts at its CM. The CM is located somewhere between the points where the normal reaction forces act, somewhere at a distance <i>x</i> from the point where \\({F}_{R}\\) acts. Our task is to find <i>x</i>. Thus, we identify three forces acting on the body (the car), and we can draw a free-body diagram for the extended rigid body, as shown in the figure.</p><figure><img src='img/CNX_UPhysics_12_01_FBDcar.jpg' alt=\"Figure are schematics that show the mass distribution for a passenger car with a wheelbase defined as d. Car has 52% of its weight on the front wheels (labeled as Ff) and 48% on the rear wheels (labeled Fr) and is on level ground. Distance between the rear axle and the center of mass (labeled rR) is x. Distance between the front axle and the center of mass (labeled rF) is d - x.\" loading='lazy'><figcaption>The free-body diagram for the car clearly indicates force vectors acting on the car and distances to the center of mass (CM). When CM is selected as the pivot point, these distances are lever arms of normal reaction forces. Notice that vector magnitudes and lever arms do not need to be drawn to scale, but all quantities of relevance must be clearly labeled.</figcaption></figure><p>We are almost ready to write down equilibrium conditions the equation through the equation for the car, but first we must decide on the reference frame. Suppose we choose the <i>x</i>-axis along the length of the car, the <i>y</i>-axis vertical, and the <i>z</i>-axis perpendicular to this <i>xy</i>-plane. With this choice we only need to write the equation and the equation because all the <i>y</i>-components are identically zero. Now we need to decide on the location of the pivot point. We can choose any point as the location of the axis of rotation (<i>z</i>-axis). Suppose we place the axis of rotation at CM, as indicated in the free-body diagram for the car. At this point, we are ready to write the equilibrium conditions for the car.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Each equilibrium condition contains only three terms because there are \\(N=3\\) forces acting on the car. The first equilibrium condition, the equation, reads</p><div class='eq'>\\[+{F}_{\\text{F}}-w+{F}_{\\text{R}}=0.\\]</div><p>This condition is trivially satisfied because when we substitute the data, the equation becomes \\(+0.52w-w+0.48w=0.\\) The second equilibrium condition, the equation, reads</p><div class='eq'>\\[{\\tau}_{\\text{F}}+{\\tau}_{w}+{\\tau}_{\\text{R}}=0\\]</div><p>where \\({\\tau}_{\\text{F}}\\) is the torque of force \\({F}_{\\text{F}},\\, {\\tau}_{w}\\) is the gravitational torque of force <i>w</i>, and \\({\\tau}_{\\text{R}}\\) is the torque of force \\({F}_{\\text{R}}.\\) When the pivot is located at CM, the gravitational torque is identically zero because the lever arm of the weight with respect to an axis that passes through CM is zero. The lines of action of both normal reaction forces are perpendicular to their lever arms, so in the equation, we have \\(|\\, \\sin \\, \\theta |=1\\) for both forces. From the free-body diagram, we read that torque \\({\\tau}_{\\text{F}}\\) causes clockwise rotation about the pivot at CM, so its sense is negative; and torque \\({\\tau}_{\\text{R}}\\) causes counterclockwise rotation about the pivot at CM, so its sense is positive. With this information, we write the second equilibrium condition as</p><div class='eq'>\\[-{r}_{\\text{F}}{F}_{\\text{F}}+{r}_{\\text{R}}{F}_{\\text{R}}=0.\\]</div><p>With the help of the free-body diagram, we identify the force magnitudes \\({F}_{\\text{R}}=0.48w\\) and \\({F}_{\\text{F}}=0.52w,\\) and their corresponding lever arms \\({r}_{\\text{R}}=x\\) and \\({r}_{\\text{F}}=d-x.\\) We can now write the second equilibrium condition, the equation, explicitly in terms of the unknown distance <i>x</i>:</p><div class='eq'>\\[-0.52(d-x)w+0.48xw=0.\\]</div><p>Here the weight <i>w</i> cancels and we can solve the equation for the unknown position <i>x</i> of the CM. The answer is \\(x=0.52d=0.52(2.5\\, \\text{m})=1.3\\, \\text{m}\\text{.}\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Choosing the pivot at the position of the front axle does not change the result. The free-body diagram for this pivot location is presented in the figure. For this choice of pivot point, the second equilibrium condition is</p><div class='eq'>\\[-{r}_{w}w+{r}_{\\text{R}}{F}_{\\text{R}}=0.\\]</div><p>When we substitute the quantities indicated in the diagram, we obtain</p><div class='eq'>\\[-(d-x)w+0.48dw=0.\\]</div><p>The answer obtained by solving the equation is, again, \\(x=0.52d=1.3\\, \\text{m}.\\)</p><figure><img src='img/CNX_UPhysics_12_01_FBDcar2.jpg' alt=\"Figure is the schematics that shows the mass distribution for a passenger car with a wheelbase defined as d. The car has 52% of its weight on its front wheels, now circled and labeled Pivot (Ff) and 48% of its weight on the rear wheels (Fr) on level ground. Distance between the rear axle and the center of mass is x. Distance between the front axle and the center of mass (rw) is d - x. The entire length of the whole axis is labeled with the equation rR=d.\" loading='lazy'><figcaption>The equivalent free-body diagram for the car; the pivot is clearly indicated.</figcaption></figure>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This example shows that when solving static equilibrium problems, we are free to choose the pivot location. For different choices of the pivot point we have different sets of equilibrium conditions to solve. However, all choices lead to the same solution to the problem.</p>"
+      }
+     ]
+    },
+    {
+     "title": "A Breaking Tension",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A small pan of mass 42.0 g is supported by two strings, as shown in the figure. The maximum tension that the string can support is 2.80 N. Mass is added gradually to the pan until one of the strings snaps. Which string is it? How much mass must be added for this to occur?</p><figure><img src='img/CNX_UPhysics_12_01_SM11-5.jpg' alt=\"Figure shows small pan of mass supported by two strings intersecting at a 90 degree angle. The length of one string is 5 centimeters, the length of another string is 10 centimeters.\" loading='lazy'><figcaption>Mass is added gradually to the pan until one of the strings snaps.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>This mechanical system consisting of strings, masses, and the pan is in static equilibrium. Specifically, the knot that ties the strings to the pan is in static equilibrium. The knot can be treated as a point; therefore, we need only the first equilibrium condition. The three forces pulling at the knot are the tension \\({\\mathbf{\\vec{T}}}_{1}\\) in the 5.0-cm string, the tension \\({\\mathbf{\\vec{T}}}_{2}\\) in the 10.0-cm string, and the weight \\(\\mathbf{\\vec{w}}\\) of the pan holding the masses. We adopt a rectangular coordinate system with the <i>y</i>-axis pointing opposite to the direction of gravity and draw the free-body diagram for the knot (see the figure). To find the tension components, we must identify the direction angles \\({\\alpha}_{1}\\) and \\({\\alpha}_{2}\\) that the strings make with the horizontal direction that is the <i>x</i>-axis. As you can see in the figure, the strings make two sides of a right triangle. We can use the Pythagorean theorem to solve this triangle, shown in the figure, and find the sine and cosine of the angles \\({\\alpha}_{1}\\) and \\({\\alpha}_{2}.\\) Then we can resolve the tensions into their rectangular components, substitute in the first condition for equilibrium (the equation and the equation), and solve for the tensions in the strings. The string with a greater tension will break first.</p><figure><img src='img/CNX_UPhysics_12_01_FBDpan.jpg' alt=\"Top figure shows the distribution of forces for the knot that ties the strings to the pan. T1 and T2 forces are pulling at the knot upward. Weight, a sum of M and m multiplied by g is pulling the knot downward. Projections of T1 and T2 at the x and y axes are shown. Bottom figure shows the representation of the knot that ties the strings to the pan as a right triangle. It has legs of the length a and 2a with a being equal 5 centimeters. Hypotenuse is a square root of five. Angle alpha 1 is formed by shorter leg and hypotenuse. Angle alpha 2 is formed by the longer leg and hypotenuse. Cosine of angle alpha 1 is equal to sine of angle alpha 2 and is equal to one divided by square root of five. Cosine of angle alpha 2 is equal to sine of angle alpha 1 and is equal to two divided by square root of five.\" loading='lazy'><figcaption>Free-body diagram for the knot in the example <i>A Breaking Tension</i>.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The weight <i>w</i> pulling on the knot is due to the mass <i>M</i> of the pan and mass <i>m</i> added to the pan, or \\(w=(M+m)g.\\) With the help of the free-body diagram in the figure, we can set up the equilibrium conditions for the knot:</p><div class='eq'>\\[\\begin{array}{lllll}\\text{in the}\\, x\\text{-direction,} & & -{T}_{1x}+{T}_{2x} & = & 0 \\\\ \\text{in the}\\, y\\text{-direction,} & & \\text{+}{T}_{1y}+{T}_{2y}-w & = & 0.\\end{array}\\]</div><p>From the free-body diagram, the magnitudes of components in these equations are</p><div class='eq'>\\[\\begin{array}{lll}{T}_{1x}={T}_{1}\\cos \\, {\\alpha}_{1}={T}_{1}\\text{/}\\sqrt{5}, & & {T}_{1y}={T}_{1}\\sin \\, {\\alpha}_{1}=2{T}_{1}\\text{/}\\sqrt{5} \\\\ {T}_{2x}={T}_{2}\\cos \\, {\\alpha}_{2}=2{T}_{2}\\text{/}\\sqrt{5}, & & {T}_{2y}={T}_{2}\\sin \\, {\\alpha}_{2}={T}_{2}\\text{/}\\sqrt{5}.\\end{array}\\]</div><p>We substitute these components into the equilibrium conditions and simplify. We then obtain two equilibrium equations for the tensions:</p><div class='eq'>\\[\\begin{array}{lllll}\\text{in}\\, x\\text{-direction,} & & {T}_{1} & = & 2{T}_{2} \\\\ \\text{in}\\, y\\text{-direction,} & & \\frac{2{T}_{1}}{\\sqrt{5}}+\\frac{{T}_{2}}{\\sqrt{5}} & = & (M+m)g.\\end{array}\\]</div><p>The equilibrium equation for the <i>x</i>-direction tells us that the tension \\({T}_{1}\\) in the 5.0-cm string is twice the tension \\({T}_{2}\\) in the 10.0-cm string. Therefore, the shorter string will snap. When we use the first equation to eliminate \\({T}_{2}\\) from the second equation, we obtain the relation between the mass \\(m\\) on the pan and the tension \\({T}_{1}\\) in the shorter string:</p><div class='eq'>\\[2.5{T}_{1}\\text{/}\\sqrt{5}=(M+m)g.\\]</div><p>The string breaks when the tension reaches the critical value of \\({T}_{1}=2.80\\, \\text{N}.\\) The preceding equation can be solved for the critical mass <i>m</i> that breaks the string:</p><div class='eq'>\\[m=\\frac{2.5}{\\sqrt{5}}\\, \\frac{{T}_{1}}{g}-M=\\frac{2.5}{\\sqrt{5}}\\, \\frac{2.80\\, \\text{N}}{9.8\\, \\text{m}\\text{/}{\\text{s}}^{2}}-0.042\\, \\text{kg}=0.277\\, \\text{kg}=277.0\\, \\text{g.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Suppose that the mechanical system considered in this example is attached to a ceiling inside an elevator going up. As long as the elevator moves up at a constant speed, the result stays the same because the weight \\(w\\) does not change. If the elevator moves up with acceleration, the critical mass is smaller because the weight of \\(M+m\\) becomes larger by an apparent weight due to the acceleration of the elevator. Still, in all cases the shorter string breaks first.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Solve the example <i>Center of Gravity of a Car</i> by choosing the pivot at the location of the rear axle.</p>",
+     "a": "<p>\\(x=1.3\\, \\text{m}\\)</p>"
+    },
+    {
+     "q": "<p>Explain which one of the following situations satisfies both equilibrium conditions: (a) a tennis ball that does not spin as it travels in the air; (b) a pelican that is gliding in the air at a constant velocity at one altitude; or (c) a crankshaft in the engine of a parked car.</p>",
+     "a": "<p>(b), (c)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A body is in equilibrium when it remains either in uniform motion (both translational and rotational) or at rest. When a body in a selected inertial frame of reference neither rotates nor moves in translational motion, we say the body is in static equilibrium in this frame of reference.",
+    "Conditions for equilibrium require that the sum of all external forces acting on the body is zero (first condition of equilibrium), and the sum of all external torques from external forces is zero (second condition of equilibrium). These two conditions must be simultaneously satisfied in equilibrium. If one of them is not satisfied, the body is not in equilibrium.",
+    "The free-body diagram for a body is a useful tool that allows us to count correctly all contributions from all external forces and torques acting on the body. Free-body diagrams for the equilibrium of an extended rigid body must indicate a pivot point and lever arms of acting forces with respect to the pivot."
+   ]
+  },
+  {
+   "num": "12.2",
+   "module": "m58341",
+   "title": "Examples of Static Equilibrium",
+   "objectives": [
+    "Identify and analyze static equilibrium situations",
+    "Set up a free-body diagram for an extended object in static equilibrium",
+    "Set up and solve static equilibrium conditions for objects in equilibrium in various physical situations"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "The Torque Balance",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Three masses are attached to a uniform meter stick, as shown in the figure. The mass of the meter stick is 150.0 g and the masses to the left of the fulcrum are \\({m}_{1}=50.0\\, \\text{g}\\) and \\({m}_{2}=75.0\\, \\text{g}.\\) Find the mass \\({m}_{3}\\) that balances the system when it is attached at the right end of the stick, and the normal reaction force at the fulcrum when the system is balanced.</p><figure><img src='img/CNX_UPhysics_12_02_torquebal.jpg' alt=\"Figure is a schematic drawing of a torque balance, a horizontal beam supported at a fulcrum (indicated by S) and three masses are attached to both sides of the fulcrum. Mass 3 is 30 cm to the right of S. Mass 2 is 40 cm to the left of S. Mass 1 is 30 cm to the left of Mass 2.\" loading='lazy'><figcaption>In a torque balance, a horizontal beam is supported at a fulcrum (indicated by <i>S</i>) and masses are attached to both sides of the fulcrum. The system is in static equilibrium when the beam does not rotate. It is balanced when the beam remains level.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>For the arrangement shown in the figure, we identify the following five forces acting on the meter stick:</p><p>\\({w}_{1}={m}_{1}g\\) is the weight of mass \\({m}_{1};\\) \\({w}_{2}={m}_{2}g\\) is the weight of mass \\({m}_{2};\\)</p><p>\\(w=mg\\) is the weight of the entire meter stick; \\({w}_{3}={m}_{3}g\\) is the weight of unknown mass \\({m}_{3};\\)</p><p>\\({F}_{S}\\) is the normal reaction force at the support point <i>S</i>.</p><p>We choose a frame of reference where the direction of the <i>y</i>-axis is the direction of gravity, the direction of the <i>x</i>-axis is along the meter stick, and the axis of rotation (the <i>z</i>-axis) is perpendicular to the <i>x</i>-axis and passes through the support point <i>S</i>. In other words, we choose the pivot at the point where the meter stick touches the support. This is a natural choice for the pivot because this point does not move as the stick rotates. Now we are ready to set up the free-body diagram for the meter stick. We indicate the pivot and attach five vectors representing the five forces along the line representing the meter stick, locating the forces with respect to the pivot the figure. At this stage, we can identify the lever arms of the five forces given the information provided in the problem. For the three hanging masses, the problem is explicit about their locations along the stick, but the information about the location of the weight <i>w</i> is given implicitly. The key word here is “uniform.” We know from our previous studies that the CM of a uniform stick is located at its midpoint, so this is where we attach the weight <i>w</i>, at the 50-cm mark.</p><figure><img src='img/CNX_UPhysics_12_02_FBDtorque.jpg' alt=\"Figure is a schematic drawing of a force distribution for a torque balance, a horizontal beam supported at a fulcrum (indicated by S) and three masses are attached to both sides of the fulcrum. Force Fs at the point S is pointing upward. Force w3, to the right of point S and separated by distance r3 is pointing downward. Forces w, w2, and w1 are to the left of point S and are pointing downward. They are separated by distance r, r2, and r1, respectively.\" loading='lazy'><figcaption>Free-body diagram for the meter stick. The pivot is chosen at the support point <i>S</i>.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>With the figure and the figure for reference, we begin by finding the lever arms of the five forces acting on the stick:</p><div class='eq'>\\[\\begin{array}{lll}{r}_{1} & = & 30.0\\, \\text{cm}+40.0\\, \\text{cm}=70.0\\, \\text{cm} \\\\ {r}_{2} & = & 40.0\\, \\text{cm} \\\\ r & = & 50.0\\, \\text{cm}-30.0\\, \\text{cm}=20.0\\, \\text{cm} \\\\ {r}_{S} & = & 0.0\\, \\text{cm}\\, \\text{(because}\\, {F}_{S}\\, \\text{is attached at the pivot)} \\\\ {r}_{3} & = & 30.0\\, \\text{cm.}\\end{array}\\]</div><p>Now we can find the five torques with respect to the chosen pivot:</p><div class='eq'>\\[\\begin{array}{lllll}{\\tau}_{1} & = & +{r}_{1}{w}_{1}\\sin \\, 90^{\\circ} =\\text{+}{r}_{1}{m}_{1}g & & \\text{(counterclockwise rotation, positive sense)} \\\\ {\\tau}_{2} & = & +{r}_{2}{w}_{2}\\sin \\, 90^{\\circ} =\\text{+}{r}_{2}{m}_{2}g & & \\text{(counterclockwise rotation, positive sense)} \\\\ \\tau & = & +rw\\, \\sin \\, 90^{\\circ} =\\text{+}rmg & & \\text{(gravitational torque)} \\\\ {\\tau}_{S} & = & {r}_{S}{F}_{S}\\sin \\, {\\theta}_{S}=0 & & \\text{(because}\\, {r}_{S}=0\\, \\text{cm)} \\\\ {\\tau}_{3} & = & -{r}_{3}{w}_{3}\\sin \\, 90^{\\circ} =-{r}_{3}{m}_{3}g & & \\text{(clockwise rotation, negative sense)}\\end{array}\\]</div><p>The second equilibrium condition (equation for the torques) for the meter stick is</p><div class='eq'>\\[{\\tau}_{1}+{\\tau}_{2}+\\tau +{\\tau}_{S}+{\\tau}_{3}=0.\\]</div><p>When substituting torque values into this equation, we can omit the torques giving zero contributions. In this way the second equilibrium condition is</p><div class='eq'>\\[+{r}_{1}{m}_{1}g+{r}_{2}{m}_{2}g+rmg-{r}_{3}{m}_{3}g=0.\\]</div><p>Selecting the \\(+y\\)-direction to be parallel to \\({\\vec{F}}_{S},\\) the first equilibrium condition for the stick is</p><div class='eq'>\\[-{w}_{1}-{w}_{2}-w+{F}_{S}-{w}_{3}=0.\\]</div><p>Substituting the forces, the first equilibrium condition becomes</p><div class='eq'>\\[-{m}_{1}g-{m}_{2}g-mg+{F}_{S}-{m}_{3}g=0.\\]</div><p>We solve these equations simultaneously for the unknown values \\({m}_{3}\\) and \\({F}_{S}.\\) In the equation, we cancel the <i>g</i> factor and rearrange the terms to obtain</p><div class='eq'>\\[{r}_{3}{m}_{3}={r}_{1}{m}_{1}+{r}_{2}{m}_{2}+rm.\\]</div><p>To obtain \\({m}_{3}\\) we divide both sides by \\({r}_{3},\\) so we have</p><div class='eq'>\\[\\begin{array}{ll} \\\\ \\\\ {m}_{3} & =\\frac{{r}_{1}}{{r}_{3}}\\, {m}_{1}+\\frac{{r}_{2}}{{r}_{3}}\\, {m}_{2}+\\frac{r}{{r}_{3}}\\, m \\\\ & =\\frac{70}{30}\\, (50.0\\, \\text{g})+\\frac{40}{30}\\, (75.0\\, \\text{g})+\\frac{20}{30}\\, (150.0\\, \\text{g})=316.0\\frac{2}{3}\\, \\text{g}≃317\\, \\text{g.}\\end{array}\\]</div><p>To find the normal reaction force, we rearrange the terms in the equation, converting grams to kilograms:</p><div class='eq'>\\[\\begin{array}{ll} \\\\ \\\\ {F}_{S} & =({m}_{1}+{m}_{2}+m+{m}_{3})g \\\\ & =(50.0+75.0+150.0+316.7)\\, \\times \\, {10}^{-3}\\text{kg}\\, \\times \\, 9.8\\, \\frac{\\text{m}}{{\\text{s}}^{2}}=5.8\\, \\text{N}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that the equation is independent of the value of <i>g</i>. The torque balance may therefore be used to measure mass, since variations in <i>g</i>-values on Earth’s surface do not affect these measurements. This is not the case for a spring balance because it measures the force.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Forces in the Forearm",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A weightlifter is holding a 50.0-lb weight (equivalent to 222.4 N) with his forearm, as shown in the figure. His forearm is positioned at \\(\\beta =60^{\\circ}\\) with respect to his upper arm. The forearm is supported by a contraction of the biceps muscle, which causes a torque around the elbow. Assuming that the tension in the biceps acts along the vertical direction given by gravity, what tension must the muscle exert to hold the forearm at the position shown? What is the force on the elbow joint? Assume that the forearm’s weight is negligible. Give your final answers in SI units.</p><figure><img src='img/CNX_UPhysics_12_02_forearm.jpg' alt=\"Figure is a schematic drawing of a forearm rotated around the elbow. A 50 pound ball is held in the palm. The distance between the elbow and the ball is 13 inches. The distance between the elbow and the biceps muscle, which causes a torque around the elbow, is 1.5 inches. Forearm forms a 60 degree angle with the upper arm.\" loading='lazy'><figcaption>The forearm is rotated around the elbow (<i>E</i>) by a contraction of the biceps muscle, which causes tension \\({\\mathbf{\\vec{T}}}_{\\text{M}}.\\)</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We identify three forces acting on the forearm: the unknown force \\(\\mathbf{\\vec{F}}\\) at the elbow; the unknown tension \\({\\mathbf{\\vec{T}}}_{\\text{M}}\\) in the muscle; and the weight \\(\\mathbf{\\vec{w}}\\) with magnitude \\(w=50\\, \\text{lb}.\\) We adopt the frame of reference with the <i>x</i>-axis along the forearm and the pivot at the elbow. The vertical direction is the direction of the weight, which is the same as the direction of the upper arm. The <i>x</i>-axis makes an angle \\(\\beta =60^{\\circ}\\) with the vertical. The <i>y</i>-axis is perpendicular to the <i>x</i>-axis. Now we set up the free-body diagram for the forearm. First, we draw the axes, the pivot, and the three vectors representing the three identified forces. Then we locate the angle \\(\\beta\\) and represent each force by its <i>x</i>- and <i>y</i>-components, remembering to cross out the original force vector to avoid double counting. Finally, we label the forces and their lever arms. The free-body diagram for the forearm is shown in the figure. At this point, we are ready to set up equilibrium conditions for the forearm. Each force has <i>x</i>- and <i>y</i>-components; therefore, we have two equations for the first equilibrium condition, one equation for each component of the net force acting on the forearm.</p><figure><img src='img/CNX_UPhysics_12_02_FBDforearm.jpg' alt=\"Figure is a free-body diagram for the forearm. Force F is applied at the point E. Force T is applied at the distance r tau from the point E. Force W is applied at the opposite side separated by r w from the point E. Projections of the forces at the x and y axes are shown. Forces F and T form angle beta with the x axis. Force W forms an angle beta with line connecting it with its projection to the y axis.\" loading='lazy'><figcaption>Free-body diagram for the forearm: The pivot is located at point <i>E</i> (elbow).</figcaption></figure><p>Notice that in our frame of reference, contributions to the second equilibrium condition (for torques) come only from the <i>y</i>-components of the forces because the <i>x</i>-components of the forces are all parallel to their lever arms, so that for any of them we have \\(\\sin \\, \\theta =0\\) in another section. For the <i>y</i>-components we have \\(\\theta =\\pm 90^{\\circ}\\) in another section. Also notice that the torque of the force at the elbow is zero because this force is attached at the pivot. So the contribution to the net torque comes only from the torques of \\({T}_{y}\\) and of \\({w}_{y}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We see from the free-body diagram that the <i>x</i>-component of the net force satisfies the equation</p><div class='eq'>\\[+{F}_{x}+{T}_{x}-{w}_{x}=0\\]</div><p>and the <i>y</i>-component of the net force satisfies</p><div class='eq'>\\[+{F}_{y}+{T}_{y}-{w}_{y}=0.\\]</div><p>The equation and the equation are two equations of the first equilibrium condition (for forces). Next, we read from the free-body diagram that the net torque along the axis of rotation is</p><div class='eq'>\\[+{r}_{T}{T}_{y}-{r}_{w}{w}_{y}=0.\\]</div><p>The equation is the second equilibrium condition (for torques) for the forearm. The free-body diagram shows that the lever arms are \\({r}_{T}=1.5\\, \\text{in}\\text{.}\\) and \\({r}_{w}=13.0\\, \\text{in}\\text{.}\\) At this point, we do not need to convert inches into SI units, because as long as these units are consistent in the equation, they cancel out. Using the free-body diagram again, we find the magnitudes of the component forces:</p><div class='eq'>\\[\\begin{array}{lll}{F}_{x} & = & F\\, \\cos \\, \\beta =F\\, \\cos \\, 60^{\\circ} =F\\, \\text{/}\\, 2 \\\\ {T}_{x} & = & T\\, \\cos \\, \\beta =T\\, \\cos \\, 60^{\\circ} =T\\, \\text{/}\\, 2 \\\\ {w}_{x} & = & w\\, \\cos \\, \\beta =w\\, \\cos \\, 60^{\\circ} =w\\, \\text{/}\\, 2 \\\\ {F}_{y} & = & F\\, \\sin \\, \\beta =F\\, \\sin \\, 60^{\\circ} =F\\sqrt{3}\\, \\text{/}\\, 2 \\\\ {T}_{y} & = & T\\, \\sin \\, \\beta =T\\, \\sin \\, 60^{\\circ} =T\\sqrt{3}\\, \\text{/}\\, 2 \\\\ {w}_{y} & = & w\\, \\sin \\, \\beta =w\\, \\sin \\, 60^{\\circ} =w\\sqrt{3}\\, \\text{/}\\, 2.\\end{array}\\]</div><p>We substitute these magnitudes into the equation, the equation, and the equation to obtain, respectively,</p><div class='eq'>\\[\\begin{array}{lll}F\\, \\text{/}\\, 2+T\\, \\text{/}\\, 2-w\\, \\text{/}\\, 2 & = & 0 \\\\ \\\\ F\\sqrt{3}\\, \\text{/}\\, 2+T\\sqrt{3}\\, \\text{/}\\, 2-w\\sqrt{3}\\, \\text{/}\\, 2 & = & 0 \\\\ \\\\ {r}_{T}T\\sqrt{3}\\, \\text{/}\\, 2-{r}_{w}w\\sqrt{3}\\, \\text{/}\\, 2 & = & 0.\\end{array}\\]</div><p>When we simplify these equations, we see that we are left with only two independent equations for the two unknown force magnitudes, <i>F</i> and <i>T</i>, because the equation for the <i>x</i>-component is equivalent to the equation for the <i>y</i>-component. In this way, we obtain the first equilibrium condition for forces</p><div class='eq'>\\[F+T-w=0\\]</div><p>and the second equilibrium condition for torques</p><div class='eq'>\\[{r}_{T}T-{r}_{w}w=0.\\]</div><p>The magnitude of tension in the muscle is obtained by solving the equation:</p><div class='eq'>\\[T=\\frac{{r}_{w}}{{r}_{T}}\\, w=\\frac{13.0}{1.5}\\, \\text{(50 lb)}=433\\, \\frac{1}{3}\\text{lb}≃433.3\\, \\text{lb.}\\]</div><p>The force at the elbow is obtained by solving the equation:</p><div class='eq'>\\[F=w-T=50.0\\, \\text{lb}-433.3\\, \\text{lb}=-383.3\\, \\text{lb.}\\]</div><p>The negative sign in the equation tells us that the actual force at the elbow is antiparallel to the working direction adopted for drawing the free-body diagram. In the final answer, we convert the forces into SI units of force. The answer is</p><div class='eq'>\\[\\begin{array}{l}F=383.3\\, \\text{lb}=383.3(4.448\\, \\text{N})=1705\\, \\text{N downward} \\\\ T=433.3\\, \\text{lb}=433.3(4.448\\, \\text{N})=1927\\, \\text{N upward.}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Two important issues here are worth noting. The first concerns conversion into SI units, which can be done at the very end of the solution as long as we keep consistency in units. The second important issue concerns the hinge joints such as the elbow. In the initial analysis of a problem, hinge joints should always be assumed to exert a force in an <i>arbitrary direction</i>, and then you must solve for all components of a hinge force independently. In this example, the elbow force happens to be vertical because the problem assumes the tension by the biceps to be vertical as well. Such a simplification, however, is not a general rule.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Suppose we adopt a reference frame with the direction of the <i>y</i>-axis along the 50-lb weight and the pivot placed at the elbow. In this frame, all three forces have only <i>y</i>-components, so we have only one equation for the first equilibrium condition (for forces). We draw the free-body diagram for the forearm as shown in the figure, indicating the pivot, the acting forces and their lever arms with respect to the pivot, and the angles \\({\\theta}_{T}\\) and \\({\\theta}_{w}\\) that the forces \\({\\mathbf{\\vec{T}}}_{\\text{M}}\\) and \\(\\mathbf{\\vec{w}}\\) (respectively) make with their lever arms. In the definition of torque given by another section, the angle \\({\\theta}_{T}\\) is the direction angle of the vector \\({\\vec{T}}_{\\text{M}},\\) counted <i>counterclockwise</i> from the radial direction of the lever arm that always points away from the pivot. By the same convention, the angle \\({\\theta}_{w}\\) is measured <i>counterclockwise</i> from the radial direction of the lever arm to the vector \\(\\mathbf{\\vec{w}}.\\) Done this way, the non-zero torques are most easily computed by directly substituting into another section as follows:</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ {\\tau}_{T}={r}_{T}T\\, \\sin \\, {\\theta}_{T}={r}_{T}T\\, \\sin \\, \\beta ={r}_{T}T\\, \\sin \\, 60^{\\circ} =+{r}_{T}T\\sqrt{3}\\, \\text{/}\\, 2 \\\\ {\\tau}_{w}={r}_{w}w\\, \\sin \\, {\\theta}_{w}={r}_{w}w\\, \\sin (\\beta +180^{\\circ} )=-{r}_{w}w\\, \\sin \\, \\beta =-{r}_{w}w\\sqrt{3}\\, \\text{/}\\, 2.\\end{array}\\]</div><figure><img src='img/CNX_UPhysics_12_02_FBD2forarm.jpg' alt=\"Figure is a free-body diagram for the forearm. Force F is applied at the point E. Force Tm is applied at the distance r tau from the point E. Force W is applied at the opposite side separated by r w from the point E. Projections of the forces at the x and y axes are shown. Force Tm forms and angle theta tau that is equal to beta with the direction of the lever arm. Force W forms an angle theta w that is equal to the sum of beta and Pi with the direction of the lever arm.\" loading='lazy'><figcaption>Free-body diagram for the forearm for the equivalent solution. The pivot is located at point E (elbow).</figcaption></figure><p>The second equilibrium condition, \\({\\tau}_{T}+{\\tau}_{w}=0,\\) can be now written as</p><div class='eq'>\\[{r}_{T}T\\sqrt{3}\\, \\text{/}\\, 2-{r}_{w}w\\sqrt{3}\\, \\text{/}\\, 2=0.\\]</div><p>From the free-body diagram, the first equilibrium condition (for forces) is</p><div class='eq'>\\[-F+T-w=0.\\]</div><p>The equation is identical to the equation and gives the result \\(T=433.3\\, \\text{lb}.\\) the equation gives</p><div class='eq'>\\[F=T-w=433.3\\, \\text{lb}-50.0\\, \\text{lb}=383.3\\, \\text{lb.}\\]</div><p>We see that these answers are identical to our previous answers, but the second choice for the frame of reference leads to an equivalent solution that is simpler and quicker because it does not require that the forces be resolved into their rectangular components.</p>"
+      }
+     ]
+    },
+    {
+     "title": "A Ladder Resting Against a Wall",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A uniform ladder is \\(L=5.0\\, \\text{m}\\) long and weighs 400.0 N. The ladder rests against a slippery vertical wall, as shown in the figure. The minimum inclination angle between the ladder and the rough floor below which the ladder slips is \\(\\beta =53^{\\circ} .\\) Find the reaction forces from the floor and from the wall on the ladder and the coefficient of static friction \\({\\mu}_{\\text{s}}\\) at the interface of the ladder with the floor that prevents the ladder from slipping.</p><figure><img src='img/CNX_UPhysics_12_02_ladder.jpg' alt=\"Figure is a schematic drawing of a 5.0-m-long ladder resting against a wall. Ladder forms a 53 degree angle with the floor.\" loading='lazy'><figcaption>A 5.0-m-long ladder rests against a frictionless wall.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can identify four forces acting on the ladder. The first force is the normal reaction force <i>N</i> from the floor in the upward vertical direction. The second force is the static friction force \\(f={\\mu}_{\\text{s}}N\\) directed horizontally along the floor toward the wall—this force prevents the ladder from slipping. These two forces act on the ladder at its contact point with the floor. The third force is the weight <i>w</i> of the ladder, attached at its CM located midway between its ends. The fourth force is the normal reaction force <i>F</i> from the wall in the horizontal direction away from the wall, attached at the contact point with the wall. There are no other forces because the wall is slippery, which means there is no friction between the wall and the ladder. Based on this analysis, we adopt the frame of reference with the <i>y</i>-axis in the vertical direction (parallel to the wall) and the <i>x</i>-axis in the horizontal direction (parallel to the floor). In this frame, each force has either a horizontal component or a vertical component but not both, which simplifies the solution. We select the pivot at the contact point with the floor. In the free-body diagram for the ladder, we indicate the pivot, all four forces and their lever arms, and the angles between lever arms and the forces, as shown in the figure. With our choice of the pivot location, there is no torque either from the normal reaction force <i>N</i> or from the static friction <i>f</i> because they both act at the pivot.</p><figure><img src='img/CNX_UPhysics_12_02_FBDladder.jpg' alt=\"Figure is a free-body diagram for a ladder that forms an angle beta with the floor and rests against a wall. Force N is applied at the point at the floor and is perpendicular to the floor. Force W is applied at the mid-point of the ladder. Force F is applied at the point resting at the wall and is perpendicular to the wall. Force W forms an angle theta w with the direction of the lever arm. Theta w is equal to the sum of Pi and half Pi with the beta subtracted. Force F forms an angle theta F with the direction of the lever arm. Theta F is equal to the Pi minus beta.\" loading='lazy'><figcaption>Free-body diagram for a ladder resting against a frictionless wall.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>From the free-body diagram, the net force in the <i>x</i>-direction is</p><div class='eq'>\\[+f-F=0\\]</div><p>the net force in the <i>y</i>-direction is</p><div class='eq'>\\[+N-w=0\\]</div><p>and the net torque along the rotation axis at the pivot point is</p><div class='eq'>\\[{\\tau}_{w}+{\\tau}_{F}=0.\\]</div><p>where \\({\\tau}_{w}\\) is the torque of the weight <i>w</i> and \\({\\tau}_{F}\\) is the torque of the reaction <i>F</i>. From the free-body diagram, we identify that the lever arm of the reaction at the wall is \\({r}_{F}=L=5.0\\, \\text{m}\\) and the lever arm of the weight is \\({r}_{w}=L\\, \\text{/}\\, 2=2.5\\, \\text{m}.\\) With the help of the free-body diagram, we identify the angles to be used in another section for torques: \\({\\theta}_{F}=180^{\\circ} -\\beta\\) for the torque from the reaction force with the wall, and \\({\\theta}_{w}=180^{\\circ} +(90^{\\circ} -\\beta )\\) for the torque due to the weight. Now we are ready to use another section to compute torques:</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ {\\tau}_{w}={r}_{w}w\\, \\sin \\, {\\theta}_{w}={r}_{w}w\\, \\sin (180^{\\circ} +90^{\\circ} -\\beta )=-\\frac{L}{2}w\\, \\sin (90^{\\circ} -\\beta )=-\\frac{L}{2}w\\, \\cos \\, \\beta \\\\ {\\tau}_{F}={r}_{F}F\\, \\sin \\, {\\theta}_{F}={r}_{F}F\\, \\sin (180^{\\circ} -\\beta )=LF\\, \\sin \\, \\beta .\\end{array}\\]</div><p>We substitute the torques into the equation and solve for \\(F:\\)</p><div class='eq'>\\[\\begin{array}{lll} \\\\ -\\frac{L}{2}w\\, \\cos \\, \\beta +LF\\, \\sin \\, \\beta & = & 0 \\\\ F=\\frac{w}{2}\\, \\cot \\, \\beta =\\frac{400.0\\, \\text{N}}{2}\\, \\cot \\, 53^{\\circ} & = & 150.7\\, \\text{N}\\end{array}\\]</div><p>We obtain the normal reaction force with the floor by solving the equation: \\(N=w=400.0\\, \\text{N}.\\) The magnitude of friction is obtained by solving the equation: \\(f=F=150.7\\, \\text{N}.\\) Since the ladder will slip if the angle is any smaller, the static friction force is at its maximum angle and the coefficient of static friction is \\({\\mu}_{\\text{s}}=f\\, \\text{/}\\, N=150.7\\, \\text{/}\\, 400.0=0.377.\\)</p><p>The net force on the ladder at the contact point with the floor is the vector sum of the normal reaction from the floor and the static friction forces:</p><div class='eq'>\\[{\\mathbf{\\vec{F}}}_{\\text{floor}}=\\mathbf{\\vec{f}}+\\mathbf{\\vec{N}}=\\text{(150.7 N)}(-\\mathbf{\\hat{i}})+(400.0\\, \\text{N)}(+\\mathbf{\\hat{j}})=(-150.7\\mathbf{\\hat{i}}+400.0\\mathbf{\\hat{j}})\\, \\text{N.}\\]</div><p>Its magnitude is</p><div class='eq'>\\[{F}_{\\text{floor}}=\\sqrt{{f}^{2}+{N}^{2}}=\\sqrt{{150.7}^{2}+{400.0}^{2}}\\, \\text{N}=427.4\\, \\text{N}\\]</div><p>and its direction is</p><div class='eq'>\\[\\phi ={\\tan}^{-1}(N\\, \\text{/}\\, f)={\\tan}^{-1}(400.0\\, \\, \\text{/}\\, 150.7)=69.3^{\\circ} \\, \\text{above the floor.}\\]</div><p>We should emphasize here two general observations of practical use. First, notice that when we choose a pivot point, there is no expectation that the system will actually pivot around the chosen point. The ladder in this example is not rotating at all but firmly stands on the floor; nonetheless, its contact point with the floor is a good choice for the pivot. Second, notice when we use another section for the computation of individual torques, we do not need to resolve the forces into their normal and parallel components with respect to the direction of the lever arm, and we do not need to consider a sense of the torque. As long as the angle in another section is correctly identified—with the help of a free-body diagram—as the angle measured counterclockwise from the direction of the lever arm to the direction of the force vector, another section gives both the magnitude and the sense of the torque. This is because torque is the vector product of the lever-arm vector crossed with the force vector, and another section expresses the rectangular component of this vector product along the axis of rotation.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This result is independent of the length of the ladder because <i>L</i> is cancelled in the second equilibrium condition, the equation. No matter how long or short the ladder is, as long as its weight is 400 N and the angle with the floor is \\(53^{\\circ} ,\\) our results hold. But the ladder will slip if the net torque becomes negative in the equation. This happens for some angles when the coefficient of static friction is not great enough to prevent the ladder from slipping.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Forces on Door Hinges",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A swinging door that weighs \\(w=400.0\\, \\text{N}\\) is supported by hinges <i>A</i> and <i>B</i> so that the door can swing about a vertical axis passing through the hinges the figure. The door has a width of \\(b=1.00\\, \\text{m},\\) and the door slab has a uniform mass density. The hinges are placed symmetrically at the door’s edge in such a way that the door’s weight is evenly distributed between them. The hinges are separated by distance \\(a=2.00\\, \\text{m}.\\) Find the forces on the hinges when the door rests half-open.</p><figure><img src='img/CNX_UPhysics_12_02_door.jpg' alt=\"Figure is a schematic drawing of a swinging vertical door supported by two hinges attached at points A and B. The distance between points A and B is 2 meters. Door is one meter wide.\" loading='lazy'><figcaption>A 400-N swinging vertical door is supported by two hinges attached at points <i>A</i> and <i>B</i>.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The forces that the door exerts on its hinges can be found by simply reversing the directions of the forces that the hinges exert on the door. Hence, our task is to find the forces from the hinges on the door. Three forces act on the door slab: an unknown force \\(\\mathbf{\\vec{A}}\\) from hinge \\(A,\\) an unknown force \\(\\mathbf{\\vec{B}}\\) from hinge \\(B,\\) and the known weight \\(\\mathbf{\\vec{w}}\\) attached at the center of mass of the door slab. The CM is located at the geometrical center of the door because the slab has a uniform mass density. We adopt a rectangular frame of reference with the <i>y</i>-axis along the direction of gravity and the <i>x</i>-axis in the plane of the slab, as shown in panel (a) of the figure, and resolve all forces into their rectangular components. In this way, we have four unknown component forces: two components of force \\(\\mathbf{\\vec{A}}\\) \\(({A}_{x}\\) and \\({A}_{y}),\\) and two components of force \\(\\mathbf{\\vec{B}}\\) \\(({B}_{x}\\) and \\({B}_{y}).\\) In the free-body diagram, we represent the two forces at the hinges by their vector components, whose assumed orientations are arbitrary. Because there are four unknowns \\(({A}_{x},\\) \\({B}_{x},\\) \\({A}_{y},\\) and \\({B}_{y}),\\) we must set up four independent equations. One equation is the equilibrium condition for forces in the <i>x</i>-direction. The second equation is the equilibrium condition for forces in the <i>y</i>-direction. The third equation is the equilibrium condition for torques in rotation about a hinge. Because the weight is evenly distributed between the hinges, we have the fourth equation, \\({A}_{y}={B}_{y}.\\) To set up the equilibrium conditions, we draw a free-body diagram and choose the pivot point at the upper hinge, as shown in panel (b) of the figure. Finally, we solve the equations for the unknown force components and find the forces.</p><figure><img src='img/CNX_UPhysics_12_02_FBDdoor.jpg' alt=\"Figure A is a geometrical representation for a swinging vertical door supported by two hinges attached at points A and B. Forces A and B are applied at the points A and B. Projections of these forces to the x and y axes are shown. Force w is applied at the point CM. Point CM is lower than point A by half-a and to the right of point A by half-b. Line from point A to CM forms an angle beta with the edge of the wall. Figure B is a free-body diagram for a swinging vertical door is supported by two hinges attached at points A and B. Force Ay forms an angle beta with the line connecting points P and CM. Force By forms an angle beta with the line connecting points B and CM. Force W forms an angle beta with the line that is the continuation of the line connecting points P and CM. Distance between points P and CM is d.\" loading='lazy'><figcaption>(a) Geometry and (b) free-body diagram for the door.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>From the free-body diagram for the door we have the first equilibrium condition for forces:</p><div class='eq'>\\[\\begin{array}{ll} \\\\ \\text{in}\\, x\\text{-direction:} & \\, -{A}_{x}+{B}_{x}=0\\; \\Rightarrow \\; {A}_{x}={B}_{x} \\\\ \\text{in}\\, y\\text{-direction:} & +{A}_{y}+{B}_{y}-w=0\\; \\Rightarrow \\; {A}_{y}={B}_{y}=\\frac{w}{2}=\\frac{400.0\\, \\text{N}}{2}=200.0\\, \\text{N.}\\end{array}\\]</div><p>We select the pivot at point <i>P</i> (upper hinge, per the free-body diagram) and write the second equilibrium condition for torques in rotation about point <i>P</i>:</p><div class='eq'>\\[\\text{pivot at}\\, P\\text{:}\\, {\\tau}_{w}+{\\tau}_{Bx}+{\\tau}_{By}=0.\\]</div><p>We use the free-body diagram to find all the terms in this equation:</p><div class='eq'>\\[\\begin{array}{lll}{\\tau}_{w} & = & dw\\, \\sin (-\\beta )=-dw\\, \\sin \\, \\beta =-dw\\frac{b\\, \\text{/}\\, 2}{d}=-w\\frac{b}{2} \\\\ {\\tau}_{Bx} & = & a{B}_{x}\\sin \\, 90^{\\circ} =+a{B}_{x} \\\\ {\\tau}_{By} & = & a{B}_{y}\\sin \\, 180^{\\circ} =0.\\end{array}\\]</div><p>In evaluating \\(\\sin \\, \\beta ,\\) we use the geometry of the triangle shown in part (a) of the figure. Now we substitute these torques into the equation and compute \\({B}_{x}:\\)</p><div class='eq'>\\[\\text{pivot at}\\, P\\text{:}\\, -w\\, \\frac{b}{2}+a{B}_{x}=0\\; \\Rightarrow \\; {B}_{x}=w\\, \\frac{b}{2a}=(400.0\\, \\text{N})\\, \\frac{1}{2\\cdot 2}=100.0\\, \\text{N.}\\]</div><p>Therefore the magnitudes of the horizontal component forces are \\({A}_{x}={B}_{x}=100.0\\, \\text{N}.\\) The forces on the door are</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\text{at the upper hinge:}\\, {\\mathbf{\\vec{F}}}_{A\\, \\text{on door}}=-100.0\\, \\text{N}\\mathbf{\\hat{i}}+200.0\\, \\text{N}\\mathbf{\\hat{j}} \\\\ \\text{at the lower hinge:}{\\mathbf{\\vec{F}}}_{B\\, \\text{on door}}=\\text{+}100.0\\, \\text{N}\\mathbf{\\hat{i}}+200.0\\, \\text{N}\\mathbf{\\hat{j}}.\\end{array}\\]</div><p>The forces on the hinges are found from Newton’s third law as</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ \\text{on the upper hinge:}\\, {\\mathbf{\\vec{F}}}_{\\text{door on}\\, A}=100.0\\, \\text{N}\\mathbf{\\hat{i}}-200.0\\, \\text{N}\\mathbf{\\hat{j}} \\\\ \\text{on the lower hinge:}\\, {\\mathbf{\\vec{F}}}_{\\text{door on}\\, B}=-100.0\\, \\text{N}\\mathbf{\\hat{i}}-200.0\\, \\text{N}\\mathbf{\\hat{j}}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that if the problem were formulated without the assumption of the weight being equally distributed between the two hinges, we wouldn’t be able to solve it because the number of the unknowns would be greater than the number of equations expressing equilibrium conditions.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Repeat the example <i>The Torque Balance</i> using the left end of the meter stick to calculate the torques; that is, by placing the pivot at the left end of the meter stick.</p>",
+     "a": "<p>316.7 g; 5.8 N</p>"
+    },
+    {
+     "q": "<p>Repeat the example <i>Forces in the Forearm</i> assuming that the forearm is an object of uniform density that weighs 8.896 N.</p>",
+     "a": "<p>\\(T=\\text{1963 N};\\, \\text{F}=1732\\, \\text{N}\\)</p>"
+    },
+    {
+     "q": "<p>For the situation described in the example <i>A Ladder Resting Against a Wall</i>, determine the values of the coefficient \\({\\mu}_{\\text{s}}\\) of static friction for which the ladder starts slipping, given that \\(\\beta\\) is the angle that the ladder makes with the floor.</p>",
+     "a": "<p>\\({\\mu}_{s}\\lt 0.5\\, \\cot \\, \\beta\\)</p>"
+    },
+    {
+     "q": "<p>Solve the problem in the example <i>Forces on Door Hinges</i> by taking the pivot position at the center of mass.</p>",
+     "a": "<p>\\({\\mathbf{\\vec{F}}}_{\\text{door on}\\, A}=100.0\\, \\text{N}\\mathbf{\\hat{i}}-200.0\\, \\text{N}\\mathbf{\\hat{j}}\\, \\text{;}\\, {\\mathbf{\\vec{F}}}_{\\text{door on}\\, B}=-100.0\\, \\text{N}\\mathbf{\\hat{i}}-200.0\\, \\text{N}\\mathbf{\\hat{j}}\\)</p>"
+    },
+    {
+     "q": "<p>A 50-kg person stands 1.5 m away from one end of a uniform 6.0-m-long scaffold of mass 70.0 kg. Find the tensions in the two vertical ropes supporting the scaffold.</p><figure><img src='img/CNX_UPhysics_12_02_woman_img.jpg' alt=\"Figure is a schematic drawing of a woman standing 1.5 m away from one end and 4.5 m away from another end of a scaffold.\" loading='lazy'></figure>",
+     "a": "<p>711.0 N; 466.0 N</p>"
+    },
+    {
+     "q": "<p>A 400.0-N sign hangs from the end of a uniform strut. The strut is 4.0 m long and weighs 600.0 N. The strut is supported by a hinge at the wall and by a cable whose other end is tied to the wall at a point 3.0 m above the left end of the strut. Find the tension in the supporting cable and the force of the hinge on the strut.</p><figure><img src='img/CNX_UPhysics_12_02_sign_img.jpg' alt=\"Figure is a schematic drawing of a sign which hangs from the end of a uniform strut. The strut is 4.0 m long and is supported by a 5.0 m long cable tied to the wall at a point 3.0 m above the left end of the strut.\" loading='lazy'></figure>",
+     "a": "<p>1167 N; 980 N directed upward at \\(18^{\\circ}\\) above the horizontal</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A variety of engineering problems can be solved by applying equilibrium conditions for rigid bodies.",
+    "In applications, identify all forces that act on a rigid body and note their lever arms in rotation about a chosen rotation axis. Construct a free-body diagram for the body. Net external forces and torques can be clearly identified from a correctly constructed free-body diagram. In this way, you can set up the first equilibrium condition for forces and the second equilibrium condition for torques.",
+    "In setting up equilibrium conditions, we are free to adopt any inertial frame of reference and any position of the pivot point. All choices lead to one answer. However, some choices can make the process of finding the solution unduly complicated. We reach the same answer no matter what choices we make. The only way to master this skill is to practice."
+   ]
+  },
+  {
+   "num": "12.3",
+   "module": "m58342",
+   "title": "Stress, Strain, and Elastic Modulus",
+   "objectives": [
+    "Explain the concepts of stress and strain in describing elastic deformations of materials",
+    "Describe the types of elastic deformation of objects and materials"
+   ],
+   "callouts": [
+    "\\text{stress}=\\text{(elastic modulus)}\\, \\times \\, \\text{strain.}",
+    "Y=\\frac{\\text{tensile stress}}{\\text{tensile strain}}=\\frac{{F}_{\\perp}\\text{/}\\, A}{\\Delta L\\, \\text{/}\\, {L}_{0}}=\\frac{{F}_{\\perp}}{A}\\, \\frac{{L}_{0}}{\\Delta L}",
+    "B=\\frac{\\text{bulk stress}}{\\text{bulk strain}}=-\\frac{\\Delta p}{\\Delta V\\, \\text{/}\\, {V}_{0}}=-\\Delta p\\, \\frac{{V}_{0}}{\\Delta V}",
+    "S=\\frac{\\text{shear stress}}{\\text{shear strain}}=\\frac{{F}_{\\parallel}\\text{/}\\, A}{\\Delta x\\, \\text{/}\\, {L}_{0}}=\\frac{{F}_{\\parallel}}{A}\\, \\frac{{L}_{0}}{\\Delta x}"
+   ],
+   "examples": [
+    {
+     "title": "Compressive Stress in a Pillar",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A sculpture weighing 10,000 N rests on a horizontal surface at the top of a 6.0-m-tall vertical pillar the figure. The pillar’s cross-sectional area is \\(0{\\text{.20 m}}^{2}\\) and it is made of granite with a mass density of \\({2700\\, \\text{kg/m}}^{3}.\\) Find the compressive stress at the cross-section located 3.0 m below the top of the pillar and the value of the compressive strain of the top 3.0-m segment of the pillar.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First we find the weight of the 3.0-m-long top section of the pillar. The normal force that acts on the cross-section located 3.0 m down from the top is the sum of the pillar’s weight and the sculpture’s weight. Once we have the normal force, we use the equation to find the stress. To find the compressive strain, we find the value of Young’s modulus for granite in the table and invert the equation.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The volume of the pillar segment with height \\(h=3.0\\, \\text{m}\\) and cross-sectional area \\(A=0.20\\, {\\text{m}}^{2}\\) is</p><div class='eq'>\\[V=Ah=(0.20\\, {\\text{m}}^{2})(3.0\\, \\text{m})=0.60\\, {\\text{m}}^{3}.\\]</div><p>With the density of granite \\(\\rho =2.7\\, \\times \\, {10}^{3}\\, {\\text{kg/m}}^{3},\\) the mass of the pillar segment is</p><div class='eq'>\\[m=\\rho V=(2.7\\, \\times \\, {10}^{3}\\, {\\text{kg/m}}^{3})(0.60\\, {\\text{m}}^{3})=1.60\\, \\times \\, {10}^{3}\\text{kg}.\\]</div><p>The weight of the pillar segment is</p><div class='eq'>\\[{w}_{p}=mg=(1.60\\, \\times \\, {10}^{3}\\text{kg})(9.80\\, {\\text{m/s}}^{2})=1.568\\, \\times \\, {10}^{4}\\text{N.}\\]</div><p>The weight of the sculpture is \\({w}_{s}=1.0\\, \\times \\, {10}^{4}\\text{N},\\) so the normal force on the cross-sectional surface located 3.0 m below the sculpture is</p><div class='eq'>\\[{F}_{\\perp}={w}_{p}+{w}_{s}=(1.568+1.0)\\, \\times \\, {10}^{4}\\text{N}=2.568\\, \\times \\, {10}^{4}\\text{N.}\\]</div><p>Therefore, the stress is</p><div class='eq'>\\[\\text{stress}=\\frac{{F}_{\\perp}}{A}=\\frac{2.568\\, \\times \\, {10}^{4}\\text{N}}{0.20\\, {\\text{m}}^{2}}=1.284\\, \\times \\, {10}^{5}\\text{Pa}=\\text{128.4 kPa.}\\]</div><p>Young’s modulus for granite is \\(Y=4.5\\, \\times \\, {10}^{10}\\text{Pa}=4.5\\, \\times \\, {10}^{7}\\text{kPa}.\\) Therefore, the compressive strain at this position is</p><div class='eq'>\\[\\text{strain}=\\frac{\\text{stress}}{Y}=\\frac{128.4\\, \\text{kPa}}{4.5\\, \\times \\, {10}^{7}\\text{kPa}}=2.85\\, \\times \\, {10}^{-6}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that the normal force acting on the cross-sectional area of the pillar is not constant along its length, but varies from its smallest value at the top to its largest value at the bottom of the pillar. Thus, if the pillar has a uniform cross-sectional area along its length, the stress is largest at its base.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Stretching a Rod",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 2.0-m-long steel rod has a cross-sectional area of \\(0.30\\, {\\text{cm}}^{2}.\\) The rod is a part of a vertical support that holds a heavy 550-kg platform that hangs attached to the rod’s lower end. Ignoring the weight of the rod, what is the tensile stress in the rod and the elongation of the rod under the stress?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>First we compute the tensile stress in the rod under the weight of the platform in accordance with the equation. Then we invert the equation to find the rod’s elongation, using \\({L}_{0}=2.0\\, \\text{m}.\\) From the table, Young’s modulus for steel is \\(Y=\\, 2.0\\, \\times \\, {10}^{11}\\text{Pa}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substituting numerical values into the equations gives us</p><div class='eq'>\\[\\begin{array}{lll}\\frac{{F}_{\\perp}}{A} & = & \\frac{(550\\, \\text{kg})(9.8\\, {\\text{m/s}}^{2})}{3.0\\, \\times \\, {10}^{-5}\\, {\\text{m}}^{2}}=1.8\\, \\times \\, {10}^{8}\\text{Pa} \\\\ \\Delta L & = & \\frac{{F}_{\\perp}}{A}\\, \\frac{{L}_{0}}{Y}=(1.8\\, \\times \\, {10}^{8}\\text{Pa})\\, \\frac{2.0\\, \\text{m}}{2.0\\, \\times \\, {10}^{11}\\text{Pa}}=1.8\\, \\times \\, {10}^{-3}\\text{m}=\\, 1.8\\, \\text{mm.}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Similarly as in the example with the column, the tensile stress in this example is not uniform along the length of the rod. Unlike in the previous example, however, if the weight of the rod is taken into consideration, the stress in the rod is largest at the top and smallest at the bottom of the rod where the equipment is attached.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Hydraulic Press",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>In a hydraulic press the figure, a 250-liter volume of oil is subjected to a 2300-psi pressure increase. If the compressibility of oil is \\(2.0\\, \\times \\, {10}^{-5}\\, \\text{/}\\, \\, \\text{atm},\\) find the bulk strain and the absolute decrease in the volume of oil when the press is operating.</p><figure><img src='img/CNX_UPhysics_12_03_hydrolics.jpg' alt=\"Figure is a schematic drawing of a hydraulic press. A small piston is displaced downward and causes the large piston holding object to move upward.\" loading='lazy'><figcaption>In a hydraulic press, when a small piston is displaced downward, the pressure in the oil is transmitted throughout the oil to the large piston, causing the large piston to move upward. A small force applied to a small piston causes a large pressing force, which the large piston exerts on an object that is either lifted or squeezed. The device acts as a mechanical lever.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We must invert the equation to find the bulk strain. First, we convert the pressure increase from psi to atm, \\(\\Delta p=2300\\, \\text{psi}=2300\\, \\text{/}\\, 14.7\\, \\text{atm}\\approx \\, 160\\, \\text{atm},\\) and identify \\({V}_{0}=\\, 250\\, \\text{L}.\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substituting values into the equation, we have</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ \\text{bulk strain}=\\frac{\\Delta V}{{V}_{0}}=\\frac{\\Delta p}{B}=k\\Delta p=(2.0\\, \\times \\, {10}^{-5}\\text{/atm})(160\\, \\text{atm})=0.0032 \\\\ \\text{answer:}\\; \\Delta V=0.0032\\, {V}_{0}=0.0032(250\\, \\text{L})=0.78\\, \\text{L.}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that since the compressibility of water is 2.32 times larger than that of oil, if the working substance in the hydraulic press of this problem were changed to water, the bulk strain as well as the volume change would be 2.32 times larger.</p>"
+      }
+     ]
+    },
+    {
+     "title": "An Old Bookshelf",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A cleaning person tries to move a heavy, old bookcase on a carpeted floor by pushing tangentially on the surface of the very top shelf. However, the only noticeable effect of this effort is similar to that seen in the figure, and it disappears when the person stops pushing. The bookcase is 180.0 cm tall and 90.0 cm wide with four 30.0-cm-deep shelves, all partially loaded with books. The total weight of the bookcase and books is 600.0 N. If the person gives the top shelf a 50.0-N push that displaces the top shelf horizontally by 15.0 cm relative to the motionless bottom shelf, find the shear modulus of the bookcase.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The only pieces of relevant information are the physical dimensions of the bookcase, the value of the tangential force, and the displacement this force causes. We identify \\({F}_{\\parallel}=50.0\\, \\text{N},\\, \\Delta x=15.0\\, \\text{cm},\\) \\({L}_{0}=180.0\\, \\text{cm},\\) and \\(A=\\text{(30.0 cm)}\\, \\text{(90.0 cm)}=2700.0\\, {\\text{cm}}^{2},\\) and we use the equation to compute the shear modulus.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substituting numbers into the equations, we obtain for the shear modulus</p><div class='eq'>\\[S=\\frac{{F}_{\\parallel}}{A}\\, \\frac{{L}_{0}}{\\Delta x}=\\frac{50.0\\, \\text{N}}{2700.0\\, {\\text{cm}}^{2}}\\, \\frac{180.0\\, \\text{cm}\\text{.}}{15.0\\, \\text{cm}\\text{.}}=\\frac{2}{9}\\, \\frac{\\text{N}}{{\\text{cm}}^{2}}=\\frac{2}{9}\\, \\times \\, {10}^{4}\\frac{\\text{N}}{{\\text{m}}^{2}}=\\frac{20}{9}\\, \\times \\, {10}^{3}\\text{Pa}=\\text{2.222 kPa.}\\]</div><p>We can also find shear stress and strain, respectively:</p><div class='eq'>\\[\\begin{array}{l}\\frac{{F}_{\\parallel}}{A}=\\frac{50.0\\, \\text{N}}{2700.0\\, {\\text{cm}}^{2}}=\\frac{5}{27}\\, \\text{kPa}=\\text{185.2 Pa} \\\\ \\frac{\\Delta x}{{L}_{0}}=\\frac{15.0\\, \\text{cm}}{180.0\\, \\text{cm}}=\\frac{1}{12}=0.083.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>If the person in this example gave the shelf a healthy push, it might happen that the induced shear would collapse it to a pile of rubbish. Much the same shear mechanism is responsible for failures of earth-filled dams and levees; and, in general, for landslides.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Find the compressive stress and strain at the base of Nelson’s column.</p>",
+     "a": "<p>\\(206.8\\, \\text{kPa};\\, 4.6\\, \\times \\, {10}^{-5}\\)</p>"
+    },
+    {
+     "q": "<p>A 2.0-m-long wire stretches 1.0 mm when subjected to a load. What is the tensile strain in the wire?</p>",
+     "a": "<p>\\(5.0\\, \\times \\, {10}^{-4}\\)</p>"
+    },
+    {
+     "q": "<p>If the normal force acting on each face of a cubical \\(1{\\text{.0-m}}^{3}\\) piece of steel is changed by \\(1.0\\, \\times \\, {10}^{7}\\text{N},\\) find the resulting change in the volume of the piece of steel.</p>",
+     "a": "<p>63 mL</p>"
+    },
+    {
+     "q": "<p>Explain why the concepts of Young’s modulus and shear modulus do not apply to fluids.</p>",
+     "a": "<p>Fluids have different mechanical properties than those of solids; fluids flow.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "External forces on an object (or medium) cause its deformation, which is a change in its size and shape. The strength of the forces that cause deformation is expressed by stress, which in SI units is measured in the unit of pressure (pascal). The extent of deformation under stress is expressed by strain, which is dimensionless.",
+    "For a small stress, the relation between stress and strain is linear. The elastic modulus is the proportionality constant in this linear relation.",
+    "Tensile (or compressive) strain is the response of an object or medium to tensile (or compressive) stress. Here, the elastic modulus is called Young’s modulus. Tensile (or compressive) stress causes elongation (or shortening) of the object or medium and is due to an external forces acting along only one direction perpendicular to the cross-section.",
+    "Bulk strain is the response of an object or medium to bulk stress. Here, the elastic modulus is called the bulk modulus. Bulk stress causes a change in the volume of the object or medium and is caused by forces acting on the body from all directions, perpendicular to its surface. Compressibility of an object or medium is the reciprocal of its bulk modulus.",
+    "Shear strain is the deformation of an object or medium under shear stress. The shear modulus is the elastic modulus in this case. Shear stress is caused by forces acting along the object’s two parallel surfaces."
+   ]
+  },
+  {
+   "num": "12.4",
+   "module": "m58343",
+   "title": "Elasticity and Plasticity",
+   "objectives": [
+    "Explain the limit where a deformation of material is elastic",
+    "Describe the range where materials show plastic behavior",
+    "Analyze elasticity and plasticity on a stress-strain diagram"
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "An object or material is elastic if it comes back to its original shape and size when the stress vanishes. In elastic deformations with stress values lower than the proportionality limit, stress is proportional to strain. When stress goes beyond the proportionality limit, the deformation is still elastic but nonlinear up to the elasticity limit.",
+    "An object or material has plastic behavior when stress is larger than the elastic limit. In the plastic region, the object or material does not come back to its original size or shape when stress vanishes but acquires a permanent deformation. Plastic behavior ends at the breaking point."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_12_01_FBDcar.jpg",
+  "CNX_UPhysics_12_01_FBDcar2.jpg",
+  "CNX_UPhysics_12_01_FBDpan.jpg",
+  "CNX_UPhysics_12_01_SM11-5.jpg",
+  "CNX_UPhysics_12_02_FBD2forarm.jpg",
+  "CNX_UPhysics_12_02_FBDdoor.jpg",
+  "CNX_UPhysics_12_02_FBDforearm.jpg",
+  "CNX_UPhysics_12_02_FBDladder.jpg",
+  "CNX_UPhysics_12_02_FBDtorque.jpg",
+  "CNX_UPhysics_12_02_door.jpg",
+  "CNX_UPhysics_12_02_forearm.jpg",
+  "CNX_UPhysics_12_02_ladder.jpg",
+  "CNX_UPhysics_12_02_sign_img.jpg",
+  "CNX_UPhysics_12_02_torquebal.jpg",
+  "CNX_UPhysics_12_02_woman_img.jpg",
+  "CNX_UPhysics_12_03_hydrolics.jpg"
+ ]
+}

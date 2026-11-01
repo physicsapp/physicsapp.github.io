@@ -1,0 +1,573 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 13,
+  "title": "Gravitation"
+ },
+ "keyEquations": [
+  {
+   "name": "Newton’s law of gravitation",
+   "tex": "{\\mathbf{\\vec{F}}}_{12}=G\\frac{{m}_{1}{m}_{2}}{{r}^{2}}{\\mathbf{\\hat{r}}}_{12}"
+  },
+  {
+   "name": "Acceleration due to gravity at the surface of Earth",
+   "tex": "g=G\\frac{{M}_{\\text{E}}}{{r}_{}^{2}}"
+  },
+  {
+   "name": "Gravitational potential energy beyond Earth",
+   "tex": "U=-\\frac{G{M}_{\\text{E}}m}{r}"
+  },
+  {
+   "name": "Conservation of energy",
+   "tex": "\\frac{1}{2}m{v}_{1}^{2}-\\frac{GMm}{{r}_{1}}=\\frac{1}{2}m{v}_{2}^{2}-\\frac{GMm}{{r}_{2}}"
+  },
+  {
+   "name": "Escape velocity",
+   "tex": "{v}_{\\text{esc}}=\\sqrt{\\frac{2GM}{R}}"
+  },
+  {
+   "name": "Orbital speed",
+   "tex": "{v}_{\\text{orbit}}=\\sqrt{\\frac{{\\text{GM}}_{\\text{E}}}{r}}"
+  },
+  {
+   "name": "Orbital period",
+   "tex": "Τ=2\\pi \\sqrt{\\frac{{r}^{3}}{{\\text{GM}}_{\\text{E}}}}"
+  },
+  {
+   "name": "Energy in circular orbit",
+   "tex": "E=K+U=-\\frac{Gm{\\text{M}}_{\\text{E}}}{2r}"
+  },
+  {
+   "name": "Conic sections",
+   "tex": "\\frac{\\alpha}{r}=1+e\\cos \\theta"
+  },
+  {
+   "name": "Kepler’s third law",
+   "tex": "{Τ}^{2}=\\frac{4{\\pi}^{2}}{GM}{a}^{3}"
+  },
+  {
+   "name": "Schwarzschild radius",
+   "tex": "{R}_{\\text{S}}=\\frac{2GM}{{c}^{2}}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "13.1",
+   "module": "m58345",
+   "title": "Newton's Law of Universal Gravitation",
+   "objectives": [
+    "List the significant milestones in the history of gravitation",
+    "Calculate the gravitational force between two point masses",
+    "Estimate the gravitational force between collections of mass"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "A Collision in Orbit",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider two nearly spherical <i>Soyuz</i> payload vehicles, in orbit about Earth, each with mass 9000 kg and diameter 4.0 m. They are initially at rest relative to each other, 10.0 m from center to center. (Both orbit Earth at the same speed and interact nearly the same as if they were isolated in deep space.) Determine the gravitational force between them and their initial acceleration toward each other (parallel to their orbital motion). Estimate how long it takes for them to drift together, and how fast they are moving upon impact.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use Newton’s law of gravitation to determine the force between them and then use Newton’s second law to find the acceleration of each. For the <i>estimate</i>, we find the final acceleration as well and assume the acceleration is constant at its average value, and we use the constant-acceleration equations from Motion along a Straight Line to find the time and speed of the collision.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The magnitude of the force is</p><div class='eq'>\\[|{\\mathbf{\\vec{F}}}_{12}|={F}_{12}=G\\, \\frac{{m}_{1}{m}_{2}}{{r}^{2}}=6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2}\\frac{(9000\\, \\text{kg})(9000\\, \\text{kg})}{{(10\\, \\text{m})}^{2}}=5.4\\, \\times \\, {10}^{-5}\\text{N.}\\]</div><p>The initial acceleration of each payload is</p><div class='eq'>\\[a=\\frac{F}{m}=\\frac{5.4\\, \\times \\, {10}^{-5}\\, \\text{N}}{9000\\, \\text{kg}}=6.0\\, \\times \\, {10}^{-9}{\\text{m/s}}^{2}.\\]</div><p>The vehicles are 4.0 m in diameter, so the vehicles move from 10.0 m to 4.0 m apart, or a distance of 3.0 m each. A similar calculation to that above, for when the vehicles are 4.0 m apart, yields an acceleration of \\(3.8\\, \\times \\, {10}^{-8}\\, {\\text{m/s}}^{2}\\), and the average of these two values is \\(2.2\\, \\times \\, {10}^{-8}\\, {\\text{m/s}}^{2}\\). If we assume a constant acceleration of this value and they start from rest, then the vehicles collide with speed given by</p><div class='eq'>\\[{v}^{2}={v}_{0}^{2}+2a(x-{x}_{0}),\\, \\text{where}\\, {v}_{0}=0,\\]</div><p>so</p><div class='eq'>\\[v=\\sqrt{2(2.2\\, \\times \\, {10}^{-8}\\, {\\text{m/s}}^{2})(3.0\\, \\text{m})}=3.6\\, \\times \\, {10}^{-4}\\, \\, \\text{m/s.}\\]</div><p>We use \\({v}^{}={v}_{0}+at\\) to find \\(t=v\\text{/}a=1.7\\, \\times \\, {10}^{4}\\, \\text{s}\\) or about 4.6 hours.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>These calculations—including the initial force—are only estimates, as the vehicles are probably not spherically symmetrical. But you can see that the force is incredibly small. Astronauts must tether themselves when doing a spacewalk, as in the figure, because the gravitational attraction cannot save them from even the smallest push away.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Attraction between Galaxies",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the acceleration of our galaxy, the <b>Milky Way</b>, due to the nearest comparably sized galaxy, the <b>Andromeda galaxy</b> (the figure). The approximate mass of each galaxy is 800 × 10<sup>9</sup> solar masses (a solar mass is the mass of our Sun), and they are separated by 2.5 million light-years. (Note that the mass of Andromeda is not so well known but is believed to be slightly larger than our galaxy.) Each galaxy has a diameter of roughly 100,000 light-years \\((1\\, \\text{light-year}=9.5\\, \\times \\, {10}^{15}\\, \\, \\text{m})\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>As in the preceding example, we use Newton’s law of gravitation to determine the force between them and then use Newton’s second law to find the acceleration of the Milky Way. We can consider the galaxies to be point masses, since their sizes are about 25 times smaller than their separation. The mass of the Sun (see Appendix D) is \\(2.0\\, \\times \\, {10}^{30}\\, \\text{kg}\\) and a light-year is the distance light travels in one year, \\(9.5\\, \\times \\, {10}^{15}\\, \\text{m}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The magnitude of the force is</p><div class='eq'>\\[{F}_{12}=G\\, \\frac{{m}_{1}{m}_{2}}{{r}^{2}}=(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}\\text{/}{\\text{kg}}^{2})\\frac{{[(800\\, \\times \\, {10}^{9})(2.0\\, \\times \\, {10}^{30}\\, \\text{kg})]}^{2}}{{[(2.5\\, \\times \\, {10}^{6})(9.5\\, \\times \\, {10}^{15}\\, \\text{m})]}^{2}}=3.0\\, \\times \\, {10}^{29}\\, \\text{N.}\\]</div><p>The acceleration of the Milky Way is</p><div class='eq'>\\[a=\\frac{F}{m}=\\frac{3.0\\, \\times \\, {10}^{29}\\, \\text{N}}{(800\\, \\times \\, {10}^{9})(2.0\\, \\times \\, {10}^{30}\\, \\text{kg})}=1.9\\, \\times \\, {10}^{-13}{\\text{m/s}}^{2}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Does this value of acceleration seem astoundingly small? If they start from rest, then they would accelerate directly toward each other, “colliding” at their center of mass. Let’s estimate the time for this to happen. The initial acceleration is \\(\\sim {10}^{-13}\\, {\\text{m/s}}^{2}\\), so using \\(v=at\\), we see that it would take \\(\\sim {10}^{13}\\, \\text{s}\\) for each galaxy to reach a speed of 1.0 m/s, and they would be only \\(\\sim 0.5\\, \\times \\, {10}^{13}\\, \\text{m}\\) closer. That is nine orders of magnitude smaller than the initial distance between them. In reality, such motions are rarely simple. These two galaxies, along with about 50 other smaller galaxies, are all gravitationally bound into our local cluster. Our local cluster is gravitationally bound to other clusters in what is called a supercluster. All of this is part of the great cosmic dance that results from gravitation, as shown in the figure.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>What happens to force and acceleration as the vehicles fall together? What will our estimate of the velocity at a collision higher or lower than the speed actually be? And finally, what would happen if the masses were not identical? Would the force on each be the same or different? How about their accelerations?</p>",
+     "a": "<p>The force of gravity on each object increases with the square of the inverse distance as they fall together, and hence so does the acceleration. For example, if the distance is halved, the force and acceleration are quadrupled. Our average is accurate only for a linearly increasing acceleration, whereas the acceleration actually increases at a greater rate. So our calculated speed is too small. From Newton’s third law (action-reaction forces), the force of gravity between any two objects must be the same. But the accelerations will not be if they have different masses.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "All masses attract one another with a gravitational force proportional to their masses and inversely proportional to the square of the distance between them.",
+    "Spherically symmetrical masses can be treated as if all their mass were located at the center.",
+    "Nonsymmetrical objects can be treated as if their mass were concentrated at their center of mass, provided their distance from other masses is large compared to their size."
+   ]
+  },
+  {
+   "num": "13.2",
+   "module": "m58346",
+   "title": "Gravitation Near Earth's Surface",
+   "objectives": [
+    "Explain the connection between the constants \\(G\\) and \\(g\\)",
+    "Determine the mass of an astronomical body from free-fall acceleration at its surface",
+    "Describe how the value of \\(g\\) varies due to location and Earth’s rotation"
+   ],
+   "callouts": [
+    "g=G\\frac{{M}_{\\text{E}}}{{r}^{2}}",
+    "\\sum F={F}_{\\text{SE}}-mg=m{a}_{\\text{c}}\\quad \\text{where}\\quad {a}_{\\text{c}}=-\\frac{{v}^{2}}{r}"
+   ],
+   "examples": [
+    {
+     "title": "Masses of Earth and Moon",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Have you ever wondered how we know the mass of Earth? We certainly can’t place it on a scale. The values of <i>g</i> and the radius of Earth were measured with reasonable accuracy centuries ago.</p><ol type='a'><li>Use the standard values of <i>g</i>, \\({R}_{\\text{E}}\\), and the equation to find the mass of Earth.</li><li>Estimate the value of <i>g</i> on the Moon. Use the fact that the Moon has a radius of about 1700 km (a value of this accuracy was determined many centuries ago) and assume it has the same average density as Earth, \\(5500\\, {\\text{kg/m}}^{3}\\).</li></ol>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>With the known values of <i>g</i> and \\({R}_{\\text{E}}\\), we can use the equation to find \\({M}_{\\text{E}}\\). For the Moon, we use the assumption of equal average density to determine the mass from a ratio of the volumes of Earth and the Moon.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Rearranging the equation, we have <div class='eq'>\\[{M}_{\\text{E}}=\\frac{g{R}_{\\text{E}}^{2}}{G}=\\frac{9.80\\, {\\text{m/s}}^{2}{(6.37\\, \\times \\, {10}^{6}\\, \\text{m})}^{2}}{6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2}}=5.95\\, \\times \\, {10}^{24}\\, \\text{kg.}\\]</div></li><li>The volume of a sphere is proportional to the radius cubed, so a simple ratio gives us <div class='eq'>\\[\\frac{{M}_{\\text{M}}}{{M}_{\\text{E}}}=\\frac{{R}_{\\text{M}}^{3}}{{R}_{\\text{E}}^{3}}\\to {M}_{\\text{M}}=(\\frac{{(1.7\\, \\times \\, {10}^{6}\\, \\text{m})}^{3}}{{(6.37\\, \\times \\, {10}^{6}\\, \\text{m})}^{3}})(5.95\\, \\times \\, {10}^{24}\\, \\text{kg})=1.1\\, \\times \\, {10}^{23}\\, \\text{kg.}\\]</div> We now use the equation. <div class='eq'>\\[{g}_{\\text{M}}=G\\, \\frac{{M}_{\\text{M}}}{{r}_{\\text{M}}^{2}}=(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})\\frac{(1.1\\, \\times \\, {10}^{23}\\, \\text{kg})}{{(1.7\\, \\times \\, {10}^{6}\\, \\text{m})}^{2}}={2.5}^{}{\\text{m/s}}^{2}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>As soon as Cavendish determined the value of <i>G</i> in 1798, the mass of Earth could be calculated. (In fact, that was the ultimate purpose of Cavendish’s experiment in the first place.) The value we calculated for <i>g</i> of the Moon is incorrect. The average density of the Moon is actually only \\(3340\\, {\\text{kg/m}}^{3}\\) and \\(g=1.6\\, {\\text{m/s}}^{2}\\) at the surface. Newton attempted to measure the mass of the Moon by comparing the effect of the Sun on Earth’s ocean tides compared to that of the Moon. His value was a factor of two too small. The most accurate values for <i>g</i> and the mass of the Moon come from tracking the motion of spacecraft that have orbited the Moon. But the mass of the Moon can actually be determined accurately without going to the Moon. Earth and the Moon orbit about a common center of mass, and careful astronomical measurements can determine that location. The ratio of the Moon’s mass to Earth’s is the ratio of [the distance from the common center of mass to the Moon’s center] to [the distance from the common center of mass to Earth’s center].</p><p>Later in this chapter, we will see that the mass of other astronomical bodies also can be determined by the period of small satellites orbiting them. But until Cavendish determined the value of <i>G</i>, the masses of all these bodies were unknown.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Gravity above Earth’s Surface",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>What is the value of <i>g</i> 400 km above Earth’s surface, where the <b>International Space Station</b> is in orbit?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Using the value of \\({M}_{\\text{E}}\\) and noting the radius is \\(r={R}_{\\text{E}}+400\\, \\text{km}\\), we use the equation to find <i>g</i>.</p><p>From the equation we have</p><div class='eq'>\\[g=G\\frac{{M}_{\\text{E}}}{{r}^{2}}=6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2}\\frac{5.96\\, \\times \\, {10}^{24}\\, \\text{kg}}{{(6.37\\, \\times \\, {10}^{6}+400\\, \\times \\, {10}^{3}\\, \\text{m})}^{2}}=8.67\\, {\\text{m/s}}^{2}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We often see video of astronauts in space stations, apparently weightless. But clearly, the force of gravity is acting on them. Comparing the value of <i>g</i> we just calculated to that on Earth \\((9.80\\, {\\text{m/s}}^{2})\\), we see that the astronauts in the International Space Station still have 88% of their weight. They only appear to be weightless because they are in free fall. We will come back to this in Satellite Orbits and Energy.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Zero Apparent Weight",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>How fast would Earth need to spin for those at the equator to have zero apparent weight? How long would the length of the day be?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Using the equation, we can set the apparent weight (\\({F}_{\\text{SE}}\\)) to zero and determine the centripetal acceleration required. From that, we can find the speed at the equator. The length of day is the time required for one complete rotation.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>From the equation, we have \\(\\sum F={F}_{\\text{SE}}-mg=m{a}_{\\text{c}}\\), so setting \\({F}_{\\text{SE}}=0\\), we get \\(g={a}_{\\text{c}}\\). Using the expression for \\({a}_{\\text{c}}\\), substituting for Earth’s radius and the standard value of gravity, we get</p><div class='eq'>\\[\\begin{array}{l} \\\\ \\\\ {a}_{\\text{c}}=\\frac{{v}^{2}}{r}=g \\\\ v=\\sqrt{gr}=\\sqrt{(9.80\\, {\\text{m/s}}^{2})(6.37\\, \\times \\, {10}^{6}\\, \\text{m})}=7.91\\, \\times \\, {10}^{3}\\, \\text{m/s}.\\end{array}\\]</div><p>The period <i>T</i> is the time for one complete rotation. Therefore, the tangential speed is the circumference divided by <i>T</i>, so we have</p><div class='eq'>\\[\\begin{array}{l} \\\\ v=\\frac{2\\pi r}{T} \\\\ T=\\frac{2\\pi r}{v}=\\frac{2\\pi (6.37\\, \\times \\, {10}^{6}\\, \\text{m})}{7.91\\, \\times \\, {10}^{3}\\, \\text{m/s}}=5.06\\, \\times \\, {10}^{3}\\, \\text{s}.\\end{array}\\]</div><p>This is about 84 minutes.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We will see later in this chapter that this speed and length of day would also be the orbital speed and period of a satellite in orbit at Earth’s surface. While such an orbit would not be possible near Earth’s surface due to air resistance, it certainly is possible only a few hundred miles above Earth.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>How does your weight at the top of a tall building compare with that on the first floor? Do you think engineers need to take into account the change in the value of <i>g</i> when designing structural support for a very tall building?</p>",
+     "a": "<p>The tallest buildings in the world are all less than 1 km. Since <i>g</i> is proportional to the distance squared from Earth’s center, a simple ratio shows that the change in <i>g</i> at 1 km above Earth’s surface is less than 0.0001%. There would be no need to consider this in structural design.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The weight of an object is the gravitational attraction between Earth and the object.",
+    "The gravitational field is represented as lines that indicate the direction of the gravitational force; the line spacing indicates the strength of the field.",
+    "Apparent weight differs from actual weight due to the acceleration of the object."
+   ]
+  },
+  {
+   "num": "13.3",
+   "module": "m58347",
+   "title": "Gravitational Potential Energy and Total Energy",
+   "objectives": [
+    "Determine changes in gravitational potential energy over great distances",
+    "Apply conservation of energy to determine escape velocity",
+    "Determine whether astronomical bodies are gravitationally bound"
+   ],
+   "callouts": [
+    "U=-\\frac{G{M}_{\\text{E}}m}{r}",
+    "\\frac{1}{2}\\, m{v}_{1}^{2}-\\frac{GMm}{{r}_{1}}=\\frac{1}{2}\\, m{v}_{2}^{2}-\\frac{GMm}{{r}_{2}}",
+    "{v}_{\\text{esc}}=\\sqrt{\\frac{2GM}{R}}"
+   ],
+   "examples": [
+    {
+     "title": "Lifting a Payload",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>How much energy is required to lift the 9000-kg <i>Soyuz</i> vehicle from Earth’s surface to the height of the ISS, 400 km above the surface?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Use another section to find the change in potential energy of the payload. That amount of work or energy must be supplied to lift the payload.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Paying attention to the fact that we start at Earth’s surface and end at 400 km above the surface, the change in <i>U</i> is</p><div class='eq'>\\[\\Delta U={U}_{\\text{orbit}}-{U}_{\\text{Earth}}=-\\frac{G{M}_{\\text{E}}m}{{R}_{\\text{E}}+\\, 400\\, \\text{km}}-(-\\frac{G{M}_{\\text{E}}m}{{R}_{\\text{E}}}).\\]</div><p>We insert the values</p><div class='eq'>\\[m=9000\\, \\text{kg,}\\quad {M}_{\\text{E}}=5.96\\, \\times \\, {10}^{24}\\text{kg,}\\quad {R}_{\\text{E}}=6.37\\, \\times \\, {10}^{6}\\, \\text{m}\\]</div><p>and convert 400 km into \\(4.00\\, \\times \\, {10}^{5}\\, \\text{m}\\). We find \\(\\Delta U=3.32\\, \\times \\, {10}^{10}\\, \\text{J}\\). It is positive, indicating an increase in potential energy, as we would expect.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>For perspective, consider that the average US household energy use in 2013 was 909 kWh per month. That is energy of</p><div class='eq'>\\[909\\, \\text{kWh}\\, \\times \\, 1000\\, \\text{W/kW}\\, \\times \\, 3600\\, \\text{s/h}=3.27\\, \\times \\, {10}^{9}\\, \\text{J per month.}\\]</div><p>So our result is an energy expenditure equivalent to 10 months. But this is just the energy needed to raise the payload 400 km. If we want the <i>Soyuz</i> to be in orbit so it can rendezvous with the ISS and not just fall back to Earth, it needs a lot of kinetic energy. As we see in the next section, that kinetic energy is about five times that of \\(\\Delta U\\). In addition, far more energy is expended lifting the propulsion system itself. Space travel is not cheap.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Escape from Earth",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>What is the escape speed from the surface of Earth? Assume there is no energy loss from air resistance. Compare this to the escape speed from the Sun, starting from Earth’s orbit.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the equation, clearly defining the values of <i>R</i> and <i>M</i>. To escape Earth, we need the mass and radius of Earth. For escaping the Sun, we need the mass of the Sun, and the orbital distance between Earth and the Sun.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substituting the values for Earth’s mass and radius directly into the equation, we obtain</p><div class='eq'>\\[{v}_{\\text{esc}}=\\sqrt{\\frac{2GM}{R}}=\\sqrt{\\frac{2(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})(5.96\\, \\times \\, {10}^{24}\\, \\text{kg})}{6.37\\, \\times \\, {10}^{6}\\, \\text{m}}}=1.12\\, \\times \\, {10}^{4}\\, \\text{m/s.}\\]</div><p>That is about 11 km/s or 25,000 mph. To escape the Sun, starting from Earth’s orbit, we use \\(R={R}_{\\text{ES}}=1.50\\, \\times \\, {10}^{11}\\, \\text{m}\\) and \\({M}_{\\text{Sun}}=1.99\\, \\times \\, {10}^{30}\\, \\text{kg}\\). The result is \\({v}_{\\text{esc}}=4.21\\, \\times \\, {10}^{4}\\, \\text{m/s}\\) or about 42 km/s.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The speed needed to escape the Sun (leave the solar system) is nearly four times the escape speed from Earth’s surface. But there is help in both cases. Earth is rotating, at a speed of nearly 460 m/s at the equator, and we can use that velocity to help escape, or to achieve orbit. For this reason, many commercial space companies maintain launch facilities near the equator. To escape the Sun, there is even more help. Earth revolves about the Sun at a speed of approximately 30 km/s. By launching in the direction that Earth is moving, we need only an additional 12 km/s. The use of gravitational assist from other planets, essentially a gravity slingshot technique, allows space probes to reach even greater speeds. In this slingshot technique, the vehicle approaches the planet and is accelerated by the planet’s gravitational attraction. It has its greatest speed at the closest point of approach, although it accelerates opposite to the motion in equal measure as it moves away. But relative to the planet, the vehicle’s speed far before the approach, and long after, are the same. If the directions are chosen correctly, that can result in a significant increase (or decrease if needed) in the vehicle’s speed relative to the rest of the solar system.</p><p>Visit this website to learn more about escape velocity.</p>"
+      }
+     ]
+    },
+    {
+     "title": "How Far Can an Object Escape?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Let’s consider the preceding example again, where we calculated the escape speed from Earth and the Sun, starting from Earth’s orbit. We noted that Earth already has an orbital speed of 30 km/s. As we see in the next section, that is the tangential speed needed to stay in circular orbit. If an object had this speed at the distance of Earth’s orbit, but was headed directly away from the Sun, how far would it travel before coming to rest? Ignore the gravitational effects of any other bodies.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The object has initial kinetic and potential energies that we can calculate. When its speed reaches zero, it is at its maximum distance from the Sun. We use the equation, conservation of energy, to find the distance at which kinetic energy is zero.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The initial position of the object is Earth’s radius of orbit and the intial speed is given as 30 km/s. The final velocity is zero, so we can solve for the distance at that point from the conservation of energy equation. Using \\({R}_{\\text{ES}}=1.50\\, \\times \\, {10}^{11}\\, \\text{m}\\) and \\({M}_{\\text{Sun}}=1.99\\, \\times \\, {10}^{30}\\, \\text{kg}\\), we have</p><div class='eq'>\\[\\begin{array}{l}\\frac{1}{2}m{v}_{1}^{2}-\\frac{GMm}{{r}_{1}}=\\frac{1}{2}m{v}_{2}^{2}-\\frac{GMm}{{r}_{2}} \\\\ \\\\ \\\\ \\\\ \\quad \\frac{1}{2}m(3.0\\times {10}^{3}\\text{m/s}{)}^{2}-\\frac{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m/kg}}^{2})(1.99\\, \\times \\, {10}^{30}\\, \\text{kg})m}{1.50\\, \\times \\, {10}^{11}\\, \\text{m}} \\\\ \\\\ \\quad =\\frac{1}{2}m{0}^{2}-\\frac{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m/kg}}^{2})(1.99\\, \\times \\, {10}^{30}\\, \\text{kg})m}{{r}_{2}}\\end{array}\\]</div><p>where the mass <i>m</i> cancels. Solving for \\({r}_{2}\\) we get \\({r}_{2}=3.0\\, \\times \\, {10}^{11}\\, \\text{m}\\). Note that this is twice the initial distance from the Sun and takes us past Mars’s orbit, but not quite to the asteroid belt.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The object in this case reached a distance <i>exactly</i> twice the initial orbital distance. We will see the reason for this in the next section when we calculate the speed for circular orbits.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Why not use the simpler expression \\(\\Delta U=mg({y}_{2}-{y}_{1})\\)? How significant would the error be? (Recall the previous result, in another section, that the value <i>g</i> at 400 km above the Earth is \\(8.67\\, {\\text{m/s}}^{2}\\).)</p>",
+     "a": "<p>The value of <i>g</i> drops by about 10% over this change in height. So \\(\\Delta U=mg({y}_{2}-{y}_{1})\\) will give too large a value. If we use \\(g=9.80\\, \\text{m/s}\\), then we get</p><p>\\(\\Delta U=mg({y}_{2}-{y}_{1})=3.53\\, \\times \\, {10}^{10}\\, \\text{J}\\)</p><p>which is about 6% greater than that found with the correct method.</p>"
+    },
+    {
+     "q": "<p>If we send a probe out of the solar system starting from Earth’s surface, do we only have to escape the Sun?</p>",
+     "a": "<p>The probe must overcome both the gravitational pull of Earth and the Sun. In the second calculation of our example, we found the speed necessary to escape the Sun from a distance of Earth’s orbit, not from Earth itself. The proper way to find this value is to start with the energy equation, the equation, in which you would include a potential energy term for both Earth and the Sun.</p>"
+    },
+    {
+     "q": "<p>Assume you are in a spacecraft in orbit about the Sun at Earth’s orbit, but far away from Earth (so that it can be ignored). How could you redirect your tangential velocity to the radial direction such that you could then pass by Mars’s orbit? What would be required to change just the direction of the velocity?</p>",
+     "a": "<p>You change the direction of your velocity with a force that is perpendicular to the velocity at all points. In effect, you must constantly adjust the thrusters, creating a centripetal force until your momentum changes from tangential to radial. A simple momentum vector diagram shows that the net <i>change</i> in momentum is \\(\\sqrt{2}\\) times the magnitude of momentum itself. This turns out to be a very inefficient way to reach Mars. We discuss the most efficient way in Kepler’s Laws of Planetary Motion.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The acceleration due to gravity changes as we move away from Earth, and the expression for gravitational potential energy must reflect this change.",
+    "The total energy of a system is the sum of kinetic and gravitational potential energy, and this total energy is conserved in orbital motion.",
+    "Objects must have a minimum velocity, the escape velocity, to leave a planet and not return.",
+    "Objects with total energy less than zero are bound; those with zero or greater are unbounded."
+   ]
+  },
+  {
+   "num": "13.4",
+   "module": "m58348",
+   "title": "Satellite Orbits and Energy",
+   "objectives": [
+    "Describe the mechanism for circular orbits",
+    "Find the orbital periods and speeds of satellites",
+    "Determine whether objects are gravitationally bound"
+   ],
+   "callouts": [
+    "{v}_{\\text{orbit}}=\\sqrt{\\frac{G{M}_{\\text{E}}}{r}}",
+    "T=2\\pi \\sqrt{\\frac{{r}^{3}}{G{M}_{\\text{E}}}}",
+    "E=K+U=\\frac{Gm{M}_{\\text{E}}}{2{r}^{}}-\\frac{Gm{M}_{\\text{E}}}{{r}^{}}=-\\frac{Gm{M}_{\\text{E}}}{2{r}^{}}"
+   ],
+   "examples": [
+    {
+     "title": "The International Space Station",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Determine the orbital speed and period for the <b>International Space Station</b> (ISS).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since the ISS orbits \\(4.00\\, \\times \\, {10}^{2}\\text{km}\\) above Earth’s surface, the radius at which it orbits is \\({R}_{\\text{E}}+4.00\\, \\times \\, {10}^{2}\\text{km}\\). We use the equation and the equation to find the orbital speed and period, respectively.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Using the equation, the orbital velocity is</p><div class='eq'>\\[{v}_{\\text{orbit}}=\\sqrt{\\frac{G{M}_{\\text{E}}}{r}}=\\sqrt{\\frac{6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2}(5.96\\, \\times \\, {10}^{24}\\, \\text{kg})}{(6.36\\, \\times \\, {10}^{6}+4.00\\, \\times \\, {10}^{5}\\, \\text{m})}}=7.67\\, \\times \\, {10}^{3}\\, \\text{m/s}\\]</div><p>which is about 17,000 mph. Using the equation, the period is</p><div class='eq'>\\[T=2\\pi \\sqrt{\\frac{{r}^{3}}{G{M}_{\\text{E}}}}=2\\pi \\sqrt{\\frac{{(6.37\\, \\times \\, {10}^{6}+4.00\\, \\times \\, {10}^{5}\\, \\text{m})}^{3}}{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})(5.96\\, \\times \\, {10}^{24}\\, \\text{kg})}}=5.55\\, \\times \\, {10}^{3}\\, \\text{s}\\]</div><p>which is just over 90 minutes.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The ISS is considered to be in low Earth orbit (LEO). Nearly all satellites are in LEO, including most weather satellites. GPS satellites, at about 20,000 km, are considered medium Earth orbit. The higher the orbit, the more energy is required to put it there and the more energy is needed to reach it for repairs. Of particular interest are the satellites in geosynchronous orbit. All fixed satellite dishes on the ground pointing toward the sky, such as TV reception dishes, are pointed toward geosynchronous satellites. These satellites are placed at the exact distance, and just above the equator, such that their period of orbit is 1 day. They remain in a fixed position relative to Earth’s surface.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Determining the Mass of Earth",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Determine the mass of Earth from the orbit of the Moon.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the equation, solve for \\({M}_{\\text{E}}\\), and substitute for the period and radius of the orbit. The radius and period of the Moon’s orbit was measured with reasonable accuracy thousands of years ago. From the astronomical data in Appendix D, the period of the Moon is 27.3 days \\(=2.36\\, \\times \\, {10}^{6}\\, \\text{s}\\), and the <i>average</i> distance between the centers of Earth and the Moon is 384,000 km.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Solving for \\({M}_{\\text{E}}\\),</p><div class='eq'>\\[\\begin{array}{lll}T & = & 2\\pi \\sqrt{\\frac{{r}^{3}}{G{M}_{\\text{E}}}} \\\\ {M}_{\\text{E}} & = & \\frac{4{\\pi}^{2}{r}^{3}}{G{Τ}^{2}}=\\frac{4{\\pi}^{2}{(3.84\\, \\times \\, {10}^{8}\\, \\text{m})}^{3}}{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2}){(2.36\\, \\times \\, {10}^{6}\\, \\text{s})}^{2}}=6.01\\, \\times \\, {10}^{24}\\, \\text{kg}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Compare this to the value of \\(5.96\\, \\times \\, {10}^{24}\\, \\text{kg}\\) that we obtained in another section, using the value of <i>g</i> at the surface of Earth. Although these values are very close (~0.8%), both calculations use average values. The value of <i>g</i> varies from the equator to the poles by approximately 0.5%. But the Moon has an elliptical orbit in which the value of <i>r</i> varies just over 10%. (The apparent size of the full Moon actually varies by about this amount, but it is difficult to notice through casual observation as the time from one extreme to the other is many months.)</p>"
+      }
+     ]
+    },
+    {
+     "title": "Galactic Speed and Period",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Let’s revisit another section. Assume that the Milky Way and Andromeda galaxies are in a circular orbit about each other. What would be the velocity of each and how long would their orbital period be? Assume the mass of each is 8 × 10<sup>11</sup> solar masses and their centers are separated by 2.5 million light years.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We cannot use the equation and the equation directly because they were derived assuming that the object of mass <i>m</i> orbited about the center of a much larger planet of mass <i>M</i>. We determined the gravitational force in another section using Newton’s law of universal gravitation. We can use Newton’s second law, applied to the centripetal acceleration of either galaxy, to determine their tangential speed. From that result we can determine the period of the orbit.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>In another section, we found the force between the galaxies to be</p><div class='eq'>\\[{F}_{12}=G\\frac{{m}_{1}{m}_{2}}{{r}^{2}}=\\, (6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})\\frac{{[(800\\, \\times \\, {10}^{9})(2.0\\, \\times \\, {10}^{30}\\, \\text{kg})]}^{2}}{{[(2.5\\, \\times \\, {10}^{6})(9.5\\, \\times \\, {10}^{15}\\, \\text{m})]}^{2}}=3.0\\, \\times \\, {10}^{29}\\, \\text{N}\\]</div><p>and that the acceleration of each galaxy is</p><div class='eq'>\\[a=\\frac{F}{m}=\\, \\frac{3.0\\, \\times \\, {10}^{29}\\, \\text{N}}{(800\\, \\times \\, {10}^{9})(2.0\\, \\times \\, {10}^{30}\\, \\text{kg})}=1.9\\, \\times \\, {10}^{-13}{\\text{m/s}}^{2}.\\]</div><p>Since the galaxies are in a circular orbit, they have centripetal acceleration. If we ignore the effect of other galaxies, then, as we learned in Linear Momentum and Collisions and Fixed-Axis Rotation, the centers of mass of the two galaxies remain fixed. Hence, the galaxies must orbit about this common center of mass. For equal masses, the center of mass is exactly half way between them. So the radius of the orbit, \\({r}_{\\text{orbit}}\\), is not the same as the distance between the galaxies, but one-half that value, or 1.25 million light-years. These two different values are shown in the figure.</p><p>Using the expression for centripetal acceleration, we have</p><div class='eq'>\\[\\begin{array}{lll}{a}_{\\text{c}} & = & \\frac{{v}_{\\text{orbit}}^{2}}{{r}_{\\text{orbit}}} \\\\ 1.9\\, \\times \\, {10}^{-13}{\\text{m/s}}^{2} & = & \\frac{{v}_{\\text{orbit}}^{2}}{(1.25\\, \\times \\, {10}^{6})(9.5\\, \\times \\, {10}^{15}\\, \\text{m})}.\\end{array}\\]</div><p>Solving for the orbit velocity, we have \\({v}_{\\text{orbit}}=47\\, \\text{km/s}\\). Finally, we can determine the period of the orbit directly from \\(T=2\\pi r\\text{/}{v}_{\\text{orbit}}\\), to find that the period is \\(T=1.6\\, \\times \\, {10}^{18}\\, \\text{s}\\), about 5 × 10<sup>10</sup> years.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The orbital speed of 47 km/s might seem high at first. But this speed is comparable to the escape speed from the Sun, which we calculated in an earlier example. To give even more perspective, this period is nearly four times longer than the time that the Universe has been in existence.</p><p>In fact, the present relative motion of these two galaxies is such that they are expected to collide in about 4 × 10<sup>9</sup> years. Although the density of stars in each galaxy makes a direct collision of any two stars unlikely, such a collision will have a dramatic effect on the shape of the galaxies. Examples of such collisions are well known in astronomy.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Energy Required to Orbit",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>In another section, we calculated the energy required to simply lift the 9000-kg <i>Soyuz</i> vehicle from Earth’s surface to the height of the ISS, 400 km above the surface. In other words, we found its <i>change</i> in potential energy. We now ask, what total energy change in the <i>Soyuz</i> vehicle is required to take it from Earth’s surface and put it in orbit with the ISS for a rendezvous (the figure)? How much of that total energy is kinetic energy?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The energy required is the difference in the <i>Soyuz</i>’s total energy in orbit and that at Earth’s surface. We can use the equation to find the total energy of the <i>Soyuz</i> at the ISS orbit. But the total energy at the surface is simply the potential energy, since it starts from rest. [Note that we <i>do not</i> use the equation at the surface, since we are not in orbit at the surface.] The kinetic energy can then be found from the difference in the total energy change and the change in potential energy found in another section. Alternatively, we can use the equation to find \\({v}_{\\text{orbit}}\\) and calculate the kinetic energy directly from that. The total energy required is then the kinetic energy plus the change in potential energy found in another section.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>From the equation, the total energy of the <i>Soyuz</i> in the same orbit as the ISS is</p><div class='eq'>\\[\\begin{array}{ll}{E}_{\\text{orbit}} & =-{K}_{\\text{orbit}}+{U}_{\\text{orbit}}=-\\frac{Gm{M}_{\\text{E}}}{2{r}^{}} \\\\ & =\\frac{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})(9000\\, \\text{kg})(5.96\\, \\times \\, {10}^{24}\\, \\text{kg})}{2{(6.36\\, \\times \\, {10}^{6}+4.00\\, \\times \\, {10}^{5}\\, \\text{m})}^{}}=-2.65\\, \\times \\, {10}^{11}\\, \\text{J}.\\end{array}\\]</div><p>The total energy at Earth’s surface is</p><div class='eq'>\\[\\begin{array}{ll}{E}_{\\text{surface}} & ={K}_{\\text{surface}}+{U}_{\\text{surface}}=0-\\frac{Gm{M}_{\\text{E}}}{{r}^{}} \\\\ & =-\\frac{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})(9000\\, \\text{kg})(5.96\\, \\times \\, {10}^{24}\\, \\text{kg})}{{(6.36\\, \\times \\, {10}^{6}\\, \\text{m})}^{}} \\\\ & =-5.63\\, \\times \\, {10}^{11}\\, \\text{J}.\\end{array}\\]</div><p>The change in energy is \\(\\Delta E={E}_{\\text{orbit}}-{E}_{\\text{surface}}=2.98\\, \\times \\, {10}^{11}\\, \\text{J}\\). To get the kinetic energy, we subtract the change in potential energy from another section, \\(\\Delta U=3.32\\, \\times \\, {10}^{10}\\, \\text{J}\\). That gives us \\({K}_{\\text{orbit}}=2.98\\, \\times \\, {10}^{11}-3.32\\, \\times \\, {10}^{10}=2.65\\, \\times \\, {10}^{11}\\, \\text{J}\\). As stated earlier, the kinetic energy of a circular orbit is always one-half the magnitude of the potential energy, and the same as the magnitude of the total energy. Our result confirms this.</p><p>The second approach is to use the equation to find the orbital speed of the <i>Soyuz</i>, which we did for the ISS in the example <i>The International Space Station</i>.</p><div class='eq'>\\[{v}_{\\text{orbit}}=\\sqrt{\\frac{G{M}_{\\text{E}}}{r}}=\\sqrt{\\frac{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})(5.96\\, \\times \\, {10}^{24}\\, \\text{kg})}{(6.36\\, \\times \\, {10}^{6}+4.00\\, \\times \\, {10}^{5}\\, \\text{m})}}=7.67\\, \\times \\, {10}^{3}\\, \\text{m/s.}\\]</div><p>So the kinetic energy of the <i>Soyuz</i> in orbit is</p><div class='eq'>\\[{K}_{\\text{orbit}}=\\frac{1}{2}m{v}_{\\text{orbit}}^{2}=\\frac{1}{2}(9000\\, \\text{kg}){(7.67\\, \\times \\, {10}^{3}\\, \\text{m/s})}^{2}=2.65\\, \\times \\, {10}^{11}\\, \\text{J,}\\]</div><p>the same as in the previous method. The total energy is just</p><div class='eq'>\\[\\Delta E={K}_{\\text{orbit}}+\\Delta U=2.65\\, \\times \\, {10}^{11}+3.32\\, \\times \\, {10}^{10}=2.98\\, \\times \\, {10}^{11}\\, \\text{J.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The kinetic energy of the <i>Soyuz</i> is nearly eight times the change in its potential energy, or 90% of the total energy needed for the rendezvous with the ISS. And it is important to remember that this energy represents only the energy that must be given to the <i>Soyuz</i>. With our present rocket technology, the mass of the propulsion system (the rocket fuel, its container and combustion system) far exceeds that of the payload, and a tremendous amount of kinetic energy must be given to that mass. So the actual cost in energy is many times that of the change in energy of the payload itself.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>By what factor must the radius change to reduce the orbital velocity of a satellite by one-half? By what factor would this change the period?</p>",
+     "a": "<p>In the equation, the radius appears in the denominator inside the square root. So the radius must increase by a factor of 4, to decrease the orbital velocity by a factor of 2. The circumference of the orbit has also increased by this factor of 4, and so with half the orbital velocity, the period must be 8 times longer. That can also be seen directly from the equation.</p>"
+    },
+    {
+     "q": "<p>There is another consideration to this last calculation of \\({M}_{\\text{E}}\\). We derived the equation assuming that the satellite orbits around the center of the astronomical body at the same radius used in the expression for the gravitational force between them. What assumption is made to justify this? Earth is about 81 times more massive than the Moon. Does the Moon orbit about the exact center of Earth?</p>",
+     "a": "<p>The assumption is that orbiting object is much less massive than the body it is orbiting. This is not really justified in the case of the Moon and Earth. Both Earth and the Moon orbit about their common center of mass. We tackle this issue in the next example.</p>"
+    },
+    {
+     "q": "<p>Galaxies are not single objects. How does the gravitational force of one galaxy exerted on the “closer” stars of the other galaxy compare to those farther away? What effect would this have on the shape of the galaxies themselves?</p>",
+     "a": "<p>The stars on the “inside” of each galaxy will be closer to the other galaxy and hence will feel a greater gravitational force than those on the outside. Consequently, they will have a greater acceleration. Even without this force difference, the inside stars would be orbiting at a smaller radius, and, hence, there would develop an elongation or stretching of each galaxy. The force difference only increases this effect.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Orbital velocities are determined by the mass of the body being orbited and the distance from the center of that body, and not by the mass of a much smaller orbiting object.",
+    "The period of the orbit is likewise independent of the orbiting object’s mass.",
+    "Bodies of comparable masses orbit about their common center of mass and their velocities and periods should be determined from Newton’s second law and law of gravitation."
+   ]
+  },
+  {
+   "num": "13.5",
+   "module": "m58350",
+   "title": "Kepler's Laws of Planetary Motion",
+   "objectives": [
+    "Describe the conic sections and how they relate to orbital motion",
+    "Describe how orbital velocity is related to conservation of angular momentum",
+    "Determine the period of an elliptical orbit from its major axis"
+   ],
+   "callouts": [
+    "\\frac{\\alpha}{r}=1+e\\cos \\theta",
+    "{T}^{2}=\\frac{4{\\pi}^{2}}{GM}{a}^{3}"
+   ],
+   "examples": [
+    {
+     "title": "Orbit of Halley’s Comet",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Determine the semi-major axis of the orbit of <b>Halley’s comet</b>, given that it arrives at perihelion every 75.3 years. If the perihelion is 0.586 AU, what is the aphelion?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are given the period, so we can rearrange the equation, solving for the semi-major axis. Since we know the value for the perihelion, we can use the definition of the semi-major axis, given earlier in this section, to find the aphelion. We note that 1 Astronomical Unit (AU) is the average radius of Earth’s orbit and is defined to be \\(1\\, \\text{AU}=1.50\\, \\times \\, {10}^{11}\\, \\text{m}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Rearranging the equation and inserting the values of the period of Halley’s comet and the mass of the Sun, we have</p><div class='eq'>\\[\\begin{array}{ll} \\\\ a & ={(\\frac{GM}{4{\\pi}^{2}}{T}^{2})}^{1\\text{/}3} \\\\ & ={(\\frac{(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})(2.00\\, \\times \\, {10}^{30}\\, \\text{kg})}{4{\\pi}^{2}}{(75.3\\, \\text{yr}\\, \\times \\, 365\\, \\text{days/yr}\\, \\times \\, 24\\, \\text{hr/day}\\, \\times \\, 3600\\, \\text{s/hr})}^{2})}^{1\\text{/}3}.\\end{array}\\]</div><p>This yields a value of \\(2.67\\, \\times \\, {10}^{12}\\, \\text{m}\\) or 17.8 AU for the semi-major axis.</p><p>The semi-major axis is one-half the sum of the aphelion and perihelion, so we have</p><div class='eq'>\\[\\begin{array}{lll} \\\\ a & = & \\frac{1}{2}(\\text{aphelion}+\\text{perihelion}) \\\\ \\text{aphelion} & = & 2a-\\text{perihelion}.\\end{array}\\]</div><p>Substituting for the values, we found for the semi-major axis and the value given for the perihelion, we find the value of the aphelion to be 35.0 AU.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Edmond <b>Halley</b>, a contemporary of Newton, first suspected that three comets, reported in 1531, 1607, and 1682, were actually the same comet. Before Tycho Brahe made measurements of comets, it was believed that they were one-time events, perhaps disturbances in the atmosphere, and that they were not affected by the Sun. Halley used Newton’s new mechanics to predict his namesake comet’s return in 1758.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>The nearly circular orbit of Saturn has an average radius of about 9.5 AU and has a period of 30 years, whereas Uranus averages about 19 AU and has a period of 84 years. Is this consistent with our results for Halley’s comet?</p>",
+     "a": "<p>The semi-major axis for the highly elliptical orbit of Halley’s comet is 17.8 AU and is the average of the perihelion and aphelion. This lies between the 9.5 AU and 19 AU orbital radii for Saturn and Uranus, respectively. The radius for a circular orbit is the same as the semi-major axis, and since the period increases with an increase of the semi-major axis, the fact that Halley’s period is between the periods of Saturn and Uranus is expected.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "All orbital motion follows the path of a conic section. Bound or closed orbits are either a circle or an ellipse; unbounded or open orbits are either a parabola or a hyperbola.",
+    "The areal velocity of any orbit is constant, a reflection of the conservation of angular momentum.",
+    "The square of the period of an elliptical orbit is proportional to the cube of the semi-major axis of that orbit."
+   ]
+  },
+  {
+   "num": "13.6",
+   "module": "m58351",
+   "title": "Tidal Forces",
+   "objectives": [
+    "Explain the origins of Earth’s ocean tides",
+    "Describe how neap and leap tides differ",
+    "Describe how tidal forces affect binary systems"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Comparing Tidal Forces",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Compare the Moon’s gravitational force on a 1.0-kg mass located on the near side and another on the far side of Earth. Repeat for the Sun and then compare the results to confirm that the Moon’s tidal forces are about twice that of the Sun.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use Newton’s law of gravitation given by another section. We need the masses of the Moon and the Sun and their distances from Earth, as well as the radius of Earth. We use the astronomical data from Appendix D.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substituting the mass of the Moon and mean distance from Earth to the Moon, we have</p><div class='eq'>\\[{F}_{12}=G\\, \\frac{{m}_{1}{m}_{2}}{{r}^{2}}=(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})\\, \\frac{(1.0\\, \\text{kg})(7.35\\, \\times \\, {10}^{22}\\, \\text{kg})}{{(3.84\\, \\times \\, {10}^{8}\\pm 6.37\\, \\times \\, {10}^{6}\\, \\text{m})}^{2}}.\\]</div><p>In the denominator, we use the minus sign for the near side and the plus sign for the far side. The results are</p><div class='eq'>\\[{F}_{\\text{near}}=3.44\\, \\times \\, {10}^{-5}\\, \\text{N}\\quad \\text{and}\\quad {F}_{\\text{far}}=3.22\\, \\times \\, {10}^{-5}\\, \\text{N.}\\]</div><p>The Moon’s gravitational force is nearly 7% higher at the near side of Earth than at the far side, but both forces are much less than that of Earth itself on the 1.0-kg mass. Nevertheless, this small difference creates the tides. We now repeat the problem, but substitute the mass of the Sun and the mean distance between the Earth and Sun. The results are</p><div class='eq'>\\[{F}_{\\text{near}}=5.89975\\, \\times \\, {10}^{-3}\\, \\text{N}\\quad \\text{and}\\quad {F}_{\\text{far}}=5.89874\\, \\times \\, {10}^{-3}\\, \\text{N.}\\]</div><p>We have to keep six significant digits since we wish to compare the difference between them to the difference for the Moon. (Although we can’t justify the absolute value to this accuracy, since all values in the calculation are the same except the distances, the accuracy in the difference is still valid to three digits.) The difference between the near and far forces on a 1.0-kg mass due to the Moon is</p><div class='eq'>\\[{F}_{\\text{near}}=3.44\\, \\times \\, {10}^{-5}\\, \\text{N}-3.22\\, \\times \\, {10}^{-5}\\, \\text{N}=0.22\\, \\times \\, {10}^{-5}\\, \\text{N,}\\]</div><p>whereas the difference for the Sun is</p><div class='eq'>\\[{F}_{\\text{near}}-{F}_{\\text{far}}=5.89975\\, \\times \\, {10}^{-3}\\, \\text{N}-5.89874\\, \\times \\, {10}^{-3}\\, \\text{N}=0.101\\, \\times \\, {10}^{-5}\\, \\text{N.}\\]</div><p>Note that a more proper approach is to write the difference in the two forces with the difference between the near and far distances explicitly expressed. With just a bit of algebra we can show that</p><div class='eq'>\\[{F}_{\\text{tidal}}=\\frac{GMm}{{r}_{1}^{2}}-\\frac{GMm}{{r}_{2}^{2}}=GMm(\\frac{({r}_{2}^{}-{r}_{1}^{})({r}_{2}^{}+{r}_{1}^{})}{{r}_{1}^{2}{r}_{2}^{2}}),\\]</div><p>where \\({r}_{1}^{}\\) and \\({r}_{2}^{}\\) are the same to three significant digits, but their difference \\(({r}_{2}-{r}_{1})\\), equal to the diameter of Earth, is also known to three significant digits. The results of the calculation are the same. This approach would be necessary if the number of significant digits needed exceeds that available on your calculator or computer.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that the forces exerted by the Sun are nearly 200 times greater than the forces exerted by the Moon. But the <i>difference</i> in those forces for the Sun is half that for the Moon. This is the nature of tidal forces. The Moon has a greater tidal effect because the fractional change in distance from the near side to the far side is so much greater for the Moon than it is for the Sun.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Earth exerts a tidal force on the Moon. Is it greater than, the same as, or less than that of the Moon on Earth? Be careful in your response, as tidal forces arise from the <i>difference</i> in gravitational forces between one side and the other. Look at the calculations we performed for the tidal force on Earth and consider the values that would change significantly for the Moon. The diameter of the Moon is one-fourth that of Earth. Tidal forces on the Moon are not easy to detect, since there is no liquid on the surface.</p>",
+     "a": "<p>Consider the last equation above. The values of \\({r}_{1}\\) and \\({r}_{2}\\) remain nearly the same, but the diameter of the Moon, \\(({r}_{2}^{}-{r}_{1}^{})\\), is one-fourth that of Earth. So the tidal forces on the Moon are about one-fourth as great as on Earth.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Earth’s tides are caused by the difference in gravitational forces from the Moon and the Sun on the different sides of Earth.",
+    "Spring or neap (high) tides occur when Earth, the Moon, and the Sun are aligned, and neap or (low) tides occur when they form a right triangle.",
+    "Tidal forces can create internal heating, changes in orbital motion, and even destruction of orbiting bodies."
+   ]
+  },
+  {
+   "num": "13.7",
+   "module": "m58352",
+   "title": "Einstein's Theory of Gravity",
+   "objectives": [
+    "Describe how the theory of general relativity approaches gravitation",
+    "Explain the principle of equivalence",
+    "Calculate the Schwarzschild radius of an object",
+    "Summarize the evidence for black holes"
+   ],
+   "callouts": [
+    "{R}_{\\text{S}}=\\frac{2GM}{{c}^{2}}"
+   ],
+   "examples": [
+    {
+     "title": "Calculating the Schwarzschild Radius",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Calculate the Schwarzschild radius for both the Sun and Earth. Compare the density of the nucleus of an atom to the density required to compress Earth’s mass uniformly to its Schwarzschild radius. The density of a nucleus is about \\(2.3\\, \\times \\, {10}^{17}\\, {\\text{kg/m}}^{3}\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the equation for this calculation. We need only the masses of Earth and the Sun, which we obtain from the astronomical data given in Appendix D.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substituting the mass of the Sun, we have</p><div class='eq'>\\[{R}_{\\text{S}}=\\frac{2GM}{{c}^{2}}=\\frac{2(6.67\\, \\times \\, {10}^{-11}\\, \\text{N}\\cdot {\\text{m}}^{2}{\\text{/kg}}^{2})(1.99\\, \\times \\, {10}^{30}\\, \\text{kg})}{{(3.0\\, \\times \\, {10}^{8}\\, \\text{m/s})}^{2}}=2.95\\, \\times \\, {10}^{3}\\, \\text{m.}\\]</div><p>This is a diameter of only about 6 km. If we use the mass of Earth, we get \\({R}_{\\text{S}}=8.85\\, \\times \\, {10}^{-3}\\, \\text{m}\\). This is a diameter of less than 2 cm! If we pack Earth’s mass into a sphere with the radius \\({R}_{\\text{S}}=8.85\\, \\times \\, {10}^{-3}\\, \\text{m}\\), we get a density of</p><div class='eq'>\\[\\rho =\\frac{\\text{mass}}{\\text{volume}}=\\frac{5.97\\, \\times \\, {10}^{24}\\, \\text{kg}}{(\\frac{4}{3}\\pi ){(8.85\\, \\times \\, {10}^{-3}\\, \\text{m})}^{3}}=2.06\\, \\times \\, {10}^{30}\\, {\\text{kg/m}}^{3}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>A <b>neutron star</b> is the most compact object known—outside of a black hole itself. The neutron star is composed of neutrons, with the density of an atomic nucleus, and, like many black holes, is believed to be the remnant of a supernova—a star that explodes at the end of its lifetime. To create a black hole from Earth, we would have to compress it to a density thirteen orders of magnitude greater than that of a neutron star. This process would require unimaginable force. There is no known mechanism that could cause an Earth-sized object to become a black hole. For the Sun, you should be able to show that it would have to be compressed to a density only about 80 times that of a nucleus. (Note: Once the mass is compressed within its Schwarzschild radius, general relativity dictates that it will collapse to a singularity. These calculations merely show the density we must achieve to initiate that collapse.)</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Consider the density required to make Earth a black hole compared to that required for the Sun. What conclusion can you draw from this comparison about what would be required to create a black hole? Would you expect the Universe to have many black holes with small mass?</p>",
+     "a": "<p>Given the incredible density required to force an Earth-sized body to become a black hole, we do not expect to see such small black holes. Even a body with the mass of our Sun would have to be compressed by a factor of 80 beyond that of a neutron star. It is believed that stars of this size cannot become black holes. However, for stars with a few solar masses, it is believed that gravitational collapse at the end of a star’s life could form a black hole. As we will discuss later, it is now believed that black holes are common at the center of galaxies. These galactic black holes typically contain the mass of many millions of stars.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "According to the theory of general relativity, gravity is the result of distortions in space-time created by mass and energy.",
+    "The principle of equivalence states that that both mass and acceleration distort space-time and are indistinguishable in comparable circumstances.",
+    "Black holes, the result of gravitational collapse, are singularities with an event horizon that is proportional to their mass.",
+    "Evidence for the existence of black holes is still circumstantial, but the amount of that evidence is overwhelming."
+   ]
+  }
+ ],
+ "figures": []
+}
