@@ -1,0 +1,396 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 11,
+  "title": "Angular Momentum"
+ },
+ "keyEquations": [
+  {
+   "name": "Velocity of center of mass of rolling object",
+   "tex": "{v}_{\\text{CM}}=R\\omega"
+  },
+  {
+   "name": "Acceleration of center of mass of rolling object",
+   "tex": "{a}_{\\text{CM}}=R\\alpha"
+  },
+  {
+   "name": "Displacement of center of mass of rolling object",
+   "tex": "{d}_{\\text{CM}}=R\\theta"
+  },
+  {
+   "name": "Acceleration of an object rolling without slipping",
+   "tex": "{a}_{\\text{CM}}=\\frac{mg\\, \\sin \\, \\theta}{m+({I}_{\\text{CM}}\\text{/}{r}^{2})}"
+  },
+  {
+   "name": "Angular momentum",
+   "tex": "\\mathbf{\\vec{l}}=\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{p}}"
+  },
+  {
+   "name": "Derivative of angular momentum equals torque",
+   "tex": "\\frac{d\\mathbf{\\vec{l}}}{dt}=\\sum \\mathbf{\\vec{\\tau }}"
+  },
+  {
+   "name": "Angular momentum of a system of particles",
+   "tex": "\\mathbf{\\vec{L}}={\\mathbf{\\vec{l}}}_{1}+{\\mathbf{\\vec{l}}}_{2}+\\cdots +{\\mathbf{\\vec{l}}}_{N}"
+  },
+  {
+   "name": "For a system of particles, derivative of angular momentum equals torque",
+   "tex": "\\frac{d\\mathbf{\\vec{L}}}{dt}=\\sum \\mathbf{\\vec{\\tau }}"
+  },
+  {
+   "name": "Angular momentum of a rotating rigid body",
+   "tex": "L=I\\omega"
+  },
+  {
+   "name": "Conservation of angular momentum",
+   "tex": "\\frac{d\\mathbf{\\vec{L}}}{dt}=0"
+  },
+  {
+   "name": "Conservation of angular momentum",
+   "tex": "\\mathbf{\\vec{L}}={\\mathbf{\\vec{l}}}_{1}+{\\mathbf{\\vec{l}}}_{2}+\\cdots +{\\mathbf{\\vec{l}}}_{N}=\\text{constant}"
+  },
+  {
+   "name": "Precessional angular velocity",
+   "tex": "{\\omega}_{P}=\\frac{rMg}{I\\omega}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "11.1",
+   "module": "m58335",
+   "title": "Rolling Motion",
+   "objectives": [
+    "Describe the physics of rolling motion without slipping",
+    "Explain how linear variables are related to angular variables for the case of rolling motion without slipping",
+    "Find the linear and angular accelerations in rolling motion with and without slipping",
+    "Calculate the static friction force associated with rolling motion without slipping",
+    "Use energy conservation to analyze rolling motion"
+   ],
+   "callouts": [
+    "{v}_{\\text{CM}}=R\\omega",
+    "{a}_{\\text{CM}}=R\\alpha",
+    "{d}_{\\text{CM}}=R\\theta",
+    "{a}_{\\text{CM}}=\\frac{mg\\, \\sin \\, \\theta}{m+({I}_{\\text{CM}}\\text{/}{r}^{2})}"
+   ],
+   "examples": [
+    {
+     "title": "Rolling Down an Inclined Plane",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A solid cylinder rolls down an inclined plane without slipping, starting from rest. It has mass <i>m</i> and radius <i>r</i>. (a) What is its acceleration? (b) What condition must the coefficient of static friction \\({\\mu}_{\\text{s}}\\) satisfy so the cylinder does not slip?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Draw a sketch and free-body diagram, and choose a coordinate system. We put <i>x</i> in the direction down the plane and <i>y</i> upward perpendicular to the plane. Identify the forces involved. These are the normal force, the force of gravity, and the force due to friction. Write down Newton’s laws in the <i>x</i>- and <i>y</i>-directions, and Newton’s law for rotation, and then solve for the acceleration and force due to friction.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>The free-body diagram and sketch are shown in the figure, including the normal force, components of the weight, and the static friction force. There is barely enough friction to keep the cylinder rolling without slipping. Since there is no slipping, the magnitude of the friction force is less than or equal to \\({\\mu}_{s}N\\). Writing down Newton’s laws in the <i>x</i>- and <i>y</i>-directions, we have<br> <div class='eq'>\\[\\sum {F}_{x}=m{a}_{x};\\; \\sum {F}_{y}=m{a}_{y}.\\]</div><br> <figure><img src='img/CNX_UPhysics_11_01_InclPlane.jpg' alt=\"A diagram of a cylinder rolling without slipping down an inclined plane and a free body diagram of the cylinder. On the left is an illustration showing the inclined plane, which makes an angle of theta with the horizontal. The cylinder is shown to be at rest at the top, then moving along the incline when it is lower. On the right is a free body diagram. The x y coordinate system is tilted so that the positive x direction is parallel to the inclined plane and points toward its bottom, and the positive y direction is outward, perpendicular to the plane. Four forces are shown. N j hat acts at the center of the cylinder and points in the positive y direction. m g sine theta i hat acts at the center of the cylinder and points in the positive x direction. Minus m g cosine theta j hat acts at the center of the cylinder and points in the negative y direction. Minus f sub s i hat acts at the point of contact and points in the negative x direction.\" loading='lazy'><figcaption>A solid cylinder rolls down an inclined plane without slipping from rest. The coordinate system has <i>x</i> in the direction down the inclined plane and <i>y</i> perpendicular to the plane. The free-body diagram is shown with the normal force, the static friction force, and the components of the weight \\(m\\vec{g}\\). Friction makes the cylinder roll down the plane rather than slip.</figcaption></figure><br> Substituting in from the free-body diagram,<br> <div class='eq'>\\[\\begin{array}{lll}mg\\, \\sin \\, \\theta -{f}_{\\text{s}} & = & m{({a}_{\\text{CM}})}_{x}, \\\\ N-mg\\, \\cos \\, \\theta & = & 0\\end{array}\\]</div> we can then solve for the linear acceleration of the center of mass from these equations:<br> <div class='eq'>\\[{a}_{\\text{CM}}=g\\sin \\, \\theta -\\frac{{f}_{\\text{s}}}{m}\\]</div><br> However, it is useful to express the linear acceleration in terms of the moment of inertia. For this, we write down Newton’s second law for rotation,<br> <div class='eq'>\\[\\sum {\\tau}_{\\text{CM}}={I}_{\\text{CM}}\\alpha .\\]</div><br> The torques are calculated about the axis through the center of mass of the cylinder. The only nonzero torque is provided by the friction force. We have<br> <div class='eq'>\\[{f}_{\\text{s}}r={I}_{\\text{CM}}\\alpha .\\]</div><br> Finally, the linear acceleration is related to the angular acceleration by<br> <div class='eq'>\\[{({a}_{\\text{CM}})}_{x}=r\\alpha .\\]</div><br> These equations can be used to solve for \\({a}_{\\text{CM}},\\alpha ,\\, \\text{and}\\, {f}_{\\text{s}}\\) in terms of the moment of inertia, where we have dropped the <i>x</i>-subscript. We rewrite \\({a}_{\\text{CM}}\\) in terms of the vertical component of gravity and the friction force, and make the following substitutions.<br> <div class='eq'>\\[{f}_{\\text{s}}=\\frac{{I}_{\\text{CM}}\\alpha}{r}=\\frac{{I}_{\\text{CM}}{a}_{\\text{CM}}}{{r}^{2}}\\]</div> From this we obtain<br> <div class='eq'>\\[\\begin{array}{ll}{a}_{\\text{CM}} & =g\\, \\sin \\, \\theta -\\frac{{I}_{\\text{CM}}{a}_{\\text{CM}}}{m{r}^{2}}, \\\\ & =\\frac{mg\\, \\sin \\, \\theta}{m+({I}_{\\text{CM}}\\text{/}{r}^{2})}.\\end{array}\\]</div><br> Note that this result is independent of the coefficient of static friction, \\({\\mu}_{\\text{s}}\\).<br> Since we have a solid cylinder, from another section, we have \\({I}_{\\text{CM}}=m{r}^{2}\\text{/}2\\) and<br> <div class='eq'>\\[{a}_{\\text{CM}}=\\frac{mg\\, \\sin \\, \\theta}{m+(m{r}^{2}\\text{/}2{r}^{2})}=\\frac{2}{3}g\\, \\sin \\, \\theta .\\]</div><br> Therefore, we have<br> <div class='eq'>\\[\\alpha =\\frac{{a}_{\\text{CM}}}{r}=\\frac{2}{3r}g\\, \\sin \\, \\theta .\\]</div></li><li>Because slipping does not occur, \\({f}_{\\text{s}}\\le {\\mu}_{\\text{s}}N\\). Solving for the friction force,<br> <div class='eq'>\\[{f}_{\\text{s}}={I}_{\\text{CM}}\\frac{\\alpha}{r}={I}_{\\text{CM}}\\frac{({a}_{\\text{CM}})}{{r}^{2}}=\\frac{{I}_{\\text{CM}}}{{r}^{2}}(\\frac{mg\\, \\sin \\, \\theta}{m+({I}_{\\text{CM}}\\text{/}{r}^{2})})=\\frac{mg{I}_{\\text{CM}}\\, \\sin \\, \\theta}{m{r}^{2}+{I}_{\\text{CM}}}.\\]</div><br> Substituting this expression into the condition for no slipping, and noting that \\(N=mg\\, \\cos \\, \\theta\\), we have<br> <div class='eq'>\\[\\frac{mg{I}_{\\text{CM}}\\sin \\, \\theta}{m{r}^{2}+{I}_{\\text{CM}}}\\le {\\mu}_{\\text{s}}mg\\, \\cos \\, \\theta\\]</div><br> or<br> <div class='eq'>\\[{\\mu}_{\\text{s}}\\ge \\frac{\\tan \\, \\theta}{1+(m{r}^{2}\\text{/}{I}_{\\text{CM}})}.\\]</div><br> For the solid cylinder, this becomes<br> <div class='eq'>\\[{\\mu}_{\\text{s}}\\ge \\frac{\\tan \\, \\theta}{1+(2m{r}^{2}\\text{/}m{r}^{2})}=\\frac{1}{3}\\tan \\, \\theta .\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<ol type='a'><li>The linear acceleration is linearly proportional to \\(\\sin \\, \\theta .\\) Thus, the greater the angle of the incline, the greater the linear acceleration, as would be expected. The angular acceleration, however, is linearly proportional to \\(\\sin \\, \\theta\\) and inversely proportional to the radius of the cylinder. Thus, the larger the radius, the smaller the angular acceleration.</li><li>For no slipping to occur, the coefficient of static friction must be greater than or equal to \\((1\\text{/}3)\\tan \\, \\theta\\). Thus, the greater the angle of incline, the greater the coefficient of static friction must be to prevent the cylinder from slipping.</li></ol>"
+      }
+     ]
+    },
+    {
+     "title": "Rolling Down an Inclined Plane with Slipping",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A solid cylinder rolls down an inclined plane from rest and undergoes slipping (the figure). It has mass <i>m</i> and radius <i>r</i>. (a) What is its linear acceleration? (b) What is its angular acceleration about an axis through the center of mass?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Draw a sketch and free-body diagram showing the forces involved. The free-body diagram is similar to the no-slipping case except for the friction force, which is kinetic instead of static. Use Newton’s second law to solve for the acceleration in the <i>x</i>-direction. Use Newton’s second law of rotation to solve for the angular acceleration.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<figure><img src='img/CNX_UPhysics_11_01_InclSlip.jpg' alt=\"A diagram of a cylinder rolling and slipping down an inclined plane and a free body diagram of the cylinder. On the left is an illustration showing the inclined plane, which makes an angle of theta with the horizontal. The cylinder is shown to be at rest at the top, then moving along the incline when it is lower. On the right is a free body diagram. The x y coordinate system is tilted so that the positive x direction is parallel to the inclined plane and points toward its bottom, and the positive y direction is outward, perpendicular to the plane. Four forces are shown. N j hat acts at the center of the cylinder and points in the positive y direction. m g sine theta i hat acts at the center of the cylinder and points in the positive x direction. Minus m g cosine theta j hat acts at the center of the cylinder and points in the negative y direction. Minus f sub k i hat acts at the point of contact and points in the negative x direction.\" loading='lazy'><figcaption>A solid cylinder rolls down an inclined plane from rest and undergoes slipping. The coordinate system has <i>x</i> in the direction down the inclined plane and <i>y</i> upward perpendicular to the plane. The free-body diagram shows the normal force, kinetic friction force, and the components of the weight \\(m\\vec{g}.\\)</figcaption></figure><p>The sum of the forces in the <i>y</i>-direction is zero, so the friction force is now \\({f}_{\\text{k}}={\\mu}_{\\text{k}}N={\\mu}_{\\text{k}}mg\\cos \\, \\theta .\\)</p><p>Newton’s second law in the <i>x</i>-direction becomes</p><div class='eq'>\\[\\sum {F}_{x}=m{a}_{x},\\]</div><div class='eq'>\\[mg\\, \\sin \\, \\theta -{\\mu}_{\\text{k}}mg\\, \\cos \\, \\theta =m{({a}_{\\text{CM}})}_{x},\\]</div><p>or</p><div class='eq'>\\[{({a}_{\\text{CM}})}_{x}=g(\\sin \\, \\theta -{\\mu}_{\\text{k}}\\, \\cos \\, \\theta ).\\]</div><p>The friction force provides the only torque about the axis through the center of mass, so Newton’s second law of rotation becomes</p><div class='eq'>\\[\\sum {\\tau}_{\\text{CM}}={I}_{\\text{CM}}\\alpha ,\\]</div><div class='eq'>\\[{f}_{\\text{k}}r={I}_{\\text{CM}}\\alpha =\\frac{1}{2}m{r}^{2}\\alpha .\\]</div><p>Solving for \\(\\alpha\\), we have</p><div class='eq'>\\[\\alpha =\\frac{2{f}_{\\text{k}}}{mr}=\\frac{2{\\mu}_{\\text{k}}g\\, \\cos \\, \\theta}{r}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>We write the linear and angular accelerations in terms of the coefficient of kinetic friction. The linear acceleration is the same as that found for an object sliding down an inclined plane with kinetic friction. The angular acceleration about the axis of rotation is linearly proportional to the normal force, which depends on the cosine of the angle of inclination. As \\(\\theta \\to 90^{\\circ}\\), this force goes to zero, and, thus, the angular acceleration goes to zero.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Curiosity Rover",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>The <i>Curiosity</i> rover, shown in the figure, was deployed on Mars on August 6, 2012. The wheels of the rover have a radius of 25 cm. Suppose astronauts arrive on Mars in the year 2050 and find the now-inoperative <i>Curiosity</i> on the side of a basin. While they are dismantling the rover, an astronaut accidentally loses a grip on one of the wheels, which rolls without slipping down into the bottom of the basin 25 meters below. If the wheel has a mass of 5 kg, what is its velocity at the bottom of the basin?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use mechanical energy conservation to analyze the problem. At the top of the hill, the wheel is at rest and has only potential energy. At the bottom of the basin, the wheel has rotational and translational kinetic energy, which must be equal to the initial potential energy by energy conservation. Since the wheel is rolling without slipping, we use the relation \\({v}_{\\text{CM}}=r\\omega\\) to relate the translational variables to the rotational variables in the energy conservation equation. We then solve for the velocity. From the figure, we see that a hollow cylinder is a good approximation for the wheel, so we can use this moment of inertia to simplify the calculation.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Energy at the top of the basin equals energy at the bottom:</p><div class='eq'>\\[mgh=\\frac{1}{2}m{v}_{\\text{CM}}^{2}+\\frac{1}{2}{I}_{\\text{CM}}{\\omega}^{2}.\\]</div><p>The known quantities are \\({I}_{\\text{CM}}=m{r}^{2}\\text{,}\\, r=0.25\\, \\text{m,}\\, \\text{and}\\, h=25.0\\, \\text{m}\\).</p><p>We rewrite the energy conservation equation eliminating \\(\\omega\\) by using \\(\\omega =\\frac{{v}_{\\text{CM}}}{r}.\\) We have</p><div class='eq'>\\[mgh=\\frac{1}{2}m{v}_{\\text{CM}}^{2}+\\frac{1}{2}m{r}^{2}\\frac{{v}_{\\text{CM}}^{2}}{{r}^{2}}\\]</div><p>or</p><div class='eq'>\\[gh=\\frac{1}{2}{v}_{\\text{CM}}^{2}+\\frac{1}{2}{v}_{\\text{CM}}^{2}\\Rightarrow {v}_{\\text{CM}}=\\sqrt{gh}.\\]</div><p>On Mars, the acceleration of gravity is \\(3.71\\, {\\, \\text{m/s}}^{2},\\) which gives the magnitude of the velocity at the bottom of the basin as</p><div class='eq'>\\[{v}_{\\text{CM}}=\\sqrt{(3.71\\, \\text{m}\\text{/}{\\text{s}}^{2})25.0\\, \\text{m}}=9.63\\, \\text{m}\\text{/}\\text{s}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is a fairly accurate result considering that Mars has very little atmosphere, and the loss of energy due to air resistance would be minimal. The result also assumes that the terrain is smooth, such that the wheel wouldn’t encounter rocks and bumps along the way.</p><p>Also, in this example, the kinetic energy, or energy of motion, is equally shared between linear and rotational motion. If we look at the moments of inertia in another section, we see that the hollow cylinder has the largest moment of inertia for a given radius and mass. If the wheels of the rover were solid and approximated by solid cylinders, for example, there would be more kinetic energy in linear motion than in rotational motion. This would give the wheel a larger linear velocity than the hollow cylinder approximation. Thus, the solid cylinder would reach the bottom of the basin faster than the hollow cylinder.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A hollow cylinder is on an incline at an angle of \\(60^{\\circ} .\\) The coefficient of static friction on the surface is \\({\\mu}_{s}=0.6\\). (a) Does the cylinder roll without slipping? (b) Will a solid cylinder roll without slipping?</p>",
+     "a": "<p>a. \\({\\mu}_{\\text{s}}\\ge \\frac{\\tan \\, \\theta}{1+(m{r}^{2}\\text{/}{I}_{\\text{CM}})}\\); inserting the angle and noting that for a hollow cylinder \\({I}_{\\text{CM}}=m{r}^{2},\\) we have \\({\\mu}_{\\text{s}}\\ge \\frac{\\tan \\, 60^{\\circ}}{1+(m{r}^{2}\\text{/}m{r}^{2})}=\\frac{1}{2}\\tan \\, 60^{\\circ} =0.87;\\) we are given a value of 0.6 for the coefficient of static friction, which is less than 0.87, so the condition isn’t satisfied and the hollow cylinder will slip; b. The solid cylinder obeys the condition \\({\\mu}_{\\text{s}}\\ge \\frac{1}{3}\\tan \\, \\theta =\\frac{1}{3}\\tan \\, 60^{\\circ} =0.58.\\) The value of 0.6 for \\({\\mu}_{\\text{S}}\\) satisfies this condition, so the solid cylinder will not slip.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "In rolling motion without slipping, a static friction force is present between the rolling object and the surface. The relations \\({v}_{\\text{CM}}=R\\omega ,{a}_{\\text{CM}}=R\\alpha ,\\, \\text{and}\\, {d}_{\\text{CM}}=R\\theta\\) all apply, such that the linear velocity, acceleration, and distance of the center of mass are the angular variables multiplied by the radius of the object.",
+    "In rolling motion with slipping, a kinetic friction force arises between the rolling object and the surface. In this case, \\({v}_{\\text{CM}}\\ne R\\omega ,{a}_{\\text{CM}}\\ne R\\alpha ,\\, \\text{and}\\, {d}_{\\text{CM}}\\ne R\\theta\\).",
+    "Energy conservation can be used to analyze rolling motion. Energy is conserved in rolling motion without slipping. Energy is not conserved in rolling motion with slipping due to the heat generated by kinetic friction."
+   ]
+  },
+  {
+   "num": "11.2",
+   "module": "m58336",
+   "title": "Angular Momentum",
+   "objectives": [
+    "Describe the vector nature of angular momentum",
+    "Find the total angular momentum and torque about a designated origin of a system of particles",
+    "Calculate the angular momentum of a rigid body rotating about a fixed axis",
+    "Calculate the torque on a rigid body rotating about a fixed axis",
+    "Use conservation of angular momentum in the analysis of objects that change their rotation rate"
+   ],
+   "callouts": [
+    "\\frac{d\\mathbf{\\vec{l}}}{dt}=\\sum \\mathbf{\\vec{\\tau }}",
+    "\\mathbf{\\vec{L}}={\\mathbf{\\vec{l}}}_{1}+{\\mathbf{\\vec{l}}}_{2}+\\cdots +{\\mathbf{\\vec{l}}}_{N}",
+    "\\frac{d\\mathbf{\\vec{L}}}{dt}=\\sum \\mathbf{\\vec{\\tau }}",
+    "L=I\\omega"
+   ],
+   "examples": [
+    {
+     "title": "Angular Momentum and Torque on a Meteor",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A meteor enters Earth’s atmosphere (the figure) and is observed by someone on the ground before it burns up in the atmosphere. The vector \\(\\mathbf{\\vec{r}}=25\\, \\text{km}\\mathbf{\\hat{i}}+25\\, \\text{km}\\mathbf{\\hat{j}}\\) gives the position of the meteor with respect to the observer. At the instant the observer sees the meteor, it has linear momentum \\(\\mathbf{\\vec{p}}=15.0\\, \\text{kg}(-2.0\\text{km}\\text{/}\\text{s}\\mathbf{\\hat{j}})\\), and it is accelerating at a constant \\(2.0\\, \\text{m}\\text{/}{\\text{s}}^{2}(-\\mathbf{\\hat{j}})\\) along its path, which for our purposes can be taken as a straight line. (a) What is the angular momentum of the meteor about the origin, which is at the location of the observer? (b) What is the torque on the meteor about the origin?</p><figure><img src='img/CNX_UPhysics_11_02_Meteor.jpg' alt=\"An x y coordinate system is shown, with positive x to the right, along the ground, and positive y vertically upward. An observer is shown near the origin. A vector r is shown from the origin to a meteor at some large positive x and positive y coordinates. The vector p at the location of the meteor points down.\" loading='lazy'><figcaption>An observer on the ground sees a meteor at position \\(\\mathbf{\\vec{r}}\\) with linear momentum \\(\\mathbf{\\vec{p}}\\).</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We resolve the acceleration into <i>x</i>- and <i>y</i>-components and use the kinematic equations to express the velocity as a function of acceleration and time. We insert these expressions into the linear momentum and then calculate the angular momentum using the cross-product. Since the position and momentum vectors are in the <i>xy</i>-plane, we expect the angular momentum vector to be along the <i>z</i>-axis. To find the torque, we take the time derivative of the angular momentum.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The meteor is entering Earth’s atmosphere at an angle of \\(90.0^{\\circ}\\) below the horizontal, so the components of the acceleration in the <i>x</i>- and <i>y</i>-directions are</p><div class='eq'>\\[{a}_{x}=0,\\; {a}_{y}=-2.0\\, \\text{m}\\text{/}{\\text{s}}^{2}.\\]</div><p>We write the velocities using the kinematic equations.</p><div class='eq'>\\[{v}_{x}=0,\\; {v}_{y}=-2.0\\, \\times \\, {10}^{3}\\, \\text{m}\\text{/}\\text{s}-(2.0\\, \\text{m}\\text{/}{\\text{s}}^{2})t.\\]</div><ol type='a'><li>The angular momentum is <div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{l}} & =\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{p}}=(25.0\\, \\text{km}\\mathbf{\\hat{i}}+25.0\\, \\text{km}\\mathbf{\\hat{j}})\\, \\times \\, 15.0\\, \\text{kg}(0\\mathbf{\\hat{i}}+{v}_{y}\\mathbf{\\hat{j}}) \\\\ & =15.0\\, \\text{kg}[25.0\\, \\text{km}({v}_{y})\\mathbf{\\hat{k}}] \\\\ & =15.0\\, \\text{kg[}2.50\\, \\times \\, {10}^{4}\\, \\text{m}(-2.0\\, \\times \\, {10}^{3}\\, \\text{m}\\text{/}\\text{s}-(2.0\\, \\text{m}\\text{/}{\\text{s}}^{2})t)\\mathbf{\\hat{k}}].\\end{array}\\]</div> At \\(t=0\\), the angular momentum of the meteor about the origin is <div class='eq'>\\[{\\mathbf{\\vec{l}}}_{0}=15.0\\, \\text{kg}[2.50\\, \\times \\, {10}^{4}\\, \\text{m}(-2.0\\, \\times \\, {10}^{3}\\, \\text{m}\\text{/}\\text{s})\\mathbf{\\hat{k}}]=7.50\\, \\times \\, {10}^{8}\\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}(-\\mathbf{\\hat{k}}).\\]</div> This is the instant that the observer sees the meteor.</li><li>To find the torque, we take the time derivative of the angular momentum. Taking the time derivative of \\(\\mathbf{\\mathbf{\\vec{l}}}\\) as a function of time, which is the second equation immediately above, we have <div class='eq'>\\[\\frac{d\\mathbf{\\vec{l}}}{dt}=-15.0\\, \\text{kg}(2.50\\, \\times \\, {10}^{4}\\, \\text{m})(2.0\\, \\text{m}\\text{/}{\\text{s}}^{2})\\mathbf{\\hat{k}}.\\]</div> Then, since \\(\\frac{d\\mathbf{\\vec{l}}}{dt}=\\sum \\mathbf{\\vec{\\tau }}\\), we have <div class='eq'>\\[\\sum \\mathbf{\\vec{\\tau }}=-7.5\\, \\times \\, {10}^{5}\\text{N}\\cdot \\text{m}\\mathbf{\\hat{k}}.\\]</div> The units of torque are given as newton-meters, not to be confused with joules. As a check, we note that the lever arm is the <i>x</i>-component of the vector \\(\\mathbf{\\vec{\\text{r}}}\\) in the figure since it is perpendicular to the force acting on the meteor, which is along its path. By Newton’s second law, this force is <div class='eq'>\\[\\mathbf{\\vec{F}}=ma(-\\mathbf{\\hat{j}})=15.0\\, \\text{kg}(2.0\\, \\text{m}\\text{/}{\\text{s}}^{2})(-\\mathbf{\\hat{j}})=30.0\\, \\text{kg}\\cdot \\text{m}\\text{/}{\\text{s}}^{2}(-\\mathbf{\\hat{j}}).\\]</div> The lever arm is <div class='eq'>\\[{\\mathbf{\\vec{r}}}_{\\perp}=2.5\\, \\times \\, {10}^{4}\\, \\text{m}\\, \\mathbf{\\hat{i}}.\\]</div> Thus, the torque is <div class='eq'>\\[\\begin{array}{ll}\\sum \\mathbf{\\vec{\\tau }}={\\mathbf{\\vec{r}}}_{\\perp}\\, \\times \\, \\mathbf{\\vec{F}} & =(2.5\\, \\times \\, {10}^{4}\\, \\text{m}\\, \\mathbf{\\hat{i}})\\, \\times \\, (-30.0\\, \\text{kg}\\cdot \\text{m}\\text{/}{\\text{s}}^{2}\\mathbf{\\hat{j}}), \\\\ & =7.5\\, \\times \\, {10}^{5}\\, \\text{N}\\cdot \\text{m}(-\\mathbf{\\hat{k}}).\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Since the meteor is accelerating downward toward Earth, its radius and velocity vector are changing. Therefore, since \\(\\mathbf{\\vec{l}}=\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{p}}\\), the angular momentum is changing as a function of time. The torque on the meteor about the origin, however, is constant, because the lever arm \\({\\mathbf{\\vec{r}}}_{\\perp}\\) and the force on the meteor are constants. This example is important in that it illustrates that the angular momentum depends on the choice of origin about which it is calculated. The methods used in this example are also important in developing angular momentum for a system of particles and for a rigid body.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Angular Momentum of Three Particles",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Referring to the figure(a), determine the total angular momentum due to the three particles about the origin. (b) What is the rate of change of the angular momentum?</p><figure><img src='img/CNX_UPhysics_11_02_SysPart.jpg' alt=\"Three particles in the x y plane with different position and momentum vectors are shown. The x and y axes show position in meters and have a range of -4.0 to 4.0 meters. Particle 1 is at x=-2.0 meters and y=1.0 meters, m sub 1 equals 2.0 kilograms, v sub 1 is 4.0 j hat meters per second, upward, and F sub 1 is -6.0 i hat Newtons to the left. Particle 2 is at x=4.0 meters and y=1.0 meters, m sub 2 equals 4.0 kilograms, v sub 2 is 5.0 i hat meters per second, to the right, and F sub 2 is 10.0 j hat Newtons up. Particle 3 is at x=2.0 meters and y=-2.0 meters, m sub 3 equals 1.0 kilograms, v sub 3 is 3.0 i hat meters per second, to the right, and F sub 3 is -8.0 j hat Newtons down.\" loading='lazy'><figcaption>Three particles in the <i>xy-</i>plane with different position and momentum vectors.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Write down the position and momentum vectors for the three particles. Calculate the individual angular momenta and add them as vectors to find the total angular momentum. Then do the same for the torques.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Particle 1: \\({\\mathbf{\\vec{r}}}_{1}=-2.0\\, \\text{m}\\mathbf{\\hat{i}}+1.0\\, \\text{m}\\mathbf{\\hat{j}},\\; {\\mathbf{\\vec{p}}}_{1}=2.0\\, \\text{kg}(4.0\\, \\text{m}\\text{/}\\text{s}\\mathbf{\\hat{j}})=8.0\\, \\text{kg}\\cdot \\text{m}\\text{/}\\text{s}\\mathbf{\\hat{j}},\\) <div class='eq'>\\[{\\mathbf{\\vec{l}}}_{1}={\\mathbf{\\vec{r}}}_{1}\\, \\times \\, {\\mathbf{\\vec{p}}}_{1}=-16.0\\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}\\mathbf{\\hat{k}}.\\]</div> Particle 2: \\({\\mathbf{\\vec{r}}}_{2}=4.0\\, \\text{m}\\mathbf{\\hat{i}}+1.0\\, \\text{m}\\mathbf{\\hat{j}},\\; {\\mathbf{\\vec{p}}}_{2}=4.0\\, \\text{kg}(5.0\\, \\text{m}\\text{/}\\text{s}\\mathbf{\\hat{i}})=20.0\\, \\text{kg}\\cdot \\text{m}\\text{/}\\text{s}\\mathbf{\\hat{i}}\\), <div class='eq'>\\[{\\mathbf{\\vec{l}}}_{2}={\\mathbf{\\vec{r}}}_{2}\\, \\times \\, {\\mathbf{\\vec{p}}}_{2}=-20.0\\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}\\mathbf{\\hat{k}}.\\]</div> Particle 3: \\({\\mathbf{\\vec{r}}}_{3}=2.0\\, \\text{m}\\mathbf{\\hat{i}}-2.0\\, \\text{m}\\mathbf{\\hat{j}},\\; {\\mathbf{\\vec{p}}}_{3}=1.0\\, \\text{kg}(3.0\\, \\text{m}\\text{/}\\text{s}\\mathbf{\\hat{i}})=3.0\\, \\text{kg}\\cdot \\text{m}\\text{/}\\text{s}\\mathbf{\\hat{i}}\\), <div class='eq'>\\[{\\mathbf{\\vec{l}}}_{3}={\\mathbf{\\vec{r}}}_{3}\\, \\times \\, {\\mathbf{\\vec{p}}}_{3}=6.0\\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}\\mathbf{\\hat{k}}.\\]</div> We add the individual angular momenta to find the total about the origin: <div class='eq'>\\[{\\mathbf{\\vec{l}}}_{T}={\\mathbf{\\vec{l}}}_{1}+{\\mathbf{\\vec{l}}}_{2}+{\\mathbf{\\vec{l}}}_{3}=-30\\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}\\mathbf{\\hat{k}}.\\]</div></li><li>The individual forces and lever arms are <div class='eq'>\\[\\begin{array}{l}{\\mathbf{\\vec{r}}}_{1\\perp}=1.0\\, \\text{m}\\mathbf{\\hat{j}},\\; {\\mathbf{\\vec{F}}}_{1}=-6.0\\, \\text{N}\\mathbf{\\hat{i}},\\; {\\mathbf{\\vec{\\tau }}}_{1}=6.0\\mathbf{\\text{N}\\cdot \\text{m}\\mathbf{\\hat{k}}} \\\\ {\\mathbf{\\vec{r}}}_{2\\perp}=4.0\\, \\text{m}\\mathbf{\\hat{i}},\\; {\\mathbf{\\vec{F}}}_{2}=10.0\\, \\text{N}\\mathbf{\\hat{j}},\\; {\\vec{\\tau }}_{2}=40.0\\, \\text{N}\\cdot \\text{m}\\mathbf{\\hat{k}} \\\\ {\\mathbf{\\vec{r}}}_{3\\perp}=2.0\\, \\text{m}\\mathbf{\\hat{i}},\\; {\\mathbf{\\vec{F}}}_{3}=-8.0\\, \\text{N}\\mathbf{\\hat{j}},\\; {\\vec{\\tau }}_{3}=-16.0\\, \\text{N}\\cdot \\text{m}\\mathbf{\\hat{k}}.\\end{array}\\]</div> Therefore: <div class='eq'>\\[\\sum _{i}{\\mathbf{\\vec{\\tau }}}_{i}={\\mathbf{\\vec{\\tau }}}_{1}+{\\mathbf{\\vec{\\tau }}}_{2}+\\mathbf{{\\vec{\\tau }}_{3}}=30\\, \\text{N}\\cdot \\text{m}\\mathbf{\\hat{k}}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This example illustrates the superposition principle for angular momentum and torque of a system of particles. Care must be taken when evaluating the radius vectors \\({\\mathbf{\\vec{r}}}_{i}\\) of the particles to calculate the angular momenta, and the lever arms, \\({\\mathbf{\\vec{r}}}_{i\\perp}\\) to calculate the torques, as they are completely different quantities.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Angular Momentum of a Robot Arm",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A robot arm on a Mars rover like <i>Curiosity</i> shown in another section is 1.0 m long and has forceps at the free end to pick up rocks. The mass of the arm is 2.0 kg and the mass of the forceps is 1.0 kg. See the figure. The robot arm and forceps move from rest to \\(\\omega =0.1\\pi \\, \\text{rad}\\text{/}\\text{s}\\) in 0.1 s. It rotates down and picks up a Mars rock that has mass 1.5 kg. The axis of rotation is the point where the robot arm connects to the rover. (a) What is the angular momentum of the robot arm by itself about the axis of rotation after 0.1 s when the arm has stopped accelerating? (b) What is the angular momentum of the robot arm when it has the Mars rock in its forceps and is rotating upwards? (c) When the arm does not have a rock in the forceps, what is the torque about the point where the arm connects to the rover when it is accelerating from rest to its final angular velocity?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the equation to find angular momentum in the various configurations. When the arm is rotating downward, the right-hand rule gives the angular momentum vector directed out of the page, which we will call the positive <i>z</i>-direction. When the arm is rotating upward, the right-hand rule gives the direction of the angular momentum vector into the page or in the negative <i>z-</i>direction. The moment of inertia is the sum of the individual moments of inertia. The arm can be approximated with a solid rod, and the forceps and Mars rock can be approximated as point masses located at a distance of 1 m from the origin. For part (c), we use Newton’s second law of motion for rotation to find the torque on the robot arm.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Writing down the individual moments of inertia, we have<br> Robot arm: \\({I}_{\\text{R}}=\\frac{1}{3}{m}_{\\text{R}}{r}^{2}=\\frac{1}{3}(2.00\\, \\text{kg}){(1.00\\, \\text{m})}^{2}=\\frac{2}{3}\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\)<br> Forceps: \\({I}_{\\text{F}}={m}_{\\text{F}}{r}^{2}=(1.0\\, \\text{kg}){(1.0\\, \\text{m})}^{2}=1.0\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\)<br> Mars rock: \\({I}_{\\text{MR}}={m}_{\\text{MR}}{r}^{2}=(1.5\\, \\text{kg}){(1.0\\, \\text{m})}^{2}=1.5\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\)<br> Therefore, without the Mars rock, the total moment of inertia is <div class='eq'>\\[{I}_{\\text{Total}}={I}_{\\text{R}}+{I}_{\\text{F}}=1.67\\, \\text{kg}\\cdot {\\text{m}}^{2}\\]</div> and the magnitude of the angular momentum is <div class='eq'>\\[L=I\\omega =1.67\\, \\text{kg}\\cdot {\\text{m}}^{2}(0.1\\pi \\, \\text{rad}\\text{/}\\text{s})=0.17\\pi \\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}.\\]</div> The angular momentum vector is directed out of the page in the \\(\\mathbf{\\hat{k}}\\) direction since the robot arm is rotating counterclockwise.</li><li>We must include the Mars rock in the calculation of the moment of inertia, so we have <div class='eq'>\\[{I}_{\\text{Total}}={I}_{\\text{R}}+{I}_{\\text{F}}+{I}_{\\text{MR}}=3.17\\, \\text{kg}\\cdot {\\text{m}}^{2}\\]</div> and <div class='eq'>\\[L=I\\omega =3.17\\, \\text{kg}\\cdot {\\text{m}}^{2}(0.1\\pi \\, \\text{rad}\\text{/}\\text{s})=0.32\\pi \\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}\\text{.}\\]</div> Now the angular momentum vector is directed into the page in the \\(-\\mathbf{\\hat{k}}\\) direction, by the right-hand rule, since the robot arm is now rotating clockwise.</li><li>We find the torque when the arm does not have the rock by taking the derivative of the angular momentum using the equation \\(\\frac{d\\mathbf{\\vec{L}}}{dt}=\\sum \\mathbf{\\vec{\\tau }}.\\) But since \\(L=I\\omega\\), and understanding that the direction of the angular momentum and torque vectors are along the axis of rotation, we can suppress the vector notation and find <div class='eq'>\\[\\frac{dL}{dt}=\\frac{d(I\\omega )}{dt}=I\\frac{d\\omega}{dt}=I\\alpha =\\sum \\tau ,\\]</div> which is Newton’s second law for rotation. Since \\(\\alpha =\\frac{0.1\\pi \\, \\text{rad}\\text{/}\\text{s}}{0.1\\, \\text{s}}=\\pi \\, \\text{rad}\\text{/}{\\text{s}}^{2}\\), we can calculate the net torque: <div class='eq'>\\[\\sum \\tau =I\\alpha =1.67\\, \\text{kg}\\cdot {\\text{m}}^{2}(\\pi \\, \\text{rad}\\text{/}{\\text{s}}^{2})=1.67\\pi \\, \\text{N}\\cdot \\text{m}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The angular momentum in (a) is less than that of (b) due to the fact that the moment of inertia in (b) is greater than (a), while the angular velocity is the same.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A proton spiraling around a magnetic field executes circular motion in the plane of the paper, as shown below. The circular path has a radius of 0.4 m and the proton has velocity \\(4.0\\, \\times \\, {10}^{6}\\, \\text{m}\\text{/}\\text{s}\\). What is the angular momentum of the proton about the origin?</p><figure><img src='img/CNX_UPhysics_11_02_ProtSpir_img.jpg' alt=\"A proton moves in a counterclockwise circle. The circle has radius r. The proton is shown when it is to the right of the center of the circle, and its velocity is v sub perpendicular in the upward, positive y, direction.\" loading='lazy'></figure>",
+     "a": "<p>From the figure, we see that the cross product of the radius vector with the momentum vector gives a vector directed out of the page. Inserting the radius and momentum into the expression for the angular momentum, we have<br> \\(\\mathbf{\\vec{l}}=\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{p}}=(0.4\\, \\text{m}\\mathbf{\\hat{i}}\\text{)}\\, \\times \\, (1.67\\, \\times \\, {10}^{-27}\\, \\text{kg}(4.0\\, \\times \\, {10}^{6}\\, \\text{m}\\text{/}\\text{s})\\mathbf{\\hat{j}})=2.7\\, \\times \\, {10}^{-21}\\, \\text{kg}\\cdot {\\text{m}}^{2}\\text{/}\\text{s}\\mathbf{\\hat{k}}\\)</p>"
+    },
+    {
+     "q": "<p>Which has greater angular momentum: a solid sphere of mass <i>m</i> rotating at a constant angular frequency \\({\\omega}_{0}\\) about the <i>z</i>-axis, or a solid cylinder of same mass and rotation rate about the <i>z</i>-axis?</p>",
+     "a": "<p>\\({I}_{\\text{sphere}}=\\frac{2}{5}m{r}^{2},\\; {I}_{\\text{cylinder}}=\\frac{1}{2}m{r}^{2}\\); Taking the ratio of the angular momenta, we have:<br> \\(\\frac{{L}_{\\text{cylinder}}}{{L}_{\\text{sphere}}}=\\frac{{I}_{\\text{cylinder}}{\\omega}_{0}}{{I}_{\\text{sphere}}{\\omega}_{0}}=\\frac{\\frac{1}{2}m{r}^{2}}{\\frac{2}{5}m{r}^{2}}=\\frac{5}{4}\\). Thus, the cylinder has \\(25%\\) more angular momentum. This is because the cylinder has more mass distributed farther from the axis of rotation.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The angular momentum \\(\\mathbf{\\vec{l}}=\\mathbf{\\vec{r}}\\, \\times \\, \\mathbf{\\vec{p}}\\) of a single particle about a designated origin is the vector product of the position vector in the given coordinate system and the particle’s linear momentum.",
+    "The angular momentum \\(\\mathbf{\\vec{l}}=\\sum _{i}{\\mathbf{\\vec{l}}}_{i}\\) of a system of particles about a designated origin is the vector sum of the individual momenta of the particles that make up the system.",
+    "The net torque on a system about a given origin is the time derivative of the angular momentum about that origin: \\(\\frac{d\\mathbf{\\vec{L}}}{dt}=\\sum \\mathbf{\\vec{\\tau }}\\).",
+    "A rigid rotating body has angular momentum \\(L=I\\omega\\) directed along the axis of rotation. The time derivative of the angular momentum \\(\\frac{dL}{dt}=\\sum \\tau\\) gives the net torque on a rigid body and is directed along the axis of rotation."
+   ]
+  },
+  {
+   "num": "11.3",
+   "module": "m58337",
+   "title": "Conservation of Angular Momentum",
+   "objectives": [
+    "Apply conservation of angular momentum to determine the angular velocity of a rotating system in which the moment of inertia is changing",
+    "Explain how the rotational kinetic energy changes when a system undergoes changes in both moment of inertia and angular velocity"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Coupled Flywheels",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A flywheel rotates without friction at an angular velocity \\({\\omega}_{0}=600\\, \\text{rev}\\text{/}\\min\\) on a frictionless, vertical shaft of negligible rotational inertia. A second flywheel, which is at rest and has a moment of inertia three times that of the rotating flywheel, is dropped onto it (the figure). Because friction exists between the surfaces, the flywheels very quickly reach the same rotational velocity, after which they spin together. (a) Use the law of conservation of angular momentum to determine the angular velocity \\(\\omega\\) of the combination. (b) What fraction of the initial kinetic energy is lost in the coupling of the flywheels?</p><figure><img src='img/CNX_UPhysics_11_03_Flywheel.jpg' alt=\"In the drawing on the left, two flywheels are shown. Their axes are vertical and aligned, and the wheels face each other, but the wheels are separate from one another. The lower wheel has moment to inertia I sub 0 and is spinning counterclockwise as viewed from above. The upper wheel has moment to inertia 3 I sub 0 and is at rest. In the drawing on the right, the wheels are coupled together and spin counterclockwise as viewed from above.\" loading='lazy'><figcaption>Two flywheels are coupled and rotate together.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Part (a) is straightforward to solve for the angular velocity of the coupled system. We use the result of (a) to compare the initial and final kinetic energies of the system in part (b).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>a. No external torques act on the system. The force due to friction produces an internal torque, which does not affect the angular momentum of the system. Therefore conservation of angular momentum gives</p><div class='eq'>\\[\\begin{array}{l}{I}_{0}{\\omega}_{0}=({I}_{0}+3{I}_{0})\\omega , \\\\ \\omega =\\frac{1}{4}{\\omega}_{0}=150\\, \\text{rev}\\text{/}\\min =15.7\\, \\text{rad}\\text{/}\\text{s}.\\end{array}\\]</div><p>b. Before contact, only one flywheel is rotating. The rotational kinetic energy of this flywheel is the initial rotational kinetic energy of the system, \\(\\frac{1}{2}{I}_{0}{\\omega}_{0}^{2}\\). The final kinetic energy is\\(\\frac{1}{2}(4{I}_{0}){\\omega}^{2}=\\frac{1}{2}(4{I}_{0}){(\\frac{{\\omega}_{0}}{4})}^{2}=\\frac{1}{8}{I}_{0}{\\omega}_{0}^{2}.\\)</p><p>Therefore, the ratio of the final kinetic energy to the initial kinetic energy is</p><div class='eq'>\\[\\frac{\\frac{1}{8}{I}_{0}{\\omega}_{0}^{2}}{\\frac{1}{2}{I}_{0}{\\omega}_{0}^{2}}=\\frac{1}{4}.\\]</div><p>Thus, 3/4 of the initial kinetic energy is lost to the coupling of the two flywheels.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Since the rotational inertia of the system increased, the angular velocity decreased, as expected from the law of conservation of angular momentum. In this example, we see that the final kinetic energy of the system has decreased, as energy is lost to the coupling of the flywheels. Compare this to the example of the skater in the figure doing work to bring her arms inward and adding rotational kinetic energy.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Dismount from a High Bar",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>An 80.0-kg gymnast dismounts from a high bar. He starts the dismount at full extension, then tucks to complete a number of revolutions before landing. His moment of inertia when fully extended can be approximated as a rod of length 1.8 m and when in the tuck a rod of half that length. If his rotation rate at full extension is 1.0 rev/s and he enters the tuck when his center of mass is at 3.0 m height moving horizontally to the floor, how many revolutions can he execute if he comes out of the tuck at 1.8 m height? See the figure.</p><figure><img src='img/CNX_UPhysics_11_03_HighBar.jpg' alt=\"A drawing of a gymnast dismounting from a 3 m tall high bar. He starts the dismount at full extension above the bar, then tucks when he is moving horizontally to the floor, level with the bar. The gymnast is 1.8 meters tall.\" loading='lazy'><figcaption>A gymnast dismounts from a high bar and executes a number of revolutions in the tucked position before landing upright.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Using conservation of angular momentum, we can find his rotation rate when in the tuck. Using the equations of kinematics, we can find the time interval from a height of 3.0 m to 1.8 m. Since he is moving horizontally with respect to the ground, the equations of free fall simplify. This will allow the number of revolutions that can be executed to be calculated. Since we are using a ratio, we can keep the units as rev/s and don’t need to convert to radians/s.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The moment of inertia at full extension is \\({I}_{0}=\\frac{1}{12}m{L}^{2}=\\frac{1}{12}80.0\\, \\text{kg}(1{.8\\, \\text{m})}^{2}=21.6\\, \\text{kg}\\cdot {\\text{m}}^{2}\\).</p><p>The moment of inertia in the tuck is \\({I}_{\\text{f}}=\\frac{1}{12}m{L}_{\\text{f}}^{\\text{2}}=\\frac{1}{12}80.0\\, \\text{kg}(0{.9\\, \\text{m})}^{2}=5.4\\, \\text{kg}\\cdot {\\text{m}}^{2}\\).</p><p>Conservation of angular momentum: \\({I}_{\\text{f}}{\\omega}_{\\text{f}}={I}_{0}{\\omega}_{0}\\Rightarrow {\\omega}_{\\text{f}}=\\frac{{I}_{0}{\\omega}_{0}}{{I}_{\\text{f}}}=\\frac{21.6\\, \\text{kg}\\cdot {\\text{m}}^{2}(1.0\\, \\text{rev}\\text{/}\\text{s})}{5.4\\, \\text{kg}\\cdot {\\text{m}}^{2}}=4.0\\, \\text{rev}\\text{/}\\text{s}\\).</p><p>Time interval in the tuck: \\(t=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{2(3.0-1.8)\\text{m}}{9.8\\, \\text{m}\\text{/}\\text{s}}}=0.5\\, \\text{s}\\).</p><p>In 0.5 s, he will be able to execute two revolutions at 4.0 rev/s.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Note that the number of revolutions he can complete will depend on how long he is in the air. In the problem, he is exiting the high bar horizontally to the ground. He could also exit at an angle with respect to the ground, giving him more or less time in the air depending on the angle, positive or negative, with respect to the ground. Gymnasts must take this into account when they are executing their dismounts.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Conservation of Angular Momentum of a Collision",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A bullet of mass \\(m=2.0\\, \\text{g}\\) is moving horizontally with a speed of \\(500.0\\, \\text{m}\\text{/}\\text{s}.\\) The bullet strikes and becomes embedded in the edge of a solid disk of mass \\(M=3.2\\, \\text{kg}\\) and radius \\(R=0.5\\, \\text{m}\\text{.}\\) The cylinder is free to rotate around its axis and is initially at rest (the figure). What is the angular velocity of the disk immediately after the bullet is embedded?</p><figure><img src='img/CNX_UPhysics_11_03_Disk.jpg' alt=\"Illustrations of a bullet before and after striking a disk. On the left is the before illustration. The bullet is travelling to the left at 500 meters per second, toward the front edge of a horizontal disk of radius R. The vertical axis through the center of the disc is shown as a vertical line connecting points A above and A prime below the center. On the right is the after illustration. The bullet is embedded in the edge of the disk, which is rotating about the vertical axis through the center. The rotation is counterclockwise as viewed from above.\" loading='lazy'><figcaption>A bullet is fired horizontally and becomes embedded in the edge of a disk that is free to rotate about its vertical axis.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>For the system of the bullet and the cylinder, no external torque acts along the vertical axis through the center of the disk. Thus, the angular momentum along this axis is conserved. The initial angular momentum of the bullet is \\(mvR\\), which is taken about the rotational axis of the disk the moment before the collision. The initial angular momentum of the cylinder is zero. Thus, the net angular momentum of the system is \\(mvR\\). Since angular momentum is conserved, the initial angular momentum of the system is equal to the angular momentum of the bullet embedded in the disk immediately after impact.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The initial angular momentum of the system is</p><div class='eq'>\\[{L}_{i}=mvR.\\]</div><p>The moment of inertia of the system with the bullet embedded in the disk is</p><div class='eq'>\\[I=m{R}^{2}+\\frac{1}{2}M{R}^{2}=(m+\\frac{M}{2}){R}^{2}.\\]</div><p>The final angular momentum of the system is</p><div class='eq'>\\[{L}_{f}=I{\\omega}_{f}.\\]</div><p>Thus, by conservation of angular momentum, \\({L}_{i}={L}_{f}\\) and</p><div class='eq'>\\[mvR=(m+\\frac{M}{2}){R}^{2}{\\omega}_{f}.\\]</div><p>Solving for \\({\\omega}_{f},\\)</p><div class='eq'>\\[{\\omega}_{f}=\\frac{mvR}{(m+M\\text{/}2){R}^{2}}=\\frac{(2.0\\, \\times \\, {10}^{-3}\\, \\text{kg})(500.0\\, \\text{m}\\text{/}\\text{s})}{(2.0\\, \\times \\, {10}^{-3}\\, \\text{kg}\\, +\\, 1.6\\, \\text{kg})(0.50\\, \\text{m})}=1.2\\, \\text{rad}\\text{/}\\text{s}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The system is composed of both a point particle and a rigid body. Care must be taken when formulating the angular momentum before and after the collision. Just before impact the angular momentum of the bullet is taken about the rotational axis of the disk.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A merry-go-round at a playground is rotating at 4.0 rev/min. Three children jump on and increase the moment of inertia of the merry-go-round/children rotating system by \\(25%\\). What is the new rotation rate?</p>",
+     "a": "<p>Using conservation of angular momentum, we have<br> \\(I(4.0\\, \\text{rev/min})=1.25I{\\omega}_{\\text{f}},\\; {\\omega}_{\\text{f}}=\\frac{1.0}{1.25}(4.0\\, \\text{rev}\\text{/}\\min )=3.2\\, \\text{rev}\\text{/}\\min\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "In the absence of external torques, a system’s total angular momentum is conserved. This is the rotational counterpart to linear momentum being conserved when the external force on a system is zero.",
+    "For a rigid body that changes its angular momentum in the absence of a net external torque, conservation of angular momentum gives \\({I}_{f}{\\omega}_{f}={I}_{i}{\\omega}_{i}\\). This equation says that the angular velocity is inversely proportional to the moment of inertia. Thus, if the moment of inertia decreases, the angular velocity must increase to conserve angular momentum.",
+    "Systems containing both point particles and rigid bodies can be analyzed using conservation of angular momentum. The angular momentum of all bodies in the system must be taken about a common axis."
+   ]
+  },
+  {
+   "num": "11.4",
+   "module": "m58338",
+   "title": "Precession of a Gyroscope",
+   "objectives": [
+    "Describe the physical processes underlying the phenomenon of precession",
+    "Calculate the precessional angular velocity of a gyroscope"
+   ],
+   "callouts": [
+    "{\\omega}_{P}=\\frac{rMg}{I\\omega}"
+   ],
+   "examples": [
+    {
+     "title": "Period of Precession",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A gyroscope spins with its tip on the ground and is spinning with negligible frictional resistance. The disk of the gyroscope has mass 0.3 kg and is spinning at 20 rev/s. Its center of mass is 5.0 cm from the pivot and the radius of the disk is 5.0 cm. What is the precessional period of the gyroscope?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the equation to find the precessional angular velocity of the gyroscope. This allows us to find the period of precession.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The moment of inertia of the disk is</p><div class='eq'>\\[I=\\frac{1}{2}m{r}^{2}=\\frac{1}{2}(0.30\\, \\text{kg})(0.05\\, {\\text{m})}^{2}=3.75\\, \\times \\, {10}^{-4}\\, \\text{kg}\\cdot {\\text{m}}^{2}.\\]</div><p>The angular velocity of the disk is</p><div class='eq'>\\[20.0\\, \\text{rev}\\text{/}\\text{s}=20.0(2\\pi )\\, \\text{rad}\\text{/}\\text{s}=125.66\\, \\text{rad}\\text{/}\\text{s}.\\]</div><p>We can now substitute in the equation. The precessional angular velocity is</p><div class='eq'>\\[{\\omega}_{P}=\\frac{rMg}{I\\omega}=\\frac{(0.05\\, \\text{m})(0.3\\, \\text{kg})(9.8\\, \\text{m}\\text{/}{\\text{s}}^{2})}{(3.75\\, \\times \\, {10}^{-4}\\, \\text{kg}\\cdot {\\text{m}}^{2})(125.66\\, \\text{rad}\\text{/}\\text{s})}=3.12\\, \\text{rad}\\text{/}\\text{s}.\\]</div><p>The precessional period of the gyroscope is</p><div class='eq'>\\[{T}_{P}=\\frac{2\\pi}{3.12\\, \\text{rad}\\text{/}\\text{s}}=2.0\\, \\text{s}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The precessional angular frequency of the gyroscope, 3.12 rad/s, or about 0.5 rev/s, is much less than the angular velocity 20 rev/s of the gyroscope disk. Therefore, we don’t expect a large component of the angular momentum to arise due to precession, and the equation is a good approximation of the precessional angular velocity.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>A top has a precession frequency of 5.0 rad/s on Earth. What is its precession frequency on the Moon?</p>",
+     "a": "<p>The Moon’s gravity is 1/6 that of Earth’s. By examining the equation, we see that the top’s precession frequency is linearly proportional to the acceleration of gravity. All other quantities, mass, moment of inertia, and spin rate are the same on the Moon. Thus, the precession frequency on the Moon is<br>\\({\\omega}_{P}\\text{(Moon)}=\\frac{1}{6}{\\omega}_{P}\\text{(Earth)}=\\frac{1}{6}(5.0\\, \\text{rad}\\text{/}\\text{s})=0.83\\, \\text{rad}\\text{/}\\text{s}.\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "When a gyroscope is set on a pivot near the surface of Earth, it precesses around a vertical axis, since the torque is always horizontal and perpendicular to \\(\\mathbf{\\mathbf{\\vec{L}}}.\\) If the gyroscope is not spinning, it acquires angular momentum in the direction of the torque, and it rotates about a horizontal axis, falling over just as we would expect.",
+    "The precessional angular velocity is given by \\({\\omega}_{P}=\\frac{rMg}{I\\omega}\\), where <i>r</i> is the distance from the pivot to the center of mass of the gyroscope, <i>I</i> is the moment of inertia of the gyroscope’s spinning disk, <i>M</i> is its mass, and \\(\\omega\\) is the angular frequency of the gyroscope disk."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_11_01_InclPlane.jpg",
+  "CNX_UPhysics_11_01_InclSlip.jpg",
+  "CNX_UPhysics_11_02_Meteor.jpg",
+  "CNX_UPhysics_11_02_ProtSpir_img.jpg",
+  "CNX_UPhysics_11_02_SysPart.jpg",
+  "CNX_UPhysics_11_03_Disk.jpg",
+  "CNX_UPhysics_11_03_Flywheel.jpg",
+  "CNX_UPhysics_11_03_HighBar.jpg"
+ ]
+}
