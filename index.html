@@ -624,7 +624,9 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   10:{eqSec:["10.1","10.1","10.1","10.1","10.1","10.2","10.2","10.2","10.2","10.2","10.3","10.4","10.4","10.4","10.5","10.5","10.5","10.6","10.6","10.6","10.7","10.8","10.8","10.8","10.8"],toy:"ferris",eqHint:"Search, for example “torque” or “inertia”"},
   11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],eqHint:"Search, for example “rolling” or “precession”"},
   12:{eqHint:"Search, for example “torque” or “stress”"},
-  13:{eqHint:"Search, for example “orbit” or “escape”"}};
+  13:{eqHint:"Search, for example “orbit” or “escape”"},
+  14:{eqSec:["14.1","14.1","14.1","14.1","14.2","14.3","14.5","14.5","14.5","14.6","14.7","14.7","14.7"],eqHint:"Search, for example “buoyant” or “Bernoulli”"},
+  15:{eqSec:["15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.2","15.2","15.3","15.3","15.3","15.4","15.4","15.4","15.4","15.4","15.4","15.5","15.5","15.5","15.5","15.6","15.6","15.6"],eqHint:"Search, for example “pendulum” or “energy”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
 
@@ -671,7 +673,7 @@ const P=x=>"("+sig(x)+")";
 const r=(lo,hi,st)=>Math.round((lo+Math.floor(Math.random()*(Math.round((hi-lo)/st)+1))*st)*1000)/1000;
 
 /* ---------- views ---------- */
-for(const n of [1,2,4,5,6,7,8,9,10,11,12,13])if(CHX[n]&&!CHX[n].hero)CHX[n].hero=()=>heroFor(n);
+for(const n of [1,2,4,5,6,7,8,9,10,11,12,13,14,15])if(CHX[n]&&!CHX[n].hero)CHX[n].hero=()=>heroFor(n);
 function heroGraph(){
   // x = t^2 (a = 2 m/s^2 from rest), t from 0 to 4 s, x from 0 to 16 m, drawn to scale
   const X=t=>30+t*25, Y=x=>96-x*5;
@@ -767,6 +769,20 @@ function heroFor(n){
       <text x="${ex}" y="${cy+36}" text-anchor="middle">M</text><text x="${mx}" y="${cy+20}" text-anchor="middle">m</text>
       <line x1="${ex}" y1="${cy+46}" x2="${mx}" y2="${cy+46}" stroke="var(--muted)"/><line x1="${ex}" y1="${cy+42}" x2="${ex}" y2="${cy+50}" stroke="var(--muted)"/><line x1="${mx}" y1="${cy+42}" x2="${mx}" y2="${cy+50}" stroke="var(--muted)"/><text x="${(ex+mx)/2}" y="${cy+43}" text-anchor="middle">r</text>
       <text x="70" y="116" text-anchor="middle">F = GMm / r²</text>`);}
+  if(n===14){const wy=46,bx=50,bw=40,top=34,bh=30;
+    return svg("A block floating in water: the buoyant force pushes up and its weight pulls down, and the two are equal",`<rect x="8" y="${wy}" width="124" height="54" fill="var(--accent-soft)"/><line x1="8" y1="${wy}" x2="132" y2="${wy}" stroke="var(--accent)" stroke-width="1.6"/>
+      <rect x="${bx}" y="${top}" width="${bw}" height="${bh}" rx="2" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+      ${A(bx+bw/2,top+bh,bx+bw/2,top+bh+22,"var(--ink)",2)}<text x="${bx+bw/2+5}" y="${top+bh+20}" fill="var(--ink)">mg</text>
+      ${A(bx+bw/2-8,top+bh-2,bx+bw/2-8,top-18,"var(--accent)",2.4)}<text x="${bx+bw/2-12}" y="${top-12}" text-anchor="end" fill="var(--accent)">F<tspan baseline-shift="sub" font-size="6">B</tspan></text>
+      <text x="128" y="${wy+12}" text-anchor="end">water</text>
+      <text x="70" y="116" text-anchor="middle">F<tspan baseline-shift="sub" font-size="6">B</tspan> = ρV<tspan baseline-shift="sub" font-size="6">sub</tspan>g</text>`);}
+  if(n===15){const x0=24,x1=132,y0=54,amp=26,per=54;let d="";for(let i=0;i<=108;i++){const x=x0+i,y=y0-amp*Math.cos(2*Math.PI*i/per);d+=(i?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);}
+    return svg("Position against time for simple harmonic motion: a cosine curve with amplitude A and period T marked",`<line x1="${x0}" y1="${y0}" x2="${x1+2}" y2="${y0}" stroke="var(--muted)"/><line x1="${x0}" y1="${y0-amp-10}" x2="${x0}" y2="${y0+amp+10}" stroke="var(--muted)"/>
+      <text x="${x1+2}" y="${y0+11}" text-anchor="end">t</text><text x="${x0-4}" y="${y0-amp-2}" text-anchor="end">x</text>
+      <path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+      <line x1="${x0+per/2}" y1="${y0}" x2="${x0+per/2}" y2="${y0+amp}" stroke="var(--ink)" stroke-dasharray="2 2"/><text x="${x0+per/2-4}" y="${y0+amp/2+3}" text-anchor="end" fill="var(--ink)">A</text>
+      <line x1="${x0}" y1="${y0+amp+8}" x2="${x0+per}" y2="${y0+amp+8}" stroke="var(--ink)"/><line x1="${x0}" y1="${y0+amp+5}" x2="${x0}" y2="${y0+amp+11}" stroke="var(--ink)"/><line x1="${x0+per}" y1="${y0+amp+5}" x2="${x0+per}" y2="${y0+amp+11}" stroke="var(--ink)"/><text x="${x0+per+4}" y="${y0+amp+11}" fill="var(--ink)">T</text>
+      <text x="70" y="116" text-anchor="middle">x = A cos(ωt), T = 2π√(m/k)</text>`);}
   return "";
 }
 
@@ -3268,7 +3284,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/01e";
+const APP_VERSION="11/01f";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
