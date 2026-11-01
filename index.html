@@ -625,7 +625,7 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],toy:"mgr",eqHint:"Search, for example “rolling” or “precession”"},
   12:{eqHint:"Search, for example “torque” or “stress”"},
   13:{toy:"space",eqHint:"Search, for example “orbit” or “escape”"},
-  14:{eqSec:["14.1","14.1","14.1","14.1","14.2","14.3","14.5","14.5","14.5","14.6","14.7","14.7","14.7"],eqHint:"Search, for example “buoyant” or “Bernoulli”"},
+  14:{eqSec:["14.1","14.1","14.1","14.1","14.2","14.3","14.5","14.5","14.5","14.6","14.7","14.7","14.7"],toy:"yard",eqHint:"Search, for example “buoyant” or “Bernoulli”"},
   15:{eqSec:["15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.2","15.2","15.3","15.3","15.3","15.4","15.4","15.4","15.4","15.4","15.4","15.5","15.5","15.5","15.5","15.6","15.6","15.6"],eqHint:"Search, for example “pendulum” or “energy”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
@@ -1365,6 +1365,22 @@ function spaceSVG(have,label){
   </svg>`;
 }
 
+function yardSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"`:off}/>`;
+  const L=(k,d,w,c)=>`<path d="${d}" fill="none" ${on(k)?`stroke="${c||"var(--ink)"}" stroke-width="${w||2}" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    <path d="M4 120 h112" stroke="var(--rule)" stroke-width="1.5"/>
+    ${P(0,"M10 120 h94 v42 h-94 Z","var(--card)")}${on(0)?'<path d="M11 127 h92 v34 h-92 Z" fill="var(--petal-5)" opacity=".35"/><path d="M11 127 q6 -2 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t8 0" fill="none" stroke="var(--petal-5)" stroke-width="1.2"/>':""}
+    ${P(1,"M14 134 h12 v22 h-12 Z","var(--card)")}${on(1)?'<path d="M14 140 h4 M14 146 h6 M14 152 h4" stroke="var(--ink)" stroke-width="1"/><circle cx="22" cy="140" r="2.2" fill="var(--petal-1)"/>':""}
+    ${P(2,"M10 112 h28 l4 -6 h-26 Z","var(--petal-1)")}${L(2,"M14 106 L4 88",1.8)}${on(2)?'<circle cx="16" cy="114" r="3" fill="var(--ink)"/><circle cx="36" cy="114" r="3" fill="var(--ink)"/><path d="M34 106 v-8 h6" fill="none" stroke="var(--ink)" stroke-width="1.6"/>':""}
+    ${P(3,"M44 126 h30 v5 h-30 Z","var(--accent-soft)")}
+    ${on(4)?'<circle cx="24" cy="54" r="11" fill="none" stroke="var(--leaf)" stroke-width="2.2"/><circle cx="24" cy="54" r="6" fill="none" stroke="var(--leaf)" stroke-width="2.2"/><path d="M24 66 v20 M18 86 h12" stroke="var(--ink)" stroke-width="1.4"/><path d="M35 54 Q46 44 52 58" fill="none" stroke="var(--leaf)" stroke-width="2.2"/>':`<circle cx="24" cy="54" r="11" ${off}/><path d="M35 54 Q46 44 52 58" ${off}/>`}
+    ${P(5,"M51 56 l6 -4 l3 4 l-6 4 Z","var(--petal-2)")}${on(5)?'<path d="M60 54 Q74 48 80 120" fill="none" stroke="var(--petal-5)" stroke-width="1.6" stroke-dasharray="2 2"/>':""}
+    ${L(6,"M108 120 V44 M104 120 V44 M104 56 h4 M104 70 h4 M104 84 h4 M104 98 h4 M104 112 h4",1.4)}${L(6,"M104 44 Q84 46 90 80 Q94 108 82 122",4,"var(--petal-6)")}
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1402,7 +1418,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} merry go round parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can play."},
   space:{eyebrow:"The space center",thing:"space center",parts:["launch pad","rocket stage","solar panels","dish antenna","Moon","tide marker","GPS satellite"],svg:spaceSVG,route:"space",
     ready:"Your space center is ready",readyText:"Use gravity to plan each mission, then fly it.",go:"Go to the space center",
-    count:(n,t)=>`${n} of ${t} space center parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can fly the missions."}};
+    count:(n,t)=>`${n} of ${t} space center parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can fly the missions."},
+  yard:{eyebrow:"The backyard",thing:"backyard",parts:["pool","depth gauge","floor jack","raft","garden hose","nozzle","water slide"],svg:yardSVG,route:"yard",
+    ready:"Your backyard is ready",readyText:"Use fluid physics to plan each splash, then try it.",go:"Go to the backyard",
+    count:(n,t)=>`${n} of ${t} backyard parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can play."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -3725,6 +3744,210 @@ TOYS.space.game={title:"Run the space center",intro:"Every mission uses real num
   notReadyTitle:"The space center isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the space center. Bloom all seven to fly the missions."};
 
 
+/* ---------- Chapter 14: backyard water day ----------
+   g = 10 m/s², water 1000 kg/m³, air 101 kPa, as in the Ch 14 notes.
+   Mission 0 (14.1, 14.2, 14.4, prediction): friends climb onto a foam raft. It goes under when its bottom is t deep;
+     the gauge pressure there, ρgt, times the area holds up the raft plus the friends (Archimedes seen from inside).
+   Mission 1 (14.1, 14.3, command): hold a car still on a floor jack. F1 = Mg(d1/d2)². Too little and the car settles
+     back onto its tire, too much and it rises to the top of the jack (a = g(r − 1), r = sent ÷ right).
+   Mission 2 (14.5, 14.6, 14.7, command): thumb on the hose. Same flow Q through a smaller hole: A2/A1 = v1/v2,
+     with v2 = D/√(2h/g) to land in a bucket D away. Bernoulli and viscosity in the after text.
+   makeYard redraws until the right choice succeeds and every wrong one misses by at least 2.5 tolerances. */
+const YRD_NAMES=["Pile onto the raft","Hold up the car","Thumb on the hose"], YRD_G=10, YRD_RHO=1000, YRD_ATM=101000, YRD_HOSE=0.016;
+const YRD_UP=0.15, YRD_DOWN=0.12;
+function yrdTol(m){return m.kind===0?0.4:m.kind===1?0.03*m.F1:0.04*m.D;}
+function yrdDraft(k){
+  if(k===0){
+    const L=pickOne([1.6,1.8,2]),Wd=pickOne([0.8,0.9,1]),t=pickOne([0.12,0.15,0.18,0.2]),rf=pickOne([30,40,50]),mf=pickOne([45,50,55,60]);
+    const A=L*Wd,mr=rf*t*A,p=YRD_RHO*YRD_G*t,lift=p*A,wr=mr*YRD_G,x=(lift-wr)/(mf*YRD_G),N=Math.floor(x),fr=x-N;
+    if(N<2||N>7||fr<0.15||fr>0.85)return null;
+    const tc=Math.round(t*100);
+    const ch=[{n:N,ok:true},
+      {n:N+1,fb:`The lift is enough for ${fmtNum(x)} friends, but nobody can be part of a friend. Rounding up puts one friend too many on the raft, and it goes under.`},
+      {n:Math.floor((lift-wr)/mf),fb:"The lift is a force in newtons, but each friend's mass is in kilograms. Divide by each friend's weight, \\(mg\\)."},
+      {n:Math.floor(((YRD_ATM+p)*A-wr)/(mf*YRD_G)),fb:"That uses absolute pressure. The air pushes down on top of the raft just as hard as it pushes up through the water, so it cancels. Only the gauge pressure \\(\\rho g t\\) holds anyone up."}];
+    ch.forEach(c=>c.t=`${c.n.toLocaleString("en-US")} friends`);
+    return{kind:0,L,Wd,t,rf,mf,A,mr,lift,wr,x,N,choices:dedupe(ch),
+      q:`Your foam raft is ${L} m long, ${Wd} m wide and ${tc} cm thick, and the foam has a density of \\(${rf}\\ \\text{kg/m}^3\\). Friends of ${mf} kg each climb on one at a time. How many can sit on it before its top goes under the water? Use \\(g = 10\\ \\text{m/s}^2\\) and water at \\(1000\\ \\text{kg/m}^3\\).`,
+      work:`\\begin{aligned}p&=\\rho g t=(1000)(10)(${t})\\\\&=${ferTx(p)}\\ \\text{Pa}\\\\F&=pA=(${ferTx(p)})(${L})(${Wd})\\\\&=${ferTx(lift)}\\ \\text{N}\\\\w&=\\rho_f tAg=(${rf})(${fmtNum(t*A,true)})(10)\\\\&=${fmtNum(wr,true)}\\ \\text{N}\\\\N&=\\tfrac{F-w}{mg}=\\tfrac{${ferTx(lift-wr)}}{${mf*10}}=${fmtNum(x,true)}\\ \\Rightarrow\\ ${N}\\end{aligned}`,
+      after:`At the edge of sinking, the bottom of the raft sits ${tc} cm deep, and the water pushes up on it with \\(F = \\rho g t A\\). That is exactly the weight of the water the raft pushes aside, \\(\\rho V g\\): Archimedes' principle (14.4) seen from the inside. A gauge under the raft reads only the extra pressure from the water (14.2), because the air above cancels out.`};}
+  if(k===1){
+    const M=pickOne([600,650,700,750,800,850,900]),d1=pickOne([1.5,2,2.5]),d2=pickOne([5,6,7.5,8]);
+    if(d2/d1<2.4)return null;
+    const F2=M*YRD_G,q=(d1/d2)**2,F1=F2*q,A1=Math.PI*(d1/200)**2,p=F1/A1;
+    const ch=[{F:F1,ok:true},
+      {F:F2*d1/d2,fb:"A piston's area goes as its diameter squared, \\(A = \\pi d^2/4\\), so the force ratio is \\((d_1/d_2)^2\\), not \\(d_1/d_2\\)."},
+      {F:F2/q,fb:"That's the ratio upside down. The small piston needs the small force: \\(F_1 = F_2 A_1/A_2\\)."},
+      {F:M*q,fb:"The jack has to hold up the car's weight, \\(Mg\\) in newtons, not its mass in kilograms."}];
+    ch.forEach(c=>{c.F=ferR(c.F);c.t=`${ferN(c.F)} N`;});
+    return{kind:1,M,d1,d2,F2,F1,A1,p,ratio:1/q,choices:dedupe(ch),
+      q:`Your floor jack holds up the front of a car, carrying ${M} kg of it. The small pump piston is ${d1} cm across and the big lift piston is ${d2} cm across. While a friend slides the jack stands under, how hard must you push on the small piston to hold the car still? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}F_2&=Mg=(${M})(10)=${ferTx(F2)}\\ \\text{N}\\\\\\tfrac{F_1}{A_1}&=\\tfrac{F_2}{A_2}\\ \\Rightarrow\\ F_1=F_2\\left(\\tfrac{d_1}{d_2}\\right)^2\\\\F_1&=(${ferTx(F2)})\\left(\\tfrac{${d1}}{${d2}}\\right)^2=${ferTx(F1)}\\ \\text{N}\\end{aligned}`,
+      after:`The oil pressure is \\(p = F_1/A_1 = ${fmtNum(p/1e6,true)}\\ \\text{MPa}\\), about ${Math.round(p/YRD_ATM)} times the air pressure around you, and Pascal's principle (14.3) carries it to the big piston. A real jack's handle is also a lever, so your hand pushes even less. The catch: to raise the car 1 cm, the small piston has to travel ${fmtNum(1/q)} cm, so you still do all the work.`};}
+  const Q=pickOne([12,15,18,20,24]),h=pickOne([0.8,1,1.2]),D=pickOne([3,3.5,4,4.5,5,5.5,6]);
+  const A1=Math.PI*(YRD_HOSE/2)**2,Qs=Q/60000,v1=Qs/A1,tf=Math.sqrt(2*h/YRD_G),v2=D/tf,f=v1/v2;
+  if(f<0.08||f>0.3)return null;
+  const ch=[{f,ok:true},
+    {f:f/Math.SQRT2,fb:"The fall time is \\(t = \\sqrt{2h/g}\\), from \\(h = \\tfrac12 gt^2\\). Without the 2 the time is too short, so you asked for too much speed and the water flew past."},
+    {f:f*f,fb:"Water flows through the area of the opening, so \\(A_1v_1 = A_2v_2\\). Treating the diameters that way makes the hole far too small."},
+    {f:1-f,fb:"That's how much to cover, not how much to leave open. With most of the hole open, the water barely speeds up."}];
+  ch.forEach(c=>{c.f=Number((100*c.f).toPrecision(3))/100;c.t=`${fmtNum(100*c.f)}% open`;});
+  return{kind:2,Q,h,D,A1,Qs,v1,tf,v2,f,R0:v1*tf,choices:dedupe(ch),
+    q:`Your garden hose is 1.6 cm across inside and lets out ${Q} liters of water per minute. You hold the end level, ${h} m above the lawn, and want the water to land in a bucket ${D} m away. What percent of the opening should you leave uncovered with your thumb? Use \\(g = 10\\ \\text{m/s}^2\\) and \\(1\\ \\text{L} = 10^{-3}\\ \\text{m}^3\\).`,
+    work:`\\begin{aligned}Q&=\\tfrac{${Q}\\times10^{-3}}{60}=${fmtNum(Qs*1e4,true)}\\times10^{-4}\\ \\text{m}^3/\\text{s}\\\\A_1&=\\pi(0.008)^2=${fmtNum(A1*1e4,true)}\\times10^{-4}\\ \\text{m}^2\\\\v_1&=\\tfrac{Q}{A_1}=${fmtNum(v1,true)}\\ \\text{m/s}\\\\t&=\\sqrt{\\tfrac{2h}{g}}=${fmtNum(tf,true)}\\ \\text{s}\\\\v_2&=\\tfrac{D}{t}=${fmtNum(v2,true)}\\ \\text{m/s}\\\\\\tfrac{A_2}{A_1}&=\\tfrac{v_1}{v_2}=${fmtNum(f,true)}=${fmtNum(100*f,true)}\\%\\end{aligned}`,
+    after:`With no thumb, the water lands only ${fmtNum(v1*tf)} m away. Your thumb adds no water; the same flow squeezes through a smaller hole, so it must leave faster (14.5). Inside the hose the water moves slowly at high pressure and trades that pressure for speed in the jet (Bernoulli, 14.6). A long, thin hose lets out less water because viscosity drags on it (14.7), and in a real hose the flow drops a little as you cover more, so this answer is a good first guess rather than exact.`};
+}
+function yrdRaft(m,n){
+  const show=Math.min(n,m.N+1),sunk=n>m.N,T0=0.5,dT=0.9;
+  const dep=k=>(m.mr+k*m.mf)/(YRD_RHO*m.A);
+  const tEnd=T0+dT*Math.max(0,show-1)+0.3+(sunk?1.3:1.1);
+  const arrive=k=>T0+dT*(k-1);
+  const depth=t=>{let d=dep(0);for(let k=1;k<=show;k++){const tk=arrive(k)+0.3;if(t<tk)break;const u=t-tk;
+      if(k>m.N){const s=Math.min(1,u/0.9);return d+(m.t+0.1-d)*(s*s*(3-2*s));}
+      d=d+(dep(k)-d)*(1-Math.exp(-u/0.18)*Math.cos(11*u));}
+    return d;};
+  const count=t=>{let c=0;for(let k=1;k<=show;k++)if(t>=arrive(k))c=k;return c;};
+  return{tEnd,show,sunk,depth,count,arrive,n,hit:n===m.N,miss:Math.abs(n-m.N)};
+}
+function yrdJack(m,F){
+  const tol=yrdTol(m),r=F/m.F1,hold=Math.abs(F-m.F1)<=tol,a=hold?0:YRD_G*(r-1),tEnd=3;
+  const y=t=>{if(hold||t<0.4)return 0;const u=t-0.4,v=0.5*a*u*u;return Math.max(-YRD_DOWN,Math.min(YRD_UP,v));};
+  return{tEnd,r,hold,a,y,hit:hold,miss:Math.abs(F-m.F1),up:r>1};
+}
+function yrdHose(m,f){
+  const v=m.v1/f,R=v*m.tf,T0=0.3,tEnd=T0+m.tf+1.2;
+  return{tEnd,T0,v,R,hit:Math.abs(R-m.D)<=yrdTol(m),miss:Math.abs(R-m.D)};
+}
+function yardSim(m,c){
+  if(m.kind===0)return yrdRaft(m,c.n);
+  if(m.kind===1)return yrdJack(m,c.F);
+  return yrdHose(m,c.f);
+}
+function makeYard(k){
+  for(let tries=0;tries<500;tries++){
+    const m=yrdDraft(k);if(!m||m.choices.length<4)continue;const tol=yrdTol(m);
+    if(!m.choices.every(c=>c.ok?yardSim(m,c).hit:yardSim(m,c).miss>=2.5*tol))continue;
+    return m;}
+}
+/* a kid in a swimsuit: sitting on the raft, or standing on the deck */
+function yrdKid(ctx,col,x,y,c,sit){
+  ctx.save();ctx.translate(x,y);ctx.strokeStyle=col(c);ctx.lineWidth=2.4;ctx.lineCap="round";ctx.beginPath();
+  if(sit){ctx.moveTo(0,-2);ctx.lineTo(0,-14);ctx.moveTo(0,-2);ctx.lineTo(6,-2);ctx.lineTo(8,4);ctx.moveTo(0,-11);ctx.lineTo(5,-6);}
+  else{ctx.moveTo(0,-12);ctx.lineTo(0,-24);ctx.moveTo(0,-12);ctx.lineTo(-3,0);ctx.moveTo(0,-12);ctx.lineTo(3,0);ctx.moveTo(0,-21);ctx.lineTo(-5,-15);ctx.moveTo(0,-21);ctx.lineTo(5,-15);}
+  ctx.stroke();ctx.fillStyle=col(c);ctx.beginPath();ctx.arc(0,sit?-18.5:-28.5,4.2,0,7);ctx.fill();ctx.restore();
+}
+/* open part of the hose end (a circular segment at the bottom) for a given open fraction */
+function yrdSeg(f){let lo=0,hi=2;for(let i=0;i<40;i++){const hm=(lo+hi)/2,a=Math.acos(1-hm)-(1-hm)*Math.sqrt(Math.max(0,2*hm-hm*hm));if(a/Math.PI<f)lo=hm;else hi=hm;}return (lo+hi)/2;}
+function drawYard(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre,tt=pre?0:Math.min(t,F.tEnd);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  const result=(ok,txt)=>{ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.textAlign="left";ctx.fillStyle=col(ok?"--good":"--bad");ctx.fillText(txt,12,46);ctx.font="11px 'IBM Plex Mono', monospace";};
+  if(m.kind===0){
+    const Ys=Math.round(H*0.6),sc=(W*0.56)/m.L,VX=2,rw=m.L*sc,rx0=(W-rw)/2+8,th=m.t*sc*VX,dk=Math.max(16,rx0-46);
+    const d=F.depth(pre?0:tt),top=Ys-(m.t-d)*sc*VX,bot=top+th;
+    /* deck on both sides, pool water between */
+    ctx.fillStyle=col("--muted");ctx.globalAlpha=.35;ctx.fillRect(0,Ys-14,dk,H);ctx.fillRect(W-14,Ys-14,14,H);ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(0,Ys-14);ctx.lineTo(dk,Ys-14);ctx.lineTo(dk,H);ctx.moveTo(W,Ys-14);ctx.lineTo(W-14,Ys-14);ctx.lineTo(W-14,H);ctx.stroke();
+    ctx.fillStyle=col("--accent-soft");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.3;ctx.fillRect(rx0,top,rw,th);ctx.strokeRect(rx0,top,rw,th);
+    const nOn=pre?0:F.count(tt),show=pre?0:F.show;
+    const cols=["--petal-1","--petal-3","--petal-4","--petal-6","--leaf","--petal-2","--petal-5","--accent"];
+    for(let k=1;k<=nOn;k++){const xk=rx0+rw*(k-0.5)/show-4,u=Math.min(1,(tt-F.arrive(k))/0.3),yk=top-(1-u)*(1-u)*34;yrdKid(ctx,col,xk,yk,cols[(k-1)%8],true);}
+    /* water drawn over the raft so the part below the surface looks wet */
+    ctx.fillStyle=col("--petal-5");ctx.globalAlpha=.28;ctx.fillRect(dk,Ys,W-14-dk,H-Ys);ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--petal-5");ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(dk,Ys);ctx.lineTo(W-14,Ys);ctx.stroke();
+    /* friends still waiting on the deck */
+    if(c){const wait=(pre?c.n:c.n-nOn),showW=Math.min(2,Math.max(0,wait));
+      for(let i=0;i<showW;i++)yrdKid(ctx,col,10+i*14,Ys-14,cols[(nOn+i)%8],false);
+      if(wait>0&&!pre){ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText(wait>2?`+${(wait-2).toLocaleString("en-US")} more`:"waiting",4,Ys-58);}}
+    /* depth of the raft's bottom, and the gauge pressure there */
+    const ax=rx0+rw+12;ctx.strokeStyle=col("--accent");ctx.lineWidth=1.2;ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(ax,Ys);ctx.lineTo(ax,bot);ctx.stroke();ctx.setLineDash([]);
+    ctx.beginPath();ctx.moveTo(ax-4,bot);ctx.lineTo(ax+4,bot);ctx.stroke();
+    ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText("d",ax+4,(Ys+bot)/2);
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("heights drawn 2 times taller",W-20,H-12);
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`friends on: ${nOn}   d = ${(Math.min(d,m.t+0.1)*100).toFixed(1)} cm`,12,14);
+    ctx.textAlign="right";ctx.fillText(`gauge p = ${(YRD_RHO*YRD_G*Math.min(d,m.t)/1000).toFixed(2)} kPa`,W-12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`you said: ${c.t}`,12,30);
+      const fb=(m.t-d)*100;ctx.textAlign="right";ctx.fillStyle=col(fb>0?"--muted":"--bad");ctx.fillText(fb>0?`top ${fb.toFixed(1)} cm above water`:"top under water",W-12,30);}
+    if(ended)result(F.hit,F.hit?"Spot on":F.sunk?"It went under":"Room to spare");
+    return;}
+  if(m.kind===1){
+    const gy=H-26,px=Math.min(14,(W*0.36)/m.d2),xs=W*0.2,xb=W*0.62,ws=m.d1*px,wb=m.d2*px,cylTop=gy-150,base=gy-14;
+    const y=pre?0:F.y(tt),ly=y*240,sy=Math.max(-46,Math.min(60,-ly*m.ratio));
+    const pb=gy-118-ly,ps=gy-118+sy;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();
+    /* oil: both cylinders and the channel under them */
+    ctx.fillStyle=col("--petal-2");ctx.globalAlpha=.45;
+    ctx.fillRect(xs-ws/2,ps+10,ws,base-ps-10);ctx.fillRect(xb-wb/2,pb+10,wb,base-pb-10);ctx.fillRect(xs-ws/2,base-14,xb-xs+ws/2,14);ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.6;ctx.beginPath();
+    ctx.moveTo(xs-ws/2,cylTop);ctx.lineTo(xs-ws/2,base);ctx.lineTo(xb+wb/2,base);ctx.lineTo(xb+wb/2,cylTop);
+    ctx.moveTo(xs+ws/2,cylTop);ctx.lineTo(xs+ws/2,base-14);ctx.lineTo(xb-wb/2,base-14);ctx.lineTo(xb-wb/2,cylTop);ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.fillRect(xs-ws/2+1,ps,ws-2,10);ctx.fillRect(xb-wb/2+1,pb,wb-2,10);
+    ctx.strokeRect(xs-ws/2+1,ps,ws-2,10);ctx.strokeRect(xb-wb/2+1,pb,wb-2,10);
+    /* lift rod and the front of the car */
+    const cb=pb-36;ctx.fillStyle=col("--muted");ctx.fillRect(xb-6,cb,12,pb-cb);ctx.strokeRect(xb-6,cb,12,pb-cb);
+    const wx=Math.min(W-24,xb+wb/2+26),wr=18;
+    ctx.fillStyle=col("--card");ctx.beginPath();ctx.roundRect(xb-80,cb-30,W-xb+100,30,8);ctx.fill();ctx.stroke();
+    ctx.fillStyle=col("--accent-soft");ctx.beginPath();ctx.roundRect(xb-40,cb-52,W-xb+60,24,8);ctx.fill();ctx.stroke();
+    ctx.fillStyle=col("--ink");ctx.beginPath();ctx.arc(wx,cb-4,wr,0,7);ctx.fill();ctx.fillStyle=col("--muted");ctx.beginPath();ctx.arc(wx,cb-4,7,0,7);ctx.fill();
+    /* your push */
+    const ah=pre?0:1;ctx.strokeStyle=col("--accent");ctx.fillStyle=col("--accent");ctx.lineWidth=2.4;ctx.beginPath();ctx.moveTo(xs,ps-44);ctx.lineTo(xs,ps-6);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(xs-6,ps-12);ctx.lineTo(xs,ps-2);ctx.lineTo(xs+6,ps-12);ctx.fill();
+    ctx.textAlign="left";ctx.fillText("F₁",xs+8,ps-30);
+    ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText(`${m.d1} cm`,xs,base+8);ctx.fillText(`${m.d2} cm`,xb,base+8);
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`t = ${tt.toFixed(1)} s   car moved ${(y*100).toFixed(1)} cm`,12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`push: ${c.t}`,12,30);
+      const p=c.F/m.A1;ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`oil p = ${fmtNum(p/1e6)} MPa`,W-12,30);
+      ctx.fillText(`lift ${ferN(c.F*m.ratio)} N`,W-12,46);ctx.fillText(`weight ${ferN(m.F2)} N`,W-12,62);}
+    else{ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`weight on jack ${ferN(m.F2)} N`,W-12,30);}
+    if(ended)result(F.hit,F.hit?"Held steady":F.up?"Shot up":"Car dropped");
+    return;}
+  /* mission 2: side view of the lawn, to scale */
+  const Xmax=1.55*m.D,x0=26,sc=(W-x0-14)/Xmax,gy=H-28,X=x=>x0+x*sc,Y=y=>gy-y*sc;
+  ctx.fillStyle=col("--leaf");ctx.globalAlpha=.25;ctx.fillRect(0,gy,W,H-gy);ctx.globalAlpha=1;
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();
+  const stp=sc<34?2:1;ctx.fillStyle=col("--muted");ctx.textAlign="center";
+  for(let x=0;x<=Xmax+1e-9;x+=stp){ctx.strokeStyle=col("--ink");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(X(x),gy);ctx.lineTo(X(x),gy+4);ctx.stroke();ctx.fillText(`${x} m`,Math.min(X(x),W-18),gy+14);}
+  /* you, holding the hose level at h */
+  const hy=Y(m.h),hx=X(0);ctx.strokeStyle=col("--ink");ctx.lineWidth=2.2;ctx.lineCap="round";const sh=Y(1.7);
+  ctx.beginPath();ctx.moveTo(hx-10,gy);ctx.lineTo(hx-6,Y(0.9));ctx.lineTo(hx-2,gy);ctx.moveTo(hx-6,Y(0.9));ctx.lineTo(hx-6,Y(1.45));ctx.moveTo(hx-6,Y(1.35));ctx.lineTo(hx,hy);ctx.stroke();
+  ctx.fillStyle=col("--ink");ctx.beginPath();ctx.arc(hx-6,sh+0.12*sc,Math.max(4,0.12*sc),0,7);ctx.fill();
+  ctx.strokeStyle=col("--leaf");ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(hx,hy);ctx.quadraticCurveTo(hx-20,gy-4,0,gy-2);ctx.stroke();
+  ctx.lineCap="butt";
+  /* the bucket */
+  const bw=0.34*sc,bh=0.32*sc,bx=X(m.D);ctx.fillStyle=col("--petal-1");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(bx-bw/2,gy-bh);ctx.lineTo(bx+bw/2,gy-bh);ctx.lineTo(bx+bw*0.38,gy);ctx.lineTo(bx-bw*0.38,gy);ctx.closePath();ctx.fill();ctx.stroke();
+  /* fence at the far edge */
+  ctx.strokeStyle=col("--muted");ctx.lineWidth=2;ctx.beginPath();for(let i=0;i<3;i++){ctx.moveTo(W-6-i*6,gy);ctx.lineTo(W-6-i*6,gy-26);}ctx.moveTo(W-20,gy-8);ctx.lineTo(W-2,gy-8);ctx.moveTo(W-20,gy-20);ctx.lineTo(W-2,gy-20);ctx.stroke();
+  const arc=(v,s1,color,lw,dash)=>{ctx.strokeStyle=col(color);ctx.lineWidth=lw;ctx.setLineDash(dash||[]);ctx.beginPath();let first=true;
+    for(let s=0;s<=s1+1e-9;s+=s1/60){const x=v*s,y=m.h-5*s*s;if(X(x)>W-8)break;if(first){ctx.moveTo(X(x),Y(y));first=false;}else ctx.lineTo(X(x),Y(y));}ctx.stroke();ctx.setLineDash([]);};
+  if(!pre){arc(m.v1,m.tf,"--muted",1.2,[3,3]);ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.textAlign="left";ctx.fillText("no thumb",Math.max(X(m.R0)+4,x0+16),gy-10);
+    const s=Math.min(m.tf,tt-F.T0);if(s>0){arc(F.v,s,"--petal-5",3);
+      if(s>=m.tf&&X(F.R)<W-8){ctx.strokeStyle=col("--petal-5");ctx.lineWidth=1.4;const sx=X(F.R);for(let i=-1;i<=1;i++){ctx.beginPath();ctx.moveTo(sx,gy-2);ctx.lineTo(sx+i*7,gy-10-(i?0:4));ctx.stroke();}}}}
+  /* end view of the hose with your thumb over the top */
+  const ix=W-36,iy=96,ir=20;ctx.save();ctx.beginPath();ctx.arc(ix,iy,ir,0,7);ctx.clip();
+  ctx.fillStyle=col("--petal-5");ctx.globalAlpha=.6;ctx.fillRect(ix-ir,iy-ir,2*ir,2*ir);ctx.globalAlpha=1;
+  if(c){const hs=yrdSeg(c.f);ctx.fillStyle=col("--pot");ctx.fillRect(ix-ir,iy-ir,2*ir,(2-hs)*ir);}
+  ctx.restore();ctx.strokeStyle=col("--ink");ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(ix,iy,ir,0,7);ctx.stroke();
+  ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText(c?`${fmtNum(100*c.f)}% open`:"hose end",ix,iy+ir+12);
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`t = ${tt.toFixed(2)} s${!pre?`   jet ${fmtNum(F.v)} m/s`:""}`,12,14);
+  ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`flow ${m.Q} L/min`,W-12,14);
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`you left ${c.t}`,12,30);}
+  if(ended)result(F.hit,F.hit?"In the bucket":F.R<m.D?"Fell short":"Overshot");
+}
+TOYS.yard.game={title:"Backyard water day",intro:"Water and oil here follow this chapter's fluid rules exactly. Plan it, then try it.",
+  names:YRD_NAMES,make:makeYard,ms:m=>m.kind===0?Math.min(9000,1800+900*Math.min(9,m.N+1)):m.kind===1?3600:4200,
+  sim:m=>yardSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawYard,
+  outcome:(F,m)=>{const c=m.choices[LP.pick==null?0:LP.pick];
+    if(m.kind===0)return F.hit?`${m.N} friends fit with the top just above the water. One more would sink it.`:F.sunk?`The raft held ${m.N} friends. Friend number ${m.N+1} pushed it under.`:`Everyone fit, with room to spare.`;
+    if(m.kind===1)return F.hit?"The car held still while the jack stands went under.":F.up?"Too hard: the car shot up to the top of the jack.":`Too gentle: the car sank to the bottom of the jack. It needed ${ferN(m.F1)} N.`;
+    return F.hit?`The water landed in the bucket, ${fmtNum(m.D)} m away.`:F.R<m.D?`The water only reached ${fmtNum(F.R)} m.`:`The water flew past the bucket and landed ${fmtNum(F.R)} m away.`;},
+  right:"Nice!",go:"Try it",pickFirst:"Pick an answer to try it",again:"Try again with new numbers",cvLabel:"Backyard",
+  notReadyTitle:"The backyard isn't ready yet",notReady:"Each plant in your garden that blooms adds a part to the backyard. Bloom all seven to play."};
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -3788,7 +4011,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/01h";
+const APP_VERSION="11/01i";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -4176,7 +4399,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeSpace,spaceSim,makeMgr,mgrSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeSpace,spaceSim,makeYard,yardSim,makeMgr,mgrSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
