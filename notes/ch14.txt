@@ -1,0 +1,767 @@
+# FREEBODY NOTES: CHAPTER 14, FLUID MECHANICS
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 14.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(p = F/A\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+
+## SUMMARY 14.1
+In short: A fluid (a liquid or a gas) flows and takes the shape of its container. Density is mass per volume, \(\rho = \frac{m}{V}\) (kg/m³); water is about \(1000\ \text{kg/m}^3\). Pressure is force per area, \(p = \frac{F}{A}\), in pascals (1 Pa = 1 N/m²); a fluid pushes at right angles on every surface it touches, equally in all directions at a point. Going down into a fluid of constant density, pressure grows steadily: \(p = p_0 + \rho gh\). The shape of the container doesn't matter, only the depth.
+Watch out: The \(h\) in \(\rho gh\) is depth below the surface, measured straight down, not the distance along a slanted wall or the height above the bottom.
+
+## SUMMARY 14.2
+In short: Gauge pressure is pressure above atmospheric; absolute pressure includes the atmosphere: \(p_\text{abs} = p_\text{g} + p_\text{atm}\), with \(p_\text{atm} \approx 1.01 \times 10^5\ \text{Pa}\). A tire gauge reads gauge pressure, so a flat tire reads zero even though the air inside is at atmospheric pressure. An open tube manometer shows gauge pressure as a height difference, \(p_\text{g} = \rho gh\). A mercury barometer measures the atmosphere itself: the air holds up a column about 760 mm tall.
+Watch out: Gauge pressure can be negative (a partial vacuum), but absolute pressure never is.
+
+## SUMMARY 14.3
+In short: Pascal's principle: a change in pressure applied to an enclosed fluid reaches every part of the fluid and the container walls undiminished. In a hydraulic press both pistons feel the same pressure, so \(\frac{F_1}{A_1} = \frac{F_2}{A_2}\): a small force on a small piston makes a big force on a big piston. Energy is still conserved: the small piston moves farther, \(A_1d_1 = A_2d_2\), so the work in equals the work out.
+Watch out: A hydraulic lift multiplies force, not energy. Push 10 times less and you push 10 times farther.
+
+## SUMMARY 14.4
+In short: Archimedes' principle: a fluid pushes up on a submerged object with a buoyant force equal to the weight of the fluid it displaces, \(F_\text{B} = \rho_\text{fluid}V_\text{sub}g\). It comes from the pressure being larger on the bottom of the object than on the top. An object floats when it is less dense than the fluid; then it sinks just far enough that \(F_\text{B}\) equals its weight, and the fraction under the surface is \(\frac{V_\text{sub}}{V} = \frac{\rho_\text{obj}}{\rho_\text{fluid}}\). An object denser than the fluid sinks, but still feels \(F_\text{B}\), so it seems lighter.
+Watch out: Use the volume of fluid displaced (the part under the surface) and the fluid's density, not the object's.
+
+## SUMMARY 14.5
+In short: In steady flow, the flow rate is the volume passing a point per second, \(Q = \frac{dV}{dt} = Av\) (m³/s). For an incompressible fluid, what goes in must come out, so \(A_1v_1 = A_2v_2\) (the continuity equation): where a pipe narrows, the fluid speeds up. Squeeze a garden hose and the water jets out faster. For a gas whose density changes, \(\rho_1A_1v_1 = \rho_2A_2v_2\) (mass flow rate stays the same).
+Watch out: Area goes as radius squared. Halve a pipe's radius and the speed goes up 4 times, not 2.
+
+## SUMMARY 14.6
+In short: Bernoulli's equation is energy conservation per volume for a fluid with no viscosity: \(p + \frac12\rho v^2 + \rho gy\) is the same everywhere along a streamline. At the same height, faster fluid has lower pressure (Bernoulli's principle): air speeding over a curved wing, the shower curtain pulled inward, a narrowing pipe with lower pressure in the narrow part. Torricelli's theorem: water leaving a hole a depth \(h\) below an open surface comes out at \(v = \sqrt{2gh}\), as fast as if it had fallen \(h\).
+Watch out: Faster flow means lower pressure, not higher. In the narrow part of a pipe the water moves faster and its pressure is lower, even though it may seem it should be squeezed harder.
+
+## SUMMARY 14.7
+In short: Real fluids have viscosity \(\eta\), a kind of internal friction (Pa·s). In laminar flow the layers slide smoothly past each other; at high speeds the flow turns turbulent, with eddies. Through a pipe, Poiseuille's law gives \(Q = \frac{(p_2 - p_1)}{R}\) with resistance \(R = \frac{8\eta l}{\pi r^4}\), so the flow depends very strongly on the radius: double the radius and the flow goes up 16 times. This is why a slightly narrowed artery makes the heart work much harder.
+Watch out: The radius is to the fourth power in Poiseuille's law, unlike the square in the continuity equation.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+
+
+
+## EQUATIONS 14.1
+* Density: \(\rho = \dfrac{m}{V}\) | Mass \(m\) (kg) per volume \(V\) (m³), in kg/m³. Water is about \(1000\ \text{kg/m}^3\).
+* Pressure: \(p = \dfrac{F}{A}\) | Force \(F\) (N) at right angles to an area \(A\) (m²), in pascals (1 Pa = 1 N/m²).
+* Pressure at a depth: \(p = p_0 + \rho gh\) | Pressure (Pa) a depth \(h\) (m) below a surface at pressure \(p_0\), in a fluid of density \(\rho\). Only the depth matters, not the container's shape.
+Change of pressure with height: \(\dfrac{dp}{dy} = -\rho g\) | Going up (\(y\) increasing) in a fluid of density \(\rho\) lowers the pressure by \(\rho g\) per meter.
+
+## EQUATIONS 14.2
+* Absolute pressure: \(p_\text{abs} = p_\text{g} + p_\text{atm}\) | Gauge pressure \(p_\text{g}\) (Pa) is what a gauge reads, above atmospheric pressure \(p_\text{atm} \approx 1.01 \times 10^5\ \text{Pa}\).
+Manometer or barometer: \(p = \rho gh\) | A column of liquid of density \(\rho\) and height difference \(h\) (m) balances a pressure difference \(p\) (Pa).
+
+## EQUATIONS 14.3
+* Pascal's principle: \(\dfrac{F_1}{A_1} = \dfrac{F_2}{A_2}\) | Both pistons of a hydraulic press, of areas \(A_1\) and \(A_2\) (m²), feel the same pressure, so the forces (N) scale with the areas.
+Pistons move different distances: \(A_1d_1 = A_2d_2\) | The fluid volume pushed out of one cylinder fills the other, so the small piston moves farther (m) and the work in equals the work out.
+
+## EQUATIONS 14.4
+* Buoyant force: \(F_\text{B} = \rho_\text{fluid}V_\text{sub}\,g\) | The weight (N) of the fluid displaced: fluid density \(\rho_\text{fluid}\) (kg/m³) times the submerged volume \(V_\text{sub}\) (m³) times \(g\).
+* Fraction submerged: \(\dfrac{V_\text{sub}}{V} = \dfrac{\rho_\text{obj}}{\rho_\text{fluid}}\) | For a floating object of density \(\rho_\text{obj}\), the fraction of its volume below the surface.
+
+## EQUATIONS 14.5
+Volume flow rate: \(Q = \dfrac{dV}{dt}\) | The volume (m³) passing a point per second, in m³/s.
+* Flow rate and speed: \(Q = Av\) | Fluid moving at average speed \(v\) (m/s) through a cross section of area \(A\) (m²).
+* Continuity equation: \(A_1v_1 = A_2v_2\) | For an incompressible fluid, the flow rate is the same everywhere in a pipe, so a narrower part has faster flow.
+Continuity, general form: \(\rho_1A_1v_1 = \rho_2A_2v_2\) | The mass flow rate (kg/s) stays the same even when the density changes, as in a gas.
+
+## EQUATIONS 14.6
+* Bernoulli's equation: \(p + \tfrac12\rho v^2 + \rho gy = \text{constant}\) | Along a streamline of a fluid with no viscosity: pressure \(p\) (Pa), kinetic energy per volume, and potential energy per volume add to the same total.
+* Bernoulli's principle: \(p_1 + \tfrac12\rho v_1^2 = p_2 + \tfrac12\rho v_2^2\) | At the same height, where the fluid moves faster its pressure is lower.
+Torricelli's theorem: \(v = \sqrt{2gh}\) | Speed (m/s) of fluid leaving a hole a depth \(h\) (m) below an open surface, the same as falling freely through \(h\).
+
+## EQUATIONS 14.7
+Viscosity: \(\eta = \dfrac{FL}{vA}\) | Force \(F\) (N) to slide a plate of area \(A\) (m²) at speed \(v\) (m/s) over a fluid layer of thickness \(L\) (m). Units Pa·s.
+Resistance to flow: \(R = \dfrac{8\eta l}{\pi r^4}\) | Resistance of a pipe of length \(l\) (m) and radius \(r\) (m) to fluid of viscosity \(\eta\) (Pa·s).
+* Poiseuille's law: \(Q = \dfrac{(p_2 - p_1)\pi r^4}{8\eta l}\) | Laminar flow rate (m³/s) through a pipe driven by a pressure difference (Pa). The \(r^4\) makes radius matter enormously.
+
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 14.1
+# Book: 1
+#
+# ## EXAMPLE 14.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#         For rotation, the letter can be ω, θ, α, or τ (units rad/s, rad, rad/s², N·m), for example
+#         Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+#         For an angle axis, write the formula with x and use "θ from 0 to 4" (Tap: θ = 2 works too):
+#         Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+
+
+
+
+
+# ============================ 14.1 FLUIDS, DENSITY, AND PRESSURE ============================
+
+## QUIZ 14.1
+Q: Three open containers of different shapes, a wide tub, a narrow tube, and a cone, are filled with water to the same depth. Where is the pressure at the bottom greatest?
+A) It is the same in all three
+B) The wide tub, since it holds the most water
+C) The narrow tube
+D) The cone
+Answer: A
+Why: \(p = p_0 + \rho gh\) depends only on the depth \(h\), not on the shape of the container or how much water it holds.
+
+## QUIZ 14.1
+Q: Which unit is the same as one pascal?
+A) \(\text{N/m}^2\)
+B) \(\text{N·m}\)
+C) \(\text{kg/m}^3\)
+D) \(\text{N/m}\)
+Answer: A
+Why: Pressure is force per area, \(p = \frac{F}{A}\), so 1 Pa = 1 N/m². Choice C is the unit of density.
+
+## QUIZ 14.1
+Q: Why does a sharp knife cut better than a dull one, pushed with the same force?
+A) The edge touches a smaller area, so the pressure is larger
+B) The sharp knife pushes with more force
+C) The dull knife has more friction
+D) The pressure is the same; the sharp knife is just harder
+Answer: A
+Why: \(p = \frac{F}{A}\). The same force on a much smaller area gives a much larger pressure.
+
+## QUIZ 14.1
+Q: In a lake, the extra pressure from the water above (beyond the air's pressure) is \(p\) at a depth of 10 m. What is it at 20 m?
+A) \(2p\)
+B) \(4p\)
+C) \(p\)
+D) \(\frac12p\)
+Answer: A
+Why: The water's part is \(\rho gh\), which grows in proportion to the depth. Twice as deep gives twice as much.
+
+## QUIZ 14.1
+Q: A uniform block of wood is cut in half. What is the density of each half?
+A) The same as the whole block
+B) Half the density of the whole block
+C) Twice the density of the whole block
+D) It depends on how it was cut
+Answer: A
+Why: \(\rho = \frac{m}{V}\). Each half has half the mass and half the volume, so the ratio is unchanged.
+
+## DRILL 14.1
+Q: A block has a mass of \({{m}}\ \text{kg}\) and a volume of \({{V}}\ \text{L}\) (\(1\ \text{L} = 0.001\ \text{m}^3\)). What is its density?
+Let: m = one of 2, 5, 8; V = one of 1, 2, 4
+Answer: m/(V*0.001)
+Wrong: m/V | That is in kg per liter. Change liters to m³ first: \(1\ \text{L} = 0.001\ \text{m}^3\).
+Wrong: V*0.001/m | Flip it: density is mass divided by volume.
+Wrong: m*V*0.001 | Divide by the volume: \(\rho = \frac{m}{V}\).
+Unit: kg/m³
+Work: \rho = \frac{m}{V} = \frac{{{m}}}{{{V}} \times 0.001} = {{answer}}\ \text{kg/m}^3
+
+## DRILL 14.1
+Q: A person's weight of \({{F}}\ \text{N}\) rests on one shoe heel with an area of \({{A}}\ \text{cm}^2\) (\(1\ \text{cm}^2 = 10^{-4}\ \text{m}^2\)). What pressure does the heel put on the floor?
+Let: F = one of 500, 600, 700; A = one of 1, 2, 4
+Answer: F/(A*100)
+Wrong: F/A | That is in N/cm². Change the area to m² first: \(A \times 10^{-4}\ \text{m}^2\).
+Wrong: F*A/100 | Pressure is force divided by area.
+Wrong: F/(A*10000) | \(\frac{F}{A \times 10^{-4}}\) gives pascals; then divide by \(10^6\) for MPa.
+Unit: MPa
+Work: p = \frac{F}{A} = \frac{{{F}}}{{{A}} \times 10^{-4}}\ \text{Pa} = {{answer}}\ \text{MPa}
+
+## DRILL 14.1
+Q: How much greater is the pressure \({{h}}\ \text{m}\) below the surface of a lake than at the surface? Use \(\rho = 1000\ \text{kg/m}^3\) and \(g = 10\ \text{m/s}^2\).
+Let: h = one of 2, 5, 8, 12
+Answer: 10*h
+Wrong: h | Multiply by \(g\) too: \(\Delta p = \rho gh\).
+Wrong: 101 + 10*h | That is the total pressure. The difference from the surface is just \(\rho gh\).
+Wrong: 100*h | \(\rho gh = (1000)(10)h\) Pa, which is \(10h\) kPa.
+Unit: kPa
+Work: \Delta p = \rho gh = (1000)(10)({{h}})\ \text{Pa} = {{answer}}\ \text{kPa}
+
+## DRILL 14.1
+Q: The air pushes on a lake's surface with \(101\ \text{kPa}\). What is the total pressure \({{h}}\ \text{m}\) below the surface? Use \(\rho = 1000\ \text{kg/m}^3\) and \(g = 10\ \text{m/s}^2\).
+Let: h = one of 3, 5, 10, 20
+Answer: 101 + 10*h
+Wrong: 10*h | Add the air's pressure on the surface: \(p = p_0 + \rho gh\).
+Wrong: 101 | Pressure grows with depth: add \(\rho gh\).
+Wrong: 101 + h | \(\rho gh = (1000)(10)h\) Pa, which is \(10h\) kPa.
+Unit: kPa
+Work: p = p_0 + \rho gh = 101 + (1000)(10)({{h}})/1000 = {{answer}}\ \text{kPa}
+
+## DRILL 14.1
+Q: A fish tank is filled with water \({{h}}\ \text{m}\) deep over a bottom of area \({{A}}\ \text{m}^2\). Ignoring the air, what force does the water put on the bottom? Use \(\rho = 1000\ \text{kg/m}^3\) and \(g = 10\ \text{m/s}^2\).
+Let: h = one of 0.5, 1, 1.5; A = one of 2, 3, 4
+Answer: 10*h*A
+Wrong: 5*h*A | Half the depth is the average pressure on a side wall. Every point of the bottom is at the full depth \(h\).
+Wrong: h*A | Multiply by \(\rho g\): \(F = \rho ghA\).
+Wrong: 10*A | Pressure grows with depth: \(p = \rho gh\).
+Unit: kN
+Work: F = pA = \rho ghA = (1000)(10)({{h}})({{A}})\ \text{N} = {{answer}}\ \text{kN}
+
+## GRAPH 14.1
+Q: The graph shows the pressure against depth \(x\) below the surface of a liquid. Use \(g = 10\ \text{m/s}^2\). What is the liquid's density?
+Plot: p = 101 + 8*x; x from 0 to 10; y from 0 to 200; unit kPa
+A) \(800\ \text{kg/m}^3\)
+B) \(8\ \text{kg/m}^3\)
+C) \(8000\ \text{kg/m}^3\)
+D) \(101\ \text{kg/m}^3\)
+Answer: A
+Why: The slope is \(\rho g = 8\ \text{kPa/m} = 8000\ \text{Pa/m}\), so \(\rho = \frac{8000}{10} = 800\ \text{kg/m}^3\), about the density of oil. The 101 kPa where the line starts is the air on the surface.
+
+
+# ============================ 14.2 MEASURING PRESSURE ============================
+
+## QUIZ 14.2
+Q: A tire is completely flat. What does a tire gauge read?
+A) Zero, because the air inside is at atmospheric pressure
+B) About 101 kPa
+C) A negative number
+D) It can't read a flat tire
+Answer: A
+Why: A tire gauge reads gauge pressure, the pressure above atmospheric. The air in a flat tire has an absolute pressure of about 101 kPa, which is a gauge pressure of zero.
+
+## QUIZ 14.2
+Q: A tire gauge reads 220 kPa. About what is the absolute pressure of the air inside?
+A) 321 kPa
+B) 220 kPa
+C) 119 kPa
+D) 101 kPa
+Answer: A
+Why: \(p_\text{abs} = p_\text{g} + p_\text{atm} = 220 + 101 = 321\ \text{kPa}\).
+
+## QUIZ 14.2
+Q: Why do barometers use mercury instead of water?
+A) Mercury is about 13.6 times denser, so the column is short; a water barometer would be about 10 m tall
+B) Mercury doesn't evaporate at all
+C) Water can't hold up a column against the atmosphere
+D) Mercury is lighter, so it rises higher
+Answer: A
+Why: The atmosphere holds up a column with \(\rho gh = p_\text{atm}\). A denser liquid needs a shorter column: about 0.76 m of mercury against about 10 m of water.
+
+## QUIZ 14.2
+Q: Which of these can be negative?
+A) Gauge pressure, but not absolute pressure
+B) Absolute pressure, but not gauge pressure
+C) Both
+D) Neither
+Answer: A
+Why: Gauge pressure is measured from atmospheric pressure, so a partial vacuum (like drinking through a straw) has a negative gauge pressure. Absolute pressure can't go below zero.
+
+## DRILL 14.2
+Q: A gauge on an air tank reads \({{pg}}\ \text{kPa}\), and atmospheric pressure is \(101\ \text{kPa}\). What is the absolute pressure in the tank?
+Let: pg = one of 150, 200, 240, 300
+Answer: pg + 101
+Wrong: pg | That is the gauge pressure. Add atmospheric pressure for the absolute pressure.
+Wrong: pg - 101 | Add atmospheric pressure: the gauge reads how far above atmospheric the tank is.
+Wrong: 101 | The tank is above atmospheric pressure by \(p_\text{g}\).
+Unit: kPa
+Work: p_\text{abs} = p_\text{g} + p_\text{atm} = {{pg}} + 101 = {{answer}}\ \text{kPa}
+
+## DRILL 14.2
+Q: An open tube manometer filled with water shows a height difference of \({{h}}\ \text{cm}\). What is the gauge pressure? Use \(\rho = 1000\ \text{kg/m}^3\) and \(g = 10\ \text{m/s}^2\).
+Let: h = one of 5, 12, 20, 30
+Answer: 100*h
+Wrong: 10000*h | Change centimeters to meters first: \(h/100\).
+Wrong: 10*h | Multiply by \(g\) too: \(p_\text{g} = \rho gh\).
+Wrong: 100*h + 101000 | That adds the atmosphere, giving absolute pressure. A manometer open to the air shows gauge pressure.
+Unit: Pa
+Work: p_\text{g} = \rho gh = (1000)(10)\left(\tfrac{{{h}}}{100}\right) = {{answer}}\ \text{Pa}
+
+## DRILL 14.2
+Q: On a mountain, atmospheric pressure is \({{p}}\ \text{kPa}\). How tall a column of water could it hold up in a barometer? Use \(\rho = 1000\ \text{kg/m}^3\) and \(g = 10\ \text{m/s}^2\).
+Let: p = one of 70, 80, 90, 100
+Answer: p/10
+Wrong: p*100 | Divide by \(\rho g\): \(h = \frac{p}{\rho g}\).
+Wrong: p | Change kPa to Pa and divide by \(\rho g = 10{,}000\ \text{N/m}^3\).
+Wrong: p/100 | \(h = \frac{p \times 1000}{(1000)(10)} = \frac{p}{10}\) m.
+Unit: m
+Work: h = \frac{p}{\rho g} = \frac{{{p}} \times 1000}{(1000)(10)} = {{answer}}\ \text{m}
+
+## DRILL 14.2
+Q: In a tank of oil with density \({{rho}}\ \text{kg/m}^3\), a gauge reads \({{p}}\ \text{kPa}\). How deep is the gauge? Use \(g = 10\ \text{m/s}^2\).
+Let: rho = one of 800, 900; p = one of 18, 36, 72
+Answer: p*1000/(rho*10)
+Wrong: p*1000/(1000*10) | That is water. Use the oil's density.
+Wrong: p/(rho*10) | Change kPa to Pa first.
+Wrong: p*1000/rho | Divide by \(g\) too: \(h = \frac{p_\text{g}}{\rho g}\).
+Unit: m
+Work: h = \frac{p_\text{g}}{\rho g} = \frac{{{p}} \times 1000}{({{rho}})(10)} = {{answer}}\ \text{m}
+
+
+# ============================ 14.3 PASCAL'S PRINCIPLE AND HYDRAULICS ============================
+
+## QUIZ 14.3
+Q: What does a hydraulic lift multiply?
+A) Force, but not energy
+B) Energy
+C) Both force and energy
+D) Pressure
+Answer: A
+Why: The big piston gets a bigger force, but it moves a shorter distance, so the work out equals the work in. The pressure is the same on both pistons.
+
+## QUIZ 14.3
+Q: You squeeze the middle of a sealed, full plastic water bottle. Where does the pressure inside go up?
+A) Everywhere in the water, by the same amount
+B) Only where you squeeze
+C) Only at the bottom
+D) Nowhere; water can't be compressed
+Answer: A
+Why: Pascal's principle: a change in pressure on an enclosed fluid reaches every part of it undiminished.
+
+## QUIZ 14.3
+Q: In a hydraulic press, the large piston has 10 times the area of the small one. The small piston is pushed down 10 cm. How far does the large piston rise?
+A) 1 cm
+B) 10 cm
+C) 100 cm
+D) 0.1 cm
+Answer: A
+Why: The volume of fluid pushed out, \(A_1d_1\), fills \(A_2d_2\). Ten times the area means one tenth the distance.
+
+## QUIZ 14.3
+Q: Why is air in a car's brake lines dangerous?
+A) Air compresses, so pushing the pedal squeezes the air instead of pushing the brake pistons
+B) Air makes the fluid heavier
+C) Air raises the pressure too much
+D) Air makes the brakes grab too hard
+Answer: A
+Why: Hydraulics work because the liquid barely compresses, so the pedal's pressure reaches the wheels. A gas bubble just gets smaller and the pedal feels soft.
+
+## DRILL 14.3
+Q: A hydraulic press has a small piston of area \({{A1}}\ \text{m}^2\) and a large piston of area \({{A2}}\ \text{m}^2\). A force of \({{F1}}\ \text{N}\) pushes on the small piston. What force does the large piston exert?
+Let: A1 = one of 0.01, 0.02; A2 = one of 0.5, 1; F1 = one of 50, 100, 200
+Answer: F1*A2/A1
+Wrong: F1*A1/A2 | The large piston gets the larger force: \(F_2 = F_1\frac{A_2}{A_1}\).
+Wrong: F1 | The pressure is the same on both pistons, not the force.
+Wrong: F1*(A2/A1)^2 | Force scales with area, not area squared.
+Unit: N
+Work: F_2 = F_1\frac{A_2}{A_1} = ({{F1}})\frac{{{A2}}}{{{A1}}} = {{answer}}\ \text{N}
+
+## DRILL 14.3
+Q: A hydraulic jack has a small piston of radius \({{r1}}\ \text{cm}\) and a large piston of radius \({{r2}}\ \text{cm}\). A force of \({{F1}}\ \text{N}\) pushes on the small piston. What force does the large piston exert?
+Let: r1 = one of 1, 2; r2 = one of 10, 15; F1 = one of 50, 100
+Answer: F1*(r2/r1)^2
+Wrong: F1*r2/r1 | Area goes as radius squared, so the force grows by \(\left(\frac{r_2}{r_1}\right)^2\).
+Wrong: F1*(r1/r2)^2 | The large piston gets the larger force.
+Wrong: F1 | The pressure is the same on both pistons, not the force.
+Unit: N
+Work: F_2 = F_1\frac{\pi r_2^2}{\pi r_1^2} = ({{F1}})\left(\frac{{{r2}}}{{{r1}}}\right)^2 = {{answer}}\ \text{N}
+
+## DRILL 14.3
+Q: The large piston of a hydraulic lift has \({{k}}\) times the area of the small piston. The small piston is pushed down \({{d1}}\ \text{cm}\). How far does the large piston rise?
+Let: k = one of 5, 10, 20; d1 = one of 10, 20, 30
+Answer: d1/k
+Wrong: d1*k | The large piston moves less: the same volume spreads over more area.
+Wrong: d1 | The volumes are equal, \(A_1d_1 = A_2d_2\), not the distances.
+Wrong: d1/k^2 | \(A_1d_1 = A_2d_2\) gives \(d_2 = d_1\frac{A_1}{A_2}\), with no square.
+Unit: cm
+Work: d_2 = d_1\frac{A_1}{A_2} = \frac{{{d1}}}{{{k}}} = {{answer}}\ \text{cm}
+
+## DRILL 14.3
+Q: A car lift holds a car of weight \({{W}}\ \text{N}\) on a piston of area \({{A2}}\ \text{m}^2\). The small piston has area \({{A1}}\ \text{m}^2\). What force on the small piston holds the car up?
+Let: W = one of 10000, 12000, 15000; A2 = one of 0.5, 1, 2; A1 = one of 0.01, 0.02
+Answer: W*A1/A2
+Wrong: W*A2/A1 | The small piston needs the smaller force: \(F_1 = W\frac{A_1}{A_2}\).
+Wrong: W | The pistons share the same pressure, not the same force.
+Wrong: W*A1 | That is \(W \times A_1\); divide by \(A_2\) too, since the pressure is \(W/A_2\).
+Unit: N
+Work: \frac{F_1}{A_1} = \frac{W}{A_2} \Rightarrow F_1 = ({{W}})\frac{{{A1}}}{{{A2}}} = {{answer}}\ \text{N}
+
+
+# ============================ 14.4 ARCHIMEDES' PRINCIPLE AND BUOYANCY ============================
+
+## QUIZ 14.4
+Q: What does the buoyant force on a submerged object equal?
+A) The weight of the fluid the object displaces
+B) The weight of the object
+C) The volume of the object
+D) The pressure at the object's depth
+Answer: A
+Why: Archimedes' principle: \(F_\text{B} = \rho_\text{fluid}V_\text{sub}g\), the weight of the displaced fluid. It equals the object's weight only when the object floats.
+
+## QUIZ 14.4
+Q: Ice has a density of about \(920\ \text{kg/m}^3\). About how much of a floating ice cube is under the water?
+A) About 92%
+B) About 8%
+C) About 50%
+D) All of it
+Answer: A
+Why: For a floating object, \(\frac{V_\text{sub}}{V} = \frac{\rho_\text{obj}}{\rho_\text{fluid}} = \frac{920}{1000} = 0.92\). That's why most of an iceberg is hidden.
+
+## QUIZ 14.4
+Q: Steel is much denser than water. How does a steel ship float?
+A) Its hollow hull displaces a weight of water equal to the ship's weight
+B) Steel becomes less dense in water
+C) The air pushes up on the deck
+D) It moves fast enough to stay up
+Answer: A
+Why: The hull encloses a lot of air, so the ship's average density is less than water's. It sinks until the water it displaces weighs as much as the whole ship.
+
+## QUIZ 14.4
+Q: An aluminum block and a lead block of the same size are held completely under water. Which has the larger buoyant force?
+A) They are the same
+B) The lead block
+C) The aluminum block
+D) It depends on the depth
+Answer: A
+Why: Both displace the same volume of water, so \(F_\text{B} = \rho_\text{water}Vg\) is the same. The lead block is heavier, so it sinks harder, but the push up is equal.
+
+## QUIZ 14.4
+Q: Where does the buoyant force come from?
+A) The water pressure on the bottom of the object is greater than on the top
+B) The object pushes the water up
+C) Water molecules stick to the object
+D) Gravity is weaker under water
+Answer: A
+Why: Pressure grows with depth, \(p = p_0 + \rho gh\), so the upward push on the bottom face is larger than the downward push on the top face. The difference is \(F_\text{B}\).
+
+## DRILL 14.4
+Q: A steel block (density \(7900\ \text{kg/m}^3\)) with a volume of \({{V}}\ \text{L}\) is held completely under water. What is the buoyant force? Use \(1\ \text{L} = 0.001\ \text{m}^3\), \(\rho_\text{water} = 1000\ \text{kg/m}^3\), and \(g = 10\ \text{m/s}^2\).
+Let: V = one of 2, 3, 5, 8
+Answer: 10*V
+Wrong: 79*V | That is the block's weight. Use the density of the water it displaces.
+Wrong: V | Multiply by \(g\) too: \(F_\text{B} = \rho Vg\).
+Wrong: 10000*V | Change liters to m³ first.
+Unit: N
+Work: F_\text{B} = \rho_\text{water}Vg = (1000)({{V}} \times 0.001)(10) = {{answer}}\ \text{N}
+
+## DRILL 14.4
+Q: A block of wood with density \({{rho}}\ \text{kg/m}^3\) floats in fresh water (\(1000\ \text{kg/m}^3\)). What percent of its volume is under the water?
+Let: rho = one of 600, 700, 800, 900
+Answer: rho/10
+Wrong: 100 - rho/10 | That is the part above the water.
+Wrong: 100000/rho | Flip it: \(\frac{V_\text{sub}}{V} = \frac{\rho_\text{wood}}{\rho_\text{water}}\).
+Wrong: 50 | Floating doesn't mean half under. The fraction depends on the densities.
+Unit: %
+Work: \frac{V_\text{sub}}{V} = \frac{\rho_\text{wood}}{\rho_\text{water}} = \frac{{{rho}}}{1000} = {{answer}}\%
+
+## DRILL 14.4
+Q: A rock of mass \({{m}}\ \text{kg}\) and volume \({{V}}\ \text{L}\) hangs from a scale, completely under water. What does the scale read? Use \(1\ \text{L} = 0.001\ \text{m}^3\), \(\rho_\text{water} = 1000\ \text{kg/m}^3\), and \(g = 10\ \text{m/s}^2\).
+Let: m = one of 3, 5, 8; V = one of 1, 1.5, 2
+Answer: m*10 - 10*V
+Wrong: m*10 | That is the weight in air. The water pushes up with \(F_\text{B}\), so the scale reads less.
+Wrong: 10*V | That is the buoyant force alone. Subtract it from the weight.
+Wrong: m*10 + 10*V | The buoyant force pushes up, so subtract it.
+Unit: N
+Work: T = mg - F_\text{B} = ({{m}})(10) - (1000)({{V}} \times 0.001)(10) = {{answer}}\ \text{N}
+
+## DRILL 14.4
+Q: An object weighs \({{W}}\ \text{N}\) in air and \({{Wp}}\ \text{N}\) when hanging completely under water. What is its density? Use \(\rho_\text{water} = 1000\ \text{kg/m}^3\).
+Let: W = one of 20, 30; L = one of 4, 5, 6; Wp = W - L
+Answer: 1000*W/(W - Wp)
+Wrong: 1000*Wp/(W - Wp) | Use the weight in air. The weight lost, \(W - W'\), is the buoyant force.
+Wrong: 1000*(W - Wp)/W | Flip it: \(\frac{\rho}{\rho_\text{water}} = \frac{W}{W - W'}\).
+Wrong: 1000*W/Wp | Divide by the weight lost, \(W - W'\), which equals the weight of the displaced water.
+Unit: kg/m³
+Work: \rho = \rho_\text{water}\frac{W}{W - W'} = (1000)\frac{{{W}}}{{{W}} - {{Wp}}} = {{answer}}\ \text{kg/m}^3
+
+## DRILL 14.4
+Q: A raft has a volume of \({{V}}\ \text{m}^3\) and a mass of \({{M}}\ \text{kg}\). What is the most mass it can carry before it goes completely under in fresh water (\(1000\ \text{kg/m}^3\))?
+Let: V = one of 1, 1.5, 2; M = one of 200, 300
+Answer: 1000*V - M
+Wrong: 1000*V | The raft's own mass uses up part of the support.
+Wrong: 1000*V + M | Subtract the raft's mass: the displaced water must hold up the raft and the load.
+Wrong: 10000*V - M | That mixes newtons and kilograms. Compare masses: the water displaced has mass \(\rho V\).
+Unit: kg
+Work: \rho V = M + m_\text{load} \Rightarrow m_\text{load} = (1000)({{V}}) - {{M}} = {{answer}}\ \text{kg}
+
+
+# ============================ 14.5 FLUID DYNAMICS ============================
+
+## QUIZ 14.5
+Q: Water flows steadily through a pipe that narrows. In the narrow part, the water
+A) moves faster
+B) moves slower
+C) moves at the same speed
+D) stops
+Answer: A
+Why: The flow rate \(Q = Av\) is the same everywhere in the pipe, so a smaller area needs a larger speed: \(A_1v_1 = A_2v_2\).
+
+## QUIZ 14.5
+Q: Why does putting your thumb over the end of a garden hose make the water spray farther?
+A) The opening is smaller, so the water leaves faster
+B) Your thumb adds pressure to the whole water system
+C) More water comes out per second
+D) The water gets denser
+Answer: A
+Why: With about the same flow rate through a smaller opening, \(v = \frac{Q}{A}\) is larger, so the water jets out faster.
+
+## QUIZ 14.5
+Q: What are the SI units of volume flow rate?
+A) \(\text{m}^3/\text{s}\)
+B) \(\text{m/s}\)
+C) \(\text{kg/s}\)
+D) \(\text{m}^2/\text{s}\)
+Answer: A
+Why: \(Q = \frac{dV}{dt}\), a volume per time. Choice C is a mass flow rate.
+
+## QUIZ 14.5
+Q: A river gets wider and deeper as it flows into a lake area. What happens to the water's speed?
+A) It slows down
+B) It speeds up
+C) It stays the same
+D) It reverses
+Answer: A
+Why: The same flow rate passes through a larger cross section, so \(v = \frac{Q}{A}\) gets smaller.
+
+## DRILL 14.5
+Q: Water flows at \({{v}}\ \text{m/s}\) through a pipe with a cross section of \({{A}}\ \text{m}^2\). What is the volume flow rate?
+Let: v = one of 2, 3, 4; A = one of 0.02, 0.05
+Answer: A*v
+Wrong: A/v | Multiply: \(Q = Av\).
+Wrong: v/A | Multiply: \(Q = Av\).
+Wrong: A*v^2 | The speed is to the first power: \(Q = Av\).
+Unit: m³/s
+Work: Q = Av = ({{A}})({{v}}) = {{answer}}\ \text{m}^3\text{/s}
+
+## DRILL 14.5
+Q: Water moves at \({{v1}}\ \text{m/s}\) in a pipe with a cross section of \({{A1}}\ \text{cm}^2\). The pipe narrows to \({{A2}}\ \text{cm}^2\). How fast does the water move there?
+Let: v1 = one of 1, 2, 3; A1 = one of 4, 6; A2 = one of 1, 2
+Answer: v1*A1/A2
+Wrong: v1*A2/A1 | A narrower pipe means faster water: \(v_2 = v_1\frac{A_1}{A_2}\).
+Wrong: v1 | The flow rate stays the same, not the speed.
+Wrong: v1*(A1/A2)^2 | Areas are given, so no square: \(A_1v_1 = A_2v_2\).
+Unit: m/s
+Work: v_2 = v_1\frac{A_1}{A_2} = ({{v1}})\frac{{{A1}}}{{{A2}}} = {{answer}}\ \text{m/s}
+
+## DRILL 14.5
+Q: Water moves at \({{v1}}\ \text{m/s}\) in a round pipe. The pipe narrows to \(\frac1{{{k}}}\) of its radius. How fast does the water move in the narrow part?
+Let: v1 = one of 0.5, 1, 1.5; k = one of 2, 3
+Answer: v1*k^2
+Wrong: v1*k | Area goes as radius squared, so the speed grows by \(k^2\).
+Wrong: v1/k^2 | A narrower pipe means faster water, not slower.
+Wrong: v1/k | A narrower pipe means faster water, and by \(k^2\).
+Unit: m/s
+Work: v_2 = v_1\frac{\pi r_1^2}{\pi r_2^2} = ({{v1}})({{k}})^2 = {{answer}}\ \text{m/s}
+
+## DRILL 14.5
+Q: A hose with an opening of \(2\ \text{cm}^2\) sprays water at \({{v}}\ \text{m/s}\). How long does it take to fill a \({{V}}\ \text{L}\) bucket? (\(1\ \text{cm}^2 = 10^{-4}\ \text{m}^2\), \(1\ \text{L} = 0.001\ \text{m}^3\))
+Let: v = one of 2, 4, 5; V = one of 10, 20
+Answer: V*0.001/(0.0002*v)
+Wrong: V/(2*v) | Change both units first: the area to m² and the volume to m³.
+Wrong: V/(0.0002*v) | Change liters to m³ too.
+Wrong: V*0.001/(0.02*v) | \(1\ \text{cm}^2 = 10^{-4}\ \text{m}^2\), so \(2\ \text{cm}^2 = 2 \times 10^{-4}\ \text{m}^2\).
+Unit: s
+Work: t = \frac{V}{Av} = \frac{{{V}} \times 10^{-3}}{(2 \times 10^{-4})({{v}})} = {{answer}}\ \text{s}
+
+
+# ============================ 14.6 BERNOULLI'S EQUATION ============================
+
+## QUIZ 14.6
+Q: Water flows through a level pipe that narrows. How does the pressure in the narrow part compare to the wide part?
+A) Lower
+B) Higher
+C) The same
+D) It depends on the water's density
+Answer: A
+Why: The water moves faster in the narrow part. At the same height, Bernoulli's equation says faster flow goes with lower pressure.
+
+## QUIZ 14.6
+Q: Why does a shower curtain bulge inward when the shower is on?
+A) The moving air and water inside have lower pressure than the still air outside
+B) The water pulls the curtain with friction
+C) The hot water makes the curtain lighter
+D) The curtain is attracted to the water by gravity
+Answer: A
+Why: The spray drags air along with it. Faster moving air has lower pressure (Bernoulli's principle), so the still air outside pushes the curtain in.
+
+## QUIZ 14.6
+Q: Water flows out of a small hole a depth \(h\) below the open surface of a large tank. How fast does it come out?
+A) As fast as an object dropped from height \(h\)
+B) Faster for a denser liquid
+C) Faster for a bigger tank
+D) At \(gh\)
+Answer: A
+Why: Torricelli's theorem: \(v = \sqrt{2gh}\), the same as free fall through \(h\). The density cancels out of Bernoulli's equation.
+
+## QUIZ 14.6
+Q: Bernoulli's equation comes from which law?
+A) Conservation of energy
+B) Conservation of momentum
+C) Newton's third law
+D) Conservation of angular momentum
+Answer: A
+Why: Each term is an energy per volume: \(p\) is work done by pressure, \(\frac12\rho v^2\) is kinetic energy per volume, and \(\rho gy\) is potential energy per volume.
+
+## QUIZ 14.6
+Q: Two ping pong balls hang on strings a few centimeters apart. You blow air between them. What happens?
+A) They move toward each other
+B) They move apart
+C) They don't move
+D) They spin
+Answer: A
+Why: The fast air between the balls has lower pressure than the still air on their outer sides, so they are pushed together.
+
+## DRILL 14.6
+Q: Water leaks from a small hole \({{h}}\ \text{m}\) below the open surface of a large tank. Use \(g = 10\ \text{m/s}^2\). How fast does it come out?
+Let: h = one of 0.8, 1.8, 3.2, 5
+Answer: sqrt(2*10*h)
+Wrong: sqrt(10*h) | Keep the 2: \(v = \sqrt{2gh}\), like free fall.
+Wrong: 2*10*h | Take the square root: \(v^2 = 2gh\).
+Wrong: sqrt(2*h) | Include \(g\): \(v = \sqrt{2gh}\).
+Unit: m/s
+Work: v = \sqrt{2gh} = \sqrt{2(10)({{h}})} = {{answer}}\ \text{m/s}
+
+## DRILL 14.6
+Q: Water in a level pipe speeds up from \({{v1}}\ \text{m/s}\) to \({{v2}}\ \text{m/s}\). By how much does its pressure drop? Use \(\rho = 1000\ \text{kg/m}^3\).
+Let: v1 = one of 1, 2; v2 = one of 4, 5, 6
+Answer: 0.5*(v2^2 - v1^2)
+Wrong: 0.5*(v2 - v1)^2 | Square each speed first, then subtract.
+Wrong: v2^2 - v1^2 | Keep the ½: \(\Delta p = \frac12\rho(v_2^2 - v_1^2)\).
+Wrong: 0.5*v2^2 | The water was already moving: subtract \(\frac12\rho v_1^2\).
+Unit: kPa
+Work: \Delta p = \tfrac12\rho(v_2^2 - v_1^2) = \tfrac12(1000)({{v2}}^2 - {{v1}}^2)\ \text{Pa} = {{answer}}\ \text{kPa}
+
+## DRILL 14.6
+Q: Water moves at \({{v1}}\ \text{m/s}\) in a level pipe, then enters a section with \(\frac1{{{k}}}\) of the cross section area. By how much does the pressure drop? Use \(\rho = 1000\ \text{kg/m}^3\).
+Let: v1 = one of 1, 2; k = one of 2, 3
+Answer: 0.5*(k^2 - 1)*v1^2
+Wrong: 0.5*k^2*v1^2 | The water was already moving: subtract \(\frac12\rho v_1^2\).
+Wrong: (k^2 - 1)*v1^2 | Keep the ½ in \(\frac12\rho v^2\).
+Wrong: 0.5*(k - 1)^2*v1^2 | Square each speed first: \(v_2 = kv_1\), so \(v_2^2 - v_1^2 = (k^2 - 1)v_1^2\).
+Unit: kPa
+Work: v_2 = {{k}}v_1 \Rightarrow \Delta p = \tfrac12(1000)(({{k}})^2 - 1)({{v1}})^2\ \text{Pa} = {{answer}}\ \text{kPa}
+
+## DRILL 14.6
+Q: Air (\(\rho = 1.2\ \text{kg/m}^3\)) moves at \({{v2}}\ \text{m/s}\) over a wing and \({{v1}}\ \text{m/s}\) under it. The wing's area is \({{A}}\ \text{m}^2\). What lift does the pressure difference give?
+Let: v1 = one of 60, 70; v2 = v1 + 10; A = one of 10, 20
+Answer: 0.6*(v2^2 - v1^2)*A
+Wrong: 0.6*(v2 - v1)^2*A | Square each speed first, then subtract.
+Wrong: 1.2*(v2^2 - v1^2)*A | Keep the ½: \(\Delta p = \frac12\rho(v_2^2 - v_1^2)\).
+Wrong: 0.6*(v2^2 - v1^2) | That is the pressure difference. Multiply by the area for the force.
+Unit: N
+Work: F = \tfrac12\rho(v_2^2 - v_1^2)A = (0.6)({{v2}}^2 - {{v1}}^2)({{A}}) = {{answer}}\ \text{N}
+
+## DRILL 14.6
+Q: Water squirts out of a small hole in the side of a tall open tank at \({{v}}\ \text{m/s}\). How far below the water's surface is the hole? Use \(g = 10\ \text{m/s}^2\).
+Let: v = one of 2, 4, 6
+Answer: v^2/20
+Wrong: v^2/10 | Keep the 2: \(h = \frac{v^2}{2g}\).
+Wrong: v/20 | Square the speed: \(v^2 = 2gh\).
+Wrong: 20/v^2 | Flip it: \(h = \frac{v^2}{2g}\).
+Unit: m
+Work: h = \frac{v^2}{2g} = \frac{({{v}})^2}{2(10)} = {{answer}}\ \text{m}
+
+
+# ============================ 14.7 VISCOSITY AND TURBULENCE ============================
+
+## QUIZ 14.7
+Q: The radius of a pipe is doubled, with the same pressure difference and length. By what factor does the laminar flow rate change?
+A) 16 times larger
+B) 4 times larger
+C) 2 times larger
+D) It stays the same
+Answer: A
+Why: Poiseuille's law has \(r^4\): \(2^4 = 16\).
+
+## QUIZ 14.7
+Q: Which has a larger viscosity at room temperature, honey or water?
+A) Honey
+B) Water
+C) They are the same
+D) Viscosity only applies to gases
+Answer: A
+Why: Viscosity measures a fluid's internal friction. Honey resists flowing much more than water, so its \(\eta\) is much larger.
+
+## QUIZ 14.7
+Q: What is the difference between laminar and turbulent flow?
+A) Laminar flow moves in smooth layers; turbulent flow has swirling eddies
+B) Laminar flow is faster
+C) Turbulent flow has no viscosity
+D) Laminar flow only happens in gases
+Answer: A
+Why: At low speeds the layers slide smoothly past each other. Faster flow, or an obstacle, breaks it into eddies and mixing.
+
+## DRILL 14.7
+Q: A pipe's radius changes to \({{k}}\) times its original value, with the same pressure difference and length. The laminar flow rate becomes how many times the original?
+Let: k = one of 0.5, 2, 3
+Answer: k^4
+Wrong: k^2 | That is how area changes. Poiseuille's law has \(r^4\).
+Wrong: k | The radius is to the fourth power: \(Q \propto r^4\).
+Wrong: 4*k | Raise to the fourth power, don't multiply by 4.
+Unit: times
+Work: \frac{Q_2}{Q_1} = \left(\frac{r_2}{r_1}\right)^4 = ({{k}})^4 = {{answer}}
+
+## DRILL 14.7
+Q: Blood flows through an artery with a pressure difference of \({{dp}}\ \text{kPa}\). Plaque narrows it to \({{f}}\) of its radius. What pressure difference keeps the same flow rate?
+Let: dp = one of 2, 4; f = one of 0.5, 0.8
+Answer: dp/f^4
+Wrong: dp/f^2 | Poiseuille's law has \(r^4\), not \(r^2\).
+Wrong: dp/f | The radius is to the fourth power: \(Q \propto r^4\Delta p\).
+Wrong: dp*f^4 | A narrower artery needs more pressure, not less.
+Unit: kPa
+Work: r_2^4\Delta p_2 = r_1^4\Delta p_1 \Rightarrow \Delta p_2 = \frac{{{dp}}}{({{f}})^4} = {{answer}}\ \text{kPa}
+
+## DRILL 14.7
+Q: A force of \({{F}}\ \text{N}\) slides a plate of area \({{A}}\ \text{m}^2\) at \({{v}}\ \text{m/s}\) over a layer of oil \(1\ \text{mm}\) thick. What is the oil's viscosity?
+Let: F = one of 1, 2, 4; A = one of 0.1, 0.2; v = one of 0.5, 1
+Answer: F*0.001/(v*A)
+Wrong: F/(v*A) | Multiply by the layer thickness \(L = 0.001\ \text{m}\).
+Wrong: F*v*A/0.001 | Flip it: \(\eta = \frac{FL}{vA}\).
+Wrong: F*0.001*v/A | Divide by the speed: \(\eta = \frac{FL}{vA}\).
+Unit: Pa·s
+Work: \eta = \frac{FL}{vA} = \frac{({{F}})(0.001)}{({{v}})({{A}})} = {{answer}}\ \text{Pa·s}

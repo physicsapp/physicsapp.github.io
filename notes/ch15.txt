@@ -1,0 +1,653 @@
+# FREEBODY NOTES: CHAPTER 15, OSCILLATIONS
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 15.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(T = 2\pi\sqrt{m/k}\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use g = 10 m/s^2. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+
+## SUMMARY 15.1
+In short: An oscillation repeats itself. The period \(T\) is the time for one cycle and the frequency \(f = \frac1T\) is cycles per second (Hz). Simple harmonic motion (SHM) happens when the restoring force is proportional to the displacement, like a mass on a spring, \(F = -kx\). Then \(x(t) = A\cos(\omega t + \phi)\) with angular frequency \(\omega = 2\pi f = \sqrt{\frac{k}{m}}\), so \(T = 2\pi\sqrt{\frac{m}{k}}\). The speed is greatest at equilibrium (\(v_\text{max} = A\omega\)) and the acceleration is greatest at the ends (\(a_\text{max} = A\omega^2\)).
+Watch out: The period of SHM doesn't depend on the amplitude. A bigger swing just moves faster.
+
+## SUMMARY 15.2
+In short: With no friction, the energy of a mass on a spring stays the same while it trades back and forth between the spring's potential energy and the block's kinetic energy: \(E = \frac12kx^2 + \frac12mv^2 = \frac12kA^2\). At the ends (\(x = \pm A\)) it is all potential; at equilibrium it is all kinetic, \(\frac12mv_\text{max}^2 = \frac12kA^2\). Solving for the speed at any position gives \(v = \pm\sqrt{\frac{k}{m}(A^2 - x^2)}\).
+Watch out: The energy goes as amplitude squared. Double the amplitude and the energy goes up 4 times.
+
+## SUMMARY 15.3
+In short: SHM is the shadow of circular motion. A point moving in a circle of radius \(A\) at constant angular velocity \(\omega\) has an \(x\) component \(x = A\cos(\omega t + \phi)\), exactly SHM. The point's speed \(A\omega\) is the shadow's maximum speed, and its centripetal acceleration \(A\omega^2\) is the shadow's maximum acceleration. This is where the "angular" in angular frequency comes from.
+Watch out: The shadow moves fastest as it passes the center, where the point on the circle is moving straight across, and stops at the ends.
+
+## SUMMARY 15.4
+In short: A simple pendulum is a small mass on a light string of length \(L\). For small swings (about 15° or less, so \(\sin\theta \approx \theta\)), it moves in SHM with \(\omega = \sqrt{\frac{g}{L}}\) and period \(T = 2\pi\sqrt{\frac{L}{g}}\). The period doesn't depend on the mass or the amplitude, which is why pendulums keep good time and can measure \(g\). Any rigid object swinging about a pivot is a physical pendulum, \(T = 2\pi\sqrt{\frac{I}{mgL}}\), with \(L\) the distance from the pivot to the center of mass. A torsional pendulum twists back and forth: \(T = 2\pi\sqrt{\frac{I}{\kappa}}\).
+Watch out: To double a pendulum's period, make it 4 times longer, since \(T\) goes as \(\sqrt{L}\).
+
+## SUMMARY 15.5
+In short: Real oscillators lose energy to friction or drag, which is damping. With a damping force \(-bv\), light damping (underdamped) still oscillates, at a slightly lower \(\omega = \sqrt{\omega_0^2 - \left(\frac{b}{2m}\right)^2}\), with an amplitude that shrinks as \(e^{-bt/2m}\). Critical damping returns to equilibrium fastest without oscillating, which is what car shock absorbers aim for. Heavier damping (overdamped) returns slowly without oscillating.
+Watch out: The amplitude shrinks, but in light damping the period barely changes.
+
+## SUMMARY 15.6
+In short: A driving force at frequency \(\omega\) makes an oscillator settle into motion at that frequency. The amplitude is largest when the driving frequency is close to the natural frequency \(\omega_0 = \sqrt{\frac{k}{m}}\): this is resonance. Less damping gives a taller, narrower resonance peak. Pushing a child on a swing works because you push once per swing, at its natural frequency.
+Watch out: The system settles at the driving frequency, not its own natural frequency. Resonance is when the two match.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+
+
+
+## EQUATIONS 15.1
+* Frequency and period: \(f = \dfrac1T\) | Frequency \(f\) (Hz, cycles per second) and period \(T\) (s, time for one cycle) are reciprocals.
+* Angular frequency: \(\omega = 2\pi f = \dfrac{2\pi}{T}\) | Angular frequency \(\omega\) (rad/s) packs one cycle into \(2\pi\) radians.
+* Position in SHM: \(x(t) = A\cos(\omega t + \phi)\) | Displacement (m) with amplitude \(A\) (m), angular frequency \(\omega\) (rad/s), and phase shift \(\phi\) (rad) set by where it starts.
+Velocity in SHM: \(v(t) = -A\omega\sin(\omega t + \phi)\) | The derivative of \(x(t)\). It is largest, \(A\omega\), when \(x = 0\).
+Acceleration in SHM: \(a(t) = -A\omega^2\cos(\omega t + \phi)\) | The derivative of \(v(t)\), equal to \(-\omega^2x\). It always points back toward equilibrium.
+* Maximum speed and acceleration: \(v_\text{max} = A\omega,\quad a_\text{max} = A\omega^2\) | The speed (m/s) peaks at equilibrium; the acceleration (m/s²) peaks at the ends, \(x = \pm A\).
+* Mass on a spring: \(\omega = \sqrt{\dfrac{k}{m}}\) | Angular frequency (rad/s) of a mass \(m\) (kg) on a spring with constant \(k\) (N/m).
+* Period of a mass on a spring: \(T = 2\pi\sqrt{\dfrac{m}{k}}\) | Time (s) for one cycle. More mass is slower; a stiffer spring is faster. It doesn't depend on the amplitude.
+Frequency of a mass on a spring: \(f = \dfrac1{2\pi}\sqrt{\dfrac{k}{m}}\) | Cycles per second (Hz), the reciprocal of the period.
+
+## EQUATIONS 15.2
+* Energy in SHM: \(E = \tfrac12kx^2 + \tfrac12mv^2 = \tfrac12kA^2\) | Total energy (J) of a mass on a spring: spring potential plus kinetic, equal to the potential energy at the ends.
+* Speed at a position: \(v = \pm\sqrt{\dfrac{k}{m}(A^2 - x^2)}\) | Speed (m/s) of the mass at displacement \(x\) (m), from energy conservation. At \(x = 0\) it is \(A\omega\).
+
+## EQUATIONS 15.3
+Shadow of circular motion: \(x(t) = A\cos(\omega t + \phi)\) | The \(x\) component of a point moving in a circle of radius \(A\) (m) at angular velocity \(\omega\) (rad/s) is SHM.
+Shadow's top speed and acceleration: \(v_\text{max} = A\omega,\quad a_\text{max} = A\omega^2\) | The point's speed on the circle and its centripetal acceleration.
+
+## EQUATIONS 15.4
+Pendulum equation: \(\dfrac{d^2\theta}{dt^2} = -\dfrac{g}{L}\theta\) | For small angles \(\theta\) (rad), \(\sin\theta \approx \theta\) and the pendulum's equation has the SHM form.
+* Simple pendulum: \(\omega = \sqrt{\dfrac{g}{L}}\) | Angular frequency (rad/s) of a pendulum of length \(L\) (m) swinging through small angles.
+* Period of a simple pendulum: \(T = 2\pi\sqrt{\dfrac{L}{g}}\) | Time (s) for one swing back and forth. It doesn't depend on the mass or (for small swings) the amplitude.
+* Physical pendulum: \(T = 2\pi\sqrt{\dfrac{I}{mgL}}\) | A rigid object of mass \(m\) (kg) and moment of inertia \(I\) (kg·m²) about the pivot, with its center of mass \(L\) (m) from the pivot.
+Torsional pendulum: \(T = 2\pi\sqrt{\dfrac{I}{\kappa}}\) | An object twisting on a wire with torsion constant \(\kappa\) (N·m/rad).
+
+## EQUATIONS 15.5
+Damped oscillator: \(m\dfrac{d^2x}{dt^2} + b\dfrac{dx}{dt} + kx = 0\) | Newton's second law with a spring force \(-kx\) and a damping force \(-bv\), where \(b\) is in kg/s.
+* Underdamped motion: \(x(t) = A_0e^{-bt/2m}\cos(\omega t + \phi)\) | It still oscillates, but the amplitude shrinks by a factor of \(e\) every \(\frac{2m}{b}\) seconds.
+* Damped angular frequency: \(\omega = \sqrt{\omega_0^2 - \left(\dfrac{b}{2m}\right)^2}\) | A little slower than the natural angular frequency \(\omega_0 = \sqrt{\frac{k}{m}}\). When \(\frac{b}{2m} = \omega_0\) it is critically damped.
+
+## EQUATIONS 15.6
+Driven oscillator: \(m\dfrac{d^2x}{dt^2} = -kx - b\dfrac{dx}{dt} + F_0\sin(\omega t)\) | A damped mass on a spring pushed by a force of size \(F_0\) (N) at angular frequency \(\omega\) (rad/s).
+* Amplitude of a driven oscillator: \(A = \dfrac{F_0}{\sqrt{m^2(\omega^2 - \omega_0^2)^2 + b^2\omega^2}}\) | Biggest when \(\omega\) is near \(\omega_0\) (resonance); smaller damping \(b\) makes the peak taller.
+
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 15.1
+# Book: 1
+#
+# ## EXAMPLE 15.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#         For rotation, the letter can be ω, θ, α, or τ (units rad/s, rad, rad/s², N·m), for example
+#         Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+#         For an angle axis, write the formula with x and use "θ from 0 to 4" (Tap: θ = 2 works too):
+#         Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+
+
+
+
+
+# ============================ 15.1 SIMPLE HARMONIC MOTION ============================
+
+## QUIZ 15.1
+Q: A mass on a spring oscillates. You pull it farther before letting go, doubling the amplitude. What happens to the period?
+A) It stays the same
+B) It doubles
+C) It is cut in half
+D) It goes up by \(\sqrt2\)
+Answer: A
+Why: \(T = 2\pi\sqrt{\frac{m}{k}}\) has no amplitude in it. The mass travels farther but moves faster, and the time per cycle is unchanged.
+
+## QUIZ 15.1
+Q: Where is a mass on a spring moving fastest?
+A) Passing through equilibrium
+B) At the ends of its motion
+C) Halfway between equilibrium and an end
+D) It moves at constant speed
+Answer: A
+Why: At equilibrium all the energy is kinetic, so the speed is greatest, \(v_\text{max} = A\omega\). At the ends it stops for an instant.
+
+## QUIZ 15.1
+Q: Where is the acceleration of a mass on a spring greatest?
+A) At the ends of its motion
+B) Passing through equilibrium
+C) Halfway between equilibrium and an end
+D) It is the same everywhere
+Answer: A
+Why: The spring force \(-kx\) is largest at the biggest stretch or squeeze, so \(a = -\omega^2x\) peaks at \(x = \pm A\). At equilibrium the force and acceleration are zero.
+
+## QUIZ 15.1
+Q: The mass on a spring is replaced by one 4 times heavier. What happens to the period?
+A) It doubles
+B) It goes up 4 times
+C) It is cut in half
+D) It stays the same
+Answer: A
+Why: \(T = 2\pi\sqrt{\frac{m}{k}}\), so 4 times the mass gives \(\sqrt4 = 2\) times the period.
+
+## QUIZ 15.1
+Q: What is needed for an oscillation to be simple harmonic motion?
+A) A restoring force proportional to the displacement
+B) A constant restoring force
+C) No forces at all
+D) A force that always points the same way
+Answer: A
+Why: SHM needs \(F = -kx\): the force points back toward equilibrium and grows in proportion to how far the object is displaced.
+
+## DRILL 15.1
+Q: A guitar string vibrates with a period of \({{T}}\ \text{s}\). What is its frequency?
+Let: T = one of 0.002, 0.004, 0.005, 0.01
+Answer: 1/T
+Wrong: T | Frequency is the reciprocal of the period: \(f = \frac1T\).
+Wrong: 2*pi/T | That is the angular frequency \(\omega\) in rad/s.
+Wrong: 1/(2*pi*T) | No \(2\pi\) here: \(f = \frac1T\).
+Unit: Hz
+Work: f = \frac1T = \frac1{{{T}}} = {{answer}}\ \text{Hz}
+
+## DRILL 15.1
+Q: A \({{m}}\ \text{kg}\) mass hangs on a spring with \(k = {{k}}\ \text{N/m}\). What is the period of its oscillation?
+Let: m = one of 0.5, 1, 2; k = one of 50, 200, 800
+Answer: 2*pi*sqrt(m/k)
+Wrong: 2*pi*sqrt(k/m) | Flip the ratio: more mass means a longer period, \(T = 2\pi\sqrt{\frac{m}{k}}\).
+Wrong: sqrt(m/k) | Multiply by \(2\pi\): \(T = 2\pi\sqrt{\frac{m}{k}}\).
+Wrong: 2*pi*m/k | Take the square root of \(\frac{m}{k}\).
+Unit: s
+Work: T = 2\pi\sqrt{\frac{m}{k}} = 2\pi\sqrt{\frac{{{m}}}{{{k}}}} = {{answer}}\ \text{s}
+
+## DRILL 15.1
+Q: A \({{m}}\ \text{kg}\) block on a spring with \(k = {{k}}\ \text{N/m}\) oscillates with amplitude \({{A}}\ \text{m}\). What is its maximum speed?
+Let: m = one of 1, 4; k = one of 100, 400; A = one of 0.05, 0.1, 0.2
+Answer: A*sqrt(k/m)
+Wrong: A*k/m | That is the maximum acceleration, \(A\omega^2\).
+Wrong: A*sqrt(m/k) | Flip it: \(\omega = \sqrt{\frac{k}{m}}\).
+Wrong: 2*pi*A*sqrt(k/m) | \(\sqrt{\frac{k}{m}}\) is already \(\omega\) in rad/s, so \(v_\text{max} = A\omega\) with no extra \(2\pi\).
+Unit: m/s
+Work: v_\text{max} = A\omega = A\sqrt{\frac{k}{m}} = ({{A}})\sqrt{\frac{{{k}}}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 15.1
+Q: An object in SHM has amplitude \({{A}}\ \text{m}\) and angular frequency \({{w}}\ \text{rad/s}\). What is its maximum acceleration?
+Let: A = one of 0.02, 0.05, 0.1; w = one of 4, 10, 20
+Answer: A*w^2
+Wrong: A*w | That is the maximum speed. Acceleration has \(\omega^2\).
+Wrong: w^2 | Multiply by the amplitude: \(a_\text{max} = A\omega^2\).
+Wrong: A^2*w | It is \(A\omega^2\), not \(A^2\omega\).
+Unit: m/s²
+Work: a_\text{max} = A\omega^2 = ({{A}})({{w}})^2 = {{answer}}\ \text{m/s}^2
+
+## DRILL 15.1
+Q: A \({{m}}\ \text{kg}\) mass on a spring oscillates with a period of \({{T}}\ \text{s}\). What is the spring constant?
+Let: m = one of 0.5, 1, 2; T = one of 0.5, 1, 2
+Answer: 4*pi^2*m/T^2
+Wrong: 2*pi*m/T | Square both sides of \(T = 2\pi\sqrt{\frac{m}{k}}\): \(k = \frac{4\pi^2m}{T^2}\).
+Wrong: 4*pi^2*T^2/m | Solve for \(k\) carefully: \(k = \frac{4\pi^2m}{T^2}\).
+Wrong: m/T^2 | Keep the \(4\pi^2\) from squaring \(2\pi\).
+Unit: N/m
+Work: k = \frac{4\pi^2m}{T^2} = \frac{4\pi^2({{m}})}{({{T}})^2} = {{answer}}\ \text{N/m}
+
+## GRAPH 15.1
+Q: The graph shows the position of a mass on a spring. What is its period?
+Plot: x = 20*cos(pi*t/2); t from 0 to 8; y from -30 to 30; unit cm
+A) \(4\ \text{s}\)
+B) \(2\ \text{s}\)
+C) \(8\ \text{s}\)
+D) \(20\ \text{s}\)
+Answer: A
+Why: One full cycle, from the top back to the top, runs from \(t = 0\) to \(t = 4\ \text{s}\). Choice B is only half a cycle (top to bottom), and 20 cm is the amplitude, not a time.
+
+## GRAPH 15.1
+Q: The graph shows the position of a mass on a spring. Tap a moment when it is moving fastest.
+Plot: x = 20*cos(pi*t/2); t from 0 to 8; y from -30 to 30; unit cm
+Tap: t = 1, 3, 5, 7
+Why: The speed is greatest where the graph is steepest, which is where it crosses \(x = 0\) (equilibrium): \(t = 1, 3, 5, 7\ \text{s}\).
+
+
+# ============================ 15.2 ENERGY IN SIMPLE HARMONIC MOTION ============================
+
+## QUIZ 15.2
+Q: A mass on a spring with no friction is at the far end of its motion. What form is its energy in?
+A) All spring potential energy
+B) All kinetic energy
+C) Half potential, half kinetic
+D) It has no energy there
+Answer: A
+Why: At \(x = \pm A\) the mass stops for an instant, so \(K = 0\) and all the energy is \(\frac12kA^2\).
+
+## QUIZ 15.2
+Q: The amplitude of a mass on a spring is doubled. What happens to its total energy?
+A) It goes up 4 times
+B) It doubles
+C) It stays the same
+D) It goes up \(\sqrt2\) times
+Answer: A
+Why: \(E = \frac12kA^2\), so doubling \(A\) multiplies the energy by \(2^2 = 4\).
+
+## QUIZ 15.2
+Q: As a mass on a spring passes through equilibrium, its energy is
+A) all kinetic
+B) all potential
+C) half kinetic and half potential
+D) zero
+Answer: A
+Why: At \(x = 0\) the spring is relaxed, so \(U = 0\) and all of \(E\) is kinetic. That's where the speed is greatest.
+
+## QUIZ 15.2
+Q: For a mass on a spring with amplitude \(A\), at which displacement is the kinetic energy equal to the potential energy?
+A) About \(0.71A\)
+B) \(0.5A\)
+C) \(0.25A\)
+D) \(A\)
+Answer: A
+Why: Each is half the total: \(\frac12kx^2 = \frac12\left(\frac12kA^2\right)\), so \(x = \frac{A}{\sqrt2} \approx 0.71A\). At \(0.5A\) the potential energy is only a quarter of the total.
+
+## DRILL 15.2
+Q: A spring with \(k = {{k}}\ \text{N/m}\) oscillates with amplitude \({{A}}\ \text{m}\). What is its total energy?
+Let: k = one of 100, 200, 400; A = one of 0.1, 0.2, 0.3
+Answer: 0.5*k*A^2
+Wrong: k*A^2 | Keep the ½: \(E = \frac12kA^2\).
+Wrong: 0.5*k*A | Square the amplitude: \(E = \frac12kA^2\).
+Wrong: 0.5*k^2*A^2 | Only \(A\) is squared, not \(k\).
+Unit: J
+Work: E = \tfrac12kA^2 = \tfrac12({{k}})({{A}})^2 = {{answer}}\ \text{J}
+
+## DRILL 15.2
+Q: A \({{m}}\ \text{kg}\) block on a spring has \({{E}}\ \text{J}\) of total energy. What is its maximum speed?
+Let: m = one of 1, 2, 4; E = one of 2, 8, 18
+Answer: sqrt(2*E/m)
+Wrong: sqrt(E/m) | Keep the 2: \(E = \frac12mv_\text{max}^2\).
+Wrong: 2*E/m | Take the square root for the speed.
+Wrong: sqrt(2*E*m) | Divide by the mass: \(v = \sqrt{\frac{2E}{m}}\).
+Unit: m/s
+Work: v_\text{max} = \sqrt{\frac{2E}{m}} = \sqrt{\frac{2({{E}})}{{{m}}}} = {{answer}}\ \text{m/s}
+
+## DRILL 15.2
+Q: A \(1\ \text{kg}\) block on a spring with \(k = {{k}}\ \text{N/m}\) oscillates with amplitude \(0.5\ \text{m}\). How fast is it moving at \(x = {{x}}\ \text{m}\)?
+Let: k = one of 100, 400, 900; x = one of 0.3, 0.4
+Answer: sqrt(k*(0.25 - x^2))
+Wrong: sqrt(k)*(0.5 - x) | Subtract the squares: \(v = \sqrt{\frac{k}{m}(A^2 - x^2)}\).
+Wrong: sqrt(k)*0.5 | That is the maximum speed, at \(x = 0\).
+Wrong: sqrt(k*(0.25 + x^2)) | Subtract \(x^2\): some of the energy is in the spring.
+Unit: m/s
+Work: v = \sqrt{\frac{k}{m}(A^2 - x^2)} = \sqrt{{{k}}\,(0.5^2 - {{x}}^2)} = {{answer}}\ \text{m/s}
+
+## DRILL 15.2
+Q: A spring with \(k = {{k}}\ \text{N/m}\) stores \({{E}}\ \text{J}\) of energy while oscillating. What is the amplitude?
+Let: k = one of 100, 400; E = one of 0.5, 2, 4.5
+Answer: sqrt(2*E/k)
+Wrong: 2*E/k | Take the square root: \(A^2 = \frac{2E}{k}\).
+Wrong: sqrt(E/k) | Keep the 2: \(E = \frac12kA^2\).
+Wrong: sqrt(2*E*k) | Divide by \(k\): \(A = \sqrt{\frac{2E}{k}}\).
+Unit: m
+Work: A = \sqrt{\frac{2E}{k}} = \sqrt{\frac{2({{E}})}{{{k}}}} = {{answer}}\ \text{m}
+
+## DRILL 15.2
+Q: A block on a spring with \(k = {{k}}\ \text{N/m}\) oscillates with amplitude \({{A}}\ \text{m}\). What is its kinetic energy at \(x = {{x}}\ \text{m}\)?
+Let: k = one of 100, 200; A = one of 0.2, 0.3; x = one of 0.05, 0.1
+Answer: 0.5*k*(A^2 - x^2)
+Wrong: 0.5*k*x^2 | That is the spring's potential energy at \(x\).
+Wrong: 0.5*k*A^2 | That is the total energy. Subtract what is in the spring.
+Wrong: 0.5*k*(A - x)^2 | Square first, then subtract: \(K = \frac12k(A^2 - x^2)\).
+Unit: J
+Work: K = \tfrac12kA^2 - \tfrac12kx^2 = \tfrac12({{k}})({{A}}^2 - {{x}}^2) = {{answer}}\ \text{J}
+
+## GRAPH 15.2
+Q: The graph shows the potential energy of a spring against its stretch \(x\). What is the spring constant?
+Plot: U = 2.5*x^2; x from 0 to 2; y from 0 to 12
+A) \(5\ \text{N/m}\)
+B) \(2.5\ \text{N/m}\)
+C) \(10\ \text{N/m}\)
+D) \(20\ \text{N/m}\)
+Answer: A
+Why: At \(x = 2\ \text{m}\), \(U = 10\ \text{J}\). From \(U = \frac12kx^2\), \(k = \frac{2U}{x^2} = \frac{2(10)}{4} = 5\ \text{N/m}\). Choice B forgot the ½, and choice C is the energy, not \(k\).
+
+
+# ============================ 15.3 COMPARING SIMPLE HARMONIC MOTION AND CIRCULAR MOTION ============================
+
+## QUIZ 15.3
+Q: A ball sits on the edge of a turntable spinning at a steady rate. A light from the side casts its shadow on a wall. How does the shadow move?
+A) In simple harmonic motion
+B) At constant speed back and forth
+C) In a circle
+D) It doesn't move
+Answer: A
+Why: The shadow shows only one component of the circular motion, \(x = A\cos(\omega t + \phi)\), which is exactly SHM.
+
+## QUIZ 15.3
+Q: In that same setup, what is the shadow's top speed?
+A) The ball's speed on the circle, \(A\omega\)
+B) Half the ball's speed
+C) Twice the ball's speed
+D) Zero
+Answer: A
+Why: As the shadow passes the center, the ball is moving straight across, parallel to the wall, so the shadow moves at the ball's full speed \(A\omega\).
+
+## QUIZ 15.3
+Q: Where is the shadow's acceleration largest?
+A) At the ends of its motion
+B) At the center
+C) It is the same everywhere
+D) It has no acceleration
+Answer: A
+Why: At the ends, the ball's centripetal acceleration \(A\omega^2\) points straight along the shadow's line, so the shadow's acceleration is the full \(A\omega^2\).
+
+## QUIZ 15.3
+Q: Why is \(\omega\) in SHM called the angular frequency?
+A) It is the angular velocity of the circular motion whose shadow is the SHM
+B) Because the object moves in an arc
+C) It measures the angle of the spring
+D) It is just a name; it has no meaning
+Answer: A
+Why: SHM is the projection of motion around a circle at angular velocity \(\omega\) rad/s. One cycle is one trip around, \(2\pi\) rad.
+
+## DRILL 15.3
+Q: A peg on the rim of a wheel of radius \({{A}}\ \text{m}\) turns at \({{f}}\) revolutions per second. What is the top speed of its shadow on a wall?
+Let: A = one of 0.1, 0.2, 0.5; f = one of 0.5, 1, 2
+Answer: 2*pi*f*A
+Wrong: f*A | Convert to rad/s first: \(\omega = 2\pi f\).
+Wrong: 2*pi*f | Multiply by the radius: \(v_\text{max} = A\omega\).
+Wrong: pi*f*A | One revolution is \(2\pi\) rad, not \(\pi\).
+Unit: m/s
+Work: v_\text{max} = A\omega = A(2\pi f) = ({{A}})(2\pi)({{f}}) = {{answer}}\ \text{m/s}
+
+## DRILL 15.3
+Q: A point moves in a circle of radius \({{A}}\ \text{m}\) at \({{w}}\ \text{rad/s}\). What is the largest acceleration of its shadow?
+Let: A = one of 0.1, 0.2, 0.3; w = one of 2, 4, 5
+Answer: A*w^2
+Wrong: A*w | That is the top speed. Acceleration has \(\omega^2\).
+Wrong: A*w^2/2 | No ½: the centripetal acceleration is \(A\omega^2\).
+Wrong: w^2/A | Multiply by the radius: \(a = A\omega^2\).
+Unit: m/s²
+Work: a_\text{max} = A\omega^2 = ({{A}})({{w}})^2 = {{answer}}\ \text{m/s}^2
+
+## DRILL 15.3
+Q: A record player turns at \({{rpm}}\) revolutions per minute. What is the period of a shadow cast by a pin on its edge?
+Let: rpm = one of 30, 45, 90, 120
+Answer: 60/rpm
+Wrong: rpm/60 | That is the frequency in revolutions per second. The period is its reciprocal.
+Wrong: 2*pi*60/rpm | One revolution is one period, no \(2\pi\) needed.
+Wrong: 60/(2*pi*rpm) | One revolution is one period: \(T = \frac{60}{\text{rpm}}\).
+Unit: s
+Work: T = \frac{60\ \text{s}}{{{rpm}}} = {{answer}}\ \text{s}
+
+
+# ============================ 15.4 PENDULUMS ============================
+
+## QUIZ 15.4
+Q: Two pendulums have the same length, but one bob has twice the mass. How do their periods compare?
+A) They are the same
+B) The heavier one has the longer period
+C) The heavier one has the shorter period
+D) The heavier one's period is \(\sqrt2\) times longer
+Answer: A
+Why: \(T = 2\pi\sqrt{\frac{L}{g}}\) has no mass in it. A heavier bob needs more force, and gravity gives it exactly that much more.
+
+## QUIZ 15.4
+Q: A pendulum is made 4 times longer. What happens to its period?
+A) It doubles
+B) It goes up 4 times
+C) It is cut in half
+D) It stays the same
+Answer: A
+Why: \(T \propto \sqrt{L}\), so 4 times the length gives \(\sqrt4 = 2\) times the period.
+
+## QUIZ 15.4
+Q: A pendulum clock is taken to the Moon, where \(g\) is smaller. What happens?
+A) Its period gets longer, so it runs slow
+B) Its period gets shorter, so it runs fast
+C) It keeps the same time
+D) It stops swinging
+Answer: A
+Why: \(T = 2\pi\sqrt{\frac{L}{g}}\), so a smaller \(g\) gives a longer period. Each tick takes longer.
+
+## QUIZ 15.4
+Q: Why does the pendulum period formula only work for small swings?
+A) It uses \(\sin\theta \approx \theta\), which is only accurate for small angles
+B) Large swings break the string
+C) Air resistance matters only for large swings
+D) The mass changes for large swings
+Answer: A
+Why: The restoring torque goes as \(\sin\theta\). Only when \(\sin\theta \approx \theta\) (about 15° or less) is the motion SHM.
+
+## QUIZ 15.4
+Q: For a physical pendulum, what is \(L\) in \(T = 2\pi\sqrt{\frac{I}{mgL}}\)?
+A) The distance from the pivot to the center of mass
+B) The total length of the object
+C) The radius of the object
+D) The length of the string
+Answer: A
+Why: Gravity acts at the center of mass, so the torque arm is the distance from the pivot to the center of mass.
+
+## DRILL 15.4
+Q: A simple pendulum is \({{L}}\ \text{m}\) long. Use \(g = 10\ \text{m/s}^2\). What is its period for small swings?
+Let: L = one of 0.4, 0.9, 1.6, 2.5
+Answer: 2*pi*sqrt(L/10)
+Wrong: 2*pi*sqrt(10/L) | Flip the ratio: a longer pendulum swings more slowly, \(T = 2\pi\sqrt{\frac{L}{g}}\).
+Wrong: sqrt(L/10) | Multiply by \(2\pi\).
+Wrong: 2*pi*L/10 | Take the square root of \(\frac{L}{g}\).
+Unit: s
+Work: T = 2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{{{L}}}{10}} = {{answer}}\ \text{s}
+
+## DRILL 15.4
+Q: You want a pendulum with a period of \({{T}}\ \text{s}\). Use \(g = 10\ \text{m/s}^2\). How long should it be?
+Let: T = one of 1, 2, 3
+Answer: 10*T^2/(4*pi^2)
+Wrong: 10*T/(2*pi) | Square both sides of \(T = 2\pi\sqrt{\frac{L}{g}}\).
+Wrong: 10*T^2/(2*pi) | Squaring \(2\pi\) gives \(4\pi^2\).
+Wrong: T^2/(4*pi^2) | Multiply by \(g\): \(L = \frac{gT^2}{4\pi^2}\).
+Unit: m
+Work: L = \frac{gT^2}{4\pi^2} = \frac{(10)({{T}})^2}{4\pi^2} = {{answer}}\ \text{m}
+
+## DRILL 15.4
+Q: On another planet, a \({{L}}\ \text{m}\) pendulum has a period of \({{T}}\ \text{s}\). What is \(g\) there?
+Let: L = one of 1, 2; T = one of 2, 3, 4
+Answer: 4*pi^2*L/T^2
+Wrong: 2*pi*L/T | Square both sides of \(T = 2\pi\sqrt{\frac{L}{g}}\).
+Wrong: 4*pi^2*T^2/L | Solve for \(g\) carefully: \(g = \frac{4\pi^2L}{T^2}\).
+Wrong: L/T^2 | Keep the \(4\pi^2\).
+Unit: m/s²
+Work: g = \frac{4\pi^2L}{T^2} = \frac{4\pi^2({{L}})}{({{T}})^2} = {{answer}}\ \text{m/s}^2
+
+## DRILL 15.4
+Q: A pendulum's length is changed to \({{k}}\) times its original length. Its new period is how many times the old one?
+Let: k = one of 0.25, 4, 9
+Answer: sqrt(k)
+Wrong: k | \(T\) goes as \(\sqrt{L}\), not \(L\).
+Wrong: k^2 | \(T\) goes as \(\sqrt{L}\).
+Wrong: 1/sqrt(k) | A longer pendulum has a longer period, not shorter.
+Unit: times
+Work: \frac{T_2}{T_1} = \sqrt{\frac{L_2}{L_1}} = \sqrt{{{k}}} = {{answer}}
+
+## DRILL 15.4
+Q: A thin rod \({{len}}\ \text{m}\) long swings about one end (\(I = \frac13m\ell^2\)). Use \(g = 10\ \text{m/s}^2\). What is its period for small swings?
+Let: len = one of 0.6, 1.2, 1.5
+Answer: 2*pi*sqrt(2*len/(3*10))
+Wrong: 2*pi*sqrt(len/10) | That treats it as a simple pendulum of the full length. Use \(T = 2\pi\sqrt{\frac{I}{mgL}}\).
+Wrong: 2*pi*sqrt(len/20) | That treats it as a simple pendulum at the center of mass. The rod's mass is spread out, so use \(I = \frac13m\ell^2\).
+Wrong: 2*pi*sqrt(len/60) | That uses \(I = \frac1{12}m\ell^2\), about the center. The rod swings about its end.
+Unit: s
+Work: T = 2\pi\sqrt{\frac{\tfrac13m\ell^2}{mg\tfrac{\ell}{2}}} = 2\pi\sqrt{\frac{2({{len}})}{3(10)}} = {{answer}}\ \text{s}
+
+## GRAPH 15.4
+Q: The graph shows the angle of a pendulum swinging through small angles. Use \(g = 10\ \text{m/s}^2\) and \(\pi^2 \approx 10\). How long is the pendulum?
+Plot: θ = 8*cos(pi*t); t from 0 to 4; y from -10 to 10; unit °
+A) \(1\ \text{m}\)
+B) \(0.25\ \text{m}\)
+C) \(4\ \text{m}\)
+D) \(0.5\ \text{m}\)
+Answer: A
+Why: One cycle takes \(T = 2\ \text{s}\). Then \(L = \frac{gT^2}{4\pi^2} = \frac{(10)(4)}{40} = 1\ \text{m}\). Choice B used 1 s, half the period; choice C used the whole 4 s shown; choice D forgot to square \(T\).
+
+
+# ============================ 15.5 DAMPED OSCILLATIONS ============================
+
+## QUIZ 15.5
+Q: A mass on a spring swings in air with a little friction. What happens over time?
+A) The amplitude gets smaller as energy is lost
+B) The period gets much longer
+C) The amplitude stays the same
+D) The amplitude grows
+Answer: A
+Why: Damping takes energy away, so the amplitude shrinks as \(e^{-bt/2m}\). For light damping the period barely changes.
+
+## QUIZ 15.5
+Q: What does a car's shock absorber aim for?
+A) Critical damping: back to equilibrium fastest, with no bouncing
+B) No damping, so the ride is smooth
+C) Overdamping, so it never moves
+D) Underdamping, so it bounces a few times
+Answer: A
+Why: Critical damping returns the car to level as quickly as possible without oscillating.
+
+## QUIZ 15.5
+Q: How does an overdamped system return to equilibrium?
+A) Slowly, without oscillating
+B) Quickly, with many oscillations
+C) It never returns
+D) Faster than a critically damped system
+Answer: A
+Why: With very heavy damping, like a spring in thick honey, the mass creeps back without overshooting, and more slowly than with critical damping.
+
+## DRILL 15.5
+Q: A \({{m}}\ \text{kg}\) mass on a spring has a damping constant \(b = {{b}}\ \text{kg/s}\). How long until its amplitude falls to \(\frac1e\) (about 37%) of its starting value?
+Let: m = one of 0.5, 1, 2; b = one of 0.1, 0.2
+Answer: 2*m/b
+Wrong: m/b | The amplitude goes as \(e^{-bt/2m}\), so it falls to \(\frac1e\) when \(\frac{bt}{2m} = 1\).
+Wrong: b/(2*m) | Flip it: \(t = \frac{2m}{b}\).
+Wrong: m/(2*b) | The 2 goes on top: \(t = \frac{2m}{b}\).
+Unit: s
+Work: \frac{bt}{2m} = 1 \Rightarrow t = \frac{2m}{b} = \frac{2({{m}})}{{{b}}} = {{answer}}\ \text{s}
+
+## DRILL 15.5
+Q: An oscillator has a natural angular frequency of \({{w0}}\ \text{rad/s}\) and light damping with \(\frac{b}{2m} = {{gam}}\ \text{s}^{-1}\). What is its damped angular frequency?
+Let: w0 = one of 5, 10; q = one of 0.6, 0.8; gam = w0*q
+Answer: sqrt(w0^2 - gam^2)
+Wrong: w0 - gam | Subtract the squares, then take the root.
+Wrong: sqrt(w0^2 + gam^2) | Damping slows the oscillation, so subtract.
+Wrong: w0 | Damping lowers the angular frequency a little.
+Unit: rad/s
+Work: \omega = \sqrt{\omega_0^2 - \left(\tfrac{b}{2m}\right)^2} = \sqrt{{{w0}}^2 - {{gam}}^2} = {{answer}}\ \text{rad/s}
+
+
+# ============================ 15.6 FORCED OSCILLATIONS ============================
+
+## QUIZ 15.6
+Q: When does a driven oscillator have its largest amplitude?
+A) When the driving frequency is close to its natural frequency
+B) When the driving frequency is very high
+C) When the driving frequency is very low
+D) The amplitude doesn't depend on the driving frequency
+Answer: A
+Why: That is resonance: each push arrives in step with the motion and adds energy.
+
+## QUIZ 15.6
+Q: The damping of a driven oscillator is increased. What happens to the resonance peak?
+A) It gets lower and wider
+B) It gets taller and narrower
+C) It moves to a much higher frequency
+D) Nothing changes
+Answer: A
+Why: More damping removes more energy each cycle, so the largest amplitude is smaller and the response is spread over a wider range of frequencies.
+
+## QUIZ 15.6
+Q: How should you push a child on a swing to make it go high?
+A) Once each swing, in time with its natural motion
+B) As fast as possible
+C) At random times
+D) Once every 10 swings
+Answer: A
+Why: Pushing at the swing's natural frequency is resonance: every push adds energy instead of fighting the motion.
+
+## DRILL 15.6
+Q: A \(1\ \text{kg}\) mass on a spring with \(k = {{k}}\ \text{N/m}\) is shaken by a motor. At what driving frequency (in Hz) is the amplitude largest?
+Let: k = one of 100, 400, 900
+Answer: sqrt(k)/(2*pi)
+Wrong: sqrt(k) | That is \(\omega_0\) in rad/s. Divide by \(2\pi\) for hertz.
+Wrong: 2*pi*sqrt(k) | Divide by \(2\pi\), don't multiply: \(f = \frac{\omega}{2\pi}\).
+Wrong: k/(2*pi) | Take the square root: \(\omega_0 = \sqrt{\frac{k}{m}}\).
+Unit: Hz
+Work: f_0 = \frac{1}{2\pi}\sqrt{\frac{k}{m}} = \frac{\sqrt{{{k}}}}{2\pi} = {{answer}}\ \text{Hz}
+
+## DRILL 15.6
+Q: A swing hangs on ropes \({{L}}\ \text{m}\) long. Use \(g = 10\ \text{m/s}^2\). How many pushes per minute make it resonate (one push per swing)?
+Let: L = one of 1.6, 2.5, 3.6
+Answer: 60/(2*pi*sqrt(L/10))
+Wrong: 60/sqrt(L/10) | Keep the \(2\pi\): \(T = 2\pi\sqrt{\frac{L}{g}}\).
+Wrong: 60/(2*pi*sqrt(10/L)) | Flip the ratio: \(T = 2\pi\sqrt{\frac{L}{g}}\).
+Wrong: 2*pi*sqrt(L/10) | That is the period in seconds. Divide 60 s by it.
+Unit: pushes per minute
+Work: T = 2\pi\sqrt{\frac{{{L}}}{10}}\ \text{s} \Rightarrow \frac{60}{T} = {{answer}}\ \text{per minute}
