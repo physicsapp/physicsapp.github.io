@@ -624,7 +624,7 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   10:{eqSec:["10.1","10.1","10.1","10.1","10.1","10.2","10.2","10.2","10.2","10.2","10.3","10.4","10.4","10.4","10.5","10.5","10.5","10.6","10.6","10.6","10.7","10.8","10.8","10.8","10.8"],toy:"ferris",eqHint:"Search, for example “torque” or “inertia”"},
   11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],toy:"mgr",eqHint:"Search, for example “rolling” or “precession”"},
   12:{eqHint:"Search, for example “torque” or “stress”"},
-  13:{eqHint:"Search, for example “orbit” or “escape”"},
+  13:{toy:"space",eqHint:"Search, for example “orbit” or “escape”"},
   14:{eqSec:["14.1","14.1","14.1","14.1","14.2","14.3","14.5","14.5","14.5","14.6","14.7","14.7","14.7"],eqHint:"Search, for example “buoyant” or “Bernoulli”"},
   15:{eqSec:["15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.1","15.2","15.2","15.3","15.3","15.3","15.4","15.4","15.4","15.4","15.4","15.4","15.5","15.5","15.5","15.5","15.6","15.6","15.6"],eqHint:"Search, for example “pendulum” or “energy”"}};
 const chx=()=>CHX[CH]||{};
@@ -1347,6 +1347,24 @@ function mgrSVG(have,label){
   </svg>`;
 }
 
+function spaceSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"`:off}/>`;
+  const L=(k,d,w)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="${w||2}" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${P(4,"M30 26 a12 12 0 1 0 0.1 0 Z","var(--card)")}${on(4)?'<circle cx="25" cy="34" r="2.5" fill="none" stroke="var(--muted)"/><circle cx="34" cy="42" r="1.8" fill="none" stroke="var(--muted)"/>':""}
+    ${L(6,"M80 28 L96 20 M88 18 L104 30",1.4)}${P(6,"M88 20 h8 v8 h-8 Z","var(--petal-2)")}
+    ${P(2,"M44 70 h16 v8 h-16 Z M80 70 h16 v8 h-16 Z M48 70 v8 M52 70 v8 M56 70 v8 M84 70 v8 M88 70 v8 M92 70 v8","var(--petal-5)")}
+    ${on(2)?'<path d="M60 74 h20" stroke="var(--ink)" stroke-width="1.2"/><rect x="65" y="68" width="10" height="12" rx="1.5" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="1.1"/>':""}
+    ${P(1,"M22 104 Q28 90 34 104 v42 h-12 Z","var(--card)")}${on(1)?'<path d="M22 146 l-4 8 h24 l-4 -8" fill="var(--petal-1)" stroke="var(--ink)" stroke-width="1.1"/>':""}
+    ${P(0,"M8 154 h40 v6 h-40 Z M14 160 v8 M42 160 v8","var(--muted)")}
+    ${L(3,"M92 156 L92 136",2.4)}${P(3,"M78 132 Q92 150 108 128 Z","var(--accent-soft)")}${on(3)?'<path d="M93 136 L102 116" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 2"/>':""}
+    ${L(5,"M58 160 L58 128 M54 136 h8 M54 144 h8 M54 152 h8",1.6)}
+    ${on(5)?'<path d="M48 150 q6 -4 12 0 t12 0" fill="none" stroke="var(--petal-5)" stroke-width="2"/>':""}
+    <path d="M4 168 h112" stroke="var(--rule)" stroke-width="1.5"/>
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1381,7 +1399,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} Ferris wheel parts`,wait:"Each plant that blooms adds a part. When all eight bloom, you can ride it."},
   mgr:{eyebrow:"The playground",thing:"merry go round",parts:["base","platform","handrails","kid"],svg:mgrSVG,route:"spin",
     ready:"Your merry go round is ready",readyText:"Predict how things roll and spin, then play.",go:"Go to the playground",
-    count:(n,t)=>`${n} of ${t} merry go round parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can play."}};
+    count:(n,t)=>`${n} of ${t} merry go round parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can play."},
+  space:{eyebrow:"The space center",thing:"space center",parts:["launch pad","rocket stage","solar panels","dish antenna","Moon","tide marker","GPS satellite"],svg:spaceSVG,route:"space",
+    ready:"Your space center is ready",readyText:"Use gravity to plan each mission, then fly it.",go:"Go to the space center",
+    count:(n,t)=>`${n} of ${t} space center parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can fly the missions."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -3411,6 +3432,299 @@ TOYS.mgr.game={title:"Ride the merry go round",intro:"The playground follows the
   right:"Nice prediction!",go:"Play",pickFirst:"Pick an answer to play",again:"Play again with new numbers",cvLabel:"Playground",
   notReadyTitle:"The merry go round isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the merry go round. Bloom all four to play."};
 
+/* ---------- Chapter 13: the space center ----------
+   Real bodies, real numbers (NASA fact sheets and mission pages), G = 6.67 × 10⁻¹¹ as in the book.
+   Mission 0 (13.1, 13.2, prediction): jump on another world. g = GM/R², height v0²/(2g).
+   Mission 1 (13.3, prediction): escape speed √(2GM/R) on a small asteroid or Phobos. The canvas squeezes distance as
+     1 − R/r, so the top line is infinitely far away and a pebble at exactly escape speed creeps up to it.
+   Mission 2 (13.4, command): circular orbit speed √(GM/r) with r = R + h. Integrated in 2D, so a wrong speed
+     crashes, stretches into an ellipse (13.5) or escapes.
+   Mission 3 (13.4, 13.5, command): stationary orbit, T equal to the planet's turn, r = (GMT²/4π²)^(1/3).
+   makeSpace redraws until every wrong choice misses by at least 2.5 tolerances and the right one succeeds. */
+const SPC_NAMES=["Jump on another world","Toss it off an asteroid","Put it in orbit","Park a stationary satellite"], SPC_G=6.67e-11, SPC_GE=9.8, SPC_ME=5.97e24;
+const SPC_NS="https://nssdc.gsfc.nasa.gov/planetary/factsheet/";
+const SPC_JUMP=[
+  {name:"the Moon",Name:"The Moon",M:7.35e22,Rkm:1737,ground:"--muted",url:SPC_NS+"moonfact.html"},
+  {name:"Mars",Name:"Mars",M:6.42e23,Rkm:3390,ground:"--petal-6",url:SPC_NS+"marsfact.html"},
+  {name:"Europa",Name:"Europa",note:"Jupiter's icy moon",M:4.80e22,Rkm:1561,ground:"--petal-5",url:SPC_NS+"galileanfact_table.html"},
+  {name:"Titan",Name:"Titan",note:"Saturn's biggest moon",M:1.35e23,Rkm:2575,ground:"--petal-2",url:SPC_NS+"saturniansatfact.html"},
+  {name:"Pluto",Name:"Pluto",M:1.30e22,Rkm:1188,ground:"--petal-3",url:SPC_NS+"plutofact.html"}];
+const SPC_ROCKS=[
+  {name:"asteroid Bennu",M:7.33e10,Rkm:0.245,url:"https://en.wikipedia.org/wiki/101955_Bennu",story:"NASA's OSIRIS-REx spacecraft visited Bennu and brought a sample of it back to Earth in 2023."},
+  {name:"asteroid Ryugu",M:4.50e11,Rkm:0.448,url:"https://en.wikipedia.org/wiki/162173_Ryugu",story:"Japan's Hayabusa2 spacecraft brought a sample of Ryugu back to Earth in 2020."},
+  {name:"Phobos, the bigger moon of Mars",short:"Phobos",M:1.06e16,Rkm:11.1,url:"https://en.wikipedia.org/wiki/Phobos_(moon)",story:"Mars still holds on to whatever escapes Phobos, so the pebble ends up orbiting Mars instead."}];
+const SPC_EARTH={name:"Earth",Name:"Earth",M:5.97e24,Rkm:6370}, SPC_MOON={name:"the Moon",Name:"The Moon",M:7.35e22,Rkm:1737};
+const SPC_ORBIT=[
+  {name:"the International Space Station",short:"ISS",body:SPC_EARTH,h:420,ht:"about 420 km",url:"https://en.wikipedia.org/wiki/International_Space_Station"},
+  {name:"a GPS satellite",short:"GPS",body:SPC_EARTH,h:20200,ht:"20,200 km",url:"https://www.gps.gov/systems/gps/space"},
+  {name:"a lunar orbiter",short:"orbiter",body:SPC_MOON,h:100,ht:"100 km"}];
+const SPC_SYNC=[
+  {name:"Earth",Name:"Earth",what:"a TV satellite that stays over one spot, so home dishes never have to move",M:5.97e24,Rkm:6370,Th:23.93,url:SPC_NS+"earthfact.html",
+    note:" (a sidereal day, about 4 minutes short of 24 h)"},
+  {name:"Mars",Name:"Mars",what:"a relay satellite that stays over one spot on Mars, so it always hears the same rover",M:6.42e23,Rkm:3390,Th:24.62,url:SPC_NS+"marsfact.html",note:""},
+  {name:"Jupiter",Name:"Jupiter",what:"a probe that stays over one spot in Jupiter's clouds",M:1.90e27,Rkm:71500,Th:9.925,url:SPC_NS+"jupiterfact.html",note:""}];
+const spcR=x=>Number(x.toPrecision(3));
+const spcSup=s=>s.replace(/[-0-9]/g,c=>"⁻⁰¹²³⁴⁵⁶⁷⁸⁹"["-0123456789".indexOf(c)]);
+/* a × 10ⁿ in TeX (p significant figures) and as plain text for the canvas */
+function spcTx(x,p){p=p||3;const e=Math.floor(Math.log10(Math.abs(x))+1e-12);if(e>=-2&&e<5){const v=Number(x.toPrecision(p));return (Math.abs(v)>=1e4?Math.round(v).toLocaleString("en-US"):String(v)).replace(/,/g,"{,}");}const a=Number((x/Math.pow(10,e)).toPrecision(p));return `${a}\\times10^{${e}}`;}
+function spcPl(x){const e=Math.floor(Math.log10(Math.abs(x))+1e-12);if(e>=-2&&e<5)return ferN(x);return `${Number((x/Math.pow(10,e)).toPrecision(3))} × 10${spcSup(String(e))}`;}
+const spcInt=x=>String(x).replace(/\B(?=(\d{3})+(?!\d))/g,"{,}");
+function spcTime(s){s=Math.max(0,s);if(s<120)return `${s.toFixed(s<10?1:0)} s`;if(s<7200)return `${(s/60).toFixed(s<600?1:0)} min`;if(s<172800)return `${(s/3600).toFixed(1)} h`;return `${(s/86400).toFixed(1)} days`;}
+const spcV=v=>v<1?fmtNum(v):v<1000?fmtNum(v):fmtNum(v);
+function spcTol(m){return m.kind===0?0.03*m.h:m.kind===1?0.03*m.ve:m.kind===2?0.01*m.vc:0.015*m.r0;}
+const SPC_GTX="G = 6.67\\times10^{-11}\\ \\text{N·m}^2/\\text{kg}^2";
+
+function spcDraft(k){
+  if(k===0){const b=pickOne(SPC_JUMP),v0=pickOne([2.5,3,3.5]),R=b.Rkm*1e3,g=SPC_G*b.M/(R*R),h=v0*v0/(2*g),hE=v0*v0/(2*SPC_GE),gm=SPC_GE*b.M/SPC_ME;
+    const ch=[{h,ok:true},
+      {h:hE,fb:`That's how high the same jump goes on Earth, where \\(g = 9.80\\ \\text{m/s}^2\\). First find this world's own surface gravity, \\(g = GM/R^2\\).`},
+      {h:v0*v0/(2*gm),fb:`Surface gravity depends on the radius too, not just the mass: \\(g = GM/R^2\\). ${b.Name} is much smaller than Earth, so you stand closer to its center, and that makes its gravity stronger than its mass alone suggests.`},
+      {h:v0*v0/g,fb:"At the top, \\(v = 0\\), so \\(0 = v_0^2 - 2gh\\) and \\(h = v_0^2/(2g)\\). Without the 2 the height comes out twice too big."}];
+    ch.forEach(c=>{c.h=spcR(c.h);c.t=`${fmtNum(c.h)} m`;});
+    const gr=spcR(g);
+    return{kind:0,b,v0,R,g,h,hE,choices:dedupe(ch),
+      q:`You land the probe on ${b.name}${b.note?`, ${b.note}`:""}. ${b.Name} has a mass of \\(${spcTx(b.M)}\\ \\text{kg}\\) and a radius of \\(${spcInt(b.Rkm)}\\ \\text{km}\\). In your spacesuit you jump straight up at \\(${v0}\\ \\text{m/s}\\). How high do you go? Use \\(${SPC_GTX}\\).`,
+      work:`\\begin{aligned}g&=\\tfrac{GM}{R^2}=\\tfrac{(6.67\\times10^{-11})(${spcTx(b.M)})}{(${spcTx(R,4)})^2}\\\\&=${fmtNum(gr,true)}\\ \\text{m/s}^2\\\\h&=\\tfrac{v_0^2}{2g}=\\tfrac{(${v0})^2}{2(${fmtNum(gr,true)})}=${fmtNum(h,true)}\\ \\text{m}\\end{aligned}`,
+      after:`On Earth the same jump only reaches \\(${fmtNum(hE,true)}\\ \\text{m}\\), so you go about ${Math.round(SPC_GE/g)} times higher. You also hang in the air for \\(2v_0/g = ${fmtNum(2*v0/g,true)}\\ \\text{s}\\). <a href="${b.url}" target="_blank" rel="noopener">NASA facts for ${b.name.replace("the ","")}</a>.`};}
+  if(k===1){const b=pickOne(SPC_ROCKS),R=b.Rkm*1e3,GM=SPC_G*b.M,ve=Math.sqrt(2*GM/R);
+    const ch=[{v:ve,ok:true},
+      {v:Math.sqrt(GM/R),fb:"\\(\\sqrt{GM/R}\\) is the speed for a low circular orbit. Tossed straight up at that speed, the pebble only rises to \\(2R\\) from the center and falls back. To escape, \\(\\tfrac12mv^2\\) must cover the whole \\(GMm/R\\)."},
+      {v:ve*Math.sqrt(1000),fb:"The radius has to be in meters. Leaving it in kilometers makes \\(R\\) 1000 times too small and the speed about 32 times too big."},
+      {v:Math.sqrt(2*SPC_GE*R),fb:`\\(9.80\\ \\text{m/s}^2\\) is gravity at Earth's surface. On ${b.short||b.name.replace("asteroid ","")} gravity is far weaker, so work from \\(G\\), \\(M\\) and \\(R\\).`}];
+    ch.forEach(c=>{c.v=spcR(c.v);c.t=`${fmtNum(c.v)} m/s`;});
+    return{kind:1,b,R,GM,ve,choices:dedupe(ch),
+      q:`You stand at the north pole of ${b.name}, where its spin doesn't help you. Its mass is \\(${spcTx(b.M)}\\ \\text{kg}\\) and its radius is \\(${b.Rkm}\\ \\text{km}\\). How fast must you toss a pebble straight up so it never comes back? Use \\(${SPC_GTX}\\).`,
+      work:`\\begin{aligned}\\tfrac12mv^2&=\\tfrac{GMm}{R}\\\\v&=\\sqrt{\\tfrac{2GM}{R}}\\\\&=\\sqrt{\\tfrac{2(6.67\\times10^{-11})(${spcTx(b.M)})}{${spcTx(R)}}}\\\\&=${fmtNum(ve,true)}\\ \\text{m/s}\\end{aligned}`,
+      after:`${ve<1?"That's slower than a slow walk. Even a gentle hop would send you off into space for good.":"That's an easy throw. A good baseball pitch would leave and never come back."} ${b.story} <a href="${b.url}" target="_blank" rel="noopener">About ${b.short||b.name.replace("asteroid ","")}</a>.`};}
+  if(k===2){const o=pickOne(SPC_ORBIT),b=o.body,R=b.Rkm*1e3,r=R+o.h*1e3,GM=SPC_G*b.M,vc=Math.sqrt(GM/r),gs=GM/(R*R);
+    const ch=[{v:vc,ok:true},
+      {v:Math.sqrt(GM/R),fb:`In \\(v = \\sqrt{GM/r}\\), \\(r\\) is measured from the center of ${b.name}: \\(r = R + h\\). Using \\(R\\) alone leaves out the height, so the speed is too big.`},
+      {v:Math.sqrt(2*GM/r),fb:"\\(\\sqrt{2GM/r}\\) is the escape speed. At that speed it leaves for good instead of circling."},
+      {v:Math.sqrt(2*gs*o.h*1e3),fb:"\\(\\sqrt{2gh}\\) is how fast something hits the ground after falling a height \\(h\\). An orbit needs gravity to supply exactly the centripetal force: \\(GMm/r^2 = mv^2/r\\)."}];
+    ch.forEach(c=>{c.v=spcR(c.v/1000)*1000;c.t=`${fmtNum(c.v/1000)} km/s`;});
+    const T=2*Math.PI*r/vc;
+    const after=o.short==="ISS"?`That's the real station's speed: once around Earth every \\(T = 2\\pi r/v = ${Math.round(T/60)}\\) minutes, about 16 sunrises a day. You can see it pass overhead with NASA's <a href="https://spotthestation.nasa.gov/" target="_blank" rel="noopener">Spot the Station</a>.`
+      :o.short==="GPS"?`Its period is \\(T = 2\\pi r/v = ${fmtNum(T/3600,true)}\\ \\text{h}\\), two orbits a day, just like the real ones (<a href="${o.url}" target="_blank" rel="noopener">GPS.gov</a>). Up there gravity is weaker, and Einstein's theory (13.7) says clocks run faster in weaker gravity: GPS clocks gain about 38 microseconds a day on ground clocks, and engineers correct for it (<a href="https://link.springer.com/article/10.12942/lrr-2003-1" target="_blank" rel="noopener">Ashby, 2003</a>). Without that, your phone's position would drift by kilometers a day.`
+      :`It goes around in \\(T = 2\\pi r/v = ${Math.round(T/60)}\\) minutes. With no air on the Moon, an orbit this low never slows down from drag.`;
+    return{kind:2,o,b,R,r,GM,vc,T,choices:dedupe(ch),
+      q:`Put ${o.name} into a circular orbit ${o.ht} above ${b.name}. ${b.Name} has a mass of \\(${spcTx(b.M)}\\ \\text{kg}\\) and a radius of \\(${spcInt(b.Rkm)}\\ \\text{km}\\). What sideways speed should it have at that height? Use \\(${SPC_GTX}\\).`,
+      work:`\\begin{aligned}r&=R+h=${spcTx(r,4)}\\ \\text{m}\\\\\\tfrac{GMm}{r^2}&=\\tfrac{mv^2}{r}\\ \\Rightarrow\\ v=\\sqrt{\\tfrac{GM}{r}}\\\\v&=\\sqrt{\\tfrac{(6.67\\times10^{-11})(${spcTx(b.M)})}{${spcTx(r,4)}}}\\\\&=${ferTx(vc)}\\ \\text{m/s}=${fmtNum(vc/1000,true)}\\ \\text{km/s}\\end{aligned}`,
+      after};}
+  const s=pickOne(SPC_SYNC),R=s.Rkm*1e3,GM=SPC_G*s.M,T=s.Th*3600,r0=Math.cbrt(GM*T*T/(4*Math.PI*Math.PI));
+  const ch=[{r:r0,ok:true},
+    {r:r0*Math.cbrt(4*Math.PI*Math.PI),fb:"Kepler's third law has a \\(4\\pi^2\\) in it: \\(T^2 = \\tfrac{4\\pi^2}{GM}r^3\\). Leaving it out puts the orbit about 3.4 times too far out, where it goes around too slowly."},
+    {r:r0*Math.cbrt(2*Math.PI),fb:"\\(T = 2\\pi r/v\\), and squaring it gives \\((2\\pi)^2 = 4\\pi^2\\), not \\(2\\pi\\)."},
+    {r:r0-R,fb:`That's the height above the surface. Kepler's third law gives \\(r\\) from the center of ${s.name}; the height is \\(r - R\\).`}];
+  ch.forEach(c=>{c.r=spcR(c.r/1000)*1000;c.t=`${ferN(c.r/1000)} km`;});
+  const after=s.name==="Earth"?`Why \\(23.93\\ \\text{h}\\) and not 24? In 24 hours Earth turns a little more than once, because it also moves along its orbit around the Sun. A satellite parked using 24 h would sit only about 0.2% too far out, yet it would drift west about \\(1^\\circ\\) a day and slowly leave the dish. <a href="${s.url}" target="_blank" rel="noopener">NASA Earth facts</a>.`
+    :s.name==="Mars"?`That's about ${fmtNum((r0-R)/1000)} km up. From there one satellite sees the same half of Mars all day. <a href="${s.url}" target="_blank" rel="noopener">NASA Mars facts</a>.`
+    :`Jupiter spins so fast that this orbit is only ${fmtNum(r0/R)} Jupiter radii from the center, well inside the orbit of its moon Io. <a href="${s.url}" target="_blank" rel="noopener">NASA Jupiter facts</a>.`;
+  return{kind:3,s,R,GM,T,r0,choices:dedupe(ch),
+    q:`Park ${s.what}. It must go around in exactly the time ${s.name} takes to turn once, \\(${s.Th}\\ \\text{h}\\)${s.note}. ${s.Name} has a mass of \\(${spcTx(s.M)}\\ \\text{kg}\\) and a radius of \\(${spcInt(s.Rkm)}\\ \\text{km}\\). What orbit radius, measured from the center of ${s.name}, should it have? Use \\(${SPC_GTX}\\).`,
+    work:`\\begin{aligned}T&=${s.Th}\\times3600=${spcTx(T,4)}\\ \\text{s}\\\\T^2&=\\tfrac{4\\pi^2}{GM}r^3\\\\r^3&=\\tfrac{GMT^2}{4\\pi^2}\\\\&=\\tfrac{(6.67\\times10^{-11})(${spcTx(s.M)})(${spcTx(T,4)})^2}{4\\pi^2}\\\\&=${spcTx(Math.pow(r0,3))}\\ \\text{m}^3\\\\r&=${spcTx(r0)}\\ \\text{m}=${ferTx(r0/1000)}\\ \\text{km}\\end{aligned}`,
+    after};
+}
+
+/* Mission 1: in units of R and R/v_esc, r'' = −0.5/r². Stops when the pebble lands again, or at 50 R. */
+function spcToss(s){
+  const pts=[{t:0,r:1,v:s}];let r=1,v=s,t=0,rmax=1;const f=x=>-0.5/(x*x);
+  while(t<2000){const dt=Math.min(0.02,0.004*Math.pow(r,1.5));
+    const k1r=v,k1v=f(r),k2r=v+0.5*dt*k1v,k2v=f(r+0.5*dt*k1r),k3r=v+0.5*dt*k2v,k3v=f(r+0.5*dt*k2r),k4r=v+dt*k3v,k4v=f(r+dt*k3r);
+    r+=dt/6*(k1r+2*k2r+2*k3r+k4r);v+=dt/6*(k1v+2*k2v+2*k3v+k4v);t+=dt;rmax=Math.max(rmax,r);
+    if(r<=1){pts.push({t,r:1,v});break;}pts.push({t,r,v});if(r>=50)break;}
+  return{pts,rmax,back:r<=1};
+}
+/* Mission 2: in units of r and r/v_c, a = −1/ρ². Starts at (0, 1) moving in −x (counterclockwise seen from the north). */
+function spcOrbit(s,rp,tMax){
+  let x=0,y=1,vx=-s,vy=0,t=0;const pts=[{t,x,y}];const dt=0.002;let rmax=1,rmin=1,crash=false,out=false;
+  const acc=(x,y)=>{const r3=Math.pow(x*x+y*y,1.5);return[-x/r3,-y/r3];};
+  while(t<tMax){
+    const[a1x,a1y]=acc(x,y),[a2x,a2y]=acc(x+0.5*dt*vx,y+0.5*dt*vy),[a3x,a3y]=acc(x+0.5*dt*(vx+0.5*dt*a1x),y+0.5*dt*(vy+0.5*dt*a1y)),[a4x,a4y]=acc(x+dt*(vx+0.5*dt*a2x),y+dt*(vy+0.5*dt*a2y));
+    const nx=x+dt*(vx+dt/6*(a1x+a2x+a3x)),ny=y+dt*(vy+dt/6*(a1y+a2y+a3y));
+    vx+=dt/6*(a1x+2*a2x+2*a3x+a4x);vy+=dt/6*(a1y+2*a2y+2*a3y+a4y);x=nx;y=ny;t+=dt;
+    const r=Math.hypot(x,y);rmax=Math.max(rmax,r);rmin=Math.min(rmin,r);
+    if(r<=rp){crash=true;pts.push({t,x:x*rp/r,y:y*rp/r});break;}
+    if(r>2.2){out=true;pts.push({t,x,y});break;}
+    if(pts.length%1===0&&Math.round(t/dt)%5===0)pts.push({t,x,y});}
+  return{pts,rmax,rmin,crash,out,tEnd:t};
+}
+function spcAt(pts,t,keys){
+  let lo=0,hi=pts.length-1;if(t>=pts[hi].t)return pts[hi];if(t<=0)return pts[0];
+  while(hi-lo>1){const md=(lo+hi)>>1;if(pts[md].t<=t)lo=md;else hi=md;}
+  const a=pts[lo],b=pts[hi],u=(t-a.t)/(b.t-a.t||1),o={t};keys.forEach(k=>o[k]=a[k]+(b[k]-a[k])*u);return o;
+}
+function spaceSim(m,c){
+  const tol=spcTol(m);
+  if(m.kind===0){const tEnd=2*m.v0/m.g;
+    return{tEnd,tApex:m.v0/m.g,y:t=>Math.max(0,m.v0*t-0.5*m.g*t*t),vy:t=>m.v0-m.g*t,aim:c.h,miss:Math.abs(c.h-m.h),hit:Math.abs(c.h-m.h)<=tol};}
+  if(m.kind===1){const s=c.v/m.ve,T=m.R/m.ve,o=spcToss(s);
+    const last=o.pts[o.pts.length-1];
+    return{tEnd:last.t*T,T,o,s,back:o.back,rmax:o.rmax,vinf:s>1?m.ve*Math.sqrt(s*s-1):0,at:t=>spcAt(o.pts,t/T,["r","v"]),miss:Math.abs(c.v-m.ve),hit:Math.abs(c.v-m.ve)<=tol};}
+  if(m.kind===2){const s=c.v/m.vc,T0=m.r/m.vc,rp=m.R/m.r,o=spcOrbit(s,rp,1.15*2*Math.PI);
+    const kind=Math.abs(c.v-m.vc)<=tol?"circle":o.crash?"crash":(o.out||s*s>=2)?"escape":"ellipse";
+    return{tEnd:o.tEnd*T0,T0,o,s,rp,kind,at:t=>spcAt(o.pts,t/T0,["x","y"]),apo:o.rmax*m.r,miss:Math.abs(c.v-m.vc),hit:Math.abs(c.v-m.vc)<=tol};}
+  const wp=2*Math.PI/m.T,ws=Math.sqrt(m.GM/Math.pow(c.r,3)),tEnd=3*m.T,dw=ws-wp,lim=15*Math.PI/180;
+  const tLost=Math.abs(dw)<1e-15?Infinity:lim/Math.abs(dw);
+  return{tEnd,wp,ws,dw,tLost,lost:tLost<tEnd,drift:t=>dw*t,miss:Math.abs(c.r-m.r0),hit:Math.abs(c.r-m.r0)<=tol};
+}
+function makeSpace(k){
+  for(let tries=0;tries<300;tries++){
+    const m=spcDraft(k);if(!m||m.choices.length<4)continue;const tol=spcTol(m);
+    if(!m.choices.every(c=>c.ok?spaceSim(m,c).hit:spaceSim(m,c).miss>=2.5*tol))continue;
+    return m;}
+}
+/* the Ch 1 probe, sitting with its feet at (px, py) */
+function spcProbe(ctx,col,px,py,sc){
+  ctx.save();ctx.translate(px,py);ctx.scale(sc||1,sc||1);
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(-8,-6);ctx.lineTo(-14,0);ctx.moveTo(8,-6);ctx.lineTo(14,0);ctx.stroke();
+  ctx.lineWidth=1.2;ctx.fillStyle=col("--petal-5");ctx.fillRect(-26,-19,12,7);ctx.strokeRect(-26,-19,12,7);ctx.fillRect(14,-19,12,7);ctx.strokeRect(14,-19,12,7);
+  ctx.fillStyle=col("--card");ctx.fillRect(-10,-22,20,14);ctx.strokeRect(-10,-22,20,14);
+  ctx.fillStyle=col("--petal-6");ctx.beginPath();ctx.moveTo(-12,-8);ctx.lineTo(12,-8);ctx.lineTo(9,-4);ctx.lineTo(-9,-4);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(4,-22);ctx.lineTo(8,-30);ctx.stroke();
+  ctx.fillStyle=col("--accent-soft");ctx.beginPath();ctx.moveTo(2,-30);ctx.quadraticCurveTo(8,-38,14,-32);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.restore();
+}
+/* a small satellite: box with two solar panels, rotated by ang */
+function spcSat(ctx,col,x,y,ang,sc){
+  ctx.save();ctx.translate(x,y);ctx.rotate(ang||0);const k=sc||1;ctx.lineWidth=1;ctx.strokeStyle=col("--ink");
+  ctx.fillStyle=col("--petal-5");ctx.fillRect(-11*k,-3*k,7*k,6*k);ctx.strokeRect(-11*k,-3*k,7*k,6*k);ctx.fillRect(4*k,-3*k,7*k,6*k);ctx.strokeRect(4*k,-3*k,7*k,6*k);
+  ctx.fillStyle=col("--accent");ctx.fillRect(-4*k,-4*k,8*k,8*k);ctx.strokeRect(-4*k,-4*k,8*k,8*k);ctx.restore();
+}
+function spcAstro(ctx,col,x,yFeet,phase){
+  const h=34;ctx.save();ctx.translate(x,yFeet);ctx.strokeStyle=col("--ink");ctx.lineWidth=1.3;
+  const spread=phase?5:3;
+  ctx.fillStyle=col("--card");ctx.beginPath();ctx.moveTo(-3,-12);ctx.lineTo(-spread,0);ctx.lineTo(-spread+4,0);ctx.lineTo(0,-9);ctx.lineTo(spread-4,0);ctx.lineTo(spread,0);ctx.lineTo(3,-12);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--muted");ctx.fillRect(-9,-25,4,11);ctx.strokeRect(-9,-25,4,11);
+  ctx.fillStyle=col("--card");ctx.beginPath();ctx.roundRect(-6,-26,12,15,3);ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.moveTo(-6,-22);ctx.lineTo(phase?-12:-9,phase?-30:-15);ctx.moveTo(6,-22);ctx.lineTo(phase?12:9,phase?-30:-15);ctx.stroke();
+  ctx.beginPath();ctx.arc(0,-h+3,6.5,0,7);ctx.fill();ctx.stroke();
+  ctx.fillStyle=col("--accent-soft");ctx.beginPath();ctx.ellipse(1.5,-h+3,4,3,0,0,7);ctx.fill();ctx.stroke();
+  ctx.restore();
+}
+function drawSpace(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre,tt=pre?0:Math.min(t,F.tEnd);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  const result=(ok,txt)=>{ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.textAlign="left";ctx.fillStyle=col(ok?"--good":"--bad");ctx.fillText(txt,12,46);ctx.font="11px 'IBM Plex Mono', monospace";};
+  const dash=(x1,y1,x2,y2,color,lw,d)=>{ctx.strokeStyle=col(color);ctx.lineWidth=lw||1.5;ctx.setLineDash(d||[6,4]);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);};
+  if(m.kind===0){
+    const top=68,bot=H-36,L=46;
+    let maxY=pre?Math.max(...m.choices.map(q=>q.h)):Math.max(m.h,c?c.h:0,m.hE);maxY*=1.18;
+    const steps=[0.1,0.2,0.25,0.5,1,2,2.5,5,10,20,25,50,100,200,250,500];const st=steps.find(s=>maxY/s<=6)||1000;maxY=Math.ceil(maxY/st)*st;
+    const Y=y=>bot-(y/maxY)*(bot-top);
+    for(let y=0;y<=maxY+1e-9;y+=st){ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(L,Y(y));ctx.lineTo(W-10,Y(y));ctx.stroke();ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`${fmtNum(y)} m`,L-4,Y(y)-(y===0?9:0));}
+    ctx.fillStyle=col(m.b.ground);ctx.globalAlpha=.35;ctx.fillRect(0,bot,W,H-bot);ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,bot);ctx.lineTo(W,bot);ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.globalAlpha=.5;[[0.2,8],[0.8,5]].forEach(([fx,r])=>{ctx.beginPath();ctx.ellipse(W*fx,bot+6,r*1.6,r*0.5,0,0,7);ctx.fill();});ctx.globalAlpha=1;
+    spcProbe(ctx,col,L+44,bot,1);
+    const ax=W*0.5;
+    if(c&&!pre){dash(L,Y(c.h),W-10,Y(c.h),"--accent");ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`your guess ${c.t}`,L+4,Y(c.h)+11);}
+    if(!pre){dash(ax+26,Y(m.hE),W-10,Y(m.hE),"--muted",1,[2,3]);ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("same jump on Earth",W-12,Y(m.hE)-9);}
+    if(!pre&&tt>=F.tApex){ctx.strokeStyle=col("--good");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(L,Y(m.h));ctx.lineTo(W-10,Y(m.h));ctx.stroke();ctx.fillStyle=col("--good");ctx.textAlign="left";ctx.fillText(`peak ${fmtNum(m.h)} m`,L+4,Y(m.h)-9);}
+    if(!pre){ctx.fillStyle=col("--muted");const dtd=F.tEnd/14;for(let s=dtd;s<tt;s+=dtd){ctx.beginPath();ctx.arc(ax+22,Y(F.y(s)),2.4,0,7);ctx.fill();}}
+    spcAstro(ctx,col,ax,Y(F.y(tt)),!pre&&!ended&&tt>0);
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";
+    ctx.fillText(`t = ${tt.toFixed(1)} s   height = ${F.y(tt).toFixed(2)} m`,12,14);
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(m.b.Name,W-12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`you said: ${c.t}`,12,30);ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`g = ${fmtNum(m.g)} m/s²`,W-12,30);}
+    if(ended)result(F.hit,F.hit?"Spot on":`Off by ${fmtNum(F.miss)} m`);
+    return;}
+  if(m.kind===1){
+    const top=74,bot=H-64,L=58,px=W*0.6,Y=r=>bot-(1-1/r)*(bot-top);
+    /* the rock: a big lumpy dome below the start line */
+    const RR=Math.max(W*0.5,200),cyR=bot+RR;
+    ctx.fillStyle=col("--muted");ctx.globalAlpha=.45;ctx.strokeStyle=col("--ink");ctx.lineWidth=1.6;ctx.beginPath();
+    for(let a=Math.PI*1.05;a<=Math.PI*1.95+1e-9;a+=0.02){const rr=RR*(1+0.012*Math.sin(9*a)+0.008*Math.sin(23*a));const x=px+rr*Math.cos(a),y=cyR+rr*Math.sin(a);if(a===Math.PI*1.05)ctx.moveTo(x,y);else ctx.lineTo(x,y);}
+    ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fill();ctx.globalAlpha=1;ctx.stroke();
+    ctx.fillStyle=col("--muted");[[-60,10,5],[40,14,4],[90,6,6]].forEach(([dx,dy,r])=>{ctx.beginPath();ctx.arc(px+dx,bot+dy+r,r,0,7);ctx.fill();});
+    /* squeezed distance axis */
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(L,top);ctx.lineTo(L,bot);ctx.stroke();
+    [[1,"R"],[1.5,"1.5R"],[2,"2R"],[3,"3R"],[5,"5R"],[10,"10R"]].forEach(([r,lab])=>{ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(L,Y(r));ctx.lineTo(W-10,Y(r));ctx.stroke();ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(lab,L-5,Y(r));});
+    dash(L,top,W-10,top,"--accent",1.2,[4,4]);ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText("∞",L-5,top);ctx.textAlign="left";ctx.fillText("gone for good",L+4,top-10);
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("squeezed scale",W-12,top-10);
+    if(!pre&&F.back&&ended){ctx.strokeStyle=col("--bad");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(L,Y(F.rmax));ctx.lineTo(W-10,Y(F.rmax));ctx.stroke();ctx.fillStyle=col("--bad");ctx.textAlign="right";ctx.fillText(`highest: ${fmtNum(F.rmax)}R`,W-12,Y(F.rmax)-9);}
+    const p=pre?{r:1,v:0}:F.at(tt);
+    if(!pre){ctx.fillStyle=col("--muted");const n=24;for(let i=1;i<n;i++){const u=tt*i/n,q=F.at(u);ctx.beginPath();ctx.arc(px+12,Y(q.r),1.8,0,7);ctx.fill();}}
+    spcAstro(ctx,col,px-16,bot,false);
+    ctx.fillStyle=col("--petal-2");ctx.strokeStyle=col("--ink");ctx.lineWidth=1;ctx.beginPath();ctx.arc(px,Y(p.r)-(pre?24:0)-(p.r<1.001&&!pre?24:0),4,0,7);ctx.fill();ctx.stroke();
+    const rname=m.b.short||m.b.name.replace("asteroid ","");
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";
+    ctx.fillText(`t = ${spcTime(tt)}`,12,14);
+    const dist=(p.r-1)*m.R,vnow=Math.abs(p.v)*m.ve;
+    ctx.fillText(`height = ${dist>=1000?fmtNum(dist/1000)+" km":fmtNum(dist)+" m"}   v = ${fmtNum(vnow)} m/s`,12,30);
+    
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText(`tossed at ${c.t}`,W-12,46);}
+    if(ended)result(F.hit,F.hit?"Gone for good":F.back?"It fell back":`Escaped, ${fmtNum(F.vinf)} m/s to spare`);
+    return;}
+  if(m.kind===2){
+    const cx=W/2,cy=(H+50)/2,sc=Math.min(W-24,H-80)/2/1.3,P=(x,y)=>[cx+x*sc,cy-y*sc];
+    const rp=m.R/m.r,earth=m.b===SPC_EARTH;
+    ctx.fillStyle=col(earth?"--petal-5":"--muted");ctx.globalAlpha=earth?.35:.45;ctx.beginPath();ctx.arc(cx,cy,rp*sc,0,7);ctx.fill();ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(cx,cy,rp*sc,0,7);ctx.stroke();
+    if(earth){ctx.fillStyle=col("--good");ctx.globalAlpha=.35;[[-.3,.2,.28],[.35,-.1,.22],[.05,-.45,.18]].forEach(([dx,dy,r])=>{ctx.beginPath();ctx.arc(cx+dx*rp*sc,cy+dy*rp*sc,r*rp*sc,0,7);ctx.fill();});ctx.globalAlpha=1;}
+    ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText(m.b.Name,cx,cy);
+    ctx.strokeStyle=col("--accent");ctx.lineWidth=1.2;ctx.setLineDash([5,4]);ctx.beginPath();ctx.arc(cx,cy,sc,0,7);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText(`target orbit, ${m.o.ht.replace("about ","")} up`,cx,cy+sc+12);
+    let p={x:0,y:1};
+    if(!pre){const pts=F.o.pts,tn=tt/F.T0;ctx.strokeStyle=col("--ink");ctx.lineWidth=1.8;ctx.beginPath();
+      for(let i=0;i<pts.length&&pts[i].t<=tn;i++){const[X,Y]=P(pts[i].x,pts[i].y);if(i===0)ctx.moveTo(X,Y);else ctx.lineTo(X,Y);}
+      p=F.at(tt);const[X,Y]=P(p.x,p.y);ctx.lineTo(X,Y);ctx.stroke();}
+    const[sx,sy]=P(p.x,p.y);
+    const r=Math.hypot(p.x,p.y);
+    if(ended&&F.kind==="crash"){ctx.fillStyle=col("--bad");ctx.beginPath();ctx.arc(sx,sy,6,0,7);ctx.fill();}else spcSat(ctx,col,sx,sy,Math.atan2(p.y,p.x),1);
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";
+    ctx.fillText(`t = ${spcTime(tt)}   height = ${ferN(Math.max(0,(r-rp)*m.r/1000))} km`,12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.t}`,12,30);ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(m.o.short==="orbiter"?"lunar orbiter":m.o.short,W-12,30);}
+    if(ended)result(F.hit,F.kind==="circle"?"Circular orbit":F.kind==="crash"?"Crashed":F.kind==="escape"?"Escaped":`Ellipse, up to ${ferN((F.apo-m.R)/1000)} km`);
+    return;}
+  /* mission 3: the planet turns, the dish looks straight up, the satellite has to keep pace */
+  const vr=pre?4.2*m.R:1.15*Math.max(c.r,m.r0),cx=W/2,cy=(H+44)/2,sc=Math.min(W-24,H-76)/2/vr,Rp=m.R*sc;
+  const th=pre?0:F.wp*tt,ds=Math.PI/2+th,P=(r,a)=>[cx+r*sc*Math.cos(a),cy-r*sc*Math.sin(a)];
+  /* the dish's view: a wedge of sky 15° to each side */
+  const lim=15*Math.PI/180;ctx.fillStyle=col("--accent");ctx.globalAlpha=.1;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,vr*sc*1.5,-(ds+lim),-(ds-lim));ctx.closePath();ctx.fill();ctx.globalAlpha=1;
+  const pc={Earth:"--petal-5",Mars:"--petal-6",Jupiter:"--petal-2"}[m.s.name];
+  ctx.fillStyle=col("--paper");ctx.beginPath();ctx.arc(cx,cy,Rp,0,7);ctx.fill();
+  ctx.fillStyle=col(pc);ctx.globalAlpha=.4;ctx.beginPath();ctx.arc(cx,cy,Rp,0,7);ctx.fill();ctx.globalAlpha=1;
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.globalAlpha=.35;ctx.beginPath();for(let i=0;i<4;i++){const a=th+i*Math.PI/4;ctx.moveTo(cx-Rp*Math.cos(a),cy+Rp*Math.sin(a));ctx.lineTo(cx+Rp*Math.cos(a),cy-Rp*Math.sin(a));}ctx.stroke();ctx.globalAlpha=1;
+  ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(cx,cy,Rp,0,7);ctx.stroke();
+  const[dx,dy]=P(m.R,ds);ctx.save();ctx.translate(dx,dy);ctx.rotate(-ds+Math.PI/2);ctx.fillStyle=col("--accent-soft");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.1;
+  ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,-5);ctx.stroke();ctx.beginPath();ctx.moveTo(-7,-11);ctx.quadraticCurveTo(0,-1,7,-11);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
+  if(ended){ctx.strokeStyle=col("--good");ctx.lineWidth=1.2;ctx.setLineDash([5,4]);ctx.beginPath();ctx.arc(cx,cy,m.r0*sc,0,7);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=col("--good");ctx.textAlign="left";const[lx,ly]=P(m.r0,-Math.PI/4);ctx.fillText("stationary orbit",Math.min(lx+4,W-120),ly+12);}
+  ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText(m.s.Name,cx,cy+(Rp>30?0:Rp+12));
+  let locked=true;
+  if(c){const as=pre?ds:Math.PI/2+F.ws*tt;ctx.strokeStyle=col("--muted");ctx.lineWidth=1;ctx.globalAlpha=.6;ctx.beginPath();ctx.arc(cx,cy,c.r*sc,0,7);ctx.stroke();ctx.globalAlpha=1;
+    const[sx,sy]=P(c.r,as);spcSat(ctx,col,sx,sy,-as+Math.PI/2,1);
+    locked=pre||Math.abs(F.drift(tt))<=lim;}
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";
+  ctx.fillText(`t = ${spcTime(tt)}   ${m.s.Name} turned ${(th/(2*Math.PI)).toFixed(2)} times`,12,14);
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: r = ${c.t}`,12,30);
+    const dd=F.drift(tt)*180/Math.PI,wrap=((dd+180)%360+360)%360-180;
+    ctx.textAlign="right";ctx.font="bold 11px 'IBM Plex Mono', monospace";ctx.fillStyle=col(locked?"--good":"--bad");ctx.fillText(locked?`signal locked, drift ${Math.abs(wrap)<0.5?"0":Math.round(wrap)}°`:"signal lost",W-12,30);ctx.font="11px 'IBM Plex Mono', monospace";}
+  if(ended)result(F.hit,F.hit?"Parked over the dish":F.dw>0?"Ran ahead of the dish":"Fell behind the dish");
+}
+TOYS.space.game={title:"Run the space center",intro:"Every mission uses real numbers for real worlds, and gravity follows Newton's law exactly.",
+  names:SPC_NAMES,make:makeSpace,ms:m=>m.kind===0?4200:m.kind===1?5200:5600,
+  sim:m=>spaceSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawSpace,
+  outcome:(F,m)=>{const c=m.choices[LP.pick==null?0:LP.pick];
+    if(m.kind===0)return F.hit?`You rose ${fmtNum(m.h)} m off ${m.b.name}, just as you said.`:`You rose ${fmtNum(m.h)} m off ${m.b.name}, not ${c.t}.`;
+    if(m.kind===1){if(F.hit)return `At ${c.t} the pebble kept slowing down but never stopped, and it never came back.`;
+      if(F.back)return `The pebble rose to ${fmtNum(F.rmax)} times the radius from the center, then fell back after ${spcTime(F.tEnd)}.`;
+      return `It escaped, but far away it still had ${fmtNum(F.vinf)} m/s left over. Escape speed is the slowest toss that never comes back, ${fmtNum(m.ve)} m/s.`;}
+    if(m.kind===2){if(F.hit)return `It circled ${m.b.name} at a steady height, once every ${spcTime(m.T)}.`;
+      if(F.kind==="crash")return `Too slow: gravity pulled it down and it crashed into ${m.b.name}.`;
+      if(F.kind==="escape")return `Too fast: that's escape speed, so it flew off and left ${m.b.name} behind.`;
+      return `Too fast for a circle: it swung out into an ellipse, as high as ${ferN((F.apo-m.R)/1000)} km.`;}
+    if(F.hit)return `It went around in exactly ${m.s.Th} h and stayed over the dish the whole time.`;
+    return F.dw>0?`That orbit is too low, so it goes around faster than ${m.s.name} turns and ran ahead of the dish after ${spcTime(F.tLost)}.`:`That orbit is too high, so it goes around slower than ${m.s.name} turns and fell behind the dish after ${spcTime(F.tLost)}.`;},
+  right:"Mission accomplished!",go:"Fly the mission",pickFirst:"Pick an answer to fly",again:"Fly again with new numbers",cvLabel:"Space mission",
+  notReadyTitle:"The space center isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the space center. Bloom all seven to fly the missions."};
+
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -3474,7 +3788,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/01g";
+const APP_VERSION="11/01h";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -3862,7 +4176,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeMgr,mgrSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeSpace,spaceSim,makeMgr,mgrSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
