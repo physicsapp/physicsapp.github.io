@@ -622,7 +622,7 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],toy:"coaster",eqHint:"Search, for example “spring” or “force”"},
   9:{eqSec:["9.1","9.2","9.2","9.2","9.2","9.3","9.3","9.5","9.6","9.6","9.6","9.6","9.6","9.6","9.7"],toy:"billiards",eqHint:"Search, for example “impulse” or “rocket”"},
   10:{eqSec:["10.1","10.1","10.1","10.1","10.1","10.2","10.2","10.2","10.2","10.2","10.3","10.4","10.4","10.4","10.5","10.5","10.5","10.6","10.6","10.6","10.7","10.8","10.8","10.8","10.8"],toy:"ferris",eqHint:"Search, for example “torque” or “inertia”"},
-  11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],eqHint:"Search, for example “rolling” or “precession”"},
+  11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],toy:"mgr",eqHint:"Search, for example “rolling” or “precession”"},
   12:{eqHint:"Search, for example “torque” or “stress”"},
   13:{eqHint:"Search, for example “orbit” or “escape”"},
   14:{eqSec:["14.1","14.1","14.1","14.1","14.2","14.3","14.5","14.5","14.5","14.6","14.7","14.7","14.7"],eqHint:"Search, for example “buoyant” or “Bernoulli”"},
@@ -1334,6 +1334,19 @@ function ferSVG(have,label){
   </svg>`;
 }
 
+function mgrSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const L=(k,d,w)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="${w||2.2}" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  const rails=[[14,112],[106,112],[34,124],[86,124],[40,101],[80,101]].map(([x,y])=>`M60 70 Q${(60+x)/2} ${y-26} ${x} ${y-12} L${x} ${y}`).join(" ");
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    <path d="M6 160 h108" stroke="var(--rule)" stroke-width="1.5"/>
+    ${on(0)?'<ellipse cx="60" cy="158" rx="22" ry="5" fill="var(--muted)" stroke="var(--ink)" stroke-width="1"/><path d="M53 120 L55 157 H65 L67 120 Z" fill="var(--muted)" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"/>':`<path d="M53 120 L55 157 H65 L67 120 Z" ${off}/>`}
+    ${on(1)?'<path d="M10 112 v6 a50 15 0 0 0 100 0 v-6" fill="var(--muted)" stroke="var(--ink)" stroke-width="1.1"/><ellipse cx="60" cy="112" rx="50" ry="15" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="1.2"/><path d="M60 112 L10 112 M60 112 L110 112 M60 112 L35 125 M60 112 L85 99" stroke="var(--muted)" stroke-width=".8"/>':`<ellipse cx="60" cy="112" rx="50" ry="15" ${off}/>`}
+    ${L(2,`M60 112 V66 ${rails}`,1.8)}${on(2)?'<circle cx="60" cy="66" r="4" fill="var(--petal-2)" stroke="var(--ink)" stroke-width="1"/>':""}
+    ${on(3)?'<g stroke="var(--petal-1)" stroke-width="2.6" stroke-linecap="round" fill="none"><circle cx="96" cy="78" r="4.5"/><path d="M96 83 V97 M96 97 L91 110 M96 97 L101 110 M96 87 L89 92 M96 87 L104 92"/></g>':`<circle cx="96" cy="78" r="4.5" ${off}/><path d="M96 83 V110" ${off}/>`}
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1365,7 +1378,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} curling set parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can throw a stone."},
   ferris:{eyebrow:"The fair",thing:"Ferris wheel",parts:["base legs","axle","spokes","rim","cars","motor","loading platform","lights"],svg:ferSVG,route:"wheel",
     ready:"Your Ferris wheel is ready",readyText:"Use rotation to plan each ride, then ride it.",go:"Go to the fair",
-    count:(n,t)=>`${n} of ${t} Ferris wheel parts`,wait:"Each plant that blooms adds a part. When all eight bloom, you can ride it."}};
+    count:(n,t)=>`${n} of ${t} Ferris wheel parts`,wait:"Each plant that blooms adds a part. When all eight bloom, you can ride it."},
+  mgr:{eyebrow:"The playground",thing:"merry go round",parts:["base","platform","handrails","kid"],svg:mgrSVG,route:"spin",
+    ready:"Your merry go round is ready",readyText:"Predict how things roll and spin, then play.",go:"Go to the playground",
+    count:(n,t)=>`${n} of ${t} merry go round parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can play."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -3221,6 +3237,180 @@ TOYS.ferris.game={title:"Ride the Ferris wheel",intro:"The wheel follows the phy
   notReadyTitle:"The Ferris wheel isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the Ferris wheel. Bloom all eight to ride it."};
 
 
+
+/* ---------- Chapter 11: playground merry go round ----------
+   g = 10 m/s². Three missions (11.4 precession has no mission):
+   Mission 0 (11.1, prediction): a ball starts at rest at the top of a straight 30° slide of height h and rolls without
+     slipping. Solid ball (I = 2/5 mr²) or hollow ball (I = 2/3 mr²). Predict the speed at the bottom, v = √(2gh/(1 + c)).
+     A dashed ghost ball rolls at the student's speed; a speed trap reads the real ball. Mass and radius are distractors.
+   Mission 1 (11.2, 11.3, prediction): the platform (solid disk, I = ½MR²) is at rest; a kid runs at v tangent to the rim
+     and jumps on at the edge. Predict ω = mvR/(I + mR²). Top view on the left, ω versus t on the right.
+   Mission 2 (11.3, prediction): the platform spins at ω1 with the kid at the edge; the kid walks to the center pole or
+     halfway in. Predict ω2 = (I + mR²)ω1/(I + mr²). The angle is integrated from ω(r(t)).
+   Tolerance 3% of the right answer. makeMgr redraws until every wrong choice misses by at least 2.5 tolerances and
+   every pair of choices differs by at least 6%. */
+const MGR_NAMES=["Race down the slide","Run and jump on","Walk to the middle"], MGR_G=10;
+const MGR_BALLS=[{name:"solid rubber ball",kind:"solid",c:0.4,frac:"\\tfrac25",one:"\\tfrac75",mass:0.5,rcm:8},
+  {name:"hollow playground ball",kind:"hollow",c:2/3,frac:"\\tfrac23",one:"\\tfrac53",mass:0.3,rcm:11}];
+const MGR_RUN=1.5, MGR_SPIN=4, MGR_WALK=[1,3.5,5.5];
+const mgrR=x=>Number(x.toPrecision(3));
+function mgrTol(m){return 0.03*m.ans;}
+function mgrDraft(k){
+  if(k===0){const b=pickOne(MGR_BALLS),o=MGR_BALLS.find(q=>q!==b),h=pickOne([1.5,1.8,2,2.2,2.4,2.5]),v=Math.sqrt(2*MGR_G*h/(1+b.c));
+    const ch=[{v,ok:true},
+      {v:Math.sqrt(2*MGR_G*h),fb:"That's the speed of something sliding with no friction at all. A rolling ball also spins, so part of \\(mgh\\) goes into rotational energy \\(\\tfrac12I\\omega^2\\) and the ball ends up slower."},
+      {v:Math.sqrt(2*MGR_G*h/(1+o.c)),fb:`That's the answer for a ${o.kind} ball. This one is ${b.kind}, so \\(I = ${b.frac}mr^2\\).`},
+      {v:Math.sqrt(2*MGR_G*h*(1+b.c)),fb:`Spinning takes energy away, so the ball is slower than \\(\\sqrt{2gh}\\), not faster. Divide \\(2gh\\) by \\(1 + ${b.frac}\\) instead of multiplying.`}];
+    ch.forEach(c=>{c.v=mgrR(c.v);c.t=`${fmtNum(c.v)} m/s`;});
+    const vs=fmtNum(mgrR(Math.sqrt(2*MGR_G*h/(1+o.c))));
+    return{kind:0,b,o,h,v,ans:v,choices:dedupe(ch),
+      q:`A ${b.name} (mass \\(${b.mass}\\ \\text{kg}\\), radius \\(${b.rcm}\\ \\text{cm}\\)) starts at rest at the top of a straight slide \\(${h}\\ \\text{m}\\) high and rolls down without slipping. For a ${b.kind} ball, \\(I = ${b.frac}mr^2\\). How fast is it going at the bottom? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}mgh&=\\tfrac12mv^2+\\tfrac12I\\omega^2,\\quad\\omega=\\tfrac{v}{r}\\\\mgh&=\\tfrac12\\left(1+${b.frac}\\right)mv^2\\\\v&=\\sqrt{\\tfrac{2gh}{${b.one}}}=\\sqrt{\\tfrac{2(10)(${h})}{${b.one}}}\\\\&=${fmtNum(v,true)}\\ \\text{m/s}\\end{aligned}`,
+      after:`The mass and radius cancel out. From this height every ${b.kind} ball reaches \\(${fmtNum(v,true)}\\ \\text{m/s}\\) and every ${o.kind} ball reaches \\(${vs}\\ \\text{m/s}.\\) A hollow ball keeps its mass far from the center, so more of the energy goes into spinning. That's why a hollow ball always loses a race down a ramp to a solid one.`};}
+  const M=pickOne([80,100,120,150]),R=pickOne([1.5,1.8,2]),mk=pickOne([25,30,35,40,45]),Ip=0.5*M*R*R,Ik=mk*R*R;
+  if(k===1){const v=pickOne([3,3.5,4,4.5,5]),Lk=mk*v*R,w=Lk/(Ip+Ik);
+    const ch=[{w,ok:true},
+      {w:v/R,fb:"\\(v/R\\) is how fast it would spin if the platform kept up with you. The heavy platform shares your angular momentum, so it spins slower."},
+      {w:Lk/Ip,fb:"After the jump you spin too, so your \\(mR^2\\) belongs in the moment of inertia: \\(mvR = (I + mR^2)\\omega\\)."},
+      {w:Math.sqrt(mk*v*v/(Ip+Ik)),fb:"Kinetic energy isn't conserved when you land and stick, just like a sticky collision in Chapter 9. Angular momentum is: \\(mvR = (I + mR^2)\\omega\\)."}];
+    ch.forEach(c=>{c.w=mgrR(c.w);c.t=`${fmtNum(c.w)} rad/s`;});
+    const K1=0.5*mk*v*v,K2=0.5*(Ip+Ik)*w*w;
+    return{kind:1,M,R,mk,v,Ip,Ik,Lk,w,ans:w,choices:dedupe(ch),
+      q:`A merry go round is a solid disk of mass \\(${M}\\ \\text{kg}\\) and radius \\(${R}\\ \\text{m}\\), sitting still. A \\(${mk}\\ \\text{kg}\\) kid runs at \\(${v}\\ \\text{m/s}\\) along the edge, straight past it, and jumps on at the rim. How fast does it spin right after? Treat the kid as a point mass and ignore friction in the axle.`,
+      work:`\\begin{aligned}I&=\\tfrac12MR^2=\\tfrac12(${M})(${R})^2\\\\&=${fmtNum(Ip,true)}\\ \\text{kg·m}^2\\\\L&=mvR=${mk}(${v})(${R})\\\\&=${fmtNum(Lk,true)}\\ \\text{kg·m}^2\\text{/s}\\\\L&=(I+mR^2)\\omega\\\\\\omega&=\\tfrac{${fmtNum(Lk,true)}}{${fmtNum(Ip,true)}+${mk}(${R})^2}\\\\&=${fmtNum(w,true)}\\ \\text{rad/s}\\end{aligned}`,
+      after:`About ${Math.round(100*(1-K2/K1))}% of the kinetic energy turned into heat and sound as your feet landed. It dropped from \\(${fmtNum(K1,true)}\\ \\text{J}\\) to \\(${fmtNum(K2,true)}\\ \\text{J}.\\) Angular momentum didn't change, because nothing outside twisted the merry go round.`};}
+  const w1=pickOne([0.8,1,1.2,1.5]),half=Math.random()<0.5,rf=half?R/2:0,Ia=Ip+Ik,Ib=Ip+mk*rf*rf,L=Ia*w1,w2=L/Ib;
+  const ch=[{w:w2,ok:true},
+    {w:w1,fb:"Nobody pushed it, but the kid moved mass closer to the axle. With no outside torque \\(L = I\\omega\\) stays the same, so a smaller \\(I\\) means a bigger \\(\\omega\\)."},
+    {w:w1*Ib/Ia,fb:"Moving toward the axle makes \\(I\\) smaller, so \\(\\omega\\) gets bigger, not smaller: \\(\\omega_2 = (I + mR^2)\\omega_1/(I + mr^2)\\)."},
+    {w:w1*Math.sqrt(Ia/Ib),fb:"Kinetic energy isn't conserved here, because the kid's legs do work pulling toward the center. Angular momentum is: \\((I + mR^2)\\omega_1 = (I + mr^2)\\omega_2\\)."}];
+  ch.forEach(c=>{c.w=mgrR(c.w);c.t=`${fmtNum(c.w)} rad/s`;});
+  const K1=0.5*Ia*w1*w1,K2=0.5*Ib*w2*w2;
+  const where=half?`halfway to the center, \\(${fmtNum(rf,true)}\\ \\text{m}\\) from the axle`:"all the way to the center pole";
+  return{kind:2,M,R,mk,w1,half,rf,Ip,Ia,Ib,L,w2,ans:w2,choices:dedupe(ch),
+    q:`A merry go round is a solid disk of mass \\(${M}\\ \\text{kg}\\) and radius \\(${R}\\ \\text{m}\\). It spins at \\(${w1}\\ \\text{rad/s}\\) with a \\(${mk}\\ \\text{kg}\\) kid standing at the edge. Nobody pushes. The kid walks ${where}. How fast does it spin now? Treat the kid as a point mass.`,
+    work:`\\begin{aligned}I&=\\tfrac12MR^2=\\tfrac12(${M})(${R})^2\\\\&=${fmtNum(Ip,true)}\\ \\text{kg·m}^2\\\\L&=(I+mR^2)\\omega_1\\\\&=(${fmtNum(Ip,true)}+${mk}(${R})^2)(${w1})\\\\&=${fmtNum(L,true)}\\ \\text{kg·m}^2\\text{/s}\\\\\\omega_2&=\\tfrac{L}{I+mr^2}=\\tfrac{${fmtNum(L,true)}}{${fmtNum(Ib,true)}}\\\\&=${fmtNum(w2,true)}\\ \\text{rad/s}\\end{aligned}`,
+    after:`It sped up with no push from anyone. Kinetic energy went up too, from \\(${fmtNum(K1,true)}\\ \\text{J}\\) to \\(${fmtNum(K2,true)}\\ \\text{J}\\) because the kid's legs pulled against the spin. Figure skaters do the same thing when they pull their arms in. Try it on a spinning office chair: start with your arms and legs out, then pull them in.`};
+}
+function mgrSim(m,c){
+  if(m.kind===0){const L=2*m.h,a=MGR_G*0.5/(1+m.b.c),ag=c.v*c.v/(2*L),tb=m.v/a,tg=c.v/ag;
+    const pos=(t,acc,v,tbot)=>t<=tbot?0.5*acc*t*t:L+v*(t-tbot);
+    const tEnd=Math.max(tb,tg)+0.5;
+    return{tEnd,L,tb,tg,s:t=>pos(t,a,m.v,tb),sg:t=>pos(t,ag,c.v,tg),v:t=>t<tb?a*t:m.v,aim:c.v,miss:Math.abs(c.v-m.v),hit:Math.abs(c.v-m.v)<=mgrTol(m)};}
+  if(m.kind===1){const tEnd=MGR_RUN+MGR_SPIN;
+    return{tEnd,w:t=>t<MGR_RUN?0:m.w,th:t=>t<MGR_RUN?0:m.w*(t-MGR_RUN),thg:t=>t<MGR_RUN?0:c.w*(t-MGR_RUN),aim:c.w,miss:Math.abs(c.w-m.w),hit:Math.abs(c.w-m.w)<=mgrTol(m)};}
+  const [t1,t2,tEnd]=MGR_WALK,r=t=>t<=t1?m.R:t>=t2?m.rf:m.R+(m.rf-m.R)*(t-t1)/(t2-t1),w=t=>m.L/(m.Ip+m.mk*r(t)*r(t));
+  const N=400,tab=[0];for(let i=1;i<=N;i++){const a=(i-1)*tEnd/N,b=i*tEnd/N;tab.push(tab[i-1]+(w(a)+4*w((a+b)/2)+w(b))/6*(b-a));}
+  const th=t=>{const x=Math.max(0,Math.min(t,tEnd))/tEnd*N,i=Math.min(N-1,Math.floor(x));return tab[i]+(tab[i+1]-tab[i])*(x-i);};
+  return{tEnd,r,w,th,aim:c.w,miss:Math.abs(c.w-m.w2),hit:Math.abs(c.w-m.w2)<=mgrTol(m)};
+}
+function makeMgr(k){
+  for(let tries=0;tries<500;tries++){
+    const m=mgrDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=mgrTol(m),val=c=>m.kind===0?c.v:c.w;
+    if(!m.choices.every(c=>c.ok?mgrSim(m,c).hit:mgrSim(m,c).miss>=2.5*tol))continue;
+    const vs=m.choices.map(val).sort((a,b)=>a-b);if(vs.some((x,i)=>i&&x/vs[i-1]<1.06))continue;
+    return m;}
+}
+/* top view of the platform: solid disk with four handrails, turned counterclockwise on screen by ang */
+function mgrTop(ctx,col,cx,cy,R,ang){
+  const pal=["--petal-1","--petal-2","--petal-5","--petal-6"];
+  for(let i=0;i<4;i++){ctx.fillStyle=col(pal[i]);ctx.globalAlpha=.28;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,-ang-i*Math.PI/2-Math.PI/2,-ang-i*Math.PI/2,false);ctx.closePath();ctx.fill();}
+  ctx.globalAlpha=1;ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.stroke();
+  ctx.lineWidth=2.4;ctx.lineCap="round";ctx.beginPath();
+  for(let i=0;i<4;i++){const a=ang+i*Math.PI/2+Math.PI/4;ctx.moveTo(cx+R*0.18*Math.cos(a),cy-R*0.18*Math.sin(a));ctx.lineTo(cx+R*0.84*Math.cos(a),cy-R*0.84*Math.sin(a));}
+  ctx.stroke();ctx.lineCap="butt";
+  ctx.fillStyle=col("--muted");ctx.beginPath();ctx.arc(cx,cy,R*0.12,0,7);ctx.fill();ctx.lineWidth=1.2;ctx.stroke();
+}
+function mgrKid(ctx,col,x,y,ghost){
+  ctx.lineWidth=ghost?1.6:2;ctx.strokeStyle=col(ghost?"--accent":"--ink");ctx.fillStyle=col("--petal-1");
+  if(ghost)ctx.setLineDash([3,3]);ctx.beginPath();ctx.arc(x,y,7,0,7);if(!ghost)ctx.fill();ctx.stroke();ctx.setLineDash([]);
+}
+function drawMgr(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre,tt=pre?0:Math.min(t,F.tEnd);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  const result=(ok,txt)=>{ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.textAlign="left";ctx.fillStyle=col(ok?"--good":"--bad");ctx.fillText(txt,12,46);ctx.font="11px 'IBM Plex Mono', monospace";};
+  if(m.kind===0){
+    /* side view in meters, same scale both ways; the bottom of the slide is at x = 0, y = 0 */
+    const run=m.h*Math.sqrt(3),xTop=-run,x0=xTop-0.9,x1=Math.max(...m.choices.map(q=>q.v))*0.45+0.9;
+    const s=Math.min((W-28)/(x1-x0),(H-140)/(m.h+1.2)),X=x=>14+(x-x0)*s,gy=H-44,Y=y=>gy-y*s,br=8;
+    /* ground with a scale */
+    ctx.fillStyle=col("--muted");ctx.globalAlpha=.18;ctx.fillRect(0,gy,W,H-gy);ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.textAlign="center";const st=s<26?2:1;
+    for(let g=Math.ceil(x0/st)*st;g<=x1;g+=st){ctx.beginPath();ctx.moveTo(X(g),gy);ctx.lineTo(X(g),gy+5);ctx.stroke();ctx.fillText(`${g}`,X(g),gy+14);}
+    ctx.textAlign="right";ctx.fillText("x (m)",W-12,gy+28);
+    /* ladder, platform and chute */
+    const lx=X(x0+0.15),px=X(xTop),py=Y(m.h);
+    ctx.strokeStyle=col("--muted");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(lx,gy);ctx.lineTo(lx,py-18);ctx.moveTo(lx+10,gy);ctx.lineTo(lx+10,py);ctx.stroke();
+    ctx.lineWidth=1.2;ctx.beginPath();for(let y=gy-10;y>py;y-=12){ctx.moveTo(lx,y);ctx.lineTo(lx+10,y);}ctx.stroke();
+    ctx.fillStyle=col("--petal-2");ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.fillRect(lx,py-3,px-lx,6);ctx.strokeRect(lx,py-3,px-lx,6);
+    ctx.strokeStyle=col("--petal-2");ctx.lineWidth=6;ctx.lineCap="round";ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(X(0),gy);ctx.stroke();ctx.lineCap="butt";
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(px,py-3);ctx.lineTo(X(0),gy-3);ctx.stroke();
+    ctx.strokeStyle=col("--muted");ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(px-2,py);ctx.lineTo(px-2,gy);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText(`h = ${m.h} m`,px+4,gy-11);
+    /* speed trap posts */
+    const tx=0.5;ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X(tx),gy);ctx.lineTo(X(tx),gy-34);ctx.stroke();
+    ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText("speed trap",X(tx)+5,gy-30);
+    /* a ball at distance d along the path, rolling with a stripe */
+    const ball=(d,ghost)=>{let x,y,nx,ny;if(d<=F.L){const u=d/F.L;x=xTop+u*run;y=m.h*(1-u);nx=-0.5;ny=Math.sqrt(3)/2;}else{x=d-F.L;y=0;nx=0;ny=1;}
+      const bx=X(x)-nx*br,by=Y(y)-ny*br-1,a=d*s/br;if(bx>W+br)return;
+      ctx.lineWidth=ghost?1.6:1.4;ctx.strokeStyle=col(ghost?"--accent":"--ink");if(ghost)ctx.setLineDash([3,3]);
+      ctx.fillStyle=col(m.b.kind==="solid"?"--petal-1":"--petal-5");ctx.beginPath();ctx.arc(bx,by,br,0,7);if(!ghost)ctx.fill();ctx.stroke();ctx.setLineDash([]);
+      if(!ghost){ctx.beginPath();ctx.moveTo(bx-br*Math.cos(a),by-br*Math.sin(a));ctx.lineTo(bx+br*Math.cos(a),by+br*Math.sin(a));ctx.stroke();}};
+    if(c&&!pre)ball(F.sg(tt),true);
+    ball(pre?0:F.s(tt),false);
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`t = ${tt.toFixed(2)} s   v = ${F.v(tt).toFixed(2)} m/s`,12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`dashed ball: ${c.t}`,12,30);}
+    if(!pre&&F.s(tt)>=F.L+tx){ctx.fillStyle=col("--ink");ctx.textAlign="right";ctx.font="bold 11px 'IBM Plex Mono', monospace";ctx.fillText(`trap: ${fmtNum(mgrR(m.v))} m/s`,W-12,14);ctx.font="11px 'IBM Plex Mono', monospace";}
+    if(ended)result(F.hit,F.hit?"Spot on":`The ball went ${fmtNum(mgrR(m.v))} m/s`);
+    return;}
+  /* missions 1 and 2: top view on the left, ω versus t on the right */
+  const R=Math.min(66,W*0.18),cx=16+R+6,cy=Math.min(H-120,74+R+20),gx=cx+R+40,gr=W-12,gt=92,gb=H-46;
+  const ang=pre?0:F.th(tt);
+  mgrTop(ctx,col,cx,cy,R,ang);
+  const P=(r,a)=>[cx+r*Math.cos(a),cy-r*Math.sin(a)];
+  if(m.kind===1){
+    if(pre||tt<MGR_RUN){const y=cy+(pre?1:(MGR_RUN-tt)/MGR_RUN)*(H-22-cy);
+      ctx.strokeStyle=col("--muted");ctx.setLineDash([3,4]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(cx+R+9,H-10);ctx.lineTo(cx+R+9,cy-30);ctx.stroke();ctx.setLineDash([]);
+      mgrKid(ctx,col,cx+R+9,y,false);ctx.fillStyle=col("--muted");ctx.textAlign="left";ctx.fillText(`${m.v} m/s ↑`,cx+R+20,Math.min(H-16,y+2));}
+    else{if(c)mgrKid(ctx,col,...P(R-9,F.thg(tt)),true);mgrKid(ctx,col,...P(R-9,ang),false);}
+  }else{mgrKid(ctx,col,...P(Math.max(F.r(pre?0:tt)/m.R*(R-9),0.2*R),ang+Math.PI/4),false);}
+  ctx.fillStyle=col("--muted");ctx.textAlign="center";ctx.fillText(`R = ${m.R} m`,cx,cy+R+14);
+  /* graph */
+  const T=F.tEnd,wMax=Math.max(...m.choices.map(q=>q.w),m.kind===2?m.w1:0)*1.15,GX=u=>gx+u/T*(gr-gx),GY=w=>gb-w/wMax*(gb-gt);
+  const tA=m.kind===1?MGR_RUN:MGR_WALK[1];
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(gx,gt-2);ctx.lineTo(gx,gb);ctx.lineTo(gr,gb);ctx.stroke();
+  ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("0",gx-4,gb);ctx.textAlign="left";ctx.fillText("ω (rad/s)",gx-20,gt-26);ctx.textAlign="right";ctx.fillText("t",gr,gb+12);
+  if(m.kind===2){ctx.fillStyle=col("--accent");ctx.globalAlpha=.13;ctx.fillRect(GX(MGR_WALK[0]),gt,GX(MGR_WALK[1])-GX(MGR_WALK[0]),gb-gt);ctx.globalAlpha=1;
+    ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText("walk in",GX((MGR_WALK[0]+MGR_WALK[1])/2),gt-8);
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`${m.w1}`,gx-4,GY(m.w1));}
+  else{ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText("jump",GX(MGR_RUN),gt-8);ctx.strokeStyle=col("--grid-line");ctx.beginPath();ctx.moveTo(GX(MGR_RUN),gt);ctx.lineTo(GX(MGR_RUN),gb);ctx.stroke();}
+  if(c){ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(GX(tA),GY(c.w));ctx.lineTo(gr,GY(c.w));ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=col("--accent");ctx.textAlign="right";ctx.fillText("you",gr,GY(c.w)-9);}
+  if(!pre){ctx.strokeStyle=col("--ink");ctx.lineWidth=2.2;ctx.beginPath();
+    for(let u=0;u<=tt+1e-9;u+=T/300){const uu=Math.min(u,tt);let w=F.w(uu);if(u===0)ctx.moveTo(GX(uu),GY(w));else{if(m.kind===1&&uu>=MGR_RUN&&uu-T/300<MGR_RUN)ctx.lineTo(GX(MGR_RUN),GY(0));ctx.lineTo(GX(uu),GY(w));}}ctx.stroke();}
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`t = ${tt.toFixed(1)} s   ω = ${F.w(tt).toFixed(3)} rad/s`,12,14);
+  if(m.kind===2&&!pre){ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`kid at r = ${F.r(tt).toFixed(2)} m`,W-12,30);}
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`you said: ${c.t}`,12,30);}
+  if(ended){const wt=m.kind===1?m.w:m.w2;result(F.hit,F.hit?"Spot on":`It spun at ${fmtNum(mgrR(wt))} rad/s`);}
+}
+TOYS.mgr.game={title:"Ride the merry go round",intro:"The playground follows the physics of rolling and spinning exactly. Predict what happens, then watch.",
+  names:MGR_NAMES,make:makeMgr,ms:m=>m.kind===0?4500:5500,
+  sim:m=>mgrSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawMgr,
+  outcome:(F,m)=>{
+    if(m.kind===0){const v=fmtNum(mgrR(m.v));return F.hit?`The speed trap read ${v} m/s, just as you said.`:`The speed trap read ${v} m/s, not ${fmtNum(F.aim)} m/s.`;}
+    const w=fmtNum(mgrR(m.kind===1?m.w:m.w2));
+    if(m.kind===1)return F.hit?`It spun at ${w} rad/s, just as you said.`:`After the jump it spun at ${w} rad/s, not ${fmtNum(F.aim)} rad/s.`;
+    return F.hit?`It sped up to ${w} rad/s, just as you said.`:`With the kid ${m.half?"halfway in":"at the center"} it spun at ${w} rad/s, not ${fmtNum(F.aim)} rad/s.`;},
+  right:"Nice prediction!",go:"Play",pickFirst:"Pick an answer to play",again:"Play again with new numbers",cvLabel:"Playground",
+  notReadyTitle:"The merry go round isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the merry go round. Bloom all four to play."};
+
 function renderAbout(){
   crumb.textContent="About";
   main.innerHTML=`
@@ -3284,7 +3474,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/01f";
+const APP_VERSION="11/01g";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -3672,7 +3862,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeMgr,mgrSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
