@@ -6,12 +6,12 @@
 # and keeps using the number it had.
 
 # How many questions are in one review session.
-Questions per review: 5
+Questions per review: 3
 
 # How many right answers grow one flower (one section) all the way to full bloom.
 # With 5 questions per review and 15 here, one review grows a flower by about a third,
 # and three reviews make it bloom.
-Right answers to grow a flower: 15
+Right answers to grow a flower: 9
 
 # How many growing reviews a student can do each day. 0 means no limit,
 # so a student can grow their garden as fast as they can answer.
@@ -36,9 +36,9 @@ Show class dates: yes
 # Questions per review: 8
 # Right answers to grow a flower: 20
 
-Chapter 1
-Questions per review: 3
-Right answers to grow a flower: 9
+Chapter 2
+Questions per review: 4
+Right answers to grow a flower: 12
 
 Chapter 3
 Questions per review: 4
@@ -48,14 +48,22 @@ Chapter 4
 Questions per review: 4
 Right answers to grow a flower: 12
 
-Chapter 5
-Questions per review: 3
-Right answers to grow a flower: 9
+Chapter 6
+Questions per review: 4
+Right answers to grow a flower: 12
+
+Chapter 7
+Questions per review: 4
+Right answers to grow a flower: 12
 
 Chapter 8
 Questions per review: 4
 Right answers to grow a flower: 12
 
-Chapter 9
-Questions per review: 3
-Right answers to grow a flower: 9
+Chapter 11
+Questions per review: 4
+Right answers to grow a flower: 12
+
+Chapter 12
+Questions per review: 4
+Right answers to grow a flower: 12
