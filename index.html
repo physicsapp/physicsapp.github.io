@@ -621,7 +621,7 @@ const CHX={3:{eqSec:["3.1","3.1","3.1","3.2","3.1","3.2","3.3","3.3","3.4","3.4"
   7:{eqSec:["7.1","7.1","7.1","7.1","7.1","7.2","7.3","7.4","7.4"],toy:"curling",eqHint:"Search, for example “spring” or “power”"},
   8:{eqSec:["8.1","8.1","8.1","8.1","8.2","8.2","8.2","8.3"],toy:"coaster",eqHint:"Search, for example “spring” or “force”"},
   9:{eqSec:["9.1","9.2","9.2","9.2","9.2","9.3","9.3","9.5","9.6","9.6","9.6","9.6","9.6","9.6","9.7"],toy:"billiards",eqHint:"Search, for example “impulse” or “rocket”"},
-  10:{eqSec:["10.1","10.1","10.1","10.1","10.1","10.2","10.2","10.2","10.2","10.2","10.3","10.4","10.4","10.4","10.5","10.5","10.5","10.6","10.6","10.6","10.7","10.8","10.8","10.8","10.8"],eqHint:"Search, for example “torque” or “inertia”"},
+  10:{eqSec:["10.1","10.1","10.1","10.1","10.1","10.2","10.2","10.2","10.2","10.2","10.3","10.4","10.4","10.4","10.5","10.5","10.5","10.6","10.6","10.6","10.7","10.8","10.8","10.8","10.8"],toy:"ferris",eqHint:"Search, for example “torque” or “inertia”"},
   11:{eqSec:["11.1","11.1","11.1","11.1","11.2","11.2","11.2","11.2","11.2","11.3","11.3","11.4"],eqHint:"Search, for example “rolling” or “precession”"}};
 const chx=()=>CHX[CH]||{};
 const eqSec=j=>((D.keyEquations[j]||{}).sec)||(chx().eqSec||[])[j]||"";
@@ -1280,6 +1280,29 @@ function curlSVG(have,label){
   </svg>`;
 }
 
+function ferSVG(have,label){
+  const on=k=>have[k], off='fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"';
+  const L=(k,d,w)=>`<path d="${d}" fill="none" ${on(k)?`stroke="var(--ink)" stroke-width="${w||2.4}" stroke-linecap="round"`:'stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>`;
+  const P=(k,d,fill)=>`<path d="${d}" ${on(k)?`fill="${fill}" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"`:off}/>`;
+  const cx=60,cy=70,R=42,pts=[...Array(8)].map((_,i)=>{const a=i*Math.PI/4;return[cx+R*Math.sin(a),cy+R*Math.cos(a)];});
+  const f=x=>x.toFixed(1);
+  const cars=pts.map(([x,y])=>`M${f(x-6)} ${f(y+2)} h12 v9 h-12 Z`).join(" ");
+  const spokes=pts.map(([x,y])=>`M${cx} ${cy} L${f(x)} ${f(y)}`).join(" ");
+  const pal=["var(--petal-1)","var(--petal-2)","var(--petal-5)","var(--petal-6)"];
+  const lights=[...Array(16)].map((_,i)=>{const a=(i+0.5)*Math.PI/8;return `<circle cx="${f(cx+R*Math.sin(a))}" cy="${f(cy+R*Math.cos(a))}" r="2" ${on(7)?`fill="${pal[i%4]}" stroke="var(--ink)" stroke-width=".5"`:'fill="none" stroke="var(--rule)" stroke-width="1"'}/>`;}).join("");
+  return `<svg viewBox="0 0 120 176" role="img" aria-label="${esc(label)}">
+    ${L(0,"M60 70 L30 164 M60 70 L90 164 M36 145 H84",2.6)}
+    ${P(6,"M38 128 h44 v5 h-44 Z M82 133 h6 v4 h4 v4 h4 v4","var(--muted)")}
+    ${L(2,spokes,1.2)}
+    <circle cx="${cx}" cy="${cy}" r="${R}" ${on(3)?'fill="none" stroke="var(--ink)" stroke-width="2.4"':'fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 3"'}/>
+    ${lights}
+    ${P(4,cars,"var(--accent-soft)")}
+    ${P(5,"M96 150 h16 v14 h-16 Z","var(--petal-6)")}${on(5)?'<path d="M104 150 L63 72" stroke="var(--ink)" stroke-width="1" stroke-dasharray="2 2"/>':""}
+    ${P(1,`M${cx-5} ${cy} a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 Z`,"var(--muted)")}
+    <path d="M4 164 h112" stroke="var(--rule)" stroke-width="1.5"/>
+  </svg>`;
+}
+
 /* Each chapter's toy gets one part per bloomed section. A chapter without a toy yet just has its garden. */
 const TOYS={
   rocket:{eyebrow:"Launch pad",thing:"rocket",parts:PARTS,svg:rocketSVG,route:"launch",
@@ -1308,7 +1331,10 @@ const TOYS={
     count:(n,t)=>`${n} of ${t} pool table parts`,wait:"Each plant that blooms adds a part. When all seven bloom, you can shoot pool."},
   curling:{eyebrow:"The curling rink",thing:"curling set",parts:["ice sheet","house","stone","broom"],svg:curlSVG,route:"curl",
     ready:"Your curling set is ready",readyText:"Use work and energy to plan each throw, then throw it.",go:"Go to the rink",
-    count:(n,t)=>`${n} of ${t} curling set parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can throw a stone."}};
+    count:(n,t)=>`${n} of ${t} curling set parts`,wait:"Each plant that blooms adds a part. When all four bloom, you can throw a stone."},
+  ferris:{eyebrow:"The fair",thing:"Ferris wheel",parts:["base legs","axle","spokes","rim","cars","motor","loading platform","lights"],svg:ferSVG,route:"wheel",
+    ready:"Your Ferris wheel is ready",readyText:"Use rotation to plan each ride, then ride it.",go:"Go to the fair",
+    count:(n,t)=>`${n} of ${t} Ferris wheel parts`,wait:"Each plant that blooms adds a part. When all eight bloom, you can ride it."}};
 const toy=()=>TOYS[chx().toy]||null;
 
 /* ---------- review: garden home, sessions, summary ---------- */
@@ -2952,6 +2978,217 @@ TOYS.curling.game={title:"Curl to the button",intro:"The stone obeys the work en
   right:"On the button!",go:"Throw",pickFirst:"Pick an answer to throw",again:"Throw again with new numbers",cvLabel:"Curling sheet",
   notReadyTitle:"The curling set isn't ready yet",notReady:"Each plant in your garden that blooms adds a part to the curling set. Bloom all four to throw a stone."};
 
+/* ---------- Chapter 10: Ferris wheel ----------
+   g = 10 m/s², angles in radians inside the physics. Four missions:
+   Mission 0 (10.1, 10.3, prediction): a real giant wheel never stops for boarding. Predict how fast to walk beside your
+     capsule, v = 2πr/T. Wheels and numbers: London Eye 120 m across, 30 min per turn; High Roller 158.5 m, 30 min;
+     Singapore Flyer 150 m, about 32 min (sources in FER_WHEELS). Close up side view at the platform; you walk 6 s, then step on.
+   Mission 1 (10.2, command): a fair wheel turns at ω0, your car is Δθ (in degrees) before the platform; pick the slowing
+     α so it stops right there, α = ω0²/(2Δθ). The wheel turns clockwise on screen.
+   Mission 2 (10.3, prediction): fair wheel at ω; predict the scale reading at the top, N = m(g − rω²).
+     The scale reads m(g + rω² cos ψ) with ψ measured from the bottom (same physics as the Ch 5 elevator).
+   Mission 3 (10.5, 10.7, command): hoop rim plus point mass cars and riders, all at R, so I = (total mass)R². Pick the
+     motor torque so the wheel reaches ω_f in t, τ = Iα. The motor holds speed once it reaches ω_f.
+   makeFer redraws until every wrong choice misses by at least 2.5 tolerances. */
+const FER_NAMES=["Walk on board","Stop at the platform","Feel lighter at the top","Start the motor"], FER_G=10, FER_WALK=6;
+const FER_WHEELS=[
+  {name:"London Eye",d:120,T:1800,Tw:"30 min",url:"https://www.thingstodoinlondon.com/attractions/london-eye/facts/"},
+  {name:"High Roller in Las Vegas",d:158.5,T:1800,Tw:"30 min",url:"https://en.wikipedia.org/wiki/High_Roller_(Ferris_wheel)"},
+  {name:"Singapore Flyer",d:150,T:1920,Tw:"32 min",url:"https://en.wikipedia.org/wiki/Singapore_Flyer"}];
+const ferR=x=>Number(x.toPrecision(3));
+const ferN=x=>{const r=ferR(x);return Math.abs(r)>=1e4?Math.round(r).toLocaleString("en-US"):fmtNum(r);};
+const ferTx=x=>ferN(x).replace(/,/g,"{,}").replace("−","-");
+const ferSci=x=>{const e=Math.floor(Math.log10(Math.abs(x)));if(e<5)return ferTx(x);const a=Number((x/Math.pow(10,e)).toPrecision(3));return `${a}\\times10^{${e}}`;};
+const ferDeg=x=>x*180/Math.PI;
+function ferTol(m){return m.kind===0?0.04*m.v:m.kind===1?Math.max(2,0.03*m.dDeg):m.kind===2?0.03*m.Ntrue:0.03*m.tf;}
+function ferDraft(k){
+  if(k===0){const w=pickOne(FER_WHEELS),r=w.d/2,v=2*Math.PI*r/w.T;
+    const ch=[{v,ok:true},
+      {v:2*Math.PI/w.T,fb:"\\(2\\pi/T\\) is the angular speed \\(\\omega\\), in rad/s. To get the capsule's speed, multiply by the radius: \\(v = r\\omega\\)."},
+      {v:r/w.T,fb:"In one turn the capsule goes all the way around, a distance \\(2\\pi r\\), not \\(r\\). So \\(v = 2\\pi r/T\\)."},
+      {v:2*v,fb:`The radius is half the distance across, \\(${fmtNum(r)}\\ \\text{m}\\). Using the full \\(${w.d}\\ \\text{m}\\) doubles the speed.`}];
+    ch.forEach(c=>{c.v=ferR(c.v);c.t=`${fmtNum(c.v)} m/s`;});
+    return{kind:0,w,r,v,choices:dedupe(ch),
+      q:`The ${w.name} is \\(${w.d}\\ \\text{m}\\) across and turns once every ${w.Tw}. It doesn't stop for boarding: you walk beside your capsule and step on. How fast should you walk to keep up with the capsule's door?`,
+      work:`\\begin{aligned}r&=\\tfrac{${w.d}}{2}=${fmtNum(r,true)}\\ \\text{m},\\quad T=${w.T}\\ \\text{s}\\\\v&=\\tfrac{2\\pi r}{T}=\\tfrac{2\\pi(${fmtNum(r,true)})}{${w.T}}\\\\&=${fmtNum(v,true)}\\ \\text{m/s}\\end{aligned}`,
+      after:`That's slower than a slow shuffle, so the wheel never needs to stop. Its angular speed is tiny, \\(\\omega = 2\\pi/T = ${ferSci(2*Math.PI/w.T).replace(/e/,"")}\\ \\text{rad/s}\\), but the huge radius still makes \\(v = r\\omega\\) big enough to walk beside. <a href="${w.url}" target="_blank" rel="noopener">Facts about the ${w.name}</a>.`};}
+  if(k===1){const r=pickOne([8,10,12]),w0=pickOne([0.25,0.3,0.35,0.4]),dDeg=pickOne([90,120,135,150,180]),dth=dDeg*Math.PI/180,a=w0*w0/(2*dth);
+    const ch=[{a,ok:true},
+      {a:w0*w0/dth,fb:"With \\(\\omega^2 = \\omega_0^2 - 2\\alpha\\Delta\\theta\\) and a final \\(\\omega = 0\\), \\(\\alpha = \\omega_0^2/(2\\Delta\\theta)\\). Without the 2 it slows twice as hard and stops halfway."},
+      {a:w0*w0/(2*dDeg),fb:"Rotation formulas need the angle in radians. Using degrees makes \\(\\alpha\\) about 57 times too small, so the wheel barely slows."},
+      {a:w0/dth,fb:"\\(\\omega_0/\\Delta\\theta\\) doesn't have the units of \\(\\alpha\\) (rad/s²). Use \\(\\omega^2 = \\omega_0^2 - 2\\alpha\\Delta\\theta\\) with a final \\(\\omega = 0\\)."}];
+    ch.forEach(c=>{c.a=ferR(c.a);c.t=`${fmtNum(c.a)} rad/s²`;});
+    const frac={90:"\\tfrac{\\pi}{2}",120:"\\tfrac{2\\pi}{3}",135:"\\tfrac{3\\pi}{4}",150:"\\tfrac{5\\pi}{6}",180:"\\pi"}[dDeg];
+    return{kind:1,r,w0,dDeg,dth,a,choices:dedupe(ch),
+      q:`A fair wheel is turning at \\(${w0}\\ \\text{rad/s}\\). Your car is \\(${dDeg}^\\circ\\) of turning away from the loading platform. The operator slows the wheel at a constant rate. What angular deceleration \\(\\alpha\\) stops your car right at the platform?`,
+      work:`\\begin{aligned}\\Delta\\theta&=${dDeg}^\\circ=${frac}=${fmtNum(dth,true)}\\ \\text{rad}\\\\0&=\\omega_0^2-2\\alpha\\Delta\\theta\\\\\\alpha&=\\tfrac{\\omega_0^2}{2\\Delta\\theta}=\\tfrac{(${w0})^2}{2(${fmtNum(dth,true)})}\\\\&=${fmtNum(a,true)}\\ \\text{rad/s}^2\\end{aligned}`,
+      after:`It takes \\(t = \\omega_0/\\alpha = ${fmtNum(w0/a,true)}\\ \\text{s}\\) to stop. Operators of small wheels do this many times a ride, one car at a time.`};}
+  if(k===2){const r=pickOne([8,10,12,15]),w=pickOne([0.4,0.45,0.5,0.55,0.6]),ac=r*w*w;if(ac<1.5||ac>4.5)return null;
+    const mass=pickOne([50,60,70,80,90]),mg=mass*FER_G,N=mass*(FER_G-ac);
+    const ch=[{N,ok:true},
+      {N:mg,fb:"That's your weight. At the top your acceleration \\(r\\omega^2\\) points down, toward the center, so the seat pushes up less than \\(mg\\)."},
+      {N:mass*(FER_G+ac),fb:"That's the reading at the bottom, where the acceleration points up. At the top it points down: \\(N = m(g - r\\omega^2)\\)."},
+      {N:mass*ac,fb:"That's only the net force. The scale also holds you up against gravity: \\(mg - N = mr\\omega^2\\) at the top."}];
+    ch.forEach(c=>{c.N=ferR(c.N);c.t=`${ferN(c.N)} N`;});
+    const LE=60*Math.pow(2*Math.PI/1800,2)*mass;
+    return{kind:2,r,w,ac,mass,mg,Ntrue:N,choices:dedupe(ch),
+      q:`You sit on a bathroom scale in a car of a fair wheel. The car is \\(${r}\\ \\text{m}\\) from the axle, the wheel turns at \\(${w}\\ \\text{rad/s}\\), and your mass is \\(${mass}\\ \\text{kg}\\). What does the scale read at the very top? Use \\(g = 10\\ \\text{m/s}^2\\).`,
+      work:`\\begin{aligned}a_c&=r\\omega^2=${r}(${w})^2\\\\&=${fmtNum(ac,true)}\\ \\text{m/s}^2\\ \\text{(down)}\\\\mg-N&=ma_c\\\\N&=m(g-r\\omega^2)\\\\&=${mass}(10-${fmtNum(ac,true)})\\\\&=${ferTx(N)}\\ \\text{N}\\end{aligned}`,
+      after:`Same physics as the elevator in Chapter 5: the scale reads less when your acceleration points down. On the London Eye, \\(r\\omega^2\\) is only about \\(0.0007\\ \\text{m/s}^2\\), so your scale would change by about \\(${LE<0.1?LE.toFixed(2):fmtNum(LE)}\\ \\text{N}\\). Big slow wheels feel smooth; small fast ones give you the drop.`};}
+  const R=pickOne([8,10,12,15]),Mrim=pickOne([4000,5000,6000,7000,8000]),n=pickOne([8,12,16]),mc=pickOne([200,250,300]),Mr=pickOne([600,800,1000,1200]);
+  const Mt=Mrim+n*mc+Mr;if((n*mc+Mr)/Mt<0.2)return null;
+  const wf=pickOne([0.3,0.4,0.5]),tf=pickOne([10,15,20]),al=wf/tf,I=Mt*R*R,tau=I*al;
+  const ch=[{tau,ok:true},
+    {tau:Mrim*R*R*al,fb:"The cars and riders spin too. Every bit of mass at the rim adds \\(mR^2\\) to the moment of inertia."},
+    {tau:0.5*I*al,fb:"\\(\\tfrac12MR^2\\) is for a solid disk, with mass spread from the center out. Here all the mass sits at the rim, so \\(I = MR^2\\)."},
+    {tau:I*wf,fb:"\\(\\tau = I\\alpha\\) uses the angular acceleration \\(\\alpha = \\omega/t\\), not the final angular speed \\(\\omega\\)."}];
+  ch.forEach(c=>{c.tau=ferR(c.tau);c.t=`${ferN(c.tau)} N·m`;});
+  return{kind:3,R,Mrim,n,mc,Mr,Mt,wf,tf,al,I,tau,choices:dedupe(ch),
+    q:`A fair wheel has a radius of \\(${R}\\ \\text{m}\\). Its rim has a mass of \\(${ferTx(Mrim)}\\ \\text{kg}\\), and \\(${n}\\) cars of \\(${mc}\\ \\text{kg}\\) each hang at the rim with \\(${ferTx(Mr)}\\ \\text{kg}\\) of riders in all. Treat the rim as a thin hoop and the cars and riders as point masses at the rim. The wheel starts from rest and should reach \\(${wf}\\ \\text{rad/s}\\) in \\(${tf}\\ \\text{s}\\). What torque should the motor supply? Ignore friction.`,
+    work:`\\begin{aligned}M&=${ferTx(Mrim)}+${n}(${mc})+${ferTx(Mr)}\\\\&=${ferTx(Mt)}\\ \\text{kg}\\\\I&=MR^2=${ferTx(Mt)}(${R})^2\\\\&=${ferSci(I)}\\ \\text{kg·m}^2\\\\\\alpha&=\\tfrac{\\omega}{t}=\\tfrac{${wf}}{${tf}}=${fmtNum(al,true)}\\ \\text{rad/s}^2\\\\\\tau&=I\\alpha=${ferTx(tau)}\\ \\text{N·m}\\end{aligned}`,
+    after:`Right before it reaches full speed, the motor puts out \\(P = \\tau\\omega = ${ferTx(tau*wf)}\\ \\text{W}\\). Once it's up to speed, it only has to make up for friction.`};
+}
+function ferSim(m,c){
+  if(m.kind===0){const tEnd=FER_WALK,gap=(c.v-m.v)*tEnd;
+    return{tEnd,vc:m.v,vy:c.v,gap,miss:Math.abs(c.v-m.v),hit:Math.abs(c.v-m.v)<=ferTol(m),at:t=>({xc:m.v*Math.min(t,tEnd),xy:c.v*Math.min(t,tEnd)})};}
+  if(m.kind===1){const a=c.a,ts=m.w0/a,ths=m.w0*m.w0/(2*a),tRight=2*m.dth/m.w0,cap=1.6*tRight,stops=ts<=cap,tEnd=stops?ts:cap;
+    const th=t=>{t=Math.min(t,tEnd);return m.w0*t-0.5*a*t*t;};
+    const missDeg=ferDeg(ths-m.dth);
+    return{tEnd,th,w:t=>Math.max(0,m.w0-a*Math.min(t,tEnd)),stops,ths,missDeg,miss:Math.abs(missDeg),hit:stops&&Math.abs(missDeg)<=ferTol(m)};}
+  if(m.kind===2){const T=2*Math.PI/m.w;
+    return{tEnd:T,th:t=>m.w*t,N:t=>m.mass*(FER_G+m.ac*Math.cos(m.w*t)),aim:c.N,miss:Math.abs(c.N-m.Ntrue),hit:Math.abs(c.N-m.Ntrue)<=ferTol(m)};}
+  const al=c.tau/m.I,tr=m.wf/al,tEnd=1.25*m.tf;
+  const w=t=>Math.min(al*t,m.wf),th=t=>t<=tr?0.5*al*t*t:0.5*al*tr*tr+m.wf*(t-tr);
+  return{tEnd,al,tr,w,th,miss:Math.abs(tr-m.tf),hit:Math.abs(tr-m.tf)<=ferTol(m),early:tr<m.tf};
+}
+function makeFer(k){
+  for(let tries=0;tries<500;tries++){
+    const m=ferDraft(k);if(!m||m.choices.length<4)continue;
+    const tol=ferTol(m);
+    if(!m.choices.every(c=>c.ok?ferSim(m,c).hit:ferSim(m,c).miss>=2.5*tol))continue;
+    return m;}
+}
+/* a wheel with cars that hang level; ang turns it clockwise on screen; car 0 is yours and sits at angle psi0+ang from the bottom */
+function ferWheel(ctx,col,cx,cy,R,ang,o){
+  const n=o.n||8,cw=o.cw||16,chh=o.ch||14,ground=o.ground;
+  const P=psi=>[cx-R*Math.sin(psi),cy+R*Math.cos(psi)];
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx-R*0.62,ground);ctx.moveTo(cx,cy);ctx.lineTo(cx+R*0.62,ground);ctx.stroke();
+  if(o.platform){const py=cy+R+chh+3;ctx.fillStyle=col("--muted");ctx.fillRect(cx-cw*1.6,py,cw*3.2,5);ctx.strokeStyle=col("--ink");ctx.lineWidth=1;ctx.strokeRect(cx-cw*1.6,py,cw*3.2,5);}
+  ctx.strokeStyle=col("--muted");ctx.lineWidth=1;ctx.beginPath();
+  for(let i=0;i<n;i++){const [x,y]=P(o.psi0+ang+i*2*Math.PI/n);ctx.moveTo(cx,cy);ctx.lineTo(x,y);}ctx.stroke();
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=2.2;ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.stroke();
+  for(let i=n-1;i>=0;i--){const [x,y]=P(o.psi0+ang+i*2*Math.PI/n);
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y+3);ctx.stroke();
+    ctx.fillStyle=col(i===0?"--accent":"--accent-soft");ctx.fillRect(x-cw/2,y+3,cw,chh);ctx.strokeRect(x-cw/2,y+3,cw,chh);
+    if(i===0&&o.mark)o.mark(x,y+3);}
+  ctx.fillStyle=col("--muted");ctx.beginPath();ctx.arc(cx,cy,4,0,7);ctx.fill();ctx.stroke();
+}
+function drawFer(t,F,m){
+  const cv=document.getElementById("cv");if(!cv)return;
+  const W=cv.clientWidth||320,H=cv.clientHeight||340,dpr=window.devicePixelRatio||1;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const ctx=cv.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim()||"#888";
+  const c=LP.pick==null?null:m.choices[LP.pick],pre=LP.state==="pick",ended=t>=F.tEnd-1e-9&&!pre,tt=pre?0:Math.min(t,F.tEnd);
+  ctx.font="11px 'IBM Plex Mono', monospace";ctx.textBaseline="middle";
+  const result=(ok,txt)=>{ctx.font="bold 12px 'IBM Plex Mono', monospace";ctx.textAlign="left";ctx.fillStyle=col(ok?"--good":"--bad");ctx.fillText(txt,12,46);ctx.font="11px 'IBM Plex Mono', monospace";};
+  if(m.kind===0){
+    /* close up at the platform: x in meters along the platform, the capsule's door starts at x = 0 */
+    const x0=-1.6,x1=Math.max(4.4,...m.choices.map(q=>q.v*FER_WALK))+1,s=(W-28)/(x1-x0),X=x=>14+(x-x0)*s;
+    const plat=H-56,carH=Math.min(2.3*s,110),carW=Math.min(2.6*s,150),p=F.at(tt);
+    /* the bottom of the giant rim, nearly straight this close */
+    const rimY=plat-carH-34;ctx.strokeStyle=col("--ink");ctx.lineWidth=3;ctx.beginPath();
+    for(let x=x0;x<=x1;x+=0.1){const y=rimY-(x-p.xc)*(x-p.xc)/(2*m.r)*s;if(x===x0)ctx.moveTo(X(x),y);else ctx.lineTo(X(x),y);}ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`bottom of the rim, r = ${fmtNum(m.r)} m`,W-12,rimY-12);
+    /* platform with a scale bar */
+    ctx.fillStyle=col("--muted");ctx.globalAlpha=.25;ctx.fillRect(0,plat,W,H-plat);ctx.globalAlpha=1;
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,plat);ctx.lineTo(W,plat);ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.textAlign="center";
+    for(let g=Math.ceil(x0);g<=x1;g++){ctx.beginPath();ctx.moveTo(X(g),plat);ctx.lineTo(X(g),plat+5);ctx.stroke();ctx.fillText(`${g}`,X(g),plat+14);}
+    ctx.textAlign="right";ctx.fillText("x (m)",W-12,plat+28);
+    /* the capsule, door in the middle */
+    const cxp=X(p.xc);ctx.strokeStyle=col("--ink");ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cxp,rimY);ctx.lineTo(cxp,plat-carH-4);ctx.stroke();
+    ctx.fillStyle=col("--accent-soft");ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(cxp-carW/2,plat-carH-4,carW,carH,carW*0.25);ctx.fill();ctx.stroke();
+    const dw=Math.max(16,0.8*s);ctx.fillStyle=col("--paper");ctx.fillRect(cxp-dw/2,plat-carH*0.78,dw,carH*0.74);ctx.strokeRect(cxp-dw/2,plat-carH*0.78,dw,carH*0.74);
+    ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText("door",cxp,plat-carH*0.78-8);
+    /* you, walking (or stepping in at the end) */
+    const inside=ended&&F.hit,yx=inside?cxp:X(p.xy),hgt=Math.min(1.7*s,80),base=inside?plat-6:plat,ph=pre||ended?0:Math.sin(tt*6)*0.35;
+    ctx.strokeStyle=col("--petal-1");ctx.lineWidth=2.6;ctx.lineCap="round";const hy=base-hgt;
+    ctx.beginPath();ctx.arc(yx,hy+hgt*0.08,hgt*0.08,0,7);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(yx,hy+hgt*0.16);ctx.lineTo(yx,hy+hgt*0.55);
+    ctx.moveTo(yx,hy+hgt*0.55);ctx.lineTo(yx+Math.sin(ph)*hgt*0.45,base);ctx.moveTo(yx,hy+hgt*0.55);ctx.lineTo(yx-Math.sin(ph)*hgt*0.45,base);
+    ctx.moveTo(yx,hy+hgt*0.25);ctx.lineTo(yx-Math.sin(ph)*hgt*0.3,hy+hgt*0.5);ctx.moveTo(yx,hy+hgt*0.25);ctx.lineTo(yx+Math.sin(ph)*hgt*0.3,hy+hgt*0.5);ctx.stroke();ctx.lineCap="butt";
+    /* small map of the whole wheel */
+    const mx=W-34,my=82,mr=22;ctx.strokeStyle=col("--muted");ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(mx,my,mr,0,7);ctx.stroke();
+    ctx.fillStyle=col("--accent");ctx.beginPath();ctx.arc(mx,my+mr,3,0,7);ctx.fill();ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(m.w.name.replace(" in Las Vegas",""),W-12,my-mr-10);
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`t = ${tt.toFixed(1)} s   capsule v = ${fmtNum(m.v)} m/s`,12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`you walk: ${c.t}`,12,30);}
+    if(ended){const g=F.gap;result(F.hit,F.hit?"Stepped right on":g<0?`The door got ${fmtNum(-g)} m ahead`:`You walked ${fmtNum(g)} m past the door`);}
+    return;}
+  if(m.kind===1){
+    const R=Math.min(110,(W-60)/2),cx=W/2,cy=Math.min(H-30-R-24,62+R+8),ground=cy+R+40;
+    const ang=pre?0:F.th(tt),psi0=-m.dth;
+    ferWheel(ctx,col,cx,cy,R,ang,{psi0,ground:H-8,platform:true,cw:18,ch:15});
+    /* dashed arc: how far your car still has to go */
+    const left=psi0+ang;if(left<-0.01){ctx.strokeStyle=col("--accent");ctx.setLineDash([4,3]);ctx.lineWidth=1.6;ctx.beginPath();
+      ctx.arc(cx,cy,R+12,Math.PI/2-left,Math.PI/2,true);ctx.stroke();ctx.setLineDash([]);}
+    ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText("platform",cx,cy+R+33);
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";
+    ctx.fillText(`t = ${tt.toFixed(1)} s   ω = ${F.w(tt).toFixed(3)} rad/s`,12,14);
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(left>0.01?`past: ${Math.round(ferDeg(left))}°`:`to go: ${Math.round(ferDeg(-left))}°`,W-12,14);
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`sent: α = ${c.t}`,12,30);}
+    if(ended)result(F.hit,F.hit?"Stopped at the platform":!F.stops?"Swung right past it":F.missDeg<0?`Stopped ${Math.round(-F.missDeg)}° short`:`Stopped ${Math.round(F.missDeg)}° past`);
+    return;}
+  /* missions 2 and 3: wheel on the left, a graph on the right */
+  const R=Math.min(68,W*0.19),cx=14+R+4,cy=H-60-R,gx=cx+R+38,gr=W-12,gt=92,gb=H-46;
+  const ang=pre?0:F.th(tt);
+  if(m.kind===2){
+    ferWheel(ctx,col,cx,cy,R,ang,{psi0:0,ground:H-14,cw:26,ch:22,mark:(x,y)=>{
+      ctx.fillStyle=col("--petal-5");ctx.fillRect(x-8,y+17,16,3);ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(x,y+6,2.6,0,7);ctx.moveTo(x,y+9);ctx.lineTo(x,y+17);ctx.stroke();
+}});
+    const T=F.tEnd,nMax=Math.max(...m.choices.map(q=>q.N),m.mass*(FER_G+m.ac))*1.12,GX=u=>gx+u/T*(gr-gx),GY=n=>gb-n/nMax*(gb-gt);
+    ctx.fillStyle=col("--accent");ctx.globalAlpha=.13;ctx.fillRect(GX(T*0.4),gt,GX(T*0.6)-GX(T*0.4),gb-gt);ctx.globalAlpha=1;
+    ctx.fillStyle=col("--accent");ctx.textAlign="center";ctx.fillText("top",GX(T/2),gt-8);
+    ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(gx,gt-2);ctx.lineTo(gx,gb);ctx.lineTo(gr,gb);ctx.stroke();
+    ctx.strokeStyle=col("--grid-line");ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(gx,GY(m.mg));ctx.lineTo(gr,GY(m.mg));ctx.stroke();
+    ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("0",gx-4,gb);ctx.fillText(`mg`,gx-4,GY(m.mg));
+    ctx.textAlign="left";ctx.fillText("scale (N)",gx-20,gt-26);ctx.textAlign="center";ctx.fillText("one turn",(gx+gr)/2,gb+12);
+    if(c){ctx.strokeStyle=col("--accent");ctx.lineWidth=2;ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(GX(T*0.4),GY(c.N));ctx.lineTo(GX(T*0.6),GY(c.N));ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText("you",GX(T*0.6)+4,GY(c.N));}
+    if(!pre){ctx.strokeStyle=col("--ink");ctx.lineWidth=2.2;ctx.beginPath();for(let u=0;u<=tt+1e-9;u+=T/200){const uu=Math.min(u,tt);if(u===0)ctx.moveTo(GX(uu),GY(F.N(uu)));else ctx.lineTo(GX(uu),GY(F.N(uu)));}ctx.stroke();}
+    ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`t = ${tt.toFixed(1)} s   rω² = ${fmtNum(m.ac)} m/s²`,12,14);
+    ctx.textAlign="right";ctx.font="bold 11px 'IBM Plex Mono', monospace";ctx.fillText(`scale: ${ferN(F.N(tt))} N`,W-12,30);ctx.font="11px 'IBM Plex Mono', monospace";
+    if(c&&!pre){ctx.fillStyle=col("--accent");ctx.textAlign="left";ctx.fillText(`you said: ${c.t}`,12,30);}
+    if(ended)result(F.hit,F.hit?"Spot on":`Off by ${ferN(F.miss)} N`);
+    return;}
+  ferWheel(ctx,col,cx,cy,R,ang,{psi0:0,ground:H-14,cw:12,ch:10,n:8});
+  const tMax=F.tEnd,wMax=m.wf*1.3,GX=u=>gx+u/tMax*(gr-gx),GY=w=>gb-w/wMax*(gb-gt);
+  ctx.strokeStyle=col("--ink");ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(gx,gt-2);ctx.lineTo(gx,gb);ctx.lineTo(gr,gb);ctx.stroke();
+  ctx.strokeStyle=col("--accent");ctx.lineWidth=1.4;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(gx,GY(m.wf));ctx.lineTo(gr,GY(m.wf));ctx.moveTo(GX(m.tf),gt);ctx.lineTo(GX(m.tf),gb);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=col("--accent");ctx.beginPath();ctx.arc(GX(m.tf),GY(m.wf),4,0,7);ctx.fill();
+  ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText("0",gx-4,gb);ctx.fillText(`${m.wf}`,gx-4,GY(m.wf));
+  ctx.textAlign="left";ctx.fillText("ω (rad/s)",gx-20,gt-26);ctx.textAlign="center";ctx.fillText(`${m.tf} s`,GX(m.tf),gb+12);ctx.textAlign="right";ctx.fillText("t",gr,gb+12);
+  if(!pre){ctx.strokeStyle=col("--ink");ctx.lineWidth=2.2;ctx.beginPath();ctx.moveTo(GX(0),GY(0));
+    if(tt>F.tr)ctx.lineTo(GX(F.tr),GY(m.wf));ctx.lineTo(GX(tt),GY(F.w(tt)));ctx.stroke();}
+  ctx.fillStyle=col("--ink");ctx.textAlign="left";ctx.fillText(`t = ${tt.toFixed(1)} s   ω = ${F.w(tt).toFixed(3)} rad/s`,12,14);
+  if(c&&!pre){ctx.fillStyle=col("--accent");ctx.fillText(`sent: ${c.t}`,12,30);ctx.fillStyle=col("--muted");ctx.textAlign="right";ctx.fillText(`α = τ/I = ${fmtNum(F.al)} rad/s²`,W-12,30);}
+  if(ended)result(F.hit,F.hit?"Full speed right on time":F.early?`Full speed in ${F.tr.toFixed(1)} s, too jerky`:`Only ${Math.round(100*F.al*m.tf/m.wf)}% of full speed at ${m.tf} s`);
+}
+TOYS.ferris.game={title:"Ride the Ferris wheel",intro:"The wheel follows the physics of rotation exactly. Get it right and the ride goes just as planned.",
+  names:FER_NAMES,make:makeFer,ms:m=>m.kind===0?6000:m.kind===2?6500:5200,
+  sim:m=>ferSim(m,m.choices[LP.pick==null?0:LP.pick]),draw:drawFer,
+  outcome:(F,m)=>{
+    if(m.kind===0){if(F.hit)return `You kept pace with the door at ${fmtNum(m.v)} m/s and stepped right on.`;
+      return F.gap<0?`The capsule moves at ${fmtNum(m.v)} m/s, so after ${FER_WALK} s its door was ${fmtNum(-F.gap)} m ahead of you.`:`The capsule only moves at ${fmtNum(m.v)} m/s, so after ${FER_WALK} s you were ${fmtNum(F.gap)} m past its door.`;}
+    if(m.kind===1){if(F.hit)return "Your car eased to a stop right at the platform.";
+      if(!F.stops)return "The wheel barely slowed, and your car swung right past the platform.";
+      return `Your car stopped ${Math.round(Math.abs(F.missDeg))}° ${F.missDeg<0?"before":"past"} the platform.`;}
+    if(m.kind===2){const n=ferN(m.Ntrue);return F.hit?`At the top the scale read ${n} N, just as you said.`:`At the top the scale read ${n} N, not ${ferN(F.aim)} N.`;}
+    if(F.hit)return `The wheel reached ${m.wf} rad/s right at ${m.tf} s.`;
+    return F.early?`The wheel hit full speed in ${F.tr.toFixed(1)} s instead of ${m.tf} s. That start would jolt the riders.`:`After ${m.tf} s the wheel was only at ${(F.al*m.tf).toFixed(3)} rad/s, not ${m.wf} rad/s.`;},
+  right:"Smooth ride!",go:"Ride",pickFirst:"Pick an answer to ride",again:"Ride again with new numbers",cvLabel:"Ferris wheel ride",
+  notReadyTitle:"The Ferris wheel isn't built yet",notReady:"Each plant in your garden that blooms adds a part to the Ferris wheel. Bloom all eight to ride it."};
+
 
 function renderAbout(){
   crumb.textContent="About";
@@ -3016,7 +3253,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/01c";
+const APP_VERSION="11/01d";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -3404,7 +3641,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
