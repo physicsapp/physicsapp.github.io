@@ -1,0 +1,431 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 14,
+  "title": "Fluid Mechanics"
+ },
+ "keyEquations": [
+  {
+   "name": "Density of a sample at constant density",
+   "tex": "\\rho =\\frac{m}{V}"
+  },
+  {
+   "name": "Pressure",
+   "tex": "p=\\frac{F}{A}"
+  },
+  {
+   "name": "Pressure at a depth h in a fluid of constant density",
+   "tex": "p={p}_{0}+\\rho gh"
+  },
+  {
+   "name": "Change of pressure with height in a constant-density fluid",
+   "tex": "\\frac{dp}{dy}=-\\rho g"
+  },
+  {
+   "name": "Absolute pressure",
+   "tex": "{p}_{\\text{abs}}={p}_{\\text{g}}+{p}_{\\text{atm}}"
+  },
+  {
+   "name": "Pascal’s principle",
+   "tex": "\\frac{{F}_{1}}{{A}_{1}}=\\frac{{F}_{2}}{{A}_{2}}"
+  },
+  {
+   "name": "Volume flow rate",
+   "tex": "Q=\\frac{dV}{dt}"
+  },
+  {
+   "name": "Continuity equation (constant density)",
+   "tex": "{A}_{1}{v}_{1}={A}_{2}{v}_{2}"
+  },
+  {
+   "name": "Continuity equation (general form)",
+   "tex": "{\\rho}_{1}{A}_{1}{v}_{1}={\\rho}_{2}{A}_{2}{v}_{2}"
+  },
+  {
+   "name": "Bernoulli’s equation",
+   "tex": "p+\\frac{1}{2}\\rho {v}^{2}+\\rho gy=\\text{constant}"
+  },
+  {
+   "name": "Viscosity",
+   "tex": "\\eta =\\frac{FL}{vA}"
+  },
+  {
+   "name": "Poiseuille’s law for resistance",
+   "tex": "R=\\frac{8\\eta l}{\\pi {r}^{4}}"
+  },
+  {
+   "name": "Poiseuille’s law",
+   "tex": "Q=\\frac{({p}_{2}-{p}_{1})\\pi {r}^{4}}{8\\eta l}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "14.1",
+   "module": "m58353",
+   "title": "Fluids, Density, and Pressure",
+   "objectives": [
+    "State the different phases of matter",
+    "Describe the characteristics of the phases of matter at the molecular or atomic level",
+    "Distinguish between compressible and incompressible materials",
+    "Define density and its related SI units",
+    "Compare and contrast the densities of various substances",
+    "Define pressure and its related SI units",
+    "Explain the relationship between pressure and force",
+    "Calculate force given pressure and area"
+   ],
+   "callouts": [
+    "\\rho =\\lim _{\\Delta V\\to 0}\\frac{\\Delta m}{\\Delta V}",
+    "\\frac{dp}{dy}=-\\rho g"
+   ],
+   "examples": [
+    {
+     "title": "What Force Must a Dam Withstand?",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider the pressure and force acting on the dam retaining a reservoir of water (the figure). Suppose the dam is 500-m wide and the water is 80.0-m deep at the dam, as illustrated below. (a) What is the average pressure on the dam due to the water? (b) Calculate the force exerted against the dam.</p><figure><img src='img/CNX_UPhysics_Figure_14_01_ExampleDam_img.jpg' alt=\"Figure is a schematic drawing of a dam with length L and height h erected on the river. There is a small canoe in the river with a single passenger. The formulas F equals p times A, and p equals h times p times g are included in this illustration.\" loading='lazy'></figure><p>The average pressure <i>p</i> due to the weight of the water is the pressure at the average depth <i>h</i> of 40.0 m, since pressure increases linearly with depth. The force exerted on the dam by the water is the average pressure times the area of contact, \\(F=pA.\\)</p>"
+      },
+      {
+       "label": "solution",
+       "html": "<ol type='a'><li>The average pressure due to the weight of a fluid is <div class='eq'>\\[p=h\\rho g.\\]</div> Entering the density of water from the table and taking <i>h</i> to be the average depth of 40.0 m, we obtain <div class='eq'>\\[\\begin{array}{ll}p & =(40.0\\, \\text{m})({10}^{3}\\, \\frac{\\text{kg}}{{\\text{m}}^{3}})(9.80\\frac{\\text{m}}{{\\text{s}}^{2}}) \\\\ & =3.92\\, \\times \\, {10}^{5}\\, \\frac{\\text{N}}{{\\text{m}}^{2}}=392\\, \\text{kPa}\\text{.}\\end{array}\\]</div></li><li>We have already found the value for <i>p</i>. The area of the dam is <div class='eq'>\\[A=80.0\\, \\text{m}\\, \\times \\, 500\\, \\text{m}=4.00\\, \\times \\, {10}^{4}\\, {\\text{m}}^{2},\\]</div> so that <div class='eq'>\\[\\begin{array}{ll} \\\\ F & =(3.92\\, \\times \\, {10}^{5}\\, {\\text{N/m}}^{2})(4.00\\, \\times \\, {10}^{4}\\, {\\text{m}}^{2}) \\\\ & =1.57\\, \\times \\, {10}^{10}\\, \\text{N}\\text{.}\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Although this force seems large, it is small compared with the \\(1.96\\, \\times \\, {10}^{13}\\text{N}\\) weight of the water in the reservoir. In fact, it is only 0.0800% of the weight.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>If the reservoir in the example <i>What Force Must a Dam Withstand?</i> covered twice the area, but was kept to the same depth, would the dam need to be redesigned?</p>",
+     "a": "<p>The pressure found in part (a) of the example is completely independent of the width and length of the lake; it depends only on its average depth at the dam. Thus, the force depends only on the water’s average depth and the dimensions of the dam, not on the horizontal extent of the reservoir. In the diagram, note that the thickness of the dam increases with depth to balance the increasing force due to the increasing pressure.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A fluid is a state of matter that yields to sideways or shearing forces. Liquids and gases are both fluids. Fluid statics is the physics of stationary fluids.",
+    "Density is the mass per unit volume of a substance or object, defined as \\(\\rho =m\\text{/}V.\\) The SI unit of density is \\({\\text{kg/m}}^{3}.\\)",
+    "Pressure is the force per unit perpendicular area over which the force is applied, \\(p=F\\text{/}A.\\) The SI unit of pressure is the pascal: \\(1\\, \\text{Pa}=1\\, {\\text{N/m}}^{2}\\).",
+    "Pressure due to the weight of a liquid of constant density is given by \\(p=\\rho \\, gh\\), where <i>p</i> is the pressure, <i>h</i> is the depth of the liquid, \\(\\rho\\) is the density of the liquid, and <i>g</i> is the acceleration due to gravity."
+   ]
+  },
+  {
+   "num": "14.2",
+   "module": "m58354",
+   "title": "Measuring Pressure",
+   "objectives": [
+    "Define gauge pressure and absolute pressure",
+    "Explain various methods for measuring pressure",
+    "Understand the working of open-tube barometers",
+    "Describe in detail how manometers and barometers operate"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Fluid Heights in an Open U-Tube",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A U-tube with both ends open is filled with a liquid of density \\({\\rho}_{1}\\) to a height <i>h</i> on both sides (the figure). A liquid of density \\({\\rho}_{2}\\lt {\\rho}_{1}\\) is poured into one side and Liquid 2 settles on top of Liquid 1. The heights on the two sides are different. The height to the top of Liquid 2 from the interface is \\({h}_{2}\\) and the height to the top of Liquid 1 from the level of the interface is \\({h}_{1}\\). Derive a formula for the height difference.</p><figure><img src='img/CNX_UPhysics_Figure_14_02_UtubeTwoDe.jpg' alt=\"Left figure shows a U-tube filled with a liquid. The liquid is at the same height at both sides of the U-tube. Right figure shows a U-tube filled with two liquids of different densities. The liquids are at different heights on both sides of the U-tube.\" loading='lazy'><figcaption>Two liquids of different densities are shown in a U-tube.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The pressure at points at the same height on the two sides of a U-tube must be the same as long as the two points are in the same liquid. Therefore, we consider two points at the same level in the two arms of the tube: One point is the interface on the side of the Liquid 2 and the other is a point in the arm with Liquid 1 that is at the same level as the interface in the other arm. The pressure at each point is due to atmospheric pressure plus the weight of the liquid above it.</p><div class='eq'>\\[\\begin{array}{l}\\text{Pressure on the side with Liquid 1}={p}_{0}+{\\rho}_{1}g{h}_{1} \\\\ \\text{Pressure on the side with Liquid 2}={p}_{0}+{\\rho}_{2}g{h}_{2}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Since the two points are in Liquid 1 and are at the same height, the pressure at the two points must be the same. Therefore, we have</p><div class='eq'>\\[{p}_{0}+{\\rho}_{1}g{h}_{1}={p}_{0}+{\\rho}_{2}g{h}_{2}.\\]</div><p>Hence,</p><div class='eq'>\\[{\\rho}_{1}{h}_{1}={\\rho}_{2}{h}_{2}.\\]</div><p>This means that the difference in heights on the two sides of the U-tube is</p><div class='eq'>\\[{h}_{2}-{h}_{1}=(1-\\frac{{\\rho}_{2}}{{\\rho}_{1}}){h}_{2}.\\]</div><p>The result makes sense if we set \\({\\rho}_{2}={\\rho}_{1},\\) which gives \\({h}_{2}={h}_{1}.\\) If the two sides have the same density, they have the same height.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Mercury is a hazardous substance. Why do you suppose mercury is typically used in barometers instead of a safer fluid such as water?</p>",
+     "a": "<p>The density of mercury is 13.6 times greater than the density of water. It takes approximately 76 cm (29.9 in.) of mercury to measure the pressure of the atmosphere, whereas it would take approximately 10 m (34 ft.) of water.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Gauge pressure is the pressure relative to atmospheric pressure.",
+    "Absolute pressure is the sum of gauge pressure and atmospheric pressure.",
+    "Open-tube manometers have U-shaped tubes and one end is always open. They are used to measure pressure. A mercury barometer is a device that measures atmospheric pressure.",
+    "The SI unit of pressure is the pascal (Pa), but several other units are commonly used."
+   ]
+  },
+  {
+   "num": "14.3",
+   "module": "m58355",
+   "title": "Pascal's Principle and Hydraulics",
+   "objectives": [
+    "State Pascal’s principle",
+    "Describe applications of Pascal’s principle",
+    "Derive relationships between forces in a hydraulic system"
+   ],
+   "callouts": [
+    "\\frac{{F}_{1}}{{A}_{1}}=\\frac{{F}_{2}}{{A}_{2}}"
+   ],
+   "examples": [
+    {
+     "title": "Calculating Force on Wheel Cylinders: Pascal Puts on the Brakes",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Consider the automobile hydraulic system shown in the figure. Suppose a force of 100 N is applied to the brake pedal, which acts on the pedal cylinder (acting as a “master” cylinder) through a lever. A force of 500 N is exerted on the pedal cylinder. Pressure created in the pedal cylinder is transmitted to the four wheel cylinders. The pedal cylinder has a diameter of 0.500 cm and each wheel cylinder has a diameter of 2.50 cm. Calculate the magnitude of the force \\({F}_{2}\\) created at each of the wheel cylinders.</p><figure><img src='img/CNX_UPhysics_Figure_14_03_AutoBrake.jpg' alt=\"Figure is a schematic drawing of a hydraulic brake system. A foot is applied to the brake pedal with the force F1. It is transmitted to the pedal cylinder with the area A1 of 0.5 cm. The Pedal cylinder is connected to the hydraulic system with two wheel cylinders with an area A2 of 2.5 cm. Wheel cylinders create output force F2.\" loading='lazy'><figcaption>Hydraulic brakes use Pascal’s principle. The driver pushes the brake pedal, exerting a force that is increased by the simple lever and again by the hydraulic system. Each of the identical wheel cylinders receives the same pressure and, therefore, creates the same force output \\({F}_{2}\\). The circular cross-sectional areas of the pedal and wheel cylinders are represented by \\({A}_{1}\\) and \\({A}_{2}\\), respectively.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are given the force \\({F}_{1}\\) applied to the pedal cylinder. The cross-sectional areas \\({A}_{1}\\) and \\({A}_{2}\\) can be calculated from their given diameters. Then we can use the following relationship to find the force \\({F}_{2}\\):</p><div class='eq'>\\[\\frac{{F}_{1}}{{A}_{1}}=\\frac{{F}_{2}}{{A}_{2}}.\\]</div><p>Manipulate this algebraically to get \\({F}_{2}\\) on one side and substitute known values.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Pascal’s principle applied to hydraulic systems is given by \\(\\frac{{F}_{1}}{{A}_{1}}=\\frac{{F}_{2}}{{A}_{2}}:\\)</p><div class='eq'>\\[\\begin{array}{ll} \\\\ {F}_{2} & =\\frac{{A}_{2}}{{A}_{1}}{F}_{1}=\\frac{\\pi {r}_{2}^{2}}{\\pi {r}_{1}^{2}}{F}_{1} \\\\ & =\\frac{{(1.25\\, \\text{cm})}^{2}}{{(0.250\\, \\text{cm})}^{2}}\\, \\times \\, 500\\, \\text{N}=1.25\\, \\times \\, {\\text{10}}^{4}\\, \\text{N}\\text{.}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This value is the force exerted by each of the four wheel cylinders. Note that we can add as many wheel cylinders as we wish. If each has a 2.50-cm diameter, each will exert \\(1.25\\, \\times \\, {10}^{4}\\, \\text{N}\\text{.}\\) A simple hydraulic system, as an example of a simple machine, can increase force but cannot do more work than is done on it. Work is force times distance moved, and the wheel cylinder moves through a smaller distance than the pedal cylinder. Furthermore, the more wheels added, the smaller the distance each one moves. Many hydraulic systems—such as power brakes and those in bulldozers—have a motorized pump that actually does most of the work in the system.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>Would a hydraulic press still operate properly if a gas is used instead of a liquid?</p>",
+     "a": "<p>Yes, it would still work, but since a gas is compressible, it would not operate as efficiently. When the force is applied, the gas would first compress and warm. Hence, the air in the brake lines must be bled out in order for the brakes to work properly.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Pressure is force per unit area.",
+    "A change in pressure applied to an enclosed fluid is transmitted undiminished to all portions of the fluid and to the walls of its container.",
+    "A hydraulic system is an enclosed fluid system used to exert forces."
+   ]
+  },
+  {
+   "num": "14.4",
+   "module": "m58356",
+   "title": "Archimedes’ Principle and Buoyancy",
+   "objectives": [
+    "Define buoyant force",
+    "State Archimedes’ principle",
+    "Describe the relationship between density and Archimedes’ principle"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Calculating Average Density",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Suppose a 60.0-kg woman floats in fresh water with 97.0% of her volume submerged when her lungs are full of air. What is her average density?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can find the woman’s density by solving the equation</p><div class='eq'>\\[\\text{fraction submerged}=\\frac{{\\rho}_{\\text{obj}}}{{\\rho}_{\\text{fl}}}\\]</div><p>for the density of the object. This yields</p><div class='eq'>\\[{\\rho}_{\\text{obj}}={\\rho}_{\\text{person}}=\\text{(fraction submerged)}\\cdot {\\rho}_{\\text{fl}}.\\]</div><p>We know both the fraction submerged and the density of water, so we can calculate the woman’s density.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Entering the known values into the expression for her density, we obtain</p><div class='eq'>\\[{\\rho}_{\\text{person}}=0.970\\cdot ({10}^{3}\\, \\frac{\\text{kg}}{{\\text{m}}^{3}})=970\\frac{\\text{kg}}{{\\text{m}}^{3}}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The woman’s density is less than the fluid density. We expect this because she floats.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [],
+   "keyConcepts": [
+    "Buoyant force is the net upward force on any object in any fluid. If the buoyant force is greater than the object’s weight, the object will rise to the surface and float. If the buoyant force is less than the object’s weight, the object will sink. If the buoyant force equals the object’s weight, the object can remain suspended at its present depth. The buoyant force is always present and acting on any object immersed either partially or entirely in a fluid.",
+    "Archimedes’ principle states that the buoyant force on an object equals the weight of the fluid it displaces."
+   ]
+  },
+  {
+   "num": "14.5",
+   "module": "m58357",
+   "title": "Fluid Dynamics",
+   "objectives": [
+    "Describe the characteristics of flow",
+    "Calculate flow rate",
+    "Describe the relationship between flow rate and velocity",
+    "Explain the consequences of the equation of continuity to the conservation of mass"
+   ],
+   "callouts": [
+    "Q=\\frac{dV}{dt}",
+    "\\begin{array}{lll}{Q}_{1} & = & {Q}_{2}, \\\\ {A}_{1}{v}_{1} & = & {A}_{2}{v}_{2}.\\end{array}",
+    "\\begin{array}{lll}{(\\frac{dm}{dt})}_{1} & = & {(\\frac{dm}{dt})}_{2} \\\\ {\\rho}_{1}{A}_{1}{v}_{1} & = & {\\rho}_{2}{A}_{2}{v}_{2}.\\end{array}"
+   ],
+   "examples": [
+    {
+     "title": "Calculating Fluid Speed through a Nozzle",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A nozzle with a diameter of 0.500 cm is attached to a garden hose with a radius of 0.900 cm. The flow rate through hose and nozzle is 0.500 L/s. Calculate the speed of the water (a) in the hose and (b) in the nozzle.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We can use the relationship between flow rate and speed to find both speeds. We use the subscript 1 for the hose and 2 for the nozzle.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>We solve the flow rate equation for speed and use \\(\\pi {r}_{1}{}^{2}\\) for the cross-sectional area of the hose, obtaining <div class='eq'>\\[v=\\frac{Q}{A}=\\frac{Q}{\\pi {r}_{1}^{2}}.\\]</div> Substituting values and using appropriate unit conversions yields <div class='eq'>\\[v=\\frac{(0.500\\, \\text{L/s})({10}^{-3}\\, {\\text{m}}^{3}\\text{/L})}{3.14{(9.00\\, \\times \\, {10}^{-3}\\, \\text{m})}^{2}}=1.96\\, \\text{m/s}\\text{.}\\]</div></li><li>We could repeat this calculation to find the speed in the nozzle \\({v}_{2}\\), but we use the equation of continuity to give a somewhat different insight. The equation states <div class='eq'>\\[{A}_{1}{v}_{1}={A}_{2}{v}_{2}.\\]</div> Solving for \\({v}_{2}\\) and substituting \\(\\pi {r}^{2}\\) for the cross-sectional area yields <div class='eq'>\\[{v}_{2}=\\frac{{A}_{1}}{{A}_{2}}{v}_{1}=\\frac{\\pi {r}_{1}^{2}}{\\pi {r}_{2}^{2}}{v}_{1}=\\frac{{r}_{1}^{2}}{{r}_{2}^{2}}{v}_{1}.\\]</div> Substituting known values, <div class='eq'>\\[{v}_{2}=\\frac{{\\text{(0.900 cm)}}^{2}}{{\\text{(0.250 cm)}}^{2}}\\, 1.96\\, \\text{m/s}=25.5\\, \\text{m/s}\\text{.}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>A speed of 1.96 m/s is about right for water emerging from a hose with no nozzle. The nozzle produces a considerably faster stream merely by constricting the flow to a narrower tube.</p><p>The solution to the last part of the example shows that speed is inversely proportional to the square of the radius of the tube, making for large effects when radius varies. We can blow out a candle at quite a distance, for example, by pursing our lips, whereas blowing on a candle with our mouth wide open is quite ineffective.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [],
+   "keyConcepts": [
+    "Flow rate <i>Q</i> is defined as the volume <i>V</i> flowing past a point in time <i>t</i>, or \\(Q=\\frac{dV}{dt}\\) where <i>V</i> is volume and <i>t</i> is time. The SI unit of flow rate is \\({\\text{m}}^{3}\\text{/s,}\\) but other rates can be used, such as L/min.",
+    "Flow rate and velocity are related by \\(Q=Av\\) where <i>A</i> is the cross-sectional area of the flow and <i>v</i> is its average velocity.",
+    "The equation of continuity states that for an incompressible fluid, the mass flowing into a pipe must equal the mass flowing out of the pipe."
+   ]
+  },
+  {
+   "num": "14.6",
+   "module": "m58358",
+   "title": "Bernoulli’s Equation",
+   "objectives": [
+    "Explain the terms in Bernoulli’s equation",
+    "Explain how Bernoulli’s equation is related to the conservation of energy",
+    "Describe how to derive Bernoulli’s principle from Bernoulli’s equation",
+    "Perform calculations using Bernoulli’s principle",
+    "Describe some applications of Bernoulli’s principle"
+   ],
+   "callouts": [],
+   "examples": [
+    {
+     "title": "Calculating Pressure",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>In another section, we found that the speed of water in a hose increased from 1.96 m/s to 25.5 m/s going from the hose to the nozzle. Calculate the pressure in the hose, given that the absolute pressure in the nozzle is \\(1.01\\, \\times \\, {10}^{5}\\, {\\text{N/m}}^{2}\\) (atmospheric, as it must be) and assuming level, frictionless flow.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Level flow means constant depth, so Bernoulli’s principle applies. We use the subscript 1 for values in the hose and 2 for those in the nozzle. We are thus asked to find \\({p}_{1}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Solving Bernoulli’s principle for \\({p}_{1}\\) yields</p><div class='eq'>\\[{p}_{1}={p}_{2}+\\frac{1}{2}\\rho {v}_{2}^{2}-\\frac{1}{2}\\rho {v}_{1}^{2}={p}_{2}+\\frac{1}{2}\\rho ({v}_{2}^{2}-{v}_{1}^{2}).\\]</div><p>Substituting known values,</p><div class='eq'>\\[\\begin{array}{ll}{p}_{1} & =1.01\\, \\times \\, {10}^{5}\\, {\\text{N/m}}^{2}\\text{+}\\frac{1}{2}({10}^{3}\\, {\\text{kg/m}}^{3})[{\\text{(25.5 m/s)}}^{2}-{\\text{(1.96 m/s)}}^{2}] \\\\ & =4.24\\, \\times \\, {10}^{5}\\, {\\text{N/m}}^{2}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This absolute pressure in the hose is greater than in the nozzle, as expected, since <i>v</i> is greater in the nozzle. The pressure \\({p}_{2}\\) in the nozzle must be atmospheric, because the water emerges into the atmosphere without other changes in conditions.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Calculating Pressure: A Fire Hose Nozzle",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Fire hoses used in major structural fires have an inside diameter of 6.40 cm (the figure). Suppose such a hose carries a flow of 40.0 L/s, starting at a gauge pressure of \\(1.62\\, \\times \\, {10}^{6}{\\text{N/m}}^{2}\\). The hose rises up 10.0 m along a ladder to a nozzle having an inside diameter of 3.00 cm. What is the pressure in the nozzle?</p><figure><img src='img/CNX_UPhysics_Figure_14_06_FireHoseTr.jpg' alt=\"Figure is a drawing of the fire truck with the extended ladder. Fireman on the top of the ladder uses hose to extinguish the fire. The flow of water from the hose is parallel to the ground and is 10 meters above it.\" loading='lazy'><figcaption>Pressure in the nozzle of this fire hose is less than at ground level for two reasons: The water has to go uphill to get to the nozzle, and speed increases in the nozzle. In spite of its lowered pressure, the water can exert a large force on anything it strikes by virtue of its kinetic energy. Pressure in the water stream becomes equal to atmospheric pressure once it emerges into the air.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We must use Bernoulli’s equation to solve for the pressure, since depth is not constant.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Bernoulli’s equation is</p><div class='eq'>\\[{p}_{1}+\\frac{1}{2}\\rho {v}_{1}^{2}+\\rho g{h}_{1}={p}_{2}+\\frac{1}{2}\\rho {v}_{2}^{2}+\\rho g{h}_{2}\\]</div><p>where subscripts 1 and 2 refer to the initial conditions at ground level and the final conditions inside the nozzle, respectively. We must first find the speeds \\({v}_{1}\\) and \\({v}_{2}\\). Since \\(Q={A}_{1}{v}_{1}\\), we get</p><div class='eq'>\\[{v}_{1}=\\frac{Q}{{A}_{1}}=\\frac{40.0\\, \\times \\, {10}^{-3}{\\text{m}}^{3}\\text{/}\\text{s}}{\\pi {(3.20\\, \\times \\, {10}^{-2}\\text{m)}}^{2}}=12.4\\text{m/s}.\\]</div><p>Similarly, we find</p><div class='eq'>\\[{v}_{2}=56.6\\, \\text{m/s}.\\]</div><p>This rather large speed is helpful in reaching the fire. Now, taking \\({h}_{1}\\) to be zero, we solve Bernoulli’s equation for \\({p}_{2}\\):</p><div class='eq'>\\[{p}_{2}={p}_{1}+\\frac{1}{2}\\rho ({v}_{1}^{2}-{v}_{2}^{2})-\\rho g{h}_{2}.\\]</div><p>Substituting known values yields</p><div class='eq'>\\[\\begin{array}{ll}{p}_{2} & =1.62\\, \\times \\, {10}^{6}\\, {\\text{N/m}}^{2}+\\frac{1}{2}(1000\\, {\\text{kg/m}}^{3})[{\\text{(12.4 m/s)}}^{2}-{\\text{(56.6 m/s)}}^{2}] \\\\ & \\, -\\, (1000\\, {\\text{kg/m}}^{3})(9.80\\, {\\text{m/s}}^{2})(10.0\\, \\text{m}) \\\\ & =-2.9\\, \\text{kPa}\\approx \\, 0\\, \\text{kPa (when compared to air pressure).}\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This value is a gauge pressure, since the initial pressure was given as a gauge pressure. Thus, the nozzle pressure equals atmospheric pressure because the water exits into the atmosphere without changes in its conditions.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [],
+   "keyConcepts": [
+    "Bernoulli’s equation states that the sum on each side of the following equation is constant, or the same at any two points in an incompressible frictionless fluid: <div class='eq'>\\[{p}_{1}+\\frac{1}{2}\\rho {v}_{1}^{2}+\\rho g{h}_{1}={p}_{2}+\\frac{1}{2}\\rho {v}_{2}^{2}+\\rho g{h}_{2}.\\]</div>",
+    "Bernoulli’s principle is Bernoulli’s equation applied to situations in which the height of the fluid is constant. The terms involving depth (or height <i>h</i>) subtract out, yielding <div class='eq'>\\[{p}_{1}+\\frac{1}{2}\\rho {v}_{1}^{2}={p}_{2}+\\frac{1}{2}\\rho {v}_{2}^{2}.\\]</div>",
+    "Bernoulli’s principle has many applications, including entrainment and velocity measurement."
+   ]
+  },
+  {
+   "num": "14.7",
+   "module": "m58359",
+   "title": "Viscosity and Turbulence",
+   "objectives": [
+    "Explain what viscosity is",
+    "Calculate flow and resistance with Poiseuille's law",
+    "Explain how pressure drops due to resistance",
+    "Calculate the Reynolds number for an object moving through a fluid",
+    "Use the Reynolds number for a system to determine whether it is laminar or turbulent",
+    "Describe the conditions under which an object has a terminal speed"
+   ],
+   "callouts": [
+    "\\eta =\\frac{FL}{vA}",
+    "R=\\frac{8\\eta l}{\\pi {r}^{4}}",
+    "Q=\\frac{({p}_{2}-{p}_{1})\\pi {r}^{4}}{8\\eta l}"
+   ],
+   "examples": [
+    {
+     "title": "Using Flow Rate: Air Conditioning Systems",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>An air conditioning system is being designed to supply air at a gauge pressure of 0.054 Pa at a temperature of \\(20\\, ^{\\circ} \\text{C}.\\) The air is sent through an insulated, round conduit with a diameter of 18.00 cm. The conduit is 20-meters long and is open to a room at atmospheric pressure 101.30 kPa. The room has a length of 12 meters, a width of 6 meters, and a height of 3 meters. (a) What is the volume flow rate through the pipe, assuming laminar flow? (b) Estimate the length of time to completely replace the air in the room. (c) The builders decide to save money by using a conduit with a diameter of 9.00 cm. What is the new flow rate?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Assuming laminar flow, Poiseuille’s law states that</p><div class='eq'>\\[Q=\\frac{({p}_{2}-{p}_{1})\\pi {r}^{4}}{8\\eta l}=\\frac{dV}{dt}.\\]</div><p>We need to compare the conduit radius before and after the flow rate reduction. Note that we are given the diameter of the conduit, so we must divide by two to get the radius.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Assuming a constant pressure difference and using the viscosity \\(\\eta =0.0181\\, \\text{mPa}\\cdot \\text{s}\\), <div class='eq'>\\[Q=\\frac{(0.054\\, \\text{Pa})(3.14){(0.09\\, \\text{m})}^{4}}{8(0.0181\\, \\times \\, {10}^{-3}\\, \\text{Pa}\\cdot \\text{s})(20\\, \\text{m})}=3.84\\, \\times \\, {10}^{-3}\\, \\frac{{\\text{m}}^{3}}{\\text{s}}.\\]</div></li><li>Assuming constant flow \\(Q=\\frac{dV}{dt}\\approx \\frac{\\Delta V}{\\Delta t}\\) <div class='eq'>\\[\\Delta t=\\frac{\\Delta V}{Q}=\\frac{(12\\, \\text{m})(6\\, \\text{m})(3\\, \\text{m})}{3.84\\, \\times \\, {10}^{-3}\\, \\frac{{\\text{m}}^{3}}{\\text{s}}}=5.63\\, \\times \\, {10}^{4}\\, \\text{s}=15.63\\, \\text{hr}.\\]</div></li><li>Using laminar flow, Poiseuille’s law yields <div class='eq'>\\[Q=\\frac{(0.054\\, \\text{Pa})(3.14){(0.045\\, \\text{m})}^{4}}{8(0.0181\\, \\times \\, {10}^{-3}\\, \\text{Pa}\\cdot \\text{s})(20\\, \\text{m})}=2.40\\, \\times \\, {10}^{-4}\\, \\frac{{\\text{m}}^{3}}{\\text{s}}.\\]</div> Thus, the radius of the conduit decreases by half reduces the flow rate to 6.25% of the original value.</li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>In general, assuming laminar flow, decreasing the radius has a more dramatic effect than changing the length. If the length is increased and all other variables remain constant, the flow rate is decreased:</p><div class='eq'>\\[\\begin{array}{lll}\\frac{{Q}_{A}}{{Q}_{B}} & = & \\frac{\\frac{({p}_{2}-{p}_{1})\\pi {r}_{A}^{4}}{8\\eta {l}_{A}}}{\\frac{({p}_{2}-{p}_{1})\\pi {r}_{B}^{4}}{8\\eta {l}_{B}}}=\\frac{{l}_{B}}{{l}_{A}} \\\\ {Q}_{B} & = & \\frac{{l}_{A}}{{l}_{B}}{Q}_{A}.\\end{array}\\]</div><p>Doubling the length cuts the flow rate to one-half the original flow rate.</p><p>If the radius is decreased and all other variables remain constant, the volume flow rate decreases by a much larger factor.</p><div class='eq'>\\[\\begin{array}{lll}\\frac{{Q}_{A}}{{Q}_{B}} & = & \\frac{\\frac{({p}_{2}-{p}_{1})\\pi {r}_{A}^{4}}{8\\eta {l}_{A}}}{\\frac{({p}_{2}-{p}_{1})\\pi {r}_{B}^{4}}{8\\eta {l}_{B}}}={(\\frac{{r}_{A}}{{r}_{B}})}^{4} \\\\ {Q}_{B} & = & {(\\frac{{r}_{B}}{{r}_{A}})}^{4}{Q}_{A}\\end{array}\\]</div><p>Cutting the radius in half decreases the flow rate to one-sixteenth the original flow rate.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Using Flow Rate: Turbulent Flow or Laminar Flow",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>In the example <i>Using Flow Rate: Air Conditioning Systems</i>, we found the volume flow rate of an air conditioning system to be \\(Q=3.84\\, \\times \\, {10}^{-3}\\, {\\text{m}}^{3}\\text{/s}.\\) This calculation assumed laminar flow. (a) Was this a good assumption? (b) At what velocity would the flow become turbulent?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>To determine if the flow of air through the air conditioning system is laminar, we first need to find the velocity, which can be found by</p><div class='eq'>\\[Q=Av=\\pi {r}^{2}v.\\]</div><p>Then we can calculate the Reynold’s number, using the equation below, and determine if it falls in the range for laminar flow</p><div class='eq'>\\[{N}_{\\text{R}}=\\frac{2\\rho vr}{\\eta}.\\]</div>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>Using the values given: <div class='eq'>\\[\\begin{array}{lllll}v & = & \\frac{Q}{\\pi {r}^{2}} & = & \\frac{3.84\\, \\times \\, {10}^{-3}\\, \\frac{{\\text{m}}^{3}}{\\text{s}}}{3.14{(0.09\\, \\text{m})}^{2}}=0.15\\frac{\\text{m}}{\\text{s}} \\\\ {N}_{\\text{R}} & = & \\frac{2\\rho vr}{\\eta} & = & \\frac{2(1.23\\frac{\\text{kg}}{{\\text{m}}^{3}})(0.15\\, \\frac{\\text{m}}{\\text{s}})(0.09\\, \\text{m})}{0.0181\\, \\times \\, {10}^{-3}\\, \\text{Pa}\\cdot \\text{s}}=1835.\\end{array}\\]</div> Since the Reynolds number is 1835 &lt; 2000, the flow is laminar and not turbulent. The assumption that the flow was laminar is valid.</li><li>To find the maximum speed of the air to keep the flow laminar, consider the Reynold’s number. <div class='eq'>\\[\\begin{array}{lll}{N}_{\\text{R}} & = & \\frac{2\\rho vr}{\\eta}\\le 2000 \\\\ v & = & \\frac{2000(0.0181\\, \\times \\, {10}^{-3}\\text{Pa}\\cdot \\text{s})}{2(1.23\\frac{\\text{kg}}{{\\text{m}}^{3}})(0.09\\, \\text{m})}=0.16\\frac{\\text{m}}{\\text{s}}.\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>When transferring a fluid from one point to another, it desirable to limit turbulence. Turbulence results in wasted energy, as some of the energy intended to move the fluid is dissipated when eddies are formed. In this case, the air conditioning system will become less efficient once the velocity exceeds 0.16 m/s, since this is the point at which turbulence will begin to occur.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [],
+   "keyConcepts": [
+    "Laminar flow is characterized by smooth flow of the fluid in layers that do not mix.",
+    "Turbulence is characterized by eddies and swirls that mix layers of fluid together.",
+    "Fluid viscosity \\(\\eta\\) is due to friction within a fluid.",
+    "Flow is proportional to pressure difference and inversely proportional to resistance: <div class='eq'>\\[Q=\\frac{p-2{p}_{1}}{R}.\\]</div>",
+    "The pressure drop caused by flow and resistance is given by \\({p}_{2}-{p}_{1}=RQ\\).",
+    "The Reynolds number \\({N}_{\\text{R}}\\) can reveal whether flow is laminar or turbulent. It is \\({N}_{\\text{R}}=\\frac{2\\rho vr}{\\eta}\\).",
+    "For \\({N}_{\\text{R}}\\) below about 2000, flow is laminar. For \\({N}_{\\text{R}}\\) above about 3000, flow is turbulent. For values of \\({N}_{\\text{R}}\\) between 2000 and 3000, it may be either or both."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_Figure_14_01_ExampleDam_img.jpg",
+  "CNX_UPhysics_Figure_14_02_UtubeTwoDe.jpg",
+  "CNX_UPhysics_Figure_14_03_AutoBrake.jpg",
+  "CNX_UPhysics_Figure_14_06_FireHoseTr.jpg"
+ ]
+}

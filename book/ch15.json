@@ -1,0 +1,420 @@
+{
+ "book": "University Physics Volume 1",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 15,
+  "title": "Oscillations"
+ },
+ "keyEquations": [
+  {
+   "name": "Relationship between frequency and period",
+   "tex": "f=\\frac{1}{T}"
+  },
+  {
+   "name": "Position in SHM withϕ=0.00",
+   "tex": "x(t)=A\\, \\cos (\\omega t)"
+  },
+  {
+   "name": "General position in SHM",
+   "tex": "x(t)=A\\cos (\\omega t+\\phi )"
+  },
+  {
+   "name": "General velocity in SHM",
+   "tex": "v(t)=-A\\omega \\sin (\\omega t+\\phi )"
+  },
+  {
+   "name": "General acceleration in SHM",
+   "tex": "a(t)=-A{\\omega}^{2}\\cos (\\omega t+\\phi )"
+  },
+  {
+   "name": "Maximum displacement (amplitude) of SHM",
+   "tex": "{x}_{\\max}=A"
+  },
+  {
+   "name": "Maximum velocity of SHM",
+   "tex": "|{v}_{\\max}|=A\\omega"
+  },
+  {
+   "name": "Maximum acceleration of SHM",
+   "tex": "|{a}_{\\max}|=A{\\omega}^{2}"
+  },
+  {
+   "name": "Angular frequency of a mass-spring system in SHM",
+   "tex": "\\omega =\\sqrt{\\frac{k}{m}}"
+  },
+  {
+   "name": "Period of a mass-spring system in SHM",
+   "tex": "T=2\\pi \\sqrt{\\frac{m}{k}}"
+  },
+  {
+   "name": "Frequency of a mass-spring system in SHM",
+   "tex": "f=\\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}"
+  },
+  {
+   "name": "Energy in a mass-spring system in SHM",
+   "tex": "{E}_{\\text{Total}}=\\frac{1}{2}k{x}^{2}+\\frac{1}{2}m{v}^{2}=\\frac{1}{2}k{A}^{2}"
+  },
+  {
+   "name": "The velocity of the mass in a spring-mass system in SHM",
+   "tex": "v=\\pm \\sqrt{\\frac{k}{m}({A}^{2}-{x}^{2})}"
+  },
+  {
+   "name": "The x-component of the radius of a rotating disk",
+   "tex": "x(t)=A\\cos (\\omega \\, t+\\phi )"
+  },
+  {
+   "name": "The x-component of the velocity of the edge of a rotating disk",
+   "tex": "v(t)=-{v}_{\\max}\\sin (\\omega \\, t+\\phi )"
+  },
+  {
+   "name": "The x-component of the acceleration of the edge of a rotating disk",
+   "tex": "a(t)=-{a}_{\\max}\\cos (\\omega \\, t+\\phi )"
+  },
+  {
+   "name": "Force equation for a simple pendulum",
+   "tex": "\\frac{{d}^{2}\\theta}{d{t}^{2}}=-\\frac{g}{L}\\theta"
+  },
+  {
+   "name": "Angular frequency for a simple pendulum",
+   "tex": "\\omega =\\sqrt{\\frac{g}{L}}"
+  },
+  {
+   "name": "Period of a simple pendulum",
+   "tex": "T=2\\pi \\sqrt{\\frac{L}{g}}"
+  },
+  {
+   "name": "Angular frequency of a physical pendulum",
+   "tex": "\\omega =\\sqrt{\\frac{mgL}{I}}"
+  },
+  {
+   "name": "Period of a physical pendulum",
+   "tex": "T=2\\pi \\sqrt{\\frac{I}{mgL}}"
+  },
+  {
+   "name": "Period of a torsional pendulum",
+   "tex": "T=2\\pi \\sqrt{\\frac{I}{\\kappa}}"
+  },
+  {
+   "name": "Newton’s second law for harmonic motion",
+   "tex": "m\\frac{{d}^{2}x}{d{t}^{2}}+b\\frac{dx}{dt}+kx=0"
+  },
+  {
+   "name": "Solution for underdamped harmonic motion",
+   "tex": "x(t)={A}_{0}{e}^{-\\frac{b}{2m}t}\\cos (\\omega t+\\phi )"
+  },
+  {
+   "name": "Natural angular frequency of a mass-spring system",
+   "tex": "{\\omega}_{0}=\\sqrt{\\frac{k}{m}}"
+  },
+  {
+   "name": "Angular frequency of underdamped harmonic motion",
+   "tex": "\\omega =\\sqrt{{\\omega}_{0}^{2}-{(\\frac{b}{2m})}^{2}}"
+  },
+  {
+   "name": "Newton’s second law for forced, damped oscillation",
+   "tex": "-kx-b\\frac{dx}{dt}+{F}_{o}\\sin (\\omega t)=m\\frac{{d}^{2}x}{d{t}^{2}}"
+  },
+  {
+   "name": "Solution to Newton’s second law for forced, damped oscillations",
+   "tex": "x(t)=A\\cos (\\omega t+\\phi )"
+  },
+  {
+   "name": "Amplitude of system undergoing forced, damped oscillations",
+   "tex": "A=\\frac{{F}_{o}}{\\sqrt{{m}^{2}{({\\omega}^{2}-{\\omega}_{o}^{2})}^{2}+{b}^{2}{\\omega}^{2}}}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "15.1",
+   "module": "m58361",
+   "title": "Simple Harmonic Motion",
+   "objectives": [
+    "Define the terms period and frequency",
+    "List the characteristics of simple harmonic motion",
+    "Explain the concept of phase shift",
+    "Write the equations of motion for the system of a mass and spring undergoing simple harmonic motion",
+    "Describe the motion of a mass oscillating on a vertical spring"
+   ],
+   "callouts": [
+    "f=\\frac{1}{T}",
+    "x(t)=A\\, \\cos (\\frac{2\\pi}{T}t)=A\\, \\cos (\\omega t)",
+    "x(t)=A\\cos (\\omega t+\\phi )",
+    "v(t)=-{v}_{\\max}\\sin (\\omega t+\\phi )",
+    "a(t)=-{a}_{\\max}\\cos (\\omega t+\\phi )",
+    "{x}_{\\max}=A",
+    "{v}_{\\max}=A\\omega",
+    "{a}_{\\max}=A{\\omega}^{2}",
+    "\\omega =\\sqrt{\\frac{k}{m}}",
+    "T=2\\pi \\sqrt{\\frac{m}{k}}",
+    "f=\\frac{1}{T}=\\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}"
+   ],
+   "examples": [
+    {
+     "title": "Determining the Frequency of Medical Ultrasound",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Ultrasound machines are used by medical professionals to make images for examining internal organs of the body. An ultrasound machine emits high-frequency sound waves, which reflect off the organs, and a computer receives the waves, using them to create a picture. We can use the formulas presented in this module to determine the frequency, based on what we know about oscillations. Consider a medical imaging device that produces ultrasound by oscillating with a period of \\(0.400\\, \\mu \\text{s}\\). What is the frequency of this oscillation?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The period (<i>T</i>) is given and we are asked to find <b>frequency (<i>f</i>)</b>.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substitute \\(0.400\\, \\mu \\text{s}\\) for <i>T</i> in \\(f=\\frac{1}{T}\\):</p><div class='eq'>\\[f=\\frac{1}{T}=\\frac{1}{0.400\\, \\times \\, {10}^{-6}\\, \\text{s}}.\\]</div><p>Solve to find</p><div class='eq'>\\[f=2.50\\, \\times \\, {10}^{6}\\, \\text{Hz}\\text{.}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This frequency of sound is much higher than the highest frequency that humans can hear (the range of human hearing is 20 Hz to 20,000 Hz); therefore, it is called ultrasound. Appropriate oscillations at this frequency generate ultrasound used for noninvasive medical diagnoses, such as observations of a fetus in the womb.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Determining the Equations of Motion for a Block and a Spring",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A 2.00-kg block is placed on a frictionless surface. A spring with a force constant of \\(k=32.00\\, \\text{N}\\text{/}\\text{m}\\) is attached to the block, and the opposite end of the spring is attached to the wall. The spring can be compressed or extended. The equilibrium position is marked as \\(x=0.00\\, \\text{m}\\text{.}\\)</p><p>Work is done on the block, pulling it out to \\(x=+0.02\\, \\text{m}\\text{.}\\) The block is released from rest and oscillates between \\(x=+0.02\\, \\text{m}\\) and \\(x=-0.02\\, \\text{m}\\text{.}\\) The period of the motion is 1.57 s. Determine the equations of motion.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We first find the angular frequency. The phase shift is zero, \\(\\phi =0.00\\, \\text{rad,}\\) because the block is released from rest at \\(x=A=+0.02\\, \\text{m}\\text{.}\\) Once the angular frequency is found, we can determine the maximum velocity and maximum acceleration.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The angular frequency can be found and used to find the maximum velocity and maximum acceleration:</p><div class='eq'>\\[\\begin{array}{lll}\\omega & = & \\frac{2\\pi}{1.57\\, \\text{s}}=4.00\\, {\\text{s}}^{-1}; \\\\ {v}_{\\max} & = & A\\omega =0.02\\text{m}(4.00\\, {\\text{s}}^{-1})=0.08\\, \\text{m/s;} \\\\ {a}_{\\max} & = & A{\\omega}^{2}=0.02\\, \\text{m}{(4.00\\, {\\text{s}}^{-1})}^{2}=0.32{\\, \\text{m/s}}^{2}.\\end{array}\\]</div><p>All that is left is to fill in the equations of motion:</p><div class='eq'>\\[\\begin{array}{lll}x(t) & = & A\\, \\cos (\\omega t+\\phi )=(0.02\\, \\text{m})\\cos (4.00\\, {\\text{s}}^{-1}t); \\\\ v(t) & = & -{v}_{\\max}\\sin (\\omega t+\\phi )=(-0.08\\, \\text{m/s})\\sin (4.00\\, {\\text{s}}^{-1}t); \\\\ a(t) & = & -{a}_{\\max}\\cos (\\omega t+\\phi )=(-0.32\\, {\\text{m/s}}^{2})\\cos (4.00\\, {\\text{s}}^{-1}t).\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>The position, velocity, and acceleration can be found for any time. It is important to remember that when using these equations, your calculator must be in radians mode.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [],
+   "keyConcepts": [
+    "Periodic motion is a repeating oscillation. The time for one oscillation is the period <i>T</i> and the number of oscillations per unit time is the frequency <i>f</i>. These quantities are related by \\(f=\\frac{1}{T}\\).",
+    "Simple harmonic motion (SHM) is oscillatory motion for a system where the restoring force is proportional to the displacement and acts in the direction opposite to the displacement.",
+    "Maximum displacement is the amplitude <i>A</i>. The angular frequency \\(\\omega\\), period <i>T</i>, and frequency <i>f</i> of a simple harmonic oscillator are given by \\(\\omega =\\sqrt{\\frac{k}{m}}\\), \\(T=2\\pi \\sqrt{\\frac{m}{k}},\\, \\text{and}\\, f=\\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}\\), where <i>m</i> is the mass of the system and <i>k</i> is the force constant.",
+    "Displacement as a function of time in SHM is given by\\(x(t)=A\\, \\cos (\\frac{2\\pi}{T}t+\\phi )=A\\cos (\\omega t+\\phi )\\).",
+    "The velocity is given by \\(v(t)=-A\\omega \\sin (\\omega t+\\phi )=-{v}_{\\max}\\sin (\\omega t+\\phi ),\\) where \\({\\text{v}}_{\\max}=A\\omega =A\\sqrt{\\frac{k}{m}}\\).",
+    "The acceleration is \\(a(t)=-A{\\omega}^{2}\\cos (\\omega t+\\phi )=-{a}_{\\max}\\cos (\\omega t+\\phi )\\), where \\({a}_{\\max}=A{\\omega}^{2}=A\\frac{k}{m}\\)."
+   ]
+  },
+  {
+   "num": "15.2",
+   "module": "m58362",
+   "title": "Energy in Simple Harmonic Motion",
+   "objectives": [
+    "Describe the energy conservation of the system of a mass and a spring",
+    "Explain the concepts of stable and unstable equilibrium points"
+   ],
+   "callouts": [
+    "{E}_{\\text{Total}}=\\frac{1}{2}k{x}^{2}+\\frac{1}{2}m{v}^{2}=\\frac{1}{2}k{A}^{2}",
+    "|v|=\\sqrt{\\frac{k}{m}({A}^{2}-{x}^{2})}"
+   ],
+   "examples": [],
+   "checks": [
+    {
+     "q": "<p>Why would it hurt more if you snapped your hand with a ruler than with a loose spring, even if the displacement of each system is equal?</p>",
+     "a": "<p>The ruler is a stiffer system, which carries greater force for the same amount of displacement. The ruler snaps your hand with greater force, which hurts more.</p>"
+    },
+    {
+     "q": "<p>Identify one way you could decrease the maximum velocity of a simple harmonic oscillator.</p>",
+     "a": "<p>You could increase the mass of the object that is oscillating. Other options would be to reduce the amplitude, or use a less stiff spring.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The simplest type of oscillations are related to systems that can be described by Hooke’s law, <i>F</i> = −<i>kx</i>, where <i>F</i> is the restoring force, <i>x</i> is the displacement from equilibrium or deformation, and <i>k</i> is the force constant of the system.",
+    "Elastic potential energy <i>U</i> stored in the deformation of a system that can be described by Hooke’s law is given by\\(U=\\frac{1}{2}k{x}^{2}.\\)",
+    "Energy in the simple harmonic oscillator is shared between elastic potential energy and kinetic energy, with the total being constant: <div class='eq'>\\[{E}_{\\text{Total}}=\\frac{1}{2}m{v}^{2}+\\frac{1}{2}k{x}^{2}=\\frac{1}{2}k{A}^{2}=\\text{constant.}\\]</div>",
+    "The magnitude of the velocity as a function of position for the simple harmonic oscillator can be found by using <div class='eq'>\\[|v|=\\sqrt{\\frac{k}{m}({A}^{2}-{x}^{2})}.\\]</div>"
+   ]
+  },
+  {
+   "num": "15.3",
+   "module": "m58363",
+   "title": "Comparing Simple Harmonic Motion and Circular Motion",
+   "objectives": [
+    "Describe how the sine and cosine functions relate to the concepts of circular motion",
+    "Describe the connection between simple harmonic motion and circular motion"
+   ],
+   "callouts": [
+    "x(t)=A\\cos (\\omega t)",
+    "v=-{v}_{\\max}\\sin (\\omega t)",
+    "a=-{a}_{\\max}\\cos (\\omega t)"
+   ],
+   "examples": [],
+   "checks": [
+    {
+     "q": "<p>Identify an object that undergoes uniform circular motion. Describe how you could trace the SHM of this object.</p>",
+     "a": "<p>A ketchup bottle sits on a lazy Susan in the center of the dinner table. You set it rotating in uniform circular motion. A set of lights shine on the bottle, producing a shadow on the wall.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A projection of uniform circular motion undergoes simple harmonic oscillation.",
+    "Consider a circle with a radius <i>A</i>, moving at a constant angular speed \\(\\omega\\). A point on the edge of the circle moves at a constant tangential speed of \\({v}_{\\max}=A\\omega\\). The projection of the radius onto the <i>x</i>-axis is \\(x(t)=A\\cos (\\omega t+\\phi )\\), where \\((\\phi )\\) is the phase shift. The <i>x</i>-component of the tangential velocity is \\(v(t)=-A\\omega \\sin (\\omega t+\\phi )\\)."
+   ]
+  },
+  {
+   "num": "15.4",
+   "module": "m58364",
+   "title": "Pendulums",
+   "objectives": [
+    "State the forces that act on a simple pendulum",
+    "Determine the angular frequency, frequency, and period of a simple pendulum in terms of the length of the pendulum and the acceleration due to gravity",
+    "Define the period for a physical pendulum",
+    "Define the period for a torsional pendulum"
+   ],
+   "callouts": [
+    "\\frac{{d}^{2}\\theta}{d{t}^{2}}=-\\frac{g}{L}\\theta",
+    "\\omega =\\sqrt{\\frac{g}{L}}",
+    "T=2\\pi \\sqrt{\\frac{L}{g}}",
+    "\\omega =\\sqrt{\\frac{mgL}{I}}",
+    "T=2\\pi \\sqrt{\\frac{I}{mgL}}",
+    "T=2\\pi \\sqrt{\\frac{I}{\\kappa}}"
+   ],
+   "examples": [
+    {
+     "title": "Measuring Acceleration due to Gravity by the Period of a Pendulum",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>What is the acceleration due to gravity in a region where a simple pendulum having a length 75.000 cm has a period of 1.7357 s?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are asked to find <i>g</i> given the period <i>T</i> and the length <i>L</i> of a pendulum. We can solve \\(T=2\\pi \\sqrt{\\frac{L}{g}}\\) for <i>g</i>, assuming only that the angle of deflection is less than \\(15^{\\circ}\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol><li>Square \\(T=2\\pi \\sqrt{\\frac{L}{g}}\\) and solve for <i>g</i>: <div class='eq'>\\[g=4{\\pi}^{2}\\frac{L}{{T}^{2}}.\\]</div></li><li>Substitute known values into the new equation: <div class='eq'>\\[g=4{\\pi}^{2}\\frac{0.75000\\, \\text{m}}{{(1.7357\\, \\text{s})}^{2}}.\\]</div></li><li>Calculate to find <i>g</i>: <div class='eq'>\\[g=9.8281{\\, \\text{m/s}}^{2}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This method for determining <i>g</i> can be very accurate, which is why length and period are given to five digits in this example. For the precision of the approximation \\(\\sin \\, \\theta \\approx \\theta\\) to be better than the precision of the pendulum length and period, the maximum displacement angle should be kept below about \\(0.5^{\\circ}\\).</p>"
+      }
+     ]
+    },
+    {
+     "title": "Reducing the Swaying of a Skyscraper",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>In extreme conditions, skyscrapers can sway up to two meters with a frequency of up to 20.00 Hz due to high winds or seismic activity. Several companies have developed physical pendulums that are placed on the top of the skyscrapers. As the skyscraper sways to the right, the pendulum swings to the left, reducing the sway. Assuming the oscillations have a frequency of 0.50 Hz, design a pendulum that consists of a long beam, of constant density, with a mass of 100 metric tons and a pivot point at one end of the beam. What should be the length of the beam?</p><figure><img src='img/CNX_UPhysics_15_05_SkyPend_img.jpg' alt=\"The figure depicts a tall building with a column on its roof and a long rod of length L that swings on a pivot point near the top of the column.\" loading='lazy'></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are asked to find the length of the physical pendulum with a known mass. We first need to find the moment of inertia of the beam. We can then use the equation for the period of a physical pendulum to find the length.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol><li>Find the moment of inertia for the CM: <br>Use the parallel axis theorem to find the moment of inertia about the point of rotation for a rod length <i>L</i>:<br> <div class='eq'>\\[I={I}_{\\text{CM}}+{\\frac{L}{4}}^{2}M=\\frac{1}{12}M{L}^{2}+\\frac{1}{4}M{L}^{2}=\\frac{1}{3}M{L}^{2}.\\]</div></li><li>The period of a physical pendulum with its center of mass a distance <i>l</i> from the pivot point has a period of \\(T=2\\pi \\sqrt{\\frac{I}{mgl}}\\). In this problem, <i>L</i> has been defined as the total length of the rod, so \\(l=L/2\\). Use the moment of inertia to solve for the length <i>L</i>: <div class='eq'>\\[\\begin{array}{l}T=\\sqrt{\\frac{\\frac{1}{3}{ML}^{2}}{Mg\\frac{L}{2}}}=2\\pi \\sqrt{\\frac{2L}{3g}}; \\\\ L=\\frac{3{T}^{2}g}{8{\\pi}^{2}}=1.49\\, \\mathrm{m}.\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>There are many ways to reduce the oscillations, including modifying the shape of the skyscrapers, using multiple physical pendulums, and using tuned-mass dampers.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Measuring the Torsion Constant of a String",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A rod has a length of \\(L=0.30\\, \\text{m}\\) and a mass of 4.00 kg. A string is attached to the CM of the rod and the system is hung from the ceiling (the figure). The rod is displaced 10 degrees from the equilibrium position and released from rest. The rod oscillates with a period of 0.5 s. What is the torsion constant \\(\\kappa\\)?</p><figure><img src='img/CNX_UPhysics_15_05_TorsPenRod.jpg' alt=\"Figure a shows a horizontal rod, length 30.0 centimeters and mass 4.00 kilograms, hanging by a string from the ceiling. The string attaches to the middle of the rod. The rod rotates with the string in the horizontal plane. Figure b shows the rod with the details needed for finding its moment of inertia. The rod’s length, end to end, is L and its total mass is M. It has linear mass density lambda equals d m d x which also equals M over L. A small segment of the rod that has length d x at a distance x from the center of the rod is highlighted. The string is attached to the rod at the center of the rod.\" loading='lazy'><figcaption>(a) A rod suspended by a string from the ceiling. (b) Finding the rod’s moment of inertia.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We are asked to find the torsion constant of the string. We first need to find the moment of inertia.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol><li>Find the moment of inertia for the CM: <div class='eq'>\\[{I}_{\\text{CM}}=\\int {x}^{2}dm={\\int}_{-L\\text{/}2}^{+L\\text{/}2}{x}^{2}\\lambda dx=\\lambda {[\\frac{{x}^{3}}{3}]}_{-L\\text{/}2}^{+L\\text{/}2}=\\lambda \\frac{2{L}^{3}}{24}=(\\frac{M}{L})\\frac{2{L}^{3}}{24}=\\frac{1}{12}M{L}^{2}.\\]</div></li><li>Calculate the torsion constant using the equation for the period: <div class='eq'>\\[\\begin{array}{lll}T & = & 2\\pi \\sqrt{\\frac{I}{\\kappa}}; \\\\ \\kappa & = & I{(\\frac{2\\pi}{T})}^{2}=(\\frac{1}{12}M{L}^{2}){(\\frac{2\\pi}{T})}^{2}; \\\\ & = & (\\frac{1}{12}(4.00\\, \\text{kg}){(0.30\\, \\text{m})}^{2}){(\\frac{2\\pi}{0.50\\, \\text{s}})}^{2}=4.73\\, \\text{N}\\cdot \\text{m}\\text{.}\\end{array}\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Like the force constant of the system of a block and a spring, the larger the torsion constant, the shorter the period.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>An engineer builds two simple pendulums. Both are suspended from small wires secured to the ceiling of a room. Each pendulum hovers 2 cm above the floor. Pendulum 1 has a bob with a mass of 10 kg. Pendulum 2 has a bob with a mass of 100 kg. Describe how the motion of the pendulums will differ if the bobs are both displaced by \\(12^{\\circ}\\).</p>",
+     "a": "<p>The movement of the pendulums will not differ at all because the mass of the bob has no effect on the motion of a simple pendulum. The pendulums are only affected by the period (which is related to the pendulum’s length) and by the acceleration due to gravity.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A mass <i>m</i> suspended by a wire of length <i>L</i> and negligible mass is a simple pendulum and undergoes SHM for amplitudes less than about \\(15^{\\circ}\\). The period of a simple pendulum is \\(T=2\\pi \\sqrt{\\frac{L}{g}}\\), where <i>L</i> is the length of the string and <i>g</i> is the acceleration due to gravity.",
+    "The period of a physical pendulum \\(T=2\\pi \\sqrt{\\frac{I}{mgL}}\\) can be found if the moment of inertia is known. The length between the point of rotation and the center of mass is <i>L</i>.",
+    "The period of a torsional pendulum \\(T=2\\pi \\sqrt{\\frac{I}{\\kappa}}\\) can be found if the moment of inertia and torsion constant are known."
+   ]
+  },
+  {
+   "num": "15.5",
+   "module": "m58365",
+   "title": "Damped Oscillations",
+   "objectives": [
+    "Describe the motion of damped harmonic motion",
+    "Write the equations of motion for damped harmonic oscillations",
+    "Describe the motion of driven, or forced, damped harmonic motion",
+    "Write the equations of motion for forced, damped harmonic motion"
+   ],
+   "callouts": [
+    "m\\frac{{d}^{2}x}{d{t}^{2}}+b\\frac{dx}{dt}+kx=0",
+    "x(t)={A}_{0}{e}^{-\\frac{b}{2m}t}\\cos (\\omega t+\\phi )",
+    "{\\omega}_{0}=\\sqrt{\\frac{k}{m}}",
+    "\\omega =\\sqrt{{\\omega}_{0}^{2}-{(\\frac{b}{2m})}^{2}}"
+   ],
+   "examples": [],
+   "checks": [
+    {
+     "q": "<p>Why are completely undamped harmonic oscillators so rare?</p>",
+     "a": "<p>Friction often comes into play whenever an object is moving. Friction causes damping in a harmonic oscillator.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Damped harmonic oscillators have non-conservative forces that dissipate their energy.",
+    "Critical damping returns the system to equilibrium as fast as possible without overshooting.",
+    "An underdamped system will oscillate through the equilibrium position.",
+    "An overdamped system moves more slowly toward equilibrium than one that is critically damped."
+   ]
+  },
+  {
+   "num": "15.6",
+   "module": "m58366",
+   "title": "Forced Oscillations",
+   "objectives": [
+    "Define forced oscillations",
+    "List the equations of motion associated with forced oscillations",
+    "Explain the concept of resonance and its impact on the amplitude of an oscillator",
+    "List the characteristics of a system oscillating in resonance"
+   ],
+   "callouts": [
+    "-kx-b\\frac{dx}{dt}+{F}_{0}\\sin (\\omega t)=m\\frac{{d}^{2}x}{d{t}^{2}}",
+    "x(t)=A\\cos (\\omega t+\\phi )",
+    "A=\\frac{{F}_{0}}{\\sqrt{{m}^{2}{({\\omega}^{2}-{\\omega}_{0}^{2})}^{2}+{b}^{2}{\\omega}^{2}}}"
+   ],
+   "examples": [],
+   "checks": [
+    {
+     "q": "<p>A famous magic trick involves a performer singing a note toward a crystal glass until the glass shatters. Explain why the trick works in terms of resonance and natural frequency.</p>",
+     "a": "<p>The performer must be singing a note that corresponds to the natural frequency of the glass. As the sound wave is directed at the glass, the glass responds by resonating at the same frequency as the sound wave. With enough energy introduced into the system, the glass begins to vibrate and eventually shatters.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A system’s natural frequency is the frequency at which the system oscillates if not affected by driving or damping forces.",
+    "A periodic force driving a harmonic oscillator at its natural frequency produces resonance. The system is said to resonate.",
+    "The less damping a system has, the higher the amplitude of the forced oscillations near resonance. The more damping a system has, the broader response it has to varying driving frequencies."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_15_05_SkyPend_img.jpg",
+  "CNX_UPhysics_15_05_TorsPenRod.jpg"
+ ]
+}
