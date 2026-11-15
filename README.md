@@ -131,6 +131,22 @@ A chapter appears in the app's chapter list as soon as `book/chNN.json` is on th
 same format as `notes/ch03.txt`. Files inside a folder have to be uploaded from inside that
 folder on GitHub.
 
+### Physics 2
+
+Physics 2 uses [OpenStax University Physics Volume 2](https://openstax.org/details/books/university-physics-volume-2),
+Chapters 5 through 16 (electricity and magnetism). Its files keep the book's own chapter numbers in their own folders:
+`book2/ch05.json` and `notes2/ch05.txt`. The chapter menu, the Equations and Review tabs have a
+Physics 1 / Physics 2 switch, and each Physics 2 chapter has its own garden. Add `--volume 2` when extracting:
+
+```
+python3 tools/extract.py osbooks-university-physics-bundle book2/ch05.json m58412,m58413,m58415,m58722,m58416,m58417,m58418 - 5 "Electric Charges and Fields" --volume 2
+```
+
+The module ids are in `collections/university-physics-volume-2.collection.xml`. Figures still go in `img/`
+(Volume 2 figure names start with `CNX_UPhysics_22` and up, so they never clash with Volume 1).
+`schedule.txt` dates apply to Physics 1 only. In `settings.txt`, a line like `Physics 2 Chapter 5`
+starts settings for one Physics 2 chapter.
+
 ## Licenses
 
 - **Content** (everything in `book/`, `notes/`, and `img/`) is adapted from

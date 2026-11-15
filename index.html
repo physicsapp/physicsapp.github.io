@@ -144,6 +144,8 @@ figcaption{font-size:.85rem;color:var(--muted)}
 .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--eq-bg);border-radius:12px;padding:4px;gap:4px}
 .seg button{border:0;background:transparent;border-radius:9px;padding:9px 6px;font-weight:600;cursor:pointer;color:var(--muted);min-height:40px}
 .seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg a{border-radius:9px;padding:9px 6px;font-weight:600;color:var(--muted);min-height:40px;text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center}
+.seg a[aria-current="page"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .chip{flex:none;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:6px 12px;font-family:var(--font-mono);font-size:.82rem;cursor:pointer;min-height:36px}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -309,11 +311,26 @@ const G=9.80;
 
 /* OpenStax page names follow the section number and title, like 3-1-position-displacement-and-average-velocity */
 const slug=s=>s.num.replace(".","-")+"-"+s.title.toLowerCase().replace(/['’]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
-const bookUrl=i=>"https://openstax.org/books/university-physics-volume-1/pages/"+slug(S[i]);
+/* Physics 2 (University Physics Volume 2) chapters use ids above P2 inside the app: Volume 2 Chapter 5 is 105.
+   cn(n) is the chapter number students see. Its files are book2/chNN.json and notes2/chNN.txt. */
+const P2=100;
+const bookOf=n=>n>P2?2:1;
+const cn=n=>n>P2?n-P2:n;
+const volUrl=b=>"https://openstax.org/details/books/university-physics-volume-"+b;
+const bookFile=n=>`${n>P2?"book2":"book"}/ch${pad2(cn(n))}.json`;
+const notesFile=n=>`${n>P2?"notes2":"notes"}/ch${pad2(cn(n))}.txt`;
+const bookUrl=i=>"https://openstax.org/books/university-physics-volume-"+bookOf(CH)+"/pages/"+slug(S[i]);
 
 /* ---------- chapters ---------- */
 /* A chapter appears in the menu as soon as book/chNN.json is on the site. notes/chNN.txt adds its summaries and review items. */
-const CHAPTERS=[[1,"Units and Measurement"],[2,"Vectors"],[3,"Motion Along a Straight Line"],[4,"Motion in Two and Three Dimensions"],[5,"Newton’s Laws of Motion"],[6,"Applications of Newton’s Laws"],[7,"Work and Kinetic Energy"],[8,"Potential Energy and Conservation of Energy"],[9,"Linear Momentum and Collisions"],[10,"Fixed Axis Rotation"],[11,"Angular Momentum"],[12,"Static Equilibrium and Elasticity"],[13,"Gravitation"],[14,"Fluid Mechanics"],[15,"Oscillations"]];
+const CHAPTERS=[[1,"Units and Measurement"],[2,"Vectors"],[3,"Motion Along a Straight Line"],[4,"Motion in Two and Three Dimensions"],[5,"Newton’s Laws of Motion"],[6,"Applications of Newton’s Laws"],[7,"Work and Kinetic Energy"],[8,"Potential Energy and Conservation of Energy"],[9,"Linear Momentum and Collisions"],[10,"Fixed Axis Rotation"],[11,"Angular Momentum"],[12,"Static Equilibrium and Elasticity"],[13,"Gravitation"],[14,"Fluid Mechanics"],[15,"Oscillations"],
+  [105,"Electric Charges and Fields"],[106,"Gauss’s Law"],[107,"Electric Potential"],[108,"Capacitance"],[109,"Current and Resistance"],[110,"Direct Current Circuits"],[111,"Magnetic Forces and Fields"],[112,"Sources of Magnetic Fields"],[113,"Electromagnetic Induction"],[114,"Inductance"],[115,"Alternating Current Circuits"],[116,"Electromagnetic Waves"]];
+/* the book shown in the chapter menu and pickers: 1 or 2, saved as fb:book */
+let BOOKSEL=store("book")===2?2:1;
+function setBook(b){BOOKSEL=b===2?2:1;store("book",BOOKSEL);}
+const BOOKS=[[1,"Physics 1"],[2,"Physics 2"]];
+/* the Physics 1 / Physics 2 switch; "to" is where it goes after switching (chapters, equations, review) */
+function bookSwitch(to){return `<nav class="seg bookswitch" aria-label="Book">${BOOKS.map(([b,l])=>`<a href="#book${b}${to?"/"+to:""}"${b===BOOKSEL?` aria-current="page"`:""}>${l}</a>`).join("")}</nav>`;}
 const pad2=n=>String(n).padStart(2,"0");
 let CH=0;
 const H=r=>"#ch"+(CH||lastCh())+(r?"/"+r:"");
@@ -523,8 +540,8 @@ function parseSettings(txt){
   const now=key=>cur!=null&&CHSET[cur]&&key in CHSET[cur]?CHSET[cur][key]:CFG[key];
   txt.replace(/\r/g,"").split("\n").forEach((raw,i)=>{
     const line=raw.replace(/#.*$/,"").trim();if(!line)return;
-    const ch=line.match(/^ch(?:apter|\.)?\s*(\d+)$/i);
-    if(ch){const n=+ch[1];if(!CHAPTERS.some(c=>c[0]===n)){CFG_ERRS.push(`settings.txt line ${i+1}: there is no Chapter ${n}, so the lines below it are skipped until the next chapter line`);cur=-1;}else cur=n;return;}
+    const ch=line.match(/^(physics\s*2\s*,?\s*)?ch(?:apter|\.)?\s*(\d+)$/i);
+    if(ch){const n=+ch[2]+(ch[1]?P2:0);if(!CHAPTERS.some(c=>c[0]===n)){CFG_ERRS.push(`settings.txt line ${i+1}: there is no ${n>P2?"Physics 2 ":""}Chapter ${cn(n)}, so the lines below it are skipped until the next chapter line`);cur=-1;}else cur=n;return;}
     if(/^every\s*chapter$/i.test(line)){cur=null;return;}
     const m=line.match(/^([^:]+):\s*(.*)$/);
     if(!m){CFG_ERRS.push(`settings.txt line ${i+1}: should look like "Questions per review: 5" or "Chapter 4"`);return;}
@@ -562,7 +579,7 @@ function parseSchedule(txt){
 }
 const WD=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 function classDates(sec){
-  if(!CFG.showDates)return "";
+  if(!CFG.showDates||CH>P2)return "";
   const l=SCHED[sec]||SCHED["ch"+sec.split(".")[0]];if(!l)return "";
   return l.map(d=>`${WD[new Date(CFG.year,d.mo-1,d.dy).getDay()]} ${d.mo}/${d.dy}`).join(" and ");
 }
@@ -787,15 +804,15 @@ function heroFor(n){
 }
 
 function renderLearn(){
-  crumb.textContent="Chapter "+CH;
+  crumb.textContent="Chapter "+cn(CH);
   const X=chx();
   main.innerHTML=`
   <a class="backlink" href="#chapters">‹ All chapters</a>
   <section class="paper hero${X.hero?"":" plain"}">
     <div class="stack">
-      <div class="eyebrow">University Physics, Volume 1</div>
+      <div class="eyebrow">University Physics, Volume ${bookOf(CH)}</div>
       <h1>${esc(D.chapter.title)}</h1>
-      <p class="muted small">Chapter ${CH} · ${plural(S.length,"section")} · ${plural(sheetOf(CH).length,"key equation")}</p>
+      <p class="muted small">Chapter ${cn(CH)} · ${plural(S.length,"section")} · ${plural(sheetOf(CH).length,"key equation")}</p>
     </div>
     ${X.hero?X.hero():""}
   </section>
@@ -806,13 +823,13 @@ function renderLearn(){
       <span class="chev" aria-hidden="true">›</span></a>`).join("")}
   </nav>
   <nav class="chnav" aria-label="Other chapters">
-    ${CHAPTERS.some(c=>c[0]===CH-1)?`<a class="btn quiet prev" href="#ch${CH-1}" aria-label="Previous: Chapter ${CH-1}, ${esc(chTitle(CH-1))}"><small>‹ Previous</small>Chapter ${CH-1}</a>`:"<span></span>"}
+    ${CHAPTERS.some(c=>c[0]===CH-1)?`<a class="btn quiet prev" href="#ch${CH-1}" aria-label="Previous: Chapter ${cn(CH-1)}, ${esc(chTitle(CH-1))}"><small>‹ Previous</small>Chapter ${cn(CH-1)}</a>`:"<span></span>"}
     <a class="btn mid" href="${H("review")}">Open your garden</a>
-    ${CHAPTERS.some(c=>c[0]===CH+1)?`<a class="btn quiet next" href="#ch${CH+1}" aria-label="Next: Chapter ${CH+1}, ${esc(chTitle(CH+1))}"><small>Next ›</small>Chapter ${CH+1}</a>`:"<span></span>"}
+    ${CHAPTERS.some(c=>c[0]===CH+1)?`<a class="btn quiet next" href="#ch${CH+1}" aria-label="Next: Chapter ${cn(CH+1)}, ${esc(chTitle(CH+1))}"><small>Next ›</small>Chapter ${cn(CH+1)}</a>`:"<span></span>"}
   </nav>
   ${attrib()}`;
 }
-function attrib(){return `<p class="attrib">Adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="${D.licenseUrl}" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">What changed</a></p>`;}
+function attrib(){return `<p class="attrib">Adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener">${esc(D.book||"University Physics Volume 1")}</a> by OpenStax, licensed <a href="${D.licenseUrl}" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">What changed</a></p>`;}
 
 function renderSection(i){
   const s=S[i], sm=SUMMARY[s.num];
@@ -843,7 +860,7 @@ function renderSection(i){
     <a class="btn quiet" href="${bookUrl(i)}" target="_blank" rel="noopener">Read the full section</a>
   </section>
   <nav class="pager">
-    ${i>0?`<a href="${H(S[i-1].num)}"><span>${S[i-1].num}</span>${esc(S[i-1].title)}</a>`:`<a href="${H("")}"><span>Chapter ${CH}</span>All sections</a>`}
+    ${i>0?`<a href="${H(S[i-1].num)}"><span>${S[i-1].num}</span>${esc(S[i-1].title)}</a>`:`<a href="${H("")}"><span>Chapter ${cn(CH)}</span>All sections</a>`}
     ${i<S.length-1?`<a class="next" href="${H(S[i+1].num)}"><span>${S[i+1].num}</span>${esc(S[i+1].title)}</a>`:`<a class="next" href="${H("review")}"><span>Next</span>Your garden</a>`}
   </nav>
   ${attrib()}`;
@@ -871,7 +888,7 @@ function renderEquations(){
   crumb.textContent="Key equations";
   main.innerHTML=`
   ${chSwitch("equations")}
-  <header class="stack"><div class="eyebrow">Chapter ${CH}</div><h1>Key equations</h1>
+  <header class="stack"><div class="eyebrow">Chapter ${cn(CH)}</div><h1>Key equations</h1>
     <p class="muted small">The equation sheet for this chapter. Each section page in Learn lists every equation from that section.</p></header>
   <input class="search" id="eqq" type="search" placeholder="${esc(chx().eqHint||"Search the equations")}" aria-label="Search equations">
   <div class="stack" id="eqlist">
@@ -1010,7 +1027,12 @@ const CONSTS=[
   {k:"R_E",tex:"R<sub>E</sub>",name:"Average radius of Earth",val:6.37e6,txt:"6.37×10^6",unit:"m"},
   {k:"M_S",tex:"M<sub>Sun</sub>",name:"Mass of the Sun",val:1.99e30,txt:"1.99×10^30",unit:"kg"},
   {k:"ρ",tex:"ρ<sub>water</sub>",name:"Density of water (4 °C)",val:1.000e3,txt:"1.000×10^3",unit:"kg/m³"},
-  {k:"p",tex:"p<sub>atm</sub>",name:"Atmospheric pressure at sea level",val:1.013e5,txt:"1.013×10^5",unit:"Pa"}];
+  {k:"p",tex:"p<sub>atm</sub>",name:"Atmospheric pressure at sea level",val:1.013e5,txt:"1.013×10^5",unit:"Pa"},
+  {k:"k",name:"Coulomb constant",val:8.99e9,txt:"8.99×10^9",unit:"N·m²/C²",note:"Quick review items round this to 9 × 10⁹."},
+  {k:"ε₀",tex:"ε<sub>0</sub>",name:"Permittivity of free space",val:8.854e-12,txt:"8.854×10^−12",unit:"C²/N·m²"},
+  {k:"e",name:"Elementary charge",val:1.602e-19,txt:"1.602×10^−19",unit:"C"},
+  {k:"m_e",tex:"m<sub>e</sub>",name:"Electron mass",val:9.109e-31,txt:"9.109×10^−31",unit:"kg"},
+  {k:"m_p",tex:"m<sub>p</sub>",name:"Proton mass",val:1.673e-27,txt:"1.673×10^−27",unit:"kg"}];
 const PREFIX=[["p",-12,"pico"],["n",-9,"nano"],["μ",-6,"micro"],["m",-3,"milli"],["c",-2,"centi"],["k",3,"kilo"],["M",6,"mega"],["G",9,"giga"]];
 const KEYS=[
   [["deg","DEG","Switch between degrees and radians","fn"],["inv","inv","Inverse functions","fn"],["π","π","Pi"],["e","e","Euler's number e"],["⁻¹","x⁻¹","Reciprocal"]],
@@ -1038,7 +1060,7 @@ function renderCalc(){
       <button type="button" data-panel="keys" aria-pressed="true">Keys</button><button type="button" data-panel="consts" aria-pressed="false">Constants</button><button type="button" data-panel="hist" aria-pressed="false">History</button></div>
     <div id="cpanel"></div>
   </section>
-  <p class="small muted">Values of the constants are from OpenStax <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> (Appendices B and D, Sections 13.2 and 14.1).</p>`;
+  <p class="small muted">Values of the constants are from OpenStax <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> (Appendices B and D, Sections 13.2 and 14.1) and <a href="https://openstax.org/details/books/university-physics-volume-2" target="_blank" rel="noopener">University Physics Volume 2</a> (Appendix B).</p>`;
   const cx=document.getElementById("cx");
   CALC.pos=Math.min(CALC.pos||CALC.expr.length,CALC.expr.length);
   const keepPos=()=>{CALC.pos=cx.selectionStart??cx.value.length;};
@@ -1508,7 +1530,7 @@ function renderGarden(){
   const cols=nAll<=3?nAll:nAll===4?2:3;
   main.innerHTML=`
   ${chSwitch("review")}
-  <header class="stack"><div class="eyebrow">Chapter ${CH} · only you can see this</div><h1>Your garden</h1></header>
+  <header class="stack"><div class="eyebrow">Chapter ${cn(CH)} · only you can see this</div><h1>Your garden</h1></header>
   ${PROG.preview?`<p class="note">Preview mode is on: every plant shows fully grown. <button class="linkbtn" id="pvoff">Turn it off</button></p>`:""}
   <section class="paper garden" aria-label="Plants, one per section" style="grid-template-columns:repeat(${cols},1fr)">
     ${SECS.map((s,i)=>{const f=secFrac(s);return `<button class="pot${GSEL===i?" sel":""}" data-i="${i}" aria-expanded="${GSEL===i}">
@@ -1572,7 +1594,7 @@ function wireBackup(){
     const got=readBackup(raw);
     if(!got){box.innerHTML=`<p class="note err">That code isn't valid. Copy the whole code, starting with FB2: (or FB1: for an older code).</p>`;return;}
     const chs=Object.keys(got).map(Number).sort((a,b)=>a-b);
-    box.innerHTML=`<p class="note">This replaces the ${chs.length===1?`Chapter ${chs[0]} garden`:`gardens for Chapters ${chs.join(", ")}`} on this device. <button class="btn quiet" id="bk-yes">Replace</button></p>`;
+    box.innerHTML=`<p class="note">This replaces the ${chs.length===1?`${chName(chs[0])} garden`:`gardens for ${chs.map(chName).join(", ")}`} on this device. <button class="btn quiet" id="bk-yes">Replace</button></p>`;
     document.getElementById("bk-yes").onclick=()=>{
       for(const n of chs)store("progress-ch"+n,Object.assign({missions:{},preview:false},got[n]));
       PROG=loadProg();GSEL=-1;renderGarden();typeset(main);};
@@ -4161,7 +4183,7 @@ function renderAbout(){
   <header class="stack"><div class="eyebrow">About</div><h1>Freebody Physics</h1>
   <p>A free study companion for calculus based introductory physics: short summaries, every key equation, worked examples, a scientific calculator, and quick review that grows a garden. Nothing is locked.</p></header>
   <section class="card stack"><h2>Source and license</h2>
-  <p>Content is adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener"><i>University Physics Volume 1</i></a> by Samuel J. Ling, Jeff Sanny, and William Moebs, published by OpenStax at Rice University. Access for free at openstax.org.</p>
+  <p>Content is adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener"><i>${esc(D.book||"University Physics Volume 1")}</i></a> by Samuel J. Ling, Jeff Sanny, and William Moebs, published by OpenStax at Rice University. Access for free at openstax.org.</p>
   <p>The book is licensed under <a href="${D.licenseUrl}" target="_blank" rel="noopener">Creative Commons Attribution NonCommercial ShareAlike 4.0</a>, and this adapted content is shared under the same license. It may not be used commercially.</p>
   <p class="small muted">Freebody Physics is not affiliated with or endorsed by OpenStax or Rice University.</p></section>
   <section class="card stack"><h2>What changed from the book</h2>
@@ -4169,19 +4191,19 @@ function renderAbout(){
     <li>Key concepts, key equations, worked examples, and Check Your Understanding items are taken from the book and reformatted for phones. Learning objectives are left out and stay in the book.</li>
     <li>Figure references inside the text are reworded because figure numbers are not shown.</li>
     <li>Photos credited to third parties are left out; diagrams and graphs made by OpenStax are included and resized.</li>
-    <li>The “In short” summaries, the review items, the garden, and its minigames are new. Quick review items use g = 10 m/s².</li>
+    <li>The “In short” summaries, the review items, the garden, and its minigames are new. Quick review items use g = 10 m/s² and, in Physics 2, k = 9 × 10⁹ N·m²/C².</li>
     <li>The full explanatory text of each section is not included. Each section links to it on openstax.org.</li>
   </ul></section>
-  <section class="card stack"><h2>Notes file check, Chapter ${CH}</h2>
-  ${NOTE_ERRS.length?`<p class="small">notes/ch${pad2(CH)}.txt loaded with ${NOTE_ERRS.length} problem${NOTE_ERRS.length===1?"":"s"}. Blocks with a problem are skipped until it's fixed.</p><ul class="bullets small">${NOTE_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:`<p class="small">notes/ch${pad2(CH)}.txt loaded with no problems: ${Object.keys(SUMMARY).length} summaries and ${ITEMS.length} review items.</p>`}
+  <section class="card stack"><h2>Notes file check, ${chName(CH)}</h2>
+  ${NOTE_ERRS.length?`<p class="small">${notesFile(CH)} loaded with ${NOTE_ERRS.length} problem${NOTE_ERRS.length===1?"":"s"}. Blocks with a problem are skipped until it's fixed.</p><ul class="bullets small">${NOTE_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:`<p class="small">${notesFile(CH)} loaded with no problems: ${Object.keys(SUMMARY).length} summaries and ${ITEMS.length} review items.</p>`}
   </section>
   <section class="card stack"><h2>Settings check</h2>
-  <p class="small">${HAVE_SETTINGS?"settings.txt":"No settings.txt was found, so the app"}${CHSET[CH]?` (with its own lines for Chapter ${CH})`:""} is using ${plural(CFG.perReview,"question")} per review, ${plural(CFG.toBloom,"right answer")} to grow a flower, and ${CFG.perDay?`a limit of ${plural(CFG.perDay,"review")} a day`:"no daily limit"}.
+  <p class="small">${HAVE_SETTINGS?"settings.txt":"No settings.txt was found, so the app"}${CHSET[CH]?` (with its own lines for ${chName(CH)})`:""} is using ${plural(CFG.perReview,"question")} per review, ${plural(CFG.toBloom,"right answer")} to grow a flower, and ${CFG.perDay?`a limit of ${plural(CFG.perDay,"review")} a day`:"no daily limit"}.
   ${HAVE_SCHED?(CFG.showDates?`Class dates from schedule.txt are shown (year ${CFG.year}).`:"Class dates are turned off in settings.txt."):"No schedule.txt was found, so no class dates are shown."}</p>
   ${CFG_ERRS.length?`<ul class="bullets small">${CFG_ERRS.map(e=>`<li class="note err">${esc(e)}</li>`).join("")}</ul>`:""}
   </section>
   <section class="card stack"><h2>For teachers: preview the garden</h2>
-  <p class="small">Turn this on to see every plant in Chapter ${CH} fully grown${toy()?" and try the "+toy().eyebrow.toLowerCase():""}. Real progress is kept and comes back when you turn it off.</p>
+  <p class="small">Turn this on to see every plant in ${chName(CH)} fully grown${toy()?" and try the "+toy().eyebrow.toLowerCase():""}. Real progress is kept and comes back when you turn it off.</p>
   <label class="toggle"><input type="checkbox" id="pv" ${PROG.preview?"checked":""}> Show a fully grown garden</label></section>
   <section class="card stack"><h2>For teachers: Check your understanding</h2>
   <p class="small">The book's Check Your Understanding questions are hidden on section pages, since quick review covers the practice. Turn this on to show them again. It changes this device only.</p>
@@ -4218,7 +4240,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/01j";
+const APP_VERSION="11/05a";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -4226,7 +4248,7 @@ let READY=null,READY_V=null;
 function probeReady(){
   if(READY)return READY;
   READY=Promise.all(CHAPTERS.map(([n])=>CACHE[n]?Promise.resolve([n,true]):
-    fetch(`book/ch${pad2(n)}.json`,{method:"HEAD",cache:"no-cache"}).then(r=>[n,r.ok]).catch(()=>[n,null])))
+    fetch(bookFile(n),{method:"HEAD",cache:"no-cache"}).then(r=>[n,r.ok]).catch(()=>[n,null])))
     .then(l=>(READY_V=Object.fromEntries(l)));
   return READY;
 }
@@ -4243,12 +4265,12 @@ function loadSetup(){
 async function fetchChapter(n){
   if(CACHE[n])return "ok";
   const opt={cache:"no-cache"};let b,nt;
-  try{[b,nt]=await Promise.all([fetch(`book/ch${pad2(n)}.json`,opt),fetch(`notes/ch${pad2(n)}.txt`,opt).catch(()=>null)]);}catch(e){return "error";}
+  try{[b,nt]=await Promise.all([fetch(bookFile(n),opt),fetch(notesFile(n),opt).catch(()=>null)]);}catch(e){return "error";}
   if(b.status===404)return "missing";
   if(!b.ok)return "error";
-  let d;try{d=await b.json();}catch(e){CACHE[n]={bad:`book/ch${pad2(n)}.json has a mistake in it (${e.message}). A single backslash in that file breaks it; every backslash there must be doubled.`};return "ok";}
+  let d;try{d=await b.json();}catch(e){CACHE[n]={bad:`${bookFile(n)} has a mistake in it (${e.message}). A single backslash in that file breaks it; every backslash there must be doubled.`};return "ok";}
   const secs=d.sections.map(x=>x.num);
-  let r={sum:{},items:[],eqs:{},exs:{},errs:[`notes/ch${pad2(n)}.txt could not be loaded, so summaries and review items are missing.`]};
+  let r={sum:{},items:[],eqs:{},exs:{},errs:[`${notesFile(n)} could not be loaded, so summaries and review items are missing.`]};
   const txt=nt&&nt.ok?await nt.text().catch(()=>null):null;
   if(CACHE[n])return "ok";
   if(txt!==null){const keepSecs=SECS;SECS=secs;try{r=parseNotes(txt);}finally{SECS=keepSecs;}}
@@ -4265,7 +4287,7 @@ function useChapter(n){
   PKEY="progress-ch"+n;SKEY="session-ch"+n;PROG=loadProg();
   const kept=CHMEM[n];
   if(kept){SESS=kept.SESS;GSEL=kept.GSEL;LP=kept.LP;}else{SESS=loadSess();GSEL=-1;LP={k:0,m:null,pick:null,state:"pick",raf:0};}
-  store("last-chapter",n);
+  store("last-chapter",n);setBook(bookOf(n));
   applyChCfg();
   setTabLinks();
 }
@@ -4274,8 +4296,10 @@ function setTabLinks(){
   document.querySelectorAll(".tabs a").forEach(a=>{if(t[a.dataset.tab])a.setAttribute("href",t[a.dataset.tab]);});
 }
 function chTitle(n){const c=CHAPTERS.find(x=>x[0]===n);return c?c[1]:"";}
+function chName(n){return (n>P2?"Physics 2 Chapter ":"Chapter ")+cn(n);}
+const bookChs=()=>CHAPTERS.filter(c=>bookOf(c[0])===BOOKSEL);
 function chStart(n){
-  if(!CFG.showDates)return "";
+  if(!CFG.showDates||n>P2)return "";
   let best=null;
   for(const k of Object.keys(SCHED)){if(k!=="ch"+n&&!k.startsWith(n+"."))continue;for(const d of SCHED[k])if(!best||d.mo*40+d.dy<best.mo*40+best.dy)best=d;}
   return best?`${WD[new Date(CFG.year,best.mo-1,best.dy).getDay()]} ${best.mo}/${best.dy}`:"";
@@ -4294,33 +4318,34 @@ async function renderMenu(my){
   const ready=await probeReady();
   if(my!==ROUTE_N)return;
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">University Physics, Volume 1</div><h1>Chapters</h1>
+  ${bookSwitch("")}
+  <header class="stack"><div class="eyebrow">University Physics, Volume ${BOOKSEL}</div><h1>${BOOKSEL===2?"Physics 2 chapters":"Chapters"}</h1>
     <p class="muted">Pick a chapter to read the key ideas, practice, and grow its garden. Each chapter has its own garden.</p></header>
   <nav class="seclist chlist" aria-label="Chapters">
-    ${CHAPTERS.map(([n,t])=>{const ok=ready[n]!==false,st=chStart(n),g=ok?chGrowth(n):"";
+    ${bookChs().map(([n,t])=>{const ok=ready[n]!==false,st=chStart(n),g=ok?chGrowth(n):"";
       const meta=[ok?"":"Coming soon",st?`In class from ${st}`:"",g].filter(Boolean).join(" · ");
-      return `<a class="secrow${ok?"":" soon"}" href="#ch${n}"${ok?"":` aria-label="Chapter ${n}, ${esc(t)}, coming soon"`}>
-      <span class="n">${n}</span>
+      return `<a class="secrow${ok?"":" soon"}" href="#ch${n}"${ok?"":` aria-label="Chapter ${cn(n)}, ${esc(t)}, coming soon"`}>
+      <span class="n">${cn(n)}</span>
       <span class="t">${esc(t)}${meta?`<span class="meta" style="display:block">${meta}</span>`:""}</span>
       <span class="chev" aria-hidden="true">›</span></a>`;}).join("")}
   </nav>
-  <p class="attrib">Adapted from <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a> · Version ${APP_VERSION}</p>`;
+  <p class="attrib">Adapted from <a href="${volUrl(BOOKSEL)}" target="_blank" rel="noopener">University Physics Volume ${BOOKSEL}</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a> · Version ${APP_VERSION}</p>`;
 }
 function renderSoon(n){
-  crumb.textContent="Chapter "+n;
+  crumb.textContent="Chapter "+cn(n);setBook(bookOf(n));
   main.innerHTML=`
   <a class="backlink" href="#chapters">‹ All chapters</a>
-  <header class="stack"><div class="eyebrow">Chapter ${n}</div><h1>${esc(chTitle(n))}</h1>
+  <header class="stack"><div class="eyebrow">${n>P2?"Physics 2, ":""}Chapter ${cn(n)}</div><h1>${esc(chTitle(n))}</h1>
     ${chStart(n)?`<p class="classdate">In class from ${chStart(n)}</p>`:""}
     <p class="muted">This chapter is coming soon. Until then, you can read it free on OpenStax.</p></header>
-  <div class="row"><a class="btn" href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">Open the book on OpenStax</a>
+  <div class="row"><a class="btn" href="${volUrl(bookOf(n))}" target="_blank" rel="noopener">Open the book on OpenStax</a>
   <a class="btn quiet" href="#chapters">All chapters</a></div>`;
 }
 /* ---------- chapter switcher (Equations and Garden pages) ---------- */
-function readyList(r){return CHAPTERS.map(c=>c[0]).filter(n=>r&&r[n]!==false);}
+function readyList(r){return bookChs().map(c=>c[0]).filter(n=>r&&r[n]!==false);}
 function chipsHTML(sub,r){
   const l=readyList(r);if(l.length<2)return "";
-  return `<span class="lbl">Chapter</span><div class="chips">${l.map(n=>`<a class="chip" href="#ch${n}/${sub}"${n===CH?` aria-current="page"`:""} aria-label="Chapter ${n}, ${esc(chTitle(n))}">${n}</a>`).join("")}</div>`;
+  return `<span class="lbl">Chapter</span><div class="chips">${l.map(n=>`<a class="chip" href="#ch${n}/${sub}"${n===CH?` aria-current="page"`:""} aria-label="Chapter ${cn(n)}, ${esc(chTitle(n))}">${cn(n)}</a>`).join("")}</div>`;
 }
 function showCur(el){const c=el&&el.querySelector('[aria-current="page"]'),box=el&&el.querySelector(".chips");if(c&&box)box.scrollLeft=c.offsetLeft-box.offsetLeft-box.clientWidth/2+c.offsetWidth/2;}
 function chSwitch(sub){
@@ -4334,18 +4359,18 @@ const BOOK={};
 function fetchBook(n){
   if(CACHE[n]&&CACHE[n].D)return Promise.resolve(CACHE[n].D);
   if(BOOK[n])return BOOK[n];
-  BOOK[n]=fetch(`book/ch${pad2(n)}.json`,{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null);
+  BOOK[n]=fetch(bookFile(n),{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null);
   return BOOK[n];
 }
 function pickOrder(r){const l=readyList(r),last=+store("last-chapter");return l.includes(last)?[last,...l.filter(n=>n!==last)]:l;}
 function pickRow(n,href,meta,cur){
   meta=[cur?"Last opened":"",meta].filter(Boolean).join(" · ");
   return `<a class="secrow${cur?" cur":""}" href="${href}">
-    <span class="n">${n}</span>
+    <span class="n">${cn(n)}</span>
     <span class="t">${esc(chTitle(n))}${meta?`<span class="meta" style="display:block">${meta}</span>`:""}</span>
     <span class="chev" aria-hidden="true">›</span></a>`;
 }
-const PICK_ATTRIB=`<p class="attrib">Adapted from <a href="https://openstax.org/details/books/university-physics-volume-1" target="_blank" rel="noopener">University Physics Volume 1</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a></p>`;
+const PICK_ATTRIB_=()=>`<p class="attrib">Adapted from <a href="${volUrl(BOOKSEL)}" target="_blank" rel="noopener">University Physics Volume ${BOOKSEL}</a> by OpenStax, licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">About this app</a></p>`;
 /* ---------- the whole garden: every chapter's plants in one field (Review picker) ---------- */
 let BIGCOLS=+store("bigcols")===3?3:5,FSEL=0;
 function pickCard(r){
@@ -4353,7 +4378,7 @@ function pickCard(r){
   if(!n)return `<p class="muted" style="margin:0">Tap a plot to pick a chapter.</p>`;
   const ok=r[n]!==false,st=chStart(n);
   const meta=[ok?(chGrowth(n)||"Not started yet"):"Coming soon",st?`In class from ${st}`:""].filter(Boolean).join(" · ");
-  return `<div class="eyebrow">Chapter ${n}</div><h2>${esc(chTitle(n))}</h2>
+  return `<div class="eyebrow">Chapter ${cn(n)}</div><h2>${esc(chTitle(n))}</h2>
     <p class="small muted" style="margin:0">${meta}</p>
     ${ok?`<a class="btn" id="fieldgo" href="#ch${n}/review" style="width:max-content">Open this garden</a>`
        :`<a class="btn quiet" id="fieldgo" href="#ch${n}" style="width:max-content">See the chapter page</a>`}`;
@@ -4410,24 +4435,24 @@ function plotSVG(n,fr,label){
   }
   g+=`<path d="M17 24 V60" stroke="var(--soil-seed)" stroke-width="2.4" stroke-linecap="round"/>
     <rect x="4" y="6" width="26" height="19" rx="3" fill="var(--card)" stroke="var(--soil-seed)" stroke-width="1.6"/>
-    <text x="17" y="20.5" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="var(--font-mono)">${n}</text>`;
+    <text x="17" y="20.5" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="var(--font-mono)">${cn(n)}</text>`;
   return `<svg viewBox="0 0 100 100" role="img" aria-label="${esc(label)}">${g}</svg>`;
 }
 function chFracs(n){
   const meta=(store("chapters")||{})[n],c=CACHE[n];
-  const secs=c&&c.secs?c.secs:meta&&meta.secs?Array.from({length:meta.secs},(_,i)=>`${n}.${i+1}`):null;
+  const secs=c&&c.secs?c.secs:meta&&meta.secs?Array.from({length:meta.secs},(_,i)=>`${cn(n)}.${i+1}`):null;
   if(!secs)return null;
   const p=store("progress-ch"+n)||{},b=bloomFor(n);
   return secs.map(s=>p.preview?1:Math.min(1,((p.grow||{})[s]||0)/b));
 }
 function fieldHTML(r){
   let tot=0,bl=0;
-  const cells=CHAPTERS.map(([n,t])=>{
+  const cells=bookChs().map(([n,t])=>{
     const ok=r[n]!==false,fr=ok?chFracs(n):null;
-    if(!ok)return `<button type="button" class="plot soon" data-n="${n}" aria-pressed="${FSEL===n}" aria-label="Chapter ${n}, ${esc(t)}, coming soon">${plotSVG(n,null,`Chapter ${n} plot, empty`)}<span class="plotlbl">soon</span></button>`;
+    if(!ok)return `<button type="button" class="plot soon" data-n="${n}" aria-pressed="${FSEL===n}" aria-label="Chapter ${cn(n)}, ${esc(t)}, coming soon">${plotSVG(n,null,`Chapter ${cn(n)} plot, empty`)}<span class="plotlbl">soon</span></button>`;
     const k=fr?fr.length:0,b=fr?fr.filter(f=>f>=BLOOM).length:0;tot+=k;bl+=b;
     const txt=fr?(BIGCOLS===3?`${b} of ${k}`:`${b}/${k}`):"";
-    return `<button type="button" class="plot" data-n="${n}" aria-pressed="${FSEL===n}" aria-label="Chapter ${n}, ${esc(t)}${fr?`, ${b} of ${k} plants in bloom`:""}">${plotSVG(n,fr||[],`Chapter ${n} plot`)}<span class="plotlbl">${txt||"&nbsp;"}</span></button>`;});
+    return `<button type="button" class="plot" data-n="${n}" aria-pressed="${FSEL===n}" aria-label="Chapter ${cn(n)}, ${esc(t)}${fr?`, ${b} of ${k} plants in bloom`:""}">${plotSVG(n,fr||[],`Chapter ${cn(n)} plot`)}<span class="plotlbl">${txt||"&nbsp;"}</span></button>`;});
   return {cells:cells.join(""),tot,bl};
 }
 function fieldSection(r){
@@ -4466,12 +4491,14 @@ async function renderReviewPicker(my){
   main.innerHTML=`<p class="muted">Loading chapters…</p>`;
   const r=await probeReady();if(my!==ROUTE_N)return;
   const l=pickOrder(r),last=+store("last-chapter");
+  if(FSEL&&bookOf(FSEL)!==BOOKSEL)FSEL=0;
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">Review</div><h1>Pick a garden</h1>
+  ${bookSwitch("review")}
+  <header class="stack"><div class="eyebrow">Review${BOOKSEL===2?" · Physics 2":""}</div><h1>Pick a garden</h1>
     <p class="muted">Each chapter has its own garden. Quick reviews of a chapter grow its plants. Tap a plot, then open its garden.</p></header>
   ${l.length?fieldSection(r):`<p class="note">No chapters could be found. Check your connection and reload.</p>`}
   <a class="btn quiet" href="#chapters" style="width:max-content">All chapters</a>
-  ${PICK_ATTRIB}`;
+  ${PICK_ATTRIB_()}`;
   wireField(r,my);
 }
 async function renderEqPicker(my){
@@ -4482,10 +4509,11 @@ async function renderEqPicker(my){
   await Promise.all(l.map(fetchChapter));if(my!==ROUTE_N)return;
   const B={};l.forEach(n=>{if(CACHE[n]&&CACHE[n].D)B[n]=sheetOf(n);});
   const all=[];
-  CHAPTERS.forEach(([n])=>{if(!B[n])return;
-    B[n].forEach(e=>{const sc=e.sec||"";all.push({n,e,sec:sc,key:(e.name+" "+sc+" chapter "+n).toLowerCase()});});});
+  bookChs().forEach(([n])=>{if(!B[n])return;
+    B[n].forEach(e=>{const sc=e.sec||"";all.push({n,e,sec:sc,key:(e.name+" "+sc+" chapter "+cn(n)).toLowerCase()});});});
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">Key equations</div><h1>Equations</h1>
+  ${bookSwitch("equations")}
+  <header class="stack"><div class="eyebrow">Key equations${BOOKSEL===2?" · Physics 2":""}</div><h1>Equations</h1>
     <p class="muted">Pick a chapter, or search the key equations of every chapter at once.</p></header>
   <input class="search" id="eqall" type="search" placeholder="Search all chapters" aria-label="Search the key equations of all chapters">
   <div class="stack" id="eqhits" hidden></div>
@@ -4493,7 +4521,7 @@ async function renderEqPicker(my){
     ${l.includes(last)?pickRow(last,`#ch${last}/equations`,B[last]?plural(B[last].length,"key equation"):"",true):""}
     ${readyList(r).map(n=>pickRow(n,`#ch${n}/equations`,B[n]?plural(B[n].length,"key equation"):"",false)).join("")}
   </nav>
-  ${PICK_ATTRIB}`;
+  ${PICK_ATTRIB_()}`;
   const q=document.getElementById("eqall"),hits=document.getElementById("eqhits"),chs=document.getElementById("eqchs");
   const MAX=30;let tm=0;
   q.addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(()=>{
@@ -4503,9 +4531,9 @@ async function renderEqPicker(my){
     chs.hidden=true;hits.hidden=false;
     hits.innerHTML=`<p class="muted small" aria-live="polite">${f.length?(f.length>MAX?`Showing ${MAX} of ${f.length} matches. Add a word to narrow it down.`:f.length+(f.length===1?" match":" matches")+" in "+plural(new Set(f.map(x=>x.n)).size,"chapter")):"No equation matches that search."}</p>`+
       f.slice(0,MAX).map(x=>`<div class="stack eqhit" style="gap:6px">${flipCard(x.e.back,`<article class="card eqcard">
-        <div class="head"><h3>${esc(x.e.name)}</h3><span class="tag">${x.sec||"Ch "+x.n}</span></div>
+        <div class="head"><h3>${esc(x.e.name)}</h3><span class="tag">${x.sec||"Ch "+cn(x.n)}</span></div>
         <div class="eq">\\[${x.e.tex}\\]</div></article>`,x.e.name,"card")}
-        <a class="open small" href="#ch${x.n}/equations" style="align-self:flex-end">Chapter ${x.n} equations ›</a></div>`).join("");
+        <a class="open small" href="#ch${x.n}/equations" style="align-self:flex-end">Chapter ${cn(x.n)} equations ›</a></div>`).join("");
     typeset(hits);},200);});
 }
 
@@ -4514,7 +4542,8 @@ function loadFail(what){
 }
 
 /* ---------- router ---------- */
-/* Addresses: #chapters is the menu, #equations and #review pick a chapter, #calc is the calculator (#solver goes there), #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
+/* Addresses: #book1 and #book2 switch between Physics 1 and Physics 2 (then show #chapters, or #book2/review shows #review).
+   Physics 2 chapters are #ch105 to #ch116 (Volume 2 Chapter 5 is #ch105). #chapters is the menu, #equations and #review pick a chapter, #calc is the calculator (#solver goes there), #ch4 a chapter, #ch4/4.2 a section, #ch4/equations, #ch4/review, #ch3/launch.
    Older links like #learn and #sec-3-2 still work and are sent to the matching new address. */
 /* ---------- tab memory ----------
    Each tab remembers the last page shown in it (TABM, saved as fb:tabs). Tapping a different tab goes back to that page
@@ -4574,6 +4603,7 @@ async function route(){
   await loadSetup();
   if(my!==ROUTE_N)return;
   const done=()=>{const r=RESTORE;RESTORE=false;LASTHASH=location.hash;if(r)restoreView(LASTHASH);else window.scrollTo(0,0);typeset(main);};
+  if((m=h.match(/^book([12])(?:\/(equations|review))?$/))){setBook(+m[1]);location.replace("#"+(m[2]||"chapters"));return;}
   if(!h||h==="chapters"){setTab("learn");await renderMenu(my);if(my===ROUTE_N)done();return;}
   if(h==="equations"){setTab("equations");await renderEqPicker(my);if(my===ROUTE_N)done();return;}
   if(h==="review"){setTab("review");await renderReviewPicker(my);if(my===ROUTE_N)done();return;}
@@ -4591,8 +4621,9 @@ async function route(){
     else if(st==="ok"&&CACHE[want].bad){setTab("learn");loadFail(CACHE[want].bad);return;}
     else if(st==="ok")useChapter(want);
     if(st==="missing"){setTab("learn");renderSoon(want);done();return;}
-    if(st==="error"){loadFail(`book/ch${pad2(want)}.json`);return;}
+    if(st==="error"){loadFail(bookFile(want));return;}
   }
+  if(CH)setBook(bookOf(CH));
   if(sub==="about"){renderAbout();setTab("");}
   else if(!m){location.replace("#chapters");return;}
   else if((m=sub.match(/^(\d+)\.(\d+)$/))&&S.some(x=>x.num===sub)){renderSection(S.findIndex(x=>x.num===sub));setTab("learn");}
