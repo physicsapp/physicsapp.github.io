@@ -1,6 +1,6 @@
 """Extract one chapter of OpenStax University Physics (CNXML source) into app JSON.
 
-Usage: python3 -I extract.py <book_bundle_dir> <out_json> <first_module> <last_module> <chapter_number> <chapter_title> [--with-problems]
+Usage: python3 -I extract.py <book_bundle_dir> <out_json> <first_module> <last_module> <chapter_number> <chapter_title> [--with-problems] [--volume 2]
        <first_module> may instead be a comma list in section order (m58719,m58308,m58309,m58310); put - for <last_module>.
 
 The JSON holds, per section: learning objectives, key concepts, boxed equations,
@@ -183,7 +183,7 @@ def parse_example(ex, ctx):
         t = tag(ch)
         ttl = ch.find(f"{C}title") if t == "para" else None
         if t == "para" and ttl is not None:
-            label = (ttl.text or "").strip()
+            label = re.sub(r"\s+", " ", "".join(ttl.itertext())).strip()  # keeps italic words like the E in "E-Field"
             if not parts and not title:
                 title = label
                 cur = {"label": "Problem", "html": ""}
@@ -310,9 +310,11 @@ def main():
                 item["n"] = n
                 n += 1
 
+    # --volume 2 extracts from University Physics Volume 2 (the Physics 2 book, files in book2/ and notes2/).
+    vol = sys.argv[sys.argv.index("--volume") + 1] if "--volume" in sys.argv else "1"
     data = {
-        "book": "University Physics Volume 1",
-        "bookUrl": "https://openstax.org/details/books/university-physics-volume-1",
+        "book": f"University Physics Volume {vol}",
+        "bookUrl": f"https://openstax.org/details/books/university-physics-volume-{vol}",
         "license": "CC BY-NC-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
         "chapter": {"num": int(chnum), "title": chtitle},
