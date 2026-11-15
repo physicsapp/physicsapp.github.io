@@ -1,0 +1,693 @@
+# FREEBODY NOTES: PHYSICS 2, CHAPTER 5, ELECTRIC CHARGES AND FIELDS
+#
+# This file holds everything in the app that you wrote, not the book:
+# the "In short" summaries and the quick review items that grow the garden.
+# Edit it, save it, and the app shows your changes the next time it loads.
+# Physics 2 files live in the notes2 and book2 folders; Physics 1 files stay in notes and book.
+#
+# HOW IT WORKS
+#   A line starting with ## begins a new block: ## SUMMARY, ## EQUATIONS, ## EXAMPLE, ## QUIZ, ## DRILL, or ## GRAPH,
+#   followed by the section number, like ## QUIZ 5.1. The section decides which plant grows.
+#   A line starting with a single # is a comment. The app ignores it.
+#   Inside a block, each line starts with a label like "Q:" or "Why:".
+#   A long entry can continue on the next lines; just don't start them with a label.
+#   Math goes between \( and \), for example \(F = k\dfrac{q_1q_2}{r^2}\).
+#   If something is wrong, the app lists the line number on its About page.
+#
+# Review items should take under a minute, with no paper or calculator.
+# Quick items use k = 9 x 10^9 N m^2/C^2 and e = 1.6 x 10^-19 C. Say so in the question.
+#
+# Editing a question's Q: line resets students' progress on that one item.
+# Fixing a typo in a choice or in Why: does not.
+
+# ============================ SUMMARIES ============================
+# One block per section, shown at the top of the section page.
+
+
+## SUMMARY 5.1
+In short: There are two kinds of charge, positive and negative. Like charges repel and unlike charges attract. Protons carry positive charge and electrons carry negative charge of the same size, the elementary charge \(e = 1.602\times10^{-19}\ \text{C}\). Charge comes in whole numbers of \(e\), so an object's charge is \(q = ne\). A negative object has extra electrons; a positive object is missing some. Rubbing two objects moves electrons from one to the other, and charge is conserved: the total charge of a closed system never changes.
+Watch out: Only electrons move when you charge an ordinary object. A positive rod lost electrons; it did not gain protons.
+
+## SUMMARY 5.2
+In short: In a conductor (like a metal) electrons move freely; in an insulator (like glass, rubber or plastic) charge stays where it is put. A charged object brought near a neutral one polarizes it: the near side gets the opposite charge and the far side the same charge. Because the opposite charge is closer, a charged object attracts a neutral one, which is why a rubbed balloon sticks to a wall. To charge by induction, bring a charged rod near a conductor, connect the conductor to ground, break the ground connection, then take the rod away. The conductor ends up with the charge opposite to the rod's. Identical conductors that touch share their total charge equally.
+Watch out: Attraction doesn't prove an object is charged, since a neutral object is attracted too. Only repulsion proves it carries the same sign.
+
+## SUMMARY 5.3
+In short: Coulomb's law gives the force between two point charges: \(F = k\dfrac{|q_1q_2|}{r^2}\), with \(k = \dfrac{1}{4\pi\varepsilon_0} = 8.99\times10^9\ \text{N·m}^2/\text{C}^2\). The force points along the line joining the charges: away from each other for like charges, toward each other for unlike ones. It falls off as \(\dfrac{1}{r^2}\), just like gravity, and the two charges feel equal and opposite forces (Newton's third law). With several charges, add the force from each one as vectors (superposition). Between a proton and an electron the electric force is about \(10^{39}\) times the gravitational force.
+Watch out: Square the distance, and convert μC to C \((10^{-6})\) before using \(k\). Charges in μC give powers of ten that are easy to drop.
+
+## SUMMARY 5.4
+In short: A charge changes the space around it by creating an electric field \(\vec E\). A test charge \(q\) placed there feels a force \(\vec F = q\vec E\), so \(\vec E = \dfrac{\vec F}{q}\), in N/C. The field of a point charge \(Q\) has size \(E = k\dfrac{|Q|}{r^2}\) and points away from a positive charge and toward a negative one. Fields from several charges add as vectors (superposition). A positive charge is pushed along \(\vec E\); a negative charge, like an electron, is pushed opposite to it.
+Watch out: The field doesn't depend on the test charge. Double the test charge and the force doubles, but \(E = \frac{F}{q}\) stays the same.
+
+## SUMMARY 5.5
+In short: When charge is spread out, cut it into tiny pieces \(dq\), add up (integrate) each piece's field \(d\vec E = k\dfrac{dq}{r^2}\hat r\), and use symmetry to cancel components. The charge piece is \(dq = \lambda\,dl\) on a line, with \(\lambda\) in C/m; \(dq = \sigma\,dA\) on a surface, with \(\sigma\) in C/m²; and \(dq = \rho\,dV\) in a volume, with \(\rho\) in C/m³. An infinite line of charge has \(E = \dfrac{2k\lambda}{r} = \dfrac{\lambda}{2\pi\varepsilon_0 r}\), falling off as \(\frac1r\). An infinite plane has \(E = \dfrac{\sigma}{2\varepsilon_0}\), the same at every distance. Two parallel planes with opposite charge have \(E = \dfrac{\sigma}{\varepsilon_0}\) between them and zero outside. On the axis of a ring, \(E = k\dfrac{Qz}{(z^2+R^2)^{3/2}}\), which is zero at the center. Far away, any finite charge looks like a point charge.
+Watch out: Symmetry does the heavy lifting. Before integrating, decide which components cancel so you only integrate the one that survives.
+
+## SUMMARY 5.6
+In short: Electric field lines map a field. They start on positive charges and end on negative charges (or go off to infinity). At every point the field is tangent to the line, and where lines are packed closer together the field is stronger. The number of lines drawn from a charge is proportional to the size of the charge. Field lines never cross, because the field has only one direction at each point.
+Watch out: A field line is not the path a charge follows. It gives the direction of the force (and acceleration) at each point, not of the velocity.
+
+## SUMMARY 5.7
+In short: An electric dipole is a pair of equal and opposite charges \(\pm q\) a distance \(d\) apart. Its dipole moment \(\vec p = q\vec d\) points from the negative charge to the positive one, in C·m. In a uniform field the forces on the two charges cancel, so the net force is zero, but there is a torque \(\vec\tau = \vec p\times\vec E\), of size \(\tau = pE\sin\theta\), that turns the dipole to line up with the field. Polar molecules like water are permanent dipoles; a nonpolar atom or molecule placed in a field gets an induced dipole that lines up with the field.
+Watch out: The torque is largest when \(\vec p\) is perpendicular to \(\vec E\) and zero when they line up, the same pattern as a compass needle.
+
+
+# ============================ EQUATIONS ============================
+# One block per section. Every line is shown on that section's Learn page.
+# A line starting with * also goes on the chapter's equation sheet (the Equations tab).
+# Each line is  Name: \(math\) | what it means  on a single line. The name is plain text, no math. Delete a line to hide it everywhere;
+# remove the * to keep it only on the Learn page. Math uses single backslashes here.
+# The text after | is the back of the notecard: tapping the equation flips it over to show this text.
+# Keep it to two sentences: what each symbol means (with units), then what the relation says or when to use it.
+# Math is fine after the |. Leave out the | and the text after it, and the equation stays a plain card that doesn't flip.
+
+
+
+
+
+## EQUATIONS 5.1
+* Charge comes in whole numbers of e: \(q = ne\) | The charge \(q\) (C) of an object with \(n\) extra (or missing) electrons, where \(e = 1.602\times10^{-19}\ \text{C}\).
+Elementary charge: \(e = 1.602\times10^{-19}\ \text{C}\) | The size of the charge on one proton or one electron. One coulomb is about \(6.24\times10^{18}\) of them.
+
+## EQUATIONS 5.2
+Shared charge: \(q_\text{each} = \dfrac{q_1 + q_2}{2}\) | Two identical conductors that touch end up with equal charges (C). The total \(q_1 + q_2\) is conserved.
+
+## EQUATIONS 5.3
+* Coulomb's law: \(F = k\dfrac{|q_1q_2|}{r^2}\) | Size of the force (N) between point charges \(q_1\) and \(q_2\) (C) a distance \(r\) (m) apart. Like charges repel, unlike charges attract.
+* Coulomb constant: \(k = \dfrac{1}{4\pi\varepsilon_0} = 8.99\times10^9\ \text{N·m}^2/\text{C}^2\) | Sets the strength of the electric force. \(\varepsilon_0 = 8.85\times10^{-12}\ \text{C}^2/\text{N·m}^2\) is the permittivity of free space.
+* Coulomb's law as a vector: \(\vec F_{12} = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q_1q_2}{r_{12}^2}\hat r_{12}\) | Force on charge 2 from charge 1, along the unit vector \(\hat r_{12}\) pointing from 1 to 2. A positive product means repulsion.
+* Superposition: \(\vec F = \displaystyle\sum_i \vec F_i\) | The net force (N) on a charge is the vector sum of the forces from each other charge, each found on its own.
+
+## EQUATIONS 5.4
+* Electric field: \(\vec E = \dfrac{\vec F}{q}\) | The force per unit charge (N/C) on a small test charge \(q\). It belongs to the source charges, not to \(q\).
+* Force from a field: \(\vec F = q\vec E\) | Force (N) on a charge \(q\) (C) in a field \(\vec E\) (N/C). For negative \(q\) the force points opposite to \(\vec E\).
+* Field of a point charge: \(E = k\dfrac{|Q|}{r^2}\) | Size of the field (N/C) a distance \(r\) (m) from a charge \(Q\) (C). It points away from positive \(Q\) and toward negative \(Q\).
+Field of many charges: \(\vec E(P) = \dfrac{1}{4\pi\varepsilon_0}\displaystyle\sum_i \dfrac{q_i}{r_i^2}\hat r_i\) | Superposition: add each charge's field at point \(P\) as vectors.
+
+## EQUATIONS 5.5
+* Charge pieces: \(dq = \lambda\,dl,\quad dq = \sigma\,dA,\quad dq = \rho\,dV\) | A small piece of charge (C) on a line, a surface or a volume, with \(\lambda\) in C/m, \(\sigma\) in C/m² and \(\rho\) in C/m³.
+Field of a continuous charge: \(\vec E = \dfrac{1}{4\pi\varepsilon_0}\displaystyle\int \dfrac{dq}{r^2}\hat r\) | Add up the field of every piece \(dq\). Use symmetry to decide which components cancel first.
+* Infinite line of charge: \(E = \dfrac{2k\lambda}{r} = \dfrac{\lambda}{2\pi\varepsilon_0 r}\) | Field (N/C) a distance \(r\) (m) from a long straight line with charge \(\lambda\) (C/m). It falls off as \(\frac1r\).
+* Infinite plane of charge: \(E = \dfrac{\sigma}{2\varepsilon_0}\) | Field (N/C) of a large flat sheet with charge \(\sigma\) (C/m²). It is the same at every distance from the sheet.
+* Two opposite planes: \(E = \dfrac{\sigma}{\varepsilon_0}\) | Between two parallel sheets with charges \(+\sigma\) and \(-\sigma\) the fields add; outside them they cancel to zero.
+Ring of charge, on its axis: \(E = k\dfrac{Qz}{\left(z^2 + R^2\right)^{3/2}}\) | Field (N/C) a distance \(z\) (m) along the axis of a ring of radius \(R\) (m) and charge \(Q\) (C). Zero at the center; like a point charge for \(z \gg R\).
+
+## EQUATIONS 5.6
+Field lines and charge: \(\dfrac{N_1}{N_2} = \dfrac{|q_1|}{|q_2|}\) | The number of lines \(N\) drawn from (or into) a charge is proportional to the size of the charge.
+
+## EQUATIONS 5.7
+* Dipole moment: \(\vec p = q\vec d\) | Dipole moment (C·m) of charges \(\pm q\) (C) a distance \(d\) (m) apart. It points from \(-q\) to \(+q\).
+* Torque on a dipole: \(\vec\tau = \vec p\times\vec E\) | Torque (N·m) that turns a dipole in a field \(\vec E\) (N/C) to line up with the field.
+* Size of the torque: \(\tau = pE\sin\theta\) | \(\theta\) is the angle between \(\vec p\) and \(\vec E\). Largest at 90°, zero when they line up.
+
+
+
+# ============================ WORKED EXAMPLES ============================
+# Optional. With no EXAMPLE blocks for a section, its Learn page shows the book's worked examples.
+# As soon as a section has one EXAMPLE block, the page shows ONLY that section's EXAMPLE blocks, in the order written here.
+# To keep a book example, give it its own block with just a Book: line (Book: 2 is the book's second example in that section).
+# Labels: Title: (required), then any of Problem:, Strategy:, Solution:, Significance:, Answer:, Note:
+# A part can run over several lines. A blank line starts a new paragraph inside the same part.
+# Math goes between \( and \), or \[ and \] for a line of its own; use \begin{aligned} for long lines so it fits a phone.
+# Remove the # at the start of each line below to try it.
+#
+# ## EXAMPLE 5.1
+# Book: 1
+#
+# ## EXAMPLE 5.1
+# Title: A practice problem of your own
+# Problem: A cart starts from rest and speeds up at \(2.0\ \text{m/s}^2\) for \(3.0\ \text{s}\). How fast is it going?
+# Strategy: Use \(v = v_0 + at\) with \(v_0 = 0\).
+# Solution: \(v = 0 + (2.0)(3.0) = 6.0\ \text{m/s}\)
+# Significance: The speed grows by \(2.0\ \text{m/s}\) every second.
+
+
+
+
+# ============================ ITEM FORMATS ============================
+#
+# QUIZ: a concept question.
+#   Q: the question
+#   A) B) C) ... the choices (2 to 6)
+#   Answer: the letter of the correct choice
+#   Why: shown after the student answers
+#
+# DRILL: a number question with fresh numbers every time, answered by tapping a choice.
+#   Let:    random values separated by semicolons.
+#           "a = 2 to 6 by 1" picks one of 2, 3, 4, 5, 6.
+#           "v0 = one of 10, 20, 30" picks from a list.
+#           "v = v0 + 4" computes a value from earlier ones.
+#   Answer: a formula, using * for times, / for divide, ^ for powers, sqrt( ) for roots.
+#   Wrong:  a formula for a tempting wrong answer | what the student probably did.
+#           Add one Wrong line per wrong choice. Choices that come out equal are dropped.
+#   Unit:   shown after each number.
+#   Q and Work: put {{name}} where a number goes; {{answer}} is the correct answer.
+#           Work is shown as one display equation after the student answers.
+#
+# GRAPH: a question about a graph drawn from a formula.
+#   Plot: v = 4 - t; t from 0 to 4; y from 0 to 5
+#         The letter before = labels the vertical axis (x, v, a, y, or F, P, K, W, U, E with units N, W, J).
+#         Add "; unit m/s" to change the unit on that axis.
+#         For a position axis instead of time, write the formula with x and use "x from 0 to 4":
+#         Plot: F = 4*x; x from 0 to 4; y from 0 to 20
+#         For rotation, the letter can be ω, θ, α, or τ (units rad/s, rad, rad/s², N·m), for example
+#         Plot: ω = 12 - 3*t; t from 0 to 4; y from 0 to 14
+#         For an angle axis, write the formula with x and use "θ from 0 to 4" (Tap: θ = 2 works too):
+#         Plot: τ = 2*x; θ from 0 to 4; y from 0 to 10
+#   Then either
+#     Tap: t = 2          the student taps the graph (use x = 2 on a position axis); list several
+#                         with commas and add "within 0.3" to change how close a tap must be
+#   or choices A) B) C) with Answer:, like a QUIZ.
+#   Why: shown after the student answers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ============================ 5.1 ELECTRIC CHARGE ============================
+
+## QUIZ 5.1
+Q: A glass rod rubbed with silk ends up positive. What happened?
+A) Electrons moved from the rod to the silk
+B) Protons moved from the silk to the rod
+C) Electrons moved from the silk to the rod
+D) The rubbing created new positive charge
+Answer: A
+Why: In ordinary objects only electrons move. The rod lost electrons, so it is left with more protons than electrons. No charge is created; the silk carries the matching negative charge.
+
+## QUIZ 5.1
+Q: Two small charged balls repel each other. Which must be true?
+A) They have the same sign of charge
+B) They have opposite signs of charge
+C) One of them is neutral
+D) They have exactly the same amount of charge
+Answer: A
+Why: Like charges repel and unlike charges attract. The amounts can be different; only the signs must match.
+
+## QUIZ 5.1
+Q: Which of these could NOT be the charge on an object? \((e = 1.6\times10^{-19}\ \text{C})\)
+A) \(2.4\times10^{-19}\ \text{C}\)
+B) \(3.2\times10^{-19}\ \text{C}\)
+C) \(-4.8\times10^{-19}\ \text{C}\)
+D) \(1.6\times10^{-18}\ \text{C}\)
+Answer: A
+Why: Charge comes in whole numbers of \(e\). \(2.4\times10^{-19}\ \text{C}\) is \(1.5e\), which isn't possible. The others are \(2e\), \(-3e\) and \(10e\).
+
+## QUIZ 5.1
+Q: A closed box holds a rod with \(+5\ \mu\text{C}\) and a cloth with \(-2\ \mu\text{C}\). After they are rubbed together, the rod has \(+1\ \mu\text{C}\). What is the cloth's charge?
+A) \(+2\ \mu\text{C}\)
+B) \(-2\ \mu\text{C}\)
+C) \(-6\ \mu\text{C}\)
+D) \(+4\ \mu\text{C}\)
+Answer: A
+Why: Charge is conserved. The total starts at \(+5 - 2 = +3\ \mu\text{C}\) and stays \(+3\ \mu\text{C}\), so the cloth has \(3 - 1 = +2\ \mu\text{C}\).
+
+## QUIZ 5.1
+Q: An object is negatively charged. What does that mean?
+A) It has more electrons than protons
+B) It has more protons than electrons
+C) It has no protons
+D) It has no electrons
+Answer: A
+Why: Negative charge on an object means an excess of electrons. It still has plenty of protons, just fewer than its electrons.
+
+## DRILL 5.1
+Q: A plastic comb picks up \({{N}}\times10^{12}\) extra electrons. What is its charge? Use \(e = 1.6\times10^{-19}\ \text{C}\).
+Let: N = one of 5, 10, 25, 50
+Answer: -N*0.16
+Wrong: N*0.16 | Extra electrons make the charge negative.
+Wrong: -N*1.6 | Count the powers of ten: \(10^{12}\times10^{-19} = 10^{-7}\ \text{C} = 0.1\ \mu\text{C}\).
+Wrong: -N*0.016 | Count the powers of ten: \(10^{12}\times10^{-19} = 10^{-7}\ \text{C} = 0.1\ \mu\text{C}\).
+Unit: μC
+Work: q = -Ne = -({{N}})(1.6)\times10^{-7}\ \text{C} = {{answer}}\ \mu\text{C}
+
+## DRILL 5.1
+Q: A metal sphere has a charge of \(+{{Q}}\ \text{nC}\). How many electrons is it missing? Use \(e = 1.6\times10^{-19}\ \text{C}\).
+Let: Q = one of 1.6, 3.2, 4.8, 8, 16
+Answer: Q/1.6
+Wrong: Q*1.6 | Divide the charge by \(e\); don't multiply.
+Wrong: Q/16 | Count the powers of ten: \(\frac{10^{-9}}{10^{-19}} = 10^{10}\).
+Wrong: Q/0.16 | Count the powers of ten: \(\frac{10^{-9}}{10^{-19}} = 10^{10}\).
+Unit: × 10¹⁰ electrons
+Work: n = \frac{q}{e} = \frac{{{Q}}\times10^{-9}}{1.6\times10^{-19}} = {{answer}}\times10^{10}
+
+
+# ============================ 5.2 CONDUCTORS, INSULATORS, AND CHARGING BY INDUCTION ============================
+
+## QUIZ 5.2
+Q: A rubbed balloon sticks to a neutral wall. Why?
+A) The wall polarizes, and its opposite charge is closer to the balloon than its like charge
+B) The wall becomes charged with the opposite sign
+C) The balloon becomes neutral
+D) The wall is a conductor
+Answer: A
+Why: The balloon pulls opposite charge in the wall a little closer and pushes like charge a little farther. The wall is still neutral, but the closer charge wins because the force grows as the distance shrinks.
+
+## QUIZ 5.2
+Q: A negatively charged rod is brought near a metal sphere. The sphere is touched to ground, the ground connection is removed, and then the rod is taken away. What charge is left on the sphere?
+A) Positive
+B) Negative
+C) None
+D) It depends on the size of the sphere
+Answer: A
+Why: The rod pushes electrons from the sphere into the ground. Cut the ground first and they can't come back, so the sphere is left positive: induction gives the charge opposite to the rod's.
+
+## QUIZ 5.2
+Q: Which of these is a conductor?
+A) Copper wire
+B) Glass
+C) Rubber
+D) Dry plastic
+Answer: A
+Why: In metals like copper some electrons move freely through the material. Glass, rubber and plastic are insulators that hold charge in place.
+
+## QUIZ 5.2
+Q: A positively charged rod attracts a small piece of paper. What can you conclude about the paper?
+A) It is negative or neutral
+B) It must be negative
+C) It must be positive
+D) It must be neutral
+Answer: A
+Why: A neutral object polarizes and is attracted too, so attraction can't tell negative from neutral. Only repulsion proves a charge.
+
+## QUIZ 5.2
+Q: A positive rod is held near, but not touching, a neutral metal sphere on an insulating stand. Which describes the sphere?
+A) Near side negative, far side positive, net charge zero
+B) Near side positive, far side negative, net charge zero
+C) The whole sphere is negative
+D) Nothing changes on the sphere
+Answer: A
+Why: Free electrons in the metal are pulled toward the rod, leaving the far side positive. Nothing touched it, so the net charge is still zero.
+
+## DRILL 5.2
+Q: Two identical metal spheres have \({{a}}\ \mu\text{C}\) and \({{b}}\ \mu\text{C}\). They touch and then are pulled apart. What is the charge on each?
+Let: a = one of 10, 14; b = one of -2, -4, -6
+Answer: (a + b)/2
+Wrong: (a - b)/2 | Keep the signs: the negative charge cancels part of the positive one.
+Wrong: a + b | That's the total. Identical spheres split it in half.
+Wrong: a/2 | The negative charge doesn't disappear. Add it to the total before splitting.
+Unit: μC
+Work: q = \frac{q_1 + q_2}{2} = \frac{({{a}}) + ({{b}})}{2} = {{answer}}\ \mu\text{C}
+
+## DRILL 5.2
+Q: Metal sphere A has \({{q}}\ \mu\text{C}\). It touches identical neutral sphere B, and after they separate, A touches identical neutral sphere C. What charge is left on A?
+Let: q = one of 8, 12, 16, 24, 40
+Answer: q/4
+Wrong: q/2 | A shares its charge twice, halving it each time.
+Wrong: q/3 | It touches the spheres one at a time, not all three at once.
+Wrong: q/8 | A halves its charge on each of the two touches: \(q \to \frac q2 \to \frac q4\).
+Unit: μC
+Work: q_A = \tfrac12\left(\tfrac12({{q}})\right) = {{answer}}\ \mu\text{C}
+
+
+# ============================ 5.3 COULOMB'S LAW ============================
+
+## QUIZ 5.3
+Q: Two point charges are moved twice as far apart. What happens to the force between them?
+A) It becomes one quarter as big
+B) It becomes half as big
+C) It doubles
+D) It goes up 4 times
+Answer: A
+Why: \(F = k\frac{|q_1q_2|}{r^2}\). Doubling \(r\) divides the force by \(2^2 = 4\).
+
+## QUIZ 5.3
+Q: Charge \(q_1 = 4\ \mu\text{C}\) and charge \(q_2 = 1\ \mu\text{C}\) are near each other. How does the force on \(q_1\) compare with the force on \(q_2\)?
+A) Same size, opposite directions
+B) The force on \(q_1\) is 4 times bigger
+C) The force on \(q_2\) is 4 times bigger
+D) Same size, same direction
+Answer: A
+Why: Newton's third law: the two charges push (or pull) on each other with equal and opposite forces, whatever their sizes.
+
+## QUIZ 5.3
+Q: Both charges are tripled and the distance between them is doubled. What happens to the force?
+A) It goes up by \(\frac94\)
+B) It goes up by \(\frac32\)
+C) It goes up by 9
+D) It stays the same
+Answer: A
+Why: The product \(q_1q_2\) goes up \(3\times3 = 9\) times and \(r^2\) goes up 4 times, so \(F\) changes by \(\frac94\).
+
+## QUIZ 5.3
+Q: A charge \(+q\) sits exactly halfway between two charges of \(+Q\). What is the net force on it?
+A) Zero
+B) \(2k\frac{qQ}{r^2}\) toward one of them
+C) \(k\frac{qQ}{r^2}\) toward one of them
+D) It depends on the sign of \(q\)
+Answer: A
+Why: The two forces are equal in size and point in opposite directions, so they add to zero. That is superposition: add the forces as vectors.
+
+## QUIZ 5.3
+Q: How does the electric force between the proton and electron in a hydrogen atom compare with the gravitational force between them?
+A) The electric force is about \(10^{39}\) times bigger
+B) They are about the same
+C) The gravitational force is bigger
+D) The electric force is about 10 times bigger
+Answer: A
+Why: Both fall off as \(\frac1{r^2}\), but \(k\) and the charges are enormous compared with \(G\) and the tiny masses. Gravity only wins for huge, neutral objects like planets.
+
+## DRILL 5.3
+Q: Two point charges of \({{a}}\ \mu\text{C}\) and \({{b}}\ \mu\text{C}\) are \({{r}}\ \text{m}\) apart. What is the size of the force between them? Use \(k = 9\times10^9\ \text{N·m}^2/\text{C}^2\).
+Let: a = one of 1, 2, 3; b = one of 2, 4, 5; r = one of 0.1, 0.2, 0.3
+Answer: 0.009*a*b/r^2
+Wrong: 0.009*a*b/r | Square the distance: \(F = k\frac{q_1q_2}{r^2}\).
+Wrong: 0.09*a*b/r^2 | Count the powers of ten: \(10^{9}\times10^{-6}\times10^{-6} = 10^{-3}\).
+Wrong: 0.009*(a + b)/r^2 | Multiply the charges; don't add them.
+Unit: N
+Work: F = k\frac{q_1q_2}{r^2} = \frac{(9\times10^9)({{a}})({{b}})\times10^{-12}}{({{r}})^2} = {{answer}}\ \text{N}
+
+## DRILL 5.3
+Q: Two charges push each other apart with \({{F}}\ \text{N}\). One charge is made \({{a}}\) times bigger and the distance between them \({{c}}\) times bigger. What is the new force?
+Let: F = one of 36, 72; a = one of 2, 3; c = one of 2, 3
+Answer: F*a/c^2
+Wrong: F*a/c | Square the distance factor: \(F\) goes as \(\frac{1}{r^2}\).
+Wrong: F*a*c^2 | A bigger distance makes the force smaller, so divide by \(c^2\).
+Wrong: F*a^2/c^2 | Only one charge changed, so the product \(q_1q_2\) grows by \(a\), not \(a^2\).
+Unit: N
+Work: F' = F\cdot\frac{a}{c^2} = ({{F}})\frac{{{a}}}{({{c}})^2} = {{answer}}\ \text{N}
+
+## DRILL 5.3
+Q: A charge feels \({{p}}\ \text{N}\) east from one nearby charge and \({{q}}\ \text{N}\) north from another. How big is the net force on it?
+Let: k = one of 1, 2, 3; p = 3*k; q = 4*k
+Answer: sqrt(p^2 + q^2)
+Wrong: p + q | The forces are at right angles, so add them as vectors.
+Wrong: q - p | Subtract only for opposite directions. At right angles use the Pythagorean theorem.
+Wrong: (p + q)/2 | Add the forces as vectors; don't average them.
+Unit: N
+Work: F = \sqrt{F_x^2 + F_y^2} = \sqrt{({{p}})^2 + ({{q}})^2} = {{answer}}\ \text{N}
+
+## GRAPH 5.3
+Q: The graph shows the force between two point charges against the distance x between them. Tap where the force is one quarter of its value at x = 1 m.
+Plot: F = 36/x^2; x from 1 to 4; y from 0 to 40
+Tap: x = 2
+Why: \(F\) goes as \(\frac1{r^2}\), so it drops to one quarter when the distance doubles, at \(x = 2\ \text{m}\) where \(F = 9\ \text{N}\).
+
+
+# ============================ 5.4 ELECTRIC FIELD ============================
+
+## QUIZ 5.4
+Q: The electric field at a point points east. An electron is placed there. Which way is the force on it?
+A) West
+B) East
+C) North
+D) There is no force on an electron
+Answer: A
+Why: \(\vec F = q\vec E\). The electron's charge is negative, so its force points opposite to the field.
+
+## QUIZ 5.4
+Q: The test charge at a point is doubled. What happens to the electric field there?
+A) It stays the same
+B) It doubles
+C) It is cut in half
+D) It goes up 4 times
+Answer: A
+Why: The field is made by the source charges. The force on the test charge doubles, so \(E = \frac{F}{q}\) is unchanged.
+
+## QUIZ 5.4
+Q: The field 2 m from a point charge is \(E_0\). What is it 4 m from the charge?
+A) \(\frac{E_0}{4}\)
+B) \(\frac{E_0}{2}\)
+C) \(2E_0\)
+D) \(E_0\)
+Answer: A
+Why: \(E = k\frac{|Q|}{r^2}\). Doubling the distance divides the field by 4.
+
+## QUIZ 5.4
+Q: Which way does the electric field point near a negative point charge?
+A) Toward the charge
+B) Away from the charge
+C) In a circle around the charge
+D) There is no field near a negative charge
+Answer: A
+Why: The field shows the force on a positive test charge, which is pulled toward a negative charge. So the field points in toward it.
+
+## QUIZ 5.4
+Q: A charge \(+Q\) and a charge \(-Q\) are some distance apart. What is the field at the midpoint between them?
+A) Not zero; it points toward \(-Q\)
+B) Not zero; it points toward \(+Q\)
+C) Zero, because the charges cancel
+D) Zero, because the point is between them
+Answer: A
+Why: \(+Q\)'s field points away from it, toward \(-Q\), and \(-Q\)'s field points toward \(-Q\) too. The two add, giving twice either one. They cancel only for two like charges.
+
+## DRILL 5.4
+Q: What is the size of the electric field \({{r}}\ \text{m}\) from a \({{q}}\ \mu\text{C}\) point charge? Use \(k = 9\times10^9\ \text{N·m}^2/\text{C}^2\).
+Let: q = one of 1, 2, 4; r = one of 0.3, 0.5, 1
+Answer: 9*q/r^2
+Wrong: 9*q/r | Square the distance: \(E = k\frac{|Q|}{r^2}\).
+Wrong: 90*q/r^2 | Count the powers of ten: \(10^9\times10^{-6} = 10^3\ \text{N/C}\), which is 1 kN/C.
+Wrong: 9*q^2/r^2 | The field uses the source charge once; there is no second charge to multiply by.
+Unit: kN/C
+Work: E = k\frac{|Q|}{r^2} = \frac{(9\times10^9)({{q}}\times10^{-6})}{({{r}})^2} = {{answer}}\ \text{kN/C}
+
+## DRILL 5.4
+Q: A \({{q}}\ \mu\text{C}\) charge sits where the electric field is \({{E}}\ \text{kN/C}\). How big is the force on it?
+Let: q = one of 2, 3, 5; E = one of 200, 400, 600
+Answer: q*E/1000
+Wrong: q*E | Convert first: μC times kN/C is \(10^{-6}\times10^{3} = 10^{-3}\ \text{N}\).
+Wrong: E/q | The force is \(F = qE\); multiply.
+Wrong: q*E/1000000 | Kilo is \(10^3\) and micro is \(10^{-6}\), so together they give \(10^{-3}\).
+Unit: N
+Work: F = qE = ({{q}})({{E}})\times10^{-3} = {{answer}}\ \text{N}
+
+## GRAPH 5.4
+Q: The graph shows the field of a point charge against the distance x from it. Tap where the field is 9 kN/C.
+Plot: E = 36/x^2; x from 1 to 4; y from 0 to 40; unit kN/C
+Tap: x = 2
+Why: The field falls as \(\frac1{r^2}\): from 36 kN/C at 1 m it drops to \(\frac{36}{4} = 9\ \text{kN/C}\) at 2 m.
+
+
+# ============================ 5.5 CALCULATING ELECTRIC FIELDS OF CHARGE DISTRIBUTIONS ============================
+
+## QUIZ 5.5
+Q: You move twice as far from a very large, flat, uniformly charged sheet. What happens to the field?
+A) It stays the same
+B) It is cut in half
+C) It becomes one quarter as big
+D) It doubles
+Answer: A
+Why: For an infinite plane \(E = \frac{\sigma}{2\varepsilon_0}\), with no distance in it. Close to a big sheet, the field doesn't fade.
+
+## QUIZ 5.5
+Q: You move twice as far from a very long, straight, charged wire. What happens to the field?
+A) It is cut in half
+B) It becomes one quarter as big
+C) It stays the same
+D) It doubles
+Answer: A
+Why: For an infinite line \(E = \frac{2k\lambda}{r}\), so the field falls as \(\frac1r\), more slowly than a point charge's \(\frac{1}{r^2}\).
+
+## QUIZ 5.5
+Q: What is the electric field at the center of a uniformly charged ring?
+A) Zero
+B) \(k\frac{Q}{R^2}\)
+C) \(k\frac{Q}{R}\)
+D) It points along the axis
+Answer: A
+Why: Every piece of the ring has a matching piece on the opposite side whose field cancels it. The axis formula gives the same: \(z = 0\) makes \(E = 0\).
+
+## QUIZ 5.5
+Q: Two large parallel sheets carry charges \(+\sigma\) and \(-\sigma\). Where is the field zero?
+A) Outside the sheets
+B) Between the sheets
+C) Nowhere
+D) Everywhere
+Answer: A
+Why: Each sheet makes a field \(\frac{\sigma}{2\varepsilon_0}\). Between the sheets the two point the same way and add to \(\frac{\sigma}{\varepsilon_0}\); outside they point opposite ways and cancel.
+
+## QUIZ 5.5
+Q: Which charge density describes charge spread over a thin metal plate, and what are its units?
+A) \(\sigma\), in C/m²
+B) \(\lambda\), in C/m
+C) \(\rho\), in C/m³
+D) \(\sigma\), in C/m
+Answer: A
+Why: A surface uses \(\sigma\) with \(dq = \sigma\,dA\). A line uses \(\lambda\) (C/m) and a volume uses \(\rho\) (C/m³).
+
+## QUIZ 5.5
+Q: You stand very far from a small charged ring, compared with its radius. What does its field look like?
+A) The field of a point charge, \(k\frac{Q}{z^2}\)
+B) The field of an infinite plane
+C) The field of an infinite line
+D) Zero
+Answer: A
+Why: For \(z \gg R\), \(z^2 + R^2 \approx z^2\), so \(E = k\frac{Qz}{(z^2 + R^2)^{3/2}}\) becomes \(k\frac{Q}{z^2}\). From far away any finite charge looks like a point.
+
+## DRILL 5.5
+Q: A long straight wire carries \({{l}}\ \mu\text{C/m}\). What is the field \({{r}}\ \text{m}\) from it? Use \(k = 9\times10^9\ \text{N·m}^2/\text{C}^2\).
+Let: l = one of 1, 2, 3; r = one of 0.1, 0.2, 0.5
+Answer: 18*l/r
+Wrong: 18*l/r^2 | A line's field falls as \(\frac1r\), not \(\frac{1}{r^2}\).
+Wrong: 9*l/r | The infinite line has \(E = \frac{2k\lambda}{r}\). The 2 is missing.
+Wrong: 18*l*r | Moving away makes the field weaker, so divide by \(r\).
+Unit: kN/C
+Work: E = \frac{2k\lambda}{r} = \frac{2(9\times10^9)({{l}}\times10^{-6})}{{{r}}} = {{answer}}\ \text{kN/C}
+
+## DRILL 5.5
+Q: A large flat sheet carries \({{s}}\ \text{nC/m}^2\). What is the field \({{d}}\ \text{m}\) from it? Use \(\varepsilon_0 = 8.85\times10^{-12}\ \text{C}^2/\text{N·m}^2\).
+Let: s = one of 17.7, 35.4, 88.5; d = one of 0.2, 0.5
+Answer: s*1000/17.7
+Wrong: s*1000/8.85 | That's \(\frac{\sigma}{\varepsilon_0}\), the field between two opposite sheets. One sheet gives \(\frac{\sigma}{2\varepsilon_0}\).
+Wrong: s*1000/17.7/d^2 | A large sheet's field doesn't depend on the distance.
+Wrong: s/17.7 | Count the powers of ten: \(\frac{10^{-9}}{10^{-12}} = 10^3\).
+Unit: N/C
+Work: E = \frac{\sigma}{2\varepsilon_0} = \frac{{{s}}\times10^{-9}}{2(8.85\times10^{-12})} = {{answer}}\ \text{N/C}
+
+## GRAPH 5.5
+Q: The graph shows the field of a long charged wire against the distance x from the wire. Tap where the field is half its value at x = 1 m.
+Plot: E = 36/x; x from 1 to 4; y from 0 to 40; unit kN/C
+Tap: x = 2
+Why: A line's field falls as \(\frac1r\), so it halves when the distance doubles, at \(x = 2\ \text{m}\). A point charge's field would already be down to a quarter there.
+
+
+# ============================ 5.6 ELECTRIC FIELD LINES ============================
+
+## QUIZ 5.6
+Q: Why can't two electric field lines cross?
+A) The field has only one direction at each point
+B) Field lines repel each other
+C) They would cancel each other
+D) They can cross near negative charges
+Answer: A
+Why: The field at a point is tangent to the field line through it. Two lines crossing would give two directions at one point.
+
+## QUIZ 5.6
+Q: In a field line drawing, where is the field strongest?
+A) Where the lines are closest together
+B) Where the lines are farthest apart
+C) Where the lines are straight
+D) The drawing doesn't show strength
+Answer: A
+Why: The density of the lines shows the strength of the field. Lines bunch up near a charge, where the field is strongest.
+
+## QUIZ 5.6
+Q: Eight field lines leave charge A and sixteen field lines end on charge B. Which is true?
+A) B is negative with twice the size of A's charge
+B) B is positive with twice the size of A's charge
+C) B is negative with half the size of A's charge
+D) A and B have equal charges
+Answer: A
+Why: Lines start on positive charges and end on negative ones, so A is positive and B is negative. The number of lines is proportional to the charge, and B has twice as many.
+
+## QUIZ 5.6
+Q: Where do electric field lines start and end?
+A) Start on positive charges, end on negative charges
+B) Start on negative charges, end on positive charges
+C) They form closed loops
+D) They start and end anywhere
+Answer: A
+Why: The field points away from positive charges and toward negative ones, so lines leave positive charges and arrive at negative charges (or go off to infinity).
+
+## QUIZ 5.6
+Q: A positive charge is released from rest on a curved field line. What does the field line tell you?
+A) The direction of its acceleration at that point
+B) The exact path it will follow
+C) Its speed at every point
+D) Nothing about its motion
+Answer: A
+Why: The force \(q\vec E\), and so the acceleration, is tangent to the field line. Once the charge is moving, it can leave the curved line, so the line is not its path.
+
+## DRILL 5.6
+Q: A \({{q}}\ \mu\text{C}\) charge is drawn with \({{N}}\) field lines. Drawn the same way, how many lines leave a \({{Q}}\ \mu\text{C}\) charge?
+Let: q = one of 2, 4; N = one of 8, 12; Q = one of 6, 8, 10
+Answer: N*Q/q
+Wrong: N*q/Q | Upside down: a bigger charge gets more lines.
+Wrong: N + Q - q | The number of lines is proportional to the charge, so scale by the ratio \(\frac{Q}{q}\).
+Wrong: N*(Q/q)^2 | The number of lines grows in proportion to the charge, not its square.
+Unit: lines
+Work: N' = N\frac{Q}{q} = ({{N}})\frac{{{Q}}}{{{q}}} = {{answer}}
+
+## DRILL 5.6
+Q: The field at point B is \({{E}}\ \text{kN/C}\). At point A the field lines are packed \({{n}}\) times as densely, so \({{n}}\) times as many lines cross the same small area. What is the field at A?
+Let: E = one of 4, 6, 10; n = one of 2, 3, 4
+Answer: E*n
+Wrong: E/n | Denser lines mean a stronger field, so multiply.
+Wrong: E*n^2 | The field is proportional to the line density, not its square.
+Wrong: E | The line density shows the field's strength, so it changes.
+Unit: kN/C
+Work: E_A = nE_B = ({{n}})({{E}}) = {{answer}}\ \text{kN/C}
+
+
+# ============================ 5.7 ELECTRIC DIPOLES ============================
+
+## QUIZ 5.7
+Q: A dipole sits in a uniform electric field. What is the net force on it?
+A) Zero
+B) Along the field
+C) Opposite the field
+D) Perpendicular to the field
+Answer: A
+Why: The forces \(+q\vec E\) and \(-q\vec E\) are equal and opposite, so they cancel. There can still be a torque, because they act at different points.
+
+## QUIZ 5.7
+Q: At what angle between \(\vec p\) and \(\vec E\) is the torque on a dipole largest?
+A) 90°
+B) 0°
+C) 45°
+D) 180°
+Answer: A
+Why: \(\tau = pE\sin\theta\), and \(\sin\theta\) is largest at 90°. At 0° and 180° the torque is zero.
+
+## QUIZ 5.7
+Q: Which way does the dipole moment \(\vec p\) point?
+A) From the negative charge to the positive charge
+B) From the positive charge to the negative charge
+C) Along the electric field
+D) Perpendicular to the line joining the charges
+Answer: A
+Why: \(\vec p = q\vec d\), where \(\vec d\) runs from \(-q\) to \(+q\).
+
+## QUIZ 5.7
+Q: A free dipole is placed in a uniform field. Which way does the torque turn it?
+A) To line \(\vec p\) up with \(\vec E\)
+B) To make \(\vec p\) opposite to \(\vec E\)
+C) To make \(\vec p\) perpendicular to \(\vec E\)
+D) It doesn't turn
+Answer: A
+Why: The torque \(\vec\tau = \vec p\times\vec E\) turns the dipole toward the field, like a compass needle turning to point north.
+
+## QUIZ 5.7
+Q: A nonpolar atom is placed in an electric field. What happens?
+A) It gets an induced dipole lined up with the field
+B) It gains a net charge
+C) Nothing, since it has no dipole
+D) It gets a dipole pointing opposite to the field
+Answer: A
+Why: The field pulls the positive nucleus one way and the electrons the other, separating them a little. That induced dipole points along the field.
+
+## DRILL 5.7
+Q: Charges of \(\pm{{q}}\ \text{nC}\) are \({{d}}\ \text{mm}\) apart. What is the size of the dipole moment?
+Let: q = one of 2, 4, 5; d = one of 2, 3, 5
+Answer: q*d
+Wrong: 2*q*d | Use the charge \(q\) on one end, not \(2q\).
+Wrong: q*d/2 | \(d\) is the whole separation between the charges, not half of it.
+Wrong: q/d | Multiply: \(p = qd\).
+Unit: × 10⁻¹² C·m
+Work: p = qd = ({{q}})({{d}})\times10^{-12} = {{answer}}\times10^{-12}\ \text{C·m}
+
+## DRILL 5.7
+Q: A dipole with \(p = {{p}}\times10^{-9}\ \text{C·m}\) makes a 30° angle with a uniform field of \({{E}}\ \text{kN/C}\). What is the torque on it? \((\sin30^\circ = 0.5,\ \cos30^\circ \approx 0.87)\)
+Let: p = one of 2, 4, 6; E = one of 2, 5, 10
+Answer: 0.5*p*E
+Wrong: p*E | That's the torque at 90°. Multiply by \(\sin30^\circ\).
+Wrong: 0.87*p*E | The torque uses \(\sin\theta\), not \(\cos\theta\).
+Wrong: 0.5*p*E/1000 | Count the powers of ten: \(10^{-9}\times10^{3} = 10^{-6}\).
+Unit: × 10⁻⁶ N·m
+Work: \tau = pE\sin\theta = ({{p}})({{E}})(0.5)\times10^{-6} = {{answer}}\times10^{-6}\ \text{N·m}

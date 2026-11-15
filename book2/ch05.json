@@ -1,0 +1,419 @@
+{
+ "book": "University Physics Volume 2",
+ "bookUrl": "https://openstax.org/details/books/university-physics-volume-2",
+ "license": "CC BY-NC-SA 4.0",
+ "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "chapter": {
+  "num": 5,
+  "title": "Electric Charges and Fields"
+ },
+ "keyEquations": [
+  {
+   "name": "Coulomb’s law",
+   "tex": "{\\mathbf{\\vec{\\text{F}}}}_{12}(r)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{{q}_{1}{q}_{2}}{{r}_{12}^{2}}{\\mathbf{\\hat{\\text{r}}}}_{12}"
+  },
+  {
+   "name": "Superposition of electric forces",
+   "tex": "\\mathbf{\\vec{\\text{F}}}(r)=\\frac{1}{4\\pi {\\varepsilon}_{0}}Q{\\sum}_{i=1}^{N}\\frac{{q}_{i}}{{r}_{i}^{2}}{\\mathbf{\\hat{\\text{r}}}}_{i}"
+  },
+  {
+   "name": "Electric force due to an electric field",
+   "tex": "\\mathbf{\\vec{\\text{F}}}=Q\\mathbf{\\vec{\\text{E}}}"
+  },
+  {
+   "name": "Electric field at point P",
+   "tex": "\\mathbf{\\vec{\\text{E}}}(P)\\equiv \\frac{1}{4\\pi {\\varepsilon}_{0}}{\\sum}_{i=1}^{N}\\frac{{q}_{i}}{{r}_{i}^{2}}{\\mathbf{\\hat{\\text{r}}}}_{i}"
+  },
+  {
+   "name": "Field of an infinite wire",
+   "tex": "\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2\\lambda}{z}\\mathbf{\\hat{\\text{k}}}"
+  },
+  {
+   "name": "Field of an infinite plane",
+   "tex": "\\mathbf{\\vec{\\text{E}}}=\\frac{\\sigma}{2{\\varepsilon}_{0}}\\mathbf{\\hat{\\text{k}}}"
+  },
+  {
+   "name": "Dipole moment",
+   "tex": "\\mathbf{\\vec{\\text{p}}}\\equiv q\\mathbf{\\vec{\\text{d}}}"
+  },
+  {
+   "name": "Torque on dipole in external E-field",
+   "tex": "\\vec{\\tau }=\\mathbf{\\vec{\\text{p}}}\\, \\times \\, \\mathbf{\\vec{\\text{E}}}"
+  }
+ ],
+ "sections": [
+  {
+   "num": "5.1",
+   "module": "m58412",
+   "title": "Electric Charge",
+   "objectives": [
+    "Describe the concept of electric charge",
+    "Explain qualitatively the force electric charge creates"
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "There are only two types of charge, which we call positive and negative. Like charges repel, unlike charges attract, and the force between charges decreases with the square of the distance.",
+    "The vast majority of positive charge in nature is carried by protons, whereas the vast majority of negative charge is carried by electrons. The electric charge of one electron is equal in magnitude and opposite in sign to the charge of one proton.",
+    "An ion is an atom or molecule that has nonzero total charge due to having unequal numbers of electrons and protons.",
+    "The SI unit for charge is the coulomb (C), with protons and electrons having charges of opposite sign but equal magnitude; the magnitude of this basic charge is \\(e\\equiv 1.602\\, \\times \\, {10}^{-19}\\, \\text{C}\\)",
+    "Both positive and negative charges exist in neutral objects and can be separated by bringing the two objects into physical contact; rubbing the objects together can remove electrons from the bonds in one object and place them on the other object, increasing the charge separation.",
+    "For macroscopic objects, negatively charged means an excess of electrons and positively charged means a depletion of electrons.",
+    "The law of conservation of charge states that the net charge of a closed system is constant."
+   ]
+  },
+  {
+   "num": "5.2",
+   "module": "m58413",
+   "title": "Conductors, Insulators, and Charging by Induction",
+   "objectives": [
+    "Explain what a conductor is",
+    "Explain what an insulator is",
+    "List the differences and similarities between conductors and insulators",
+    "Describe the process of charging by induction"
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "A conductor is a substance that allows charge to flow freely through its atomic structure.",
+    "An insulator holds charge fixed in place.",
+    "Polarization is the separation of positive and negative charges in a neutral object. Polarized objects have their positive and negative charges concentrated in different areas, giving them a charge distribution."
+   ]
+  },
+  {
+   "num": "5.3",
+   "module": "m58415",
+   "title": "Coulomb's Law",
+   "objectives": [
+    "Describe the electric force, both qualitatively and quantitatively",
+    "Calculate the force that charges exert on each other",
+    "Determine the direction of the electric force for different source charges",
+    "Correctly describe and apply the superposition principle for multiple source charges"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{\\text{F}}}(\\text{r})=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, Q{\\sum}_{i=1}^{N}\\frac{{q}_{i}}{{r}_{i}^{2}}{\\mathbf{\\hat{\\text{r}}}}_{i}"
+   ],
+   "examples": [
+    {
+     "title": "The Force on the Electron in Hydrogen",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A hydrogen atom consists of a single proton and a single electron. The proton has a charge of \\(\\text{+}e\\) and the electron has \\(-e\\). In the “ground state” of the atom, the electron orbits the proton at most probable distance of \\(5.29\\, \\times \\, {10}^{-11}\\, \\text{m}\\) (the figure). Calculate the electric force on the electron due to the proton.</p><figure><img src='img/CNX_UPhysics_22_03_HForce.jpg' alt=\"A positive charge is shown at the center of a sphere of radius r. An electron is depicted as a particle on the sphere. The force on the electron is along the radius, toward the nucleus.\" loading='lazy'><figcaption>A schematic depiction of a hydrogen atom, showing the force on the electron. This depiction is only to enable us to calculate the force; the hydrogen atom does not really look like this. Recall another section.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>For the purposes of this example, we are treating the electron and proton as two point particles, each with an electric charge, and we are told the distance between them; we are asked to calculate the force on the electron. We thus use Coulomb’s law.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Our two charges and the distance between them are,</p><div class='eq'>\\[\\begin{array}{lll}{q}_{1} & = & \\text{+}e=\\text{+}1.602\\, \\times \\, {10}^{-19}\\, \\text{C} \\\\ {q}_{2} & = & -e=-1.602\\, \\times \\, {10}^{-19}\\, \\text{C} \\\\ r & = & 5.29\\, \\times \\, {10}^{-11}\\, \\text{m}.\\end{array}\\]</div><p>The magnitude of the force on the electron is</p><div class='eq'>\\[F=\\frac{1}{4\\pi {\\epsilon}_{0}}\\, \\frac{{|e|}^{2}}{{r}^{2}}=\\frac{1}{4\\pi (8.85\\, \\times \\, {10}^{-12}\\, \\frac{{\\text{C}}^{2}}{\\text{N}\\cdot {\\text{m}}^{2}})}\\, \\frac{{(1.602\\, \\times \\, {10}^{-19}\\, \\text{C})}^{2}}{{(5.29\\, \\times \\, {10}^{-11}\\, \\text{m})}^{2}}=8.25\\, \\times \\, {10}^{-8}\\, \\text{N}.\\]</div><p>As for the direction, since the charges on the two particles are opposite, the force is attractive; the force on the electron points radially directly toward the proton, everywhere in the electron’s orbit. The force is thus expressed as</p><div class='eq'>\\[\\mathbf{\\vec{\\text{F}}}=(8.25\\, \\times \\, {10}^{-8}\\, \\text{N})\\mathbf{\\hat{\\text{r}}}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>This is a three-dimensional system, so the electron (and therefore the force on it) can be anywhere in an imaginary spherical shell around the proton. In this “classical” model of the hydrogen atom, the electrostatic force on the electron points in the inward centripetal direction, thus maintaining the electron’s orbit. But note that the quantum mechanical model of hydrogen (discussed in Quantum Mechanics) is utterly different.</p>"
+      }
+     ]
+    },
+    {
+     "title": "The Net Force from Two Source Charges",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Three different, small charged objects are placed as shown in the figure. The charges \\({q}_{1}\\) and \\({q}_{3}\\) are fixed in place; \\({q}_{2}\\) is free to move. Given \\({q}_{1}=2e\\), \\({q}_{2}=-3e\\), and \\({q}_{3}=-5e\\), and that \\(d=2.0\\, \\times \\, {10}^{-7}\\, \\text{m}\\), what is the net force on the middle charge \\({q}_{2}\\)?</p><figure><img src='img/CNX_UPhysics_22_03_3Charges.jpg' alt=\"Three charges are shown in an x y coordinate system. Charge q sub 1 is at x=0, y=d. Charge q sub 2 is at x=2 d, y=0. Charge q sub 3 is at the origin. Force F 1 2 is exerted on charge q sub 2 and points up. Force F 3 2 is exerted on charge q sub 2 and points to the left. Force F is exerted on charge q sub 2 and points at an angle theta above the minus x direction.\" loading='lazy'><figcaption>Source charges \\({q}_{1}\\) and \\({q}_{3}\\) each apply a force on \\({q}_{2}\\).</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use Coulomb’s law again. The way the question is phrased indicates that \\({q}_{2}\\) is our test charge, so that \\({q}_{1}\\) and \\({q}_{3}\\) are source charges. The principle of superposition says that the force on \\({q}_{2}\\) from each of the other charges is unaffected by the presence of the other charge. Therefore, we write down the force on \\({q}_{2}\\) from each and add them together as vectors.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>We have two source charges \\(({q}_{1}\\) and \\({q}_{3}),\\) a test charge \\(({q}_{2}),\\) distances \\(({r}_{12}\\) and \\({r}_{32}),\\) and we are asked to find a force. This calls for Coulomb’s law and superposition of forces. There are two forces:</p><div class='eq'>\\[\\mathbf{\\vec{\\text{F}}}={\\mathbf{\\vec{\\text{F}}}}_{12}+{\\mathbf{\\vec{\\text{F}}}}_{32}=\\frac{1}{4\\pi {\\varepsilon}_{0}}[\\frac{{q}_{2}{q}_{1}}{{r}_{12}^{2}}\\mathbf{\\hat{\\text{j}}}+(-\\frac{{q}_{2}{q}_{3}}{{r}_{32}^{2}}\\mathbf{\\hat{\\text{i}}})].\\]</div><p>We can’t add these forces directly because they don’t point in the same direction: \\({\\mathbf{\\vec{\\text{F}}}}_{32}\\) points only in the −<i>x</i>-direction, while \\({\\mathbf{\\vec{\\text{F}}}}_{12}\\) points only in the +<i>y</i>-direction. The net force is obtained from applying the Pythagorean theorem to its <i>x</i>- and <i>y</i>-components:</p><div class='eq'>\\[F=\\sqrt{{F}_{x}^{2}+{F}_{y}^{2}}\\]</div><p>where</p><div class='eq'>\\[\\begin{array}{ll}{F}_{x} & =-{F}_{32}=-\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{{q}_{2}{q}_{3}}{{r}_{32}^{2}} \\\\ & =-(8.99\\, \\times \\, {10}^{9}\\frac{\\text{N}\\cdot {\\text{m}}^{2}}{{\\text{C}}^{2}})\\frac{(4.806\\, \\times \\, {10}^{-19}\\, \\text{C})(8.01\\, \\times \\, {10}^{-19}\\, \\text{C})}{{(4.00\\, \\times \\, {10}^{-7}\\, \\text{m})}^{2}} \\\\ & =-2.16\\, \\times \\, {10}^{\\text{-14}}\\, \\text{N}\\end{array}\\]</div><p>and</p><div class='eq'>\\[\\begin{array}{ll}{F}_{y} & ={F}_{12}=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{{q}_{2}{q}_{1}}{{r}_{12}^{2}} \\\\ & =(8.99\\, \\times \\, {10}^{9}\\frac{\\text{N}\\cdot {\\text{m}}^{2}}{{\\text{C}}^{2}})\\frac{(4.806\\, \\times \\, {10}^{-19}\\, \\text{C})(3.204\\, \\times \\, {10}^{-19}\\, \\text{C})}{{(2.00\\, \\times \\, {10}^{-7}\\, \\text{m})}^{2}} \\\\ & =3.46\\, \\times \\, {10}^{-14}\\, \\text{N}.\\end{array}\\]</div><p>We find that</p><div class='eq'>\\[F=\\sqrt{{F}_{x}^{2}+{F}_{y}^{2}}=4.08\\, \\times \\, {10}^{-14}\\, \\text{N}\\]</div><p>at an angle of</p><div class='eq'>\\[\\theta ={\\tan}^{-1}(\\frac{{F}_{y}}{{F}_{x}})={\\tan}^{-1}(\\frac{3.46\\, \\times \\, {10}^{-14}\\, \\text{N}}{-2.16\\, \\times \\, {10}^{-14}\\, \\text{N}})=-58^{\\circ} ,\\]</div><p>that is, \\(58^{\\circ}\\) above the −<i>x</i>-axis, as shown in the diagram.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice that when we substituted the numerical values of the charges, we did not include the negative sign of either \\({q}_{2}\\) or \\({q}_{3}\\). Recall that negative signs on vector quantities indicate a reversal of direction of the vector in question. But for electric forces, the direction of the force is determined by the types (signs) of both interacting charges; we determine the force directions by considering whether the signs of the two charges are the same or are opposite. If you also include negative signs from negative charges when you substitute numbers, you run the risk of mathematically reversing the direction of the force you are calculating. Thus, the safest thing to do is to calculate just the magnitude of the force, using the absolute values of the charges, and determine the directions physically.</p><p>It’s also worth noting that the only new concept in this example is how to calculate the electric forces; everything else (getting the net force from its components, breaking the forces into their components, finding the direction of the net force) is the same as force problems you have done earlier.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>What would be different if the electron also had a positive charge?</p>",
+     "a": "<p>The force would point outward.</p>"
+    },
+    {
+     "q": "<p>What would be different if \\({q}_{1}\\) were negative?</p>",
+     "a": "<p>The net force would point \\(58^{\\circ}\\) below the −<i>x</i>-axis.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "Coulomb’s law gives the magnitude of the force vector between point charges. It is <div class='eq'>\\[{\\mathbf{\\vec{\\text{F}}}}_{12}(r)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{{q}_{1}{q}_{2}}{{r}_{12}^{2}}{\\mathbf{\\hat{\\text{r}}}}_{12}\\]</div> where \\({q}_{1}\\) and \\({q}_{2}\\) are two point charges separated by a distance <i>r</i>. This Coulomb force is extremely basic, since most charges are due to point-like particles. It is responsible for all electrostatic effects and underlies most macroscopic forces."
+   ]
+  },
+  {
+   "num": "5.4",
+   "module": "m58722",
+   "title": "Electric Field",
+   "objectives": [
+    "Explain the purpose of the electric field concept",
+    "Describe the properties of the electric field",
+    "Calculate the field of a collection of source charges of either sign"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{\\text{F}}}=Q\\mathbf{\\vec{\\text{E}}}",
+    "\\mathbf{\\vec{\\text{E}}}(P)\\equiv \\frac{1}{4\\pi {\\varepsilon}_{0}}{\\sum}_{i=1}^{N}\\frac{{q}_{i}}{{r}_{i}^{2}}{\\mathbf{\\hat{\\text{r}}}}_{i}"
+   ],
+   "examples": [
+    {
+     "title": "The E-Field of an Atom",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>In an ionized helium atom, the most probable distance between the nucleus and the electron is \\(r=26.5\\, \\times \\, {10}^{-12}\\, \\text{m}\\). What is the electric field due to the nucleus at the location of the electron?</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Note that although the electron is mentioned, it is not used in any calculation. The problem asks for an electric field, not a force; hence, there is only one charge involved, and the problem specifically asks for the field due to the nucleus. Thus, the electron is a red herring; only its distance matters. Also, since the distance between the two protons in the nucleus is much, much smaller than the distance of the electron from the nucleus, we can treat the two protons as a single charge +2<i>e</i> (the figure).</p><figure><img src='img/CNX_UPhysics_22_04_EofHe.jpg' alt=\"A positive charge of plus 2 e is shown at the center of a sphere of radius r. An electron is depicted as a particle on the sphere. The vector r is shown as a vector with its tail at the center and its head at the location of the electron. The electric field at the location of the electron is shown as a vector E with its tail at the electron and pointing directly away from the center.\" loading='lazy'><figcaption>A schematic representation of a helium atom. Again, helium physically looks nothing like this, but this sort of diagram is helpful for calculating the electric field of the nucleus.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The electric field is calculated by</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\sum}_{i=1}^{N}\\frac{{q}_{i}}{{r}_{i}^{2}}{\\mathbf{\\hat{\\text{r}}}}_{i}.\\]</div><p>Since there is only one source charge (the nucleus), this expression simplifies to</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\hat{r}.\\]</div><p>Here \\(q=2e=2(1.6\\, \\times \\, {10}^{-19}\\, \\text{C})\\) (since there are two protons) and <i>r</i> is given; substituting gives</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}=\\frac{1}{4\\pi (8.85\\, \\times \\, {10}^{-12}\\frac{{\\text{C}}^{2}}{\\text{N}\\cdot {\\text{m}}^{2}})}\\, \\frac{2(1.6\\, \\times \\, {10}^{-19}\\, \\text{C})}{{(26.5\\, \\times \\, {10}^{-12}\\, \\text{m})}^{2}}\\mathbf{\\hat{\\text{r}}}=4.1\\, \\times \\, {10}^{12}\\frac{\\text{N}}{\\text{C}}\\mathbf{\\hat{\\text{r}}}.\\]</div><p>The direction of \\(\\mathbf{\\vec{\\text{E}}}\\) is radially away from the nucleus in all directions. Why? Because a positive test charge placed in this field would accelerate radially away from the nucleus (since it is also positively charged), and again, the convention is that the direction of the electric field vector is defined in terms of the direction of the force it would apply to positive test charges.</p>"
+      }
+     ]
+    },
+    {
+     "title": "The E-Field above Two Equal Charges",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>(a) Find the electric field (magnitude and direction) a distance <i>z</i> above the midpoint between two equal charges \\(\\text{+}q\\) that are a distance <i>d</i> apart (the figure). Check that your result is consistent with what you’d expect when \\(z≫d\\).</p><p>(b) The same as part (a), only this time make the right-hand charge \\(-q\\) instead of \\(\\text{+}q\\).</p><figure><img src='img/CNX_UPhysics_22_04_TwoSymqs.jpg' alt=\"Point P is a distance z above the midpoint between two charges separated by a horizontal distance d. The distance from each charge to point P is r, and the angle between r and the vertical is theta.\" loading='lazy'><figcaption>Finding the field of two identical source charges at the point <i>P</i>. Due to the symmetry, the net field at <i>P</i> is entirely vertical. (Notice that this is <i>not</i> true away from the midline between the charges.)</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We add the two fields as vectors, per the equation. Notice that the system (and therefore the field) is symmetrical about the vertical axis; as a result, the horizontal components of the field vectors cancel. This simplifies the math. Also, we take care to express our final answer in terms of only quantities that are given in the original statement of the problem: <i>q</i>, <i>z</i>, <i>d</i>, and constants \\((\\pi ,{\\varepsilon}_{0}).\\)</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<ol type='a'><li>By symmetry, the horizontal (<i>x</i>)-components of \\(\\mathbf{\\vec{\\text{E}}}\\) cancel (the figure); \\({E}_{x}=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\, \\sin \\, \\theta -\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\, \\sin \\, \\theta =0\\).<br> <figure><img src='img/CNX_UPhysics_22_04_TwoComp.jpg' alt=\"Point P is a distance z above the midpoint between two charges separated by a horizontal distance d. The distance from each charge to point P is r, and the angle between r and the vertical is theta. The x and y components of the electric field are shown as arrows whose tails are at point P. Four arrows are shown, as follows: E sub x r points to the left, E sub x l points to the right, E sub z l points up, and E sub z r points up.\" loading='lazy'><figcaption>Note that the horizontal components of the electric fields from the two charges cancel each other out, while the vertical components add together.</figcaption></figure><br> The vertical (<i>z</i>)-component is given by <div class='eq'>\\[{E}_{z}=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\, \\cos \\, \\theta +\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\, \\cos \\, \\theta =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2q}{{r}^{2}}\\, \\cos \\, \\theta .\\]</div> Since none of the other components survive, this is the entire electric field, and it points in the \\(\\mathbf{\\hat{\\text{k}}}\\) direction. Notice that this calculation uses the principle of <b>superposition</b>; we calculate the fields of the two charges independently and then add them together.<br> What we want to do now is replace the quantities in this expression that we don’t know (such as <i>r</i>), or can’t easily measure (such as \\(\\cos \\, \\theta )\\) with quantities that we do know, or can measure. In this case, by geometry, <div class='eq'>\\[{r}^{2}={z}^{2}+{(\\frac{d}{2})}^{2}\\]</div> and <div class='eq'>\\[\\cos \\, \\theta =\\frac{z}{r}=\\frac{z}{{[{z}^{2}+{(\\frac{d}{2})}^{2}]}^{1\\text{/}2}}.\\]</div> Thus, substituting, <div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2q}{[{z}^{2}+{(\\frac{d}{2})}^{2}]}\\, \\frac{z}{{[{z}^{2}+{(\\frac{d}{2})}^{2}]}^{1\\text{/}2}}\\mathbf{\\hat{\\text{k}}}.\\]</div> Simplifying, the desired answer is <div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2qz}{{[{z}^{2}+{(\\frac{d}{2})}^{2}]}^{3\\text{/}2}}\\mathbf{\\hat{\\text{k}}}.\\]</div></li><li>If the source charges are equal and opposite, the vertical components cancel because \\({E}_{z}=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\, \\cos \\, \\theta -\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\, \\cos \\, \\theta =0\\)<br> and we get, for the horizontal component of \\(\\mathbf{\\vec{\\text{E}}}\\), <div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{\\text{E}}}(z) & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\, \\sin \\, \\theta \\mathbf{\\hat{\\text{i}}}-\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{-q}{{r}^{2}}\\, \\sin \\, \\theta \\mathbf{\\hat{\\text{i}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2q}{{r}^{2}}\\, \\sin \\, \\theta \\mathbf{\\hat{\\text{i}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2q}{[{z}^{2}+{(\\frac{d}{2})}^{2}]}\\, \\frac{(\\frac{d}{2})}{{[{z}^{2}+{(\\frac{d}{2})}^{2}]}^{1\\text{/}2}}\\mathbf{\\hat{\\text{i}}}.\\end{array}\\]</div> This becomes <div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{qd}{{[{z}^{2}+{(\\frac{d}{2})}^{2}]}^{3\\text{/}2}}\\mathbf{\\hat{\\text{i}}}.\\]</div></li></ol>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>It is a very common and very useful technique in physics to check whether your answer is reasonable by evaluating it at extreme cases. In this example, we should evaluate the field expressions for the cases \\(d=0\\), \\(z≫d\\), and \\(z\\to \\infty\\), and confirm that the resulting expressions match our physical expectations. Let’s do so:</p><p>Let’s start with the equation, the field of two identical charges. From far away (i.e., \\(z≫d),\\) the two source charges should “merge” and we should then “see” the field of just one charge, of size 2<i>q</i>. So, let \\(z≫d;\\) then we can neglect \\({d}^{2}\\) in the equation to obtain</p><div class='eq'>\\[\\begin{array}{ll}\\lim _{d\\to 0}\\mathbf{\\vec{\\text{E}}} & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2qz}{{[{z}^{2}]}^{3\\text{/}2}}\\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2qz}{{z}^{3}}\\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{(2q)}{{z}^{2}}\\mathbf{\\hat{\\text{k}}},\\end{array}\\]</div><p>which is the correct expression for a field at a distance <i>z</i> away from a charge 2<i>q</i>.</p><p>Next, we consider the field of equal and opposite charges, the equation. It can be shown (via a Taylor expansion) that for \\(d≪z≪\\infty\\), this becomes</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{qd}{{z}^{3}}\\mathbf{\\hat{\\text{i}}},\\]</div><p>which is the field of a dipole, a system that we will study in more detail later. (Note that the units of \\(\\mathbf{\\vec{\\text{E}}}\\) are still correct in this expression, since the units of <i>d</i> in the numerator cancel the unit of the “extra” <i>z</i> in the denominator.) If <i>z</i> is <i>very</i> large \\((z\\to \\infty )\\), then \\(E\\to 0\\), as it should; the two charges “merge” and so cancel out.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>What is the electric field due to a single point particle?</p>",
+     "a": "<p>\\(\\mathbf{\\vec{\\text{E}}}=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{q}{{r}^{2}}\\hat{r}\\)</p>"
+    }
+   ],
+   "keyConcepts": [
+    "The electric field is an alteration of space caused by the presence of an electric charge. The electric field mediates the electric force between a source charge and a test charge.",
+    "The electric field, like the electric force, obeys the superposition principle",
+    "The field is a vector; by definition, it points away from positive charges and toward negative charges."
+   ]
+  },
+  {
+   "num": "5.5",
+   "module": "m58416",
+   "title": "Calculating Electric Fields of Charge Distributions",
+   "objectives": [
+    "Explain what a continuous source charge distribution is and how it is related to the concept of quantization of charge",
+    "Describe line charges, surface charges, and volume charges",
+    "Calculate the field of a continuous source charge distribution of either sign"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2\\lambda}{z}\\mathbf{\\hat{\\text{k}}}",
+    "\\mathbf{\\vec{\\text{E}}}=\\frac{\\sigma}{2{\\varepsilon}_{0}}\\mathbf{\\hat{\\text{k}}}"
+   ],
+   "examples": [
+    {
+     "title": "Electric Field of a Line Segment",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the electric field a distance <i>z</i> above the midpoint of a straight line segment of length <i>L</i> that carries a uniform line charge density \\(\\lambda\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>Since this is a continuous charge distribution, we conceptually break the wire segment into differential pieces of length <i>dl</i>, each of which carries a differential amount of charge \\(dq=\\lambda dl\\). Then, we calculate the differential field created by two symmetrically placed pieces of the wire, using the symmetry of the setup to simplify the calculation (the figure). Finally, we integrate this differential field expression over the length of the wire (half of it, actually, as we explain below) to obtain the complete electric field expression.</p><figure><img src='img/CNX_UPhysics_22_05_EofWire.jpg' alt=\"A long, thin wire is on the x axis. The end of the wire is a distance z from the center of the wire. A small segment of the wire, a distance x to the right of the center of the wire, is shaded. Another segment, the same distance to the left of center, is also shaded. Point P is a distance z above the center of the wire, on the z axis. Point P is a distance r from each shaded region. The r vectors point from each shaded region to point P. Vectors d E 1 and d E 2 are drawn at point P. d E 1 points away from the left side shaded region and points up and right, at an angle theta to the z axis. d E 2 points away from the right side shaded region and points up and r left, making the same angle with the vertical as d E 1. The two d E vectors are equal in length.\" loading='lazy'><figcaption>A uniformly charged segment of wire. The electric field at point <i>P</i> can be found by applying the superposition principle to symmetrically placed charge elements and integrating.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Before we jump into it, what do we expect the field to “look like” from far away? Since it is a finite line segment, from far away, it should look like a point charge. We will check the expression we get to see if it meets this expectation.</p><p>The electric field for a line charge is given by the general expression</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(P)=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{\\text{line}}\\frac{\\lambda dl}{{r}^{2}}\\mathbf{\\hat{\\text{r}}}.\\]</div><p>The symmetry of the situation (our choice of the two identical differential pieces of charge) implies the horizontal (<i>x</i>)-components of the field cancel, so that the net field points in the <i>z</i>-direction. Let’s check this formally.</p><p>The total field \\(\\mathbf{\\vec{\\text{E}}}(P)\\) is the vector sum of the fields from each of the two charge elements (call them \\({\\mathbf{\\vec{\\text{E}}}}_{1}\\) and \\({\\mathbf{\\vec{\\text{E}}}}_{2}\\), for now):</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(P)={\\mathbf{\\vec{\\text{E}}}}_{1}+{\\mathbf{\\vec{\\text{E}}}}_{2}={E}_{1x}\\mathbf{\\hat{\\text{i}}}+{E}_{1z}\\mathbf{\\hat{\\text{k}}}+{E}_{2x}(-\\mathbf{\\hat{\\text{i}}})+{E}_{2z}\\mathbf{\\hat{\\text{k}}}.\\]</div><p>Because the two charge elements are identical and are the same distance away from the point <i>P</i> where we want to calculate the field, \\({E}_{1x}={E}_{2x},\\) so those components cancel. This leaves</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(P)={E}_{1z}\\mathbf{\\hat{\\text{k}}}+{E}_{2z}\\mathbf{\\hat{\\text{k}}}={E}_{1}\\, \\cos \\, \\theta \\mathbf{\\hat{\\text{k}}}+{E}_{2}\\, \\cos \\, \\theta \\mathbf{\\hat{\\text{k}}}.\\]</div><p>These components are also equal, so we have</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{\\text{E}}}(P) & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\int \\frac{\\lambda dl}{{r}^{2}}\\, \\cos \\, \\theta \\mathbf{\\hat{\\text{k}}}+\\frac{1}{4\\pi {\\varepsilon}_{0}}\\int \\frac{\\lambda dl}{{r}^{2}}\\, \\cos \\, \\theta \\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{0}^{L\\text{/}2}\\frac{2\\lambda dx}{{r}^{2}}\\, \\cos \\, \\theta \\mathbf{\\hat{\\text{k}}}\\end{array}\\]</div><p>where our differential line element <i>dl</i> is <i>dx</i>, in this example, since we are integrating along a line of charge that lies on the <i>x</i>-axis. (The limits of integration are 0 to \\(\\frac{L}{2}\\), not \\(-\\frac{L}{2}\\) to \\(+\\frac{L}{2}\\), because we have constructed the net field from two differential pieces of charge <i>dq</i>. If we integrated along the entire length, we would pick up an erroneous factor of 2.)</p><p>In principle, this is complete. However, to actually calculate this integral, we need to eliminate all the variables that are not given. In this case, both <i>r</i> and \\(\\theta\\) change as we integrate outward to the end of the line charge, so those are the variables to get rid of. We can do that the same way we did for the two point charges: by noticing that</p><div class='eq'>\\[r={({z}^{2}+{x}^{2})}^{1\\text{/}2}\\]</div><p>and</p><div class='eq'>\\[\\cos \\, \\theta =\\frac{z}{r}=\\frac{z}{{({z}^{2}+{x}^{2})}^{1\\text{/}2}}.\\]</div><p>Substituting, we obtain</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{\\text{E}}}(P) & =\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{0}^{L\\text{/}2}\\frac{2\\lambda dx}{({z}^{2}+{x}^{2})}\\, \\frac{z}{{({z}^{2}+{x}^{2})}^{1\\text{/}2}}\\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{0}^{L\\text{/}2}\\frac{2\\lambda z}{{({z}^{2}+{x}^{2})}^{3\\text{/}2}}dx\\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{2\\lambda z}{4\\pi {\\varepsilon}_{0}}[\\frac{x}{{z}^{2}\\sqrt{{z}^{2}+{x}^{2}}}]{|}_{0}^{L\\text{/}2}\\mathbf{\\hat{\\text{k}}}\\end{array}\\]</div><p>which simplifies to</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{\\lambda L}{z\\sqrt{{z}^{2}+\\frac{{L}^{2}}{4}}}\\mathbf{\\hat{\\text{k}}}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Notice, once again, the use of symmetry to simplify the problem. This is a very common strategy for calculating electric fields. The fields of nonsymmetrical charge distributions have to be handled with multiple integrals and may need to be calculated numerically by a computer.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Electric Field of an Infinite Line of Charge",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the electric field a distance <i>z</i> above the midpoint of an infinite line of charge that carries a uniform line charge density \\(\\lambda\\).</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>This is exactly like the preceding example, except the limits of integration will be \\(-\\infty\\) to \\(\\text{+}\\infty\\).</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Again, the horizontal components cancel out, so we wind up with</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(P)=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{-\\infty}^{\\infty}\\frac{\\lambda dx}{{r}^{2}}\\, \\cos \\, \\theta \\mathbf{\\hat{\\text{k}}}\\]</div><p>where our differential line element <i>dl</i> is <i>dx</i>, in this example, since we are integrating along a line of charge that lies on the <i>x</i>-axis. Again,</p><div class='eq'>\\[\\cos \\, \\theta =\\frac{z}{r}=\\frac{z}{{({z}^{2}+{x}^{2})}^{1\\text{/}2}}.\\]</div><p>Substituting, we obtain</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{\\text{E}}}(P) & =\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{-\\infty}^{\\infty}\\frac{\\lambda dx}{({z}^{2}+{x}^{2})}\\, \\frac{z}{{({z}^{2}+{x}^{2})}^{1\\text{/}2}}\\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{-\\infty}^{\\infty}\\frac{\\lambda z}{{({z}^{2}+{x}^{2})}^{3\\text{/}2}}dx\\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{\\lambda z}{4\\pi {\\varepsilon}_{0}}{[\\frac{x}{{z}^{2}\\sqrt{{z}^{2}+{x}^{2}}}]|}_{-\\infty}^{\\infty}\\mathbf{\\hat{\\text{k}}},\\end{array}\\]</div><p>which simplifies to</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2\\lambda}{z}\\mathbf{\\hat{\\text{k}}}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Our strategy for working with continuous charge distributions also gives useful results for charges with infinite dimension.</p>"
+      }
+     ]
+    },
+    {
+     "title": "Electric Field due to a Ring of Charge",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>A ring has a uniform charge density \\(\\lambda\\), with units of coulomb per unit meter of arc. Find the electric field at a point on the axis passing through the center of the ring.</p>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We use the same procedure as for the charged wire. The difference here is that the charge is distributed on a circle. We divide the circle into infinitesimal elements shaped as arcs on the circle and use polar coordinates shown in the figure.</p><figure><img src='img/CNX_UPhysics_22_05_RingChg.jpg' alt=\"A ring of radius R is shown in the x y plane of an x y z coordinate system. The ring is centered on the origin. A small segment of the ring is shaded. The segment is at an angle of theta from the x axis, subtends an angle of d theta, and contains a charge of d q equal to lambda R d theta. Point P is on the z axis, a distance of z above the center of the ring. The distance from the shaded segment to point P is equal to the square root of R squared plus squared.\" loading='lazy'><figcaption>The system and variable for calculating the electric field due to a ring of charge.</figcaption></figure>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The electric field for a line charge is given by the general expression</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(P)=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{\\text{line}}\\frac{\\lambda dl}{{r}^{2}}\\mathbf{\\hat{\\text{r}}}.\\]</div><p>A general element of the arc between \\(\\theta\\) and \\(\\theta +d\\theta\\) is of length \\(Rd\\theta\\) and therefore contains a charge equal to \\(\\lambda Rd\\theta .\\) The element is at a distance of \\(r=\\sqrt{{z}^{2}+{R}^{2}}\\) from <i>P</i>, the angle is \\(\\cos \\, \\phi =\\frac{z}{\\sqrt{{z}^{2}+{R}^{2}}}\\), and therefore the electric field is</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{\\text{E}}}(P) & =\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{\\mathbf{\\text{line}}}\\frac{\\lambda dl}{{r}^{2}}\\mathbf{\\hat{\\text{r}}}=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{0}^{2\\pi}\\frac{\\lambda Rd\\theta}{{z}^{2}+{R}^{2}}\\, \\frac{z}{\\sqrt{{z}^{2}+{R}^{2}}}\\mathbf{\\hat{z}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{\\lambda Rz}{{({z}^{2}+{R}^{2})}^{3\\text{/}2}}\\mathbf{\\hat{z}}{\\int}_{0}^{2\\pi}d\\theta =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{2\\pi \\lambda Rz}{{({z}^{2}+{R}^{2})}^{3\\text{/}2}}\\mathbf{\\hat{z}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{{q}_{\\mathbf{\\text{tot}}}z}{{({z}^{2}+{R}^{2})}^{3\\text{/}2}}\\mathbf{\\hat{z}}.\\end{array}\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>As usual, symmetry simplified this problem, in this particular case resulting in a trivial integral. Also, when we take the limit of \\(z>>R\\), we find that</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}\\approx \\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{{q}_{\\text{tot}}}{{z}^{2}}\\mathbf{\\hat{z}},\\]</div><p>as we expect.</p>"
+      }
+     ]
+    },
+    {
+     "title": "The Field of a Disk",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the electric field of a circular thin disk of radius <i>R</i> and uniform charge density at a distance <i>z</i> above the center of the disk (the figure)</p><figure><img src='img/CNX_UPhysics_22_05_EofDisk.jpg' alt=\"A disk of radius R is shown in the x y plane of an x y z coordinate system. The disk is centered on the origin. A ring, concentric with the disk, of radius r prime and width d r prime is indicated and two small segments on opposite sides of the ring are shaded and labeled as having charge d q. The test point is on the z axis, a distance of z above the center of the disk. The distance from each shaded segment to the test point is r. The electric field contributions, d E, due to the d q charges are shown as arrows in the directions of the associated r vectors. The d E vectors are at an angle of theta to the z axis.\" loading='lazy'><figcaption>A uniformly charged disk. As in the line charge example, the field above the center of this disk can be calculated by taking advantage of the symmetry of the charge distribution.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>The electric field for a surface charge is given by</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(P)=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{\\text{surface}}\\frac{\\sigma dA}{{r}^{2}}\\mathbf{\\hat{\\text{r}}}.\\]</div><p>To solve surface charge problems, we break the surface into symmetrical differential “strips” that match the shape of the surface; here, we’ll use rings, as shown in the figure. Again, by symmetry, the horizontal components cancel and the field is entirely in the vertical \\((\\mathbf{\\hat{\\text{k}}})\\) direction. The vertical component of the electric field is extracted by multiplying by \\(\\cos \\, \\theta\\), so</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(P)=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{\\text{surface}}\\frac{\\sigma dA}{{r}^{2}}\\, \\cos \\, \\theta \\, \\mathbf{\\hat{\\text{k}}}.\\]</div><p>As before, we need to rewrite the unknown factors in the integrand in terms of the given quantities. In this case,</p><div class='eq'>\\[\\begin{array}{lll}dA & = & 2\\pi {r}^{'}d{r}^{'} \\\\ {r}^{2} & = & {{r}^{'}}^{2}+{z}^{2} \\\\ \\cos \\, \\theta & = & \\frac{z}{{({{r}^{'}}^{2}+{z}^{2})}^{1\\text{/}2}}.\\end{array}\\]</div><p>(Please take note of the two different “<i>r</i>’s” here; <i>r</i> is the distance from the differential ring of charge to the point <i>P</i> where we wish to determine the field, whereas \\({r}^{'}\\) is the distance from the center of the disk to the differential ring of charge.) Also, we already performed the polar angle integral in writing down <i>dA</i>.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>Substituting all this in, we get</p><div class='eq'>\\[\\begin{array}{ll}\\mathbf{\\vec{\\text{E}}}(P) & =\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}{\\int}_{0}^{R}\\frac{\\sigma (2\\pi {r}^{'}d{r}^{'})z}{{({{r}^{'}}^{2}+{z}^{2})}^{3\\text{/}2}}\\mathbf{\\hat{\\text{k}}} \\\\ & =\\frac{1}{4\\pi {\\varepsilon}_{0}}(2\\pi \\sigma z)(\\frac{1}{z}-\\frac{1}{\\sqrt{{R}^{2}+{z}^{2}}})\\mathbf{\\hat{\\text{k}}}\\end{array}\\]</div><p>or, more simply,</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)=\\frac{1}{4\\pi {\\varepsilon}_{0}}(2\\pi \\sigma -\\frac{2\\pi \\sigma z}{\\sqrt{{R}^{2}+{z}^{2}}})\\mathbf{\\hat{\\text{k}}}.\\]</div>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Again, it can be shown (via a Taylor expansion) that when \\(z≫R\\), this reduces to</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}(z)\\approx \\frac{1}{4\\pi {\\varepsilon}_{0}}\\, \\frac{\\sigma \\pi {R}^{2}}{{z}^{2}}\\mathbf{\\hat{\\text{k}}},\\]</div><p>which is the expression for a point charge \\(Q=\\sigma \\pi {R}^{2}.\\)</p>"
+      }
+     ]
+    },
+    {
+     "title": "The Field of Two Infinite Planes",
+     "parts": [
+      {
+       "label": "Problem",
+       "html": "<p>Find the electric field everywhere resulting from two infinite planes with equal but opposite charge densities (the figure).</p><figure><img src='img/CNX_UPhysics_22_05_TwoPlanes.jpg' alt=\"The figure shows two vertically oriented parallel plates A and B separated by a distance d. Plate A is positively charged and B is negatively charged. Electric field lines are parallel between the plates and curved outward at the ends of the plates. A charge q is moved from A to B. The work done W equals q times V sub A B, and the electric field intensity E equals V sub A B over d.\" loading='lazy'><figcaption>Two charged infinite planes. Note the direction of the electric field.</figcaption></figure>"
+      },
+      {
+       "label": "Strategy",
+       "html": "<p>We already know the electric field resulting from a single infinite plane, so we may use the principle of superposition to find the field from two.</p>"
+      },
+      {
+       "label": "Solution",
+       "html": "<p>The electric field points away from the positively charged plane and toward the negatively charged plane. Since the \\(\\sigma\\) are equal and opposite, this means that in the region outside of the two planes, the electric fields cancel each other out to zero.</p><p>However, in the region between the planes, the electric fields add, and we get</p><div class='eq'>\\[\\mathbf{\\vec{\\text{E}}}=\\frac{\\sigma}{{\\varepsilon}_{0}}\\mathbf{\\hat{\\text{i}}}\\]</div><p>for the electric field. The \\(\\mathbf{\\hat{\\text{i}}}\\) is because in the figure, the field is pointing in the +<i>x</i>-direction.</p>"
+      },
+      {
+       "label": "Significance",
+       "html": "<p>Systems that may be approximated as two infinite planes of this sort provide a useful means of creating uniform electric fields.</p>"
+      }
+     ]
+    }
+   ],
+   "checks": [
+    {
+     "q": "<p>How would the strategy used above change to calculate the electric field at a point a distance <i>z</i> above one end of the finite line segment?</p>",
+     "a": "<p>We will no longer be able to take advantage of symmetry. Instead, we will need to calculate each of the two components of the electric field with their own integral.</p>"
+    },
+    {
+     "q": "<p>How would the above limit change with a uniformly charged rectangle instead of a disk?</p>",
+     "a": "<p>The point charge would be \\(Q=\\sigma ab\\) where <i>a</i> and <i>b</i> are the sides of the rectangle but otherwise identical.</p>"
+    },
+    {
+     "q": "<p>What would the electric field look like in a system with two parallel positively charged planes with equal charge densities?</p>",
+     "a": "<p>The electric field would be zero in between, and have magnitude \\(\\frac{\\sigma}{{\\varepsilon}_{0}}\\) everywhere else.</p>"
+    }
+   ],
+   "keyConcepts": [
+    "A very large number of charges can be treated as a continuous charge distribution, where the calculation of the field requires integration. Common cases are: <ul><li>one-dimensional (like a wire); uses a line charge density \\(\\lambda\\)</li><li>two-dimensional (metal plate); uses surface charge density \\(\\sigma\\)</li><li>three-dimensional (metal sphere); uses volume charge density \\(\\rho\\)</li></ul>",
+    "The “source charge” is a differential amount of charge <i>dq</i>. Calculating <i>dq</i> depends on the type of source charge distribution: <div class='eq'>\\[dq=\\lambda dl;\\; dq=\\sigma dA;\\; dq=\\rho dV.\\]</div>",
+    "Symmetry of the charge distribution is usually key.",
+    "Important special cases are the field of an “infinite” wire and the field of an “infinite” plane.",
+    "one-dimensional (like a wire); uses a line charge density \\(\\lambda\\)",
+    "two-dimensional (metal plate); uses surface charge density \\(\\sigma\\)",
+    "three-dimensional (metal sphere); uses volume charge density \\(\\rho\\)"
+   ]
+  },
+  {
+   "num": "5.6",
+   "module": "m58417",
+   "title": "Electric Field Lines",
+   "objectives": [
+    "Explain the purpose of an electric field diagram",
+    "Describe the relationship between a vector diagram and a field line diagram",
+    "Explain the rules for creating a field diagram and why these rules make physical sense",
+    "Sketch the field of an arbitrary source charge"
+   ],
+   "callouts": [],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "Electric field diagrams assist in visualizing the field of a source charge.",
+    "The magnitude of the field is proportional to the field line density.",
+    "Field vectors are everywhere tangent to field lines."
+   ]
+  },
+  {
+   "num": "5.7",
+   "module": "m58418",
+   "title": "Electric Dipoles",
+   "objectives": [
+    "Describe a permanent dipole",
+    "Describe an induced dipole",
+    "Define and calculate an electric dipole moment",
+    "Explain the physical meaning of the dipole moment"
+   ],
+   "callouts": [
+    "\\mathbf{\\vec{\\text{p}}}\\equiv q\\mathbf{\\vec{\\text{d}}}",
+    "\\vec{\\tau }=\\mathbf{\\vec{\\text{p}}}\\, \\times \\, \\mathbf{\\vec{\\text{E}}}"
+   ],
+   "examples": [],
+   "checks": [],
+   "keyConcepts": [
+    "If a permanent dipole is placed in an external electric field, it results in a torque that aligns it with the external field.",
+    "If a nonpolar atom (or molecule) is placed in an external field, it gains an induced dipole that is aligned with the external field.",
+    "The net field is the vector sum of the external field plus the field of the dipole (physical or induced).",
+    "The strength of the polarization is described by the dipole moment of the dipole, \\(\\mathbf{\\vec{\\text{p}}}=q\\mathbf{\\vec{\\text{d}}}\\)."
+   ]
+  }
+ ],
+ "figures": [
+  "CNX_UPhysics_22_03_3Charges.jpg",
+  "CNX_UPhysics_22_03_HForce.jpg",
+  "CNX_UPhysics_22_04_EofHe.jpg",
+  "CNX_UPhysics_22_04_TwoComp.jpg",
+  "CNX_UPhysics_22_04_TwoSymqs.jpg",
+  "CNX_UPhysics_22_05_EofDisk.jpg",
+  "CNX_UPhysics_22_05_EofWire.jpg",
+  "CNX_UPhysics_22_05_RingChg.jpg",
+  "CNX_UPhysics_22_05_TwoPlanes.jpg"
+ ]
+}
