@@ -252,6 +252,21 @@ a.chip[aria-current="page"]{background:var(--ink);color:var(--paper);border-colo
 .btn[disabled]{opacity:.55;cursor:default}
 .startcard{text-align:left}
 .rocketcard{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center}
+dialog.partpop{border:1px solid var(--rule);border-radius:18px;padding:18px 18px 12px;background:var(--card);color:var(--ink);width:min(320px,calc(100vw - 32px));max-height:calc(100dvh - 32px);text-align:center;box-sizing:border-box}
+dialog.partpop::backdrop{background:rgba(8,14,20,.55)}
+.partpop .toyart{position:relative;width:140px;margin:8px auto 6px}
+.partpop .toyart svg{width:140px;height:auto;display:block}
+.partpop .toyart .newpart{position:absolute;inset:0;animation:partdrop .9s cubic-bezier(.2,.7,.3,1) .35s both}
+.partpop h2{margin:4px 0 2px;font-size:1.2rem;line-height:1.3}
+.partpop .pips{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin:10px 0 14px}
+.partpop .pips span{width:18px;height:6px;border-radius:3px;background:var(--rule)}
+.partpop .pips span.on{background:var(--accent)}
+.partpop .pips span.new{animation:pipin .4s ease-out 1.1s both}
+.partpop .btn{width:100%}
+.partpop .linkbtn{display:block;margin:4px auto 0;min-height:44px;text-decoration:none}
+@keyframes partdrop{0%{transform:translateY(-30px);opacity:0}65%{transform:translateY(3px);opacity:1}100%{transform:none;opacity:1}}
+@keyframes pipin{from{background:var(--rule)}to{background:var(--accent)}}
+@media (prefers-reduced-motion: reduce){.partpop .toyart .newpart,.partpop .pips span.new{animation:none}}
 .rocketcard svg{width:96px;height:auto}
 .howgrow summary,.card>summary{cursor:pointer}
 .code{width:100%;font-family:var(--font-mono);font-size:.8rem;border:1px solid var(--rule);border-radius:10px;padding:10px;background:var(--eq-bg);color:var(--ink);resize:vertical}
@@ -1744,7 +1759,7 @@ function renderSummary(){
   ${grown.length?`<section class="paper garden grown">${grown.map(x=>`<div class="pot static" data-i="${x.i}" data-b="${x.b}" data-a="${x.a}">${plantSVG(x.b,x.i,"")}<span class="potlbl"><b>${x.s}</b> grew</span></div>`).join("")}</section>`
     :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed questions come back soon, mixed in with the others."}</p>`}
   ${!Ss.practice&&Ss.sec?`<p class="small muted">Section ${Ss.sec}: ${secCount(Ss.sec)} of ${CFG.toBloom} right answers.</p>`:""}
-  ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed.${toy()&&toy().parts[x.i]?` You earned the ${toy().thing}'s ${toy().parts[x.i]}.`:""}</p>`).join("")}
+  ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed.${toy()&&toy().parts[x.i]?` It added the ${toy().parts[x.i]} to your ${toy().thing}.`:""}</p>`).join("")}
   <div class="row">
     <a class="btn" href="${H("review")}" id="back">Back to your garden</a>
     ${nxSec&&!Ss.practice?`<button class="btn quiet" id="again">${nxSec===Ss.sec?`Keep growing ${nxSec}`:`Next: grow ${nxSec}`}</button>`:""}
@@ -1755,12 +1770,46 @@ function renderSummary(){
   const cells=[...main.querySelectorAll(".pot.static")];
   if(!cells.length)return;
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,t0=performance.now(),dur=1400;
+  const T=toy(),earned=T&&!Ss.practice?newBloom.map(x=>x.i).filter(i=>T.parts[i]):[];
+  if(earned.length){const mark=cells[0];setTimeout(()=>{if(document.body.contains(mark))partPopup(T,earned);},reduce?300:1900);}
   const frame=now=>{const k=reduce?1:Math.min(1,(now-t0)/dur),e=ease(k);
     cells.forEach(c=>{const b=+c.dataset.b,a=+c.dataset.a,i=+c.dataset.i;const svg=c.querySelector("svg");if(svg)svg.outerHTML=plantSVG(b+(a-b)*e,i,`Section ${SECS[i]} plant`);});
     if(k<1)requestAnimationFrame(frame);};
   setTimeout(()=>requestAnimationFrame(frame),reduce?0:350);
 }
 
+
+/* ---------- new toy part popup ---------- */
+/* shows the toy with the newly earned parts dropping into place; the new parts are found by
+   comparing the toy drawn before and after, so it works for every toy without per toy code */
+function partPopup(T,idx,haveIn){
+  const have=haveIn||bloomed(),before=have.map((h,i)=>h&&!idx.includes(i)),nHave=have.filter(Boolean).length,nAll=have.length,done=nHave===nAll;
+  const names=idx.map(i=>T.parts[i]),list=names.length<3?names.join(" and "):names.slice(0,-1).join(", ")+", and "+names[names.length-1];
+  const Thing=T.thing[0].toUpperCase()+T.thing.slice(1);
+  const mk=h=>{const t=document.createElement("template");t.innerHTML=T.svg(h,"").trim();return t.content.firstElementChild;};
+  const a=mk(have),b=mk(before),bs=new Set([...b.children].map(e=>e.outerHTML));
+  let changed=0;[...a.children].forEach(e=>{if(bs.has(e.outerHTML))e.setAttribute("visibility","hidden");else changed++;});
+  a.removeAttribute("role");a.setAttribute("aria-hidden","true");
+  b.setAttribute("aria-label",`${Thing} with ${nHave} of ${nAll} parts`);
+  const d=document.createElement("dialog");d.className="partpop";d.setAttribute("aria-labelledby","pp-h");
+  d.innerHTML=`<p class="small muted" style="margin:0">${idx.length>1?"Sections":"Section"} ${idx.map(i=>SECS[i]).join(" and ")} bloomed</p>
+    <div class="toyart">${changed?b.outerHTML+`<div class="newpart">${a.outerHTML}</div>`:T.svg(have,`${Thing} with ${nHave} of ${nAll} parts`)}</div>
+    <h2 id="pp-h">${done?esc(T.ready):`${idx.length>1?"New parts":"New part"}: ${esc(list)}`}</h2>
+    <p class="small muted" style="margin:0">${done?T.readyText:esc(T.count(nHave,nAll))}</p>
+    <div class="pips" aria-hidden="true">${have.map((h,i)=>`<span class="${h?"on":""}${idx.includes(i)?" new":""}"></span>`).join("")}</div>
+    ${done?`<a class="btn" href="${H(T.route)}" id="pp-go">${esc(T.go)}</a><button class="linkbtn" id="pp-x">Later</button>`
+      :`<button class="btn" id="pp-x">Continue</button><button class="linkbtn" id="pp-g">See my garden</button>`}`;
+  if(!changed&&d.querySelector(".toyart svg"))d.querySelector(".toyart svg").removeAttribute("aria-hidden");
+  document.body.appendChild(d);
+  d.addEventListener("close",()=>d.remove());
+  d.querySelector("#pp-x").onclick=()=>d.close();
+  const g=d.querySelector("#pp-g");if(g)g.onclick=()=>{d.close();const bk=document.getElementById("back");if(bk)bk.click();};
+  const go=d.querySelector("#pp-go");if(go)go.onclick=()=>{SESS=null;d.close();};
+  d.addEventListener("click",e=>{if(e.target!==d)return;const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();});
+  window.addEventListener("hashchange",()=>{if(d.open)d.close();},{once:true});
+  if(d.showModal)d.showModal();else d.setAttribute("open","");
+  (d.querySelector("#pp-go")||d.querySelector("#pp-x")).focus();
+}
 /* ---------- launch pad ---------- */
 const pickOne=a=>a[Math.floor(Math.random()*a.length)];
 const MISSION_NAMES=["Straight up","Engine burn","Round trip"];
@@ -4240,7 +4289,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/05a";
+const APP_VERSION="11/15a";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -4637,7 +4686,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeSpace,spaceSim,makeYard,yardSim,makeCar,carSim,makeMgr,mgrSim,backupCode,readBackup,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeSpace,spaceSim,makeYard,yardSim,makeCar,carSim,makeMgr,mgrSim,backupCode,readBackup,partPopup,bloomed,toy,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
