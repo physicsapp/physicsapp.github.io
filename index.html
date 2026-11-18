@@ -4,6 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <!--/repo-head-->
+<!-- Security: the page may only load code from this site and the exact MathJax version below, and may only send data back to this site.
+     If you ever add a new outside script, font or image host, add its address to the matching line here or the browser will block it. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/mathjax@3.2.2/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self'; media-src 'self'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Freebody Physics</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -276,6 +280,11 @@ dialog.partpop::backdrop{background:rgba(8,14,20,.55)}
 .dots{display:flex;flex-wrap:wrap;gap:6px}
 .dot{width:10px;height:10px;border-radius:50%;background:var(--rule)}
 .dot.cur{background:var(--accent)} .dot.ok{background:var(--good)} .dot.no{background:var(--bad)}
+.endhead{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.endhead .endnums{display:flex;justify-content:space-between;gap:10px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.ebar{height:6px;border-radius:3px;background:var(--rule);overflow:hidden}
+.ebar span{display:block;height:100%;background:var(--accent);border-radius:3px}
+.endlink{width:100%;justify-content:center}
 .qtext{font-size:1.08rem}
 .opt.chosen{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
 .checkbtn{width:100%;margin-top:4px}
@@ -315,7 +324,7 @@ dialog.partpop::backdrop{background:rgba(8,14,20,.55)}
 <script>
 window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"},startup:{typeset:false},options:{enableMenu:false}};
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" integrity="sha384-KKWa9jJ1MZvssLeOoXG6FiOAZfAgmzsIIfw8BXwI9+kYm0lPCbC6yTQPBC00F1/L" crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
 <script>
 (function(){
 "use strict";
@@ -837,12 +846,14 @@ function renderLearn(){
       <span class="t">${esc(s.title)}<span class="meta" style="display:block">${classDates(s.num,true)?`In class ${classDates(s.num,true)} · `:""}${s.examples.length} worked example${s.examples.length===1?"":"s"} · ${secItems(s.num).length} review items</span></span>
       <span class="chev" aria-hidden="true">›</span></a>`).join("")}
   </nav>
+  ${ITEMS.length?`<button class="btn endlink" id="endless">${endlessSess()?`Keep going in endless review · question ${endlessSess().i+1} of ${endlessSess().queue.length}`:`Endless review · all ${ITEMS.length} questions`}</button>`:""}
   <nav class="chnav" aria-label="Other chapters">
     ${CHAPTERS.some(c=>c[0]===CH-1)?`<a class="btn quiet prev" href="#ch${CH-1}" aria-label="Previous: Chapter ${cn(CH-1)}, ${esc(chTitle(CH-1))}"><small>‹ Previous</small>Chapter ${cn(CH-1)}</a>`:"<span></span>"}
     <a class="btn mid" href="${H("review")}">Open your garden</a>
     ${CHAPTERS.some(c=>c[0]===CH+1)?`<a class="btn quiet next" href="#ch${CH+1}" aria-label="Next: Chapter ${cn(CH+1)}, ${esc(chTitle(CH+1))}"><small>Next ›</small>Chapter ${cn(CH+1)}</a>`:"<span></span>"}
   </nav>
   ${attrib()}`;
+  const en=document.getElementById("endless");if(en)en.onclick=startEndless;
 }
 function attrib(){return `<p class="attrib">Adapted from <a href="${D.bookUrl}" target="_blank" rel="noopener">${esc(D.book||"University Physics Volume 1")}</a> by OpenStax, licensed <a href="${D.licenseUrl}" target="_blank" rel="noopener">CC BY NC SA 4.0</a>. Access for free at openstax.org. <a href="#about">What changed</a></p>`;}
 
@@ -1490,26 +1501,47 @@ function loadSess(){
   const s=store(SKEY);if(!s||!Array.isArray(s.queue)||s.done)return null;
   const byId={};ITEMS.forEach(i=>byId[i.id]=i);
   /* older builds added a retry at the end for each miss; drop any not yet answered */
-  const queue=s.queue.filter(q=>byId[q.id]&&!(q.retry&&!q.answered)).map(q=>{const c=Object.assign({},q,{it:byId[q.id]});delete c.id;return c;});
+  const queue=s.queue.filter(q=>byId[q.id]&&!(!s.endless&&q.retry&&!q.answered)).map(q=>{const c=Object.assign({},q,{it:byId[q.id]});delete c.id;return c;});
   let i=s.i;
   if(queue.length!==s.queue.length)i=queue.findIndex(q=>!q.answered);
   if(!queue.length||i<0||i>=queue.length)return null;
   return Object.assign(s,{queue,i,paused:true});
 }
 function pausedSess(){return SESS&&!SESS.done&&SESS.paused?SESS:null;}
-function resumeLabel(P){return P.practice?"Keep practicing":`Keep growing ${P.sec}`;}
+function resumeLabel(P){return P.endless?"Keep going in endless review":P.practice?"Keep practicing":`Keep growing ${P.sec}`;}
+/* ---------- endless review: every question in the chapter, shuffled, from every section ----------
+   Works like practice (never grows plants, not limited by the daily review count). A miss comes back
+   a few questions later as "Try again". End pauses it, so the spot is saved like any other session. */
+function endlessSess(){const P=pausedSess();return P&&P.endless?P:null;}
+function startEndless(){
+  if(endlessSess())return resumeSess();
+  const before={};SECS.forEach(s=>before[s]=secFrac(s));
+  SESS={queue:shuffle(ITEMS.slice()).map(it=>({it})),i:0,first:0,firstN:0,practice:true,endless:true,sec:null,before,done:false};
+  saveSess();GSEL=-1;
+  if(location.hash===H("review")){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash=H("review");
+}
+function endlessCard(){
+  if(!ITEMS.length)return "";
+  const E=endlessSess();
+  return `<section class="card stack endcard">
+    <div class="eyebrow">Endless review</div><h2>Every question in Chapter ${cn(CH)}</h2>
+    <p class="small muted">All ${ITEMS.length} questions from every section, shuffled. A miss comes back a few questions later. It doesn't grow plants, so go as long as you like and stop any time.${E?" Your spot is saved until you start another review.":""}</p>
+    <button class="btn quiet" id="endless" style="width:max-content">${E?`Keep going · question ${E.i+1} of ${E.queue.length}`:"Start endless review"}</button></section>`;
+}
 function resumeSess(){SESS.paused=false;saveSess();GSEL=-1;
   if(location.hash===H("review")){renderSession();typeset(main);window.scrollTo(0,0);}else location.hash=H("review");}
 function renderPaused(){
   const Ss=SESS;crumb.textContent="Paused";
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">${Ss.practice?"Practice":"Review"} paused</div><h1>Your spot is saved</h1>
+  <header class="stack"><div class="eyebrow">${Ss.endless?"Endless review":Ss.practice?"Practice":"Review"} paused</div><h1>Your spot is saved</h1>
     <p class="muted">You're on question ${Ss.i+1} of ${Ss.queue.length}${Ss.sec?` in section ${Ss.sec}`:""}. Answers you already gave are counted. Come back any time, even after closing the app, and you'll pick up right here.</p></header>
   <div class="row">
     <button class="btn" id="resume">${resumeLabel(Ss)}</button>
     <a class="btn quiet" href="${H("review")}" id="back">Back to your garden</a>
-  </div>`;
+  </div>
+  ${Ss.endless&&Ss.firstN?`<button class="linkbtn" id="score">Finish and see my score (${Ss.first} of ${Ss.firstN} right so far)</button>`:""}`;
   document.getElementById("resume").onclick=resumeSess;
+  const sc=document.getElementById("score");if(sc)sc.onclick=()=>{Ss.paused=false;Ss.quit=true;renderSummary();typeset(main);window.scrollTo(0,0);};
   document.getElementById("back").onclick=e=>{e.preventDefault();GSEL=-1;renderGarden();typeset(main);window.scrollTo(0,0);};
 }
 function secTitle(sec){const s=S.find(x=>x.num===sec);return s?s.title:"";}
@@ -1519,7 +1551,7 @@ function startCard(){
   const nx=nextSec(), allBloom=SECS.every(s=>secFrac(s)>=BLOOM);
   const practice=`<button class="btn quiet" id="practice">Practice anyway (doesn't grow plants)</button>`;
   const P=pausedSess();
-  if(P)return `<button class="btn big" id="resume">${resumeLabel(P)} · question ${P.i+1} of ${P.queue.length}</button>
+  if(P&&!P.endless)return `<button class="btn big" id="resume">${resumeLabel(P)} · question ${P.i+1} of ${P.queue.length}</button>
     <p class="small muted">You stopped partway through, and your spot is saved. Tapping a different plant starts that section instead.</p>`;
   if(dayCapped())return `<h2>That's today's ${CFG.perDay===1?"review":plural(CFG.perDay,"review")}</h2>
     <p class="muted small">Come back tomorrow to keep growing. Practice is always open.</p>${practice}`;
@@ -1553,6 +1585,7 @@ function renderGarden(){
   </section>
   ${GSEL>=0?potDetail(GSEL):""}
   <section class="card stack startcard">${startCard()}</section>
+  ${endlessCard()}
   ${T?`<section class="card rocketcard">
     ${T.svg(have,`${T.thing[0].toUpperCase()+T.thing.slice(1)} with ${nHave} of ${nAll} parts`)}
     <div class="stack" style="min-width:0">
@@ -1578,6 +1611,7 @@ function renderGarden(){
   const go=document.getElementById("go");if(go)go.onclick=()=>startSession(nx.sec,false);
   const rs=document.getElementById("resume");if(rs)rs.onclick=resumeSess;
   const pr=document.getElementById("practice");if(pr)pr.onclick=()=>startSession(null,true);
+  const en=document.getElementById("endless");if(en)en.onclick=startEndless;
   const pv=document.getElementById("pvoff");if(pv)pv.onclick=()=>{PROG.preview=false;saveProg();renderGarden();};
   main.querySelectorAll("[data-focus]").forEach(b=>b.onclick=()=>startSession(b.dataset.focus,b.dataset.practice==="1"));
   wireBackup();
@@ -1621,13 +1655,32 @@ function backupCode(){
   const all={};for(const [n] of CHAPTERS){const p=store("progress-ch"+n);if(p&&p.items)all[n]=p;}
   try{return "FB2:"+btoa(unescape(encodeURIComponent(JSON.stringify({v:2,ch:all}))));}catch(e){return "";}
 }
+/* A pasted code can come from anyone, so keep only the fields the app writes, with the types it writes,
+   and drop everything else. A broken or tampered code then can't break the garden or sneak in other data. */
+function cleanProg(p){
+  const isObj=o=>!!o&&typeof o==="object"&&!Array.isArray(o);
+  if(!isObj(p)||!isObj(p.items))return null;
+  const int=(x,lo,hi)=>Number.isInteger(x)&&x>=lo&&x<=hi?x:undefined;
+  const map=(o,f,max)=>{const r=Object.create(null);if(!isObj(o))return {};let c=0;
+    for(const k of Object.keys(o)){if(k.length>40||k==="__proto__"||k==="constructor"||k==="prototype")continue;if(++c>max)break;const v=f(o[k]);if(v!==undefined)r[k]=v;}
+    return Object.assign({},r);};
+  const items=map(p.items,r=>{if(!isObj(r))return;
+    const o={box:int(r.box,0,GAP.length-1)??0,due:int(r.due,-1,1e7)??0,last:int(r.last,-1,1e7)??-1,n:int(r.n,0,1e7)??0};
+    const lr=int(r.lastRight,-1,1e7);if(lr!==undefined)o.lastRight=lr;if(r.miss===true)o.miss=true;return o;},5000);
+  return {v:2,items,
+    missions:map(p.missions,m=>isObj(m)?{flown:m.flown===true,star:m.star===true}:undefined,100),
+    preview:p.preview===true,
+    grow:map(p.grow,x=>int(x,0,1e6),500),
+    days:map(p.days,x=>int(x,0,1e4),100)};
+}
 function readBackup(raw){
   try{
-    const m=raw.replace(/\s+/g,"").match(/^FB([12]):(.+)$/);if(!m)return null;
+    if(typeof raw!=="string"||raw.length>2e6)return null;
+    const m=raw.replace(/\s+/g,"").match(/^FB([12]):([A-Za-z0-9+/=]+)$/);if(!m)return null;
     const p=JSON.parse(decodeURIComponent(escape(atob(m[2]))));
-    if(m[1]==="1")return p&&p.items?{3:p}:null;
+    if(m[1]==="1"){const c=cleanProg(p);return c?{3:c}:null;}
     if(!p||!p.ch||typeof p.ch!=="object")return null;
-    const out={};for(const k of Object.keys(p.ch)){const n=+k;if(CHAPTERS.some(c=>c[0]===n)&&p.ch[k]&&p.ch[k].items)out[n]=p.ch[k];}
+    const out={};for(const k of Object.keys(p.ch)){const n=+k;const c=cleanProg(p.ch[k]);if(CHAPTERS.some(x=>x[0]===n)&&c)out[n]=c;}
     return Object.keys(out).length?out:null;
   }catch(e){return null;}
 }
@@ -1645,7 +1698,7 @@ function startSession(sec,practice){
 }
 function renderSession(){
   const Ss=SESS;
-  crumb.textContent=Ss.practice?"Practice":"Review";
+  crumb.textContent=Ss.endless?"Endless review":Ss.practice?"Practice":"Review";
   if(Ss.i>=Ss.queue.length)return renderSummary();
   const q=Ss.queue[Ss.i],it=q.it;
   if(it.type==="DRILL"&&!q.inst){try{q.inst=makeDrill(it);}catch(e){Ss.i++;return renderSession();}}
@@ -1655,11 +1708,13 @@ function renderSession(){
   else if(!it.tap)choices=it.o.map((o,j)=>optBtn(q,j,o,j===it.c)).join("");
   main.innerHTML=`
   <div class="sesshead">
-    <div class="dots" aria-label="Item ${Ss.i+1} of ${Ss.queue.length}">${Ss.queue.map((x,j)=>`<span class="dot${j<Ss.i?(x.ok?" ok":" no"):j===Ss.i?" cur":""}"></span>`).join("")}</div>
+    ${Ss.endless?`<div class="endhead"><div class="endnums"><span>Question ${Ss.i+1} of ${Ss.queue.length}</span><span>${Ss.first} of ${Ss.firstN} right</span></div>
+      <div class="ebar" role="progressbar" aria-label="Endless review progress" aria-valuemin="0" aria-valuemax="${Ss.queue.length}" aria-valuenow="${Ss.i}"><span style="width:${(100*Ss.i/Ss.queue.length).toFixed(1)}%"></span></div></div>`
+    :`<div class="dots" aria-label="Item ${Ss.i+1} of ${Ss.queue.length}">${Ss.queue.map((x,j)=>`<span class="dot${j<Ss.i?(x.ok?" ok":" no"):j===Ss.i?" cur":""}"></span>`).join("")}</div>`}
     <button class="linkbtn" id="quit">End</button>
   </div>
   <article class="card stack qcard">
-    <div class="probhead"><span>${it.sec} ${esc(secTitle(it.sec))}</span><span>${q.retry?"Try again":Ss.practice?"Practice":""}</span></div>
+    <div class="probhead"><span>${it.sec} ${esc(secTitle(it.sec))}</span><span>${q.retry?"Try again":Ss.endless?"Endless":Ss.practice?"Practice":""}</span></div>
     <p class="qtext">${esc(prompt)}</p>
     ${it.plot?graphSVG(it,q):""}
     ${it.tap&&!q.answered?`<p class="small muted">Tap the graph, then check your answer.</p>`:""}
@@ -1691,6 +1746,7 @@ function optBtn(q,j,text,ok){
 function answer(q,ok){
   const Ss=SESS;q.answered=true;q.ok=ok;
   if(!q.retry){Ss.firstN++;if(ok)Ss.first++;if(!Ss.practice)record(q.it,ok);}
+  if(Ss.endless&&!ok)Ss.queue.splice(Math.min(Ss.queue.length,Ss.i+4+Math.floor(Math.random()*4)),0,{it:q.it,retry:true});
   saveSess();
   renderSession();typeset(main);
   const fb=document.getElementById("fb");if(fb&&fb.scrollIntoView)fb.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
@@ -1700,7 +1756,7 @@ function feedback(q){
   if(it.type==="DRILL"&&!q.ok){const c=q.inst.choices[q.pick];if(c&&c.fb)extra=`<p>${esc(c.fb)}</p>`;}
   const work=it.type==="DRILL"&&q.inst.work?`<div class="eqbox" data-stack="${esc(stackTex(q.inst.work))}">\\[${q.inst.work}\\]</div>`:"";
   const why=it.why?`<p>${esc(it.why)}</p>`:"";
-  const head=q.ok?(q.retry?"Got it this time":"Correct"):(SESS&&SESS.practice?"Not quite.":"Not quite. This one will come back soon for another try.");
+  const head=q.ok?(q.retry?"Got it this time":"Correct"):(SESS&&SESS.endless?"Not quite. It will come back in a few questions.":SESS&&SESS.practice?"Not quite.":"Not quite. This one will come back soon for another try.");
   return `<div class="fb ${q.ok?"good":"bad"}"><b>${head}</b>${extra}${why}${work}</div>`;
 }
 
@@ -1754,19 +1810,21 @@ function renderSummary(){
   const same=!Ss.practice&&Ss.sec&&secFrac(Ss.sec)<BLOOM&&queueFor(Ss.sec).length?Ss.sec:null;
   const nxSec=dayCapped()?null:(same||(nextSec()||{}).sec||null);
   main.innerHTML=`
-  <header class="stack"><div class="eyebrow">${Ss.practice?"Practice":"Review"} ${Ss.quit?"ended":"done"}</div>
+  <header class="stack"><div class="eyebrow">${Ss.endless?"Endless review":Ss.practice?"Practice":"Review"} ${Ss.quit?"ended":"done"}</div>
     <h1>${Ss.firstN?`${Ss.first} of ${Ss.firstN} right on the first try`:"No items answered"}</h1></header>
   ${grown.length?`<section class="paper garden grown">${grown.map(x=>`<div class="pot static" data-i="${x.i}" data-b="${x.b}" data-a="${x.a}">${plantSVG(x.b,x.i,"")}<span class="potlbl"><b>${x.s}</b> grew</span></div>`).join("")}</section>`
-    :`<p class="muted">${Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed questions come back soon, mixed in with the others."}</p>`}
+    :`<p class="muted">${Ss.endless?(Ss.quit?"Endless review doesn't grow plants. Start a new round any time.":"You made it through every question in the chapter."):Ss.practice?"Practice doesn't grow plants, so it's a safe place to try things.":"No growth this time. Missed questions come back soon, mixed in with the others."}</p>`}
   ${!Ss.practice&&Ss.sec?`<p class="small muted">Section ${Ss.sec}: ${secCount(Ss.sec)} of ${CFG.toBloom} right answers.</p>`:""}
   ${newBloom.map(x=>`<p class="note good">Section ${x.s} bloomed.${toy()&&toy().parts[x.i]?` It added the ${toy().parts[x.i]} to your ${toy().thing}.`:""}</p>`).join("")}
   <div class="row">
     <a class="btn" href="${H("review")}" id="back">Back to your garden</a>
+    ${Ss.endless?`<button class="btn quiet" id="eagain">New endless round</button>`:""}
     ${nxSec&&!Ss.practice?`<button class="btn quiet" id="again">${nxSec===Ss.sec?`Keep growing ${nxSec}`:`Next: grow ${nxSec}`}</button>`:""}
   </div>
   ${dayCapped()&&!Ss.practice?`<p class="small muted">That's today's ${CFG.perDay===1?"review":plural(CFG.perDay,"review")}. Come back tomorrow to keep growing.</p>`:""}`;
   document.getElementById("back").onclick=e=>{e.preventDefault();SESS=null;renderGarden();typeset(main);window.scrollTo(0,0);};
   const ag=document.getElementById("again");if(ag)ag.onclick=()=>{SESS=null;startSession(nxSec,false);};
+  const ea=document.getElementById("eagain");if(ea)ea.onclick=()=>{SESS=null;startEndless();};
   const cells=[...main.querySelectorAll(".pot.static")];
   if(!cells.length)return;
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,t0=performance.now(),dur=1400;
@@ -4289,7 +4347,7 @@ function updateBar(v){
 setTimeout(()=>latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);}),2500);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")latestVersion().then(v=>{if(v&&v!==APP_VERSION)updateBar(v);});});
 
-const APP_VERSION="11/15a";
+const APP_VERSION="11/17a";
 /* ---------- chapter menu and loading ---------- */
 const CACHE={};let SETUP=null;
 /* chapters whose book file is on the site: checked once per visit */
@@ -4646,7 +4704,7 @@ let ROUTE_N=0;
 async function route(){
   const my=++ROUTE_N;
   snapView();cancelAnimationFrame(LP.raf);
-  const h=decodeURIComponent((location.hash||"").slice(1));let m;
+  let h=(location.hash||"").slice(1);try{h=decodeURIComponent(h);}catch(e){location.replace("#chapters");return;}let m;
   if((m=h.match(/^sec-(\d+)-(\d+)$/))){location.replace(`#ch${+m[1]}/${+m[1]}.${+m[2]}`);return;}
   if(/^(learn|practice|launch)$/.test(h)){location.replace(`#ch${lastCh()}`+(h==="learn"?"":"/"+(h==="practice"?"review":h)));return;}
   await loadSetup();
@@ -4686,7 +4744,7 @@ window.addEventListener("hashchange",route);
 function boot(){
   setTabLinks();wireTabs();
   route();
-  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeSpace,spaceSim,makeYard,yardSim,makeCar,carSim,makeMgr,mgrSim,backupCode,readBackup,partPopup,bloomed,toy,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
+  window.__fb={calcEval,calcFmt,sig,makeDrill,parseNotes,record,queueFor,secFrac,makeMission,flight,makeLanding,landSim,makeSail,sailSim,makeCat,catSim,makeElv,elvSim,makeRace,raceSim,makeCst,cstSim,makeBil,bilSim,makeCurl,curlSim,makeFer,ferSim,makeSpace,spaceSim,makeYard,yardSim,makeCar,carSim,makeMgr,mgrSim,backupCode,readBackup,partPopup,startEndless,bloomed,toy,get CH(){return CH},get LP(){return LP},get ITEMS(){return ITEMS},get ERRS(){return NOTE_ERRS},get PROG(){return PROG},set PROG(v){PROG=v},setDay(n){DAY_OFF=n}};
 }
 boot();
 })();
